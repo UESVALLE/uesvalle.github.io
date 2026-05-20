@@ -160,6 +160,14 @@
 .analito-interpretacion{background:#f8fbff;border:1px solid #dbeafe;color:#1e3a8a;border-radius:.85rem;padding:.65rem .85rem;font-size:.82rem;margin-bottom:.75rem;line-height:1.35}
 .analito-interpretacion b{color:#1d4ed8}
 
+
+/* V2.8: pestañas internas tabla analitos / sistemas asociados */
+.inner-tabs{display:flex;gap:.45rem;flex-wrap:wrap;margin:.25rem 0 .75rem}
+.inner-tab-btn{border:1px solid #c7d7fe;background:#fff;color:#1d4ed8;border-radius:999px;padding:.32rem .8rem;font-size:.8rem;font-weight:850}
+.inner-tab-btn.active{background:#1d4ed8;color:#fff;box-shadow:0 6px 15px rgba(29,78,216,.20)}
+.inner-tab-pane{display:none}
+.inner-tab-pane.active{display:block}
+
 </style>
 
 <!-- HTML Muestras - basado en V15.7, con clasificación tipo laboratorio, filtros removibles y nueva estructura de datos -->
@@ -256,7 +264,19 @@
 <div id="analitoKPIs" class="analito-kpi-grid"></div>
 <div id="analitoInterpretacion" class="analito-interpretacion"></div>
 <div id="parametroTiempoNota" class="section-note mb-3">Seleccione un grupo y/o parámetro para visualizar su comportamiento. Si no selecciona uno, se mostrará el parámetro con más resultados no aceptables dentro del universo filtrado.</div><div class="row g-3"><div class="col-12 col-xl-6"><div class="chart p-3"><h5 id="tituloGraficoMuestrasAnio">Muestras por año</h5><div class="chart-container"><canvas id="chartMuestrasAnio"></canvas></div></div></div><div class="col-12 col-xl-6"><div class="chart p-3"><h5 id="tituloGraficoParametroAnio">Parámetro seleccionado por año</h5><div class="chart-container"><canvas id="chartParametroTiempo"></canvas></div></div></div></div>
-<div class="section mt-3 mb-0"><button class="toggle section-h" data-bs-toggle="collapse" data-bs-target="#tablaAnalitosComportamiento" aria-expanded="false"><div class="d-flex gap-3"><div class="sec-ico">📋</div><div><h5>Tabla de analitos del universo filtrado</h5><div class="small text-muted">Consulta y descarga de los resultados que corresponden a los filtros generales y a los filtros de grupo, parámetro y diagnóstico.</div></div></div><span class="arrow"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button><div class="collapse" id="tablaAnalitosComportamiento"><div class="section-b"><div class="section-note mb-3">La tabla muestra una vista previa para mantener rendimiento. El botón CSV descarga todos los registros filtrados del módulo.</div><div class="d-flex gap-2 flex-wrap mb-3"><button id="btnCargarTablaAnalitos" class="btn btn-sm btn-primary" type="button">Cargar/actualizar tabla</button><button id="btnDescargarAnalitosFiltrados" class="btn btn-sm btn-outline-secondary" type="button">Descargar CSV analitos filtrados</button></div><div class="table-responsive"><table id="tblAnalitosFiltrados" class="table table-striped table-hover w-100"></table></div></div></div></div>
+<div class="section mt-3 mb-0"><button class="toggle section-h" data-bs-toggle="collapse" data-bs-target="#tablaAnalitosComportamiento" aria-expanded="false"><div class="d-flex gap-3"><div class="sec-ico">📋</div><div><h5>Tabla de analitos del universo filtrado</h5><div class="small text-muted">Consulta y descarga de los resultados que corresponden a los filtros generales y a los filtros de grupo, parámetro y diagnóstico.</div></div></div><span class="arrow"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button><div class="collapse" id="tablaAnalitosComportamiento"><div class="section-b"><div class="section-note mb-3">La tabla muestra una vista previa para mantener rendimiento. Las pestañas permiten revisar tanto los analitos filtrados como los sistemas/acueductos asociados al filtro técnico seleccionado.</div>
+<div class="inner-tabs" role="tablist" aria-label="Tablas del módulo de analitos">
+  <button id="btnTabAnalitos" class="inner-tab-btn active" type="button" data-inner-tab="analitos">Analitos filtrados</button>
+  <button id="btnTabSistemasAnalitos" class="inner-tab-btn" type="button" data-inner-tab="sistemas">Sistemas asociados</button>
+</div>
+<div id="paneAnalitos" class="inner-tab-pane active">
+  <div class="d-flex gap-2 flex-wrap mb-3"><button id="btnCargarTablaAnalitos" class="btn btn-sm btn-primary" type="button">Cargar/actualizar tabla</button><button id="btnDescargarAnalitosFiltrados" class="btn btn-sm btn-outline-secondary" type="button">Descargar CSV analitos filtrados</button></div>
+  <div class="table-responsive"><table id="tblAnalitosFiltrados" class="table table-striped table-hover w-100"></table></div>
+</div>
+<div id="paneSistemasAnalitos" class="inner-tab-pane">
+  <div class="d-flex gap-2 flex-wrap mb-3"><button id="btnCargarTablaSistemasAnalitos" class="btn btn-sm btn-primary" type="button">Cargar/actualizar sistemas</button><button id="btnDescargarSistemasAnalitos" class="btn btn-sm btn-outline-secondary" type="button">Descargar CSV sistemas asociados</button></div>
+  <div class="table-responsive"><table id="tblSistemasAnalitos" class="table table-striped table-hover w-100"></table></div>
+</div></div></div></div>
 </div></div></section>
 
     </div>
@@ -274,7 +294,7 @@
   </div>
 </section>
 
-<footer class="text-center"><strong>UESVALLE | Tablero de Muestras</strong><br>Tablero de Muestras V2.7: conectado a las salidas normalizadas IRCA 2020-2026, maestro acueductos IRCA 2026 y catálogo normativo.</footer>
+<footer class="text-center"><strong>UESVALLE | Tablero de Muestras</strong><br>Tablero de Muestras V2.8: conectado a las salidas normalizadas IRCA 2020-2026, maestro acueductos IRCA 2026 y catálogo normativo.</footer>
 </div></main>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -305,7 +325,7 @@ const FILES={
   resumenMuestra:['data/muestras_irca/current/resumen_muestras.csv'],
   serieTiempo:['data/muestras_irca/current/serie_tiempo_analitos.csv']
 };
-let DASH=[],FICHAS=[],COORDS=[],RES_PARAM=[],NO_ACEPT=[],LAB_DET=[],RES_MUESTRA=[],SERIE=[],FILTERED=[],FICHAS_FILTERED=[],charts={},DTR=null,DTP=null,DTS=null,DTA=null,MAP=null,MARKERS=null,BASE_LAYERS={},lastSelectedSample='';
+let DASH=[],FICHAS=[],COORDS=[],RES_PARAM=[],NO_ACEPT=[],LAB_DET=[],RES_MUESTRA=[],SERIE=[],FILTERED=[],FICHAS_FILTERED=[],charts={},DTR=null,DTP=null,DTS=null,DTA=null,DTSA=null,MAP=null,MARKERS=null,BASE_LAYERS={},lastSelectedSample='';
 const RISK_COLOR={'SIN RIESGO':'#00b050','BAJO':'#92d050','MEDIO':'#ffff00','ALTO':'#ffc000','INVIABLE SANITARIAMENTE':'#ff0000','SIN DATO':'#6c757d'};
 const RISK_ORDER={'SIN DATO':0,'SIN RIESGO':1,'BAJO':2,'MEDIO':3,'ALTO':4,'INVIABLE SANITARIAMENTE':5};
 function norm(v){return(v==null?'':String(v).trim()).normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\s+/g,' ').toUpperCase()}
@@ -1058,6 +1078,7 @@ function updateAnalitoModule(changed=''){
   updateCharts();
   updateResumenTable();
   updateTablaAnalitos(false);
+  if(DTSA)updateTablaSistemasAnalitos(false);
 }
 
 function analitoUniqueKey(r){
@@ -1077,6 +1098,124 @@ function dedupeAnalitoRows(rows){
     if(!map.has(k))map.set(k,r);
   });
   return [...map.values()];
+}
+
+
+function resumenSistemasAnalitosRows(){
+  const rows=dedupeAnalitoRows(analitoFilteredRows());
+  const map=new Map();
+  rows.forEach(r=>{
+    const codigo=String(colVal(r,['CODIGO_SISTEMA'],'')).trim();
+    const sistema=String(colVal(r,['SISTEMA_DISTRIBUCION'],'Sin sistema')).trim();
+    const key=codigo || (norm(colVal(r,['MUNICIPIO'],''))+'|'+norm(sistema));
+    if(!key)return;
+    if(!map.has(key)){
+      map.set(key,{
+        MUNICIPIO:colVal(r,['MUNICIPIO'],''),
+        AMBITO:colVal(r,['CLASIFICACION_URBANO_RURAL','AMBITO'],'Sin dato'),
+        CODIGO_SISTEMA:codigo,
+        SISTEMA_DISTRIBUCION:sistema,
+        TIPO_DISPOSITIVO:new Set(),
+        MUESTRAS:new Set(),
+        PARAMS:new Set(),
+        NO_KEYS:new Set(),
+        TOTAL_KEYS:new Set(),
+        IRCAS:new Map(),
+        FECHAS:[],
+        VALS:[],
+        PUNTOS:new Set()
+      });
+    }
+    const o=map.get(key);
+    o.TIPO_DISPOSITIVO.add(colVal(r,['TIPO_DISPOSITIVO_AJUSTADO'],'Sin dato')||'Sin dato');
+    if(r.CODIGO_MUESTRA_SIVICAP)o.MUESTRAS.add(String(r.CODIGO_MUESTRA_SIVICAP));
+    const p=parametroEtiqueta(r)||colVal(r,['PARAMETRO_VISUAL','PARAMETRO']);
+    if(p)o.PARAMS.add(p);
+    const k=llaveAnalitoHomologado(r); if(k!=='|')o.TOTAL_KEYS.add(k);
+    if(rowIsNoAceptable(r)&&k!=='|')o.NO_KEYS.add(k);
+    const ir=num(r.IRCA_NUM); if(ir!=null&&r.CODIGO_MUESTRA_SIVICAP)o.IRCAS.set(String(r.CODIGO_MUESTRA_SIVICAP),ir);
+    const fecha=shortDate(colVal(r,['FECHA_TOMA','FECHA'],''));
+    if(fecha && fecha!=='Sin fecha')o.FECHAS.push(fecha);
+    const val=num(colVal(r,['RESULTADO_NUM','RESULTADO']));
+    if(val!=null)o.VALS.push(val);
+    const punto=colVal(r,['DESCRIPCION_PM','DIRECCION_PM','UBICACION_PM'],'');
+    if(punto)o.PUNTOS.add(punto);
+  });
+  return [...map.values()].map(o=>{
+    const ir=[...o.IRCAS.values()];
+    const vals=o.VALS;
+    const disp=[...o.TIPO_DISPOSITIVO].filter(Boolean);
+    const fechas=o.FECHAS.sort();
+    return {
+      MUNICIPIO:o.MUNICIPIO||'–',
+      AMBITO:o.AMBITO||'Sin dato',
+      CODIGO_SISTEMA:o.CODIGO_SISTEMA||'–',
+      SISTEMA_DISTRIBUCION:o.SISTEMA_DISTRIBUCION||'–',
+      TIPO_DISPOSITIVO:disp.length===1?disp[0]:(disp.length>1?'Mixto':'Sin dato'),
+      MUESTRAS:o.MUESTRAS.size,
+      ANALITOS:o.PARAMS.size,
+      NO_ACEPTABLES:o.NO_KEYS.size,
+      TOTAL:o.TOTAL_KEYS.size,
+      PCT:o.TOTAL_KEYS.size?o.NO_KEYS.size/o.TOTAL_KEYS.size*100:0,
+      IRCA_PROM:ir.length?ir.reduce((a,b)=>a+b,0)/ir.length:null,
+      IRCA_MAX:ir.length?Math.max(...ir):null,
+      FECHA_ULTIMA:fechas.length?fechas[fechas.length-1]:'–',
+      VALOR_MAX_PARAM:vals.length?Math.max(...vals):null,
+      PUNTOS:o.PUNTOS.size
+    };
+  }).sort((a,b)=>b.NO_ACEPTABLES-a.NO_ACEPTABLES || b.PCT-a.PCT || b.MUESTRAS-a.MUESTRAS || String(a.MUNICIPIO).localeCompare(String(b.MUNICIPIO),'es'));
+}
+function updateTablaSistemasAnalitos(forceLoad=false){
+  if(!DTSA && !forceLoad)return;
+  const rows=resumenSistemasAnalitosRows();
+  const cols=[
+    {title:'Municipio',data:'MUNICIPIO'},
+    {title:'Ámbito',data:'AMBITO'},
+    {title:'Código sistema',data:'CODIGO_SISTEMA',render:d=>`<b>${esc(d)}</b>`},
+    {title:'Sistema / acueducto',data:'SISTEMA_DISTRIBUCION'},
+    {title:'Dispositivo',data:'TIPO_DISPOSITIVO',render:d=>{const cls=norm(d).includes('FILTRO')?'pill-filtro':'pill-grifo';return `<span class="pill ${cls}">${esc(d)}</span>`;}},
+    {title:'Muestras',data:'MUESTRAS',render:d=>fmt(d)},
+    {title:'Analitos',data:'ANALITOS',render:d=>fmt(d)},
+    {title:'No aceptables',data:'NO_ACEPTABLES',render:d=>`<b>${fmt(d)}</b>`},
+    {title:'% no aceptable',data:'PCT',render:d=>`<span class="pct-bad">${fmt(d,1)}%</span>`},
+    {title:'IRCA prom.',data:'IRCA_PROM',render:d=>d==null?'–':fmt(d,2)},
+    {title:'IRCA máx.',data:'IRCA_MAX',render:d=>d==null?'–':fmt(d,2)},
+    {title:'Última muestra',data:'FECHA_ULTIMA'},
+    {title:'Valor máx. parámetro',data:'VALOR_MAX_PARAM',render:d=>d==null?'–':fmt(d,2)},
+    {title:'Puntos PM',data:'PUNTOS',render:d=>fmt(d)}
+  ];
+  if(DTSA){DTSA.clear().rows.add(rows).draw();return;}
+  DTSA=$('#tblSistemasAnalitos').DataTable({data:rows,columns:cols,pageLength:10,order:[[7,'desc'],[8,'desc']],dom:'Bfrtip',buttons:['copy','csv','excel','print'],language:{url:'https://cdn.datatables.net/plug-ins/1.13.8/i18n/es-ES.json'}});
+}
+function descargarSistemasAnalitos(){
+  const rows=resumenSistemasAnalitosRows();
+  downloadCSV(rows,[
+    ['Municipio','MUNICIPIO'],
+    ['Ámbito','AMBITO'],
+    ['Código sistema','CODIGO_SISTEMA'],
+    ['Sistema / acueducto','SISTEMA_DISTRIBUCION'],
+    ['Dispositivo','TIPO_DISPOSITIVO'],
+    ['Muestras','MUESTRAS'],
+    ['Analitos','ANALITOS'],
+    ['No aceptables','NO_ACEPTABLES'],
+    ['% no aceptable',r=>fmt(r.PCT,1)],
+    ['IRCA promedio',r=>r.IRCA_PROM==null?'':fmt(r.IRCA_PROM,2)],
+    ['IRCA máximo',r=>r.IRCA_MAX==null?'':fmt(r.IRCA_MAX,2)],
+    ['Última muestra','FECHA_ULTIMA'],
+    ['Valor máximo parámetro',r=>r.VALOR_MAX_PARAM==null?'':fmt(r.VALOR_MAX_PARAM,2)],
+    ['Puntos PM','PUNTOS']
+  ],`sistemas_asociados_analitos_${new Date().toISOString().slice(0,10)}.csv`);
+}
+function activateInnerTab(tab){
+  document.querySelectorAll('.inner-tab-btn').forEach(b=>b.classList.toggle('active',b.dataset.innerTab===tab));
+  document.querySelectorAll('.inner-tab-pane').forEach(p=>p.classList.remove('active'));
+  if(tab==='sistemas'){
+    document.getElementById('paneSistemasAnalitos')?.classList.add('active');
+    updateTablaSistemasAnalitos(true);
+  }else{
+    document.getElementById('paneAnalitos')?.classList.add('active');
+    updateTablaAnalitos(true);
+  }
 }
 
 function updateTablaAnalitos(forceLoad=false){
@@ -1099,7 +1238,9 @@ function updateTablaAnalitos(forceLoad=false){
     {title:'IRCA',data:'IRCA_NUM'},
     {title:'Riesgo',data:'NIVEL_RIESGO'}
   ];
-  if(DTA){DTA.clear().rows.add(rows).draw();return;}
+  if(DTA){DTA.clear().rows.add(rows).draw();}
+  if(DTSA){updateTablaSistemasAnalitos(false);}
+  if(DTA)return;
   DTA=$('#tblAnalitosFiltrados').DataTable({data:rows,columns:cols,pageLength:10,order:[[0,'desc']],dom:'Bfrtip',buttons:['copy','csv','excel','print'],language:{url:'https://cdn.datatables.net/plug-ins/1.13.8/i18n/es-ES.json'}});
 }
 function descargarAnalitosFiltrados(){
@@ -1157,7 +1298,7 @@ document.getElementById('btnFiltrar').addEventListener('click',()=>{updateFilter
   updateFicha();
   updateResultsTable();
 }
-document.getElementById('fMuestra')?.addEventListener('change',applySampleSelection);document.getElementById('btnLimpiarMuestra')?.addEventListener('click',()=>{lastSelectedSample='';fMuestra.value='';if(window.jQuery)jQuery('#fMuestra').val('').trigger('change.select2');applySampleSelection();});document.getElementById('fSoloNoAceptables')?.addEventListener('change',()=>{updateResultsTable();});document.getElementById('btnLimpiarAnalitos')?.addEventListener('click',()=>{fDiagnostico.value='';fParametro.value='';fGrupo.value='';const vg=document.getElementById('fVistaGrafico');if(vg)vg.value='PROMEDIO';if(window.jQuery)jQuery('#fGrupo,#fParametro,#fDiagnostico').val('').trigger('change.select2');updateAnalitoModule();});document.getElementById('kpiNoAceptablesCard').addEventListener('click',()=>{fDiagnostico.value='No aceptable';if(window.jQuery)jQuery('#fDiagnostico').val('No aceptable').trigger('change.select2');updateAnalitoModule('fDiagnostico');});document.getElementById('btnDescargarMuestra')?.addEventListener('click',descargarMuestra);document.getElementById('btnCargarTablaResultados')?.addEventListener('click',cargarTablaDescarga);document.getElementById('btnDescargarFiltrado')?.addEventListener('click',descargarFiltrado);document.getElementById('btnCargarTablaAnalitos')?.addEventListener('click',()=>updateTablaAnalitos(true));document.getElementById('btnDescargarAnalitosFiltrados')?.addEventListener('click',descargarAnalitosFiltrados);document.getElementById('layerBtn').addEventListener('click',()=>layerPanel.classList.toggle('collapsed-panel'));document.getElementById('legendBtn').addEventListener('click',()=>legendPanel.classList.toggle('collapsed-panel'));document.getElementById('btnFitMap').addEventListener('click',()=>updateMap());document.getElementById('btnFullMap').addEventListener('click',()=>{mapShell.classList.toggle('fullscreen');btnFullMap.textContent=mapShell.classList.contains('fullscreen')?'Cerrar pantalla completa':'Pantalla completa';setTimeout(()=>MAP&&MAP.invalidateSize(),250);});
+document.getElementById('fMuestra')?.addEventListener('change',applySampleSelection);document.getElementById('btnLimpiarMuestra')?.addEventListener('click',()=>{lastSelectedSample='';fMuestra.value='';if(window.jQuery)jQuery('#fMuestra').val('').trigger('change.select2');applySampleSelection();});document.getElementById('fSoloNoAceptables')?.addEventListener('change',()=>{updateResultsTable();});document.getElementById('btnLimpiarAnalitos')?.addEventListener('click',()=>{fDiagnostico.value='';fParametro.value='';fGrupo.value='';const vg=document.getElementById('fVistaGrafico');if(vg)vg.value='PROMEDIO';if(window.jQuery)jQuery('#fGrupo,#fParametro,#fDiagnostico').val('').trigger('change.select2');updateAnalitoModule();});document.getElementById('kpiNoAceptablesCard').addEventListener('click',()=>{fDiagnostico.value='No aceptable';if(window.jQuery)jQuery('#fDiagnostico').val('No aceptable').trigger('change.select2');updateAnalitoModule('fDiagnostico');});document.getElementById('btnDescargarMuestra')?.addEventListener('click',descargarMuestra);document.getElementById('btnCargarTablaResultados')?.addEventListener('click',cargarTablaDescarga);document.getElementById('btnDescargarFiltrado')?.addEventListener('click',descargarFiltrado);document.getElementById('btnCargarTablaAnalitos')?.addEventListener('click',()=>updateTablaAnalitos(true));document.getElementById('btnDescargarAnalitosFiltrados')?.addEventListener('click',descargarAnalitosFiltrados);document.getElementById('btnCargarTablaSistemasAnalitos')?.addEventListener('click',()=>updateTablaSistemasAnalitos(true));document.getElementById('btnDescargarSistemasAnalitos')?.addEventListener('click',descargarSistemasAnalitos);document.getElementById('btnTabAnalitos')?.addEventListener('click',()=>activateInnerTab('analitos'));document.getElementById('btnTabSistemasAnalitos')?.addEventListener('click',()=>activateInnerTab('sistemas'));document.getElementById('layerBtn').addEventListener('click',()=>layerPanel.classList.toggle('collapsed-panel'));document.getElementById('legendBtn').addEventListener('click',()=>legendPanel.classList.toggle('collapsed-panel'));document.getElementById('btnFitMap').addEventListener('click',()=>updateMap());document.getElementById('btnFullMap').addEventListener('click',()=>{mapShell.classList.toggle('fullscreen');btnFullMap.textContent=mapShell.classList.contains('fullscreen')?'Cerrar pantalla completa':'Pantalla completa';setTimeout(()=>MAP&&MAP.invalidateSize(),250);});
 document.querySelectorAll('#dashboardTabs button[data-bs-toggle="tab"]').forEach(btn=>{
   btn.addEventListener('shown.bs.tab',()=>{renderActiveTab();});
 });
