@@ -147,6 +147,14 @@
   color:#166534!important;
 }
 
+
+/* V2.4: KPIs internos del módulo de analitos */
+.analito-kpi-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:.55rem;margin-bottom:.75rem}
+.analito-kpi{background:#fff;border:1px solid #dbeafe;border-radius:.8rem;padding:.55rem .65rem;text-align:center}
+.analito-kpi small{display:block;color:#667085;font-weight:800;font-size:.68rem;line-height:1.1}
+.analito-kpi b{display:block;color:#1d4ed8;font-size:1.05rem;line-height:1.2;margin-top:.12rem}
+@media(max-width:992px){.analito-kpi-grid{grid-template-columns:repeat(2,1fr)}}
+
 </style>
 
 <!-- HTML Muestras - basado en V15.7, con clasificación tipo laboratorio, filtros removibles y nueva estructura de datos -->
@@ -239,6 +247,7 @@
   <div class="col-12 col-md-2"><label class="form-label filter-label">Diagnóstico</label><select id="fDiagnostico" class="form-select form-select-sm searchable-select"><option value="">Todos</option></select></div>
   <div class="col-12 col-md-2"><button id="btnLimpiarAnalitos" class="btn btn-sm btn-outline-secondary w-100" type="button">Limpiar analitos</button></div>
 </div></div>
+<div id="analitoKPIs" class="analito-kpi-grid"></div>
 <div id="parametroTiempoNota" class="section-note mb-3">Seleccione un grupo y/o parámetro para visualizar su comportamiento. Si no selecciona uno, se mostrará el parámetro con más resultados no aceptables dentro del universo filtrado.</div><div class="row g-3"><div class="col-12 col-xl-6"><div class="chart p-3"><h5>Muestras por año</h5><div class="chart-container"><canvas id="chartMuestrasAnio"></canvas></div></div></div><div class="col-12 col-xl-6"><div class="chart p-3"><h5>Parámetro seleccionado por año</h5><div class="chart-container"><canvas id="chartParametroTiempo"></canvas></div></div></div></div>
 <div class="section mt-3 mb-0"><button class="toggle section-h" data-bs-toggle="collapse" data-bs-target="#tablaAnalitosComportamiento" aria-expanded="false"><div class="d-flex gap-3"><div class="sec-ico">📋</div><div><h5>Tabla de analitos del universo filtrado</h5><div class="small text-muted">Consulta y descarga de los resultados que corresponden a los filtros generales y a los filtros de grupo, parámetro y diagnóstico.</div></div></div><span class="arrow"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button><div class="collapse" id="tablaAnalitosComportamiento"><div class="section-b"><div class="section-note mb-3">La tabla muestra una vista previa para mantener rendimiento. El botón CSV descarga todos los registros filtrados del módulo.</div><div class="d-flex gap-2 flex-wrap mb-3"><button id="btnCargarTablaAnalitos" class="btn btn-sm btn-primary" type="button">Cargar/actualizar tabla</button><button id="btnDescargarAnalitosFiltrados" class="btn btn-sm btn-outline-secondary" type="button">Descargar CSV analitos filtrados</button></div><div class="table-responsive"><table id="tblAnalitosFiltrados" class="table table-striped table-hover w-100"></table></div></div></div></div>
 </div></div></section>
@@ -258,7 +267,7 @@
   </div>
 </section>
 
-<footer class="text-center"><strong>UESVALLE | Tablero de Muestras</strong><br>Tablero de Muestras V2.2: conectado a las salidas normalizadas IRCA 2020-2026, maestro acueductos IRCA 2026 y catálogo normativo.</footer>
+<footer class="text-center"><strong>UESVALLE | Tablero de Muestras</strong><br>Tablero de Muestras V2.4: conectado a las salidas normalizadas IRCA 2020-2026, maestro acueductos IRCA 2026 y catálogo normativo.</footer>
 </div></main>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -675,53 +684,81 @@ function serieRowPass(r){
   if(fMunicipio.value && norm(colVal(r,['MUNICIPIO']))!==norm(fMunicipio.value))return false;
   if(fSistema.value && norm(colVal(r,['SISTEMA_DISTRIBUCION','SISTEMA']))!==norm(fSistema.value))return false;
   if(fCodigoSistema.value && norm(colVal(r,['CODIGO_SISTEMA']))!==norm(fCodigoSistema.value))return false;
-  if(fGrupo.value && norm(colVal(r,['GRUPO_VISUAL','GRUPO_PARAMETRO']))!==norm(fGrupo.value))return false;
+  if(fGrupo.value && norm(grupoVisual(colVal(r,['GRUPO_VISUAL','GRUPO_PARAMETRO','GRUPO'])))!==norm(fGrupo.value))return false;
   if(fDiagnostico.value && r.DIAGNOSTICO && norm(r.DIAGNOSTICO)!==norm(fDiagnostico.value))return false;
   return true;
 }
+
+function updateAnalitoKPIs(paramRows, moduleRows, selectedParam){
+  const box=document.getElementById('analitoKPIs');
+  if(!box)return;
+  const rows = selectedParam ? paramRows : moduleRows;
+  const mediciones=rows.length;
+  const muestras=uniq(rows.map(r=>r.CODIGO_MUESTRA_SIVICAP)).length;
+  const sistemas=uniq(rows.map(r=>r.CODIGO_SISTEMA)).length;
+  const municipios=uniq(rows.map(r=>r.MUNICIPIO)).length;
+  const no=conteoNoAceptablesHomologados(rows.filter(r=>rowIsNoAceptable(r)));
+  const vals=rows.map(r=>num(colVal(r,['RESULTADO_NUM','RESULTADO']))).filter(v=>v!=null);
+  const maxVal=vals.length?Math.max(...vals):null;
+  box.innerHTML=`<div class="analito-kpi"><small>Mediciones filtradas</small><b>${fmt(mediciones)}</b></div>
+  <div class="analito-kpi"><small>Muestras asociadas</small><b>${fmt(muestras)}</b></div>
+  <div class="analito-kpi"><small>Sistemas afectados</small><b>${fmt(sistemas)}</b></div>
+  <div class="analito-kpi"><small>Municipios</small><b>${fmt(municipios)}</b></div>
+  <div class="analito-kpi"><small>No aceptables</small><b>${fmt(no)}</b></div>
+  <div class="analito-kpi"><small>Valor máximo</small><b>${maxVal==null?'–':fmt(maxVal,2)}</b></div>`;
+}
+
 function updateCharts(){
-  const byYear=groupBy(FILTERED,r=>r.ANIO);
+  // V2.4: las gráficas responden a los filtros internos del módulo.
+  const moduleRows = analitoFilteredRows();
+
+  const byYear=groupBy(moduleRows,r=>r.ANIO);
   const years=[...byYear.keys()].sort();
   barChart('chartMuestrasAnio',years,years.map(y=>uniq(byYear.get(y).map(r=>r.CODIGO_MUESTRA_SIVICAP)).length),'Muestras');
+
   let selected=fParametro.value;
   if(!selected){
-    const baseAnalitos=FILTERED.filter(r=>(!fGrupo.value||norm(colVal(r,['GRUPO_VISUAL','GRUPO_PARAMETRO']))===norm(fGrupo.value))&&(!fDiagnostico.value||norm(r.DIAGNOSTICO)===norm(fDiagnostico.value)));
-    const m=groupBy(baseAnalitos.filter(r=>isTrue(r.ES_NO_ACEPTABLE)),r=>parametroEtiqueta(r));
-    selected=[...m.entries()].sort((a,b)=>conteoNoAceptablesHomologados(b[1])-conteoNoAceptablesHomologados(a[1]))[0]?.[0]||uniq(FILTERED.map(r=>parametroEtiqueta(r)))[0]||'';
+    const baseAnalitos=FILTERED.filter(r=>
+      (!fGrupo.value||norm(grupoVisual(colVal(r,['GRUPO_VISUAL','GRUPO_PARAMETRO','GRUPO'])))===norm(fGrupo.value)) &&
+      (!fDiagnostico.value||norm(diagLabel(r))===norm(fDiagnostico.value))
+    );
+    const m=groupBy(baseAnalitos.filter(r=>rowIsNoAceptable(r)),r=>parametroEtiqueta(r));
+    selected=[...m.entries()].sort((a,b)=>conteoNoAceptablesHomologados(b[1])-conteoNoAceptablesHomologados(a[1]))[0]?.[0]||uniq(baseAnalitos.map(r=>parametroEtiqueta(r)))[0]||'';
   }
-  let pyears=[],promedio=[],muestraCnt=[],refRow={};
-  if(SERIE.length){
-    const serieRows=SERIE.filter(r=>serieRowPass(r) && norm(parametroHomologadoValor(colVal(r,['PARAMETRO_HOMOLOGADO','PARAMETRO_BASE_VISUAL','PARAMETRO_VISUAL','PARAMETRO'])))===norm(selected));
-    const byY=groupBy(serieRows,r=>String(colVal(r,['ANIO','AÑO'])));
-    pyears=[...byY.keys()].sort();
-    promedio=pyears.map(y=>num(colVal(byY.get(y)[0],['RESULTADO_PROMEDIO','PROMEDIO_RESULTADO','RESULTADO_NUM'])));
-    muestraCnt=pyears.map(y=>Number(colVal(byY.get(y)[0],['TOTAL_MEDICIONES','TOTAL_MUESTRAS'],0))||0);
-    refRow=serieRows.find(r=>String(colVal(r,['VALOR_MAXIMO_PERMISIBLE'])).trim()!=='')||{};
-  }else{
-    const paramRows=FILTERED.filter(r=>norm(parametroEtiqueta(r))===norm(selected)&&num(r.RESULTADO_NUM)!=null);
-    const py=groupBy(paramRows,r=>r.ANIO);
-    pyears=[...py.keys()].sort();
-    promedio=pyears.map(y=>{const vals=py.get(y).map(r=>num(r.RESULTADO_NUM)).filter(v=>v!=null);return vals.length?Number((vals.reduce((a,b)=>a+b,0)/vals.length).toFixed(3)):null});
-    muestraCnt=pyears.map(y=>uniq(py.get(y).map(r=>r.CODIGO_MUESTRA_SIVICAP)).length);
-    refRow=paramRows.find(r=>String(r.VALOR_MAXIMO_PERMISIBLE||'').trim()!=='')||{};
-  }
+
+  const paramRows=moduleRows.filter(r=>!selected || norm(parametroEtiqueta(r))===norm(selected));
+  const py=groupBy(paramRows.filter(r=>num(colVal(r,['RESULTADO_NUM','RESULTADO']))!=null),r=>r.ANIO);
+  const pyears=[...py.keys()].sort();
+  const promedio=pyears.map(y=>{
+    const vals=py.get(y).map(r=>num(colVal(r,['RESULTADO_NUM','RESULTADO']))).filter(v=>v!=null);
+    return vals.length?Number((vals.reduce((a,b)=>a+b,0)/vals.length).toFixed(3)):null;
+  });
+  const muestraCnt=pyears.map(y=>uniq(py.get(y).map(r=>r.CODIGO_MUESTRA_SIVICAP)).length);
+  const refRow=paramRows.find(r=>String(colVal(r,['VALOR_MAXIMO_PERMISIBLE'])).trim()!=='')||{};
   const vmp=colVal(refRow,['VALOR_MAXIMO_PERMISIBLE'],'');
   const refNums=String(vmp||'').replace(',','.').match(/-?\d+(\.\d+)?/g)?.map(Number)||[];
   const datasets=[{label:`${selected || 'Resultado'} promedio`,data:promedio,tension:.25,spanGaps:true}];
   if(refNums.length===1){datasets.push({label:'Valor máximo permitido',data:pyears.map(()=>refNums[0]),borderDash:[6,5],pointRadius:0,spanGaps:true});}
   if(refNums.length>=2){datasets.push({label:'Límite inferior permitido',data:pyears.map(()=>Math.min(refNums[0],refNums[1])),borderDash:[4,4],pointRadius:0,spanGaps:true});datasets.push({label:'Límite superior permitido',data:pyears.map(()=>Math.max(refNums[0],refNums[1])),borderDash:[6,5],pointRadius:0,spanGaps:true});}
   const sistema=fSistema.value||fCodigoSistema.value||'universo filtrado';
-  parametroTiempoNota.innerHTML=selected?`Se presenta el comportamiento anual de <b>${esc(selected)}</b> para <b>${esc(sistema)}</b>. Cada punto corresponde al promedio anual del resultado reportado. Mediciones por año: ${pyears.map((y,i)=>`${y}: ${muestraCnt[i]}`).join(' | ') || 'sin datos'}. Referencia normativa: <b>${esc(vmp||'sin dato')}</b> ${esc(colVal(refRow,['UNIDAD'],''))}.`:'No hay parámetro seleccionado para la serie de tiempo.';
+  const diagTxt=fDiagnostico.value?` con diagnóstico <b>${esc(fDiagnostico.value)}</b>`:'';
+  parametroTiempoNota.innerHTML=selected?`Se presenta el comportamiento anual de <b>${esc(selected)}</b>${diagTxt} para <b>${esc(sistema)}</b>. Cada punto corresponde al promedio anual del resultado reportado dentro del filtro del módulo. Mediciones por año: ${pyears.map((y,i)=>`${y}: ${muestraCnt[i]}`).join(' | ') || 'sin datos'}. Referencia normativa: <b>${esc(vmp||'sin dato')}</b> ${esc(colVal(refRow,['UNIDAD'],''))}.`:'No hay parámetro seleccionado para la serie de tiempo.';
   lineChart('chartParametroTiempo',pyears,datasets);
-  const critBase=FILTERED.filter(r=>(!fGrupo.value||norm(colVal(r,['GRUPO_VISUAL','GRUPO_PARAMETRO']))===norm(fGrupo.value))&&(!fDiagnostico.value||norm(r.DIAGNOSTICO)===norm(fDiagnostico.value)));
-  const byParam=groupBy(critBase.filter(r=>isTrue(r.ES_NO_ACEPTABLE)),r=>parametroEtiqueta(r));
+
+  const critBase=FILTERED.filter(r=>
+    (!fGrupo.value||norm(grupoVisual(colVal(r,['GRUPO_VISUAL','GRUPO_PARAMETRO','GRUPO'])))===norm(fGrupo.value)) &&
+    (!fDiagnostico.value||norm(diagLabel(r))===norm(fDiagnostico.value))
+  );
+  const byParam=groupBy(critBase.filter(r=>rowIsNoAceptable(r)),r=>parametroEtiqueta(r));
   const top=[...byParam.entries()].map(([k,v])=>({k,n:conteoNoAceptablesHomologados(v)})).sort((a,b)=>b.n-a.n).slice(0,10).reverse();
   barChart('chartParametrosCriticos',top.map(x=>x.k),top.map(x=>x.n),'Parámetros no aceptables',true);
+
+  updateAnalitoKPIs(paramRows, moduleRows, selected);
 }
 function updateResumenTable(){
-  const base=FILTERED.filter(r=>(!fGrupo.value||norm(colVal(r,['GRUPO_VISUAL','GRUPO_PARAMETRO']))===norm(fGrupo.value))&&(!fParametro.value||norm(colVal(r,['PARAMETRO_VISUAL','PARAMETRO']))===norm(fParametro.value)||norm(parametroEtiqueta(r))===norm(fParametro.value))&&(!fDiagnostico.value||norm(r.DIAGNOSTICO)===norm(fDiagnostico.value)));
+  const base=FILTERED.filter(r=>(!fGrupo.value||norm(grupoVisual(colVal(r,['GRUPO_VISUAL','GRUPO_PARAMETRO','GRUPO'])))===norm(fGrupo.value))&&(!fParametro.value||norm(parametroEtiqueta(r))===norm(fParametro.value)||norm(colVal(r,['PARAMETRO_VISUAL','PARAMETRO']))===norm(fParametro.value))&&(!fDiagnostico.value||norm(diagLabel(r))===norm(fDiagnostico.value)));
   const byParam=groupBy(base,r=>parametroEtiqueta(r));
-  let rows=[...byParam.entries()].map(([p,arr])=>{const no=conteoNoAceptablesHomologados(arr);const total=conteoTotalAnalitosHomologados(arr);return{PARAMETRO:p,GRUPO:colVal(arr[0],['GRUPO_VISUAL','GRUPO_PARAMETRO']),TOTAL:total,NO:no,PCT:total?no/total*100:0,SISTEMAS:uniq(arr.map(r=>r.CODIGO_SISTEMA)).length,MUNICIPIOS:uniq(arr.map(r=>r.MUNICIPIO)).length}}).sort((a,b)=>b.NO-a.NO).slice(0,100);
+  let rows=[...byParam.entries()].map(([p,arr])=>{const no=conteoNoAceptablesHomologados(arr.filter(r=>rowIsNoAceptable(r)));const total=conteoTotalAnalitosHomologados(arr);return{PARAMETRO:p,GRUPO:colVal(arr[0],['GRUPO_VISUAL','GRUPO_PARAMETRO']),TOTAL:total,NO:no,PCT:total?no/total*100:0,SISTEMAS:uniq(arr.map(r=>r.CODIGO_SISTEMA)).length,MUNICIPIOS:uniq(arr.map(r=>r.MUNICIPIO)).length}}).sort((a,b)=>b.NO-a.NO).slice(0,100);
   if(DTP){DTP.clear().rows.add(rows).draw();return}
   DTP=$('#tblResumenParametros').DataTable({data:rows,columns:[{title:'Parámetro',data:'PARAMETRO'},{title:'Grupo',data:'GRUPO'},{title:'Total parámetros',data:'TOTAL',render:d=>fmt(d)},{title:'Parámetros no aceptables',data:'NO',render:d=>`<span class="badge badge-bad">${fmt(d)}</span>`},{title:'% parámetros no aceptables',data:'PCT',render:d=>fmt(d,1)+'%'},{title:'Sistemas',data:'SISTEMAS',render:d=>fmt(d)},{title:'Municipios',data:'MUNICIPIOS',render:d=>fmt(d)}],pageLength:10,order:[[3,'desc']],dom:'Bfrtip',buttons:['copy','csv','excel'],language:{url:'https://cdn.datatables.net/plug-ins/1.13.8/i18n/es-ES.json'}});
 }
@@ -892,9 +929,13 @@ function bindSistemasClick(){
 
 
 function analitoRowPass(r, ignore=''){
-  if(ignore!=='fGrupo' && fGrupo.value && norm(colVal(r,['GRUPO_VISUAL','GRUPO_PARAMETRO','GRUPO']))!==norm(fGrupo.value))return false;
-  if(ignore!=='fParametro' && fParametro.value && !(norm(colVal(r,['PARAMETRO_VISUAL','PARAMETRO']))===norm(fParametro.value) || norm(parametroEtiqueta(r))===norm(fParametro.value)))return false;
-  if(ignore!=='fDiagnostico' && fDiagnostico.value && norm(diagLabel(r))!==norm(fDiagnostico.value) && norm(r.DIAGNOSTICO)!==norm(fDiagnostico.value))return false;
+  const grupoRow = grupoVisual(colVal(r,['GRUPO_VISUAL','GRUPO_PARAMETRO','GRUPO']));
+  const paramRow = parametroEtiqueta(r) || colVal(r,['PARAMETRO_VISUAL','PARAMETRO','PARAMETRO_HOMOLOGADO']);
+  const diagRow = diagLabel(r);
+
+  if(ignore!=='fGrupo' && fGrupo.value && norm(grupoRow)!==norm(fGrupo.value))return false;
+  if(ignore!=='fParametro' && fParametro.value && norm(paramRow)!==norm(fParametro.value))return false;
+  if(ignore!=='fDiagnostico' && fDiagnostico.value && norm(diagRow)!==norm(fDiagnostico.value) && norm(r.DIAGNOSTICO)!==norm(fDiagnostico.value))return false;
   return true;
 }
 function analitoFilteredRows(){
@@ -903,23 +944,30 @@ function analitoFilteredRows(){
 function optionsAnalito(col, ignoreId){
   return uniq(FILTERED.filter(r=>analitoRowPass(r, ignoreId)).map(r=>{
     if(col==='DIAGNOSTICO')return diagLabel(r);
-    if(col==='PARAMETRO_VISUAL')return parametroEtiqueta(r) || colVal(r,['PARAMETRO_VISUAL','PARAMETRO']);
+    if(col==='PARAMETRO_VISUAL')return parametroEtiqueta(r) || colVal(r,['PARAMETRO_VISUAL','PARAMETRO','PARAMETRO_HOMOLOGADO']);
     if(col==='GRUPO_VISUAL')return grupoVisual(colVal(r,['GRUPO_VISUAL','GRUPO_PARAMETRO','GRUPO']));
     return r[col];
-  })).sort((a,b)=>String(a).localeCompare(String(b),'es'));
+  })).filter(v=>!isEmptyOrGeneric(v)).sort((a,b)=>String(a).localeCompare(String(b),'es'));
 }
 function updateAnalitoOptions(changed=''){
   const keepGrupo=fGrupo.value, keepParametro=fParametro.value, keepDiag=fDiagnostico.value;
+
   fillSelect('fGrupo', optionsAnalito('GRUPO_VISUAL','fGrupo'), 'Todos');
-  if(keepGrupo && [...fGrupo.options].some(o=>norm(o.value)===norm(keepGrupo)))fGrupo.value=keepGrupo;
+  if(keepGrupo && [...fGrupo.options].some(o=>norm(o.value)===norm(keepGrupo)))fGrupo.value=[...fGrupo.options].find(o=>norm(o.value)===norm(keepGrupo)).value;
 
   fillSelect('fParametro', optionsAnalito('PARAMETRO_VISUAL','fParametro'), 'Todos');
-  if(keepParametro && [...fParametro.options].some(o=>norm(o.value)===norm(keepParametro)))fParametro.value=keepParametro;
-  else if(changed==='fGrupo')fParametro.value='';
+  if(changed==='fGrupo'){
+    fParametro.value='';
+  }else if(keepParametro && [...fParametro.options].some(o=>norm(o.value)===norm(keepParametro))){
+    fParametro.value=[...fParametro.options].find(o=>norm(o.value)===norm(keepParametro)).value;
+  }
 
   fillSelect('fDiagnostico', optionsAnalito('DIAGNOSTICO','fDiagnostico'), 'Todos');
-  if(keepDiag && [...fDiagnostico.options].some(o=>norm(o.value)===norm(keepDiag)))fDiagnostico.value=keepDiag;
-  else if(changed==='fGrupo' || changed==='fParametro')fDiagnostico.value='';
+  if(changed==='fGrupo' || changed==='fParametro'){
+    fDiagnostico.value='';
+  }else if(keepDiag && [...fDiagnostico.options].some(o=>norm(o.value)===norm(keepDiag))){
+    fDiagnostico.value=[...fDiagnostico.options].find(o=>norm(o.value)===norm(keepDiag)).value;
+  }
 
   if(window.jQuery && jQuery.fn.select2){
     jQuery('#fGrupo,#fParametro,#fDiagnostico').trigger('change.select2');
