@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="utf-8"/>
-<title>Muestras V2 | UESVALLE</title>
+<title>Muestras | UESVALLE</title>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
 <link href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet"/>
@@ -110,7 +110,7 @@
 .detail-filter-card .sample-select-wrap{width:100%}
 
 
-/* V1 nueva estructura: salida tipo laboratorio clasificada heredada de V15.7 */
+/* V1 nueva estructura: salida tipo laboratorio clasificada heredada de V15.7; V2.1 evita duplicados In-situ/laboratorio */
 .lab-results.v157-classified th{
   background:#a8273a!important;
   color:#fff!important;
@@ -149,7 +149,7 @@
 
 </style>
 
-<!-- HTML Muestras V2 - basado en V15.7, con clasificación tipo laboratorio, filtros removibles y nueva estructura de datos -->
+<!-- HTML Muestras - basado en V15.7, con clasificación tipo laboratorio, filtros removibles y nueva estructura de datos -->
 </head>
 <body>
 <div class="gov-banner"><div class="container d-flex align-items-center" style="height:100%"><img src="https://www.gov.co/assets/images/logo.png" alt="GOV.CO"></div></div>
@@ -256,7 +256,7 @@
   </div>
 </section>
 
-<footer class="text-center"><strong>UESVALLE | Tablero de Muestras</strong><br>Versión Muestras V2: basada en V15.7, conectada a las salidas normalizadas IRCA 2020-2026, maestro acueductos IRCA 2026 y catálogo normativo.</footer>
+<footer class="text-center"><strong>UESVALLE | Tablero de Muestras</strong><br>Tablero de Muestras V2.1: conectado a las salidas normalizadas IRCA 2020-2026, maestro acueductos IRCA 2026 y catálogo normativo.</footer>
 </div></main>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -278,6 +278,7 @@ Chart.register(ChartDataLabels);
 const FILES={
   metadata:['data/muestras_irca/current/metadata_trazabilidad.json'],
   dashboard:['data/muestras_irca/current/detalle_resultados_liviano.csv'],
+  dashboardManifest:['data/muestras_irca/current/chunks/manifest_detalle_resultados_liviano_chunks.txt'],
   fichas:['data/muestras_irca/current/indice_muestras.csv'],
   coords:['data/muestras_irca/current/coordenadas_sistemas.csv'],
   resumenParametros:['data/muestras_irca/current/resumen_parametros.csv'],
@@ -500,6 +501,38 @@ async function loadCSVOne(paths,label='archivo'){
 async function loadCSVOptional(paths,label='archivo opcional'){
   try{return await loadCSVOne(paths,label);}catch(err){console.warn('Archivo opcional no cargado:',label,err.message||err);return {data:[],url:''};}
 }
+
+async function loadCSVMany(paths,label='archivos'){
+  let all=[];
+  let urls=[];
+  for(let i=0;i<paths.length;i++){
+    const item=await loadCSVOne([paths[i]], `${label} ${i+1}/${paths.length}`);
+    all=all.concat(item.data||[]);
+    urls.push(item.url||paths[i]);
+  }
+  return {data:all,url:urls.join(' | ')};
+}
+async function loadDashboardDetalle(){
+  if(FILES.dashboardManifest && FILES.dashboardManifest.length){
+    for(const manifestUrl of FILES.dashboardManifest){
+      try{
+        const response=await fetch(manifestUrl,{cache:'no-store'});
+        if(!response.ok)continue;
+        const text=await response.text();
+        const parts=text.split(/\r?\n/).map(x=>x.trim()).filter(Boolean);
+        if(parts.length){
+          const base=manifestUrl.replace(/[^\/]+$/,'');
+          const paths=parts.map(p=>base+p);
+          return await loadCSVMany(paths,'detalle analítico liviano');
+        }
+      }catch(err){
+        console.warn('No se pudo cargar manifest de chunks:', err.message || err);
+      }
+    }
+  }
+  return await loadCSVOne(FILES.dashboard,'detalle analítico liviano');
+}
+
 async function loadJSONOptional(paths,label='json opcional'){
   if(!paths || !paths.length)return {data:null,url:''};
   for(const url of paths){
@@ -695,15 +728,59 @@ function parametroBase(p){const n=norm(p);if(n.includes('CLORO RESIDUAL LIBRE'))
 function isInSitu(p){const n=norm(p);return n.includes('IN SITU')||n.includes('IN-SITU');}
 function parametroVisual(p){let t=String(p||'').replace(/\s+/g,' ').trim();t=t.replace(/Ph/g,'pH').replace(/PH/g,'pH');return t;}
 function prepararRowsDetalle(rows){
-  let out=rows.slice();
-  if(out.some(r=>String(colVal(r,['MOSTRAR_DETALLE'])).trim()!=='')){
-    out=out.filter(r=>isTrue(colVal(r,['MOSTRAR_DETALLE'],true)) || norm(colVal(r,['MOSTRAR_DETALLE']))==='TRUE');
-  }else{
-    const groups=new Map();
-    out.forEach(r=>{const b=parametroBase(colVal(r,['PARAMETRO_VISUAL','PARAMETRO']));if(!groups.has(b))groups.set(b,[]);groups.get(b).push(r);});
-    out=[];groups.forEach(arr=>{const ins=arr.filter(x=>isInSitu(colVal(x,['PARAMETRO_VISUAL','PARAMETRO'])));out.push(...(ins.length?ins:arr));});
+  // V2.1: depuración de salida tipo laboratorio.
+  // Evita duplicar pares equivalentes como Turbiedad / Turbiedad In-situ,
+  // pH / pH In-situ, Cloro Residual Libre / Cloro Residual Libre In-situ.
+  // Si existe medición In-situ para el mismo parámetro base, se muestra solo esa.
+  let baseRows = rows.slice();
+
+  // Si la salida trae bandera MOSTRAR_DETALLE, se respeta primero.
+  // Después se aplica igualmente la deduplicación por parámetro base.
+  if(baseRows.some(r=>String(colVal(r,['MOSTRAR_DETALLE'])).trim()!=='')){
+    baseRows = baseRows.filter(r=>isTrue(colVal(r,['MOSTRAR_DETALLE'],true)) || norm(colVal(r,['MOSTRAR_DETALLE']))==='TRUE');
   }
-  return out.sort((a,b)=>(Number(colVal(a,['ORDEN_GRUPO'],grupoOrden(colVal(a,['GRUPO_VISUAL','GRUPO_PARAMETRO']))))||9)-(Number(colVal(b,['ORDEN_GRUPO'],grupoOrden(colVal(b,['GRUPO_VISUAL','GRUPO_PARAMETRO']))))||9)||(Number(colVal(a,['ORDEN_PARAMETRO'],999))||999)-(Number(colVal(b,['ORDEN_PARAMETRO'],999))||999)||String(colVal(a,['PARAMETRO_VISUAL','PARAMETRO'])).localeCompare(String(colVal(b,['PARAMETRO_VISUAL','PARAMETRO'])),'es'));
+
+  const groups = new Map();
+  baseRows.forEach(r=>{
+    const p = colVal(r,['PARAMETRO_VISUAL','PARAMETRO','PARAMETRO_HOMOLOGADO']);
+    const b = parametroBase(p);
+    if(!groups.has(b))groups.set(b,[]);
+    groups.get(b).push(r);
+  });
+
+  const out=[];
+  groups.forEach(arr=>{
+    const insitu = arr.filter(x=>isInSitu(colVal(x,['PARAMETRO_VISUAL','PARAMETRO','PARAMETRO_HOMOLOGADO'])));
+    const candidatos = insitu.length ? insitu : arr;
+
+    // Si quedan varios candidatos del mismo parámetro base, seleccionar una fila representativa.
+    // Prioridad: no aceptable, con resultado numérico, con diagnóstico, primera según orden.
+    candidatos.sort((a,b)=>{
+      const badA = rowIsNoAceptable(a) ? 1 : 0;
+      const badB = rowIsNoAceptable(b) ? 1 : 0;
+      if(badA !== badB) return badB - badA;
+
+      const numA = num(colVal(a,['RESULTADO_NUM','RESULTADO']))!=null ? 1 : 0;
+      const numB = num(colVal(b,['RESULTADO_NUM','RESULTADO']))!=null ? 1 : 0;
+      if(numA !== numB) return numB - numA;
+
+      const diagA = isEmptyOrGeneric(colVal(a,['DIAGNOSTICO'])) ? 0 : 1;
+      const diagB = isEmptyOrGeneric(colVal(b,['DIAGNOSTICO'])) ? 0 : 1;
+      if(diagA !== diagB) return diagB - diagA;
+
+      return (Number(colVal(a,['ORDEN_PARAMETRO'],999))||999) - (Number(colVal(b,['ORDEN_PARAMETRO'],999))||999);
+    });
+
+    if(candidatos.length) out.push(candidatos[0]);
+  });
+
+  return out.sort((a,b)=>
+    (Number(colVal(a,['ORDEN_GRUPO'],grupoOrden(colVal(a,['GRUPO_VISUAL','GRUPO_PARAMETRO']))))||9)-
+    (Number(colVal(b,['ORDEN_GRUPO'],grupoOrden(colVal(b,['GRUPO_VISUAL','GRUPO_PARAMETRO']))))||9)||
+    (Number(colVal(a,['ORDEN_PARAMETRO'],999))||999)-
+    (Number(colVal(b,['ORDEN_PARAMETRO'],999))||999)||
+    String(colVal(a,['PARAMETRO_VISUAL','PARAMETRO'])).localeCompare(String(colVal(b,['PARAMETRO_VISUAL','PARAMETRO'])),'es')
+  );
 }
 function sampleCodeNorm(v){return cleanCodeValue(v);}
 function sampleEq(a,b){return sampleCodeNorm(a)===sampleCodeNorm(b);}
@@ -906,7 +983,7 @@ if(window.jQuery){
 
 
 (async function main(){try{
-  setStatus('Iniciando carga del Muestras V2...');
+  setStatus('Iniciando carga del Muestras...');
   const meta=await loadJSONOptional(FILES.metadata,'metadata trazabilidad');
   const f=await loadCSVOne(FILES.fichas,'índice de muestras');
   FICHAS=normalizeDatasetV15(f.data);prepararAmbito(FICHAS);
@@ -930,7 +1007,7 @@ if(window.jQuery){
   const st=await loadCSVOptional(FILES.serieTiempo,'serie de tiempo de analitos');
   SERIE=normalizeDatasetV15(st.data);
 
-  const d=await loadCSVOne(FILES.dashboard,'detalle analítico liviano');
+  const d=await loadDashboardDetalle();
   DASH=normalizeDatasetV15(d.data);prepararAmbito(DASH);
   mergeCoordsIntoRows(DASH,COORDS);
   mergeCoordsIntoRows(FICHAS,COORDS);
@@ -945,7 +1022,7 @@ if(window.jQuery){
   setTimeout(()=>{
     applyAll();
     const metaTxt=meta.data && meta.data.version_procesamiento ? ` Versión datos: <b>${esc(meta.data.version_procesamiento)}</b>.` : '';
-    setStatus(`Datos Muestras V2 cargados correctamente.${metaTxt} Fuente analítica: <b>${esc(d.url)}</b>. Registros analíticos livianos: <b>${fmt(DASH.length)}</b>. Fichas/índice de muestra: <b>${fmt(FICHAS.length)}</b>. Coordenadas: <b>${fmt(COORDS.length)}</b>. Serie analitos: <b>${fmt(SERIE.length)}</b>. No se duplicó la carga del detalle de laboratorio.`, 'success');
+    setStatus(`Datos Muestras cargados correctamente.${metaTxt} Fuente analítica: <b>${esc(d.url)}</b>. Registros analíticos livianos: <b>${fmt(DASH.length)}</b>. Fichas/índice de muestra: <b>${fmt(FICHAS.length)}</b>. Coordenadas: <b>${fmt(COORDS.length)}</b>. Serie analitos: <b>${fmt(SERIE.length)}</b>. No se duplicó la carga del detalle de laboratorio.`, 'success');
     setTimeout(()=>{loadAlert.classList.add('d-none');btnToggleStatus.textContent='Ver detalle';statusHint.textContent='Oculto';},1800);
   },50);
 }catch(e){console.error(e);setStatus(`<b>Error cargando CSV:</b> ${esc(e.message)}. Verifique que el HTML esté junto a los CSV optimizados V15.3 o ajuste las rutas en el objeto FILES.`, 'danger');}})();

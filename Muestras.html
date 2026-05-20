@@ -110,7 +110,7 @@
 .detail-filter-card .sample-select-wrap{width:100%}
 
 
-/* V1 nueva estructura: salida tipo laboratorio clasificada heredada de V15.7 */
+/* V1 nueva estructura: salida tipo laboratorio clasificada heredada de V15.7; V2.1 evita duplicados In-situ/laboratorio */
 .lab-results.v157-classified th{
   background:#a8273a!important;
   color:#fff!important;
@@ -256,7 +256,7 @@
   </div>
 </section>
 
-<footer class="text-center"><strong>UESVALLE | Tablero de Muestras</strong><br>Tablero de Muestras: conectado a las salidas normalizadas IRCA 2020-2026, maestro acueductos IRCA 2026 y catálogo normativo.</footer>
+<footer class="text-center"><strong>UESVALLE | Tablero de Muestras</strong><br>Tablero de Muestras V2.1: conectado a las salidas normalizadas IRCA 2020-2026, maestro acueductos IRCA 2026 y catálogo normativo.</footer>
 </div></main>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -728,15 +728,59 @@ function parametroBase(p){const n=norm(p);if(n.includes('CLORO RESIDUAL LIBRE'))
 function isInSitu(p){const n=norm(p);return n.includes('IN SITU')||n.includes('IN-SITU');}
 function parametroVisual(p){let t=String(p||'').replace(/\s+/g,' ').trim();t=t.replace(/Ph/g,'pH').replace(/PH/g,'pH');return t;}
 function prepararRowsDetalle(rows){
-  let out=rows.slice();
-  if(out.some(r=>String(colVal(r,['MOSTRAR_DETALLE'])).trim()!=='')){
-    out=out.filter(r=>isTrue(colVal(r,['MOSTRAR_DETALLE'],true)) || norm(colVal(r,['MOSTRAR_DETALLE']))==='TRUE');
-  }else{
-    const groups=new Map();
-    out.forEach(r=>{const b=parametroBase(colVal(r,['PARAMETRO_VISUAL','PARAMETRO']));if(!groups.has(b))groups.set(b,[]);groups.get(b).push(r);});
-    out=[];groups.forEach(arr=>{const ins=arr.filter(x=>isInSitu(colVal(x,['PARAMETRO_VISUAL','PARAMETRO'])));out.push(...(ins.length?ins:arr));});
+  // V2.1: depuración de salida tipo laboratorio.
+  // Evita duplicar pares equivalentes como Turbiedad / Turbiedad In-situ,
+  // pH / pH In-situ, Cloro Residual Libre / Cloro Residual Libre In-situ.
+  // Si existe medición In-situ para el mismo parámetro base, se muestra solo esa.
+  let baseRows = rows.slice();
+
+  // Si la salida trae bandera MOSTRAR_DETALLE, se respeta primero.
+  // Después se aplica igualmente la deduplicación por parámetro base.
+  if(baseRows.some(r=>String(colVal(r,['MOSTRAR_DETALLE'])).trim()!=='')){
+    baseRows = baseRows.filter(r=>isTrue(colVal(r,['MOSTRAR_DETALLE'],true)) || norm(colVal(r,['MOSTRAR_DETALLE']))==='TRUE');
   }
-  return out.sort((a,b)=>(Number(colVal(a,['ORDEN_GRUPO'],grupoOrden(colVal(a,['GRUPO_VISUAL','GRUPO_PARAMETRO']))))||9)-(Number(colVal(b,['ORDEN_GRUPO'],grupoOrden(colVal(b,['GRUPO_VISUAL','GRUPO_PARAMETRO']))))||9)||(Number(colVal(a,['ORDEN_PARAMETRO'],999))||999)-(Number(colVal(b,['ORDEN_PARAMETRO'],999))||999)||String(colVal(a,['PARAMETRO_VISUAL','PARAMETRO'])).localeCompare(String(colVal(b,['PARAMETRO_VISUAL','PARAMETRO'])),'es'));
+
+  const groups = new Map();
+  baseRows.forEach(r=>{
+    const p = colVal(r,['PARAMETRO_VISUAL','PARAMETRO','PARAMETRO_HOMOLOGADO']);
+    const b = parametroBase(p);
+    if(!groups.has(b))groups.set(b,[]);
+    groups.get(b).push(r);
+  });
+
+  const out=[];
+  groups.forEach(arr=>{
+    const insitu = arr.filter(x=>isInSitu(colVal(x,['PARAMETRO_VISUAL','PARAMETRO','PARAMETRO_HOMOLOGADO'])));
+    const candidatos = insitu.length ? insitu : arr;
+
+    // Si quedan varios candidatos del mismo parámetro base, seleccionar una fila representativa.
+    // Prioridad: no aceptable, con resultado numérico, con diagnóstico, primera según orden.
+    candidatos.sort((a,b)=>{
+      const badA = rowIsNoAceptable(a) ? 1 : 0;
+      const badB = rowIsNoAceptable(b) ? 1 : 0;
+      if(badA !== badB) return badB - badA;
+
+      const numA = num(colVal(a,['RESULTADO_NUM','RESULTADO']))!=null ? 1 : 0;
+      const numB = num(colVal(b,['RESULTADO_NUM','RESULTADO']))!=null ? 1 : 0;
+      if(numA !== numB) return numB - numA;
+
+      const diagA = isEmptyOrGeneric(colVal(a,['DIAGNOSTICO'])) ? 0 : 1;
+      const diagB = isEmptyOrGeneric(colVal(b,['DIAGNOSTICO'])) ? 0 : 1;
+      if(diagA !== diagB) return diagB - diagA;
+
+      return (Number(colVal(a,['ORDEN_PARAMETRO'],999))||999) - (Number(colVal(b,['ORDEN_PARAMETRO'],999))||999);
+    });
+
+    if(candidatos.length) out.push(candidatos[0]);
+  });
+
+  return out.sort((a,b)=>
+    (Number(colVal(a,['ORDEN_GRUPO'],grupoOrden(colVal(a,['GRUPO_VISUAL','GRUPO_PARAMETRO']))))||9)-
+    (Number(colVal(b,['ORDEN_GRUPO'],grupoOrden(colVal(b,['GRUPO_VISUAL','GRUPO_PARAMETRO']))))||9)||
+    (Number(colVal(a,['ORDEN_PARAMETRO'],999))||999)-
+    (Number(colVal(b,['ORDEN_PARAMETRO'],999))||999)||
+    String(colVal(a,['PARAMETRO_VISUAL','PARAMETRO'])).localeCompare(String(colVal(b,['PARAMETRO_VISUAL','PARAMETRO'])),'es')
+  );
 }
 function sampleCodeNorm(v){return cleanCodeValue(v);}
 function sampleEq(a,b){return sampleCodeNorm(a)===sampleCodeNorm(b);}
