@@ -168,6 +168,39 @@
 .inner-tab-pane{display:none}
 .inner-tab-pane.active{display:block}
 
+
+/* Navegación común tableros UESVALLE */
+.nav-card{
+  border:0;
+  border-radius:1rem;
+  box-shadow:0 8px 24px rgba(0,0,0,.06);
+  background:#fff;
+}
+.navbar .nav-link,.navbar .dropdown-toggle{font-weight:600}
+.dropdown-menu .dropdown-item.active{background:#2e64d2;color:#fff}
+.nav-processes{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  align-items:center;
+}
+.process-btn{
+  background:#f8fafc;
+  border:1px solid #d0d5dd;
+  border-radius:999px;
+  padding:.65rem 1rem!important;
+  color:#344054!important;
+  font-weight:700;
+  box-shadow:0 2px 6px rgba(0,0,0,.04);
+  transition:all .2s ease;
+}
+.process-btn:hover{background:#eef4ff;border-color:#98a2b3}
+.process-btn.active{
+  background:#2e64d2;
+  color:#fff!important;
+  border-color:#2e64d2;
+}
+
 </style>
 
 <!-- HTML Muestras - basado en V15.7, con clasificación tipo laboratorio, filtros removibles y nueva estructura de datos -->
@@ -176,6 +209,63 @@
 <div class="gov-banner"><div class="container d-flex align-items-center" style="height:100%"><img src="https://www.gov.co/assets/images/logo.png" alt="GOV.CO"></div></div>
 <main><div class="board">
 <header class="p-2 mb-3"><div class="d-flex justify-content-center"><img src="https://www.uesvalle.gov.co/info/uesvalle/media/bloque1656.png" alt="UESVALLE"></div></header>
+
+
+      <section class="nav-card p-3 mb-3">
+        <nav class="navbar navbar-expand-lg bg-white rounded-4">
+          <div class="container-fluid d-flex flex-column align-items-center">
+            <div class="fw-bold mb-3 fs-5">Procesos</div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navPrincipal">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navPrincipal">
+              <ul class="navbar-nav mb-2 mb-lg-0 nav-processes">
+                <li class="nav-item dropdown mx-2 my-1">
+                  <a class="nav-link dropdown-toggle process-btn active" href="#" role="button" data-bs-toggle="dropdown">
+                    1. Agua para consumo humano y saneamiento básico
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="https://javiermarin7.github.io/UESVALLE/ircas.html">1.1 IRCAS</a></li>
+                    <li><a class="dropdown-item" href="https://javiermarin7.github.io/UESVALLE/index.html">1.2 Filtros</a></li>
+                    <li><a class="dropdown-item" href="https://javiermarin7.github.io/UESVALLE/seguimiento_ach.html">1.3 Seguimiento Actividades Agua para Consumo Humano</a></li>
+                    <li><a class="dropdown-item" href="https://javiermarin7.github.io/UESVALLE/Dosificacion_cloro.html">1.4 Dosificación de cloro</a></li>
+                    <li><a class="dropdown-item active" href="https://javiermarin7.github.io/UESVALLE/Muestras.html">1.5 Muestras</a></li>
+                  </ul>
+                </li>
+
+                <li class="nav-item dropdown mx-2 my-1">
+                  <a class="nav-link dropdown-toggle process-btn" href="#" role="button" data-bs-toggle="dropdown">
+                    2. Alimentos y medicamentos
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item disabled" href="#">Próximamente</a></li>
+                  </ul>
+                </li>
+
+                <li class="nav-item dropdown mx-2 my-1">
+                  <a class="nav-link dropdown-toggle process-btn" href="#" role="button" data-bs-toggle="dropdown">
+                    3. Zoonosis y ETV
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item disabled" href="#">Próximamente</a></li>
+                  </ul>
+                </li>
+
+                <li class="nav-item dropdown mx-2 my-1">
+                  <a class="nav-link dropdown-toggle process-btn" href="#" role="button" data-bs-toggle="dropdown">
+                    4. Establecimientos de interés sanitario
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="https://javiermarin7.github.io/UESVALLE/piscinas.html">4.1 Piscinas</a></li>
+                    <li><a class="dropdown-item" href="https://javiermarin7.github.io/UESVALLE/empresas_plaguicidas.html">4.2 Empresas aplicadoras de plaguicidas</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </section>
+
 <section class="cardx p-3 mb-2"><div class="d-flex flex-column flex-lg-row align-items-lg-center gap-2"><div class="me-auto"><h1 class="title mb-1">Tablero de Muestras</h1><div class="subtitle">Resultados históricos de muestras, parámetros analíticos, cumplimiento normativo, puntos de toma y sistemas muestreados.</div></div><div class="header-status"><span id="lastUpdate" class="badge text-bg-success rounded-pill">Cargando…</span><div class="mini-status"><span>Estado de carga de datos</span><button type="button" id="btnToggleStatus">Ver detalle</button><span id="statusHint">Oculto</span></div></div></div><div id="loadAlert" class="status-body d-none mt-2"><div class="alert alert-info mb-0 py-2">Cargando salidas de la nueva estructura generadas desde <b>resultados_irca_normalizado_consolidado.csv</b>, <b>maestro_acueductos_irca_2026.csv</b> y <b>catalogo_parametros_normativo.csv</b>.</div></div></section>
 
 <section class="filter-card">
