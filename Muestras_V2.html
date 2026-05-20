@@ -110,7 +110,7 @@
 .detail-filter-card .sample-select-wrap{width:100%}
 
 
-/* V1 nueva estructura: salida tipo laboratorio clasificada heredada de V15.7; V2.1 evita duplicados In-situ/laboratorio */
+/* V1 nueva estructura: salida tipo laboratorio clasificada heredada de V15.7 */
 .lab-results.v157-classified th{
   background:#a8273a!important;
   color:#fff!important;
@@ -239,7 +239,9 @@
   <div class="col-12 col-md-2"><label class="form-label filter-label">Diagnóstico</label><select id="fDiagnostico" class="form-select form-select-sm searchable-select"><option value="">Todos</option></select></div>
   <div class="col-12 col-md-2"><button id="btnLimpiarAnalitos" class="btn btn-sm btn-outline-secondary w-100" type="button">Limpiar analitos</button></div>
 </div></div>
-<div id="parametroTiempoNota" class="section-note mb-3">Seleccione un grupo y/o parámetro para visualizar su comportamiento. Si no selecciona uno, se mostrará el parámetro con más resultados no aceptables dentro del universo filtrado.</div><div class="row g-3"><div class="col-12 col-xl-6"><div class="chart p-3"><h5>Muestras por año</h5><div class="chart-container"><canvas id="chartMuestrasAnio"></canvas></div></div></div><div class="col-12 col-xl-6"><div class="chart p-3"><h5>Parámetro seleccionado por año</h5><div class="chart-container"><canvas id="chartParametroTiempo"></canvas></div></div></div></div></div></div></section>
+<div id="parametroTiempoNota" class="section-note mb-3">Seleccione un grupo y/o parámetro para visualizar su comportamiento. Si no selecciona uno, se mostrará el parámetro con más resultados no aceptables dentro del universo filtrado.</div><div class="row g-3"><div class="col-12 col-xl-6"><div class="chart p-3"><h5>Muestras por año</h5><div class="chart-container"><canvas id="chartMuestrasAnio"></canvas></div></div></div><div class="col-12 col-xl-6"><div class="chart p-3"><h5>Parámetro seleccionado por año</h5><div class="chart-container"><canvas id="chartParametroTiempo"></canvas></div></div></div></div>
+<div class="section mt-3 mb-0"><button class="toggle section-h" data-bs-toggle="collapse" data-bs-target="#tablaAnalitosComportamiento" aria-expanded="false"><div class="d-flex gap-3"><div class="sec-ico">📋</div><div><h5>Tabla de analitos del universo filtrado</h5><div class="small text-muted">Consulta y descarga de los resultados que corresponden a los filtros generales y a los filtros de grupo, parámetro y diagnóstico.</div></div></div><span class="arrow"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button><div class="collapse" id="tablaAnalitosComportamiento"><div class="section-b"><div class="section-note mb-3">La tabla muestra una vista previa para mantener rendimiento. El botón CSV descarga todos los registros filtrados del módulo.</div><div class="d-flex gap-2 flex-wrap mb-3"><button id="btnCargarTablaAnalitos" class="btn btn-sm btn-primary" type="button">Cargar/actualizar tabla</button><button id="btnDescargarAnalitosFiltrados" class="btn btn-sm btn-outline-secondary" type="button">Descargar CSV analitos filtrados</button></div><div class="table-responsive"><table id="tblAnalitosFiltrados" class="table table-striped table-hover w-100"></table></div></div></div></div>
+</div></div></section>
 
     </div>
     <div class="tab-pane fade" id="tab-parametros" role="tabpanel" aria-labelledby="tab-parametros-btn" tabindex="0">
@@ -256,7 +258,7 @@
   </div>
 </section>
 
-<footer class="text-center"><strong>UESVALLE | Tablero de Muestras</strong><br>Tablero de Muestras V2.1: conectado a las salidas normalizadas IRCA 2020-2026, maestro acueductos IRCA 2026 y catálogo normativo.</footer>
+<footer class="text-center"><strong>UESVALLE | Tablero de Muestras</strong><br>Tablero de Muestras V2.2: conectado a las salidas normalizadas IRCA 2020-2026, maestro acueductos IRCA 2026 y catálogo normativo.</footer>
 </div></main>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -287,7 +289,7 @@ const FILES={
   resumenMuestra:['data/muestras_irca/current/resumen_muestras.csv'],
   serieTiempo:['data/muestras_irca/current/serie_tiempo_analitos.csv']
 };
-let DASH=[],FICHAS=[],COORDS=[],RES_PARAM=[],NO_ACEPT=[],LAB_DET=[],RES_MUESTRA=[],SERIE=[],FILTERED=[],FICHAS_FILTERED=[],charts={},DTR=null,DTP=null,DTS=null,MAP=null,MARKERS=null,BASE_LAYERS={},lastSelectedSample='';
+let DASH=[],FICHAS=[],COORDS=[],RES_PARAM=[],NO_ACEPT=[],LAB_DET=[],RES_MUESTRA=[],SERIE=[],FILTERED=[],FICHAS_FILTERED=[],charts={},DTR=null,DTP=null,DTS=null,DTA=null,MAP=null,MARKERS=null,BASE_LAYERS={},lastSelectedSample='';
 const RISK_COLOR={'SIN RIESGO':'#00b050','BAJO':'#92d050','MEDIO':'#ffff00','ALTO':'#ffc000','INVIABLE SANITARIAMENTE':'#ff0000','SIN DATO':'#6c757d'};
 const RISK_ORDER={'SIN DATO':0,'SIN RIESGO':1,'BAJO':2,'MEDIO':3,'ALTO':4,'INVIABLE SANITARIAMENTE':5};
 function norm(v){return(v==null?'':String(v).trim()).normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\s+/g,' ').toUpperCase()}
@@ -615,11 +617,12 @@ function updateFilterOptions(){
   fillSelect('fSistema',optionsFor('SISTEMA_DISTRIBUCION','fSistema').sort());
   fillSelect('fCodigoSistema',optionsFor('CODIGO_SISTEMA','fCodigoSistema').sort());
   fillSelect('fRiesgo',optionsFor('NIVEL_RIESGO','fRiesgo').sort((a,b)=>(RISK_ORDER[a]||0)-(RISK_ORDER[b]||0)));
-  fillSelect('fDiagnostico',optionsFor('DIAGNOSTICO','fDiagnostico').sort());
+  
   fillSampleSelect();
-  fillSelect('fParametro',optionsFor('PARAMETRO_VISUAL','fParametro').sort());
-  fillSelect('fGrupo',optionsFor('GRUPO_VISUAL','fGrupo').sort());
+  
+  
   fillSelect('fTipoDispositivo',optionsFor('TIPO_DISPOSITIVO_AJUSTADO','fTipoDispositivo').sort());
+  updateAnalitoOptions();
   updateDetailControlVisibility();
 }
 function initFilters(){initYears();updateFilterOptions();initSearchableSelects();}
@@ -728,59 +731,15 @@ function parametroBase(p){const n=norm(p);if(n.includes('CLORO RESIDUAL LIBRE'))
 function isInSitu(p){const n=norm(p);return n.includes('IN SITU')||n.includes('IN-SITU');}
 function parametroVisual(p){let t=String(p||'').replace(/\s+/g,' ').trim();t=t.replace(/Ph/g,'pH').replace(/PH/g,'pH');return t;}
 function prepararRowsDetalle(rows){
-  // V2.1: depuración de salida tipo laboratorio.
-  // Evita duplicar pares equivalentes como Turbiedad / Turbiedad In-situ,
-  // pH / pH In-situ, Cloro Residual Libre / Cloro Residual Libre In-situ.
-  // Si existe medición In-situ para el mismo parámetro base, se muestra solo esa.
-  let baseRows = rows.slice();
-
-  // Si la salida trae bandera MOSTRAR_DETALLE, se respeta primero.
-  // Después se aplica igualmente la deduplicación por parámetro base.
-  if(baseRows.some(r=>String(colVal(r,['MOSTRAR_DETALLE'])).trim()!=='')){
-    baseRows = baseRows.filter(r=>isTrue(colVal(r,['MOSTRAR_DETALLE'],true)) || norm(colVal(r,['MOSTRAR_DETALLE']))==='TRUE');
+  let out=rows.slice();
+  if(out.some(r=>String(colVal(r,['MOSTRAR_DETALLE'])).trim()!=='')){
+    out=out.filter(r=>isTrue(colVal(r,['MOSTRAR_DETALLE'],true)) || norm(colVal(r,['MOSTRAR_DETALLE']))==='TRUE');
+  }else{
+    const groups=new Map();
+    out.forEach(r=>{const b=parametroBase(colVal(r,['PARAMETRO_VISUAL','PARAMETRO']));if(!groups.has(b))groups.set(b,[]);groups.get(b).push(r);});
+    out=[];groups.forEach(arr=>{const ins=arr.filter(x=>isInSitu(colVal(x,['PARAMETRO_VISUAL','PARAMETRO'])));out.push(...(ins.length?ins:arr));});
   }
-
-  const groups = new Map();
-  baseRows.forEach(r=>{
-    const p = colVal(r,['PARAMETRO_VISUAL','PARAMETRO','PARAMETRO_HOMOLOGADO']);
-    const b = parametroBase(p);
-    if(!groups.has(b))groups.set(b,[]);
-    groups.get(b).push(r);
-  });
-
-  const out=[];
-  groups.forEach(arr=>{
-    const insitu = arr.filter(x=>isInSitu(colVal(x,['PARAMETRO_VISUAL','PARAMETRO','PARAMETRO_HOMOLOGADO'])));
-    const candidatos = insitu.length ? insitu : arr;
-
-    // Si quedan varios candidatos del mismo parámetro base, seleccionar una fila representativa.
-    // Prioridad: no aceptable, con resultado numérico, con diagnóstico, primera según orden.
-    candidatos.sort((a,b)=>{
-      const badA = rowIsNoAceptable(a) ? 1 : 0;
-      const badB = rowIsNoAceptable(b) ? 1 : 0;
-      if(badA !== badB) return badB - badA;
-
-      const numA = num(colVal(a,['RESULTADO_NUM','RESULTADO']))!=null ? 1 : 0;
-      const numB = num(colVal(b,['RESULTADO_NUM','RESULTADO']))!=null ? 1 : 0;
-      if(numA !== numB) return numB - numA;
-
-      const diagA = isEmptyOrGeneric(colVal(a,['DIAGNOSTICO'])) ? 0 : 1;
-      const diagB = isEmptyOrGeneric(colVal(b,['DIAGNOSTICO'])) ? 0 : 1;
-      if(diagA !== diagB) return diagB - diagA;
-
-      return (Number(colVal(a,['ORDEN_PARAMETRO'],999))||999) - (Number(colVal(b,['ORDEN_PARAMETRO'],999))||999);
-    });
-
-    if(candidatos.length) out.push(candidatos[0]);
-  });
-
-  return out.sort((a,b)=>
-    (Number(colVal(a,['ORDEN_GRUPO'],grupoOrden(colVal(a,['GRUPO_VISUAL','GRUPO_PARAMETRO']))))||9)-
-    (Number(colVal(b,['ORDEN_GRUPO'],grupoOrden(colVal(b,['GRUPO_VISUAL','GRUPO_PARAMETRO']))))||9)||
-    (Number(colVal(a,['ORDEN_PARAMETRO'],999))||999)-
-    (Number(colVal(b,['ORDEN_PARAMETRO'],999))||999)||
-    String(colVal(a,['PARAMETRO_VISUAL','PARAMETRO'])).localeCompare(String(colVal(b,['PARAMETRO_VISUAL','PARAMETRO'])),'es')
-  );
+  return out.sort((a,b)=>(Number(colVal(a,['ORDEN_GRUPO'],grupoOrden(colVal(a,['GRUPO_VISUAL','GRUPO_PARAMETRO']))))||9)-(Number(colVal(b,['ORDEN_GRUPO'],grupoOrden(colVal(b,['GRUPO_VISUAL','GRUPO_PARAMETRO']))))||9)||(Number(colVal(a,['ORDEN_PARAMETRO'],999))||999)-(Number(colVal(b,['ORDEN_PARAMETRO'],999))||999)||String(colVal(a,['PARAMETRO_VISUAL','PARAMETRO'])).localeCompare(String(colVal(b,['PARAMETRO_VISUAL','PARAMETRO'])),'es'));
 }
 function sampleCodeNorm(v){return cleanCodeValue(v);}
 function sampleEq(a,b){return sampleCodeNorm(a)===sampleCodeNorm(b);}
@@ -931,6 +890,91 @@ function bindSistemasClick(){
   });
 }
 
+
+function analitoRowPass(r, ignore=''){
+  if(ignore!=='fGrupo' && fGrupo.value && norm(colVal(r,['GRUPO_VISUAL','GRUPO_PARAMETRO','GRUPO']))!==norm(fGrupo.value))return false;
+  if(ignore!=='fParametro' && fParametro.value && !(norm(colVal(r,['PARAMETRO_VISUAL','PARAMETRO']))===norm(fParametro.value) || norm(parametroEtiqueta(r))===norm(fParametro.value)))return false;
+  if(ignore!=='fDiagnostico' && fDiagnostico.value && norm(diagLabel(r))!==norm(fDiagnostico.value) && norm(r.DIAGNOSTICO)!==norm(fDiagnostico.value))return false;
+  return true;
+}
+function analitoFilteredRows(){
+  return FILTERED.filter(r=>analitoRowPass(r));
+}
+function optionsAnalito(col, ignoreId){
+  return uniq(FILTERED.filter(r=>analitoRowPass(r, ignoreId)).map(r=>{
+    if(col==='DIAGNOSTICO')return diagLabel(r);
+    if(col==='PARAMETRO_VISUAL')return parametroEtiqueta(r) || colVal(r,['PARAMETRO_VISUAL','PARAMETRO']);
+    if(col==='GRUPO_VISUAL')return grupoVisual(colVal(r,['GRUPO_VISUAL','GRUPO_PARAMETRO','GRUPO']));
+    return r[col];
+  })).sort((a,b)=>String(a).localeCompare(String(b),'es'));
+}
+function updateAnalitoOptions(changed=''){
+  const keepGrupo=fGrupo.value, keepParametro=fParametro.value, keepDiag=fDiagnostico.value;
+  fillSelect('fGrupo', optionsAnalito('GRUPO_VISUAL','fGrupo'), 'Todos');
+  if(keepGrupo && [...fGrupo.options].some(o=>norm(o.value)===norm(keepGrupo)))fGrupo.value=keepGrupo;
+
+  fillSelect('fParametro', optionsAnalito('PARAMETRO_VISUAL','fParametro'), 'Todos');
+  if(keepParametro && [...fParametro.options].some(o=>norm(o.value)===norm(keepParametro)))fParametro.value=keepParametro;
+  else if(changed==='fGrupo')fParametro.value='';
+
+  fillSelect('fDiagnostico', optionsAnalito('DIAGNOSTICO','fDiagnostico'), 'Todos');
+  if(keepDiag && [...fDiagnostico.options].some(o=>norm(o.value)===norm(keepDiag)))fDiagnostico.value=keepDiag;
+  else if(changed==='fGrupo' || changed==='fParametro')fDiagnostico.value='';
+
+  if(window.jQuery && jQuery.fn.select2){
+    jQuery('#fGrupo,#fParametro,#fDiagnostico').trigger('change.select2');
+  }
+}
+function updateAnalitoModule(changed=''){
+  updateAnalitoOptions(changed);
+  updateCharts();
+  updateResumenTable();
+  updateTablaAnalitos(false);
+}
+function updateTablaAnalitos(forceLoad=false){
+  if(!DTA && !forceLoad)return;
+  const rows=analitoFilteredRows().slice(0,2000);
+  const cols=[
+    {title:'Año',data:'ANIO'},
+    {title:'Municipio',data:'MUNICIPIO'},
+    {title:'Sistema',data:'SISTEMA_DISTRIBUCION'},
+    {title:'Código sistema',data:'CODIGO_SISTEMA'},
+    {title:'Muestra',data:'CODIGO_MUESTRA_SIVICAP'},
+    {title:'Grupo',data:null,render:r=>grupoVisual(colVal(r,['GRUPO_VISUAL','GRUPO_PARAMETRO','GRUPO']))},
+    {title:'Parámetro',data:null,render:r=>esc(parametroEtiqueta(r)||colVal(r,['PARAMETRO_VISUAL','PARAMETRO']))},
+    {title:'Resultado',data:null,render:r=>esc(colVal(r,['RESULTADO','RESULTADO_NUM'],''))},
+    {title:'Unidad',data:'UNIDAD'},
+    {title:'Valor permitido',data:'VALOR_MAXIMO_PERMISIBLE'},
+    {title:'Diagnóstico',data:null,render:r=>`<span class="${rowIsNoAceptable(r)?'badge badge-bad':'badge badge-ok'}">${esc(diagLabel(r))}</span>`},
+    {title:'IRCA',data:'IRCA_NUM'},
+    {title:'Riesgo',data:'NIVEL_RIESGO'}
+  ];
+  if(DTA){DTA.clear().rows.add(rows).draw();return;}
+  DTA=$('#tblAnalitosFiltrados').DataTable({data:rows,columns:cols,pageLength:10,order:[[0,'desc']],dom:'Bfrtip',buttons:['copy','csv','excel','print'],language:{url:'https://cdn.datatables.net/plug-ins/1.13.8/i18n/es-ES.json'}});
+}
+function descargarAnalitosFiltrados(){
+  const rows=analitoFilteredRows();
+  downloadCSV(rows,[
+    ['Año','ANIO'],
+    ['Municipio','MUNICIPIO'],
+    ['Ámbito','CLASIFICACION_URBANO_RURAL'],
+    ['Prestador','PERSONA_PRESTADORA'],
+    ['Sistema','SISTEMA_DISTRIBUCION'],
+    ['Código sistema','CODIGO_SISTEMA'],
+    ['Muestra','CODIGO_MUESTRA_SIVICAP'],
+    ['Fecha toma','FECHA_TOMA'],
+    ['Tipo dispositivo ajustado','TIPO_DISPOSITIVO_AJUSTADO'],
+    ['Grupo',r=>grupoVisual(colVal(r,['GRUPO_VISUAL','GRUPO_PARAMETRO','GRUPO']))],
+    ['Parámetro',r=>parametroEtiqueta(r)||colVal(r,['PARAMETRO_VISUAL','PARAMETRO'])],
+    ['Resultado',r=>colVal(r,['RESULTADO','RESULTADO_NUM'],'')],
+    ['Unidad','UNIDAD'],
+    ['Valor permitido','VALOR_MAXIMO_PERMISIBLE'],
+    ['Diagnóstico',r=>diagLabel(r)],
+    ['IRCA','IRCA_NUM'],
+    ['Nivel riesgo','NIVEL_RIESGO']
+  ],`analitos_filtrados_${new Date().toISOString().slice(0,10)}.csv`);
+}
+
 function activeDashboardTab(){return document.querySelector('#dashboardTabs .nav-link.active')?.dataset.tab || 'resultados';}
 function resizeVisibleWidgets(){
   Object.values(charts).forEach(ch=>{try{ch.resize();}catch(e){}});
@@ -939,7 +983,7 @@ function resizeVisibleWidgets(){
 function renderActiveTab(){
   const tab=activeDashboardTab();
   if(tab==='resultados'){updateFicha();updateResultsTable();}
-  else if(tab==='comportamiento'){updateCharts();}
+  else if(tab==='comportamiento'){updateAnalitoModule();}
   else if(tab==='parametros'){updateCharts();updateResumenTable();}
   else if(tab==='mapa'){updateMap();}
   resizeVisibleWidgets();
@@ -953,7 +997,7 @@ function scheduleApplyFilters(){
 }
 function applyAll(){filterData();activeChips();updateKPIs();updateSistemasFiltrados();renderActiveTab();}
 function clearFilters(){document.querySelectorAll('#fAnios input.year-opt').forEach(x=>x.checked=false);updateYearButton();['fMunicipio','fAmbito','fPrestador','fSistema','fCodigoSistema','fRiesgo','fDiagnostico','fMuestra','fParametro','fGrupo','fTipoDispositivo'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});const chk=document.getElementById('fSoloNoAceptables');if(chk)chk.checked=false; if(window.jQuery) jQuery('select.searchable-select').trigger('change.select2'); lastSelectedSample='';applyAll();}
-document.getElementById('btnFiltrar').addEventListener('click',()=>{updateFilterOptions();applyAll();});document.getElementById('btnLimpiar').addEventListener('click',clearFilters);document.getElementById('btnRefrescar').addEventListener('click',()=>location.reload());document.getElementById('btnToggleStatus').addEventListener('click',()=>{loadAlert.classList.toggle('d-none');const oculto=loadAlert.classList.contains('d-none');btnToggleStatus.textContent=oculto?'Ver detalle':'Ocultar detalle';statusHint.textContent=oculto?'Oculto':'Visible';});['fMunicipio','fAmbito','fPrestador','fSistema','fCodigoSistema','fRiesgo','fTipoDispositivo'].forEach(id=>document.getElementById(id)?.addEventListener('change',()=>{updateFilterOptions();scheduleApplyFilters();}));['fDiagnostico','fParametro','fGrupo'].forEach(id=>document.getElementById(id)?.addEventListener('change',()=>{updateCharts();updateResumenTable();}));function applySampleSelection(){
+document.getElementById('btnFiltrar').addEventListener('click',()=>{updateFilterOptions();applyAll();});document.getElementById('btnLimpiar').addEventListener('click',clearFilters);document.getElementById('btnRefrescar').addEventListener('click',()=>location.reload());document.getElementById('btnToggleStatus').addEventListener('click',()=>{loadAlert.classList.toggle('d-none');const oculto=loadAlert.classList.contains('d-none');btnToggleStatus.textContent=oculto?'Ver detalle':'Ocultar detalle';statusHint.textContent=oculto?'Oculto':'Visible';});['fMunicipio','fAmbito','fPrestador','fSistema','fCodigoSistema','fRiesgo','fTipoDispositivo'].forEach(id=>document.getElementById(id)?.addEventListener('change',()=>{updateFilterOptions();scheduleApplyFilters();}));['fGrupo','fParametro','fDiagnostico'].forEach(id=>document.getElementById(id)?.addEventListener('change',()=>{updateAnalitoModule(id);}));function applySampleSelection(){
   lastSelectedSample=sampleCodeNorm(fMuestra.value);
   if(lastSelectedSample && fMuestra.value!==lastSelectedSample){
     fMuestra.value=lastSelectedSample;
@@ -962,7 +1006,7 @@ document.getElementById('btnFiltrar').addEventListener('click',()=>{updateFilter
   updateFicha();
   updateResultsTable();
 }
-document.getElementById('fMuestra')?.addEventListener('change',applySampleSelection);document.getElementById('btnLimpiarMuestra')?.addEventListener('click',()=>{lastSelectedSample='';fMuestra.value='';if(window.jQuery)jQuery('#fMuestra').val('').trigger('change.select2');applySampleSelection();});document.getElementById('fSoloNoAceptables')?.addEventListener('change',()=>{updateResultsTable();});document.getElementById('btnLimpiarAnalitos')?.addEventListener('click',()=>{fDiagnostico.value='';fParametro.value='';fGrupo.value='';updateCharts();updateResumenTable();});document.getElementById('kpiNoAceptablesCard').addEventListener('click',()=>{fDiagnostico.value='No aceptable';updateCharts();updateResumenTable();});document.getElementById('btnDescargarMuestra')?.addEventListener('click',descargarMuestra);document.getElementById('btnCargarTablaResultados')?.addEventListener('click',cargarTablaDescarga);document.getElementById('btnDescargarFiltrado')?.addEventListener('click',descargarFiltrado);document.getElementById('layerBtn').addEventListener('click',()=>layerPanel.classList.toggle('collapsed-panel'));document.getElementById('legendBtn').addEventListener('click',()=>legendPanel.classList.toggle('collapsed-panel'));document.getElementById('btnFitMap').addEventListener('click',()=>updateMap());document.getElementById('btnFullMap').addEventListener('click',()=>{mapShell.classList.toggle('fullscreen');btnFullMap.textContent=mapShell.classList.contains('fullscreen')?'Cerrar pantalla completa':'Pantalla completa';setTimeout(()=>MAP&&MAP.invalidateSize(),250);});
+document.getElementById('fMuestra')?.addEventListener('change',applySampleSelection);document.getElementById('btnLimpiarMuestra')?.addEventListener('click',()=>{lastSelectedSample='';fMuestra.value='';if(window.jQuery)jQuery('#fMuestra').val('').trigger('change.select2');applySampleSelection();});document.getElementById('fSoloNoAceptables')?.addEventListener('change',()=>{updateResultsTable();});document.getElementById('btnLimpiarAnalitos')?.addEventListener('click',()=>{fDiagnostico.value='';fParametro.value='';fGrupo.value='';if(window.jQuery)jQuery('#fGrupo,#fParametro,#fDiagnostico').val('').trigger('change.select2');updateAnalitoModule();});document.getElementById('kpiNoAceptablesCard').addEventListener('click',()=>{fDiagnostico.value='No aceptable';if(window.jQuery)jQuery('#fDiagnostico').val('No aceptable').trigger('change.select2');updateAnalitoModule('fDiagnostico');});document.getElementById('btnDescargarMuestra')?.addEventListener('click',descargarMuestra);document.getElementById('btnCargarTablaResultados')?.addEventListener('click',cargarTablaDescarga);document.getElementById('btnDescargarFiltrado')?.addEventListener('click',descargarFiltrado);document.getElementById('btnCargarTablaAnalitos')?.addEventListener('click',()=>updateTablaAnalitos(true));document.getElementById('btnDescargarAnalitosFiltrados')?.addEventListener('click',descargarAnalitosFiltrados);document.getElementById('layerBtn').addEventListener('click',()=>layerPanel.classList.toggle('collapsed-panel'));document.getElementById('legendBtn').addEventListener('click',()=>legendPanel.classList.toggle('collapsed-panel'));document.getElementById('btnFitMap').addEventListener('click',()=>updateMap());document.getElementById('btnFullMap').addEventListener('click',()=>{mapShell.classList.toggle('fullscreen');btnFullMap.textContent=mapShell.classList.contains('fullscreen')?'Cerrar pantalla completa':'Pantalla completa';setTimeout(()=>MAP&&MAP.invalidateSize(),250);});
 document.querySelectorAll('#dashboardTabs button[data-bs-toggle="tab"]').forEach(btn=>{
   btn.addEventListener('shown.bs.tab',()=>{renderActiveTab();});
 });
@@ -975,6 +1019,13 @@ if(window.jQuery){
     }
   });
 }
+
+if(window.jQuery){
+  jQuery(document).on('select2:select select2:clear', '#fGrupo,#fParametro,#fDiagnostico', function(){
+    updateAnalitoModule(this.id);
+  });
+}
+
 if(window.jQuery){
   jQuery(document).on('select2:select select2:clear', '#fMuestra', function(){
     applySampleSelection();
