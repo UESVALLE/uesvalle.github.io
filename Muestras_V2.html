@@ -155,6 +155,11 @@
 .analito-kpi b{display:block;color:#1d4ed8;font-size:1.05rem;line-height:1.2;margin-top:.12rem}
 @media(max-width:992px){.analito-kpi-grid{grid-template-columns:repeat(2,1fr)}}
 
+
+/* V2.6: lectura interpretativa y títulos dinámicos del módulo analitos */
+.analito-interpretacion{background:#f8fbff;border:1px solid #dbeafe;color:#1e3a8a;border-radius:.85rem;padding:.65rem .85rem;font-size:.82rem;margin-bottom:.75rem;line-height:1.35}
+.analito-interpretacion b{color:#1d4ed8}
+
 </style>
 
 <!-- HTML Muestras - basado en V15.7, con clasificación tipo laboratorio, filtros removibles y nueva estructura de datos -->
@@ -248,7 +253,8 @@
   <div class="col-12 col-md-2"><button id="btnLimpiarAnalitos" class="btn btn-sm btn-outline-secondary w-100" type="button">Limpiar analitos</button></div>
 </div></div>
 <div id="analitoKPIs" class="analito-kpi-grid"></div>
-<div id="parametroTiempoNota" class="section-note mb-3">Seleccione un grupo y/o parámetro para visualizar su comportamiento. Si no selecciona uno, se mostrará el parámetro con más resultados no aceptables dentro del universo filtrado.</div><div class="row g-3"><div class="col-12 col-xl-6"><div class="chart p-3"><h5>Muestras por año</h5><div class="chart-container"><canvas id="chartMuestrasAnio"></canvas></div></div></div><div class="col-12 col-xl-6"><div class="chart p-3"><h5>Parámetro seleccionado por año</h5><div class="chart-container"><canvas id="chartParametroTiempo"></canvas></div></div></div></div>
+<div id="analitoInterpretacion" class="analito-interpretacion"></div>
+<div id="parametroTiempoNota" class="section-note mb-3">Seleccione un grupo y/o parámetro para visualizar su comportamiento. Si no selecciona uno, se mostrará el parámetro con más resultados no aceptables dentro del universo filtrado.</div><div class="row g-3"><div class="col-12 col-xl-6"><div class="chart p-3"><h5 id="tituloGraficoMuestrasAnio">Muestras por año</h5><div class="chart-container"><canvas id="chartMuestrasAnio"></canvas></div></div></div><div class="col-12 col-xl-6"><div class="chart p-3"><h5 id="tituloGraficoParametroAnio">Parámetro seleccionado por año</h5><div class="chart-container"><canvas id="chartParametroTiempo"></canvas></div></div></div></div>
 <div class="section mt-3 mb-0"><button class="toggle section-h" data-bs-toggle="collapse" data-bs-target="#tablaAnalitosComportamiento" aria-expanded="false"><div class="d-flex gap-3"><div class="sec-ico">📋</div><div><h5>Tabla de analitos del universo filtrado</h5><div class="small text-muted">Consulta y descarga de los resultados que corresponden a los filtros generales y a los filtros de grupo, parámetro y diagnóstico.</div></div></div><span class="arrow"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button><div class="collapse" id="tablaAnalitosComportamiento"><div class="section-b"><div class="section-note mb-3">La tabla muestra una vista previa para mantener rendimiento. El botón CSV descarga todos los registros filtrados del módulo.</div><div class="d-flex gap-2 flex-wrap mb-3"><button id="btnCargarTablaAnalitos" class="btn btn-sm btn-primary" type="button">Cargar/actualizar tabla</button><button id="btnDescargarAnalitosFiltrados" class="btn btn-sm btn-outline-secondary" type="button">Descargar CSV analitos filtrados</button></div><div class="table-responsive"><table id="tblAnalitosFiltrados" class="table table-striped table-hover w-100"></table></div></div></div></div>
 </div></div></section>
 
@@ -267,7 +273,7 @@
   </div>
 </section>
 
-<footer class="text-center"><strong>UESVALLE | Tablero de Muestras</strong><br>Tablero de Muestras V2.4: conectado a las salidas normalizadas IRCA 2020-2026, maestro acueductos IRCA 2026 y catálogo normativo.</footer>
+<footer class="text-center"><strong>UESVALLE | Tablero de Muestras</strong><br>Tablero de Muestras V2.6: conectado a las salidas normalizadas IRCA 2020-2026, maestro acueductos IRCA 2026 y catálogo normativo.</footer>
 </div></main>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -689,10 +695,49 @@ function serieRowPass(r){
   return true;
 }
 
+
+function updateAnalitoInterpretacion(paramRows, moduleRows, selectedParam){
+  const box=document.getElementById('analitoInterpretacion');
+  if(!box)return;
+  const rows=dedupeAnalitoRows(selectedParam ? paramRows : moduleRows);
+  const paramTxt=selectedParam || fParametro.value || 'el conjunto de parámetros filtrados';
+  const diagTxt=fDiagnostico.value || 'todos los diagnósticos';
+  const muestras=uniq(rows.map(r=>r.CODIGO_MUESTRA_SIVICAP)).length;
+  const sistemas=uniq(rows.map(r=>r.CODIGO_SISTEMA)).length;
+  const municipios=uniq(rows.map(r=>r.MUNICIPIO)).filter(Boolean);
+  const noRows=rows.filter(r=>rowIsNoAceptable(r));
+  const no=conteoNoAceptablesHomologados(noRows);
+  const vals=rows.map(r=>num(colVal(r,['RESULTADO_NUM','RESULTADO']))).filter(v=>v!=null);
+  const maxVal=vals.length?Math.max(...vals):null;
+  const refRow=rows.find(r=>String(colVal(r,['VALOR_MAXIMO_PERMISIBLE'])).trim()!=='')||{};
+  const vmp=colVal(refRow,['VALOR_MAXIMO_PERMISIBLE'],'sin dato');
+  const unidad=colVal(refRow,['UNIDAD'],'');
+  const sistemasNo=uniq(noRows.map(r=>r.CODIGO_SISTEMA)).length;
+  const textoNo = fDiagnostico.value && norm(fDiagnostico.value)==='NO ACEPTABLE'
+    ? `Se están visualizando únicamente resultados <b>No aceptables</b>.`
+    : `Dentro del universo filtrado se identifican <b>${fmt(no)}</b> registros no aceptables${sistemasNo?` asociados a <b>${fmt(sistemasNo)}</b> sistemas`:''}.`;
+  box.innerHTML=`Para <b>${esc(paramTxt)}</b> con diagnóstico <b>${esc(diagTxt)}</b>, se consultan <b>${fmt(rows.length)}</b> mediciones en <b>${fmt(muestras)}</b> muestras, <b>${fmt(sistemas)}</b> sistemas y <b>${fmt(municipios.length)}</b> municipio(s). ${textoNo} Valor máximo observado: <b>${maxVal==null?'–':fmt(maxVal,2)} ${esc(unidad)}</b>. Referencia normativa: <b>${esc(vmp)} ${esc(unidad)}</b>.`;
+}
+function updateTitulosGraficosAnalitos(){
+  const t1=document.getElementById('tituloGraficoMuestrasAnio');
+  const t2=document.getElementById('tituloGraficoParametroAnio');
+  if(t1){
+    const d=norm(fDiagnostico.value);
+    if(d==='NO ACEPTABLE')t1.textContent='Muestras no aceptables por año';
+    else if(d==='ACEPTABLE')t1.textContent='Muestras aceptables por año';
+    else t1.textContent='Muestras evaluadas por año';
+  }
+  if(t2){
+    const p=fParametro.value||'Parámetro seleccionado';
+    const d=fDiagnostico.value?` - ${fDiagnostico.value}`:'';
+    t2.textContent=`${p} por año${d}`;
+  }
+}
+
 function updateAnalitoKPIs(paramRows, moduleRows, selectedParam){
   const box=document.getElementById('analitoKPIs');
   if(!box)return;
-  const rows = selectedParam ? paramRows : moduleRows;
+  const rows = dedupeAnalitoRows(selectedParam ? paramRows : moduleRows);
   const mediciones=rows.length;
   const muestras=uniq(rows.map(r=>r.CODIGO_MUESTRA_SIVICAP)).length;
   const sistemas=uniq(rows.map(r=>r.CODIGO_SISTEMA)).length;
@@ -710,7 +755,7 @@ function updateAnalitoKPIs(paramRows, moduleRows, selectedParam){
 
 function updateCharts(){
   // V2.4: las gráficas responden a los filtros internos del módulo.
-  const moduleRows = analitoFilteredRows();
+  const moduleRows = dedupeAnalitoRows(analitoFilteredRows());
 
   const byYear=groupBy(moduleRows,r=>r.ANIO);
   const years=[...byYear.keys()].sort();
@@ -754,6 +799,8 @@ function updateCharts(){
   barChart('chartParametrosCriticos',top.map(x=>x.k),top.map(x=>x.n),'Parámetros no aceptables',true);
 
   updateAnalitoKPIs(paramRows, moduleRows, selected);
+  updateAnalitoInterpretacion(paramRows, moduleRows, selected);
+  updateTitulosGraficosAnalitos();
 }
 function updateResumenTable(){
   const base=FILTERED.filter(r=>(!fGrupo.value||norm(grupoVisual(colVal(r,['GRUPO_VISUAL','GRUPO_PARAMETRO','GRUPO'])))===norm(fGrupo.value))&&(!fParametro.value||norm(parametroEtiqueta(r))===norm(fParametro.value)||norm(colVal(r,['PARAMETRO_VISUAL','PARAMETRO']))===norm(fParametro.value))&&(!fDiagnostico.value||norm(diagLabel(r))===norm(fDiagnostico.value)));
@@ -979,15 +1026,37 @@ function updateAnalitoModule(changed=''){
   updateResumenTable();
   updateTablaAnalitos(false);
 }
+
+function analitoUniqueKey(r){
+  return [
+    sampleCodeNorm(colVal(r,['CODIGO_MUESTRA_SIVICAP'],'')),
+    norm(parametroEtiqueta(r)||colVal(r,['PARAMETRO_VISUAL','PARAMETRO','PARAMETRO_HOMOLOGADO'],'')),
+    norm(colVal(r,['RESULTADO','RESULTADO_NUM'],'')),
+    norm(colVal(r,['UNIDAD'],'')),
+    norm(colVal(r,['VALOR_MAXIMO_PERMISIBLE'],'')),
+    norm(diagLabel(r))
+  ].join('|');
+}
+function dedupeAnalitoRows(rows){
+  const map=new Map();
+  rows.forEach(r=>{
+    const k=analitoUniqueKey(r);
+    if(!map.has(k))map.set(k,r);
+  });
+  return [...map.values()];
+}
+
 function updateTablaAnalitos(forceLoad=false){
   if(!DTA && !forceLoad)return;
-  const rows=analitoFilteredRows().slice(0,2000);
+  const rows=dedupeAnalitoRows(analitoFilteredRows()).slice(0,2000);
   const cols=[
     {title:'Año',data:'ANIO'},
     {title:'Municipio',data:'MUNICIPIO'},
     {title:'Sistema',data:'SISTEMA_DISTRIBUCION'},
     {title:'Código sistema',data:'CODIGO_SISTEMA'},
     {title:'Muestra',data:'CODIGO_MUESTRA_SIVICAP'},
+    {title:'Fecha toma',data:null,render:r=>esc(shortDate(colVal(r,['FECHA_TOMA','FECHA'])) )},
+    {title:'Punto muestreo',data:null,render:r=>esc(colVal(r,['DESCRIPCION_PM','DIRECCION_PM','UBICACION_PM'],'–'))},
     {title:'Grupo',data:null,render:r=>grupoVisual(colVal(r,['GRUPO_VISUAL','GRUPO_PARAMETRO','GRUPO']))},
     {title:'Parámetro',data:null,render:r=>esc(parametroEtiqueta(r)||colVal(r,['PARAMETRO_VISUAL','PARAMETRO']))},
     {title:'Resultado',data:null,render:r=>esc(colVal(r,['RESULTADO','RESULTADO_NUM'],''))},
@@ -1001,7 +1070,7 @@ function updateTablaAnalitos(forceLoad=false){
   DTA=$('#tblAnalitosFiltrados').DataTable({data:rows,columns:cols,pageLength:10,order:[[0,'desc']],dom:'Bfrtip',buttons:['copy','csv','excel','print'],language:{url:'https://cdn.datatables.net/plug-ins/1.13.8/i18n/es-ES.json'}});
 }
 function descargarAnalitosFiltrados(){
-  const rows=analitoFilteredRows();
+  const rows=dedupeAnalitoRows(analitoFilteredRows());
   downloadCSV(rows,[
     ['Año','ANIO'],
     ['Municipio','MUNICIPIO'],
@@ -1010,7 +1079,8 @@ function descargarAnalitosFiltrados(){
     ['Sistema','SISTEMA_DISTRIBUCION'],
     ['Código sistema','CODIGO_SISTEMA'],
     ['Muestra','CODIGO_MUESTRA_SIVICAP'],
-    ['Fecha toma','FECHA_TOMA'],
+    ['Fecha toma',r=>shortDate(colVal(r,['FECHA_TOMA','FECHA']))],
+    ['Punto muestreo',r=>colVal(r,['DESCRIPCION_PM','DIRECCION_PM','UBICACION_PM'],'')],
     ['Tipo dispositivo ajustado','TIPO_DISPOSITIVO_AJUSTADO'],
     ['Grupo',r=>grupoVisual(colVal(r,['GRUPO_VISUAL','GRUPO_PARAMETRO','GRUPO']))],
     ['Parámetro',r=>parametroEtiqueta(r)||colVal(r,['PARAMETRO_VISUAL','PARAMETRO'])],
