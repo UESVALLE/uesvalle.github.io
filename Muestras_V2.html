@@ -149,7 +149,7 @@
 
 
 /* V2.4: KPIs internos del módulo de analitos */
-.analito-kpi-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:.55rem;margin-bottom:.75rem}
+.analito-kpi-grid{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:.55rem;margin-bottom:.75rem}
 .analito-kpi{background:#fff;border:1px solid #dbeafe;border-radius:.8rem;padding:.55rem .65rem;text-align:center}
 .analito-kpi small{display:block;color:#667085;font-weight:800;font-size:.68rem;line-height:1.1}
 .analito-kpi b{display:block;color:#1d4ed8;font-size:1.05rem;line-height:1.2;margin-top:.12rem}
@@ -248,9 +248,10 @@
 <section class="section"><button class="toggle section-h" data-bs-toggle="collapse" data-bs-target="#serieTiempo" aria-expanded="true"><div class="d-flex gap-3"><div class="sec-ico">📈</div><div><h5>Comportamiento de analitos</h5><div class="small text-muted">Análisis anual del resultado del analito seleccionado dentro del universo filtrado.</div></div></div><span class="arrow"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button><div class="collapse show" id="serieTiempo"><div class="section-b">
 <div class="detail-filter-card mb-3"><div class="row align-items-end g-2">
   <div class="col-12 col-md-3"><label class="form-label filter-label">Grupo parámetro</label><select id="fGrupo" class="form-select form-select-sm searchable-select"><option value="">Todos</option></select></div>
-  <div class="col-12 col-md-5"><label class="form-label filter-label">Parámetro</label><select id="fParametro" class="form-select form-select-sm searchable-select"><option value="">Todos</option></select></div>
+  <div class="col-12 col-md-4"><label class="form-label filter-label">Parámetro</label><select id="fParametro" class="form-select form-select-sm searchable-select"><option value="">Todos</option></select></div>
   <div class="col-12 col-md-2"><label class="form-label filter-label">Diagnóstico</label><select id="fDiagnostico" class="form-select form-select-sm searchable-select"><option value="">Todos</option></select></div>
-  <div class="col-12 col-md-2"><button id="btnLimpiarAnalitos" class="btn btn-sm btn-outline-secondary w-100" type="button">Limpiar analitos</button></div>
+  <div class="col-12 col-md-2"><label class="form-label filter-label">Vista del gráfico</label><select id="fVistaGrafico" class="form-select form-select-sm"><option value="PROMEDIO">Promedio anual</option><option value="MAXIMO">Valor máximo anual</option><option value="NO_ACEPTABLES">Número de no aceptables</option></select></div>
+  <div class="col-12 col-md-1"><button id="btnLimpiarAnalitos" class="btn btn-sm btn-outline-secondary w-100" type="button">Limpiar</button></div>
 </div></div>
 <div id="analitoKPIs" class="analito-kpi-grid"></div>
 <div id="analitoInterpretacion" class="analito-interpretacion"></div>
@@ -273,7 +274,7 @@
   </div>
 </section>
 
-<footer class="text-center"><strong>UESVALLE | Tablero de Muestras</strong><br>Tablero de Muestras V2.6: conectado a las salidas normalizadas IRCA 2020-2026, maestro acueductos IRCA 2026 y catálogo normativo.</footer>
+<footer class="text-center"><strong>UESVALLE | Tablero de Muestras</strong><br>Tablero de Muestras V2.7: conectado a las salidas normalizadas IRCA 2020-2026, maestro acueductos IRCA 2026 y catálogo normativo.</footer>
 </div></main>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -702,6 +703,7 @@ function updateAnalitoInterpretacion(paramRows, moduleRows, selectedParam){
   const rows=dedupeAnalitoRows(selectedParam ? paramRows : moduleRows);
   const paramTxt=selectedParam || fParametro.value || 'el conjunto de parámetros filtrados';
   const diagTxt=fDiagnostico.value || 'todos los diagnósticos';
+  const vistaTxt=(document.getElementById('fVistaGrafico')?.selectedOptions?.[0]?.textContent)||'Promedio anual';
   const muestras=uniq(rows.map(r=>r.CODIGO_MUESTRA_SIVICAP)).length;
   const sistemas=uniq(rows.map(r=>r.CODIGO_SISTEMA)).length;
   const municipios=uniq(rows.map(r=>r.MUNICIPIO)).filter(Boolean);
@@ -709,6 +711,7 @@ function updateAnalitoInterpretacion(paramRows, moduleRows, selectedParam){
   const no=conteoNoAceptablesHomologados(noRows);
   const vals=rows.map(r=>num(colVal(r,['RESULTADO_NUM','RESULTADO']))).filter(v=>v!=null);
   const maxVal=vals.length?Math.max(...vals):null;
+  const avgVal=vals.length?vals.reduce((a,b)=>a+b,0)/vals.length:null;
   const refRow=rows.find(r=>String(colVal(r,['VALOR_MAXIMO_PERMISIBLE'])).trim()!=='')||{};
   const vmp=colVal(refRow,['VALOR_MAXIMO_PERMISIBLE'],'sin dato');
   const unidad=colVal(refRow,['UNIDAD'],'');
@@ -716,7 +719,7 @@ function updateAnalitoInterpretacion(paramRows, moduleRows, selectedParam){
   const textoNo = fDiagnostico.value && norm(fDiagnostico.value)==='NO ACEPTABLE'
     ? `Se están visualizando únicamente resultados <b>No aceptables</b>.`
     : `Dentro del universo filtrado se identifican <b>${fmt(no)}</b> registros no aceptables${sistemasNo?` asociados a <b>${fmt(sistemasNo)}</b> sistemas`:''}.`;
-  box.innerHTML=`Para <b>${esc(paramTxt)}</b> con diagnóstico <b>${esc(diagTxt)}</b>, se consultan <b>${fmt(rows.length)}</b> mediciones en <b>${fmt(muestras)}</b> muestras, <b>${fmt(sistemas)}</b> sistemas y <b>${fmt(municipios.length)}</b> municipio(s). ${textoNo} Valor máximo observado: <b>${maxVal==null?'–':fmt(maxVal,2)} ${esc(unidad)}</b>. Referencia normativa: <b>${esc(vmp)} ${esc(unidad)}</b>.`;
+  box.innerHTML=`Para <b>${esc(paramTxt)}</b> con diagnóstico <b>${esc(diagTxt)}</b>, se consultan <b>${fmt(rows.length)}</b> mediciones en <b>${fmt(muestras)}</b> muestras, <b>${fmt(sistemas)}</b> sistemas y <b>${fmt(municipios.length)}</b> municipio(s). ${textoNo} Promedio observado: <b>${avgVal==null?'–':fmt(avgVal,2)} ${esc(unidad)}</b>. Valor máximo observado: <b>${maxVal==null?'–':fmt(maxVal,2)} ${esc(unidad)}</b>. Referencia normativa: <b>${esc(vmp)} ${esc(unidad)}</b>. Vista activa del gráfico: <b>${esc(vistaTxt)}</b>.`;
 }
 function updateTitulosGraficosAnalitos(){
   const t1=document.getElementById('tituloGraficoMuestrasAnio');
@@ -730,7 +733,8 @@ function updateTitulosGraficosAnalitos(){
   if(t2){
     const p=fParametro.value||'Parámetro seleccionado';
     const d=fDiagnostico.value?` - ${fDiagnostico.value}`:'';
-    t2.textContent=`${p} por año${d}`;
+    const vista=(document.getElementById('fVistaGrafico')?.selectedOptions?.[0]?.textContent)||'Promedio anual';
+    t2.textContent=`${p}: ${vista}${d}`;
   }
 }
 
@@ -745,16 +749,22 @@ function updateAnalitoKPIs(paramRows, moduleRows, selectedParam){
   const no=conteoNoAceptablesHomologados(rows.filter(r=>rowIsNoAceptable(r)));
   const vals=rows.map(r=>num(colVal(r,['RESULTADO_NUM','RESULTADO']))).filter(v=>v!=null);
   const maxVal=vals.length?Math.max(...vals):null;
+  const avgVal=vals.length?vals.reduce((a,b)=>a+b,0)/vals.length:null;
+  const years=uniq(rows.map(r=>r.ANIO)).length;
+  const pctNo=mediciones?rows.filter(r=>rowIsNoAceptable(r)).length/mediciones*100:0;
   box.innerHTML=`<div class="analito-kpi"><small>Mediciones filtradas</small><b>${fmt(mediciones)}</b></div>
   <div class="analito-kpi"><small>Muestras asociadas</small><b>${fmt(muestras)}</b></div>
   <div class="analito-kpi"><small>Sistemas afectados</small><b>${fmt(sistemas)}</b></div>
   <div class="analito-kpi"><small>Municipios</small><b>${fmt(municipios)}</b></div>
+  <div class="analito-kpi"><small>Años con dato</small><b>${fmt(years)}</b></div>
   <div class="analito-kpi"><small>No aceptables</small><b>${fmt(no)}</b></div>
-  <div class="analito-kpi"><small>Valor máximo</small><b>${maxVal==null?'–':fmt(maxVal,2)}</b></div>`;
+  <div class="analito-kpi"><small>% registros no aceptables</small><b>${fmt(pctNo,1)}%</b></div>
+  <div class="analito-kpi"><small>Prom. / Máx.</small><b>${avgVal==null?'–':fmt(avgVal,2)} / ${maxVal==null?'–':fmt(maxVal,2)}</b></div>`;
 }
 
 function updateCharts(){
-  // V2.4: las gráficas responden a los filtros internos del módulo.
+  // V2.7: el gráfico derecho permite tres lecturas:
+  // promedio anual, valor máximo anual y número de no aceptables.
   const moduleRows = dedupeAnalitoRows(analitoFilteredRows());
 
   const byYear=groupBy(moduleRows,r=>r.ANIO);
@@ -772,22 +782,45 @@ function updateCharts(){
   }
 
   const paramRows=moduleRows.filter(r=>!selected || norm(parametroEtiqueta(r))===norm(selected));
-  const py=groupBy(paramRows.filter(r=>num(colVal(r,['RESULTADO_NUM','RESULTADO']))!=null),r=>r.ANIO);
+  const py=groupBy(paramRows.filter(r=>num(colVal(r,['RESULTADO_NUM','RESULTADO']))!=null || rowIsNoAceptable(r)),r=>r.ANIO);
   const pyears=[...py.keys()].sort();
-  const promedio=pyears.map(y=>{
-    const vals=py.get(y).map(r=>num(colVal(r,['RESULTADO_NUM','RESULTADO']))).filter(v=>v!=null);
-    return vals.length?Number((vals.reduce((a,b)=>a+b,0)/vals.length).toFixed(3)):null;
-  });
+  const vista=document.getElementById('fVistaGrafico')?.value || 'PROMEDIO';
+
+  let dataSerie=[];
+  let serieLabel='';
+  if(vista==='MAXIMO'){
+    dataSerie=pyears.map(y=>{
+      const vals=py.get(y).map(r=>num(colVal(r,['RESULTADO_NUM','RESULTADO']))).filter(v=>v!=null);
+      return vals.length?Math.max(...vals):null;
+    });
+    serieLabel=`${selected || 'Resultado'} máximo`;
+  }else if(vista==='NO_ACEPTABLES'){
+    dataSerie=pyears.map(y=>conteoNoAceptablesHomologados(py.get(y).filter(r=>rowIsNoAceptable(r))));
+    serieLabel=`${selected || 'Resultado'} no aceptables`;
+  }else{
+    dataSerie=pyears.map(y=>{
+      const vals=py.get(y).map(r=>num(colVal(r,['RESULTADO_NUM','RESULTADO']))).filter(v=>v!=null);
+      return vals.length?Number((vals.reduce((a,b)=>a+b,0)/vals.length).toFixed(3)):null;
+    });
+    serieLabel=`${selected || 'Resultado'} promedio`;
+  }
+
   const muestraCnt=pyears.map(y=>uniq(py.get(y).map(r=>r.CODIGO_MUESTRA_SIVICAP)).length);
   const refRow=paramRows.find(r=>String(colVal(r,['VALOR_MAXIMO_PERMISIBLE'])).trim()!=='')||{};
   const vmp=colVal(refRow,['VALOR_MAXIMO_PERMISIBLE'],'');
   const refNums=String(vmp||'').replace(',','.').match(/-?\d+(\.\d+)?/g)?.map(Number)||[];
-  const datasets=[{label:`${selected || 'Resultado'} promedio`,data:promedio,tension:.25,spanGaps:true}];
-  if(refNums.length===1){datasets.push({label:'Valor máximo permitido',data:pyears.map(()=>refNums[0]),borderDash:[6,5],pointRadius:0,spanGaps:true});}
-  if(refNums.length>=2){datasets.push({label:'Límite inferior permitido',data:pyears.map(()=>Math.min(refNums[0],refNums[1])),borderDash:[4,4],pointRadius:0,spanGaps:true});datasets.push({label:'Límite superior permitido',data:pyears.map(()=>Math.max(refNums[0],refNums[1])),borderDash:[6,5],pointRadius:0,spanGaps:true});}
+  const datasets=[{label:serieLabel,data:dataSerie,tension:.25,spanGaps:true}];
+
+  // Las líneas normativas aplican para promedio/máximo. Para conteos no aceptables no se muestran.
+  if(vista!=='NO_ACEPTABLES'){
+    if(refNums.length===1){datasets.push({label:'Valor máximo permitido',data:pyears.map(()=>refNums[0]),borderDash:[6,5],pointRadius:0,spanGaps:true});}
+    if(refNums.length>=2){datasets.push({label:'Límite inferior permitido',data:pyears.map(()=>Math.min(refNums[0],refNums[1])),borderDash:[4,4],pointRadius:0,spanGaps:true});datasets.push({label:'Límite superior permitido',data:pyears.map(()=>Math.max(refNums[0],refNums[1])),borderDash:[6,5],pointRadius:0,spanGaps:true});}
+  }
+
   const sistema=fSistema.value||fCodigoSistema.value||'universo filtrado';
   const diagTxt=fDiagnostico.value?` con diagnóstico <b>${esc(fDiagnostico.value)}</b>`:'';
-  parametroTiempoNota.innerHTML=selected?`Se presenta el comportamiento anual de <b>${esc(selected)}</b>${diagTxt} para <b>${esc(sistema)}</b>. Cada punto corresponde al promedio anual del resultado reportado dentro del filtro del módulo. Mediciones por año: ${pyears.map((y,i)=>`${y}: ${muestraCnt[i]}`).join(' | ') || 'sin datos'}. Referencia normativa: <b>${esc(vmp||'sin dato')}</b> ${esc(colVal(refRow,['UNIDAD'],''))}.`:'No hay parámetro seleccionado para la serie de tiempo.';
+  const vistaTxt=(document.getElementById('fVistaGrafico')?.selectedOptions?.[0]?.textContent)||'Promedio anual';
+  parametroTiempoNota.innerHTML=selected?`Se presenta <b>${esc(vistaTxt)}</b> de <b>${esc(selected)}</b>${diagTxt} para <b>${esc(sistema)}</b>. Mediciones por año: ${pyears.map((y,i)=>`${y}: ${muestraCnt[i]}`).join(' | ') || 'sin datos'}. Referencia normativa: <b>${esc(vmp||'sin dato')}</b> ${esc(colVal(refRow,['UNIDAD'],''))}.`:'No hay parámetro seleccionado para la serie de tiempo.';
   lineChart('chartParametroTiempo',pyears,datasets);
 
   const critBase=FILTERED.filter(r=>
@@ -1115,7 +1148,7 @@ function scheduleApplyFilters(){
 }
 function applyAll(){filterData();activeChips();updateKPIs();updateSistemasFiltrados();renderActiveTab();}
 function clearFilters(){document.querySelectorAll('#fAnios input.year-opt').forEach(x=>x.checked=false);updateYearButton();['fMunicipio','fAmbito','fPrestador','fSistema','fCodigoSistema','fRiesgo','fDiagnostico','fMuestra','fParametro','fGrupo','fTipoDispositivo'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});const chk=document.getElementById('fSoloNoAceptables');if(chk)chk.checked=false; if(window.jQuery) jQuery('select.searchable-select').trigger('change.select2'); lastSelectedSample='';applyAll();}
-document.getElementById('btnFiltrar').addEventListener('click',()=>{updateFilterOptions();applyAll();});document.getElementById('btnLimpiar').addEventListener('click',clearFilters);document.getElementById('btnRefrescar').addEventListener('click',()=>location.reload());document.getElementById('btnToggleStatus').addEventListener('click',()=>{loadAlert.classList.toggle('d-none');const oculto=loadAlert.classList.contains('d-none');btnToggleStatus.textContent=oculto?'Ver detalle':'Ocultar detalle';statusHint.textContent=oculto?'Oculto':'Visible';});['fMunicipio','fAmbito','fPrestador','fSistema','fCodigoSistema','fRiesgo','fTipoDispositivo'].forEach(id=>document.getElementById(id)?.addEventListener('change',()=>{updateFilterOptions();scheduleApplyFilters();}));['fGrupo','fParametro','fDiagnostico'].forEach(id=>document.getElementById(id)?.addEventListener('change',()=>{updateAnalitoModule(id);}));function applySampleSelection(){
+document.getElementById('btnFiltrar').addEventListener('click',()=>{updateFilterOptions();applyAll();});document.getElementById('btnLimpiar').addEventListener('click',clearFilters);document.getElementById('btnRefrescar').addEventListener('click',()=>location.reload());document.getElementById('btnToggleStatus').addEventListener('click',()=>{loadAlert.classList.toggle('d-none');const oculto=loadAlert.classList.contains('d-none');btnToggleStatus.textContent=oculto?'Ver detalle':'Ocultar detalle';statusHint.textContent=oculto?'Oculto':'Visible';});['fMunicipio','fAmbito','fPrestador','fSistema','fCodigoSistema','fRiesgo','fTipoDispositivo'].forEach(id=>document.getElementById(id)?.addEventListener('change',()=>{updateFilterOptions();scheduleApplyFilters();}));['fGrupo','fParametro','fDiagnostico'].forEach(id=>document.getElementById(id)?.addEventListener('change',()=>{updateAnalitoModule(id);}));document.getElementById('fVistaGrafico')?.addEventListener('change',()=>{updateCharts();updateTablaAnalitos(false);});function applySampleSelection(){
   lastSelectedSample=sampleCodeNorm(fMuestra.value);
   if(lastSelectedSample && fMuestra.value!==lastSelectedSample){
     fMuestra.value=lastSelectedSample;
@@ -1124,7 +1157,7 @@ document.getElementById('btnFiltrar').addEventListener('click',()=>{updateFilter
   updateFicha();
   updateResultsTable();
 }
-document.getElementById('fMuestra')?.addEventListener('change',applySampleSelection);document.getElementById('btnLimpiarMuestra')?.addEventListener('click',()=>{lastSelectedSample='';fMuestra.value='';if(window.jQuery)jQuery('#fMuestra').val('').trigger('change.select2');applySampleSelection();});document.getElementById('fSoloNoAceptables')?.addEventListener('change',()=>{updateResultsTable();});document.getElementById('btnLimpiarAnalitos')?.addEventListener('click',()=>{fDiagnostico.value='';fParametro.value='';fGrupo.value='';if(window.jQuery)jQuery('#fGrupo,#fParametro,#fDiagnostico').val('').trigger('change.select2');updateAnalitoModule();});document.getElementById('kpiNoAceptablesCard').addEventListener('click',()=>{fDiagnostico.value='No aceptable';if(window.jQuery)jQuery('#fDiagnostico').val('No aceptable').trigger('change.select2');updateAnalitoModule('fDiagnostico');});document.getElementById('btnDescargarMuestra')?.addEventListener('click',descargarMuestra);document.getElementById('btnCargarTablaResultados')?.addEventListener('click',cargarTablaDescarga);document.getElementById('btnDescargarFiltrado')?.addEventListener('click',descargarFiltrado);document.getElementById('btnCargarTablaAnalitos')?.addEventListener('click',()=>updateTablaAnalitos(true));document.getElementById('btnDescargarAnalitosFiltrados')?.addEventListener('click',descargarAnalitosFiltrados);document.getElementById('layerBtn').addEventListener('click',()=>layerPanel.classList.toggle('collapsed-panel'));document.getElementById('legendBtn').addEventListener('click',()=>legendPanel.classList.toggle('collapsed-panel'));document.getElementById('btnFitMap').addEventListener('click',()=>updateMap());document.getElementById('btnFullMap').addEventListener('click',()=>{mapShell.classList.toggle('fullscreen');btnFullMap.textContent=mapShell.classList.contains('fullscreen')?'Cerrar pantalla completa':'Pantalla completa';setTimeout(()=>MAP&&MAP.invalidateSize(),250);});
+document.getElementById('fMuestra')?.addEventListener('change',applySampleSelection);document.getElementById('btnLimpiarMuestra')?.addEventListener('click',()=>{lastSelectedSample='';fMuestra.value='';if(window.jQuery)jQuery('#fMuestra').val('').trigger('change.select2');applySampleSelection();});document.getElementById('fSoloNoAceptables')?.addEventListener('change',()=>{updateResultsTable();});document.getElementById('btnLimpiarAnalitos')?.addEventListener('click',()=>{fDiagnostico.value='';fParametro.value='';fGrupo.value='';const vg=document.getElementById('fVistaGrafico');if(vg)vg.value='PROMEDIO';if(window.jQuery)jQuery('#fGrupo,#fParametro,#fDiagnostico').val('').trigger('change.select2');updateAnalitoModule();});document.getElementById('kpiNoAceptablesCard').addEventListener('click',()=>{fDiagnostico.value='No aceptable';if(window.jQuery)jQuery('#fDiagnostico').val('No aceptable').trigger('change.select2');updateAnalitoModule('fDiagnostico');});document.getElementById('btnDescargarMuestra')?.addEventListener('click',descargarMuestra);document.getElementById('btnCargarTablaResultados')?.addEventListener('click',cargarTablaDescarga);document.getElementById('btnDescargarFiltrado')?.addEventListener('click',descargarFiltrado);document.getElementById('btnCargarTablaAnalitos')?.addEventListener('click',()=>updateTablaAnalitos(true));document.getElementById('btnDescargarAnalitosFiltrados')?.addEventListener('click',descargarAnalitosFiltrados);document.getElementById('layerBtn').addEventListener('click',()=>layerPanel.classList.toggle('collapsed-panel'));document.getElementById('legendBtn').addEventListener('click',()=>legendPanel.classList.toggle('collapsed-panel'));document.getElementById('btnFitMap').addEventListener('click',()=>updateMap());document.getElementById('btnFullMap').addEventListener('click',()=>{mapShell.classList.toggle('fullscreen');btnFullMap.textContent=mapShell.classList.contains('fullscreen')?'Cerrar pantalla completa':'Pantalla completa';setTimeout(()=>MAP&&MAP.invalidateSize(),250);});
 document.querySelectorAll('#dashboardTabs button[data-bs-toggle="tab"]').forEach(btn=>{
   btn.addEventListener('shown.bs.tab',()=>{renderActiveTab();});
 });
