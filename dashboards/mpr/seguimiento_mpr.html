@@ -186,18 +186,46 @@ function initKpiClicks(){
 function destroyChart(id){if(charts[id]){charts[id].destroy();delete charts[id];}}
 function makeGroupedChart(id,labels,datasets,extra={}){
   destroyChart(id);
+  const flatValues=(datasets||[]).flatMap(d=>Array.isArray(d.data)?d.data:[]).map(v=>Number(v)||0);
+  const maxVal=Math.max(0,...flatValues);
+  const axisMax=maxVal<=5?Math.max(5,maxVal+1):Math.ceil(maxVal*1.15);
+  const step=maxVal<=12?1:undefined;
+  const prepared=(datasets||[]).map(d=>({
+    borderWidth:0,
+    borderRadius:6,
+    barPercentage:0.78,
+    categoryPercentage:0.72,
+    maxBarThickness:30,
+    ...d
+  }));
   charts[id]=new Chart(document.getElementById(id),{
     type:'bar',
-    data:{labels,datasets},
+    data:{labels,datasets:prepared},
     options:{
       responsive:true,maintainAspectRatio:false,
-      plugins:{legend:{display:true,position:'bottom'},datalabels:{display:true,anchor:'end',align:'end',font:{weight:'bold',size:9},formatter:v=>v?String(v):''}},
-      scales:{y:{beginAtZero:true,ticks:{precision:0}},x:{ticks:{autoSkip:false,maxRotation:45,minRotation:0}}},
+      interaction:{mode:'index',intersect:false},
+      plugins:{
+        legend:{display:true,position:'bottom',labels:{usePointStyle:true,pointStyle:'rectRounded',padding:16,font:{size:12,weight:'600'}}},
+        tooltip:{backgroundColor:'rgba(15,23,42,0.92)',padding:10,titleFont:{weight:'700'},bodyFont:{weight:'600'}},
+        datalabels:{display:true,anchor:'end',align:'end',offset:2,color:'#334155',font:{weight:'bold',size:10},formatter:v=>v?String(v):''}
+      },
+      scales:{
+        y:{beginAtZero:true,suggestedMax:axisMax,ticks:{precision:0,stepSize:step,color:'#475467',font:{weight:'600'}},grid:{color:'rgba(148,163,184,.18)'},border:{display:false}},
+        x:{ticks:{autoSkip:false,maxRotation:28,minRotation:0,color:'#475467',font:{weight:'600'}},grid:{display:false},border:{display:false}}
+      },
       ...extra
     }
   });
 }
-function makeChart(id,type,labels,data,extra={}){destroyChart(id);const opts={responsive:true,maintainAspectRatio:false,plugins:{legend:{display:type==='doughnut',position:'bottom'},datalabels:{display:true,anchor:'end',align:'end',font:{weight:'bold',size:10},formatter:v=>v?String(v):''}},scales:type==='doughnut'?{}:{y:{beginAtZero:true,ticks:{precision:0}},x:{ticks:{autoSkip:false,maxRotation:45,minRotation:0}}},...extra};charts[id]=new Chart(document.getElementById(id),{type,data:{labels,datasets:[{label:extra.label||'',data}]},options:opts});}
+function makeChart(id,type,labels,data,extra={}){
+  destroyChart(id);
+  const maxVal=Math.max(0,...(data||[]).map(v=>Number(v)||0));
+  const axisMax=maxVal<=5?Math.max(5,maxVal+1):Math.ceil(maxVal*1.15);
+  const palette=['#ef4444','#f97316','#eab308','#8b5cf6','#06b6d4','#22c55e','#3b82f6'];
+  const dataset={label:extra.label||'',data,backgroundColor:extra.backgroundColor||palette.slice(0,Math.max((data||[]).length,1)),borderRadius:6,borderWidth:0,maxBarThickness:30};
+  const opts={responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{display:type==='doughnut',position:'bottom',labels:{usePointStyle:true,padding:14,font:{size:12,weight:'600'}}},tooltip:{backgroundColor:'rgba(15,23,42,0.92)',padding:10,titleFont:{weight:'700'},bodyFont:{weight:'600'}},datalabels:{display:true,anchor:'end',align:'end',offset:2,color:'#334155',font:{weight:'bold',size:10},formatter:v=>v?String(v):''}},scales:type==='doughnut'?{}:{y:{beginAtZero:true,suggestedMax:axisMax,ticks:{precision:0,stepSize:maxVal<=12?1:undefined,color:'#475467',font:{weight:'600'}},grid:{color:'rgba(148,163,184,.18)'},border:{display:false}},x:{ticks:{autoSkip:false,maxRotation:28,minRotation:0,color:'#475467',font:{weight:'600'}},grid:{display:false},border:{display:false}}},...extra};
+  charts[id]=new Chart(document.getElementById(id),{type,data:{labels,datasets:[dataset]},options:opts});
+}
 function chartIndex(evt,elements){return elements&&elements.length?elements[0].index:null;}
 function detailActivitiesForSystems(systems){const codes=new Set(systems.map(r=>val(r.CODIGO_LLAVE)).filter(Boolean));return ACTIVIDADES.filter(a=>codes.has(val(a.CODIGO_LLAVE)));}
 function resumenFuncionarios(systems,acts){const map={};function add(nombre,act,code){const n=val(nombre)||'Sin funcionario';if(!map[n])map[n]={FUNCIONARIO:n,PROGRAMADOS:0,VISITAS_13:0,MUESTREOS_14:0,RESOLUCIONES_15:0,SISTEMAS:new Set()};if(code)map[n].SISTEMAS.add(code);if(act==='PROGRAMADO')map[n].PROGRAMADOS++;if(act==='1.3')map[n].VISITAS_13++;if(act==='1.4')map[n].MUESTREOS_14++;if(act==='1.5')map[n].RESOLUCIONES_15++;}
@@ -244,10 +272,10 @@ function renderCharts(){
   const labels=ag.labels;
   const values=(fn)=>labels.map(l=>fn(ag.sub(l)));
   makeGroupedChart('chartSeguimiento',labels,[
-    {label:'Programados',data:values(s=>s.length)},
-    {label:'Visitas 1.3',data:values(s=>s.filter(r=>val(r.ejecuto_13)==='SI').length)},
-    {label:'Muestreos 1.4',data:values(s=>s.filter(r=>val(r.ejecuto_14)==='SI').length)},
-    {label:'Resoluciones 1.5',data:values(s=>s.filter(r=>val(r.ejecuto_15)==='SI').length)}
+    {label:'Programados',data:values(s=>s.length),backgroundColor:'#2563eb'},
+    {label:'Visitas 1.3',data:values(s=>s.filter(r=>val(r.ejecuto_13)==='SI').length),backgroundColor:'#22c55e'},
+    {label:'Muestreos 1.4',data:values(s=>s.filter(r=>val(r.ejecuto_14)==='SI').length),backgroundColor:'#f97316'},
+    {label:'Resoluciones 1.5',data:values(s=>s.filter(r=>val(r.ejecuto_15)==='SI').length),backgroundColor:'#a855f7'}
   ],{onClick:(evt,els)=>{const i=chartIndex(evt,els);if(i==null)return;applyChartFilter(dim,labels[i]);}});
   const af=alertsFiltered();
   const tipos=uniq(af.map(r=>r.TIPO_ALERTA));
