@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 """
 Normalización tablero Mapas de Riesgo MPR - UESVALLE
 Versión V1.3
@@ -614,3 +614,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

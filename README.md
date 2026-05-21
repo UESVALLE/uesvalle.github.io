@@ -1,4 +1,4 @@
-# Portal de Tableros UESVALLE
+﻿# Portal de Tableros UESVALLE
 
 Repositorio institucional para la publicación de tableros HTML, datos CSV, scripts de normalización y documentación técnica asociados a los procesos de seguimiento, vigilancia y control sanitario de UESVALLE.
 

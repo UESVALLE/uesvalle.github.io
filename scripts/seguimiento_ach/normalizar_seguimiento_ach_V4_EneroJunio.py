@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 """
 Normalización de seguimiento de actividades ACH - UESVALLE
 Versión: V4 Enero-Junio
@@ -666,3 +666,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

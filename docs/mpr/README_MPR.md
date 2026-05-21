@@ -1,4 +1,4 @@
-# Tablero Seguimiento Mapas de Riesgo MPR - UESVALLE
+﻿# Tablero Seguimiento Mapas de Riesgo MPR - UESVALLE
 
 ## Ubicación recomendada dentro del repositorio
 
@@ -84,3 +84,4 @@ Cuando exista el archivo de la actividad 1.5, debe guardarse como:
 `data/mpr/raw/1.5_ResolucionesMPR.csv`
 
 El script lo detectará automáticamente.
+

@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 """
 Normalización histórica de seguimiento de actividades ACH - UESVALLE
 Versión: HISTÓRICO Enero-Marzo + Enero-Junio
@@ -789,3 +789,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 """
 ACTUALIZAR PORTAL Y NAVEGACIÓN COMÚN - TABLERO MPR UESVALLE
 Versión: V1.0
@@ -22,7 +22,7 @@ from pathlib import Path
 REPO_ROOT = Path(r"G:\Mi unidad\8.UES\PAGINA INDICADORES\UESVALLE")
 
 MPR_URL_REL = "dashboards/mpr/seguimiento_mpr.html"
-MPR_URL_GH = "https://javiermarin7.github.io/UESVALLE/dashboards/mpr/seguimiento_mpr.html"
+MPR_URL_GH = "https://uesvalle.github.io/dashboards/mpr/seguimiento_mpr.html"
 
 MPR_DROPDOWN_ITEM = (
     '<li><a class="dropdown-item" '
@@ -273,3 +273,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
