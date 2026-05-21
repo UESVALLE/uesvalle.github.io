@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Normalización tablero Mapas de Riesgo MPR - UESVALLE
-Versión V1.2
+Versión V1.3
 
 Uso esperado desde la raíz del repositorio:
     python scripts/mpr/normalizar_mpr.py
@@ -180,6 +180,133 @@ def standardize_activity(df: pd.DataFrame, actividad_default: str, fuente_archiv
     return df[keep]
 
 
+
+STOPWORDS_MATCH = {
+    "ACUEDUCTO", "ACUEDUCTOS", "ASOCIACION", "ASOCIADOS", "USUARIOS", "JUNTA", "ADMINISTRADORA",
+    "COMUNITARIO", "COMUNITARIA", "RURAL", "VEREDA", "VEREDAS", "CORREGIMIENTO", "ESP", "E", "S",
+    "P", "SAS", "SA", "DE", "DEL", "LA", "EL", "LOS", "LAS", "Y", "O", "PARA", "PARTE", "ALTA",
+    "BAJA", "SISTEMA", "ETAPAS", "MUNICIPIO", "VALLE", "CAUCA", "EMPRESA", "SERVICIO", "SERVICIOS"
+}
+
+
+def normalize_match_text(value) -> str:
+    """Texto simplificado para cruce por nombre/localidad/prestador."""
+    s = normalize_upper(value)
+    s = re.sub(r"[^A-Z0-9 ]+", " ", s)
+    tokens = [t for t in s.split() if len(t) > 1 and t not in STOPWORDS_MATCH]
+    return " ".join(tokens)
+
+
+def similarity_score(a, b) -> float:
+    """Puntaje robusto: secuencia, Jaccard y contención de tokens."""
+    from difflib import SequenceMatcher
+
+    aa = normalize_match_text(a)
+    bb = normalize_match_text(b)
+    if not aa or not bb:
+        return 0.0
+
+    seq = SequenceMatcher(None, aa, bb).ratio()
+    ta, tb = set(aa.split()), set(bb.split())
+    inter = len(ta & tb)
+    union = max(1, len(ta | tb))
+    jaccard = inter / union
+    containment = max(inter / max(1, len(ta)), inter / max(1, len(tb)))
+    return round(max(seq, jaccard, containment), 6)
+
+
+def build_base_match_text(df: pd.DataFrame) -> pd.Series:
+    """Combina localidad y prestador programado para el cruce textual."""
+    localidad = df.get("LOCALIDAD_PROGRAMADA", pd.Series([""] * len(df))).fillna("").astype(str)
+    prestador = df.get("PERSONA_PRESTADORA_PROGRAMADA", pd.Series([""] * len(df))).fillna("").astype(str)
+    return (localidad + " " + prestador).map(normalize_match_text)
+
+
+def build_activity_match_text(df: pd.DataFrame) -> pd.Series:
+    """Combina localidad, nombre de sistema y prestador ejecutado para el cruce textual."""
+    loc = df.get("LOCALIDADES_ABASTECIDAS", pd.Series([""] * len(df))).fillna("").astype(str)
+    sistema = df.get("NOMBRE_SISTEMA", pd.Series([""] * len(df))).fillna("").astype(str)
+    prestador = df.get("PERSONA_PRESTADORA", pd.Series([""] * len(df))).fillna("").astype(str)
+    return (loc + " " + sistema + " " + prestador).map(normalize_match_text)
+
+
+def apply_programmed_crosswalk(actividades: pd.DataFrame, base: pd.DataFrame, threshold: float = 0.45) -> pd.DataFrame:
+    """
+    Cruza actividades ejecutadas contra programados.
+
+    Prioridad:
+    1) Cruce exacto por código.
+    2) Si el código SISA no coincide con CODIGO_ANTIGUO, cruce textual por municipio + localidad/sistema/prestador.
+
+    Esto es necesario porque SISA puede exportar CODIGO_SISTEMA nuevo, mientras la programación usa CODIGO_ANTIGUO.
+    """
+    if actividades.empty:
+        return actividades
+
+    acts = actividades.copy()
+
+    prog = base.copy()
+    if "CODIGO_PROGRAMADO_ORIGINAL" not in prog.columns:
+        prog["CODIGO_PROGRAMADO_ORIGINAL"] = prog["CODIGO_LLAVE"].map(normalize_code)
+
+    prog["__MUN_MATCH__"] = prog["MUNICIPIO_PROGRAMADO"].map(normalize_upper)
+    prog["__TXT_MATCH__"] = build_base_match_text(prog)
+
+    # Índice por código programado original.
+    prog_code_lookup = {}
+    for _, p in prog.iterrows():
+        code = normalize_code(p.get("CODIGO_PROGRAMADO_ORIGINAL", ""))
+        if code:
+            prog_code_lookup[code] = p
+
+    # Candidatos por municipio para cruce textual.
+    prog_by_mun = {m: g.copy() for m, g in prog.groupby("__MUN_MATCH__", dropna=False)}
+
+    acts["CODIGO_SISA_ORIGINAL"] = acts["CODIGO_LLAVE"].map(normalize_code)
+    acts["CODIGO_PROGRAMADO_CRUCE"] = ""
+    acts["TIPO_CRUCE_MPR"] = "SIN_CRUCE"
+    acts["PUNTAJE_CRUCE_MPR"] = 0.0
+
+    acts["__MUN_MATCH__"] = acts["MUNICIPIO"].map(normalize_upper)
+    acts["__TXT_MATCH__"] = build_activity_match_text(acts)
+
+    for idx, r in acts.iterrows():
+        sisa_code = normalize_code(r.get("CODIGO_SISA_ORIGINAL", ""))
+
+        # 1. Código exacto.
+        if sisa_code and sisa_code in prog_code_lookup:
+            p = prog_code_lookup[sisa_code]
+            acts.at[idx, "CODIGO_PROGRAMADO_CRUCE"] = p.get("CODIGO_LLAVE", "")
+            acts.at[idx, "CODIGO_LLAVE"] = p.get("CODIGO_LLAVE", "")
+            acts.at[idx, "TIPO_CRUCE_MPR"] = "CODIGO"
+            acts.at[idx, "PUNTAJE_CRUCE_MPR"] = 1.0
+            continue
+
+        # 2. Fallback textual.
+        mun = r.get("__MUN_MATCH__", "")
+        cands = prog_by_mun.get(mun, pd.DataFrame())
+        if cands.empty:
+            continue
+
+        best_score = 0.0
+        best_row = None
+        act_text = r.get("__TXT_MATCH__", "")
+        for _, p in cands.iterrows():
+            score = similarity_score(act_text, p.get("__TXT_MATCH__", ""))
+            if score > best_score:
+                best_score = score
+                best_row = p
+
+        if best_row is not None and best_score >= threshold:
+            acts.at[idx, "CODIGO_PROGRAMADO_CRUCE"] = best_row.get("CODIGO_LLAVE", "")
+            acts.at[idx, "CODIGO_LLAVE"] = best_row.get("CODIGO_LLAVE", "")
+            acts.at[idx, "TIPO_CRUCE_MPR"] = "TEXTO"
+            acts.at[idx, "PUNTAJE_CRUCE_MPR"] = best_score
+
+    acts = acts.drop(columns=["__MUN_MATCH__", "__TXT_MATCH__"], errors="ignore")
+    return acts
+
+
 def agg_activity_flags(acts: pd.DataFrame, code: str, prefix: str) -> pd.DataFrame:
     cols = ["CODIGO_LLAVE", f"ejecuto_{prefix}", f"fecha_{prefix}", f"funcionario_{prefix}", f"acta_{prefix}", f"registros_{prefix}"]
     if acts.empty or "ACTIVIDAD" not in acts.columns:
@@ -202,7 +329,7 @@ def agg_activity_flags(acts: pd.DataFrame, code: str, prefix: str) -> pd.DataFra
 
 def main():
     print("=" * 100)
-    print("NORMALIZACIÓN SEGUIMIENTO MAPAS DE RIESGO MPR - UESVALLE | V1.2")
+    print("NORMALIZACIÓN SEGUIMIENTO MAPAS DE RIESGO MPR - UESVALLE | V1.3")
     print("=" * 100)
     print(f"Repo raíz: {REPO_ROOT}")
     print(f"Entradas : {RAW_DIR}")
@@ -247,7 +374,11 @@ def main():
         base["__PRESTADOR_PROG__"] = ""
         prestador_col = "__PRESTADOR_PROG__"
 
-    base["CODIGO_LLAVE"] = base[codigo_prog_col].map(normalize_code)
+    base["CODIGO_PROGRAMADO_ORIGINAL"] = base[codigo_prog_col].map(normalize_code)
+    # CODIGO_LLAVE se usa como identificador interno. Si no hay código, se crea una llave sintética
+    # para que la fila pueda mantenerse y eventualmente cruzarse por texto.
+    base["CODIGO_LLAVE"] = base["CODIGO_PROGRAMADO_ORIGINAL"]
+    base.loc[base["CODIGO_LLAVE"].eq(""), "CODIGO_LLAVE"] = base.loc[base["CODIGO_LLAVE"].eq(""), "ID"].map(lambda x: f"SIN_CODIGO_ID_{normalize_code(x)}" if normalize_code(x) else "")
     base["FUNCIONARIO_PROGRAMADO"] = base[func_prog_col].map(clean_text)
     base["FUNCIONARIO_PROGRAMADO_NORM"] = base["FUNCIONARIO_PROGRAMADO"].map(normalize_upper)
     base["PERSONA_PRESTADORA_PROGRAMADA"] = base[prestador_col].map(clean_text)
@@ -270,6 +401,11 @@ def main():
     act14 = standardize_activity(muestreo14, "1.4", "1.4_MuestreoMPR.csv")
     act15 = standardize_activity(resol15, "1.5", "1.5_ResolucionesMPR.csv") if not resol15.empty else pd.DataFrame()
     actividades = pd.concat([act13, act14, act15], ignore_index=True)
+
+    # Cruce programado vs ejecutado.
+    # Primero intenta por código; si SISA usa un código distinto al CODIGO_ANTIGUO,
+    # cruza por municipio + localidad/sistema/prestador.
+    actividades = apply_programmed_crosswalk(actividades, base, threshold=0.45)
 
     # Enriquecer actividad con catálogo POA.
     if not codigos.empty and "Código" in codigos.columns:
@@ -320,7 +456,7 @@ def main():
 
     seguimiento["ESTADO_MPR"] = seguimiento.apply(estado, axis=1)
     seguimiento["PROGRAMADO"] = "SI"
-    seguimiento["CODIGO_VALIDO"] = np.where(seguimiento["CODIGO_LLAVE"].eq(""), "NO", "SI")
+    seguimiento["CODIGO_VALIDO"] = np.where(seguimiento["CODIGO_PROGRAMADO_ORIGINAL"].astype(str).str.strip().eq(""), "NO", "SI")
     seguimiento["COINCIDE_FUNCIONARIO_13"] = seguimiento.apply(lambda r: same_person(r.get("FUNCIONARIO_PROGRAMADO", ""), r.get("funcionario_13", "")), axis=1)
     seguimiento["COINCIDE_FUNCIONARIO_14"] = seguimiento.apply(lambda r: same_person(r.get("FUNCIONARIO_PROGRAMADO", ""), r.get("funcionario_14", "")), axis=1)
     seguimiento["COINCIDE_FUNCIONARIO_15"] = seguimiento.apply(lambda r: same_person(r.get("FUNCIONARIO_PROGRAMADO", ""), r.get("funcionario_15", "")), axis=1)
@@ -329,7 +465,7 @@ def main():
     cod_prog = set(seguimiento["CODIGO_LLAVE"].dropna().astype(str)) - {""}
     if not actividades.empty:
         actividades["PROGRAMADO"] = np.where(actividades["CODIGO_LLAVE"].isin(cod_prog), "SI", "NO")
-        prog_lookup = seguimiento[["CODIGO_LLAVE", "FUNCIONARIO_PROGRAMADO", "ARO_PROGRAMADO", "MUNICIPIO_PROGRAMADO", "LOCALIDAD_PROGRAMADA"]].drop_duplicates("CODIGO_LLAVE")
+        prog_lookup = seguimiento[["CODIGO_LLAVE", "CODIGO_PROGRAMADO_ORIGINAL", "FUNCIONARIO_PROGRAMADO", "ARO_PROGRAMADO", "MUNICIPIO_PROGRAMADO", "LOCALIDAD_PROGRAMADA"]].drop_duplicates("CODIGO_LLAVE")
         actividades = actividades.merge(prog_lookup, on="CODIGO_LLAVE", how="left", suffixes=("", "_PROG"))
         actividades["COINCIDE_FUNCIONARIO_PROGRAMADO"] = actividades.apply(lambda r: same_person(r.get("FUNCIONARIO_PROGRAMADO", ""), r.get("FUNCIONARIO", "")), axis=1)
     else:
@@ -395,7 +531,7 @@ def main():
     resumen_funcionario = resumen_funcionario.rename(columns={"FUNCIONARIO_PROGRAMADO": "FUNCIONARIO"})
 
     ordered_cols = [
-        "ID", "ARO_PROGRAMADO", "MUNICIPIO_PROGRAMADO", "LOCALIDAD_PROGRAMADA", "CODIGO_LLAVE", "CODIGO_VALIDO",
+        "ID", "ARO_PROGRAMADO", "MUNICIPIO_PROGRAMADO", "LOCALIDAD_PROGRAMADA", "CODIGO_PROGRAMADO_ORIGINAL", "CODIGO_LLAVE", "CODIGO_VALIDO",
         "FUNCIONARIO_PROGRAMADO", "PERSONA_PRESTADORA_PROGRAMADA",
         "ejecuto_13", "fecha_13", "funcionario_13", "acta_13", "registros_13", "COINCIDE_FUNCIONARIO_13",
         "ejecuto_14", "fecha_14", "funcionario_14", "acta_14", "registros_14", "COINCIDE_FUNCIONARIO_14",
@@ -438,7 +574,7 @@ def main():
         print(f"[OK] {name}: {len(df):,} registros")
 
     metadata = {
-        "version_script": "V1.2",
+        "version_script": "V1.3",
         "fecha_generacion": datetime.now().isoformat(timespec="seconds"),
         "repo_root": str(REPO_ROOT),
         "raw_dir": str(RAW_DIR),
@@ -449,6 +585,9 @@ def main():
         "programados_con_funcionario": int(seguimiento_out["FUNCIONARIO_PROGRAMADO"].astype(str).str.strip().ne("").sum()),
         "funcionarios_programados": int(seguimiento_out["FUNCIONARIO_PROGRAMADO"].replace("", np.nan).nunique(dropna=True)),
         "actividades_ejecutadas": int(len(actividades)),
+        "actividades_cruzadas_codigo": int((actividades.get("TIPO_CRUCE_MPR", pd.Series(dtype=str)) == "CODIGO").sum()) if not actividades.empty else 0,
+        "actividades_cruzadas_texto": int((actividades.get("TIPO_CRUCE_MPR", pd.Series(dtype=str)) == "TEXTO").sum()) if not actividades.empty else 0,
+        "actividades_sin_cruce": int((actividades.get("TIPO_CRUCE_MPR", pd.Series(dtype=str)) == "SIN_CRUCE").sum()) if not actividades.empty else 0,
         "visitas_13": int(len(act13)),
         "muestreo_14": int(len(act14)),
         "resolucion_15": int(len(act15)) if not act15.empty else 0,
