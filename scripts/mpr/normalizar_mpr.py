@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 """
 Normalización tablero Mapas de Riesgo MPR - UESVALLE
-Autor: ChatGPT + UESVALLE
+Versión V1.2
 
 Uso esperado desde la raíz del repositorio:
-    python scripts/normalizar_mpr.py
+    python scripts/mpr/normalizar_mpr.py
 
 Entradas esperadas:
     data/mpr/raw/Programados.csv
@@ -18,6 +18,7 @@ Salidas:
     data/mpr/current/actividades_mpr_ejecutadas.csv
     data/mpr/current/resumen_mpr_aro.csv
     data/mpr/current/resumen_mpr_municipio.csv
+    data/mpr/current/resumen_mpr_funcionario.csv
     data/mpr/current/alertas_mpr.csv
     data/mpr/current/catalogo_codigos_poa_mpr.csv
     data/mpr/current/metadata_mpr.json
@@ -33,12 +34,11 @@ import pandas as pd
 import numpy as np
 
 SCRIPT_PATH = Path(__file__).resolve()
-# Si el script está en scripts/mpr, la raíz es parents[2].
-# Si queda temporalmente en scripts, la raíz es parents[1].
 if SCRIPT_PATH.parent.name.lower() == "mpr" and SCRIPT_PATH.parent.parent.name.lower() == "scripts":
     REPO_ROOT = SCRIPT_PATH.parents[2]
 else:
     REPO_ROOT = SCRIPT_PATH.parents[1]
+
 RAW_DIR = REPO_ROOT / "data" / "mpr" / "raw"
 OUT_DIR = REPO_ROOT / "data" / "mpr" / "current"
 HIST_DIR = REPO_ROOT / "data" / "mpr" / "historical"
@@ -71,6 +71,8 @@ def clean_text(value) -> str:
         return ""
     s = str(value).strip()
     s = re.sub(r"\s+", " ", s)
+    if s.lower() in ["nan", "none", "null"]:
+        return ""
     return s
 
 
@@ -79,12 +81,10 @@ def strip_accents(s: str) -> str:
 
 
 def normalize_upper(value) -> str:
-    s = strip_accents(clean_text(value)).upper()
-    return s
+    return strip_accents(clean_text(value)).upper()
 
 
 def normalize_code(value) -> str:
-    """Convierte códigos tipo 115502.0, '115502 ', NaN en texto limpio."""
     if pd.isna(value):
         return ""
     s = str(value).strip()
@@ -97,8 +97,7 @@ def normalize_code(value) -> str:
             return str(int(f))
     except Exception:
         pass
-    s = re.sub(r"\.0$", "", s)
-    return s.strip()
+    return re.sub(r"\.0$", "", s).strip()
 
 
 def first_nonempty(series: pd.Series) -> str:
@@ -115,23 +114,48 @@ def parse_dates(series: pd.Series) -> pd.Series:
     return pd.to_datetime(series, dayfirst=True, errors="coerce")
 
 
+def find_col(df: pd.DataFrame, candidates: list[str]) -> str | None:
+    if df.empty:
+        return None
+    norm_map = {normalize_upper(c).replace("_", " "): c for c in df.columns}
+    for cand in candidates:
+        key = normalize_upper(cand).replace("_", " ")
+        if key in norm_map:
+            return norm_map[key]
+    return None
+
+
+def ensure_col(df: pd.DataFrame, col: str) -> None:
+    if col not in df.columns:
+        df[col] = ""
+
+
+def same_person(a, b) -> str:
+    aa, bb = normalize_upper(a), normalize_upper(b)
+    if not aa or not bb:
+        return "SIN DATO"
+    return "SI" if aa == bb else "NO"
+
+
 def standardize_activity(df: pd.DataFrame, actividad_default: str, fuente_archivo: str) -> pd.DataFrame:
     if df.empty:
         return df
     df = df.copy()
-    # Garantizar columnas mínimas
+
+    # Garantizar columnas mínimas de SISA.
     for col in [
-        "ACTIVIDAD", "CODIGO ANTERIOR", "CODIGO_SISTEMA", "MUNICIPIO", "LOCALIDADES_ABASTECIDAS",
-        "NOMBRE_SISTEMA", "PERSONA_PRESTADORA", "ARO", "NOMBRE_ARO", "FUNCIONARIO",
-        "FEC_VISITA", "FECHA CARGUE", "ACTA", "CONSECUTIVO VISITA", "ESTADO", "OBSERVACION"
+        "ACTIVIDAD", "CODIGO ANTERIOR", "CODIGO_ANTIGUO", "CODIGO_SISTEMA", "MUNICIPIO",
+        "LOCALIDADES_ABASTECIDAS", "NOMBRE_SISTEMA", "PERSONA_PRESTADORA", "ARO", "NOMBRE_ARO",
+        "FUNCIONARIO", "FEC_VISITA", "FECHA CARGUE", "ACTA", "CONSECUTIVO VISITA", "ESTADO", "OBSERVACION"
     ]:
-        if col not in df.columns:
-            df[col] = ""
+        ensure_col(df, col)
+
+    codigo_ant_col = find_col(df, ["CODIGO_ANTIGUO", "CODIGO ANTERIOR", "CODIGO_ANTERIOR", "CODIGO ANTIGUO"])
+    codigo_sis_col = find_col(df, ["CODIGO_SISTEMA", "CODIGO SISTEMA", "CODIGO IVC", "CODIGO_IVC"])
 
     df["ACTIVIDAD"] = df["ACTIVIDAD"].replace("", np.nan).fillna(actividad_default).astype(str).str.strip()
-    df["CODIGO_ANTERIOR"] = df["CODIGO ANTERIOR"].map(normalize_code)
-    df["CODIGO_SISTEMA_LIMPIO"] = df["CODIGO_SISTEMA"].map(normalize_code)
-    # Llave preferente: CODIGO ANTERIOR. Si viene vacío, usar CODIGO_SISTEMA como respaldo.
+    df["CODIGO_ANTERIOR"] = df[codigo_ant_col].map(normalize_code) if codigo_ant_col else ""
+    df["CODIGO_SISTEMA_LIMPIO"] = df[codigo_sis_col].map(normalize_code) if codigo_sis_col else ""
     df["CODIGO_LLAVE"] = df["CODIGO_ANTERIOR"]
     df.loc[df["CODIGO_LLAVE"].eq(""), "CODIGO_LLAVE"] = df.loc[df["CODIGO_LLAVE"].eq(""), "CODIGO_SISTEMA_LIMPIO"]
 
@@ -150,7 +174,6 @@ def standardize_activity(df: pd.DataFrame, actividad_default: str, fuente_archiv
         "PERSONA_PRESTADORA", "ARO", "NOMBRE_ARO", "ARO_NORM", "FUNCIONARIO", "FEC_VISITA", "FECHA_ACTIVIDAD",
         "FECHA CARGUE", "FECHA_CARGUE_DT", "ACTA", "CONSECUTIVO VISITA", "ESTADO", "OBSERVACION"
     ]
-    # Agregar columnas extra si existen y son útiles para 1.5
     for extra in ["NUMERO_RESOLUCION", "AÑO", "CUENCA", "FUENTE", "RIESGO", "SE_EXPIDE", "SE_ACTUALIZA"]:
         if extra in df.columns and extra not in keep:
             keep.append(extra)
@@ -178,9 +201,9 @@ def agg_activity_flags(acts: pd.DataFrame, code: str, prefix: str) -> pd.DataFra
 
 
 def main():
-    print("="*100)
-    print("NORMALIZACIÓN SEGUIMIENTO MAPAS DE RIESGO MPR - UESVALLE")
-    print("="*100)
+    print("=" * 100)
+    print("NORMALIZACIÓN SEGUIMIENTO MAPAS DE RIESGO MPR - UESVALLE | V1.2")
+    print("=" * 100)
     print(f"Repo raíz: {REPO_ROOT}")
     print(f"Entradas : {RAW_DIR}")
     print(f"Salidas  : {OUT_DIR}")
@@ -197,40 +220,66 @@ def main():
     resol15 = read_csv_smart(FILES["resolucion_15"])
     codigos = read_csv_smart(FILES["codigos_poa"])
 
-    print(f"Programados: {len(programados):,}")
+    print(f"Programados leídos: {len(programados):,}")
+    print(f"Columnas Programados: {', '.join(programados.columns.astype(str)) if not programados.empty else 'SIN COLUMNAS'}")
     print(f"1.3 Visitas: {len(visitas13):,}")
     print(f"1.4 Muestreo: {len(muestreo14):,}")
     print(f"1.5 Resolución: {len(resol15):,} {'(opcional no cargado)' if resol15.empty else ''}")
 
-    # Programados como universo base
-    for col in ["ID", "ARO", "MUNICIPIO", "LOCALIDAD", "CODIGO ANTERIOR"]:
-        if col not in programados.columns:
-            programados[col] = ""
-
+    # Programados como universo base.
     base = programados.copy()
-    base["CODIGO_LLAVE"] = base["CODIGO ANTERIOR"].map(normalize_code)
+    for col in ["ID", "ARO", "MUNICIPIO", "LOCALIDAD"]:
+        ensure_col(base, col)
+
+    codigo_prog_col = find_col(base, ["CODIGO_ANTIGUO", "CODIGO ANTERIOR", "CODIGO_ANTERIOR", "CODIGO ANTIGUO"])
+    func_prog_col = find_col(base, ["FUNCIONARIO", "FUNCIONARIO_PROGRAMADO", "INGENIERO", "INGENIERO_PROGRAMADO", "PROFESIONAL", "PROFESIONAL_PROGRAMADO", "RESPONSABLE", "RESPONSABLE_PROGRAMADO"])
+    prestador_col = find_col(base, ["PERSONA_PRESTADORA", "PERSONA PRESTADORA", "PRESTADOR", "NOMBRE_PRESTADOR"])
+
+    if codigo_prog_col is None:
+        print("[ADVERTENCIA] No se encontró columna de código en Programados. Se esperaba CODIGO_ANTIGUO o CODIGO ANTERIOR.")
+        base["__CODIGO_PROG__"] = ""
+        codigo_prog_col = "__CODIGO_PROG__"
+    if func_prog_col is None:
+        print("[ADVERTENCIA] No se encontró columna de funcionario en Programados. Si ya actualizaste el archivo, verifica que tenga una columna llamada FUNCIONARIO.")
+        base["__FUNCIONARIO_PROG__"] = ""
+        func_prog_col = "__FUNCIONARIO_PROG__"
+    if prestador_col is None:
+        base["__PRESTADOR_PROG__"] = ""
+        prestador_col = "__PRESTADOR_PROG__"
+
+    base["CODIGO_LLAVE"] = base[codigo_prog_col].map(normalize_code)
+    base["FUNCIONARIO_PROGRAMADO"] = base[func_prog_col].map(clean_text)
+    base["FUNCIONARIO_PROGRAMADO_NORM"] = base["FUNCIONARIO_PROGRAMADO"].map(normalize_upper)
+    base["PERSONA_PRESTADORA_PROGRAMADA"] = base[prestador_col].map(clean_text)
     base["ARO_PROGRAMADO"] = base["ARO"].map(normalize_upper)
     base["MUNICIPIO_PROGRAMADO"] = base["MUNICIPIO"].map(normalize_upper)
     base["LOCALIDAD_PROGRAMADA"] = base["LOCALIDAD"].map(clean_text)
     base["LOCALIDAD_PROGRAMADA_NORM"] = base["LOCALIDAD"].map(normalize_upper)
 
-    # Actividades ejecutadas
+    # Eliminar filas realmente vacías de Programados, usuales al final de exportaciones.
+    before = len(base)
+    base = base[
+        base[["ID", "ARO_PROGRAMADO", "MUNICIPIO_PROGRAMADO", "LOCALIDAD_PROGRAMADA", "CODIGO_LLAVE", "FUNCIONARIO_PROGRAMADO"]]
+        .astype(str).apply(lambda row: any(clean_text(x) for x in row), axis=1)
+    ].copy()
+    print(f"Programados válidos después de limpieza: {len(base):,} (removidos {before-len(base):,})")
+    print(f"Programados con funcionario: {(base['FUNCIONARIO_PROGRAMADO'].astype(str).str.strip().ne('')).sum():,}")
+
+    # Actividades ejecutadas.
     act13 = standardize_activity(visitas13, "1.3", "1.3_VisitasMPR.csv")
     act14 = standardize_activity(muestreo14, "1.4", "1.4_MuestreoMPR.csv")
     act15 = standardize_activity(resol15, "1.5", "1.5_ResolucionesMPR.csv") if not resol15.empty else pd.DataFrame()
     actividades = pd.concat([act13, act14, act15], ignore_index=True)
 
-    # Enriquecer actividad con catálogo POA
+    # Enriquecer actividad con catálogo POA.
     if not codigos.empty and "Código" in codigos.columns:
         cod = codigos.copy()
         cod["Código"] = cod["Código"].astype(str).str.strip()
         actividades = actividades.merge(cod, how="left", left_on="ACTIVIDAD", right_on="Código")
-        # Catálogo MPR
         catalogo_mpr = cod[cod["Código"].isin(["1.3", "1.4", "1.5"])].copy()
     else:
-        catalogo_mpr = pd.DataFrame({"Código":["1.3","1.4","1.5"], "Actividad_Resumen":["Visita MPR", "Muestreo MPR", "Resolución MPR"]})
+        catalogo_mpr = pd.DataFrame({"Código": ["1.3", "1.4", "1.5"], "Actividad_Resumen": ["Visita MPR", "Muestreo MPR", "Resolución MPR"]})
 
-    # Agregados por código
     a13 = agg_activity_flags(actividades, "1.3", "13")
     a14 = agg_activity_flags(actividades, "1.4", "14")
     a15 = agg_activity_flags(actividades, "1.5", "15")
@@ -241,9 +290,15 @@ def main():
         if f"ejecuto_{p}" not in seguimiento.columns:
             seguimiento[f"ejecuto_{p}"] = "NO"
         seguimiento[f"ejecuto_{p}"] = seguimiento[f"ejecuto_{p}"].fillna("NO")
-        for c in [f"registros_{p}"]:
-            if c not in seguimiento.columns: seguimiento[c] = 0
-            seguimiento[c] = pd.to_numeric(seguimiento[c], errors="coerce").fillna(0).astype(int)
+        if f"registros_{p}" not in seguimiento.columns:
+            seguimiento[f"registros_{p}"] = 0
+        seguimiento[f"registros_{p}"] = pd.to_numeric(seguimiento[f"registros_{p}"], errors="coerce").fillna(0).astype(int)
+        if f"funcionario_{p}" not in seguimiento.columns:
+            seguimiento[f"funcionario_{p}"] = ""
+        if f"fecha_{p}" not in seguimiento.columns:
+            seguimiento[f"fecha_{p}"] = ""
+        if f"acta_{p}" not in seguimiento.columns:
+            seguimiento[f"acta_{p}"] = ""
 
     def estado(row):
         e13, e14, e15 = row["ejecuto_13"] == "SI", row["ejecuto_14"] == "SI", row["ejecuto_15"] == "SI"
@@ -266,40 +321,58 @@ def main():
     seguimiento["ESTADO_MPR"] = seguimiento.apply(estado, axis=1)
     seguimiento["PROGRAMADO"] = "SI"
     seguimiento["CODIGO_VALIDO"] = np.where(seguimiento["CODIGO_LLAVE"].eq(""), "NO", "SI")
-
-    # Diferencia días 1.3 -> 1.4
+    seguimiento["COINCIDE_FUNCIONARIO_13"] = seguimiento.apply(lambda r: same_person(r.get("FUNCIONARIO_PROGRAMADO", ""), r.get("funcionario_13", "")), axis=1)
+    seguimiento["COINCIDE_FUNCIONARIO_14"] = seguimiento.apply(lambda r: same_person(r.get("FUNCIONARIO_PROGRAMADO", ""), r.get("funcionario_14", "")), axis=1)
+    seguimiento["COINCIDE_FUNCIONARIO_15"] = seguimiento.apply(lambda r: same_person(r.get("FUNCIONARIO_PROGRAMADO", ""), r.get("funcionario_15", "")), axis=1)
     seguimiento["DIAS_13_A_14"] = (pd.to_datetime(seguimiento.get("fecha_14"), errors="coerce") - pd.to_datetime(seguimiento.get("fecha_13"), errors="coerce")).dt.days
 
-    # Actividades no programadas
     cod_prog = set(seguimiento["CODIGO_LLAVE"].dropna().astype(str)) - {""}
-    actividades["PROGRAMADO"] = np.where(actividades["CODIGO_LLAVE"].isin(cod_prog), "SI", "NO")
+    if not actividades.empty:
+        actividades["PROGRAMADO"] = np.where(actividades["CODIGO_LLAVE"].isin(cod_prog), "SI", "NO")
+        prog_lookup = seguimiento[["CODIGO_LLAVE", "FUNCIONARIO_PROGRAMADO", "ARO_PROGRAMADO", "MUNICIPIO_PROGRAMADO", "LOCALIDAD_PROGRAMADA"]].drop_duplicates("CODIGO_LLAVE")
+        actividades = actividades.merge(prog_lookup, on="CODIGO_LLAVE", how="left", suffixes=("", "_PROG"))
+        actividades["COINCIDE_FUNCIONARIO_PROGRAMADO"] = actividades.apply(lambda r: same_person(r.get("FUNCIONARIO_PROGRAMADO", ""), r.get("FUNCIONARIO", "")), axis=1)
+    else:
+        actividades["PROGRAMADO"] = ""
 
-    # Alertas
+    # Alertas.
     alertas = []
     for _, r in seguimiento.iterrows():
+        base_alerta = {
+            "CODIGO_LLAVE": r.get("CODIGO_LLAVE", ""),
+            "ARO": r.get("ARO_PROGRAMADO", ""),
+            "MUNICIPIO": r.get("MUNICIPIO_PROGRAMADO", ""),
+            "LOCALIDAD": r.get("LOCALIDAD_PROGRAMADA", ""),
+            "FUNCIONARIO_PROGRAMADO": r.get("FUNCIONARIO_PROGRAMADO", ""),
+        }
         if r["CODIGO_VALIDO"] == "NO":
-            alertas.append({"TIPO_ALERTA":"PROGRAMADO SIN CODIGO", "CODIGO_LLAVE":"", "ARO":r.get("ARO_PROGRAMADO",""), "MUNICIPIO":r.get("MUNICIPIO_PROGRAMADO",""), "LOCALIDAD":r.get("LOCALIDAD_PROGRAMADA","")})
+            alertas.append({"TIPO_ALERTA": "PROGRAMADO SIN CODIGO", **base_alerta})
+        if str(r["FUNCIONARIO_PROGRAMADO"]).strip() == "":
+            alertas.append({"TIPO_ALERTA": "PROGRAMADO SIN FUNCIONARIO", **base_alerta})
         if str(r["ESTADO_MPR"]).startswith("ALERTA") or r["ESTADO_MPR"] in ["SIN EJECUCIÓN", "PENDIENTE 1.4 MUESTREO", "PENDIENTE 1.5 RESOLUCIÓN"]:
-            alertas.append({"TIPO_ALERTA":r["ESTADO_MPR"], "CODIGO_LLAVE":r.get("CODIGO_LLAVE",""), "ARO":r.get("ARO_PROGRAMADO",""), "MUNICIPIO":r.get("MUNICIPIO_PROGRAMADO",""), "LOCALIDAD":r.get("LOCALIDAD_PROGRAMADA","")})
+            alertas.append({"TIPO_ALERTA": r["ESTADO_MPR"], **base_alerta})
 
-    no_prog = actividades[(actividades["CODIGO_LLAVE"].astype(str).ne("")) & (~actividades["CODIGO_LLAVE"].isin(cod_prog))]
+    no_prog = actividades[(actividades.get("CODIGO_LLAVE", pd.Series(dtype=str)).astype(str).ne("")) & (~actividades.get("CODIGO_LLAVE", pd.Series(dtype=str)).isin(cod_prog))] if not actividades.empty else pd.DataFrame()
     for _, r in no_prog.iterrows():
-        alertas.append({"TIPO_ALERTA":"EJECUTADO NO PROGRAMADO", "CODIGO_LLAVE":r.get("CODIGO_LLAVE",""), "ARO":r.get("ARO_NORM",""), "MUNICIPIO":r.get("MUNICIPIO_NORM",""), "LOCALIDAD":r.get("LOCALIDADES_ABASTECIDAS","")})
+        alertas.append({
+            "TIPO_ALERTA": "EJECUTADO NO PROGRAMADO", "CODIGO_LLAVE": r.get("CODIGO_LLAVE", ""),
+            "ARO": r.get("ARO_NORM", ""), "MUNICIPIO": r.get("MUNICIPIO_NORM", ""),
+            "LOCALIDAD": r.get("LOCALIDADES_ABASTECIDAS", ""), "FUNCIONARIO_PROGRAMADO": ""
+        })
 
-    # Duplicados por actividad/código
     if not actividades.empty:
         dup = actividades.groupby(["ACTIVIDAD", "CODIGO_LLAVE"], dropna=False).size().reset_index(name="REGISTROS")
         dup = dup[(dup["CODIGO_LLAVE"].astype(str).ne("")) & (dup["REGISTROS"] > 1)]
         for _, r in dup.iterrows():
-            alertas.append({"TIPO_ALERTA":f"DUPLICADO ACTIVIDAD {r['ACTIVIDAD']}", "CODIGO_LLAVE":r["CODIGO_LLAVE"], "ARO":"", "MUNICIPIO":"", "LOCALIDAD":f"{int(r['REGISTROS'])} registros"})
+            alertas.append({"TIPO_ALERTA": f"DUPLICADO ACTIVIDAD {r['ACTIVIDAD']}", "CODIGO_LLAVE": r["CODIGO_LLAVE"], "ARO": "", "MUNICIPIO": "", "LOCALIDAD": f"{int(r['REGISTROS'])} registros", "FUNCIONARIO_PROGRAMADO": ""})
 
-    alertas_df = pd.DataFrame(alertas).drop_duplicates() if alertas else pd.DataFrame(columns=["TIPO_ALERTA","CODIGO_LLAVE","ARO","MUNICIPIO","LOCALIDAD"])
+    alertas_df = pd.DataFrame(alertas).drop_duplicates() if alertas else pd.DataFrame(columns=["TIPO_ALERTA", "CODIGO_LLAVE", "ARO", "MUNICIPIO", "LOCALIDAD", "FUNCIONARIO_PROGRAMADO"])
 
-    # Resúmenes
     def summarize(group_cols):
         g = seguimiento.groupby(group_cols, dropna=False).agg(
             PROGRAMADOS=("CODIGO_LLAVE", "count"),
             CON_CODIGO_VALIDO=("CODIGO_VALIDO", lambda s: int((s == "SI").sum())),
+            CON_FUNCIONARIO=("FUNCIONARIO_PROGRAMADO", lambda s: int(s.astype(str).str.strip().ne("").sum())),
             EJECUTADOS_13=("ejecuto_13", lambda s: int((s == "SI").sum())),
             EJECUTADOS_14=("ejecuto_14", lambda s: int((s == "SI").sum())),
             EJECUTADOS_15=("ejecuto_15", lambda s: int((s == "SI").sum())),
@@ -308,6 +381,8 @@ def main():
             PENDIENTE_14=("ESTADO_MPR", lambda s: int((s == "PENDIENTE 1.4 MUESTREO").sum())),
             PENDIENTE_15=("ESTADO_MPR", lambda s: int((s == "PENDIENTE 1.5 RESOLUCIÓN").sum())),
             ALERTAS=("ESTADO_MPR", lambda s: int(s.astype(str).str.startswith("ALERTA").sum())),
+            COINCIDE_13=("COINCIDE_FUNCIONARIO_13", lambda s: int((s == "SI").sum())),
+            COINCIDE_14=("COINCIDE_FUNCIONARIO_14", lambda s: int((s == "SI").sum())),
         ).reset_index()
         g["AVANCE_13_PCT"] = (g["EJECUTADOS_13"] / g["PROGRAMADOS"].replace(0, np.nan) * 100).round(1)
         g["AVANCE_14_PCT"] = (g["EJECUTADOS_14"] / g["PROGRAMADOS"].replace(0, np.nan) * 100).round(1)
@@ -316,13 +391,15 @@ def main():
 
     resumen_aro = summarize(["ARO_PROGRAMADO"])
     resumen_municipio = summarize(["ARO_PROGRAMADO", "MUNICIPIO_PROGRAMADO"])
+    resumen_funcionario = summarize(["ARO_PROGRAMADO", "FUNCIONARIO_PROGRAMADO"])
+    resumen_funcionario = resumen_funcionario.rename(columns={"FUNCIONARIO_PROGRAMADO": "FUNCIONARIO"})
 
-    # Orden columnas tabla maestra
     ordered_cols = [
         "ID", "ARO_PROGRAMADO", "MUNICIPIO_PROGRAMADO", "LOCALIDAD_PROGRAMADA", "CODIGO_LLAVE", "CODIGO_VALIDO",
-        "ejecuto_13", "fecha_13", "funcionario_13", "acta_13", "registros_13",
-        "ejecuto_14", "fecha_14", "funcionario_14", "acta_14", "registros_14",
-        "ejecuto_15", "fecha_15", "funcionario_15", "acta_15", "registros_15",
+        "FUNCIONARIO_PROGRAMADO", "PERSONA_PRESTADORA_PROGRAMADA",
+        "ejecuto_13", "fecha_13", "funcionario_13", "acta_13", "registros_13", "COINCIDE_FUNCIONARIO_13",
+        "ejecuto_14", "fecha_14", "funcionario_14", "acta_14", "registros_14", "COINCIDE_FUNCIONARIO_14",
+        "ejecuto_15", "fecha_15", "funcionario_15", "acta_15", "registros_15", "COINCIDE_FUNCIONARIO_15",
         "DIAS_13_A_14", "ESTADO_MPR", "PROGRAMADO"
     ]
     for c in ordered_cols:
@@ -330,8 +407,8 @@ def main():
             seguimiento[c] = ""
     seguimiento_out = seguimiento[ordered_cols].copy()
 
-    # Exportar fechas como YYYY-MM-DD
-    for df in [seguimiento_out, actividades, resumen_aro, resumen_municipio, alertas_df, catalogo_mpr]:
+    # Exportar fechas como YYYY-MM-DD.
+    for df in [seguimiento_out, actividades, resumen_aro, resumen_municipio, resumen_funcionario, alertas_df, catalogo_mpr]:
         for col in df.columns:
             if "fecha" in col.lower() or col in ["FECHA_ACTIVIDAD", "FECHA_CARGUE_DT"]:
                 try:
@@ -339,7 +416,6 @@ def main():
                 except Exception:
                     pass
 
-    # Guardar histórico con timestamp y current
     stamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     hist_run = HIST_DIR / stamp
     hist_run.mkdir(parents=True, exist_ok=True)
@@ -349,6 +425,7 @@ def main():
         "actividades_mpr_ejecutadas.csv": actividades,
         "resumen_mpr_aro.csv": resumen_aro,
         "resumen_mpr_municipio.csv": resumen_municipio,
+        "resumen_mpr_funcionario.csv": resumen_funcionario,
         "alertas_mpr.csv": alertas_df,
         "catalogo_codigos_poa_mpr.csv": catalogo_mpr,
     }
@@ -361,16 +438,20 @@ def main():
         print(f"[OK] {name}: {len(df):,} registros")
 
     metadata = {
+        "version_script": "V1.2",
         "fecha_generacion": datetime.now().isoformat(timespec="seconds"),
         "repo_root": str(REPO_ROOT),
         "raw_dir": str(RAW_DIR),
         "out_dir": str(OUT_DIR),
-        "programados": int(len(programados)),
+        "programados": int(len(base)),
+        "programados_leidos": int(len(programados)),
+        "programados_con_codigo": int((seguimiento_out["CODIGO_VALIDO"] == "SI").sum()),
+        "programados_con_funcionario": int(seguimiento_out["FUNCIONARIO_PROGRAMADO"].astype(str).str.strip().ne("").sum()),
+        "funcionarios_programados": int(seguimiento_out["FUNCIONARIO_PROGRAMADO"].replace("", np.nan).nunique(dropna=True)),
         "actividades_ejecutadas": int(len(actividades)),
         "visitas_13": int(len(act13)),
         "muestreo_14": int(len(act14)),
         "resolucion_15": int(len(act15)) if not act15.empty else 0,
-        "programados_con_codigo": int((seguimiento_out["CODIGO_VALIDO"] == "SI").sum()),
         "ejecutados_13": int((seguimiento_out["ejecuto_13"] == "SI").sum()),
         "ejecutados_14": int((seguimiento_out["ejecuto_14"] == "SI").sum()),
         "ejecutados_15": int((seguimiento_out["ejecuto_15"] == "SI").sum()),
@@ -379,7 +460,7 @@ def main():
     (OUT_DIR / "metadata_mpr.json").write_text(json.dumps(metadata, indent=2, ensure_ascii=False), encoding="utf-8")
     (hist_run / "metadata_mpr.json").write_text(json.dumps(metadata, indent=2, ensure_ascii=False), encoding="utf-8")
     print("[OK] metadata_mpr.json")
-    print("="*100)
+    print("=" * 100)
     print("Proceso finalizado.")
 
 
