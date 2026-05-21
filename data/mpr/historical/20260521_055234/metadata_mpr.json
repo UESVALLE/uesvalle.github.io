@@ -1,0 +1,23 @@
+{
+  "fecha_generacion": "2026-05-21T05:52:34",
+  "repo_root": "/mnt/data/mpr_package",
+  "raw_dir": "/mnt/data/mpr_package/data/mpr/raw",
+  "out_dir": "/mnt/data/mpr_package/data/mpr/current",
+  "programados": 75,
+  "actividades_ejecutadas": 77,
+  "visitas_13": 50,
+  "muestreo_14": 27,
+  "resolucion_15": 0,
+  "programados_con_codigo": 69,
+  "ejecutados_13": 35,
+  "ejecutados_14": 17,
+  "ejecutados_15": 0,
+  "salidas": [
+    "seguimiento_mpr_sistemas.csv",
+    "actividades_mpr_ejecutadas.csv",
+    "resumen_mpr_aro.csv",
+    "resumen_mpr_municipio.csv",
+    "alertas_mpr.csv",
+    "catalogo_codigos_poa_mpr.csv"
+  ]
+}
