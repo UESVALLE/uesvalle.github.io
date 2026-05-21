@@ -329,7 +329,7 @@ def agg_activity_flags(acts: pd.DataFrame, code: str, prefix: str) -> pd.DataFra
 
 def main():
     print("=" * 100)
-    print("NORMALIZACIÓN SEGUIMIENTO MAPAS DE RIESGO MPR - UESVALLE | V1.3")
+    print("NORMALIZACIÓN SEGUIMIENTO MAPAS DE RIESGO MPR - UESVALLE | V1.4")
     print("=" * 100)
     print(f"Repo raíz: {REPO_ROOT}")
     print(f"Entradas : {RAW_DIR}")
@@ -375,10 +375,6 @@ def main():
         prestador_col = "__PRESTADOR_PROG__"
 
     base["CODIGO_PROGRAMADO_ORIGINAL"] = base[codigo_prog_col].map(normalize_code)
-    # CODIGO_LLAVE se usa como identificador interno. Si no hay código, se crea una llave sintética
-    # para que la fila pueda mantenerse y eventualmente cruzarse por texto.
-    base["CODIGO_LLAVE"] = base["CODIGO_PROGRAMADO_ORIGINAL"]
-    base.loc[base["CODIGO_LLAVE"].eq(""), "CODIGO_LLAVE"] = base.loc[base["CODIGO_LLAVE"].eq(""), "ID"].map(lambda x: f"SIN_CODIGO_ID_{normalize_code(x)}" if normalize_code(x) else "")
     base["FUNCIONARIO_PROGRAMADO"] = base[func_prog_col].map(clean_text)
     base["FUNCIONARIO_PROGRAMADO_NORM"] = base["FUNCIONARIO_PROGRAMADO"].map(normalize_upper)
     base["PERSONA_PRESTADORA_PROGRAMADA"] = base[prestador_col].map(clean_text)
@@ -388,11 +384,24 @@ def main():
     base["LOCALIDAD_PROGRAMADA_NORM"] = base["LOCALIDAD"].map(normalize_upper)
 
     # Eliminar filas realmente vacías de Programados, usuales al final de exportaciones.
+    # No se usa ID para esta validación, porque algunas filas vacías conservan consecutivo.
     before = len(base)
+    campos_utiles_programacion = [
+        "ARO_PROGRAMADO", "MUNICIPIO_PROGRAMADO", "LOCALIDAD_PROGRAMADA",
+        "CODIGO_PROGRAMADO_ORIGINAL", "FUNCIONARIO_PROGRAMADO", "PERSONA_PRESTADORA_PROGRAMADA"
+    ]
     base = base[
-        base[["ID", "ARO_PROGRAMADO", "MUNICIPIO_PROGRAMADO", "LOCALIDAD_PROGRAMADA", "CODIGO_LLAVE", "FUNCIONARIO_PROGRAMADO"]]
-        .astype(str).apply(lambda row: any(clean_text(x) for x in row), axis=1)
+        base[campos_utiles_programacion].apply(lambda row: any(clean_text(x) for x in row), axis=1)
     ].copy()
+
+    # CODIGO_LLAVE se usa como identificador interno. Si no hay código, se crea una llave sintética
+    # para que la fila pueda mantenerse y eventualmente cruzarse por texto.
+    base["CODIGO_LLAVE"] = base["CODIGO_PROGRAMADO_ORIGINAL"]
+    base.loc[base["CODIGO_LLAVE"].eq(""), "CODIGO_LLAVE"] = base.loc[base["CODIGO_LLAVE"].eq("")].apply(
+        lambda r: f"SIN_CODIGO_{normalize_upper(r.get('MUNICIPIO_PROGRAMADO',''))}_{normalize_upper(r.get('LOCALIDAD_PROGRAMADA',''))}"[:80],
+        axis=1
+    )
+
     print(f"Programados válidos después de limpieza: {len(base):,} (removidos {before-len(base):,})")
     print(f"Programados con funcionario: {(base['FUNCIONARIO_PROGRAMADO'].astype(str).str.strip().ne('')).sum():,}")
 
@@ -548,7 +557,7 @@ def main():
         for col in df.columns:
             if "fecha" in col.lower() or col in ["FECHA_ACTIVIDAD", "FECHA_CARGUE_DT"]:
                 try:
-                    df[col] = pd.to_datetime(df[col], errors="coerce").dt.strftime("%Y-%m-%d").fillna("")
+                    df[col] = pd.to_datetime(df[col], errors="coerce", dayfirst=True).dt.strftime("%Y-%m-%d").fillna("")
                 except Exception:
                     pass
 
@@ -574,7 +583,7 @@ def main():
         print(f"[OK] {name}: {len(df):,} registros")
 
     metadata = {
-        "version_script": "V1.3",
+        "version_script": "V1.4",
         "fecha_generacion": datetime.now().isoformat(timespec="seconds"),
         "repo_root": str(REPO_ROOT),
         "raw_dir": str(RAW_DIR),
