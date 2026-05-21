@@ -1,0 +1,1283 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <title>Tablero – Empresas Aplicadoras de Plaguicidas UESVALLE</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet"/>
+  <link href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" rel="stylesheet"/>
+  <link href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" rel="stylesheet"/>
+  <link href="https://cdn.datatables.net/1.13.8/css/dataTables.bootstrap5.min.css" rel="stylesheet"/>
+  <link href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.bootstrap5.min.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/css/tom-select.bootstrap5.min.css" rel="stylesheet"/>
+
+  <style>
+    :root{
+      --board-max:1460px;
+      --shadow-soft:0 8px 24px rgba(0,0,0,.06);
+      --border-soft:1px solid #e9ecef;
+      --brand-blue:#2e64d2;
+      --bg-page:#f4f6f8;
+      --text-muted:#667085;
+      --green:#16a34a;
+      --yellow:#f1bf45;
+      --red:#ef4444;
+      --gray:#667085;
+      --blue:#1d4ed8;
+    }
+    body{background:var(--bg-page);color:#212529;}
+    .gov-banner{background-color:#2e64d2;height:46px;width:100%;}
+    .gov-banner img{height:30px;}
+    .bg-shell{min-height:100vh;background:var(--bg-page);}
+    .board{max-width:var(--board-max);margin:0 auto;padding:24px 16px 36px;}
+    .soft-card,.kpi-card,.chart-card,.nav-card,header{border:0;border-radius:1rem;box-shadow:var(--shadow-soft);background:#fff;}
+    .header-ues .brand-strip{display:flex;justify-content:center;align-items:center;gap:.75rem;flex-wrap:wrap;}
+    .header-ues .brand-strip img{max-width:100%;height:auto;}
+    .board-title{font-size:clamp(1.5rem,2vw,2.1rem);font-weight:800;color:#1f2937;margin:0;}
+    .board-subtitle{color:var(--text-muted);font-size:.95rem;}
+    .last-update-badge{font-size:.95rem;padding:.5rem .8rem;border-radius:999px;}
+
+    .navbar .nav-link,.navbar .dropdown-toggle{font-weight:600;}
+    .dropdown-menu .dropdown-item.active{background:#2e64d2;}
+    .nav-processes{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;}
+    .process-btn{
+      background:#f8fafc;border:1px solid #d0d5dd;border-radius:999px;
+      padding:.65rem 1rem !important;color:#344054 !important;font-weight:700;
+      box-shadow:0 2px 6px rgba(0,0,0,.04);transition:all .2s ease;
+    }
+    .process-btn:hover{background:#eef4ff;border-color:#98a2b3;}
+    .process-btn.active{background:#2e64d2;color:#fff !important;border-color:#2e64d2;}
+
+    .filter-label{font-size:.88rem;font-weight:600;color:#475467;}
+    .kpi-card{height:100%;}
+    .kpi-label{font-size:.88rem;color:var(--text-muted);min-height:38px;line-height:1.2;margin-bottom:.35rem;}
+    .kpi-value{font-size:clamp(18px,2.7vw,32px);font-weight:800;line-height:1.05;color:#111827;}
+    .kpi-mini{font-size:.8rem;color:#6b7280;margin-top:.25rem;}
+    .chart-container{height:360px;position:relative;}
+    .chart-container-tall{height:430px;position:relative;}
+    #map{height:78vh;min-height:760px;border-radius:.85rem;overflow:hidden;}
+    .badge-map{font-size:.95rem;padding:.45rem .75rem;border-radius:999px;}
+    .active-filters-wrap{display:flex;flex-wrap:wrap;gap:8px;}
+    .active-filter-chip{
+      display:inline-flex;align-items:center;gap:6px;background:#eef4ff;border:1px solid #c7d7fe;
+      color:#1d4ed8;border-radius:999px;padding:6px 10px;font-size:.84rem;font-weight:700;
+    }
+    .active-filter-chip .label{color:#475467;font-weight:600;}
+    .ts-control{min-height:31px;padding-top:2px !important;padding-bottom:2px !important;}
+
+    .concept-kpi-card{
+      background:var(--concept-bg, rgba(232,197,90,.16)) !important;
+      border:1px solid var(--concept-border, rgba(232,197,90,.40)) !important;
+      position:relative;overflow:hidden;cursor:pointer;
+    }
+    .concept-kpi-card::before{
+      content:"";position:absolute;left:0;right:0;top:0;height:10px;
+      border-radius:1rem 1rem 0 0;background:var(--concept-color,#e8c55a);
+    }
+    .concept-kpi-pill{
+      display:inline-block;margin-top:10px;padding:6px 14px;border-radius:999px;font-weight:800;color:#fff;background:var(--concept-color,#e8c55a);
+    }
+
+    .section-block{
+      border:1px solid #e8edf5;border-radius:1.1rem;box-shadow:var(--shadow-soft);background:#fff;overflow:hidden;
+    }
+    .section-header{
+      padding:1rem 1.15rem;border-bottom:1px solid #eef2f6;display:flex;align-items:flex-start;gap:.9rem;
+      background:linear-gradient(90deg, rgba(239,246,255,.98), rgba(248,250,252,.98));
+    }
+    .section-header__icon{
+      width:52px;height:52px;border-radius:16px;display:flex;align-items:center;justify-content:center;
+      font-size:1.5rem;flex:0 0 52px;background:#e3edff;border:1px solid #bdd1ff;color:#1d4ed8;
+    }
+    .section-header h5{margin:0;font-weight:800;color:#1d4ed8;font-size:1.75rem;}
+    .section-body{padding:1rem;}
+    .section-note{font-size:.9rem;color:#6b7280;}
+
+    .map-section-toolbar{display:flex;align-items:center;justify-content:space-between;gap:.75rem;flex-wrap:wrap;margin-bottom:.8rem;}
+    .map-section-toolbar__copy{color:#475467;font-size:.93rem;}
+    .map-section-toolbar__actions{display:flex;align-items:center;gap:.55rem;flex-wrap:wrap;justify-content:flex-end;}
+    .map-section-note{font-size:.9rem;color:#475467;background:#f8fbff;border:1px solid #dbeafe;border-radius:.9rem;padding:.75rem .9rem;margin-bottom:1rem;}
+    .map-summary-panel{border:1px solid #dbeafe !important;background:#f8fbff !important;color:#1e3a8a;font-weight:700;}
+    .section-block--blue{border-color:#8eb3ff;box-shadow:0 10px 28px rgba(29,78,216,.08);}
+    .section-block--blue .section-header{background:linear-gradient(180deg,#eef4ff 0%,#edf3ff 100%);border-bottom-color:#c9dafc;}
+    .section-block--blue .section-header__icon{background:#e3edff;border:1px solid #bdd1ff;color:#1d4ed8;font-size:1.8rem;}
+    .section-block--blue .section-header h5{color:#1d4ed8;}
+    @media (max-width:576px){.map-section-toolbar__actions{justify-content:flex-start;}}
+
+
+
+
+    .kpi-row-6{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:1rem;margin-bottom:1rem;}
+    .kpi-modern{padding:1.15rem 1rem !important;border-radius:1.1rem;box-shadow:0 6px 18px rgba(0,0,0,.06);border:1px solid #eef2f7;text-align:center;background:#fff;}
+    .kpi-icon{width:74px;height:74px;border-radius:50%;margin:0 auto 1rem;display:flex;align-items:center;justify-content:center;background:#eaf1ff;color:#2457d6;border:1px solid #d5e3ff;}
+    .kpi-icon svg{width:38px;height:38px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+    .kpi-modern .kpi-label{min-height:58px;display:flex;align-items:center;justify-content:center;font-weight:750;color:#1f2937;font-size:.9rem;line-height:1.25;text-align:center;margin-bottom:0;}
+    .kpi-divider{border-top:2px dotted #d9e1ec;margin:.75rem 0 1rem;}
+    .kpi-modern .kpi-value{font-size:clamp(22px,3vw,38px);font-weight:850;color:#2457d6;letter-spacing:.3px;}
+    .table-toggle-header{width:100%;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:0;border:none;background:transparent;text-align:left;cursor:pointer;}
+    .table-toggle-copy{min-width:0;}
+    .table-toggle-arrow{flex:0 0 auto;width:44px;height:44px;border-radius:999px;display:flex;align-items:center;justify-content:center;border:1px solid #d0d5dd;background:#f8fafc;color:#475467;transition:all .2s ease;box-shadow:0 2px 6px rgba(0,0,0,.04);}
+    .table-toggle-arrow svg{width:22px;height:22px;display:block;transition:transform .2s ease;}
+    .table-toggle-header:hover .table-toggle-arrow{background:#eef4ff;border-color:#98a2b3;color:#1d4ed8;}
+    .table-toggle-header[aria-expanded="true"] .table-toggle-arrow svg{transform:rotate(90deg);}
+    @media (max-width:1200px){.kpi-row-6{grid-template-columns:repeat(3,minmax(0,1fr));}}
+    @media (max-width:768px){.kpi-row-6{grid-template-columns:1fr;}}
+
+    .municipio-label div{
+      background:rgba(255,255,255,0.78);color:#5b21b6;border:1px solid rgba(91,33,182,.18);
+      border-radius:8px;padding:2px 6px;font-size:11px;font-weight:700;white-space:nowrap;box-shadow:0 1px 4px rgba(0,0,0,.08);
+    }
+    .vereda-label div{
+      background:rgba(255,255,255,0.68);color:#475467;border:1px solid rgba(71,84,103,.14);
+      border-radius:6px;padding:1px 5px;font-size:9px;font-weight:600;white-space:nowrap;box-shadow:0 1px 3px rgba(0,0,0,.06);
+    }
+    .rio-label div{
+      background:rgba(255,255,255,0.72);color:#0369a1;border:1px solid rgba(3,105,161,.18);
+      border-radius:8px;padding:2px 6px;font-size:10px;font-weight:700;white-space:nowrap;box-shadow:0 1px 4px rgba(0,0,0,.08);
+    }
+
+    .empresa-marker{
+      width:18px;height:18px;border-radius:50%;border:2px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.28);
+    }
+    .empresa-marker.favorable{background:#16a34a;}
+    .empresa-marker.favreq{background:#f1bf45;}
+    .empresa-marker.desfavorable{background:#ef4444;}
+    .empresa-marker.sinconcepto{background:#667085;}
+
+    .layer-toggle-btn,.legend-toggle-btn{
+      position:absolute;z-index:520;width:42px;height:42px;display:flex;align-items:center;justify-content:center;
+      background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:10px;box-shadow:0 8px 20px rgba(0,0,0,.15);cursor:pointer;color:#475467;
+    }
+    .layer-toggle-btn{top:12px;right:12px;}
+    .legend-toggle-btn{bottom:12px;left:12px;}
+    .layer-toggle-btn:hover,.legend-toggle-btn:hover{background:#f8fafc;}
+    .layer-toggle-btn svg,.legend-toggle-btn svg{width:22px;height:22px;}
+
+    .custom-layer-panel,.custom-legend-panel{
+      position:absolute;z-index:530;background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:14px;
+      box-shadow:0 8px 24px rgba(0,0,0,.18);padding:10px 12px;transition:opacity .18s ease,transform .18s ease;
+    }
+    .custom-layer-panel{top:12px;right:12px;width:300px;max-height:80%;overflow:auto;}
+    .custom-legend-panel{bottom:12px;left:12px;width:265px;}
+    .custom-layer-panel.collapsed,.custom-legend-panel.collapsed{opacity:0;pointer-events:none;transform:translateY(-6px) scale(.98);}
+    .layer-panel-header{font-weight:800;font-size:.95rem;color:#1f2937;margin-bottom:8px;}
+    .layer-close-btn{border:none;background:transparent;font-size:20px;line-height:1;color:#667085;cursor:pointer;padding:0 4px;}
+    .custom-layer-panel details{border-top:1px solid #e5e7eb;padding-top:8px;margin-top:8px;}
+    .custom-layer-panel details:first-of-type{border-top:none;padding-top:0;margin-top:0;}
+    .custom-layer-panel summary{cursor:pointer;font-weight:700;color:#334155;margin-bottom:6px;list-style:none;}
+    .custom-layer-panel summary::-webkit-details-marker{display:none;}
+    .custom-layer-panel label{display:block;font-size:.88rem;color:#475467;margin:5px 0;cursor:pointer;}
+    .custom-layer-panel input[type="checkbox"],.custom-layer-panel input[type="radio"]{margin-right:8px;}
+
+    #legend .legend-title{font-size:.85rem;font-weight:700;margin-bottom:.4rem;color:#334155;}
+    #legend div{margin:4px 0;font-size:.84rem;color:#374151;}
+    #legend i{display:inline-block;width:14px;height:14px;border-radius:50%;margin-right:8px;vertical-align:middle;border:1px solid rgba(0,0,0,.15);}
+
+    #mapResumen{text-align:left !important;padding:14px 16px !important;border-radius:1rem !important;border:1px solid #eee;font-size:0.9rem;background:#fff;}
+    .map-summary-line{font-size:1rem;color:#344054;display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;text-align:center;line-height:1.45;}
+    .map-summary-line strong{color:#22314d;font-weight:800;}
+    .map-summary-label{margin-top:10px;margin-bottom:6px;font-size:.9rem;color:#475467;font-weight:700;text-align:center;}
+    .map-summary-chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;align-items:center;}
+    .concepto-badge,.clase-badge{
+      display:inline-block;margin:2px 4px;padding:6px 12px;border-radius:999px;font-size:.84rem;font-weight:700;line-height:1.2;
+      border:1px solid rgba(0,0,0,.08);transition:transform .15s ease,box-shadow .15s ease,outline .15s ease;cursor:pointer;
+    }
+    .badge-active{outline:3px solid #22314d;transform:translateY(-1px);box-shadow:0 4px 10px rgba(0,0,0,.15);}
+    .map-summary-subnote{margin-top:8px;font-size:.82rem;color:#667085;text-align:center;}
+
+    .leaflet-popup-content-wrapper{border-radius:14px;box-shadow:0 8px 24px rgba(0,0,0,.18);}
+    .leaflet-popup-content{margin:12px 14px;}
+    .popup-empresa{min-width:320px;max-width:420px;font-family:Arial,sans-serif;}
+    .popup-empresa .popup-title{font-size:1rem;font-weight:800;color:#1f2937;margin-bottom:4px;}
+    .popup-empresa .popup-subtitle{font-size:.84rem;color:#6b7280;margin-bottom:10px;}
+    .popup-empresa .popup-section{border-top:1px solid #e5e7eb;padding-top:8px;margin-top:8px;}
+    .popup-empresa .popup-row{margin-bottom:4px;font-size:.86rem;color:#334155;line-height:1.3;}
+    .popup-empresa .popup-label{font-weight:700;color:#374151;}
+    .table thead th{white-space:nowrap;}
+
+    @media (max-width: 992px){#map{height:68vh;min-height:620px;}}
+    @media (max-width: 768px){.custom-layer-panel{width:230px;max-height:65%;}}
+    @media (max-width: 576px){.board{padding-left:10px;padding-right:10px;}#map{height:62vh;min-height:500px;}.board-title{font-size:1.35rem;}}
+  </style>
+</head>
+<body>
+  <div class="gov-banner">
+    <div class="container d-flex align-items-center" style="height:100%;">
+      <img src="https://www.gov.co/assets/images/logo.png" alt="GOV.CO">
+    </div>
+  </div>
+
+  <main class="bg-shell">
+    <div class="board">
+      <header class="header-ues py-2 mb-3">
+        <div class="container-fluid px-3">
+          <div class="brand-strip">
+            <img src="https://www.uesvalle.gov.co/info/uesvalle/media/bloque1656.png" alt="UESVALLE" loading="lazy" class="img-fluid">
+          </div>
+        </div>
+      </header>
+
+      <section class="nav-card p-3 mb-3">
+        <nav class="navbar navbar-expand-lg bg-white rounded-4">
+          <div class="container-fluid d-flex flex-column align-items-center">
+            <div class="fw-bold mb-3 fs-5">Procesos</div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navPrincipal">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navPrincipal">
+              <ul class="navbar-nav mb-2 mb-lg-0 nav-processes">
+                <li class="nav-item dropdown mx-2 my-1">
+                  <a class="nav-link dropdown-toggle process-btn" href="#" role="button" data-bs-toggle="dropdown">
+                    1. Agua para consumo humano y saneamiento básico
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="https://javiermarin7.github.io/UESVALLE/ircas.html">1.1 IRCAS</a></li>
+                    <li><a class="dropdown-item" href="https://javiermarin7.github.io/UESVALLE/">1.2 Filtros</a></li>
+                    <li><a class="dropdown-item" href="https://javiermarin7.github.io/UESVALLE/dashboards/seguimiento_ach/seguimiento_ach.html">1.3 Seguimiento Actividades Agua para Consumo Humano</a></li>
+                    <li><a class="dropdown-item" href="https://javiermarin7.github.io/UESVALLE/dashboards/dosificacion_cloro/dosificacion_cloro.html">1.4 Dosificación de cloro</a></li>
+                  </ul>
+                </li>
+
+                <li class="nav-item dropdown mx-2 my-1">
+                  <a class="nav-link dropdown-toggle process-btn" href="#" role="button" data-bs-toggle="dropdown">
+                    2. Alimentos y medicamentos
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item disabled" href="#">Próximamente</a></li>
+                  </ul>
+                </li>
+
+                <li class="nav-item dropdown mx-2 my-1">
+                  <a class="nav-link dropdown-toggle process-btn" href="#" role="button" data-bs-toggle="dropdown">
+                    3. Zoonosis y ETV
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item disabled" href="#">Próximamente</a></li>
+                  </ul>
+                </li>
+
+                <li class="nav-item dropdown mx-2 my-1">
+                  <a class="nav-link dropdown-toggle process-btn active" href="#" role="button" data-bs-toggle="dropdown">
+                    4. Establecimientos de interés sanitario
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="https://javiermarin7.github.io/UESVALLE/dashboards/piscinas/piscinas.html">5.4 Piscinas</a></li>
+                    <li><a class="dropdown-item active" href="https://javiermarin7.github.io/UESVALLE/dashboards/empresas_plaguicidas/empresas_plaguicidas.html">5.5 Empresas aplicadoras de plaguicidas</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </section>
+
+<section class="soft-card p-3 mb-3">
+        <div class="d-flex flex-column flex-lg-row align-items-lg-center">
+          <div class="me-auto">
+            <h1 class="board-title">Establecimientos de Interés Sanitario · Empresas Aplicadoras de Plaguicidas</h1>
+            <div class="board-subtitle mt-1">Fuente: CSV depurado desde Excel con coordenadas KML / My Maps</div>
+          </div>
+          <div class="mt-2 mt-lg-0 d-flex gap-2 flex-wrap">
+            <span id="lastUpdate" class="badge text-bg-success last-update-badge">Cargando…</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="soft-card p-3 mb-3">
+        <div class="row g-3 align-items-end">
+          <div class="col-12 col-sm-6 col-md-3">
+            <label class="form-label filter-label mb-1">Municipio</label>
+            <select id="fmunicipio" class="form-select form-select-sm"><option value="">Todos</option></select>
+          </div>
+          <div class="col-12 col-sm-6 col-md-3">
+            <label class="form-label filter-label mb-1">Concepto</label>
+            <select id="fconcepto" class="form-select form-select-sm"><option value="">Todos</option></select>
+          </div>
+          <div class="col-12 col-sm-6 col-md-2">
+            <label class="form-label filter-label mb-1">Clasificación</label>
+            <select id="fclasificacion" class="form-select form-select-sm"><option value="">Todos</option></select>
+          </div>
+          <div class="col-12 col-sm-6 col-md-4">
+            <label class="form-label filter-label mb-1">Entidad</label>
+            <select id="fentidad" class="form-select form-select-sm"><option value="">Todas</option></select>
+          </div>
+          <div class="col-12 col-sm-6 col-md-2">
+            <label class="form-label filter-label mb-1">Año visita</label>
+            <select id="fanio" class="form-select form-select-sm"><option value="">Todos</option></select>
+          </div>
+          <div class="col-12 col-sm-6 col-md-3">
+            <label class="form-label filter-label mb-1">Estado coordenada</label>
+            <select id="festadoCoord" class="form-select form-select-sm"><option value="">Todos</option></select>
+          </div>
+          <div class="col-12 col-sm-6 col-md-4">
+            <label class="form-label filter-label mb-1">Empresa</label>
+            <select id="fempresa" class="form-select form-select-sm"><option value="">Todas</option></select>
+          </div>
+          <div class="col-12 col-md-3 d-flex gap-2 justify-content-center pt-2 flex-wrap">
+            <button id="btnFiltrar" class="btn btn-primary btn-sm px-4">Aplicar filtros</button>
+            <button id="btnLimpiar" class="btn btn-outline-secondary btn-sm px-4">Limpiar</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="soft-card p-3 mb-3">
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+          <div>
+            <div class="fw-bold mb-2">Filtros activos</div>
+            <div id="activeFilters" class="active-filters-wrap"><span class="text-muted">Sin filtros adicionales</span></div>
+          </div>
+          <div><button id="btnClearActiveFilters" class="btn btn-outline-danger btn-sm">Limpiar filtros activos</button></div>
+        </div>
+      </section>
+
+      <section class="section-block mb-3">
+        <div class="section-header">
+          <div class="section-header__icon">🧪</div>
+          <div>
+            <h5>Indicadores de seguimiento</h5>
+            <div class="small text-muted">Resumen general de empresas aplicadoras de plaguicidas, concepto sanitario y cobertura espacial.</div>
+          </div>
+        </div>
+        <div class="section-body">
+          <section class="kpi-row-6">
+            <div class="kpi-card kpi-modern">
+              <div class="kpi-icon"><svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/><path d="M9 9h.01M12 9h.01M15 9h.01M9 12h.01M12 12h.01M15 12h.01"/></svg></div>
+              <div class="kpi-label">Empresas registradas</div>
+              <div class="kpi-divider"></div>
+              <div id="kpiTotal" class="kpi-value">–</div>
+            </div>
+            <div class="kpi-card kpi-modern">
+              <div class="kpi-icon"><svg viewBox="0 0 24 24"><path d="M9 18l-6 3V6l6-3 6 3 6-3v15l-6 3-6-3Z"/><path d="M9 3v15M15 6v15"/></svg></div>
+              <div class="kpi-label">Municipios con empresas</div>
+              <div class="kpi-divider"></div>
+              <div id="kpiMunicipios" class="kpi-value">–</div>
+            </div>
+            <div class="kpi-card kpi-modern">
+              <div class="kpi-icon"><svg viewBox="0 0 24 24"><path d="M12 21s7-4.4 7-11a7 7 0 1 0-14 0c0 6.6 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+              <div class="kpi-label">Registros con coordenada</div>
+              <div class="kpi-divider"></div>
+              <div id="kpiConCoord" class="kpi-value">–</div>
+              <div class="kpi-mini">Ubicables en mapa</div>
+            </div>
+            <div class="kpi-card kpi-modern">
+              <div class="kpi-icon"><svg viewBox="0 0 24 24"><path d="M4 18h16"/><path d="M6 18l2-8h8l2 8"/><path d="M9 10V6h6v4"/><path d="M8 14h8"/></svg></div>
+              <div class="kpi-label">Aplicación terrestre</div>
+              <div class="kpi-divider"></div>
+              <div id="kpiTerrestre" class="kpi-value">–</div>
+            </div>
+            <div class="kpi-card kpi-modern">
+              <div class="kpi-icon"><svg viewBox="0 0 24 24"><path d="M22 16.5 2 12l20-4.5-4 4.5 4 4.5Z"/><path d="M2 12h16"/></svg></div>
+              <div class="kpi-label">Aplicación aérea</div>
+              <div class="kpi-divider"></div>
+              <div id="kpiAerea" class="kpi-value">–</div>
+            </div>
+            <div class="kpi-card kpi-modern">
+              <div class="kpi-icon"><svg viewBox="0 0 24 24"><path d="M4 21V5a2 2 0 0 1 2-2h8v18"/><path d="M14 9h4a2 2 0 0 1 2 2v10"/><path d="M8 7h2M8 11h2M8 15h2M17 13h.01M17 17h.01"/></svg></div>
+              <div class="kpi-label">Entidades fuente</div>
+              <div class="kpi-divider"></div>
+              <div id="kpiEntidades" class="kpi-value">–</div>
+            </div>
+          </section>
+
+          <section class="row g-3">
+            <div class="col-12 col-sm-6 col-lg-4">
+              <div class="kpi-card concept-kpi-card p-3" style="--concept-color:#16a34a; --concept-bg:rgba(22,163,74,.16); --concept-border:rgba(22,163,74,.42);" id="cardKpiFavorable">
+                <div class="kpi-label">Concepto</div><div class="kpi-value" id="kpiFavorable">–</div><div class="concept-kpi-pill">FAVORABLE</div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4">
+              <div class="kpi-card concept-kpi-card p-3" style="--concept-color:#f1bf45; --concept-bg:rgba(241,191,69,.18); --concept-border:rgba(241,191,69,.45);" id="cardKpiFavReq">
+                <div class="kpi-label">Concepto</div><div class="kpi-value" id="kpiFavReq">–</div><div class="concept-kpi-pill">FAVORABLE CON REQUERIMIENTOS</div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4">
+              <div class="kpi-card concept-kpi-card p-3" style="--concept-color:#667085; --concept-bg:rgba(102,112,133,.16); --concept-border:rgba(102,112,133,.42);" id="cardKpiSinConcepto">
+                <div class="kpi-label">Concepto</div><div class="kpi-value" id="kpiSinConcepto">–</div><div class="concept-kpi-pill">SIN CONCEPTO</div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section class="mb-4">
+        <section class="section-block section-block--blue mb-4" id="seccionMapaEmpresas">
+          <div class="section-header">
+            <div class="section-header__icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18 3 21V6l6-3 6 3 6-3v15l-6 3-6-3Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 3v15" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><path d="M15 6v15" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>
+            </div>
+            <div>
+              <h5>Mapa de empresas aplicadoras de plaguicidas</h5>
+              <div class="small text-muted">Visualización territorial de los establecimientos registrados y capas de contexto del Valle del Cauca.</div>
+            </div>
+          </div>
+          <div class="section-body">
+            <div class="map-section-toolbar">
+              <div class="map-section-toolbar__copy">Activa capas territoriales, revisa puntos de establecimientos y descarga el GeoJSON filtrado cuando sea necesario.</div>
+              <div class="map-section-toolbar__actions">
+                <span id="mapCount" class="badge text-bg-primary badge-map">0 puntos</span>
+                <div class="btn-group">
+                  <button id="btnFit" class="btn btn-sm btn-outline-primary">Ajustar vista</button>
+                  <button id="btnGeoJSON" class="btn btn-sm btn-success">Descargar GeoJSON (filtrado)</button>
+                </div>
+              </div>
+            </div>
+            <div class="map-section-note">
+              El mapa principal incluye los <b>establecimientos registrados</b>, además de las capas <b>Territoriales</b> tomadas del tablero de filtros: Municipios Valle, Veredas, Centros poblados, Vías principales, Ríos y Valle contorno.
+            </div>
+            <div class="position-relative">
+              <div id="map"></div>
+
+              <div id="layerToggle" class="layer-toggle-btn" title="Capas del mapa">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 3 2 8l10 5 10-5-10-5Zm0 7.2L4.4 8 12 4.8 19.6 8 12 10.2Zm-10 3.3 10 5 10-5M2 18l10 5 10-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+
+              <div id="layerPanel" class="custom-layer-panel collapsed">
+                <div class="layer-panel-header d-flex justify-content-between align-items-center">
+                  <span>Capas del mapa</span>
+                  <button id="layerClose" class="layer-close-btn" type="button" aria-label="Cerrar panel">×</button>
+                </div>
+
+                <details open>
+                  <summary>Mapas base</summary>
+                  <label><input type="radio" name="basemap" value="cartoLight" checked> Claro CARTO</label>
+                  <label><input type="radio" name="basemap" value="esriTopo"> Topográfico Esri</label>
+                  <label><input type="radio" name="basemap" value="esriImagery"> Satélite Esri</label>
+                  <label><input type="radio" name="basemap" value="osm"> OpenStreetMap</label>
+                </details>
+
+                <details open>
+                  <summary>Capas de datos</summary>
+                  <label><input type="checkbox" data-layer="empresas" checked> Establecimientos registrados (puntos)</label>
+                </details>
+
+                <details open>
+                  <summary>Territorial</summary>
+                  <label><input type="checkbox" data-layer="municipiosValle" checked> Municipios Valle</label>
+                  <label><input type="checkbox" data-layer="municipiosValleLabels" checked> Etiquetas municipios Valle</label>
+                  <label><input type="checkbox" data-layer="veredasValle" checked> Veredas Valle</label>
+                  <label><input type="checkbox" data-layer="centrosPoblados" checked> Centros poblados</label>
+                  <label><input type="checkbox" data-layer="viasPrincipales"> Vías principales</label>
+                  <label><input type="checkbox" data-layer="rios"> Ríos</label>
+                  <label><input type="checkbox" data-layer="riosLabels"> Etiquetas ríos</label>
+                  <label><input type="checkbox" data-layer="valleContorno" checked> Valle contorno</label>
+                  <label><input type="checkbox" data-layer="municipiosUES"> Municipios UES</label>
+                  <label><input type="checkbox" data-layer="turbiedad"> Turbiedad</label>
+                </details>
+              </div>
+
+              <div id="legendToggle" class="legend-toggle-btn" title="Leyenda del mapa">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M5 6h14M5 12h14M5 18h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                  <circle cx="8" cy="6" r="1.8" fill="currentColor"/>
+                  <circle cx="12" cy="12" r="1.8" fill="currentColor"/>
+                  <circle cx="16" cy="18" r="1.8" fill="currentColor"/>
+                </svg>
+              </div>
+
+              <div id="legendPanel" class="custom-legend-panel collapsed">
+                <div class="layer-panel-header d-flex justify-content-between align-items-center">
+                  <span>Leyenda</span>
+                  <button id="legendClose" class="layer-close-btn" type="button" aria-label="Cerrar leyenda">×</button>
+                </div>
+                <div id="legend"></div>
+              </div>
+            </div>
+
+            <div id="mapResumen" class="mt-3 p-2 text-center rounded shadow-sm map-summary-panel"></div>
+          </div>
+        </section>
+
+        <div class="row g-4">
+          <div class="col-12 col-xl-6">
+            <div class="chart-card p-3">
+              <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-2">
+                <h5 class="mb-0">Concepto sanitario</h5>
+                <div class="text-muted">Haz clic para filtrar</div>
+              </div>
+              <div class="chart-container"><canvas id="chartConcepto"></canvas></div>
+            </div>
+          </div>
+          <div class="col-12 col-xl-6">
+            <div class="chart-card p-3">
+              <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-2">
+                <h5 class="mb-0">Clasificación de aplicación</h5>
+                <div class="text-muted">Haz clic para filtrar</div>
+              </div>
+              <div class="chart-container"><canvas id="chartClasificacion"></canvas></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="row g-4 mb-4">
+        <div class="col-12 col-xl-7">
+          <div class="chart-card p-3 h-100">
+            <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-2">
+              <h5 class="mb-0">Empresas por municipio</h5>
+              <div class="text-muted">Haz clic en una barra para filtrar por municipio</div>
+            </div>
+            <div class="chart-container-tall"><canvas id="chartMunicipio"></canvas></div>
+          </div>
+        </div>
+        <div class="col-12 col-xl-5">
+          <div class="chart-card p-3 h-100">
+            <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-2">
+              <h5 class="mb-0">Empresas por entidad</h5>
+              <div class="text-muted">Fuente / autoridad sanitaria</div>
+            </div>
+            <div class="chart-container-tall"><canvas id="chartEntidad"></canvas></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="soft-card p-3">
+        <button class="table-toggle-header" type="button" data-bs-toggle="collapse" data-bs-target="#tablaDetalleCollapse" aria-expanded="false" aria-controls="tablaDetalleCollapse">
+          <div class="table-toggle-copy">
+            <h5 class="mb-1">Tabla de detalle</h5>
+            <div class="text-muted">La tabla queda oculta para reducir el ruido visual. Ábrela solo cuando necesites consultar, filtrar o exportar registros.</div>
+          </div>
+          <span class="table-toggle-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </button>
+        <div id="tablaDetalleCollapse" class="collapse mt-3">
+          <div class="table-responsive">
+            <table id="tbl" class="table table-striped table-hover w-100"></table>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+  <script src="https://unpkg.com/esri-leaflet@3.0.14/dist/esri-leaflet.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.8/js/dataTables.bootstrap5.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.bootstrap5.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/js/tom-select.complete.min.js"></script>
+
+  <script>
+    if(window.Chart && window.ChartDataLabels){ Chart.register(ChartDataLabels); }
+
+    // Al subir el CSV a GitHub, puedes colocar aquí el raw URL. Mientras tanto el tablero funciona con el CSV embebido.
+    const CSV_URL = "";
+    const EMBEDDED_DATA = [{"ID": "1", "NOMBRE_EMPRESA": "EXTINPLAGAS DEL VALLE", "ENTIDAD": "Secretaría Departamental de Salud del Valle del Cauca-UESVALLE", "DIRECCIÓN": "Carrera 7A # 5-39", "MUNICIPIO": "San Pedro", "Corregimiento": "", "pais": "Colombia", "Departamento": "Valle del Cauca", "ubicación": "Colombia,Valle del Cauca,San Pedro,Carrera 7A # 5-39", "TELÉFONO": "3186835145", "CORREO ELECTRÓNICO": "extinplagasdelvalle@gmail.com", "FECHA DE VISITA": "4/3/2025", "CONCEPTO": "Favorable", "CLASIFICACIÓN": "Terrestre", "ADDRESS_KML": "Colombia,Valle del Cauca,San Pedro,Carrera 7A # 5-39", "LATITUD": "3.9965803", "LONGITUD": "-76.23002509999999", "ALTITUD": "0", "ESTADO_COORDENADA": "CON COORDENADA", "FUENTE_COORDENADA": "GEOMETRIA_POINT_KML", "ESTADO_MAPA": "CON COORDENADA", "ANIO_VISITA": "2025"}, {"ID": "2", "NOMBRE_EMPRESA": "EMPRESA DE SERVICIOS DE SALUD OCUPACIONAL-SANEAMIENTO INDUSTRIAL", "ENTIDAD": "Secretaría Departamental de Salud del Valle del Cauca-UESVALLE", "DIRECCIÓN": "Carrera 4 # 23-89", "MUNICIPIO": "Andalucía", "Corregimiento": "Ricaurte", "pais": "Colombia", "Departamento": "Valle del Cauca", "ubicación": "Colombia,Valle del Cauca,Andalucía,Carrera 4 # 23-89", "TELÉFONO": "3177091500", "CORREO ELECTRÓNICO": "saneamiento_industrial@hotmail.com", "FECHA DE VISITA": "4/8/2025", "CONCEPTO": "Favorable", "CLASIFICACIÓN": "Terrestre", "ADDRESS_KML": "Colombia,Valle del Cauca,Andalucía,Carrera 4 # 23-89", "LATITUD": "4.178879999999999", "LONGITUD": "-76.161767", "ALTITUD": "0", "ESTADO_COORDENADA": "CON COORDENADA", "FUENTE_COORDENADA": "GEOMETRIA_POINT_KML", "ESTADO_MAPA": "CON COORDENADA", "ANIO_VISITA": "2025"}, {"ID": "3", "NOMBRE_EMPRESA": "STANDARD SAFETY PESTS CONTROL S.A.S", "ENTIDAD": "Secretaría Departamental de Salud del Valle del Cauca-UESVALLE", "DIRECCIÓN": "Calle 6B # 1 -11", "MUNICIPIO": "Andalucía", "Corregimiento": "", "pais": "Colombia", "Departamento": "Valle del Cauca", "ubicación": "Colombia,Valle del Cauca,Andalucía,Calle 6B # 1 -11", "TELÉFONO": "3122104686/3102839614", "CORREO ELECTRÓNICO": "standardsafetypestcontrol@gmail.com", "FECHA DE VISITA": "25/04/2025", "CONCEPTO": "Favorable con Requerimientos", "CLASIFICACIÓN": "Terrestre", "ADDRESS_KML": "Colombia,Valle del Cauca,Andalucía,Calle 6B # 1 -11", "LATITUD": "4.16307441296611", "LONGITUD": "-76.1679049232959", "ALTITUD": "", "ESTADO_COORDENADA": "SIN COORDENADA", "FUENTE_COORDENADA": "COORDENADA_DISPONIBLE_EN_ARCHIVO", "ESTADO_MAPA": "CON COORDENADA", "ANIO_VISITA": "2025"}, {"ID": "4", "NOMBRE_EMPRESA": "FUMIGACIONES EL TREBOL´S", "ENTIDAD": "Secretaría Departamental de Salud del Valle del Cauca-UESVALLE", "DIRECCIÓN": "Calle 8 # 7-05", "MUNICIPIO": "Caicedonia", "Corregimiento": "", "pais": "Colombia", "Departamento": "Valle del Cauca", "ubicación": "Colombia,Valle del Cauca,Caicedonia,Calle 8 # 7-05", "TELÉFONO": "3117602108", "CORREO ELECTRÓNICO": "lucesduque8@hotmail.com", "FECHA DE VISITA": "28/03/2025", "CONCEPTO": "Favorable con Requerimientos", "CLASIFICACIÓN": "Terrestre", "ADDRESS_KML": "Colombia,Valle del Cauca,Caicedonia,Calle 8 # 7-05", "LATITUD": "4.3324356", "LONGITUD": "-75.82294519999999", "ALTITUD": "0", "ESTADO_COORDENADA": "CON COORDENADA", "FUENTE_COORDENADA": "GEOMETRIA_POINT_KML", "ESTADO_MAPA": "CON COORDENADA", "ANIO_VISITA": "2025"}, {"ID": "5", "NOMBRE_EMPRESA": "ING MEGASERVICIOS 2   S.A.S", "ENTIDAD": "Secretaría Departamental de Salud del Valle del Cauca-UESVALLE", "DIRECCIÓN": "Finca El Oasis Vereda Tierra Blanca", "MUNICIPIO": "Roldanillo", "Corregimiento": "", "pais": "Colombia", "Departamento": "Valle del Cauca", "ubicación": "Colombia,Valle del Cauca,Roldanillo,Finca El Oasis Vereda Tierra Blanca", "TELÉFONO": "3162855286\n3156247916", "CORREO ELECTRÓNICO": "ing-megaservicios@gmail.com", "FECHA DE VISITA": "12/19/2025", "CONCEPTO": "Favorable", "CLASIFICACIÓN": "Terrestre", "ADDRESS_KML": "Colombia,Valle del Cauca,Roldanillo,Finca El Oasis Vereda Tierra Blanca", "LATITUD": "3.4461963", "LONGITUD": "-76.36013299999999", "ALTITUD": "0", "ESTADO_COORDENADA": "CON COORDENADA", "FUENTE_COORDENADA": "GEOMETRIA_POINT_KML", "ESTADO_MAPA": "CON COORDENADA", "ANIO_VISITA": "2025"}, {"ID": "6", "NOMBRE_EMPRESA": "EMPRESA DE SERVICIOS DE SANEAMIENTO AMBIENTAL SERVISAM E.A.T", "ENTIDAD": "Secretaría Departamental de Salud del Valle del Cauca-UESVALLE", "DIRECCIÓN": "Calle 53 # 50-57", "MUNICIPIO": "Sevilla", "Corregimiento": "", "pais": "Colombia", "Departamento": "Valle del Cauca", "ubicación": "Colombia,Valle del Cauca,Sevilla,Calle 53 # 50-57", "TELÉFONO": "3154934270/3113618406", "CORREO ELECTRÓNICO": "servisameat@yahoo.com", "FECHA DE VISITA": "08/05/2025", "CONCEPTO": "Favorable", "CLASIFICACIÓN": "Terrestre", "ADDRESS_KML": "Colombia,Valle del Cauca,Sevilla,Calle 53 # 50-57", "LATITUD": "4.2664484", "LONGITUD": "-75.9344089", "ALTITUD": "0", "ESTADO_COORDENADA": "CON COORDENADA", "FUENTE_COORDENADA": "GEOMETRIA_POINT_KML", "ESTADO_MAPA": "CON COORDENADA", "ANIO_VISITA": "2025"}, {"ID": "7", "NOMBRE_EMPRESA": "UNIDAD TÉCNICA EN SANEAMIENTO", "ENTIDAD": "Secretaría Departamental de Salud del Valle del Cauca-UESVALLE", "DIRECCIÓN": "Carrera 3 # 4-80", "MUNICIPIO": "Guacarí", "Corregimiento": "", "pais": "Colombia", "Departamento": "Valle del Cauca", "ubicación": "Colombia,Valle del Cauca,Guacarí,Carrera 3 # 4-80", "TELÉFONO": "3147319578", "CORREO ELECTRÓNICO": "utesafumigaciones@hotmail.com", "FECHA DE VISITA": "4/9/2025", "CONCEPTO": "Favorable", "CLASIFICACIÓN": "Terrestre", "ADDRESS_KML": "Colombia,Valle del Cauca,Guacarí,Carrera 3 # 4-80", "LATITUD": "3.7630793", "LONGITUD": "-76.32908669999999", "ALTITUD": "0", "ESTADO_COORDENADA": "CON COORDENADA", "FUENTE_COORDENADA": "GEOMETRIA_POINT_KML", "ESTADO_MAPA": "CON COORDENADA", "ANIO_VISITA": "2025"}, {"ID": "8", "NOMBRE_EMPRESA": "FUMIBUGA S.A.S", "ENTIDAD": "Secretaría Departamental de Salud del Valle del Cauca-UESVALLE", "DIRECCIÓN": "Parcelación Calima Canaguaros BL 12 Ap 3", "MUNICIPIO": "Calima El Darién", "Corregimiento": "", "pais": "Colombia", "Departamento": "Valle del Cauca", "ubicación": "Colombia,Valle del Cauca,Calima El Darién,Parcelación Calima Canaguaros BL 12 Ap 3", "TELÉFONO": "3154834030", "CORREO ELECTRÓNICO": "gerfra587@yahoo.es", "FECHA DE VISITA": "26/03/2025", "CONCEPTO": "Favorable", "CLASIFICACIÓN": "Terrestre", "ADDRESS_KML": "Colombia,Valle del Cauca,Calima El Darién,Parcelación Calima Canaguaros BL 12 Ap 3", "LATITUD": "3.8853485", "LONGITUD": "-76.53263059999999", "ALTITUD": "0", "ESTADO_COORDENADA": "CON COORDENADA", "FUENTE_COORDENADA": "GEOMETRIA_POINT_KML", "ESTADO_MAPA": "CON COORDENADA", "ANIO_VISITA": "2025"}, {"ID": "9", "NOMBRE_EMPRESA": "FUMIORGANICOS FL", "ENTIDAD": "Secretaría Departamental de Salud del Valle del Cauca-UESVALLE", "DIRECCIÓN": "Calle 1 # 10-08", "MUNICIPIO": "El Cerrito", "Corregimiento": "", "pais": "Colombia", "Departamento": "Valle del Cauca", "ubicación": "Colombia,Valle del Cauca,El Cerrito,Calle 1 # 10-08", "TELÉFONO": "2571620/3154734951", "CORREO ELECTRÓNICO": "fumiorganicos.fl@gmail.com", "FECHA DE VISITA": "5/9/2025", "CONCEPTO": "Favorable", "CLASIFICACIÓN": "Terrestre", "ADDRESS_KML": "Colombia,Valle del Cauca,El Cerrito,Calle 1 # 10-08", "LATITUD": "3.681089", "LONGITUD": "-76.311381", "ALTITUD": "0", "ESTADO_COORDENADA": "CON COORDENADA", "FUENTE_COORDENADA": "GEOMETRIA_POINT_KML", "ESTADO_MAPA": "CON COORDENADA", "ANIO_VISITA": "2025"}, {"ID": "10", "NOMBRE_EMPRESA": "TERRACONTROL CIP S.A.S", "ENTIDAD": "Secretaría Departamental de Salud del Valle del Cauca-UESVALLE", "DIRECCIÓN": "Calle 6 # 14-59 Local 1", "MUNICIPIO": "El Cerrito", "Corregimiento": "", "pais": "Colombia", "Departamento": "Valle del Cauca", "ubicación": "Colombia,Valle del Cauca,El Cerrito,Calle 6 # 14-59 Local 1", "TELÉFONO": "3175015525", "CORREO ELECTRÓNICO": "gerencia@terracontrol.com.co", "FECHA DE VISITA": "5/9/2025", "CONCEPTO": "Favorable", "CLASIFICACIÓN": "Terrestre", "ADDRESS_KML": "Colombia,Valle del Cauca,El Cerrito,Calle 6 # 14-59 Local 1", "LATITUD": "3.6832507", "LONGITUD": "-76.3153562", "ALTITUD": "0", "ESTADO_COORDENADA": "CON COORDENADA", "FUENTE_COORDENADA": "GEOMETRIA_POINT_KML", "ESTADO_MAPA": "CON COORDENADA", "ANIO_VISITA": "2025"}, {"ID": "11", "NOMBRE_EMPRESA": "SANEAMIENTO AMBIENTAL EMPRESA ASOCIATIVA DE TRABAJO", "ENTIDAD": "Secretaría Departamental de Salud del Valle del Cauca-UESVALLE", "DIRECCIÓN": "Carrera 10 # 7-74 Piso 2", "MUNICIPIO": "Zarzal", "Corregimiento": "", "pais": "Colombia", "Departamento": "Valle del Cauca", "ubicación": "Colombia,Valle del Cauca,Zarzal,Carrera 10 # 7-74 Piso 2", "TELÉFONO": "3168948759", "CORREO ELECTRÓNICO": "juceberar@hotmail.com", "FECHA DE VISITA": "21/05/2025", "CONCEPTO": "Favorable", "CLASIFICACIÓN": "Terrestre", "ADDRESS_KML": "Colombia,Valle del Cauca,Zarzal,Carrera 10 # 7-74 Piso 2", "LATITUD": "4.393408", "LONGITUD": "-76.0725439", "ALTITUD": "0", "ESTADO_COORDENADA": "CON COORDENADA", "FUENTE_COORDENADA": "GEOMETRIA_POINT_KML", "ESTADO_MAPA": "CON COORDENADA", "ANIO_VISITA": "2025"}, {"ID": "12", "NOMBRE_EMPRESA": "SANEAMIENTO AMBIENTAL FUMIZAR", "ENTIDAD": "Secretaría Departamental de Salud del Valle del Cauca-UESVALLE", "DIRECCIÓN": "Manzana D Casa 11", "MUNICIPIO": "Zarzal", "Corregimiento": "Limones", "pais": "Colombia", "Departamento": "Valle del Cauca", "ubicación": "Colombia,Valle del Cauca,Zarzal,Manzana D Casa 11", "TELÉFONO": "3155776573", "CORREO ELECTRÓNICO": "fumizar2013@hotmail.com", "FECHA DE VISITA": "21/05/2025", "CONCEPTO": "Favorable", "CLASIFICACIÓN": "Terrestre", "ADDRESS_KML": "Colombia,Valle del Cauca,Zarzal,limones", "LATITUD": "4.38825419030397", "LONGITUD": "-76.0471589581045", "ALTITUD": "", "ESTADO_COORDENADA": "SIN COORDENADA", "FUENTE_COORDENADA": "COORDENADA_DISPONIBLE_EN_ARCHIVO", "ESTADO_MAPA": "CON COORDENADA", "ANIO_VISITA": "2025"}, {"ID": "13", "NOMBRE_EMPRESA": "MANTENIMIENTOS BAUTISTA", "ENTIDAD": "Secretaría Departamental de Salud del Valle del Cauca-UESVALLE", "DIRECCIÓN": "Calle 7 Cra 16 C Mz 11 Casa 5 Piso 3", "MUNICIPIO": "Restrepo", "Corregimiento": "", "pais": "Colombia", "Departamento": "Valle del Cauca", "ubicación": "Colombia,Valle del Cauca,Restrepo,Calle 7 Cra 16 C Mz 11 Casa 5 Piso 3", "TELÉFONO": "3136536048", "CORREO ELECTRÓNICO": "mantenimientoyroceria@gmail.com", "FECHA DE VISITA": "30/04/2025", "CONCEPTO": "Favorable", "CLASIFICACIÓN": "Terrestre", "ADDRESS_KML": "Colombia,Valle del Cauca,Restrepo,Calle 7 Cra 16 C Mz 11 Casa 5 Piso 3", "LATITUD": "3.8195117", "LONGITUD": "-76.52366479999999", "ALTITUD": "0", "ESTADO_COORDENADA": "CON COORDENADA", "FUENTE_COORDENADA": "GEOMETRIA_POINT_KML", "ESTADO_MAPA": "CON COORDENADA", "ANIO_VISITA": "2025"}, {"ID": "14", "NOMBRE_EMPRESA": "INGENIO RIOPAILA", "ENTIDAD": "Secretaría Departamental de Salud del Valle del Cauca-UESVALLE", "DIRECCIÓN": "La Paila", "MUNICIPIO": "Zarzal", "Corregimiento": "La Paila", "pais": "Colombia", "Departamento": "Valle del Cauca", "ubicación": "Colombia,Valle del Cauca,Zarzal, ingenio riopaila", "TELÉFONO": "", "CORREO ELECTRÓNICO": "", "FECHA DE VISITA": "", "CONCEPTO": "", "CLASIFICACIÓN": "Aérea", "ADDRESS_KML": "Colombia,Valle del Cauca,Zarzal, ingenio riopaila", "LATITUD": "4.3190617", "LONGITUD": "-76.0887612", "ALTITUD": "0", "ESTADO_COORDENADA": "CON COORDENADA", "FUENTE_COORDENADA": "GEOMETRIA_POINT_KML", "ESTADO_MAPA": "CON COORDENADA", "ANIO_VISITA": ""}, {"ID": "15", "NOMBRE_EMPRESA": "ABC FUMIGACIONES COLOMBIA S.A.S", "ENTIDAD": "Secretaría de Salud de Palmira", "DIRECCIÓN": "Carrera 26 A No 12A-60", "MUNICIPIO": "Palmira", "Corregimiento": "", "pais": "Colombia", "Departamento": "Valle del Cauca", "ubicación": "Colombia,Valle del Cauca,Palmira,Carrera 26 A No 12A-60", "TELÉFONO": "", "CORREO ELECTRÓNICO": "gerencia@abcfumigaciones.com", "FECHA DE VISITA": "2/23/2023", "CONCEPTO": "Favorable", "CLASIFICACIÓN": "Terrestre", "ADDRESS_KML": "Colombia,Valle del Cauca,Palmira,Carrera 26 A No 12A-60", "LATITUD": "3.512143", "LONGITUD": "-76.299314", "ALTITUD": "0", "ESTADO_COORDENADA": "CON COORDENADA", "FUENTE_COORDENADA": "GEOMETRIA_POINT_KML", "ESTADO_MAPA": "CON COORDENADA", "ANIO_VISITA": "2023"}, {"ID": "16", "NOMBRE_EMPRESA": "COLPLAGAS LTDA", "ENTIDAD": "Secretaría de Salud Distrito de Santiago de Cali", "DIRECCIÓN": "Calle 30 N No. 2 bis-46", "MUNICIPIO": "Santiago de Cali", "Corregimiento": "", "pais": "Colombia", "Departamento": "Valle del Cauca", "ubicación": "Colombia,Valle del Cauca,Santiago de Cali,Calle 30 N No. 2 bis-46", "TELÉFONO": "", "CORREO ELECTRÓNICO": "manuel.cadavid@rentokil-initial.com", "FECHA DE VISITA": "9/8/2023", "CONCEPTO": "Favorable", "CLASIFICACIÓN": "Terrestre", "ADDRESS_KML": "Colombia,Valle del Cauca,Santiago de Cali,Calle 30 N No. 2 bis-46", "LATITUD": "3.4660225", "LONGITUD": "-76.52121369999999", "ALTITUD": "0", "ESTADO_COORDENADA": "CON COORDENADA", "FUENTE_COORDENADA": "GEOMETRIA_POINT_KML", "ESTADO_MAPA": "CON COORDENADA", "ANIO_VISITA": "2023"}, {"ID": "17", "NOMBRE_EMPRESA": "FUMIGACIONES Y EXTINTORES MILLENNIUM LTDA", "ENTIDAD": "Secretaría de Salud Distrito de Santiago de Cali", "DIRECCIÓN": "Carrera 23 C No. 9F-21", "MUNICIPIO": "Santiago de Cali", "Corregimiento": "", "pais": "Colombia", "Departamento": "Valle del Cauca", "ubicación": "Colombia,Valle del Cauca,Santiago de Cali,Carrera 23 C No. 9F-21", "TELÉFONO": "", "CORREO ELECTRÓNICO": "fumigacionesmillennium@hotmail.com", "FECHA DE VISITA": "8/22/2025", "CONCEPTO": "Favorable", "CLASIFICACIÓN": "Terrestre", "ADDRESS_KML": "Colombia,Valle del Cauca,Santiago de Cali,Carrera 23 C No. 9F-21", "LATITUD": "3.4344867", "LONGITUD": "-76.53186459999999", "ALTITUD": "0", "ESTADO_COORDENADA": "CON COORDENADA", "FUENTE_COORDENADA": "GEOMETRIA_POINT_KML", "ESTADO_MAPA": "CON COORDENADA", "ANIO_VISITA": "2025"}, {"ID": "18", "NOMBRE_EMPRESA": "PEST FUMIGATION", "ENTIDAD": "Secretaría de Salud Distrito de Santiago de Cali", "DIRECCIÓN": "Carrera 40 A No. 49-74", "MUNICIPIO": "Santiago de Cali", "Corregimiento": "", "pais": "Colombia", "Departamento": "Valle del Cauca", "ubicación": "Colombia,Valle del Cauca,Santiago de Cali,Carrera 40 A No. 49-74", "TELÉFONO": "", "CORREO ELECTRÓNICO": "pestfumigation49@gmail.co", "FECHA DE VISITA": "7/4/2023", "CONCEPTO": "Favorable", "CLASIFICACIÓN": "Terrestre", "ADDRESS_KML": "Colombia,Valle del Cauca,Santiago de Cali,Carrera 40 A No. 49-74", "LATITUD": "3.4080208", "LONGITUD": "-76.5018796", "ALTITUD": "0", "ESTADO_COORDENADA": "CON COORDENADA", "FUENTE_COORDENADA": "GEOMETRIA_POINT_KML", "ESTADO_MAPA": "CON COORDENADA", "ANIO_VISITA": "2023"}, {"ID": "19", "NOMBRE_EMPRESA": "SIMPA S.A.S.", "ENTIDAD": "Secretaría de Salud Distrito de Santiago de Cali", "DIRECCIÓN": "Carrera 28D No.72F-137 Local 101", "MUNICIPIO": "Santiago de Cali", "Corregimiento": "", "pais": "Colombia", "Departamento": "Valle del Cauca", "ubicación": "Colombia,Valle del Cauca,Santiago de Cali,Carrera 28D No.72F-137 Local 101", "TELÉFONO": "", "CORREO ELECTRÓNICO": "soluciones@simpa.com.co", "FECHA DE VISITA": "7/18/2025", "CONCEPTO": "Favorable", "CLASIFICACIÓN": "Terrestre", "ADDRESS_KML": "Colombia,Valle del Cauca,Santiago de Cali,Carrera 28D No.72F-137 Local 101", "LATITUD": "3.426114999999999", "LONGITUD": "-76.4956432", "ALTITUD": "0", "ESTADO_COORDENADA": "CON COORDENADA", "FUENTE_COORDENADA": "GEOMETRIA_POINT_KML", "ESTADO_MAPA": "CON COORDENADA", "ANIO_VISITA": "2025"}, {"ID": "20", "NOMBRE_EMPRESA": "TNK S:A.S", "ENTIDAD": "Secretaría de Salud Distrito de Santiago de Cali", "DIRECCIÓN": "Avenida 4 Norte No. 48N-23", "MUNICIPIO": "Santiago de Cali", "Corregimiento": "", "pais": "Colombia", "Departamento": "Valle del Cauca", "ubicación": "Colombia,Valle del Cauca,Santiago de Cali,Avenida 4 Norte No. 48N-23", "TELÉFONO": "", "CORREO ELECTRÓNICO": "grupotnk@yahoo.com", "FECHA DE VISITA": "14/10/2025", "CONCEPTO": "Favorable", "CLASIFICACIÓN": "Terrestre", "ADDRESS_KML": "Colombia,Valle del Cauca,Santiago de Cali,Avenida 4 Norte No. 48N-23", "LATITUD": "3.475761399999999", "LONGITUD": "-76.5234789", "ALTITUD": "0", "ESTADO_COORDENADA": "CON COORDENADA", "FUENTE_COORDENADA": "GEOMETRIA_POINT_KML", "ESTADO_MAPA": "CON COORDENADA", "ANIO_VISITA": "2025"}, {"ID": "21", "NOMBRE_EMPRESA": "BRILLANTEX MULTISERVICIOS S.A.S", "ENTIDAD": "Secretaría de Salud Distrito de Santiago de Cali", "DIRECCIÓN": "Carrera 59 # 2E-46", "MUNICIPIO": "Santiago de Cali", "Corregimiento": "", "pais": "Colombia", "Departamento": "Valle del Cauca", "ubicación": "Colombia,Valle del Cauca,Santiago de Cali,Carrera 59 # 2E-46", "TELÉFONO": "", "CORREO ELECTRÓNICO": "calidad@brillantex.com", "FECHA DE VISITA": "1/29/2026", "CONCEPTO": "Favorable", "CLASIFICACIÓN": "Terrestre", "ADDRESS_KML": "Colombia,Valle del Cauca,Santiago de Cali,Carrera 59 # 2E-46", "LATITUD": "3.407515", "LONGITUD": "-76.555234", "ALTITUD": "0", "ESTADO_COORDENADA": "CON COORDENADA", "FUENTE_COORDENADA": "GEOMETRIA_POINT_KML", "ESTADO_MAPA": "CON COORDENADA", "ANIO_VISITA": "2026"}];
+
+    const URL_MUNICIPIOS_UES = "https://services5.arcgis.com/l23kE3b7uPnZIuaB/arcgis/rest/services/Municipio_UES/FeatureServer/0";
+    const URL_MUNICIPIO_VALLE = "https://services5.arcgis.com/l23kE3b7uPnZIuaB/arcgis/rest/services/CARTOGRAFIA_BASE/FeatureServer/2";
+    const URL_VEREDAS_VALLE = "https://services5.arcgis.com/l23kE3b7uPnZIuaB/arcgis/rest/services/CARTOGRAFIA_BASE/FeatureServer/4";
+    const URL_VALLE_CONTORNO = "https://services5.arcgis.com/l23kE3b7uPnZIuaB/arcgis/rest/services/Sedes_Educativas_WFL1/FeatureServer/8";
+    const URL_CENTROS_POBLADOS = "https://services5.arcgis.com/l23kE3b7uPnZIuaB/arcgis/rest/services/CARTOGRAFIA_BASE/FeatureServer/1";
+    const URL_VIAS = "https://services5.arcgis.com/l23kE3b7uPnZIuaB/arcgis/rest/services/Sedes_Educativas_WFL1/FeatureServer/3";
+    const URL_RIOS = "https://services5.arcgis.com/l23kE3b7uPnZIuaB/arcgis/rest/services/Sedes_Educativas_WFL1/FeatureServer/4";
+    const URL_TURBIEDAD = "https://services5.arcgis.com/l23kE3b7uPnZIuaB/arcgis/rest/services/Turbiedad/FeatureServer/1";
+
+    // Extensión cartográfica general del Valle del Cauca para conservar el contexto territorial completo.
+    const VALLE_BOUNDS = L.latLngBounds([[3.05, -77.65], [5.15, -75.45]]);
+    const VALLE_CENTER = [4.10, -76.35];
+
+    let RAW = [];
+    let LIST = [];
+    let MAP = null;
+    let markerCluster = null;
+    let dataLayerGroup = null;
+    let table = null;
+    let charts = {};
+    let toms = {};
+    let chartMunicipioFilter = "";
+    let chartConceptoFilter = "";
+    let chartClasificacionFilter = "";
+    let mapConceptoFilter = "";
+
+    let baseLayers = {};
+    let layerRefs = {};
+
+    function norm(v){
+      return String(v ?? "").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toUpperCase().trim();
+    }
+    function esc(v){
+      return String(v ?? "").replace(/[&<>"\']/g, ch => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","\'":"&#39;"}[ch]));
+    }
+    function num(v){
+      const n = parseFloat(String(v ?? "").replace(",", "."));
+      return Number.isFinite(n) ? n : null;
+    }
+    function fmtInt(v){ return new Intl.NumberFormat("es-CO").format(v || 0); }
+    function unique(arr){ return [...new Set(arr.filter(v => v !== null && v !== undefined && String(v).trim() !== ""))].sort((a,b)=>String(a).localeCompare(String(b),"es")); }
+    function countBy(arr, field){
+      const out = {};
+      arr.forEach(d => {
+        const k = d[field] && String(d[field]).trim() ? String(d[field]).trim() : "SIN DATO";
+        out[k] = (out[k] || 0) + 1;
+      });
+      return out;
+    }
+    function hasCoord(d){
+      const lat = num(d.LATITUD), lon = num(d.LONGITUD);
+      return lat !== null && lon !== null && lat >= -90 && lat <= 90 && lon >= -180 && lon <= 180;
+    }
+    function conceptoKey(v){
+      const n = norm(v);
+      if(n.includes("REQUER")) return "favreq";
+      if(n.includes("DESFAVOR")) return "desfavorable";
+      if(n.includes("FAVORABLE")) return "favorable";
+      return "sinconcepto";
+    }
+    function conceptoColor(v){
+      const k = conceptoKey(v);
+      if(k === "favorable") return "#16a34a";
+      if(k === "favreq") return "#f1bf45";
+      if(k === "desfavorable") return "#ef4444";
+      return "#667085";
+    }
+    function conceptoLabel(v){
+      return v && String(v).trim() ? v : "SIN CONCEPTO";
+    }
+
+    function parseCsvFallback(text){
+      const rows = [];
+      let row = [], cur = "", inQuotes = false;
+      for(let i=0; i<text.length; i++){
+        const ch = text[i];
+        const next = text[i+1];
+        if(ch === '"'){
+          if(inQuotes && next === '"'){ cur += '"'; i++; }
+          else inQuotes = !inQuotes;
+        }else if(ch === ',' && !inQuotes){
+          row.push(cur); cur = "";
+        }else if((ch === '\n' || ch === '\r') && !inQuotes){
+          if(ch === '\r' && next === '\n') i++;
+          row.push(cur);
+          if(row.some(v => String(v).trim() !== "")) rows.push(row);
+          row = []; cur = "";
+        }else{
+          cur += ch;
+        }
+      }
+      row.push(cur);
+      if(row.some(v => String(v).trim() !== "")) rows.push(row);
+      if(!rows.length) return [];
+      const headers = rows.shift().map(h => String(h || "").replace(/^\uFEFF/, "").trim());
+      return rows.map(r => {
+        const o = {};
+        headers.forEach((h, idx) => { o[h] = r[idx] ?? ""; });
+        return o;
+      });
+    }
+
+    async function loadCsv(){
+      let data = null;
+      if(CSV_URL){
+        try{
+          const r = await fetch(CSV_URL + (CSV_URL.includes("?") ? "&" : "?") + "t=" + Date.now(), {cache:"no-store"});
+          if(!r.ok) throw new Error("HTTP " + r.status);
+          const csvText = await r.text();
+          data = (window.Papa && Papa.parse)
+            ? Papa.parse(csvText, {header:true, skipEmptyLines:true}).data
+            : parseCsvFallback(csvText);
+        }catch(err){
+          console.warn("No se pudo cargar CSV_URL. Usando datos embebidos.", err);
+        }
+      }
+      if(!data){
+        data = Array.isArray(EMBEDDED_DATA) ? EMBEDDED_DATA : [];
+      }
+      RAW = data.map((d, i) => ({
+        ...d,
+        ID: d.ID || String(i+1),
+        LATITUD: num(d.LATITUD),
+        LONGITUD: num(d.LONGITUD),
+        ANIO_VISITA: d.ANIO_VISITA || "",
+        ESTADO_MAPA: hasCoord(d) ? "CON COORDENADA" : "SIN COORDENADA"
+      }));
+      document.getElementById("lastUpdate").textContent = "Datos cargados: " + new Date().toLocaleString("es-CO");
+    }
+
+    function initTomSelects(){
+      ["fmunicipio","fconcepto","fclasificacion","fentidad","fanio","festadoCoord","fempresa"].forEach(id => {
+        const el = document.getElementById(id);
+        if(el && !el.tomselect && window.TomSelect){
+          toms[id] = new TomSelect(el, {allowEmptyOption:true, create:false, maxOptions:1000, sortField:{field:"text",direction:"asc"}});
+        }
+      });
+    }
+
+    function setSelectOptions(id, values, allLabel="Todos"){
+      const el = document.getElementById(id);
+      const current = el.value || "";
+      if(el.tomselect){
+        el.tomselect.clearOptions();
+        el.tomselect.addOption({value:"", text:allLabel});
+        values.forEach(v => el.tomselect.addOption({value:v, text:v}));
+        el.tomselect.refreshOptions(false);
+        el.tomselect.setValue(values.includes(current) ? current : "", true);
+      }else{
+        el.innerHTML = `<option value="">${allLabel}</option>` + values.map(v => `<option value="${esc(v)}">${esc(v)}</option>`).join("");
+        if(values.includes(current)) el.value = current;
+      }
+    }
+
+    function populateFilters(){
+      setSelectOptions("fmunicipio", unique(RAW.map(d=>d.MUNICIPIO)));
+      setSelectOptions("fconcepto", unique(RAW.map(d=>conceptoLabel(d.CONCEPTO))));
+      setSelectOptions("fclasificacion", unique(RAW.map(d=>d["CLASIFICACIÓN"] || "SIN CLASIFICACIÓN")));
+      setSelectOptions("fentidad", unique(RAW.map(d=>d.ENTIDAD)), "Todas");
+      setSelectOptions("fanio", unique(RAW.map(d=>d.ANIO_VISITA).map(String)));
+      setSelectOptions("festadoCoord", unique(RAW.map(d=>d.ESTADO_MAPA)));
+      setSelectOptions("fempresa", unique(RAW.map(d=>d.NOMBRE_EMPRESA)), "Todas");
+    }
+
+    function applyFilters(){
+      const fm = document.getElementById("fmunicipio").value;
+      const fc = document.getElementById("fconcepto").value;
+      const fcl = document.getElementById("fclasificacion").value;
+      const fe = document.getElementById("fentidad").value;
+      const fa = document.getElementById("fanio").value;
+      const fcoord = document.getElementById("festadoCoord").value;
+      const femp = document.getElementById("fempresa").value;
+
+      LIST = RAW.filter(d => {
+        if(fm && d.MUNICIPIO !== fm) return false;
+        if(fc && conceptoLabel(d.CONCEPTO) !== fc) return false;
+        if(fcl && (d["CLASIFICACIÓN"] || "SIN CLASIFICACIÓN") !== fcl) return false;
+        if(fe && d.ENTIDAD !== fe) return false;
+        if(fa && String(d.ANIO_VISITA) !== String(fa)) return false;
+        if(fcoord && d.ESTADO_MAPA !== fcoord) return false;
+        if(femp && d.NOMBRE_EMPRESA !== femp) return false;
+        if(chartMunicipioFilter && d.MUNICIPIO !== chartMunicipioFilter) return false;
+        if(chartConceptoFilter && conceptoLabel(d.CONCEPTO) !== chartConceptoFilter) return false;
+        if(chartClasificacionFilter && (d["CLASIFICACIÓN"] || "SIN CLASIFICACIÓN") !== chartClasificacionFilter) return false;
+        if(mapConceptoFilter && conceptoLabel(d.CONCEPTO) !== mapConceptoFilter) return false;
+        return true;
+      });
+
+      renderActiveFilters();
+      renderKPIs();
+      renderMap();
+      renderMapSummary();
+      renderCharts();
+      renderTable();
+    }
+
+    function renderActiveFilters(){
+      const wrap = document.getElementById("activeFilters");
+      const chips = [];
+      const add = (label, value) => { if(value) chips.push(`<span class="active-filter-chip"><span class="label">${label}:</span> ${esc(value)}</span>`); };
+      add("Municipio", document.getElementById("fmunicipio").value);
+      add("Concepto", document.getElementById("fconcepto").value);
+      add("Clasificación", document.getElementById("fclasificacion").value);
+      add("Entidad", document.getElementById("fentidad").value);
+      add("Año", document.getElementById("fanio").value);
+      add("Estado coord.", document.getElementById("festadoCoord").value);
+      add("Empresa", document.getElementById("fempresa").value);
+      add("Gráfico municipio", chartMunicipioFilter);
+      add("Gráfico concepto", chartConceptoFilter);
+      add("Gráfico clasificación", chartClasificacionFilter);
+      add("Mapa concepto", mapConceptoFilter);
+      wrap.innerHTML = chips.length ? chips.join("") : `<span class="text-muted">Sin filtros adicionales</span>`;
+    }
+
+    function renderKPIs(){
+      const municipios = unique(LIST.map(d=>d.MUNICIPIO));
+      const entidades = unique(LIST.map(d=>d.ENTIDAD));
+      document.getElementById("kpiTotal").textContent = fmtInt(LIST.length);
+      document.getElementById("kpiMunicipios").textContent = fmtInt(municipios.length);
+      document.getElementById("kpiConCoord").textContent = fmtInt(LIST.filter(hasCoord).length);
+      document.getElementById("kpiTerrestre").textContent = fmtInt(LIST.filter(d=>norm(d["CLASIFICACIÓN"])==="TERRESTRE").length);
+      document.getElementById("kpiAerea").textContent = fmtInt(LIST.filter(d=>norm(d["CLASIFICACIÓN"])==="AEREA").length);
+      document.getElementById("kpiEntidades").textContent = fmtInt(entidades.length);
+      document.getElementById("kpiFavorable").textContent = fmtInt(LIST.filter(d=>conceptoKey(d.CONCEPTO)==="favorable").length);
+      document.getElementById("kpiFavReq").textContent = fmtInt(LIST.filter(d=>conceptoKey(d.CONCEPTO)==="favreq").length);
+      document.getElementById("kpiSinConcepto").textContent = fmtInt(LIST.filter(d=>conceptoKey(d.CONCEPTO)==="sinconcepto").length);
+    }
+
+    function initMap(){
+      if(!window.L){
+        const el = document.getElementById("map");
+        if(el) el.innerHTML = `<div class="p-4 text-center text-muted">No se pudo cargar Leaflet. Revisa la conexión a internet o abre el archivo desde un servidor local.</div>`;
+        return;
+      }
+      MAP = L.map("map", {preferCanvas:true, maxBounds: VALLE_BOUNDS.pad(0.35), maxBoundsViscosity:0.25}).setView(VALLE_CENTER, 8);
+
+      baseLayers.cartoLight = L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+        attribution:"&copy; OpenStreetMap &copy; CARTO", maxZoom:20
+      }).addTo(MAP);
+      baseLayers.esriTopo = L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}", {
+        attribution:"Tiles &copy; Esri"
+      });
+      baseLayers.esriImagery = L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", {
+        attribution:"Tiles &copy; Esri"
+      });
+      baseLayers.osm = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution:"&copy; OpenStreetMap contributors"
+      });
+
+      dataLayerGroup = L.layerGroup().addTo(MAP);
+      markerCluster = (L.markerClusterGroup ? L.markerClusterGroup({showCoverageOnHover:false, maxClusterRadius:42}) : L.layerGroup()).addTo(MAP);
+
+      const canUseEsri = !!(L.esri && L.esri.featureLayer);
+      if(!canUseEsri){
+        console.warn("Esri Leaflet no está disponible. El mapa cargará puntos y mapas base sin capas territoriales.");
+      }
+
+      if(canUseEsri){
+      layerRefs.municipiosUES = L.esri.featureLayer({
+        url: URL_MUNICIPIOS_UES,
+        style: { color:"#0f766e", weight:2.2, fillColor:"#2dd4bf", fillOpacity:0.04 }
+      });
+
+      layerRefs.municipiosValle = L.esri.featureLayer({
+        url: URL_MUNICIPIO_VALLE,
+        style: function(feature){
+          const p = feature?.properties || {};
+          const nombre = p.MPIO_CNMBR || p.MUNICIPIO || p.NOM_MUN || p.NOMBRE || p.MPIO || p.NAME || "";
+          const seleccionado = document.getElementById("fmunicipio")?.value || chartMunicipioFilter || "";
+          const isSelected = seleccionado && norm(nombre) === norm(seleccionado);
+          return {
+            color: isSelected ? "#1d4ed8" : "#8b5cf6",
+            weight: isSelected ? 4 : 2.2,
+            fillColor: isSelected ? "#93c5fd" : "#c4b5fd",
+            fillOpacity: isSelected ? 0.18 : 0.00,
+            opacity: 0.95
+          };
+        }
+      }).addTo(MAP);
+
+      layerRefs.municipiosValleLabels = L.layerGroup().addTo(MAP);
+      layerRefs.municipiosValle.on("load", () => {
+        renderMunicipiosLabels();
+      });
+
+      layerRefs.veredasValle = L.esri.featureLayer({
+        url: URL_VEREDAS_VALLE,
+        style: { color:"#c9ced6", weight:0.8, fillColor:"#f5f6f7", fillOpacity:0.00, opacity:0.9 }
+      }).addTo(MAP);
+
+      layerRefs.centrosPoblados = L.esri.featureLayer({
+        url: URL_CENTROS_POBLADOS,
+        pointToLayer: (geojson, latlng) => L.circleMarker(latlng, {radius:4, color:"#b45309", weight:1, fillColor:"#f59e0b", fillOpacity:.8})
+      }).addTo(MAP);
+
+      layerRefs.turbiedad = L.esri.featureLayer({
+        url: URL_TURBIEDAD,
+        pointToLayer: (geojson, latlng) => L.circleMarker(latlng, {radius:5, color:"#0369a1", weight:1.2, fillColor:"#38bdf8", fillOpacity:.85})
+      });
+
+      layerRefs.viasPrincipales = L.esri.featureLayer({
+        url: URL_VIAS,
+        style: {color:"#475569", weight:1.8, opacity:.75}
+      });
+
+      layerRefs.rios = L.esri.featureLayer({
+        url: URL_RIOS,
+        style: {color:"#0ea5e9", weight:1.8, opacity:.75}
+      });
+
+      layerRefs.riosLabels = L.layerGroup();
+      layerRefs.rios.on("load", () => renderRiosLabels());
+
+      layerRefs.valleContorno = L.esri.featureLayer({
+        url: URL_VALLE_CONTORNO,
+        style: {color:"#111827", weight:2.5, fillOpacity:0, opacity:.85}
+      }).addTo(MAP);
+      }
+
+      initLayerPanel();
+      initLegend();
+      setTimeout(() => fitValleBounds(), 350);
+      document.getElementById("btnFit")?.addEventListener("click", () => fitValleBounds());
+      document.getElementById("btnGeoJSON")?.addEventListener("click", downloadGeoJSON);
+    }
+
+    function selectedLabelStyle(nombre){
+      const selected = document.getElementById("fmunicipio")?.value || chartMunicipioFilter || "";
+      if(selected && norm(nombre) === norm(selected)){
+        return '<span style="background:rgba(219,234,254,.95);border:1px solid #2563eb;color:#1d4ed8;font-size:12px;font-weight:800;padding:2px 6px;border-radius:8px;">';
+      }
+      return '<span>';
+    }
+
+    function renderMunicipiosLabels(){
+      const grp = layerRefs.municipiosValleLabels;
+      if(!grp || !layerRefs.municipiosValle) return;
+      grp.clearLayers();
+      layerRefs.municipiosValle.eachFeature(function(featureLayer){
+        const p = featureLayer.feature?.properties || {};
+        const nombre = p.MPIO_CNMBR || p.MUNICIPIO || p.NOM_MUN || p.NOMBRE || p.MPIO || p.NAME || "";
+        if(!nombre || !featureLayer.getBounds) return;
+        const b = featureLayer.getBounds();
+        if(!b || !b.isValid()) return;
+        L.marker(b.getCenter(), {
+          interactive:false,
+          icon:L.divIcon({className:"municipio-label", html:`<div>${selectedLabelStyle(nombre)}${esc(nombre)}</span></div>`})
+        }).addTo(grp);
+      });
+    }
+
+
+    function renderRiosLabels(){
+      const grp = layerRefs.riosLabels;
+      if(!grp || !layerRefs.rios) return;
+      grp.clearLayers();
+      layerRefs.rios.eachFeature(function(featureLayer){
+        const p = featureLayer.feature?.properties || {};
+        const nombre = p.NOM1_DRENAJE || p.NOMBRE || p.RIO || '';
+        if(!nombre || !featureLayer.getBounds) return;
+        const b = featureLayer.getBounds();
+        if(!b || !b.isValid()) return;
+        L.marker(b.getCenter(), {
+          interactive:false,
+          icon:L.divIcon({className:'rio-label', html:`<div>${esc(nombre)}</div>`})
+        }).addTo(grp);
+      });
+    }
+
+    function markerIcon(concepto){
+      const cls = conceptoKey(concepto);
+      return L.divIcon({className:"", html:`<div class="empresa-marker ${cls}"></div>`, iconSize:[18,18], iconAnchor:[9,9]});
+    }
+
+
+    function refreshMunicipiosStyle(){
+      if(!layerRefs.municipiosValle || !layerRefs.municipiosValle.eachFeature) return;
+      const selected = document.getElementById("fmunicipio")?.value || chartMunicipioFilter || "";
+      layerRefs.municipiosValle.eachFeature(function(featureLayer){
+        const p = featureLayer.feature?.properties || {};
+        const nombre = p.MPIO_CNMBR || p.MUNICIPIO || p.NOM_MUN || p.NOMBRE || p.MPIO || p.NAME || "";
+        const isSelected = selected && norm(nombre) === norm(selected);
+        if(featureLayer.setStyle){
+          featureLayer.setStyle({
+            color: isSelected ? "#1d4ed8" : "#8b5cf6",
+            weight: isSelected ? 4 : 2.2,
+            fillColor: isSelected ? "#93c5fd" : "#c4b5fd",
+            fillOpacity: isSelected ? 0.18 : 0.00,
+            opacity: 0.95
+          });
+        }
+      });
+      renderMunicipiosLabels();
+    }
+
+    function renderMap(){
+      markerCluster.clearLayers();
+      refreshMunicipiosStyle();
+      const bounds = [];
+      LIST.filter(hasCoord).forEach(d => {
+        const lat = num(d.LATITUD), lon = num(d.LONGITUD);
+        const marker = L.marker([lat, lon], {icon:markerIcon(d.CONCEPTO)});
+        const html = `
+          <div class="popup-empresa">
+            <div class="popup-title">${esc(d.NOMBRE_EMPRESA)}</div>
+            <div class="popup-subtitle">${esc(d.MUNICIPIO || "")} · ${esc(d["CLASIFICACIÓN"] || "SIN CLASIFICACIÓN")}</div>
+            <div class="popup-row"><span class="popup-label">Concepto:</span> <span style="font-weight:800;color:${conceptoColor(d.CONCEPTO)}">${esc(conceptoLabel(d.CONCEPTO))}</span></div>
+            <div class="popup-row"><span class="popup-label">Entidad:</span> ${esc(d.ENTIDAD || "")}</div>
+            <div class="popup-row"><span class="popup-label">Dirección:</span> ${esc(d["DIRECCIÓN"] || "")}</div>
+            <div class="popup-row"><span class="popup-label">Fecha visita:</span> ${esc(d["FECHA DE VISITA"] || "SIN DATO")}</div>
+            <div class="popup-section">
+              <div class="popup-row"><span class="popup-label">Correo:</span> ${esc(d["CORREO ELECTRÓNICO"] || "SIN DATO")}</div>
+              <div class="popup-row"><span class="popup-label">Teléfono:</span> ${esc(d["TELÉFONO"] || "SIN DATO")}</div>
+              <div class="popup-row"><span class="popup-label">Coordenadas:</span> ${lat.toFixed(6)}, ${lon.toFixed(6)}</div>
+            </div>
+          </div>`;
+        marker.bindPopup(html);
+        marker.on("click", () => {
+          if(table) table.search(d.NOMBRE_EMPRESA).draw();
+        });
+        markerCluster.addLayer(marker);
+        bounds.push([lat,lon]);
+      });
+      document.getElementById("mapCount").textContent = fmtInt(bounds.length) + " puntos";
+      // Mantener la lectura territorial completa del Valle del Cauca.
+      // No se ajusta automáticamente al bbox de los puntos porque, con pocos registros,
+      // el mapa queda demasiado cerrado y pierde contexto departamental.
+      fitValleBounds();
+    }
+
+    function renderMapSummary(){
+      const total = LIST.length;
+      const conCoord = LIST.filter(hasCoord).length;
+      const conceptos = countBy(LIST, "CONCEPTO");
+      const clasificaciones = countBy(LIST, "CLASIFICACIÓN");
+
+      const chipsConcepto = Object.entries(conceptos).map(([k,v]) => {
+        const label = conceptoLabel(k === "SIN DATO" ? "" : k);
+        const active = mapConceptoFilter === label ? " badge-active" : "";
+        return `<span class="concepto-badge${active}" style="background:${conceptoColor(label)}22;color:#111827;border-color:${conceptoColor(label)}55" onclick="setMapConceptoFilter('${esc(label)}')">${esc(label)}: <b>${v}</b></span>`;
+      }).join("");
+
+      const chipsClase = Object.entries(clasificaciones).map(([k,v]) => 
+        `<span class="clase-badge" style="background:#eef4ff;color:#1d4ed8;border-color:#c7d7fe">${esc(k)}: <b>${v}</b></span>`
+      ).join("");
+
+      document.getElementById("mapResumen").innerHTML = `
+        <div class="map-summary-line">
+          <span><strong>${fmtInt(total)}</strong> empresas filtradas</span>
+          <span>·</span>
+          <span><strong>${fmtInt(conCoord)}</strong> con coordenada válida</span>
+        </div>
+        <div class="map-summary-label">Concepto sanitario</div>
+        <div class="map-summary-chips">${chipsConcepto || '<span class="text-muted">Sin datos</span>'}</div>
+        <div class="map-summary-label">Clasificación</div>
+        <div class="map-summary-chips">${chipsClase || '<span class="text-muted">Sin datos</span>'}</div>
+        <div class="map-summary-subnote">Haz clic sobre un concepto para activar o quitar filtro en el mapa.</div>`;
+    }
+
+
+    function fitValleBounds(){
+      if(!MAP) return;
+      MAP.fitBounds(VALLE_BOUNDS, {padding:[12,12], maxZoom:8});
+    }
+
+    function fitBoundsToPoints(rows){
+      const pts = (rows || LIST).filter(hasCoord).map(d => [num(d.LATITUD), num(d.LONGITUD)]);
+      if(pts.length){
+        MAP.fitBounds(pts, {padding:[30,30], maxZoom:12});
+      }else{
+        fitValleBounds();
+      }
+    }
+
+    function buildFilteredGeoJSON(){
+      return {
+        type: "FeatureCollection",
+        name: "Empresas_Plaguicidas_filtrado",
+        features: LIST.filter(hasCoord).map(d => ({
+          type: "Feature",
+          geometry: {type:"Point", coordinates:[num(d.LONGITUD), num(d.LATITUD)]},
+          properties: {...d}
+        }))
+      };
+    }
+
+    function downloadGeoJSON(){
+      const geojson = buildFilteredGeoJSON();
+      const blob = new Blob([JSON.stringify(geojson, null, 2)], {type:"application/geo+json;charset=utf-8"});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      const stamp = new Date().toISOString().slice(0,10).replaceAll("-","");
+      a.href = url;
+      a.download = `Empresas_Plaguicidas_filtrado_${stamp}.geojson`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    }
+
+    window.setMapConceptoFilter = function(label){
+      mapConceptoFilter = mapConceptoFilter === label ? "" : label;
+      applyFilters();
+    }
+
+    function initLayerPanel(){
+      document.getElementById("layerToggle").addEventListener("click", () => document.getElementById("layerPanel").classList.toggle("collapsed"));
+      document.getElementById("layerClose").addEventListener("click", () => document.getElementById("layerPanel").classList.add("collapsed"));
+      document.querySelectorAll("input[name='basemap']").forEach(r => {
+        r.addEventListener("change", () => {
+          Object.values(baseLayers).forEach(l => MAP.removeLayer(l));
+          baseLayers[r.value].addTo(MAP);
+        });
+      });
+      document.querySelectorAll("#layerPanel input[type='checkbox'][data-layer]").forEach(chk => {
+        chk.addEventListener("change", () => {
+          const name = chk.dataset.layer;
+          if(name === "empresas"){
+            if(chk.checked) MAP.addLayer(markerCluster); else MAP.removeLayer(markerCluster);
+            return;
+          }
+          const layer = layerRefs[name];
+          if(!layer) return;
+          if(chk.checked) layer.addTo(MAP); else MAP.removeLayer(layer);
+        });
+      });
+    }
+
+    function initLegend(){
+      document.getElementById("legendToggle").addEventListener("click", () => document.getElementById("legendPanel").classList.toggle("collapsed"));
+      document.getElementById("legendClose").addEventListener("click", () => document.getElementById("legendPanel").classList.add("collapsed"));
+      document.getElementById("legend").innerHTML = `
+        <div class="legend-title">Establecimientos registrados</div>
+        <div><i style="background:#16a34a"></i>Favorable</div>
+        <div><i style="background:#f1bf45"></i>Favorable con requerimientos</div>
+        <div><i style="background:#667085"></i>Sin concepto</div>
+        <hr class="my-2">
+        <div class="legend-title">Capas territoriales</div>
+        <div><i style="background:#ffffff;border:2px solid #8b5cf6"></i>Municipios Valle</div>
+        <div><i style="background:#f5f6f7;border-color:#c9ced6"></i>Veredas Valle</div>`;
+    }
+
+    function makeChart(canvasId, type, labels, data, options={}, colors=null){
+      if(charts[canvasId]) charts[canvasId].destroy();
+      const ctx = document.getElementById(canvasId);
+      const palette = colors || labels.map(l => conceptoColor(l));
+      charts[canvasId] = new Chart(ctx, {
+        type,
+        data: {labels, datasets:[{label:"Empresas", data, backgroundColor:palette, borderColor:palette, borderWidth:1}]},
+        options: {
+          responsive:true,
+          maintainAspectRatio:false,
+          plugins:{
+            legend:{display:type==="doughnut", position:"bottom"},
+            datalabels:{
+              color:"#111827", anchor:"end", align:"top", font:{weight:"bold"},
+              formatter:(v)=>v ? fmtInt(v) : ""
+            }
+          },
+          scales: type==="doughnut" ? {} : {
+            y:{beginAtZero:true,ticks:{precision:0}},
+            x:{ticks:{autoSkip:false, maxRotation:45, minRotation:0}}
+          },
+          ...options
+        }
+      });
+      return charts[canvasId];
+    }
+
+    function renderCharts(){
+      const concepto = countBy(LIST.map(d=>({CONCEPTO: conceptoLabel(d.CONCEPTO)})), "CONCEPTO");
+      const labelsC = Object.keys(concepto);
+      const chartC = makeChart("chartConcepto", "doughnut", labelsC, labelsC.map(k=>concepto[k]));
+      chartC.options.onClick = (evt, els) => {
+        if(!els.length) return;
+        const label = labelsC[els[0].index];
+        chartConceptoFilter = chartConceptoFilter === label ? "" : label;
+        applyFilters();
+      };
+
+      const clasif = countBy(LIST, "CLASIFICACIÓN");
+      const labelsCl = Object.keys(clasif);
+      const chartCl = makeChart("chartClasificacion", "bar", labelsCl, labelsCl.map(k=>clasif[k]), {}, ["#1d4ed8", "#38bdf8", "#94a3b8"]);
+      chartCl.options.onClick = (evt, els) => {
+        if(!els.length) return;
+        const label = labelsCl[els[0].index];
+        chartClasificacionFilter = chartClasificacionFilter === label ? "" : label;
+        applyFilters();
+      };
+
+      const mun = countBy(LIST, "MUNICIPIO");
+      const labelsM = Object.keys(mun).sort((a,b)=>mun[b]-mun[a]);
+      const chartM = makeChart("chartMunicipio", "bar", labelsM, labelsM.map(k=>mun[k]), {}, labelsM.map(() => "#2e64d2"));
+      chartM.options.indexAxis = "y";
+      chartM.options.scales = {x:{beginAtZero:true,ticks:{precision:0}}, y:{ticks:{autoSkip:false}}};
+      chartM.options.onClick = (evt, els) => {
+        if(!els.length) return;
+        const label = labelsM[els[0].index];
+        chartMunicipioFilter = chartMunicipioFilter === label ? "" : label;
+        applyFilters();
+      };
+      chartM.update();
+
+      const ent = countBy(LIST, "ENTIDAD");
+      const labelsE = Object.keys(ent).sort((a,b)=>ent[b]-ent[a]);
+      const chartE = makeChart("chartEntidad", "bar", labelsE, labelsE.map(k=>ent[k]), {}, labelsE.map(() => "#0f766e"));
+      chartE.options.indexAxis = "y";
+      chartE.options.scales = {x:{beginAtZero:true,ticks:{precision:0}}, y:{ticks:{autoSkip:false}}};
+      chartE.update();
+    }
+
+    function renderTable(){
+      const cols = [
+        {title:"ID", data:"ID"},
+        {title:"Empresa", data:"NOMBRE_EMPRESA"},
+        {title:"Municipio", data:"MUNICIPIO"},
+        {title:"Dirección", data:"DIRECCIÓN"},
+        {title:"Fecha visita", data:"FECHA DE VISITA"},
+        {title:"Concepto", data:"CONCEPTO", render:(d)=>`<span style="font-weight:800;color:${conceptoColor(d)}">${esc(conceptoLabel(d))}</span>`},
+        {title:"Clasificación", data:"CLASIFICACIÓN"},
+        {title:"Entidad", data:"ENTIDAD"},
+        {title:"Latitud", data:"LATITUD", render:(d)=> d !== null && d !== "" ? Number(d).toFixed(6) : ""},
+        {title:"Longitud", data:"LONGITUD", render:(d)=> d !== null && d !== "" ? Number(d).toFixed(6) : ""},
+        {title:"Estado coordenada", data:"ESTADO_MAPA"},
+        {title:"Correo", data:"CORREO ELECTRÓNICO"},
+        {title:"Teléfono", data:"TELÉFONO"}
+      ];
+      if(table){
+        table.clear();
+        table.rows.add(LIST);
+        table.draw();
+        return;
+      }
+      table = $("#tbl").DataTable({
+        data: LIST,
+        columns: cols,
+        responsive:false,
+        scrollX:true,
+        pageLength:10,
+        dom:"Bfrtip",
+        buttons:[
+          {extend:"copyHtml5", text:"Copiar"},
+          {extend:"csvHtml5", text:"CSV", title:"Empresas_Plaguicidas_Filtrado"},
+          {extend:"excelHtml5", text:"Excel", title:"Empresas_Plaguicidas_Filtrado"},
+          {extend:"print", text:"Imprimir"}
+        ],
+        language:{url:"https://cdn.datatables.net/plug-ins/1.13.8/i18n/es-ES.json"}
+      });
+    }
+
+    function clearAllFilters(){
+      chartMunicipioFilter = "";
+      chartConceptoFilter = "";
+      chartClasificacionFilter = "";
+      mapConceptoFilter = "";
+      ["fmunicipio","fconcepto","fclasificacion","fentidad","fanio","festadoCoord","fempresa"].forEach(id => {
+        const el = document.getElementById(id);
+        if(el?.tomselect) el.tomselect.setValue("", true);
+        else if(el) el.value = "";
+      });
+      if(table) table.search("").columns().search("").draw();
+      applyFilters();
+    }
+
+    function initEvents(){
+      ["fmunicipio","fconcepto","fclasificacion","fentidad","fanio","festadoCoord","fempresa"].forEach(id => {
+        document.getElementById(id).addEventListener("change", applyFilters);
+      });
+      document.getElementById("btnFiltrar").addEventListener("click", applyFilters);
+      document.getElementById("btnLimpiar").addEventListener("click", clearAllFilters);
+      document.getElementById("btnClearActiveFilters").addEventListener("click", clearAllFilters);
+      document.getElementById("tablaDetalleCollapse")?.addEventListener("shown.bs.collapse", () => {
+        if(table) table.columns.adjust().draw(false);
+      });
+
+      document.getElementById("cardKpiFavorable").addEventListener("click", () => { setKpiConcepto("Favorable"); });
+      document.getElementById("cardKpiFavReq").addEventListener("click", () => { setKpiConcepto("Favorable con Requerimientos"); });
+      document.getElementById("cardKpiSinConcepto").addEventListener("click", () => { setKpiConcepto("SIN CONCEPTO"); });
+    }
+
+    function setKpiConcepto(value){
+      if(chartConceptoFilter === value) chartConceptoFilter = ""; else chartConceptoFilter = value;
+      applyFilters();
+    }
+
+    async function main(){
+      await loadCsv();
+      initTomSelects();
+      populateFilters();
+      initMap();
+      initEvents();
+      applyFilters();
+    }
+
+    main().catch(err => {
+      console.error("Error inicializando tablero", err);
+      const badge = document.getElementById("lastUpdate");
+      if(badge){ badge.textContent = "Error al cargar datos"; badge.className = "badge text-bg-danger last-update-badge"; }
+      const holder = document.getElementById("mapResumen");
+      if(holder) holder.innerHTML = `<strong>No se pudo inicializar el tablero.</strong> Revisa la consola del navegador o la conexión a internet.`;
+    });
+  </script>
+</body>
+</html>

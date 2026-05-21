@@ -1,0 +1,677 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.23002509999999,
+          3.9965803
+        ]
+      },
+      "properties": {
+        "ID": "1",
+        "NOMBRE_EMPRESA": "EXTINPLAGAS DEL VALLE",
+        "ENTIDAD": "Secretaría Departamental de Salud del Valle del Cauca-UESVALLE",
+        "DIRECCIÓN": "Carrera 7A # 5-39",
+        "MUNICIPIO": "San Pedro",
+        "Corregimiento": "",
+        "pais": "Colombia",
+        "Departamento": "Valle del Cauca",
+        "ubicación": "Colombia,Valle del Cauca,San Pedro,Carrera 7A # 5-39",
+        "TELÉFONO": "3186835145",
+        "CORREO ELECTRÓNICO": "extinplagasdelvalle@gmail.com",
+        "FECHA DE VISITA": "4/3/2025",
+        "CONCEPTO": "Favorable",
+        "CLASIFICACIÓN": "Terrestre",
+        "ADDRESS_KML": "Colombia,Valle del Cauca,San Pedro,Carrera 7A # 5-39",
+        "ALTITUD": "0",
+        "ESTADO_COORDENADA": "CON COORDENADA",
+        "FUENTE_COORDENADA": "GEOMETRIA_POINT_KML",
+        "ESTADO_MAPA": "CON COORDENADA",
+        "ANIO_VISITA": 2025
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.161767,
+          4.178879999999999
+        ]
+      },
+      "properties": {
+        "ID": "2",
+        "NOMBRE_EMPRESA": "EMPRESA DE SERVICIOS DE SALUD OCUPACIONAL-SANEAMIENTO INDUSTRIAL",
+        "ENTIDAD": "Secretaría Departamental de Salud del Valle del Cauca-UESVALLE",
+        "DIRECCIÓN": "Carrera 4 # 23-89",
+        "MUNICIPIO": "Andalucía",
+        "Corregimiento": "Ricaurte",
+        "pais": "Colombia",
+        "Departamento": "Valle del Cauca",
+        "ubicación": "Colombia,Valle del Cauca,Andalucía,Carrera 4 # 23-89",
+        "TELÉFONO": "3177091500",
+        "CORREO ELECTRÓNICO": "saneamiento_industrial@hotmail.com",
+        "FECHA DE VISITA": "4/8/2025",
+        "CONCEPTO": "Favorable",
+        "CLASIFICACIÓN": "Terrestre",
+        "ADDRESS_KML": "Colombia,Valle del Cauca,Andalucía,Carrera 4 # 23-89",
+        "ALTITUD": "0",
+        "ESTADO_COORDENADA": "CON COORDENADA",
+        "FUENTE_COORDENADA": "GEOMETRIA_POINT_KML",
+        "ESTADO_MAPA": "CON COORDENADA",
+        "ANIO_VISITA": 2025
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.1679049232959,
+          4.16307441296611
+        ]
+      },
+      "properties": {
+        "ID": "3",
+        "NOMBRE_EMPRESA": "STANDARD SAFETY PESTS CONTROL S.A.S",
+        "ENTIDAD": "Secretaría Departamental de Salud del Valle del Cauca-UESVALLE",
+        "DIRECCIÓN": "Calle 6B # 1 -11",
+        "MUNICIPIO": "Andalucía",
+        "Corregimiento": "",
+        "pais": "Colombia",
+        "Departamento": "Valle del Cauca",
+        "ubicación": "Colombia,Valle del Cauca,Andalucía,Calle 6B # 1 -11",
+        "TELÉFONO": "3122104686/3102839614",
+        "CORREO ELECTRÓNICO": "standardsafetypestcontrol@gmail.com",
+        "FECHA DE VISITA": "25/04/2025",
+        "CONCEPTO": "Favorable con Requerimientos",
+        "CLASIFICACIÓN": "Terrestre",
+        "ADDRESS_KML": "Colombia,Valle del Cauca,Andalucía,Calle 6B # 1 -11",
+        "ALTITUD": "",
+        "ESTADO_COORDENADA": "SIN COORDENADA",
+        "FUENTE_COORDENADA": "COORDENADA_DISPONIBLE_EN_ARCHIVO",
+        "ESTADO_MAPA": "CON COORDENADA",
+        "ANIO_VISITA": 2025
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.82294519999999,
+          4.3324356
+        ]
+      },
+      "properties": {
+        "ID": "4",
+        "NOMBRE_EMPRESA": "FUMIGACIONES EL TREBOL´S",
+        "ENTIDAD": "Secretaría Departamental de Salud del Valle del Cauca-UESVALLE",
+        "DIRECCIÓN": "Calle 8 # 7-05",
+        "MUNICIPIO": "Caicedonia",
+        "Corregimiento": "",
+        "pais": "Colombia",
+        "Departamento": "Valle del Cauca",
+        "ubicación": "Colombia,Valle del Cauca,Caicedonia,Calle 8 # 7-05",
+        "TELÉFONO": "3117602108",
+        "CORREO ELECTRÓNICO": "lucesduque8@hotmail.com",
+        "FECHA DE VISITA": "28/03/2025",
+        "CONCEPTO": "Favorable con Requerimientos",
+        "CLASIFICACIÓN": "Terrestre",
+        "ADDRESS_KML": "Colombia,Valle del Cauca,Caicedonia,Calle 8 # 7-05",
+        "ALTITUD": "0",
+        "ESTADO_COORDENADA": "CON COORDENADA",
+        "FUENTE_COORDENADA": "GEOMETRIA_POINT_KML",
+        "ESTADO_MAPA": "CON COORDENADA",
+        "ANIO_VISITA": 2025
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.36013299999999,
+          3.4461963
+        ]
+      },
+      "properties": {
+        "ID": "5",
+        "NOMBRE_EMPRESA": "ING MEGASERVICIOS 2   S.A.S",
+        "ENTIDAD": "Secretaría Departamental de Salud del Valle del Cauca-UESVALLE",
+        "DIRECCIÓN": "Finca El Oasis Vereda Tierra Blanca",
+        "MUNICIPIO": "Roldanillo",
+        "Corregimiento": "",
+        "pais": "Colombia",
+        "Departamento": "Valle del Cauca",
+        "ubicación": "Colombia,Valle del Cauca,Roldanillo,Finca El Oasis Vereda Tierra Blanca",
+        "TELÉFONO": "3162855286\n3156247916",
+        "CORREO ELECTRÓNICO": "ing-megaservicios@gmail.com",
+        "FECHA DE VISITA": "12/19/2025",
+        "CONCEPTO": "Favorable",
+        "CLASIFICACIÓN": "Terrestre",
+        "ADDRESS_KML": "Colombia,Valle del Cauca,Roldanillo,Finca El Oasis Vereda Tierra Blanca",
+        "ALTITUD": "0",
+        "ESTADO_COORDENADA": "CON COORDENADA",
+        "FUENTE_COORDENADA": "GEOMETRIA_POINT_KML",
+        "ESTADO_MAPA": "CON COORDENADA",
+        "ANIO_VISITA": 2025
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.9344089,
+          4.2664484
+        ]
+      },
+      "properties": {
+        "ID": "6",
+        "NOMBRE_EMPRESA": "EMPRESA DE SERVICIOS DE SANEAMIENTO AMBIENTAL SERVISAM E.A.T",
+        "ENTIDAD": "Secretaría Departamental de Salud del Valle del Cauca-UESVALLE",
+        "DIRECCIÓN": "Calle 53 # 50-57",
+        "MUNICIPIO": "Sevilla",
+        "Corregimiento": "",
+        "pais": "Colombia",
+        "Departamento": "Valle del Cauca",
+        "ubicación": "Colombia,Valle del Cauca,Sevilla,Calle 53 # 50-57",
+        "TELÉFONO": "3154934270/3113618406",
+        "CORREO ELECTRÓNICO": "servisameat@yahoo.com",
+        "FECHA DE VISITA": "08/05/2025",
+        "CONCEPTO": "Favorable",
+        "CLASIFICACIÓN": "Terrestre",
+        "ADDRESS_KML": "Colombia,Valle del Cauca,Sevilla,Calle 53 # 50-57",
+        "ALTITUD": "0",
+        "ESTADO_COORDENADA": "CON COORDENADA",
+        "FUENTE_COORDENADA": "GEOMETRIA_POINT_KML",
+        "ESTADO_MAPA": "CON COORDENADA",
+        "ANIO_VISITA": 2025
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.32908669999999,
+          3.7630793
+        ]
+      },
+      "properties": {
+        "ID": "7",
+        "NOMBRE_EMPRESA": "UNIDAD TÉCNICA EN SANEAMIENTO",
+        "ENTIDAD": "Secretaría Departamental de Salud del Valle del Cauca-UESVALLE",
+        "DIRECCIÓN": "Carrera 3 # 4-80",
+        "MUNICIPIO": "Guacarí",
+        "Corregimiento": "",
+        "pais": "Colombia",
+        "Departamento": "Valle del Cauca",
+        "ubicación": "Colombia,Valle del Cauca,Guacarí,Carrera 3 # 4-80",
+        "TELÉFONO": "3147319578",
+        "CORREO ELECTRÓNICO": "utesafumigaciones@hotmail.com",
+        "FECHA DE VISITA": "4/9/2025",
+        "CONCEPTO": "Favorable",
+        "CLASIFICACIÓN": "Terrestre",
+        "ADDRESS_KML": "Colombia,Valle del Cauca,Guacarí,Carrera 3 # 4-80",
+        "ALTITUD": "0",
+        "ESTADO_COORDENADA": "CON COORDENADA",
+        "FUENTE_COORDENADA": "GEOMETRIA_POINT_KML",
+        "ESTADO_MAPA": "CON COORDENADA",
+        "ANIO_VISITA": 2025
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.53263059999999,
+          3.8853485
+        ]
+      },
+      "properties": {
+        "ID": "8",
+        "NOMBRE_EMPRESA": "FUMIBUGA S.A.S",
+        "ENTIDAD": "Secretaría Departamental de Salud del Valle del Cauca-UESVALLE",
+        "DIRECCIÓN": "Parcelación Calima Canaguaros BL 12 Ap 3",
+        "MUNICIPIO": "Calima El Darién",
+        "Corregimiento": "",
+        "pais": "Colombia",
+        "Departamento": "Valle del Cauca",
+        "ubicación": "Colombia,Valle del Cauca,Calima El Darién,Parcelación Calima Canaguaros BL 12 Ap 3",
+        "TELÉFONO": "3154834030",
+        "CORREO ELECTRÓNICO": "gerfra587@yahoo.es",
+        "FECHA DE VISITA": "26/03/2025",
+        "CONCEPTO": "Favorable",
+        "CLASIFICACIÓN": "Terrestre",
+        "ADDRESS_KML": "Colombia,Valle del Cauca,Calima El Darién,Parcelación Calima Canaguaros BL 12 Ap 3",
+        "ALTITUD": "0",
+        "ESTADO_COORDENADA": "CON COORDENADA",
+        "FUENTE_COORDENADA": "GEOMETRIA_POINT_KML",
+        "ESTADO_MAPA": "CON COORDENADA",
+        "ANIO_VISITA": 2025
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.311381,
+          3.681089
+        ]
+      },
+      "properties": {
+        "ID": "9",
+        "NOMBRE_EMPRESA": "FUMIORGANICOS FL",
+        "ENTIDAD": "Secretaría Departamental de Salud del Valle del Cauca-UESVALLE",
+        "DIRECCIÓN": "Calle 1 # 10-08",
+        "MUNICIPIO": "El Cerrito",
+        "Corregimiento": "",
+        "pais": "Colombia",
+        "Departamento": "Valle del Cauca",
+        "ubicación": "Colombia,Valle del Cauca,El Cerrito,Calle 1 # 10-08",
+        "TELÉFONO": "2571620/3154734951",
+        "CORREO ELECTRÓNICO": "fumiorganicos.fl@gmail.com",
+        "FECHA DE VISITA": "5/9/2025",
+        "CONCEPTO": "Favorable",
+        "CLASIFICACIÓN": "Terrestre",
+        "ADDRESS_KML": "Colombia,Valle del Cauca,El Cerrito,Calle 1 # 10-08",
+        "ALTITUD": "0",
+        "ESTADO_COORDENADA": "CON COORDENADA",
+        "FUENTE_COORDENADA": "GEOMETRIA_POINT_KML",
+        "ESTADO_MAPA": "CON COORDENADA",
+        "ANIO_VISITA": 2025
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.3153562,
+          3.6832507
+        ]
+      },
+      "properties": {
+        "ID": "10",
+        "NOMBRE_EMPRESA": "TERRACONTROL CIP S.A.S",
+        "ENTIDAD": "Secretaría Departamental de Salud del Valle del Cauca-UESVALLE",
+        "DIRECCIÓN": "Calle 6 # 14-59 Local 1",
+        "MUNICIPIO": "El Cerrito",
+        "Corregimiento": "",
+        "pais": "Colombia",
+        "Departamento": "Valle del Cauca",
+        "ubicación": "Colombia,Valle del Cauca,El Cerrito,Calle 6 # 14-59 Local 1",
+        "TELÉFONO": "3175015525",
+        "CORREO ELECTRÓNICO": "gerencia@terracontrol.com.co",
+        "FECHA DE VISITA": "5/9/2025",
+        "CONCEPTO": "Favorable",
+        "CLASIFICACIÓN": "Terrestre",
+        "ADDRESS_KML": "Colombia,Valle del Cauca,El Cerrito,Calle 6 # 14-59 Local 1",
+        "ALTITUD": "0",
+        "ESTADO_COORDENADA": "CON COORDENADA",
+        "FUENTE_COORDENADA": "GEOMETRIA_POINT_KML",
+        "ESTADO_MAPA": "CON COORDENADA",
+        "ANIO_VISITA": 2025
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.0725439,
+          4.393408
+        ]
+      },
+      "properties": {
+        "ID": "11",
+        "NOMBRE_EMPRESA": "SANEAMIENTO AMBIENTAL EMPRESA ASOCIATIVA DE TRABAJO",
+        "ENTIDAD": "Secretaría Departamental de Salud del Valle del Cauca-UESVALLE",
+        "DIRECCIÓN": "Carrera 10 # 7-74 Piso 2",
+        "MUNICIPIO": "Zarzal",
+        "Corregimiento": "",
+        "pais": "Colombia",
+        "Departamento": "Valle del Cauca",
+        "ubicación": "Colombia,Valle del Cauca,Zarzal,Carrera 10 # 7-74 Piso 2",
+        "TELÉFONO": "3168948759",
+        "CORREO ELECTRÓNICO": "juceberar@hotmail.com",
+        "FECHA DE VISITA": "21/05/2025",
+        "CONCEPTO": "Favorable",
+        "CLASIFICACIÓN": "Terrestre",
+        "ADDRESS_KML": "Colombia,Valle del Cauca,Zarzal,Carrera 10 # 7-74 Piso 2",
+        "ALTITUD": "0",
+        "ESTADO_COORDENADA": "CON COORDENADA",
+        "FUENTE_COORDENADA": "GEOMETRIA_POINT_KML",
+        "ESTADO_MAPA": "CON COORDENADA",
+        "ANIO_VISITA": 2025
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.0471589581045,
+          4.38825419030397
+        ]
+      },
+      "properties": {
+        "ID": "12",
+        "NOMBRE_EMPRESA": "SANEAMIENTO AMBIENTAL FUMIZAR",
+        "ENTIDAD": "Secretaría Departamental de Salud del Valle del Cauca-UESVALLE",
+        "DIRECCIÓN": "Manzana D Casa 11",
+        "MUNICIPIO": "Zarzal",
+        "Corregimiento": "Limones",
+        "pais": "Colombia",
+        "Departamento": "Valle del Cauca",
+        "ubicación": "Colombia,Valle del Cauca,Zarzal,Manzana D Casa 11",
+        "TELÉFONO": "3155776573",
+        "CORREO ELECTRÓNICO": "fumizar2013@hotmail.com",
+        "FECHA DE VISITA": "21/05/2025",
+        "CONCEPTO": "Favorable",
+        "CLASIFICACIÓN": "Terrestre",
+        "ADDRESS_KML": "Colombia,Valle del Cauca,Zarzal,limones",
+        "ALTITUD": "",
+        "ESTADO_COORDENADA": "SIN COORDENADA",
+        "FUENTE_COORDENADA": "COORDENADA_DISPONIBLE_EN_ARCHIVO",
+        "ESTADO_MAPA": "CON COORDENADA",
+        "ANIO_VISITA": 2025
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.52366479999999,
+          3.8195117
+        ]
+      },
+      "properties": {
+        "ID": "13",
+        "NOMBRE_EMPRESA": "MANTENIMIENTOS BAUTISTA",
+        "ENTIDAD": "Secretaría Departamental de Salud del Valle del Cauca-UESVALLE",
+        "DIRECCIÓN": "Calle 7 Cra 16 C Mz 11 Casa 5 Piso 3",
+        "MUNICIPIO": "Restrepo",
+        "Corregimiento": "",
+        "pais": "Colombia",
+        "Departamento": "Valle del Cauca",
+        "ubicación": "Colombia,Valle del Cauca,Restrepo,Calle 7 Cra 16 C Mz 11 Casa 5 Piso 3",
+        "TELÉFONO": "3136536048",
+        "CORREO ELECTRÓNICO": "mantenimientoyroceria@gmail.com",
+        "FECHA DE VISITA": "30/04/2025",
+        "CONCEPTO": "Favorable",
+        "CLASIFICACIÓN": "Terrestre",
+        "ADDRESS_KML": "Colombia,Valle del Cauca,Restrepo,Calle 7 Cra 16 C Mz 11 Casa 5 Piso 3",
+        "ALTITUD": "0",
+        "ESTADO_COORDENADA": "CON COORDENADA",
+        "FUENTE_COORDENADA": "GEOMETRIA_POINT_KML",
+        "ESTADO_MAPA": "CON COORDENADA",
+        "ANIO_VISITA": 2025
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.0887612,
+          4.3190617
+        ]
+      },
+      "properties": {
+        "ID": "14",
+        "NOMBRE_EMPRESA": "INGENIO RIOPAILA",
+        "ENTIDAD": "Secretaría Departamental de Salud del Valle del Cauca-UESVALLE",
+        "DIRECCIÓN": "La Paila",
+        "MUNICIPIO": "Zarzal",
+        "Corregimiento": "La Paila",
+        "pais": "Colombia",
+        "Departamento": "Valle del Cauca",
+        "ubicación": "Colombia,Valle del Cauca,Zarzal, ingenio riopaila",
+        "TELÉFONO": "",
+        "CORREO ELECTRÓNICO": "",
+        "FECHA DE VISITA": "",
+        "CONCEPTO": "",
+        "CLASIFICACIÓN": "Aérea",
+        "ADDRESS_KML": "Colombia,Valle del Cauca,Zarzal, ingenio riopaila",
+        "ALTITUD": "0",
+        "ESTADO_COORDENADA": "CON COORDENADA",
+        "FUENTE_COORDENADA": "GEOMETRIA_POINT_KML",
+        "ESTADO_MAPA": "CON COORDENADA",
+        "ANIO_VISITA": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.299314,
+          3.512143
+        ]
+      },
+      "properties": {
+        "ID": "15",
+        "NOMBRE_EMPRESA": "ABC FUMIGACIONES COLOMBIA S.A.S",
+        "ENTIDAD": "Secretaría de Salud de Palmira",
+        "DIRECCIÓN": "Carrera 26 A No 12A-60",
+        "MUNICIPIO": "Palmira",
+        "Corregimiento": "",
+        "pais": "Colombia",
+        "Departamento": "Valle del Cauca",
+        "ubicación": "Colombia,Valle del Cauca,Palmira,Carrera 26 A No 12A-60",
+        "TELÉFONO": "",
+        "CORREO ELECTRÓNICO": "gerencia@abcfumigaciones.com",
+        "FECHA DE VISITA": "2/23/2023",
+        "CONCEPTO": "Favorable",
+        "CLASIFICACIÓN": "Terrestre",
+        "ADDRESS_KML": "Colombia,Valle del Cauca,Palmira,Carrera 26 A No 12A-60",
+        "ALTITUD": "0",
+        "ESTADO_COORDENADA": "CON COORDENADA",
+        "FUENTE_COORDENADA": "GEOMETRIA_POINT_KML",
+        "ESTADO_MAPA": "CON COORDENADA",
+        "ANIO_VISITA": 2023
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.52121369999999,
+          3.4660225
+        ]
+      },
+      "properties": {
+        "ID": "16",
+        "NOMBRE_EMPRESA": "COLPLAGAS LTDA",
+        "ENTIDAD": "Secretaría de Salud Distrito de Santiago de Cali",
+        "DIRECCIÓN": "Calle 30 N No. 2 bis-46",
+        "MUNICIPIO": "Santiago de Cali",
+        "Corregimiento": "",
+        "pais": "Colombia",
+        "Departamento": "Valle del Cauca",
+        "ubicación": "Colombia,Valle del Cauca,Santiago de Cali,Calle 30 N No. 2 bis-46",
+        "TELÉFONO": "",
+        "CORREO ELECTRÓNICO": "manuel.cadavid@rentokil-initial.com",
+        "FECHA DE VISITA": "9/8/2023",
+        "CONCEPTO": "Favorable",
+        "CLASIFICACIÓN": "Terrestre",
+        "ADDRESS_KML": "Colombia,Valle del Cauca,Santiago de Cali,Calle 30 N No. 2 bis-46",
+        "ALTITUD": "0",
+        "ESTADO_COORDENADA": "CON COORDENADA",
+        "FUENTE_COORDENADA": "GEOMETRIA_POINT_KML",
+        "ESTADO_MAPA": "CON COORDENADA",
+        "ANIO_VISITA": 2023
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.53186459999999,
+          3.4344867
+        ]
+      },
+      "properties": {
+        "ID": "17",
+        "NOMBRE_EMPRESA": "FUMIGACIONES Y EXTINTORES MILLENNIUM LTDA",
+        "ENTIDAD": "Secretaría de Salud Distrito de Santiago de Cali",
+        "DIRECCIÓN": "Carrera 23 C No. 9F-21",
+        "MUNICIPIO": "Santiago de Cali",
+        "Corregimiento": "",
+        "pais": "Colombia",
+        "Departamento": "Valle del Cauca",
+        "ubicación": "Colombia,Valle del Cauca,Santiago de Cali,Carrera 23 C No. 9F-21",
+        "TELÉFONO": "",
+        "CORREO ELECTRÓNICO": "fumigacionesmillennium@hotmail.com",
+        "FECHA DE VISITA": "8/22/2025",
+        "CONCEPTO": "Favorable",
+        "CLASIFICACIÓN": "Terrestre",
+        "ADDRESS_KML": "Colombia,Valle del Cauca,Santiago de Cali,Carrera 23 C No. 9F-21",
+        "ALTITUD": "0",
+        "ESTADO_COORDENADA": "CON COORDENADA",
+        "FUENTE_COORDENADA": "GEOMETRIA_POINT_KML",
+        "ESTADO_MAPA": "CON COORDENADA",
+        "ANIO_VISITA": 2025
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.5018796,
+          3.4080208
+        ]
+      },
+      "properties": {
+        "ID": "18",
+        "NOMBRE_EMPRESA": "PEST FUMIGATION",
+        "ENTIDAD": "Secretaría de Salud Distrito de Santiago de Cali",
+        "DIRECCIÓN": "Carrera 40 A No. 49-74",
+        "MUNICIPIO": "Santiago de Cali",
+        "Corregimiento": "",
+        "pais": "Colombia",
+        "Departamento": "Valle del Cauca",
+        "ubicación": "Colombia,Valle del Cauca,Santiago de Cali,Carrera 40 A No. 49-74",
+        "TELÉFONO": "",
+        "CORREO ELECTRÓNICO": "pestfumigation49@gmail.co",
+        "FECHA DE VISITA": "7/4/2023",
+        "CONCEPTO": "Favorable",
+        "CLASIFICACIÓN": "Terrestre",
+        "ADDRESS_KML": "Colombia,Valle del Cauca,Santiago de Cali,Carrera 40 A No. 49-74",
+        "ALTITUD": "0",
+        "ESTADO_COORDENADA": "CON COORDENADA",
+        "FUENTE_COORDENADA": "GEOMETRIA_POINT_KML",
+        "ESTADO_MAPA": "CON COORDENADA",
+        "ANIO_VISITA": 2023
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.4956432,
+          3.426114999999999
+        ]
+      },
+      "properties": {
+        "ID": "19",
+        "NOMBRE_EMPRESA": "SIMPA S.A.S.",
+        "ENTIDAD": "Secretaría de Salud Distrito de Santiago de Cali",
+        "DIRECCIÓN": "Carrera 28D No.72F-137 Local 101",
+        "MUNICIPIO": "Santiago de Cali",
+        "Corregimiento": "",
+        "pais": "Colombia",
+        "Departamento": "Valle del Cauca",
+        "ubicación": "Colombia,Valle del Cauca,Santiago de Cali,Carrera 28D No.72F-137 Local 101",
+        "TELÉFONO": "",
+        "CORREO ELECTRÓNICO": "soluciones@simpa.com.co",
+        "FECHA DE VISITA": "7/18/2025",
+        "CONCEPTO": "Favorable",
+        "CLASIFICACIÓN": "Terrestre",
+        "ADDRESS_KML": "Colombia,Valle del Cauca,Santiago de Cali,Carrera 28D No.72F-137 Local 101",
+        "ALTITUD": "0",
+        "ESTADO_COORDENADA": "CON COORDENADA",
+        "FUENTE_COORDENADA": "GEOMETRIA_POINT_KML",
+        "ESTADO_MAPA": "CON COORDENADA",
+        "ANIO_VISITA": 2025
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.5234789,
+          3.475761399999999
+        ]
+      },
+      "properties": {
+        "ID": "20",
+        "NOMBRE_EMPRESA": "TNK S:A.S",
+        "ENTIDAD": "Secretaría de Salud Distrito de Santiago de Cali",
+        "DIRECCIÓN": "Avenida 4 Norte No. 48N-23",
+        "MUNICIPIO": "Santiago de Cali",
+        "Corregimiento": "",
+        "pais": "Colombia",
+        "Departamento": "Valle del Cauca",
+        "ubicación": "Colombia,Valle del Cauca,Santiago de Cali,Avenida 4 Norte No. 48N-23",
+        "TELÉFONO": "",
+        "CORREO ELECTRÓNICO": "grupotnk@yahoo.com",
+        "FECHA DE VISITA": "14/10/2025",
+        "CONCEPTO": "Favorable",
+        "CLASIFICACIÓN": "Terrestre",
+        "ADDRESS_KML": "Colombia,Valle del Cauca,Santiago de Cali,Avenida 4 Norte No. 48N-23",
+        "ALTITUD": "0",
+        "ESTADO_COORDENADA": "CON COORDENADA",
+        "FUENTE_COORDENADA": "GEOMETRIA_POINT_KML",
+        "ESTADO_MAPA": "CON COORDENADA",
+        "ANIO_VISITA": 2025
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.555234,
+          3.407515
+        ]
+      },
+      "properties": {
+        "ID": "21",
+        "NOMBRE_EMPRESA": "BRILLANTEX MULTISERVICIOS S.A.S",
+        "ENTIDAD": "Secretaría de Salud Distrito de Santiago de Cali",
+        "DIRECCIÓN": "Carrera 59 # 2E-46",
+        "MUNICIPIO": "Santiago de Cali",
+        "Corregimiento": "",
+        "pais": "Colombia",
+        "Departamento": "Valle del Cauca",
+        "ubicación": "Colombia,Valle del Cauca,Santiago de Cali,Carrera 59 # 2E-46",
+        "TELÉFONO": "",
+        "CORREO ELECTRÓNICO": "calidad@brillantex.com",
+        "FECHA DE VISITA": "1/29/2026",
+        "CONCEPTO": "Favorable",
+        "CLASIFICACIÓN": "Terrestre",
+        "ADDRESS_KML": "Colombia,Valle del Cauca,Santiago de Cali,Carrera 59 # 2E-46",
+        "ALTITUD": "0",
+        "ESTADO_COORDENADA": "CON COORDENADA",
+        "FUENTE_COORDENADA": "GEOMETRIA_POINT_KML",
+        "ESTADO_MAPA": "CON COORDENADA",
+        "ANIO_VISITA": 2026
+      }
+    }
+  ]
+}
