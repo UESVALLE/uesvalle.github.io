@@ -1,0 +1,26 @@
+{
+  "version_procesamiento": "V1_NUEVA_ESTRUCTURA_DESDE_NORMALIZADOS",
+  "fecha_generacion": "2026-05-19T19:12:51",
+  "fuente_resultados": "G:\\Mi unidad\\8.UES\\PAGINA INDICADORES\\Muestras\\03_Resultados_IRCA_Normalizados\\resultados_irca_normalizado_consolidado.csv",
+  "fuente_maestro_irca": "G:\\Mi unidad\\8.UES\\PAGINA INDICADORES\\Muestras\\01_Maestros\\maestro_acueductos_irca_2026.csv",
+  "fuente_catalogo_normativo": "G:\\Mi unidad\\8.UES\\PAGINA INDICADORES\\Muestras\\01_Maestros\\catalogo_parametros_normativo.csv",
+  "registros_resultados_normalizados": 14893,
+  "muestras_indice": 14893,
+  "registros_analiticos_livianos": 234607,
+  "sistemas_con_coordenadas": 610,
+  "sistemas_total": 671,
+  "parametros_unicos": 44,
+  "no_aceptables": 25279,
+  "archivos_generados": [
+    "detalle_resultados_liviano.csv",
+    "indice_muestras.csv",
+    "coordenadas_sistemas.csv",
+    "resumen_parametros.csv",
+    "parametros_no_aceptables.csv",
+    "resumen_muestras.csv",
+    "serie_tiempo_analitos.csv",
+    "muestras_irca_consolidado.csv",
+    "catalogo_parametros_normativo.csv",
+    "metadata_trazabilidad.json"
+  ]
+}

@@ -1,0 +1,46 @@
+﻿PARAMETRO,PARAMETRO_N,GRUPO_PARAMETRO,PARAMETRO_GRUPO_ANALITICO,PARAMETRO_PRIORITARIO,METODO,VALOR_MAXIMO_PERMISIBLE,UNIDAD,NORMA_REFERENCIA,OBSERVACION
+Cloro Residual Libre,CLORO RESIDUAL LIBRE,BASICO_OPERATIVO,CLORO RESIDUAL LIBRE,CLORO RESIDUAL LIBRE,,0.3 - 2.0,mg/L,Resolución 2115 de 2007,Valor aceptable en cualquier punto de la red de distribución. Aplicar igual para medición en laboratorio o in situ.
+Cloro Residual Libre In-situ,CLORO RESIDUAL LIBRE IN SITU,BASICO_OPERATIVO,CLORO RESIDUAL LIBRE,CLORO RESIDUAL LIBRE,,0.3 - 2.0,mg/L,Resolución 2115 de 2007,Medición in situ del mismo parámetro normativo: cloro residual libre en red.
+Color Aparente,COLOR APARENTE,BASICO_OPERATIVO,COLOR APARENTE,COLOR APARENTE,,15,UPC,Resolución 2115 de 2007,Valor máximo aceptable para color aparente.
+Color Aparente In-situ,COLOR APARENTE IN SITU,BASICO_OPERATIVO,COLOR APARENTE,COLOR APARENTE,,15,UPC,Resolución 2115 de 2007,Se homologa al parámetro Color aparente; validar método/equipo de campo utilizado.
+Conductividad,CONDUCTIVIDAD,BASICO_OPERATIVO,CONDUCTIVIDAD,OTRO,,1000,µS/cm,Resolución 2115 de 2007,Valor máximo aceptable; puede ajustarse según promedios habituales y mapa de riesgo de la zona.
+Ph,PH,BASICO_OPERATIVO,PH,PH,,6.5 - 9.0,unidades de pH,Resolución 2115 de 2007,Rango aceptable para potencial de hidrógeno.
+Temperatura,TEMPERATURA,BASICO_OPERATIVO,TEMPERATURA,OTRO,,No establecido,°C,Resolución 2115 de 2007,La Resolución 2115 de 2007 no fija valor máximo aceptable para temperatura; se conserva como parámetro operativo/de apoyo.
+Temperatura In Situ,TEMPERATURA IN SITU,BASICO_OPERATIVO,TEMPERATURA IN SITU,OTRO,,No establecido,°C,Resolución 2115 de 2007,La Resolución 2115 de 2007 no fija valor máximo aceptable para temperatura in situ; se conserva como parámetro operativo/de apoyo.
+Turbiedad,TURBIEDAD,BASICO_OPERATIVO,TURBIEDAD,TURBIEDAD,,2,UNT,Resolución 2115 de 2007,Valor máximo aceptable para turbiedad.
+Turbiedad In-situ,TURBIEDAD IN SITU,BASICO_OPERATIVO,TURBIEDAD,TURBIEDAD,,2,UNT,Resolución 2115 de 2007,Se homologa al parámetro Turbiedad; validar método/equipo de campo utilizado.
+pH In-situ,PH IN SITU,BASICO_OPERATIVO,PH,PH,,6.5 - 9.0,unidades de pH,Resolución 2115 de 2007,Medición in situ del mismo parámetro normativo: pH.
+Alcalinidad Total,ALCALINIDAD TOTAL,FISICOQUIMICO,ALCALINIDAD,OTRO,,200,mg/L como CaCO3,Resolución 2115 de 2007,Valor máximo aceptable para alcalinidad total.
+COT,COT,FISICOQUIMICO,COT,OTRO,,5,mg/L,Resolución 2115 de 2007,Carbono Orgánico Total. Cualquier incremento habitual debe investigarse con prestador y autoridad sanitaria.
+Cloruros,CLORUROS,FISICOQUIMICO,CLORUROS,OTRO,,250,mg/L como Cl-,Resolución 2115 de 2007,Valor máximo aceptable para cloruros.
+Dureza Calcica,DUREZA CALCICA,FISICOQUIMICO,DUREZA,OTRO,,60,mg/L como CaCO3,Resolución 2115 de 2007,"No tiene VMA específico en la Resolución 2115. Para control normativo usar Calcio (60 mg/L como Ca) y Dureza Total (300 mg/L como CaCO3), según aplique."
+Dureza Total,DUREZA TOTAL,FISICOQUIMICO,DUREZA,OTRO,,300,mg/L como CaCO3,Resolución 2115 de 2007,Valor máximo aceptable para dureza total.
+Floruros,FLORUROS,FISICOQUIMICO,FLORUROS,OTRO,,1,mg/L como F-,Resolución 2115 de 2007,Valor máximo aceptable para fluoruros.
+Fosfatos,FOSFATOS,FISICOQUIMICO,FOSFATOS,FOSFATOS,,0.5,mg/L como PO4^3-,Resolución 2115 de 2007,Valor máximo aceptable para fosfatos.
+Nitratos,NITRATOS,FISICOQUIMICO,NITRATOS,NITRATOS,,10,mg/L como NO3-,Resolución 2115 de 2007,Valor máximo aceptable para nitratos.
+Nitritos,NITRITOS,FISICOQUIMICO,NITRITOS,NITRITOS,,0.1,mg/L como NO2-,Resolución 2115 de 2007,Valor máximo aceptable para nitritos.
+Sulfatos,SULFATOS,FISICOQUIMICO,SULFATOS,OTRO,,250,mg/L como SO4^2-,Resolución 2115 de 2007,Valor máximo aceptable para sulfatos.
+Aluminio,ALUMINIO,METALES_Y_ELEMENTOS,ALUMINIO,ALUMINIO,,0.2,mg/L como Al3+,Resolución 2115 de 2007,Valor máximo aceptable para aluminio residual derivado de coagulante; también aparece en características económicas e indirectas.
+Cadmio,CADMIO,METALES_Y_ELEMENTOS,CADMIO,OTRO,,0.003,mg/L como Cd,Resolución 2115 de 2007,Valor máximo aceptable para cadmio.
+Calcio,CALCIO,METALES_Y_ELEMENTOS,CALCIO,OTRO,,60,mg/L como Ca,Resolución 2115 de 2007,Valor máximo aceptable para calcio.
+Cobre,COBRE,METALES_Y_ELEMENTOS,COBRE,OTRO,,1,mg/L como Cu,Resolución 2115 de 2007,Valor máximo aceptable para cobre.
+Hierro Total,HIERRO TOTAL,METALES_Y_ELEMENTOS,HIERRO,HIERRO,,0.3,mg/L como Fe,Resolución 2115 de 2007,Valor máximo aceptable para hierro total; también aplica como residual si se usan sales de hierro como coagulante.
+Magnesio,MAGNESIO,METALES_Y_ELEMENTOS,MAGNESIO,OTRO,,36,mg/L como Mg,Resolución 2115 de 2007,Valor máximo aceptable para magnesio.
+Manganeso,MANGANESO,METALES_Y_ELEMENTOS,MANGANESO,MANGANESO,,0.1,mg/L como Mn,Resolución 2115 de 2007,Valor máximo aceptable para manganeso.
+Molibdeno,MOLIBDENO,METALES_Y_ELEMENTOS,MOLIBDENO,OTRO,,0.07,mg/L como Mo,Resolución 2115 de 2007,Valor máximo aceptable para molibdeno.
+Niquel,NIQUEL,METALES_Y_ELEMENTOS,NIQUEL,OTRO,,0.02,mg/L como Ni,Resolución 2115 de 2007,Valor máximo aceptable para níquel.
+Plomo,PLOMO,METALES_Y_ELEMENTOS,PLOMO,OTRO,,0.01,mg/L como Pb,Resolución 2115 de 2007,Valor máximo aceptable para plomo.
+Zinc,ZINC,METALES_Y_ELEMENTOS,ZINC,OTRO,,3,mg/L como Zn,Resolución 2115 de 2007,Valor máximo aceptable para zinc.
+Coliformes Totales,COLIFORMES TOTALES,MICROBIOLOGICO,COLIFORMES TOTALES,COLIFORMES TOTALES,,0,UFC/100 cm3,Resolución 2115 de 2007,Para filtración por membrana: 0 UFC/100 cm3. En presencia-ausencia: ausencia en 100 cm3.
+Cryptosporidium,CRYPTOSPORIDIUM,MICROBIOLOGICO,CRYPTOSPORIDIUM,OTRO,,0,ooquistes/volumen fijado,Resolución 2115 de 2007,Valor aceptable: cero ooquistes por volumen fijado según metodología aplicada.
+E Coli,E COLI,MICROBIOLOGICO,E. COLI,E. COLI,,0,UFC/100 cm3,Resolución 2115 de 2007,"Ninguna muestra de agua para consumo humano debe contener E. coli en 100 cm3, independientemente del método."
+Enterovirus,ENTEROVIRUS,MICROBIOLOGICO,ENTEROVIRUS,OTRO,,No establecido,presencia/ausencia,Resolución 2115 de 2007,No tiene VMA numérico específico en la tabla microbiológica básica; investigar según mapa de riesgo si se demuestra presencia de patógenos.
+Giardia,GIARDIA,MICROBIOLOGICO,GIARDIA,OTRO,,0,quistes/volumen fijado,Resolución 2115 de 2007,Valor aceptable: cero quistes por volumen fijado según metodología aplicada.
+Hepatitis A,HEPATITIS A,MICROBIOLOGICO,HEPATITIS A,OTRO,,No establecido,presencia/ausencia,Resolución 2115 de 2007,No tiene VMA numérico específico en la tabla microbiológica básica; investigar según mapa de riesgo si se demuestra presencia de patógenos.
+Mesófilos,MESOFILOS,MICROBIOLOGICO,MESÓFILOS,OTRO,,100,UFC/100 cm3,Resolución 2115 de 2007,Prueba complementaria recomendada; valor máximo aceptable de microorganismos mesofílicos.
+Rotavirus,ROTAVIRUS,MICROBIOLOGICO,ROTAVIRUS,OTRO,,No establecido,presencia/ausencia,Resolución 2115 de 2007,No tiene VMA numérico específico en la tabla microbiológica básica; investigar según mapa de riesgo si se demuestra presencia de patógenos.
+Carbamatos,CARBAMATOS,ORGANICOS_PLAGUICIDAS,CARBAMATOS,OTRO,,0.0001 / 0.001 / 0.01,mg/L,Resolución 2115 de 2007,"Plaguicida/sustancia: el límite individual depende de clasificación toxicológica y DL50 oral. Usar 0,0001 mg/L para sustancias cancerígenas, mutagénicas, teratogénicas, extremadamente o altamente peligrosas."
+Determinación Indirecta De Residuos De Plaguicidas Organofosforados Y Carbamatos,DETERMINACION INDIRECTA DE RESIDUOS DE PLAGUICIDAS ORGANOFOSFORADOS Y CARBAMATOS,ORGANICOS_PLAGUICIDAS,FOSFATOS,FOSFATOS,,No establecido,según método,Resolución 2115 de 2007,"Ensayo indirecto de tamizaje; la Resolución 2115 define límites para sustancias/plaguicidas, no un VMA propio para esta determinación indirecta. No homologar a fosfatos."
+Organofosforados,ORGANOFOSFORADOS,ORGANICOS_PLAGUICIDAS,FOSFATOS,FOSFATOS,,0.0001 / 0.001 / 0.01,mg/L,Resolución 2115 de 2007,Plaguicida/sustancia: el límite individual depende de clasificación toxicológica y DL50 oral. No confundir con fosfatos.
+Plaguicidas Totales,PLAGUICIDAS TOTALES,ORGANICOS_PLAGUICIDAS,PLAGUICIDAS TOTALES,OTRO,,0.1,mg/L,Resolución 2115 de 2007,"La suma total de plaguicidas no podrá ser superior a 0,1 mg/L, sin exceder límites individuales aplicables."
+Grupo Funcional Organoclorados,GRUPO FUNCIONAL ORGANOCLORADOS,OTROS,GRUPO FUNCIONAL ORGANOCLORADOS,OTRO,,0.0001 / 0.001 / 0.01,mg/L,Resolución 2115 de 2007,Grupo de plaguicidas/sustancias: el límite individual depende de clasificación toxicológica y DL50 oral; validar compuesto específico en mapa de riesgo.

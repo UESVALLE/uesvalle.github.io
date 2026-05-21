@@ -1,0 +1,6 @@
+detalle_resultados_liviano_part_001.csv
+detalle_resultados_liviano_part_002.csv
+detalle_resultados_liviano_part_003.csv
+detalle_resultados_liviano_part_004.csv
+detalle_resultados_liviano_part_005.csv
+detalle_resultados_liviano_part_006.csv
