@@ -10,6 +10,38 @@
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
 <style>
 :root{--board-max:1480px;--shadow:0 8px 24px rgba(0,0,0,.06);--blue:#2e64d2;--blue2:#1d4ed8;--muted:#667085;--bg:#f4f6f8;--line:#e8edf5;--ok:#16a34a;--bad:#dc2626;--warn:#f59e0b;--gray:#64748b}*{box-sizing:border-box}body{background:var(--bg);color:#1f2937}.gov-banner{background:#2e64d2;height:46px}.gov-banner img{height:30px}.board{max-width:var(--board-max);margin:auto;padding:18px 16px 40px}.cardx,.section,.kpi,.chart,header,.nav-card,.soft-card{background:#fff;border:0;border-radius:1rem;box-shadow:var(--shadow)}header img{max-width:100%;height:auto}.title{font-size:clamp(1.35rem,1.8vw,1.9rem);font-weight:850;color:#1f2937}.subtitle{color:var(--muted);font-size:.88rem}.navbar .nav-link,.navbar .dropdown-toggle{font-weight:600}.dropdown-menu .dropdown-item.active{background:#2e64d2;color:#fff}.nav-processes{display:flex;flex-wrap:wrap;justify-content:center;align-items:center}.process-btn{background:#f8fafc;border:1px solid #d0d5dd;border-radius:999px;padding:.65rem 1rem!important;color:#344054!important;font-weight:700;box-shadow:0 2px 6px rgba(0,0,0,.04);transition:all .2s ease}.process-btn:hover{background:#eef4ff;border-color:#98a2b3}.process-btn.active{background:#2e64d2;color:#fff!important;border-color:#2e64d2}.header-status{display:flex;flex-direction:column;align-items:flex-end;gap:.25rem;min-width:250px}.header-status #lastUpdate{font-size:.76rem;padding:.38rem .7rem!important}.mini-status{font-size:.76rem;color:#1d4ed8;font-weight:800;display:flex;gap:.35rem;align-items:center;justify-content:flex-end}.mini-status button{border:0;background:transparent;color:#1d4ed8;font-weight:850;padding:0;text-decoration:none}.mini-status button:hover{text-decoration:underline}.filter-card{background:#fff;border-radius:1rem;box-shadow:var(--shadow);border:1px solid var(--line);padding:.62rem .75rem!important;margin-bottom:.55rem!important}.filter-card .row{--bs-gutter-x:.5rem!important;--bs-gutter-y:.35rem!important}.filter-label{font-size:.74rem!important;font-weight:750;color:#475467;margin-bottom:.12rem!important}.form-select-sm,.form-control-sm{height:28px!important;min-height:28px!important;font-size:.76rem!important;border-radius:.65rem}.filter-actions .btn{height:30px;padding:.18rem .8rem!important;font-size:.75rem}.select2-container{width:100%!important;font-size:.80rem}.select2-container--default .select2-selection--single{height:28px!important;min-height:28px!important;border:1px solid #d0d5dd!important;border-radius:.65rem!important;display:flex!important;align-items:center!important}.select2-container--default .select2-selection--single .select2-selection__rendered{line-height:26px!important;color:#344054!important;padding-left:.55rem!important;padding-right:1.6rem!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.select2-container--default .select2-selection--single .select2-selection__arrow{height:26px!important;right:4px!important}.select2-dropdown{border:1px solid #d0d5dd!important;border-radius:.65rem!important;box-shadow:0 12px 28px rgba(15,23,42,.16)!important;overflow:hidden}.active-filter-line{display:flex;align-items:center;gap:.35rem;flex-wrap:nowrap;overflow-x:auto;white-space:nowrap;padding:.55rem .85rem!important;margin-bottom:.55rem!important}.active-filter-line .active-title{font-weight:850;color:#1f2937;flex:0 0 auto}.active-filter-line #activeFilters{display:flex;align-items:center;gap:.3rem;flex-wrap:nowrap;white-space:nowrap}.chip{display:inline-flex;gap:6px;background:#eef4ff;border:1px solid #c7d7fe;color:#1d4ed8;border-radius:999px;padding:.18rem .48rem;font-size:.74rem;font-weight:700;margin:0}.chip .label{color:#475467}.kpi-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:.65rem}.kpi{padding:.65rem .75rem;text-align:center;border:1px solid #eef2f7}.kpi-label{font-size:.72rem;color:#475467;font-weight:750;min-height:24px;display:flex;align-items:center;justify-content:center;line-height:1.15}.kpi-value{font-size:clamp(18px,2.1vw,28px);font-weight:850;color:#2457d6;line-height:1.1}.kpi-mini{font-size:.72rem;color:#667085;margin-top:.2rem}.module-tabs-card{background:linear-gradient(180deg,#ffffff,#f8fbff);border:1px solid #c7d7fe!important;border-radius:1rem;box-shadow:0 8px 24px rgba(29,78,216,.10)!important;margin-bottom:.75rem;overflow:hidden}.module-tabs-head{background:linear-gradient(180deg,#eef4ff,#eaf2ff)!important;padding:.55rem .75rem!important;border-bottom:1px solid #dbeafe}.module-tabs-title{font-weight:850;color:#1d4ed8;margin:0;font-size:1rem}.module-tabs-subtitle{color:#667085;font-size:.84rem;margin-top:.15rem}#dashboardTabs{flex-wrap:nowrap!important;overflow:hidden!important;gap:.38rem!important;justify-content:center!important;padding:.35rem .5rem!important;border-bottom:0}#dashboardTabs .nav-item{flex:0 1 auto!important;min-width:0!important}#dashboardTabs .nav-link{border:1px solid #c7d7fe!important;border-radius:999px!important;background:#fff;color:#1d4ed8;font-weight:800;font-size:.78rem!important;line-height:1.05!important;padding:.38rem .68rem!important;white-space:nowrap!important;box-shadow:0 2px 8px rgba(29,78,216,.08)}#dashboardTabs .nav-link.active{background:#1d4ed8!important;color:#fff!important;box-shadow:0 8px 20px rgba(29,78,216,.26)!important;transform:translateY(-1px)}.dashboard-tabs-content{padding:.7rem!important;background:#f8fafc}.tab-intro{background:#fff;border:1px solid #dbeafe;border-radius:.9rem;padding:.5rem .65rem;margin-bottom:.65rem;color:#475467;font-size:.78rem}.section{border:1px solid var(--line);overflow:hidden;margin-bottom:.65rem!important}.section-h{background:linear-gradient(180deg,#eef4ff,#edf3ff);padding:.62rem .75rem;border-bottom:1px solid #eef2f6;display:flex;align-items:flex-start;gap:.9rem}.sec-ico{width:42px;height:42px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;background:#e3edff;border:1px solid #bdd1ff;color:#1d4ed8;flex:0 0 42px}.section-h h5{margin:0;font-weight:850;color:var(--blue2);font-size:clamp(1rem,1.35vw,1.28rem)}.section-h .small{font-size:.76rem}.section-b{padding:.7rem}.toggle{width:100%;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:0;border:0;background:transparent;text-align:left}.arrow{width:34px;height:34px;border-radius:999px;display:flex;align-items:center;justify-content:center;border:1px solid #d0d5dd;background:#fff;color:#475467}.toggle[aria-expanded=true] .arrow svg{transform:rotate(90deg)}.arrow svg{width:20px;height:20px;transition:.2s}.chart{border-radius:1rem;box-shadow:var(--shadow);background:#fff}.chart-container{height:320px;position:relative}.chart-tall{height:390px;position:relative}.section-note{background:#f8fbff;border:1px solid #dbeafe;color:#1e3a8a;border-radius:.8rem;padding:.55rem .65rem;font-size:.78rem}.badge-soft{background:#eef4ff;color:#1d4ed8;border:1px solid #c7d7fe}.badge-bad{background:#fee2e2;color:#991b1b;border:1px solid #fecaca}.badge-ok{background:#dcfce7;color:#166534;border:1px solid #bbf7d0}.badge-warn{background:#fff7ed;color:#9a3412;border:1px solid #fed7aa}.status-pill{border-radius:999px;padding:.18rem .55rem;font-weight:850;font-size:.74rem;display:inline-block}.pill-ok{background:#dcfce7;color:#166534;border:1px solid #bbf7d0}.pill-warn{background:#fff7ed;color:#9a3412;border:1px solid #fed7aa}.pill-bad{background:#fee2e2;color:#991b1b;border:1px solid #fecaca}.pill-muted{background:#f1f5f9;color:#475569;border:1px solid #e2e8f0}.dt-buttons .btn{margin-right:.25rem}table{font-size:.78rem!important}.table thead th{white-space:nowrap;background:#eff6ff!important;color:#1e3a8a!important;font-weight:850!important}.dataTables_wrapper .dataTables_length,.dataTables_wrapper .dataTables_filter,.dataTables_wrapper .dataTables_info,.dataTables_wrapper .dataTables_paginate{font-size:.75rem}.dataTables_wrapper{padding:.3rem}.table-hover tbody tr:hover td{background:#eff6ff!important}.footer{color:#667085;font-size:.86rem;padding-bottom:2rem}.poa-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.75rem}.poa-card{background:#fff;border:1px solid #dbeafe;border-radius:.85rem;padding:.75rem}.poa-card h6{font-weight:850;color:#1d4ed8}.poa-card p{font-size:.8rem;color:#475467;margin:0}.progress-mini{height:8px;border-radius:999px;background:#e5e7eb;overflow:hidden}.progress-mini span{display:block;height:100%;background:#1d4ed8}.placeholder-box{border:1px dashed #c7d7fe;background:#f8fbff;border-radius:1rem;padding:1rem;text-align:center;color:#475467}.detail-kpi-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.65rem;margin-bottom:.75rem}.detail-kpi{background:#fff;border:1px solid #dbeafe;border-radius:.85rem;padding:.65rem;text-align:center}.detail-kpi small{display:block;color:#667085;font-weight:800;font-size:.7rem;line-height:1.1}.detail-kpi b{display:block;color:#2457d6;font-size:1.25rem;line-height:1.15;margin-top:.12rem}.table-note{background:#fff;border:1px solid #dbeafe;border-radius:.85rem;padding:.6rem .75rem;color:#475467;font-size:.82rem;margin-bottom:.7rem}.inner-tabs{display:flex;gap:.45rem;flex-wrap:wrap;margin:.25rem 0 .75rem}.inner-tab-btn{border:1px solid #c7d7fe;background:#fff;color:#1d4ed8;border-radius:999px;padding:.32rem .8rem;font-size:.8rem;font-weight:850}.inner-tab-btn.active{background:#1d4ed8;color:#fff;box-shadow:0 6px 15px rgba(29,78,216,.20)}.inner-tab-pane{display:none}.inner-tab-pane.active{display:block}.seguimiento-resumen{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.65rem;margin-bottom:.75rem}.seguimiento-mini{background:#fff;border:1px solid #dbeafe;border-radius:.85rem;padding:.6rem .75rem}.seguimiento-mini small{display:block;color:#667085;font-weight:800;font-size:.7rem}.seguimiento-mini b{display:block;color:#2457d6;font-size:1.1rem}.chart-toolbar{display:flex;align-items:end;justify-content:space-between;gap:.75rem;flex-wrap:wrap;margin-bottom:.65rem}
+.prioridad-gestion{
+  border-radius:.9rem;
+  padding:.75rem .9rem;
+  margin:.65rem 0 .3rem;
+  font-size:.86rem;
+  line-height:1.45;
+  border:1px solid #dbeafe;
+  background:#f8fbff;
+  color:#334155;
+}
+.prioridad-gestion b{color:#1d4ed8}
+.prioridad-gestion.prio-rojo{background:#fff1f2;border-color:#fecdd3;border-left:6px solid #dc2626}
+.prioridad-gestion.prio-naranja{background:#fff7ed;border-color:#fed7aa;border-left:6px solid #f97316}
+.prioridad-gestion.prio-azul{background:#eff6ff;border-color:#bfdbfe;border-left:6px solid #2563eb}
+.prioridad-gestion.prio-verde{background:#ecfdf3;border-color:#bbf7d0;border-left:6px solid #16a34a}
+.chip .chip-x{
+  border:0;
+  background:#dbeafe;
+  color:#1d4ed8;
+  width:18px;
+  height:18px;
+  border-radius:999px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:900;
+  line-height:1;
+  padding:0;
+  cursor:pointer;
+}
+.chip .chip-x:hover{background:#bfdbfe;color:#1e3a8a}
+
 .interpretacion-seguimiento{
   background:linear-gradient(180deg,#ffffff,#f8fbff);
   border:1px solid #bfdbfe;
@@ -127,7 +159,7 @@
             <div class="section-note flex-grow-1 mb-0">Seleccione una vista para comparar <b>Programados</b>, <b>Visitas 1.3</b>, <b>Muestreos 1.4</b> y <b>Resoluciones 1.5</b>. Al hacer clic en una barra se filtra la tabla maestra.</div>
             <div style="min-width:260px"><label class="form-label filter-label">Vista del gráfico</label><select id="fVistaSeguimiento" class="form-select form-select-sm"><option value="GENERAL">General</option><option value="FUNCIONARIO">Por funcionario</option><option value="MUNICIPIO">Por municipio</option><option value="ARO">Por ARO</option><option value="CODIGO">Por código</option></select></div>
           </div>
-          <div class="chart p-3"><h5 id="tituloChartSeguimiento">Seguimiento general</h5><div class="chart-tall"><canvas id="chartSeguimiento"></canvas></div><div class="leyenda-seguimiento" id="leyendaChartSeguimiento"><span><i class="leyenda-dot" style="background:#2563eb"></i>Programados</span><span><i class="leyenda-dot" style="background:#22c55e"></i>Visitas 1.3 ejecutadas</span><span><i class="leyenda-dot" style="background:#f97316"></i>Muestreos 1.4 ejecutados</span><span><i class="leyenda-dot" style="background:#a855f7"></i>Resoluciones 1.5 elaboradas</span></div><div id="interpretacionSeguimiento" class="interpretacion-seguimiento">Seleccione filtros para generar la lectura del avance programado frente a lo ejecutado.</div></div>
+          <div class="chart p-3"><h5 id="tituloChartSeguimiento">Seguimiento general</h5><div class="chart-tall"><canvas id="chartSeguimiento"></canvas></div><div class="leyenda-seguimiento" id="leyendaChartSeguimiento"><span><i class="leyenda-dot" style="background:#2563eb"></i>Programados</span><span><i class="leyenda-dot" style="background:#22c55e"></i>Visitas 1.3 ejecutadas</span><span><i class="leyenda-dot" style="background:#f97316"></i>Muestreos 1.4 ejecutados</span><span><i class="leyenda-dot" style="background:#a855f7"></i>Resoluciones 1.5 elaboradas</span></div><div id="interpretacionSeguimiento" class="interpretacion-seguimiento">Seleccione filtros para generar la lectura del avance programado frente a lo ejecutado.</div><div id="prioridadGestion" class="prioridad-gestion prio-azul">Prioridad de gestión: seleccione filtros para identificar la etapa crítica del ciclo MPR.</div></div>
         </div></div>
       </section>
       <section class="section">
@@ -184,7 +216,7 @@
 Chart.register(ChartDataLabels);
 const DATA_PATH="../../data/mpr/current/";
 const FILES={sistemas:"seguimiento_mpr_sistemas.csv",actividades:"actividades_mpr_ejecutadas.csv",aro:"resumen_mpr_aro.csv",municipio:"resumen_mpr_municipio.csv",funcionario:"resumen_mpr_funcionario.csv",alertas:"alertas_mpr.csv",catalogo:"catalogo_codigos_poa_mpr.csv",metadata:"metadata_mpr.json"};
-let SISTEMAS=[],ACTIVIDADES=[],RES_ARO=[],RES_MUN=[],RES_FUNC=[],ALERTAS=[],CATALOGO=[],FILTERED=[];let charts={},tables={};
+let SISTEMAS=[],ACTIVIDADES=[],RES_ARO=[],RES_MUN=[],RES_FUNC=[],ALERTAS=[],CATALOGO=[],FILTERED=[];let charts={},tables={},LAST_CHART_LABEL_MAP={};
 function norm(v){return(v==null?'':String(v).trim()).normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\s+/g,' ').toUpperCase()}
 function val(v){return v==null?'':String(v).trim()}
 function num(v){const n=Number(String(v||'').replace(',','.'));return isNaN(n)?0:n}
@@ -237,7 +269,26 @@ function refreshDependentOptions(){
   setOptions('fCodigo', uniq(SISTEMAS.filter(r=>matchesExcept(r,'CODIGO')).map(r=>r.CODIGO_LLAVE)).filter(Boolean), keep.cod);
 }
 
-function renderActive(){const chips=[['ARO',fAro.value],['Municipio',fMunicipio.value],['Funcionario',fFuncionario.value],['Estado',fEstado.value],['Código',fCodigo.value],['1.3',f13.value],['1.4',f14.value],['1.5',f15.value],['Código válido',fCodValido.value]].filter(x=>x[1]);activeFilters.innerHTML=chips.length?chips.map(x=>`<span class="chip"><span class="label">${x[0]}:</span> ${x[1]}</span>`).join(''):'<span class="text-muted">Sin filtros adicionales</span>';contextLine.textContent=`${FILTERED.length.toLocaleString('es-CO')} sistemas programados en el filtro activo`;}
+
+function renderActive(){
+  const chips=[
+    ['ARO','fAro',fAro.value],
+    ['Municipio','fMunicipio',fMunicipio.value],
+    ['Funcionario','fFuncionario',fFuncionario.value],
+    ['Estado','fEstado',fEstado.value],
+    ['Código','fCodigo',fCodigo.value],
+    ['1.3','f13',f13.value],
+    ['1.4','f14',f14.value],
+    ['1.5','f15',f15.value],
+    ['Código válido','fCodValido',fCodValido.value]
+  ].filter(x=>x[2]);
+  activeFilters.innerHTML=chips.length?chips.map(x=>{
+    const display=x[0]==='Funcionario'?shortName(x[2]):x[2];
+    return `<span class="chip"><span class="label">${x[0]}:</span> ${display}<button class="chip-x" data-clear-filter="${x[1]}" title="Quitar filtro">×</button></span>`;
+  }).join(''):'<span class="text-muted">Sin filtros adicionales</span>';
+  contextLine.textContent=`${FILTERED.length.toLocaleString('es-CO')} sistemas programados en el filtro activo`;
+}
+
 function renderKPIs(){const rows=FILTERED;const total=rows.length;const e13=rows.filter(r=>val(r.ejecuto_13)==='SI').length;const e14=rows.filter(r=>val(r.ejecuto_14)==='SI').length;const e15=rows.filter(r=>val(r.ejecuto_15)==='SI').length;const pend13=rows.filter(r=>val(r.ejecuto_13)!=='SI').length;const pend14=rows.filter(r=>val(r.ejecuto_14)!=='SI').length;const pend15=rows.filter(r=>val(r.ejecuto_15)!=='SI').length;setText('kpiProgramados',total.toLocaleString('es-CO'));setText('kpi13',e13.toLocaleString('es-CO'));setText('kpiPend13',pend13.toLocaleString('es-CO'));setText('kpi14',e14.toLocaleString('es-CO'));setText('kpiPend14',pend14.toLocaleString('es-CO'));setText('kpi15',e15.toLocaleString('es-CO'));setText('kpiPend15',pend15.toLocaleString('es-CO'));}
 function initKpiClicks(){
   const bind=(id,updates)=>{const el=document.getElementById(id)?.closest('.kpi');if(el){el.style.cursor='pointer';el.addEventListener('click',()=>{Object.entries(updates).forEach(([k,v])=>{const x=document.getElementById(k);if(x){x.value=v;$(x).trigger('change.select2')}});apply();document.getElementById('tablaMaestra')?.scrollIntoView({behavior:'smooth',block:'start'});});}};
@@ -298,31 +349,42 @@ function resumenFuncionarios(systems,acts){const map={};function add(nombre,act,
 systems.forEach(r=>{const code=val(r.CODIGO_LLAVE);['FUNCIONARIO_PROGRAMADO','FUNCIONARIO_ASIGNADO','INGENIERO_PROGRAMADO','INGENIERO_ASIGNADO','PROFESIONAL_PROGRAMADO','RESPONSABLE_PROGRAMADO','RESPONSABLE'].forEach(k=>splitPeople(r[k]).forEach(p=>add(p,'PROGRAMADO',code)));});
 acts.forEach(a=>add(a.FUNCIONARIO,val(a.ACTIVIDAD),val(a.CODIGO_LLAVE)));
 return Object.values(map).map(r=>({...r,SISTEMAS:r.SISTEMAS.size})).sort((a,b)=>(b.VISITAS_13+b.MUESTREOS_14+b.RESOLUCIONES_15+b.PROGRAMADOS)-(a.VISITAS_13+a.MUESTREOS_14+a.RESOLUCIONES_15+a.PROGRAMADOS));}
+
 function aggregateForChart(rows,dim){
   let labels=[];
+  let labelMap={};
   if(dim==='GENERAL') labels=['Total filtro activo'];
   else if(dim==='ARO') labels=uniq(rows.map(r=>r.ARO_PROGRAMADO));
   else if(dim==='MUNICIPIO') labels=uniq(rows.map(r=>r.MUNICIPIO_PROGRAMADO));
-  else if(dim==='FUNCIONARIO') labels=uniq(rows.map(r=>r.FUNCIONARIO_PROGRAMADO)).filter(Boolean);
+  else if(dim==='FUNCIONARIO'){
+    const full=uniq(rows.map(r=>r.FUNCIONARIO_PROGRAMADO)).filter(Boolean);
+    labels=full.map(shortName);
+    full.forEach((f,i)=>{labelMap[labels[i]]=f;});
+  }
   else if(dim==='CODIGO') labels=uniq(rows.map(r=>r.CODIGO_LLAVE)).filter(Boolean);
   if(dim==='MUNICIPIO') labels=labels.map(m=>({m,n:rows.filter(r=>val(r.MUNICIPIO_PROGRAMADO)===m).length})).sort((a,b)=>b.n-a.n).slice(0,20).map(x=>x.m);
   if(dim==='CODIGO') labels=labels.slice(0,30);
   const sub=(label)=>{
+    const real=labelMap[label]||label;
     if(dim==='GENERAL') return rows;
-    if(dim==='ARO') return rows.filter(r=>val(r.ARO_PROGRAMADO)===label);
-    if(dim==='MUNICIPIO') return rows.filter(r=>val(r.MUNICIPIO_PROGRAMADO)===label);
-    if(dim==='FUNCIONARIO') return rows.filter(r=>val(r.FUNCIONARIO_PROGRAMADO)===label);
-    if(dim==='CODIGO') return rows.filter(r=>val(r.CODIGO_LLAVE)===label);
+    if(dim==='ARO') return rows.filter(r=>val(r.ARO_PROGRAMADO)===real);
+    if(dim==='MUNICIPIO') return rows.filter(r=>val(r.MUNICIPIO_PROGRAMADO)===real);
+    if(dim==='FUNCIONARIO') return rows.filter(r=>val(r.FUNCIONARIO_PROGRAMADO)===real);
+    if(dim==='CODIGO') return rows.filter(r=>val(r.CODIGO_LLAVE)===real);
     return rows;
   };
-  return {labels,sub};
+  return {labels,sub,labelMap};
 }
+
+
 function applyChartFilter(dim,label){
   if(!label || dim==='GENERAL') return;
+  const realLabel=LAST_CHART_LABEL_MAP[label]||label;
   const map={ARO:'fAro',MUNICIPIO:'fMunicipio',FUNCIONARIO:'fFuncionario',CODIGO:'fCodigo'};
   const id=map[dim];
-  if(id){const el=document.getElementById(id);el.value=label;$(el).trigger('change.select2');apply();document.getElementById('tablaMaestra')?.scrollIntoView({behavior:'smooth',block:'start'});}
+  if(id){const el=document.getElementById(id);el.value=realLabel;$(el).trigger('change.select2');apply();document.getElementById('tablaMaestra')?.scrollIntoView({behavior:'smooth',block:'start'});}
 }
+
 function renderSeguimientoResumen(){
   const acts=activitiesFiltered();
   const f=FILTERED;
@@ -360,12 +422,45 @@ function renderInterpretacionSeguimiento(){
     `La lectura permite comparar lo programado frente a lo ejecutado y priorizar los sistemas pendientes.`;
 }
 
+function renderPrioridadGestion(){
+  const box=document.getElementById('prioridadGestion');
+  if(!box) return;
+  const f=FILTERED||[];
+  const total=f.length;
+  const v13=f.filter(r=>val(r.ejecuto_13)==='SI').length;
+  const v14=f.filter(r=>val(r.ejecuto_14)==='SI').length;
+  const v15=f.filter(r=>val(r.ejecuto_15)==='SI').length;
+  const p13=total-v13, p14=total-v14, p15=total-v15;
+  const sujeto=fFuncionario.value?` para <b>${shortName(fFuncionario.value)}</b>`:(fAro.value?` para el ARO <b>${fAro.value}</b>`:(fMunicipio.value?` para <b>${fMunicipio.value}</b>`:''));
+  let cls='prio-verde', msg='';
+  if(total===0){
+    cls='prio-azul';
+    msg='Prioridad de gestión: no hay sistemas en el filtro activo. Ajuste los filtros para revisar la programación MPR.';
+  }else if(p13>0){
+    cls='prio-rojo';
+    msg=`Prioridad de gestión${sujeto}: realizar <b>${p13.toLocaleString('es-CO')}</b> visita(s) 1.3 pendientes. Esta es la etapa crítica porque aún no se ha completado la inspección inicial para todos los sistemas programados.`;
+  }else if(p14>0){
+    cls='prio-naranja';
+    msg=`Prioridad de gestión${sujeto}: programar y ejecutar <b>${p14.toLocaleString('es-CO')}</b> muestreo(s) 1.4 pendientes. Las visitas ya avanzaron, pero falta cerrar la etapa de toma de muestras.`;
+  }else if(p15>0){
+    cls='prio-azul';
+    msg=`Prioridad de gestión${sujeto}: elaborar <b>${p15.toLocaleString('es-CO')}</b> acto(s) administrativo(s) 1.5 pendientes. El ciclo técnico de visita y muestreo ya está cerrado para el filtro activo.`;
+  }else{
+    cls='prio-verde';
+    msg=`Prioridad de gestión${sujeto}: ciclo MPR completo para los <b>${total.toLocaleString('es-CO')}</b> sistema(s) del filtro activo.`;
+  }
+  box.className=`prioridad-gestion ${cls}`;
+  box.innerHTML=msg;
+}
+
+
 function renderCharts(){
   const rows=FILTERED;
   const dim=fVistaSeguimiento?.value||'GENERAL';
   const dimName={GENERAL:'general',FUNCIONARIO:'por funcionario',MUNICIPIO:'por municipio',ARO:'por ARO',CODIGO:'por código'}[dim]||'general';
   if(document.getElementById('tituloChartSeguimiento')) tituloChartSeguimiento.textContent='Seguimiento '+dimName;
   const ag=aggregateForChart(rows,dim);
+  LAST_CHART_LABEL_MAP=ag.labelMap||{};
   const labels=ag.labels;
   const values=(fn)=>labels.map(l=>fn(ag.sub(l)));
   makeGroupedChart('chartSeguimiento',labels,[
@@ -378,13 +473,29 @@ function renderCharts(){
   const tipos=uniq(af.map(r=>r.TIPO_ALERTA));
   makeChart('chartAlertas','bar',tipos,tipos.map(t=>af.filter(r=>val(r.TIPO_ALERTA)===t).length),{indexAxis:'y'});
   renderInterpretacionSeguimiento();
+  renderPrioridadGestion();
 }
 function dt(id,rows,cols,renderers={}){if(tables[id]){tables[id].clear().rows.add(rows).draw();return;}tables[id]=$('#'+id).DataTable({data:rows,columns:cols.map(c=>({title:c.title||c.data,data:c.data,defaultContent:'',render:renderers[c.data]||null})),pageLength:10,lengthMenu:[[10,25,50,-1],[10,25,50,'Todos']],responsive:false,dom:'Bfrtip',buttons:[{extend:'copy',text:'Copiar',className:'btn btn-sm btn-outline-secondary'},{extend:'csvHtml5',text:'CSV',className:'btn btn-sm btn-outline-primary'},{extend:'excelHtml5',text:'Excel',className:'btn btn-sm btn-outline-success'}],language:{url:'https://cdn.datatables.net/plug-ins/1.13.8/i18n/es-ES.json'}});}
-function renderTables(){dt('tblSistemas',FILTERED,[{data:'ARO_PROGRAMADO',title:'ARO'},{data:'MUNICIPIO_PROGRAMADO',title:'Municipio'},{data:'LOCALIDAD_PROGRAMADA',title:'Localidad'},{data:'CODIGO_LLAVE',title:'Código'},{data:'CODIGO_VALIDO',title:'Código válido'},{data:'FUNCIONARIO_PROGRAMADO',title:'Funcionario programado'},{data:'PERSONA_PRESTADORA_PROGRAMADA',title:'Prestador programado'},{data:'ejecuto_13',title:'1.3'},{data:'fecha_13',title:'Fecha 1.3'},{data:'funcionario_13',title:'Funcionario 1.3'},{data:'COINCIDE_FUNCIONARIO_13',title:'Coincide 1.3'},{data:'ejecuto_14',title:'1.4'},{data:'fecha_14',title:'Fecha 1.4'},{data:'funcionario_14',title:'Funcionario 1.4'},{data:'COINCIDE_FUNCIONARIO_14',title:'Coincide 1.4'},{data:'ejecuto_15',title:'1.5'},{data:'fecha_15',title:'Fecha 1.5'},{data:'DIAS_13_A_14',title:'Días 1.3→1.4'},{data:'ESTADO_MPR',title:'Estado'}],{ejecuto_13:badgeSiNo,ejecuto_14:badgeSiNo,ejecuto_15:badgeSiNo,COINCIDE_FUNCIONARIO_13:badgeSiNo,COINCIDE_FUNCIONARIO_14:badgeSiNo,COINCIDE_FUNCIONARIO_15:badgeSiNo,ESTADO_MPR:badgeEstado});dt('tblAlertas',alertsFiltered(),[{data:'TIPO_ALERTA',title:'Tipo alerta'},{data:'ARO',title:'ARO'},{data:'MUNICIPIO',title:'Municipio'},{data:'LOCALIDAD',title:'Localidad'},{data:'CODIGO_LLAVE',title:'Código'}],{TIPO_ALERTA:badgeEstado});dt('tblActividades',activitiesFiltered(),[{data:'ACTIVIDAD',title:'Actividad'},{data:'Actividad_Resumen',title:'Resumen POA'},{data:'MUNICIPIO',title:'Municipio'},{data:'LOCALIDADES_ABASTECIDAS',title:'Localidad'},{data:'CODIGO_LLAVE',title:'Código llave'},{data:'NOMBRE_SISTEMA',title:'Sistema'},{data:'PERSONA_PRESTADORA',title:'Prestador'},{data:'NOMBRE_ARO',title:'ARO'},{data:'FUNCIONARIO',title:'Funcionario'},{data:'FECHA_ACTIVIDAD',title:'Fecha actividad'},{data:'ACTA',title:'Acta'},{data:'ESTADO',title:'Estado SISA'},{data:'PROGRAMADO',title:'Programado'}]);dt('tblAro',RES_ARO,[{data:'ARO_PROGRAMADO',title:'ARO'},{data:'PROGRAMADOS',title:'Programados'},{data:'EJECUTADOS_13',title:'1.3'},{data:'EJECUTADOS_14',title:'1.4'},{data:'EJECUTADOS_15',title:'1.5'},{data:'COMPLETOS_13_14',title:'Completo 1.3+1.4'},{data:'SIN_EJECUCION',title:'Sin ejecución'},{data:'PENDIENTE_14',title:'Pend. 1.4'},{data:'ALERTAS',title:'Alertas'},{data:'AVANCE_14_PCT',title:'% avance 1.4'}]);dt('tblMunicipio',RES_MUN,[{data:'ARO_PROGRAMADO',title:'ARO'},{data:'MUNICIPIO_PROGRAMADO',title:'Municipio'},{data:'PROGRAMADOS',title:'Programados'},{data:'EJECUTADOS_13',title:'1.3'},{data:'EJECUTADOS_14',title:'1.4'},{data:'COMPLETOS_13_14',title:'Completo'},{data:'SIN_EJECUCION',title:'Sin ejecución'},{data:'PENDIENTE_14',title:'Pend. 1.4'},{data:'ALERTAS',title:'Alertas'},{data:'AVANCE_CICLO_13_14_PCT',title:'% ciclo 1.3+1.4'}]);dt('tblFuncionario',RES_FUNC,[{data:'ARO_PROGRAMADO',title:'ARO'},{data:'FUNCIONARIO',title:'Funcionario programado'},{data:'PROGRAMADOS',title:'Programados'},{data:'CON_CODIGO_VALIDO',title:'Con código'},{data:'EJECUTADOS_13',title:'Visitas 1.3'},{data:'EJECUTADOS_14',title:'Muestreos 1.4'},{data:'EJECUTADOS_15',title:'Resoluciones 1.5'},{data:'COMPLETOS_13_14',title:'Completo 1.3+1.4'},{data:'SIN_EJECUCION',title:'Sin ejecución'},{data:'PENDIENTE_14',title:'Pend. 1.4'},{data:'ALERTAS',title:'Alertas'},{data:'AVANCE_13_PCT',title:'% 1.3'},{data:'AVANCE_14_PCT',title:'% 1.4'},{data:'COINCIDE_13',title:'Coincide 1.3'},{data:'COINCIDE_14',title:'Coincide 1.4'}]);dt('tblFuncionarioFiltro',resumenFuncionarios(FILTERED,activitiesFiltered()),[{data:'FUNCIONARIO',title:'Funcionario'},{data:'PROGRAMADOS',title:'Programados asignados'},{data:'VISITAS_13',title:'Visitas 1.3'},{data:'MUESTREOS_14',title:'Muestreos 1.4'},{data:'RESOLUCIONES_15',title:'Resoluciones 1.5'},{data:'SISTEMAS',title:'Sistemas'}]);renderSeguimientoResumen();}
+
+function renderNombreCorto(data){return shortPeople(data)||val(data);}
+function renderTables(){dt('tblSistemas',FILTERED,[{data:'ARO_PROGRAMADO',title:'ARO'},{data:'MUNICIPIO_PROGRAMADO',title:'Municipio'},{data:'LOCALIDAD_PROGRAMADA',title:'Localidad'},{data:'CODIGO_LLAVE',title:'Código'},{data:'CODIGO_VALIDO',title:'Código válido'},{data:'FUNCIONARIO_PROGRAMADO',title:'Funcionario programado'},{data:'PERSONA_PRESTADORA_PROGRAMADA',title:'Prestador programado'},{data:'ejecuto_13',title:'1.3'},{data:'fecha_13',title:'Fecha 1.3'},{data:'funcionario_13',title:'Funcionario 1.3'},{data:'COINCIDE_FUNCIONARIO_13',title:'Coincide 1.3'},{data:'ejecuto_14',title:'1.4'},{data:'fecha_14',title:'Fecha 1.4'},{data:'funcionario_14',title:'Funcionario 1.4'},{data:'COINCIDE_FUNCIONARIO_14',title:'Coincide 1.4'},{data:'ejecuto_15',title:'1.5'},{data:'fecha_15',title:'Fecha 1.5'},{data:'DIAS_13_A_14',title:'Días 1.3→1.4'},{data:'ESTADO_MPR',title:'Estado'}],{ejecuto_13:badgeSiNo,ejecuto_14:badgeSiNo,ejecuto_15:badgeSiNo,FUNCIONARIO_PROGRAMADO:renderNombreCorto,funcionario_13:renderNombreCorto,funcionario_14:renderNombreCorto,funcionario_15:renderNombreCorto,COINCIDE_FUNCIONARIO_13:badgeSiNo,COINCIDE_FUNCIONARIO_14:badgeSiNo,COINCIDE_FUNCIONARIO_15:badgeSiNo,ESTADO_MPR:badgeEstado});dt('tblAlertas',alertsFiltered(),[{data:'TIPO_ALERTA',title:'Tipo alerta'},{data:'ARO',title:'ARO'},{data:'MUNICIPIO',title:'Municipio'},{data:'LOCALIDAD',title:'Localidad'},{data:'CODIGO_LLAVE',title:'Código'}],{TIPO_ALERTA:badgeEstado});dt('tblActividades',activitiesFiltered(),[{data:'ACTIVIDAD',title:'Actividad'},{data:'Actividad_Resumen',title:'Resumen POA'},{data:'MUNICIPIO',title:'Municipio'},{data:'LOCALIDADES_ABASTECIDAS',title:'Localidad'},{data:'CODIGO_LLAVE',title:'Código llave'},{data:'NOMBRE_SISTEMA',title:'Sistema'},{data:'PERSONA_PRESTADORA',title:'Prestador'},{data:'NOMBRE_ARO',title:'ARO'},{data:'FUNCIONARIO',title:'Funcionario'},{data:'FECHA_ACTIVIDAD',title:'Fecha actividad'},{data:'ACTA',title:'Acta'},{data:'ESTADO',title:'Estado SISA'},{data:'PROGRAMADO',title:'Programado'}]);dt('tblAro',RES_ARO,[{data:'ARO_PROGRAMADO',title:'ARO'},{data:'PROGRAMADOS',title:'Programados'},{data:'EJECUTADOS_13',title:'1.3'},{data:'EJECUTADOS_14',title:'1.4'},{data:'EJECUTADOS_15',title:'1.5'},{data:'COMPLETOS_13_14',title:'Completo 1.3+1.4'},{data:'SIN_EJECUCION',title:'Sin ejecución'},{data:'PENDIENTE_14',title:'Pend. 1.4'},{data:'ALERTAS',title:'Alertas'},{data:'AVANCE_14_PCT',title:'% avance 1.4'}]);dt('tblMunicipio',RES_MUN,[{data:'ARO_PROGRAMADO',title:'ARO'},{data:'MUNICIPIO_PROGRAMADO',title:'Municipio'},{data:'PROGRAMADOS',title:'Programados'},{data:'EJECUTADOS_13',title:'1.3'},{data:'EJECUTADOS_14',title:'1.4'},{data:'COMPLETOS_13_14',title:'Completo'},{data:'SIN_EJECUCION',title:'Sin ejecución'},{data:'PENDIENTE_14',title:'Pend. 1.4'},{data:'ALERTAS',title:'Alertas'},{data:'AVANCE_CICLO_13_14_PCT',title:'% ciclo 1.3+1.4'}]);dt('tblFuncionario',RES_FUNC,[{data:'ARO_PROGRAMADO',title:'ARO'},{data:'FUNCIONARIO',title:'Funcionario programado'},{data:'PROGRAMADOS',title:'Programados'},{data:'CON_CODIGO_VALIDO',title:'Con código'},{data:'EJECUTADOS_13',title:'Visitas 1.3'},{data:'EJECUTADOS_14',title:'Muestreos 1.4'},{data:'EJECUTADOS_15',title:'Resoluciones 1.5'},{data:'COMPLETOS_13_14',title:'Completo 1.3+1.4'},{data:'SIN_EJECUCION',title:'Sin ejecución'},{data:'PENDIENTE_14',title:'Pend. 1.4'},{data:'ALERTAS',title:'Alertas'},{data:'AVANCE_13_PCT',title:'% 1.3'},{data:'AVANCE_14_PCT',title:'% 1.4'},{data:'COINCIDE_13',title:'Coincide 1.3'},{data:'COINCIDE_14',title:'Coincide 1.4'}]);dt('tblFuncionarioFiltro',resumenFuncionarios(FILTERED,activitiesFiltered()),[{data:'FUNCIONARIO',title:'Funcionario'},{data:'PROGRAMADOS',title:'Programados asignados'},{data:'VISITAS_13',title:'Visitas 1.3'},{data:'MUESTREOS_14',title:'Muestreos 1.4'},{data:'RESOLUCIONES_15',title:'Resoluciones 1.5'},{data:'SISTEMAS',title:'Sistemas'}]);renderSeguimientoResumen();}
 function renderPoa(){poaCards.innerHTML=CATALOGO.map(r=>`<div class="poa-card"><h6>${r['Código']||''} · ${r['Actividad_Resumen']||''}</h6><p>${r['Actividad']||''}</p></div>`).join('') || '<div class="placeholder-box">No se encontró catálogo POA.</div>'}
 function apply(){refreshDependentOptions();FILTERED=getFiltered();renderActive();renderKPIs();renderCharts();renderTables();}
 function clearFilters(){['fAro','fMunicipio','fFuncionario','fEstado','fCodigo','f13','f14','f15','fCodValido'].forEach(id=>{const el=document.getElementById(id);el.value='';$(el).trigger('change.select2')});apply();}
 async function init(){try{[SISTEMAS,ACTIVIDADES,RES_ARO,RES_MUN,RES_FUNC,ALERTAS,CATALOGO]=await Promise.all([loadCSV(FILES.sistemas),loadCSV(FILES.actividades),loadCSV(FILES.aro),loadCSV(FILES.municipio),loadCSV(FILES.funcionario),loadCSV(FILES.alertas),loadCSV(FILES.catalogo)]);fillSelect('fAro',uniq(SISTEMAS.map(r=>r.ARO_PROGRAMADO)));fillSelect('fMunicipio',uniq(SISTEMAS.map(r=>r.MUNICIPIO_PROGRAMADO)));fillSelect('fFuncionario',allFuncionarios());fillSelect('fEstado',uniq(SISTEMAS.map(r=>r.ESTADO_MPR)));fillSelect('fCodigo',uniq(SISTEMAS.map(r=>r.CODIGO_LLAVE)));initSelect2();initKpiClicks();document.querySelectorAll('.inner-tab-btn').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.inner-tab-btn').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.inner-tab-pane').forEach(p=>p.classList.remove('active'));btn.classList.add('active');const target=btn.dataset.innerTab;document.getElementById('pane'+target.charAt(0).toUpperCase()+target.slice(1))?.classList.add('active');}));['fAro','fMunicipio','fFuncionario','fEstado','fCodigo','f13','f14','f15','fCodValido','fVistaSeguimiento'].forEach(id=>document.getElementById(id).addEventListener('change',apply));btnFiltrar.addEventListener('click',apply);btnLimpiar.addEventListener('click',clearFilters);btnRefrescar.addEventListener('click',()=>location.reload());btnToggleStatus.addEventListener('click',()=>{loadAlert.classList.toggle('d-none');statusHint.textContent=loadAlert.classList.contains('d-none')?'Oculto':'Visible';btnToggleStatus.textContent=loadAlert.classList.contains('d-none')?'Ver detalle':'Ocultar detalle'});renderPoa();const meta=await fetch(DATA_PATH+FILES.metadata).then(r=>r.json()).catch(()=>null);if(meta){lastUpdate.textContent='Actualizado: '+String(meta.fecha_generacion||'').replace('T',' ').slice(0,16);loadAlert.querySelector('.alert').innerHTML+=`<br><b>Registros:</b> ${meta.programados||0} programados · ${meta.actividades_ejecutadas||0} actividades ejecutadas · ${meta.resolucion_15||0} resoluciones 1.5 cargadas.`}else{lastUpdate.textContent='Datos cargados'}apply();}catch(err){console.error(err);lastUpdate.textContent='Error de carga';document.querySelector('.board').insertAdjacentHTML('afterbegin',`<div class="alert alert-danger"><b>Error cargando datos MPR:</b> ${err}</div>`);}}
+
+document.addEventListener('click', function(e){
+  const btn=e.target.closest('[data-clear-filter]');
+  if(!btn) return;
+  const id=btn.dataset.clearFilter;
+  const el=document.getElementById(id);
+  if(el){
+    el.value='';
+    if(window.jQuery && $(el).data('select2')) $(el).trigger('change.select2');
+    apply();
+  }
+});
+
 init();
 </script>
 </body>
