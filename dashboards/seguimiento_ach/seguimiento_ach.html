@@ -1,0 +1,2641 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <title>Seguimiento Actividades Agua para Consumo Humano | UESVALLE</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet"/>
+  <link href="https://cdn.datatables.net/1.13.8/css/dataTables.bootstrap5.min.css" rel="stylesheet"/>
+  <link href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.bootstrap5.min.css" rel="stylesheet"/>
+
+  <style>
+    :root{
+      --board-max:1460px;
+      --shadow-soft:0 8px 24px rgba(0,0,0,.06);
+      --border-soft:1px solid #e9ecef;
+      --brand-blue:#2e64d2;
+      --brand-blue-dark:#1d4ed8;
+      --bg-page:#f4f6f8;
+      --text-muted:#667085;
+      --green:#198754;
+      --green-soft:#eaf7ef;
+      --blue-soft:#e8f0fe;
+      --beige-soft:#fff6e8;
+      --critical:#dc2626;
+      --low:#f97316;
+      --medium:#f2c14e;
+      --ok:#16a34a;
+      --over:#2563eb;
+      --nodata:#6c757d;
+    }
+
+    body{background:var(--bg-page);color:#212529}
+    .gov-banner{background:#2e64d2;height:46px;width:100%;z-index:10}
+    .gov-banner img{height:30px}
+    .bg-shell{background:var(--bg-page);min-height:100vh}
+    .board{max-width:var(--board-max);margin:0 auto;padding:24px 16px 36px}
+
+    .soft-card,.kpi-card,.chart-card,.nav-card,header{
+      border:0;
+      border-radius:1rem;
+      box-shadow:var(--shadow-soft);
+      background:#fff;
+    }
+
+    .header-ues{border-bottom:var(--border-soft)}
+    .header-ues .brand-strip{display:flex;justify-content:center;align-items:center;gap:.75rem;flex-wrap:wrap}
+    .header-ues .brand-strip img{max-width:100%;height:auto}
+
+    .board-title{
+      font-size:clamp(1.5rem,2vw,2.1rem);
+      font-weight:800;
+      color:#1f2937;
+      margin:0;
+    }
+    .board-subtitle{color:var(--text-muted);font-size:.95rem}
+    .last-update-badge{font-size:.95rem;padding:.5rem .8rem;border-radius:999px}
+
+    .navbar .nav-link,.navbar .dropdown-toggle{font-weight:600}
+    .dropdown-menu .dropdown-item.active{background:#2e64d2}
+    .nav-processes{display:flex;flex-wrap:wrap;justify-content:center;align-items:center}
+    .process-btn{
+      background:#f8fafc;
+      border:1px solid #d0d5dd;
+      border-radius:999px;
+      padding:.65rem 1rem!important;
+      color:#344054!important;
+      font-weight:700;
+      box-shadow:0 2px 6px rgba(0,0,0,.04);
+      transition:all .2s ease;
+    }
+    .process-btn:hover{background:#eef4ff;border-color:#98a2b3}
+    .process-btn.active{background:#2e64d2;color:#fff!important;border-color:#2e64d2}
+
+    .filter-label{font-size:.88rem;font-weight:600;color:#475467}
+    .form-select,.form-control{border-radius:.65rem}
+    .section-note{font-size:.9rem;color:#6b7280}
+
+    .section-block{
+      border:1px solid #e8edf5;
+      border-radius:1.1rem;
+      box-shadow:var(--shadow-soft);
+      background:#fff;
+      overflow:hidden;
+    }
+    .section-header{
+      padding:1rem 1.15rem;
+      border-bottom:1px solid #eef2f6;
+      display:flex;
+      align-items:flex-start;
+      gap:.9rem;
+    }
+    .section-header__icon{
+      width:52px;
+      height:52px;
+      border-radius:16px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:1.5rem;
+      flex:0 0 52px;
+      box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);
+    }
+    .section-header h5{
+      margin:0;
+      font-weight:800;
+      color:#1f2937;
+      font-size:clamp(1.35rem,2vw,2rem);
+    }
+    .section-header .small{margin-top:.2rem;font-size:1rem;color:#475467 !important}
+    .section-body{padding:1rem}
+
+    .section-block--blue{border-color:#8eb3ff;box-shadow:0 10px 28px rgba(29,78,216,.08)}
+    .section-block--blue .section-header{background:linear-gradient(180deg,#eef4ff 0%,#edf3ff 100%);border-bottom-color:#c9dafc}
+    .section-block--blue .section-header__icon{background:#e3edff;border:1px solid #bdd1ff;color:#1d4ed8}
+    .section-block--blue .section-header h5{color:#1d4ed8}
+
+    .section-block--green{border-color:#b9e6c8;box-shadow:0 10px 28px rgba(25,135,84,.08)}
+    .section-block--green .section-header{background:linear-gradient(90deg,rgba(234,247,239,1),rgba(234,247,239,.72));border-bottom-color:#cfe9d7}
+    .section-block--green .section-header__icon{background:#dff2e6;border:1px solid #b9e6c8;color:#198754}
+    .section-block--green .section-header h5{color:#198754}
+
+    .section-block--beige{border-color:#f1dfbf;box-shadow:0 10px 28px rgba(181,106,0,.08)}
+    .section-block--beige .section-header{background:linear-gradient(90deg,rgba(255,246,232,1),rgba(255,246,232,.72));border-bottom-color:#f1dfbf}
+    .section-block--beige .section-header__icon{background:#fff0d8;color:#b56a00}
+    .section-block--beige .section-header h5{color:#b56a00}
+
+    .kpi-row-6{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:1rem}
+    .kpi-card{
+      height:100%;
+      padding:1.15rem 1rem!important;
+      border-radius:1.1rem;
+      box-shadow:0 6px 18px rgba(0,0,0,.06);
+      border:1px solid #eef2f7;
+      text-align:center;
+    }
+    .kpi-icon{
+      width:70px;
+      height:70px;
+      border-radius:50%;
+      margin:0 auto 1rem;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:#eaf1ff;
+      color:#2457d6;
+      border:1px solid #d5e3ff;
+      font-size:1.7rem;
+    }
+    .kpi-label{
+      min-height:56px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:700;
+      color:#1f2937;
+      font-size:.92rem;
+      line-height:1.25;
+      text-align:center;
+    }
+    .kpi-divider{border-top:2px dotted #d9e1ec;margin:.8rem 0 1rem}
+    .kpi-value{font-size:clamp(22px,3vw,38px);font-weight:850;color:#2457d6;letter-spacing:.3px;line-height:1.1}
+    .kpi-foot{font-size:.78rem;color:#667085;margin-top:.3rem}
+
+    .chart-container{height:330px;position:relative}
+    .chart-container-sm{height:280px;position:relative}
+    .chart-card{border:1px solid #edf0f2;border-radius:1rem;background:#fff;box-shadow:0 4px 14px rgba(0,0,0,.05)}
+    .chart-card h6,.chart-card h5{font-weight:800;color:#1f2937}
+
+    #map{
+      height:70vh;
+      min-height:620px;
+      border-radius:.85rem;
+      overflow:hidden;
+      border:1px solid #dbeafe;
+    }
+    .badge-map{font-size:.95rem;padding:.45rem .75rem;border-radius:999px}
+    .map-section-note{
+      font-size:.9rem;
+      color:#475467;
+      background:#f8fbff;
+      border:1px solid #dbeafe;
+      border-radius:.9rem;
+      padding:.75rem .9rem;
+      margin-bottom:1rem;
+    }
+    .map-summary-panel{
+      border:1px solid #dbeafe !important;
+      background:#f8fbff !important;
+      color:#1e3a8a;
+      font-weight:700;
+    }
+
+    .layer-toggle-btn,.legend-toggle-btn{
+      position:absolute;
+      z-index:520;
+      width:42px;
+      height:42px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:#fff;
+      border:1px solid rgba(0,0,0,.08);
+      border-radius:10px;
+      box-shadow:0 8px 20px rgba(0,0,0,.15);
+      cursor:pointer;
+      color:#475467;
+    }
+    .layer-toggle-btn{top:12px;right:12px}
+    .legend-toggle-btn{bottom:12px;left:12px}
+    .layer-toggle-btn:hover,.legend-toggle-btn:hover{background:#f8fafc}
+    .layer-toggle-btn svg,.legend-toggle-btn svg{width:22px;height:22px}
+
+    .custom-layer-panel,.custom-legend-panel{
+      position:absolute;
+      z-index:530;
+      background:#fff;
+      border:1px solid rgba(0,0,0,.08);
+      border-radius:14px;
+      box-shadow:0 8px 24px rgba(0,0,0,.18);
+      padding:10px 12px;
+      transition:opacity .18s ease,transform .18s ease;
+    }
+    .custom-layer-panel{top:12px;right:12px;width:290px;max-height:80%;overflow:auto}
+    .custom-legend-panel{bottom:12px;left:12px;width:260px}
+    .custom-layer-panel.collapsed,.custom-legend-panel.collapsed{opacity:0;pointer-events:none;transform:translateY(-6px) scale(.98)}
+    .layer-panel-header{font-weight:800;font-size:.95rem;color:#1f2937;margin-bottom:8px}
+    .layer-close-btn{border:none;background:transparent;font-size:20px;line-height:1;color:#667085;cursor:pointer;padding:0 4px}
+    .custom-layer-panel details{border-top:1px solid #e5e7eb;padding-top:8px;margin-top:8px}
+    .custom-layer-panel details:first-of-type{border-top:none;padding-top:0;margin-top:0}
+    .custom-layer-panel summary{cursor:pointer;font-weight:700;color:#334155;margin-bottom:6px;list-style:none}
+    .custom-layer-panel summary::-webkit-details-marker{display:none}
+    .custom-layer-panel label{display:block;font-size:.88rem;color:#475467;margin:5px 0;cursor:pointer}
+    .custom-layer-panel input[type="checkbox"],.custom-layer-panel input[type="radio"]{margin-right:8px}
+
+    .municipio-label div{
+      background:rgba(255,255,255,.78);
+      color:#5b21b6;
+      border:1px solid rgba(91,33,182,.18);
+      border-radius:8px;
+      padding:2px 6px;
+      font-size:11px;
+      font-weight:700;
+      white-space:nowrap;
+      box-shadow:0 1px 4px rgba(0,0,0,.08)
+    }
+
+    .status-badge{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:.35rem .65rem;
+      border-radius:999px;
+      color:#fff;
+      font-size:.78rem;
+      font-weight:800;
+      line-height:1.1;
+      white-space:nowrap;
+    }
+    .bg-critical{background:var(--critical)}
+    .bg-low{background:var(--low)}
+    .bg-medium{background:var(--medium);color:#111827}
+    .bg-ok{background:var(--ok)}
+    .bg-over{background:var(--over)}
+    .bg-nodata{background:var(--nodata)}
+
+    .active-filter-chip{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      background:#eef4ff;
+      border:1px solid #c7d7fe;
+      color:#1d4ed8;
+      border-radius:999px;
+      padding:6px 10px;
+      font-size:.82rem;
+      font-weight:700;
+      margin:3px;
+    }
+
+    .table-toggle-header{
+      width:100%;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:1rem;
+      padding:0;
+      border:none;
+      background:transparent;
+      text-align:left;
+      cursor:pointer;
+    }
+    .table-toggle-copy{min-width:0}
+    .table-toggle-arrow{
+      flex:0 0 auto;
+      width:44px;
+      height:44px;
+      border-radius:999px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border:1px solid #d0d5dd;
+      background:#f8fafc;
+      color:#475467;
+      transition:all .2s ease;
+      box-shadow:0 2px 6px rgba(0,0,0,.04)
+    }
+    .table-toggle-arrow svg{width:22px;height:22px;display:block;transition:transform .2s ease}
+    .table-toggle-header[aria-expanded="true"] .table-toggle-arrow svg{transform:rotate(90deg)}
+
+
+    .row-estado-critico td{background:#fee2e2 !important;}
+    .row-estado-bajo td{background:#ffedd5 !important;}
+    .row-estado-medio td{background:#fef3c7 !important;}
+    .row-estado-cumplido td{background:#dcfce7 !important;}
+    .row-estado-supera td{background:#dbeafe !important;}
+
+    .row-estado-critico td:first-child{border-left:5px solid #dc2626;}
+    .row-estado-bajo td:first-child{border-left:5px solid #f97316;}
+    .row-estado-medio td:first-child{border-left:5px solid #f2c14e;}
+    .row-estado-cumplido td:first-child{border-left:5px solid #16a34a;}
+    .row-estado-supera td:first-child{border-left:5px solid #2563eb;}
+
+    .leaflet-pane.ach-points-pane{
+      z-index:680 !important;
+    }
+    .leaflet-pane.ach-territorial-pane{
+      z-index:330 !important;
+    }
+    .leaflet-pane.ach-labels-pane{
+      z-index:620 !important;
+      pointer-events:none;
+    }
+
+
+    .municipio-kpi-row{
+      display:grid;
+      grid-template-columns:repeat(6,minmax(0,1fr));
+      gap:1rem;
+      margin-bottom:1rem;
+    }
+    .municipio-kpi-card{
+      background:#fff;
+      border:1px solid #e5e7eb;
+      border-radius:1rem;
+      padding:1rem;
+      box-shadow:0 4px 14px rgba(0,0,0,.05);
+      text-align:center;
+    }
+    .municipio-kpi-label{
+      color:#475467;
+      font-size:.82rem;
+      font-weight:750;
+      min-height:34px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      line-height:1.2;
+    }
+    .municipio-kpi-value{
+      margin-top:.45rem;
+      color:#1d4ed8;
+      font-size:clamp(18px,2.5vw,30px);
+      font-weight:850;
+      line-height:1.1;
+    }
+    .municipio-section-note{
+      background:#eff6ff;
+      border:1px solid #bfdbfe;
+      border-radius:.9rem;
+      color:#1e3a8a;
+      font-size:.88rem;
+      padding:.75rem .9rem;
+      margin-bottom:1rem;
+    }
+    .popup-ach-card{
+      min-width:285px;
+      max-width:380px;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    }
+    .popup-ach-head{
+      margin:-13px -19px 10px -19px;
+      padding:12px 14px;
+      color:#fff;
+      border-radius:12px 12px 0 0;
+    }
+    .popup-ach-title{
+      font-size:16px;
+      font-weight:850;
+      line-height:1.15;
+      margin:0;
+      text-transform:uppercase;
+      letter-spacing:.02em;
+    }
+    .popup-ach-subtitle{
+      font-size:12px;
+      opacity:.92;
+      margin-top:2px;
+      font-weight:650;
+    }
+    .popup-ach-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:7px;
+      margin-bottom:10px;
+    }
+    .popup-ach-metric{
+      background:#f8fafc;
+      border:1px solid #e5e7eb;
+      border-radius:10px;
+      padding:7px 8px;
+    }
+    .popup-ach-metric small{
+      display:block;
+      color:#64748b;
+      font-weight:750;
+      font-size:10px;
+      margin-bottom:2px;
+    }
+    .popup-ach-metric b{
+      color:#111827;
+      font-size:14px;
+    }
+    .popup-ach-section{
+      border-top:1px solid #e5e7eb;
+      padding-top:8px;
+      margin-top:8px;
+    }
+    .popup-ach-section-title{
+      color:#1f2937;
+      font-size:12px;
+      font-weight:850;
+      margin-bottom:4px;
+    }
+    .popup-ach-list{
+      margin:0;
+      padding-left:17px;
+      font-size:12px;
+      color:#334155;
+    }
+    .popup-ach-list li{
+      margin-bottom:2px;
+    }
+    .popup-ach-status{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:5px 9px;
+      border-radius:999px;
+      color:#fff;
+      font-size:11px;
+      font-weight:850;
+      margin-top:4px;
+    }
+    @media (max-width:1200px){
+      .municipio-kpi-row{grid-template-columns:repeat(3,minmax(0,1fr));}
+    }
+    @media (max-width:768px){
+      .municipio-kpi-row{grid-template-columns:1fr;}
+    }
+
+
+    .multi-select-hint{
+      font-size:.74rem;
+      color:#667085;
+      margin-top:3px;
+    }
+    select[multiple].form-select{
+      min-height:82px;
+      padding-top:.35rem;
+      padding-bottom:.35rem;
+    }
+
+    .multi-filter{
+      position:relative;
+      width:100%;
+    }
+    .multi-filter-btn{
+      width:100%;
+      min-height:35px;
+      border:1px solid #d0d5dd;
+      background:#fff;
+      color:#344054;
+      border-radius:.65rem;
+      font-size:.92rem;
+      text-align:left;
+      padding:.35rem 2.1rem .35rem .75rem;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:.5rem;
+      box-shadow:0 1px 2px rgba(16,24,40,.03);
+    }
+    .multi-filter-btn:hover{
+      background:#f8fafc;
+      border-color:#98a2b3;
+    }
+    .multi-filter-btn::after{
+      content:"";
+      position:absolute;
+      right:.85rem;
+      width:.55rem;
+      height:.55rem;
+      border-right:2px solid #667085;
+      border-bottom:2px solid #667085;
+      transform:rotate(45deg);
+      margin-top:-.15rem;
+    }
+    .multi-filter-menu{
+      width:100%;
+      max-height:280px;
+      overflow:auto;
+      border-radius:.85rem;
+      border:1px solid #d0d5dd;
+      box-shadow:0 12px 28px rgba(16,24,40,.16);
+      padding:.55rem;
+    }
+    .multi-filter-actions{
+      display:flex;
+      gap:.4rem;
+      padding:.35rem .25rem .55rem;
+      border-bottom:1px solid #edf1f7;
+      margin-bottom:.4rem;
+      position:sticky;
+      top:0;
+      background:#fff;
+      z-index:1;
+    }
+    .multi-filter-actions button{
+      font-size:.74rem;
+      padding:.25rem .5rem;
+      border-radius:999px;
+    }
+    .multi-filter-option{
+      display:flex;
+      align-items:center;
+      gap:.5rem;
+      padding:.38rem .45rem;
+      border-radius:.5rem;
+      font-size:.86rem;
+      color:#344054;
+      cursor:pointer;
+      user-select:none;
+    }
+    .multi-filter-option:hover{
+      background:#eef4ff;
+    }
+    .multi-filter-option input{
+      margin:0;
+    }
+    .multi-filter-count{
+      font-weight:650;
+      color:#344054;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .filters-actions{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:.55rem;
+      flex-wrap:wrap;
+      width:100%;
+      margin-top:.35rem;
+    }
+
+    .dt-buttons .btn{margin-right:.25rem}
+    .table{font-size:.86rem}
+    footer{color:#667085;font-size:.86rem;padding-bottom:2rem}
+
+
+    .persona-kpi-row{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:1rem;
+      margin-bottom:1rem;
+    }
+    .persona-kpi-card{
+      background:#fff;
+      border:1px solid #e5e7eb;
+      border-radius:1rem;
+      padding:1rem;
+      box-shadow:0 4px 14px rgba(0,0,0,.05);
+      text-align:center;
+    }
+    .persona-kpi-label{
+      color:#475467;
+      font-size:.86rem;
+      font-weight:750;
+      line-height:1.2;
+      min-height:36px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .persona-kpi-value{
+      margin-top:.5rem;
+      color:#198754;
+      font-size:clamp(20px,2.8vw,34px);
+      font-weight:850;
+      line-height:1.1;
+    }
+    .persona-section-note{
+      background:#f0fdf4;
+      border:1px solid #bbf7d0;
+      border-radius:.9rem;
+      color:#14532d;
+      font-size:.88rem;
+      padding:.75rem .9rem;
+      margin-bottom:1rem;
+    }
+    @media (max-width:992px){
+      .persona-kpi-row{grid-template-columns:repeat(2,minmax(0,1fr));}
+    }
+    @media (max-width:576px){
+      .persona-kpi-row{grid-template-columns:1fr;}
+    }
+
+    @media (max-width:1200px){.kpi-row-6{grid-template-columns:repeat(3,minmax(0,1fr))}}
+    @media (max-width:768px){
+      .kpi-row-6{grid-template-columns:1fr}
+      #map{height:62vh;min-height:500px}
+      .custom-layer-panel{width:230px;max-height:65%}
+      .board{padding-left:10px;padding-right:10px}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="gov-banner">
+    <div class="container d-flex align-items-center" style="height:100%;">
+      <img src="https://www.gov.co/assets/images/logo.png" alt="GOV.CO">
+    </div>
+  </div>
+
+  <main class="bg-shell">
+    <div class="board">
+
+      <header class="header-ues py-2 mb-3">
+        <div class="container-fluid px-3">
+          <div class="brand-strip">
+            <img src="https://www.uesvalle.gov.co/info/uesvalle/media/bloque1656.png" alt="UESVALLE" loading="lazy" class="img-fluid">
+          </div>
+        </div>
+      </header>
+
+      <section class="nav-card p-3 mb-3">
+        <nav class="navbar navbar-expand-lg bg-white rounded-4">
+          <div class="container-fluid d-flex flex-column align-items-center">
+            <div class="fw-bold mb-3 fs-5">Procesos</div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navPrincipal">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navPrincipal">
+              <ul class="navbar-nav mb-2 mb-lg-0 nav-processes">
+                <li class="nav-item dropdown mx-2 my-1">
+                  <a class="nav-link dropdown-toggle process-btn active" href="#" role="button" data-bs-toggle="dropdown">1. Agua para consumo humano y saneamiento básico</a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="https://javiermarin7.github.io/UESVALLE/ircas.html">1.1 IRCAS</a></li>
+                    <li><a class="dropdown-item" href="https://javiermarin7.github.io/UESVALLE/index.html">1.2 Filtros</a></li>
+                    <li><a class="dropdown-item active" href="https://javiermarin7.github.io/UESVALLE/dashboards/seguimiento_ach/seguimiento_ach.html">1.3 Seguimiento actividades ACH</a></li>
+                    <li><a class="dropdown-item" href="https://javiermarin7.github.io/UESVALLE/Dosificacion_cloro.html">1.4 Dosificación de cloro</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item dropdown mx-2 my-1">
+                  <a class="nav-link dropdown-toggle process-btn" href="#" role="button" data-bs-toggle="dropdown">2. Alimentos y medicamentos</a>
+                  <ul class="dropdown-menu"><li><a class="dropdown-item disabled" href="#">Próximamente</a></li></ul>
+                </li>
+                <li class="nav-item dropdown mx-2 my-1">
+                  <a class="nav-link dropdown-toggle process-btn" href="#" role="button" data-bs-toggle="dropdown">3. Zoonosis y ETV</a>
+                  <ul class="dropdown-menu"><li><a class="dropdown-item disabled" href="#">Próximamente</a></li></ul>
+                </li>
+                <li class="nav-item dropdown mx-2 my-1">
+                  <a class="nav-link dropdown-toggle process-btn" href="#" role="button" data-bs-toggle="dropdown">4. Establecimientos interés sanitario EIS</a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="https://javiermarin7.github.io/UESVALLE/piscinas.html">5.4 Piscinas</a></li>
+                    <li><a class="dropdown-item" href="https://javiermarin7.github.io/UESVALLE/empresas_plaguicidas.html">5.5 Empresas aplicadoras de plaguicidas</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </section>
+
+      <section class="soft-card p-3 mb-3">
+        <div class="d-flex flex-column flex-lg-row align-items-lg-center">
+          <div class="me-auto">
+            <h1 class="board-title">Seguimiento Actividades Agua para Consumo Humano</h1>
+            <div class="board-subtitle mt-1">Proceso Agua para Consumo Humano | Actividades programadas, ejecutadas y pendientes | Fuente: GitHub CSV</div>
+          </div>
+          <div class="mt-2 mt-lg-0">
+            <span id="lastUpdate" class="badge text-bg-success last-update-badge">Cargando…</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="loadAlert" class="soft-card p-3 mb-3">
+        <div class="alert alert-info mb-0">Cargando archivos CSV de seguimiento...</div>
+      </section>
+
+      <section class="soft-card p-3 mb-3">
+        <div class="row g-3 align-items-end">
+          <div class="col-12 col-sm-6 col-md-2">
+            <label class="form-label filter-label mb-1">Periodo</label>
+            <select id="fPeriodo" class="form-select form-select-sm"><option value="">Todos</option></select>
+          </div>
+          <div class="col-12 col-sm-6 col-md-2">
+            <label class="form-label filter-label mb-1">ARO</label>
+            <select id="fAro" class="form-select form-select-sm"><option value="">Todos</option></select>
+          </div>
+          <div class="col-12 col-sm-6 col-md-2">
+            <label class="form-label filter-label mb-1">Tipo</label>
+            <select id="fTipo" class="form-select form-select-sm"><option value="">Todos</option></select>
+          </div>
+          <div class="col-12 col-sm-6 col-md-3">
+            <label class="form-label filter-label mb-1">Municipio</label>
+            <div class="dropdown multi-filter" id="wrapMunicipio">
+              <button class="multi-filter-btn dropdown-toggle" type="button" id="btnMunicipioMulti" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                <span class="multi-filter-count" id="txtMunicipioMulti">Todos los municipios</span>
+              </button>
+              <div class="dropdown-menu multi-filter-menu" aria-labelledby="btnMunicipioMulti">
+                <div class="multi-filter-actions">
+                  <button type="button" class="btn btn-sm btn-outline-primary" data-multi-action="all" data-target="fMunicipio">Todos</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary" data-multi-action="none" data-target="fMunicipio">Limpiar</button>
+                </div>
+                <div id="fMunicipio" class="multi-filter-options"></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-md-3">
+            <label class="form-label filter-label mb-1">Responsable</label>
+            <select id="fResponsable" class="form-select form-select-sm"><option value="">Todos</option></select>
+          </div>
+          <div class="col-12 col-sm-6 col-md-2">
+            <label class="form-label filter-label mb-1">Estado</label>
+            <select id="fEstado" class="form-select form-select-sm"><option value="">Todos</option></select>
+          </div>
+          <div class="col-12 col-sm-6 col-md-2">
+            <label class="form-label filter-label mb-1">Actividades</label>
+            <div class="dropdown multi-filter" id="wrapActividades">
+              <button class="multi-filter-btn dropdown-toggle" type="button" id="btnActividadesMulti" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                <span class="multi-filter-count" id="txtActividadesMulti">Todas las actividades</span>
+              </button>
+              <div class="dropdown-menu multi-filter-menu" aria-labelledby="btnActividadesMulti">
+                <div class="multi-filter-actions">
+                  <button type="button" class="btn btn-sm btn-outline-primary" data-multi-action="all" data-target="fGrupoActividad">Todas</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary" data-multi-action="none" data-target="fGrupoActividad">Limpiar</button>
+                </div>
+                <div id="fGrupoActividad" class="multi-filter-options"></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-md-2">
+            <label class="form-label filter-label mb-1">Código</label>
+            <div class="dropdown multi-filter" id="wrapCodigo">
+              <button class="multi-filter-btn dropdown-toggle" type="button" id="btnCodigoMulti" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                <span class="multi-filter-count" id="txtCodigoMulti">Todos los códigos</span>
+              </button>
+              <div class="dropdown-menu multi-filter-menu" aria-labelledby="btnCodigoMulti">
+                <div class="multi-filter-actions">
+                  <button type="button" class="btn btn-sm btn-outline-primary" data-multi-action="all" data-target="fActividad">Todos</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary" data-multi-action="none" data-target="fActividad">Limpiar</button>
+                </div>
+                <div id="fActividad" class="multi-filter-options"></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-5">
+            <label class="form-label filter-label mb-1">Buscar texto</label>
+            <input id="fTexto" class="form-control form-control-sm" placeholder="Nombre, municipio, actividad, ARO..." />
+          </div>
+          <div class="col-12">
+            <div class="filters-actions">
+              <button id="btnFiltrar" class="btn btn-primary btn-sm px-4">Aplicar filtros</button>
+              <button id="btnLimpiar" class="btn btn-outline-secondary btn-sm px-4">Limpiar</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="soft-card p-3 mb-3">
+        <div class="fw-bold mb-2">Filtros activos</div>
+        <div id="activeFilters"><span class="text-muted">Sin filtros adicionales</span></div>
+      </section>
+
+      <section class="section-block section-block--blue mb-4">
+        <div class="section-header">
+          <div class="section-header__icon">📊</div>
+          <div>
+            <h5>Indicadores de seguimiento</h5>
+            <div class="small text-muted">Resumen general de actividades programadas, ejecutadas y pendientes del periodo filtrado.</div>
+          </div>
+        </div>
+        <div class="section-body">
+          <div class="kpi-row-6">
+            <div class="kpi-card">
+              <div class="kpi-icon">📌</div>
+              <div class="kpi-label">Actividades programadas</div>
+              <div class="kpi-divider"></div>
+              <div id="kpiProgramado" class="kpi-value">–</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-icon">✅</div>
+              <div class="kpi-label">Actividades ejecutadas</div>
+              <div class="kpi-divider"></div>
+              <div id="kpiEjecutado" class="kpi-value">–</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-icon">⏳</div>
+              <div class="kpi-label">Actividades pendientes</div>
+              <div class="kpi-divider"></div>
+              <div id="kpiPendiente" class="kpi-value">–</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-icon">📈</div>
+              <div class="kpi-label">% cumplimiento global</div>
+              <div class="kpi-divider"></div>
+              <div id="kpiCumplimiento" class="kpi-value">–</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-icon">👥</div>
+              <div class="kpi-label">Responsables</div>
+              <div class="kpi-divider"></div>
+              <div id="kpiResponsables" class="kpi-value">–</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-icon">🗺️</div>
+              <div class="kpi-label">Municipios con registros</div>
+              <div class="kpi-divider"></div>
+              <div id="kpiMunicipios" class="kpi-value">–</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-block section-block--blue mb-4" id="seccionActividadesPersona">
+        <button class="table-toggle-header section-header" type="button" data-bs-toggle="collapse" data-bs-target="#actividadesPersonaCollapse" aria-expanded="false" aria-controls="actividadesPersonaCollapse">
+          <div class="d-flex align-items-start gap-3 table-toggle-copy">
+            <div class="section-header__icon">👥</div>
+            <div>
+              <h5>Actividades por responsable</h5>
+              <div class="small text-muted">Consulta por persona las actividades programadas, ejecutadas, pendientes y su porcentaje de cumplimiento.</div>
+            </div>
+          </div>
+          <span class="table-toggle-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </button>
+
+        <div class="collapse" id="actividadesPersonaCollapse">
+          <div class="section-body">
+            <div class="persona-section-note">
+              Esta sección responde a los filtros generales del tablero. Además, puedes seleccionar una persona específica para revisar el detalle de sus actividades.
+            </div>
+
+            <div class="row g-3 align-items-end mb-3">
+              <div class="col-12 col-md-5">
+                <label class="form-label filter-label mb-1">Responsable para esta sección</label>
+                <select id="fPersonaDetalle" class="form-select form-select-sm">
+                  <option value="">Todos los responsables filtrados</option>
+                </select>
+              </div>
+              <div class="col-12 col-md-7">
+                <div class="section-note">
+                  Si seleccionas una persona, la gráfica muestra sus actividades. Si dejas “Todos”, la gráfica resume el cumplimiento por responsable.
+                </div>
+              </div>
+            </div>
+
+            <div class="persona-kpi-row">
+              <div class="persona-kpi-card">
+                <div class="persona-kpi-label">Programado</div>
+                <div id="personaKpiProgramado" class="persona-kpi-value">–</div>
+              </div>
+              <div class="persona-kpi-card">
+                <div class="persona-kpi-label">Ejecutado</div>
+                <div id="personaKpiEjecutado" class="persona-kpi-value">–</div>
+              </div>
+              <div class="persona-kpi-card">
+                <div class="persona-kpi-label">Pendiente</div>
+                <div id="personaKpiPendiente" class="persona-kpi-value">–</div>
+              </div>
+              <div class="persona-kpi-card">
+                <div class="persona-kpi-label">% cumplimiento</div>
+                <div id="personaKpiCumplimiento" class="persona-kpi-value">–</div>
+              </div>
+            </div>
+
+            <div class="row g-3">
+              <div class="col-12">
+                <div class="chart-card p-3 h-100">
+                  <h6 class="mb-2" id="tituloChartPersonaActividad">Cumplimiento por responsable</h6>
+                  <div class="chart-container" style="height:420px"><canvas id="chartPersonaActividad"></canvas></div>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="chart-card p-3 h-100">
+                  <h6 class="mb-2">Detalle de códigos por responsable</h6>
+                  <div class="section-note mb-2">Los registros se sombrean de forma tenue según el estado de cumplimiento: crítico, bajo, medio, cumplido o supera meta.</div>
+                  <div class="table-responsive">
+                    <table id="tblPersonaActividad" class="table table-striped table-hover w-100"></table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-block section-block--blue mb-4" id="seccionMapaCumplimiento">
+        <button class="table-toggle-header section-header" type="button" data-bs-toggle="collapse" data-bs-target="#mapaCumplimientoCollapse" aria-expanded="true" aria-controls="mapaCumplimientoCollapse">
+          <div class="d-flex align-items-start gap-3 table-toggle-copy">
+            <div class="section-header__icon">🧭</div>
+            <div>
+              <h5>Mapa municipal de cumplimiento</h5>
+              <div class="small text-muted">Mapa coroplético municipal según estado de cumplimiento. Los puntos muestran la intensidad del pendiente.</div>
+            </div>
+          </div>
+          <span class="table-toggle-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </button>
+        <div class="collapse show" id="mapaCumplimientoCollapse">
+        <div class="section-body">
+          <div class="map-section-note">
+            El mapa combina coropleta municipal por estado de cumplimiento y puntos proporcionales al pendiente. Los polígonos se colorean según el indicador filtrado.
+          </div>
+          <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-2">
+            <span class="badge text-bg-primary badge-map" id="mapCount">0 municipios</span>
+            <button id="btnFit" class="btn btn-sm btn-outline-primary">Ajustar vista</button>
+          </div>
+          <div class="position-relative">
+            <div id="map"></div>
+
+            <div id="layerToggle" class="layer-toggle-btn" title="Capas del mapa">
+              <svg viewBox="0 0 24 24"><path d="M12 3 2 8l10 5 10-5-10-5Zm0 7.2L4.4 8 12 4.8 19.6 8 12 10.2Zm-10 3.3 10 5 10-5M2 18l10 5 10-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+
+            <div id="layerPanel" class="custom-layer-panel collapsed">
+              <div class="layer-panel-header d-flex justify-content-between align-items-center">
+                <span>Capas del mapa</span>
+                <button id="layerClose" class="layer-close-btn" type="button">×</button>
+              </div>
+              <details open>
+                <summary>Mapas base</summary>
+                <label><input type="radio" name="basemap" value="cartoLight" checked> Claro CARTO</label>
+                <label><input type="radio" name="basemap" value="esriTopo"> Topográfico Esri</label>
+                <label><input type="radio" name="basemap" value="esriImagery"> Satélite Esri</label>
+                <label><input type="radio" name="basemap" value="osm"> OpenStreetMap</label>
+              </details>
+              <details open>
+                <summary>Capas de datos</summary>
+                <label><input type="checkbox" data-layer="municipalAch" checked> Puntos municipales ACH</label>
+              </details>
+              <details open>
+                <summary>Territorial</summary>
+                <label><input type="checkbox" data-layer="municipiosValle" checked> Municipios Valle / coropleta</label>
+                <label><input type="checkbox" data-layer="municipiosLabels" checked> Etiquetas municipios</label>
+                <label><input type="checkbox" data-layer="valleContorno" checked> Valle contorno</label>
+              </details>
+            </div>
+
+            <div id="legendToggle" class="legend-toggle-btn" title="Leyenda del mapa">
+              <svg viewBox="0 0 24 24"><path d="M5 6h14M5 12h14M5 18h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="8" cy="6" r="1.8" fill="currentColor"/><circle cx="12" cy="12" r="1.8" fill="currentColor"/><circle cx="16" cy="18" r="1.8" fill="currentColor"/></svg>
+            </div>
+            <div id="legendPanel" class="custom-legend-panel collapsed">
+              <div class="layer-panel-header d-flex justify-content-between align-items-center">
+                <span>Leyenda</span>
+                <button id="legendClose" class="layer-close-btn" type="button">×</button>
+              </div>
+              <div id="legend"></div>
+            </div>
+          </div>
+          <div id="mapResumen" class="mt-3 p-2 text-center rounded shadow-sm map-summary-panel" style="font-size:0.9rem;"></div>
+        </div>
+        </div>
+      </section>
+
+      <section class="section-block section-block--blue mb-4" id="seccionSeguimientoMunicipio">
+        <button class="table-toggle-header section-header" type="button" data-bs-toggle="collapse" data-bs-target="#seguimientoMunicipioCollapse" aria-expanded="false" aria-controls="seguimientoMunicipioCollapse">
+          <div class="d-flex align-items-start gap-3 table-toggle-copy">
+            <div class="section-header__icon">🏙️</div>
+            <div>
+              <h5>Seguimiento por municipio</h5>
+              <div class="small text-muted">Consulta el estado operativo por municipio: actividades programadas, ejecutadas, pendientes, responsables y actividades críticas.</div>
+            </div>
+          </div>
+          <span class="table-toggle-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </button>
+
+        <div class="collapse" id="seguimientoMunicipioCollapse">
+          <div class="section-body">
+            <div class="municipio-section-note">
+              Esta sección responde a los filtros generales del tablero. Si seleccionas un municipio, se muestran sus responsables y actividades con mayor pendiente.
+            </div>
+
+            <div class="row g-3 align-items-end mb-3">
+              <div class="col-12 col-md-5">
+                <label class="form-label filter-label mb-1">Municipio para esta sección</label>
+                <select id="fMunicipioDetalle" class="form-select form-select-sm">
+                  <option value="">Todos los municipios filtrados</option>
+                </select>
+              </div>
+              <div class="col-12 col-md-7">
+                <div class="section-note">
+                  Si seleccionas un municipio, la gráfica muestra sus actividades. Si dejas “Todos”, la gráfica resume el cumplimiento por municipio.
+                </div>
+              </div>
+            </div>
+
+            <div class="municipio-kpi-row">
+              <div class="municipio-kpi-card">
+                <div class="municipio-kpi-label">Programado</div>
+                <div id="municipioKpiProgramado" class="municipio-kpi-value">–</div>
+              </div>
+              <div class="municipio-kpi-card">
+                <div class="municipio-kpi-label">Ejecutado</div>
+                <div id="municipioKpiEjecutado" class="municipio-kpi-value">–</div>
+              </div>
+              <div class="municipio-kpi-card">
+                <div class="municipio-kpi-label">Pendiente</div>
+                <div id="municipioKpiPendiente" class="municipio-kpi-value">–</div>
+              </div>
+              <div class="municipio-kpi-card">
+                <div class="municipio-kpi-label">% cumplimiento</div>
+                <div id="municipioKpiCumplimiento" class="municipio-kpi-value">–</div>
+              </div>
+              <div class="municipio-kpi-card">
+                <div class="municipio-kpi-label">Responsables</div>
+                <div id="municipioKpiResponsables" class="municipio-kpi-value">–</div>
+              </div>
+              <div class="municipio-kpi-card">
+                <div class="municipio-kpi-label">Actividades críticas</div>
+                <div id="municipioKpiCriticas" class="municipio-kpi-value">–</div>
+              </div>
+            </div>
+
+            <div class="row g-3">
+              <div class="col-12">
+                <div class="chart-card p-3 h-100">
+                  <h6 class="mb-2" id="tituloChartMunicipioActividad">Cumplimiento por municipio</h6>
+                  <div class="chart-container" style="height:420px"><canvas id="chartMunicipioActividad"></canvas></div>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="chart-card p-3 h-100">
+                  <h6 class="mb-2">Detalle de códigos del municipio</h6>
+                  <div class="section-note mb-2">Los registros se sombrean de forma tenue según su estado de cumplimiento.</div>
+                  <div class="table-responsive">
+                    <table id="tblMunicipioActividad" class="table table-striped table-hover w-100"></table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-block section-block--beige mb-4" id="seccionAnaliticaPriorizacion">
+        <button class="table-toggle-header section-header" type="button" data-bs-toggle="collapse" data-bs-target="#analiticaPriorizacionCollapse" aria-expanded="true" aria-controls="analiticaPriorizacionCollapse">
+          <div class="d-flex align-items-start gap-3 table-toggle-copy">
+            <div class="section-header__icon">🔎</div>
+            <div>
+              <h5>Analítica de priorización y seguimiento</h5>
+              <div class="small text-muted">Identifica responsables, municipios, ARO, estados y actividades con mayor pendiente para orientar el seguimiento operativo.</div>
+            </div>
+          </div>
+          <span class="table-toggle-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </button>
+
+        <div class="collapse show" id="analiticaPriorizacionCollapse">
+        <div class="section-body">
+          <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+            <div class="section-note">
+              Las gráficas son interactivas: al hacer clic sobre una barra o categoría, el tablero aplica el filtro correspondiente.
+            </div>
+            <button id="btnLimpiarFiltrosAnalitica" class="btn btn-sm btn-outline-secondary px-3">
+              Borrar filtros aplicados
+            </button>
+          </div>
+          <div class="row g-3 mb-3">
+            <div class="col-12 col-xl-6">
+              <div class="chart-card p-3 h-100">
+                <h5 class="mb-1">Programado, ejecutado y pendiente por ARO</h5>
+                <div class="section-note mb-2">Comparativo general por área regional operativa. Clic sobre un ARO para filtrar.</div>
+                <div class="chart-container"><canvas id="chartAro"></canvas></div>
+              </div>
+            </div>
+            <div class="col-12 col-xl-6">
+              <div class="chart-card p-3 h-100">
+                <h5 class="mb-1">Distribución por estado de cumplimiento</h5>
+                <div class="section-note mb-2">Clasificación semafórica. Clic sobre un estado para filtrar el tablero.</div>
+                <div class="chart-container"><canvas id="chartEstado"></canvas></div>
+              </div>
+            </div>
+          </div>
+          <div class="row g-3">
+            <div class="col-12 col-xl-4">
+              <div class="chart-card p-3 h-100">
+                <h6 class="mb-2">Responsables por pendiente</h6>
+                <div class="chart-container-sm"><canvas id="chartResponsable"></canvas></div>
+              </div>
+            </div>
+            <div class="col-12 col-xl-4">
+              <div class="chart-card p-3 h-100">
+                <h6 class="mb-2">Municipios por pendiente</h6>
+                <div class="chart-container-sm"><canvas id="chartMunicipio"></canvas></div>
+              </div>
+            </div>
+            <div class="col-12 col-xl-4">
+              <div class="chart-card p-3 h-100">
+                <h6 class="mb-2">Códigos por pendiente</h6>
+                <div class="chart-container-sm"><canvas id="chartActividad"></canvas></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+      </section>
+
+      <section class="soft-card p-3 mb-4">
+        <button class="table-toggle-header" type="button" data-bs-toggle="collapse" data-bs-target="#tablasConsultaCollapse" aria-expanded="false" aria-controls="tablasConsultaCollapse">
+          <div class="table-toggle-copy">
+            <h5 class="mb-1">Tablas de consulta</h5>
+            <div class="section-note mb-0">Las tablas quedan ocultas para reducir el ruido visual del tablero. Ábrelas cuando necesites consultar, filtrar o exportar registros.</div>
+          </div>
+          <span class="table-toggle-arrow">
+            <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </button>
+
+        <div class="collapse mt-3" id="tablasConsultaCollapse">
+          <ul class="nav nav-tabs" id="tablasTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active fw-semibold" id="tab-detalle-tab" data-bs-toggle="tab" data-bs-target="#tab-detalle" type="button" role="tab">Detalle depurado</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link fw-semibold" id="tab-municipal-tab" data-bs-toggle="tab" data-bs-target="#tab-municipal" type="button" role="tab">Resumen municipal</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link fw-semibold" id="tab-responsable-tab" data-bs-toggle="tab" data-bs-target="#tab-responsable" type="button" role="tab">Resumen responsable</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link fw-semibold" id="tab-actividad-tab" data-bs-toggle="tab" data-bs-target="#tab-actividad" type="button" role="tab">Resumen actividad</button>
+            </li>
+          </ul>
+
+          <div class="tab-content pt-3">
+            <div class="tab-pane fade show active" id="tab-detalle" role="tabpanel">
+              <div class="table-responsive"><table id="tblDetalle" class="table table-striped table-hover w-100"></table></div>
+            </div>
+            <div class="tab-pane fade" id="tab-municipal" role="tabpanel">
+              <div class="table-responsive"><table id="tblMunicipal" class="table table-striped table-hover w-100"></table></div>
+            </div>
+            <div class="tab-pane fade" id="tab-responsable" role="tabpanel">
+              <div class="table-responsive"><table id="tblResponsable" class="table table-striped table-hover w-100"></table></div>
+            </div>
+            <div class="tab-pane fade" id="tab-actividad" role="tabpanel">
+              <div class="table-responsive"><table id="tblActividad" class="table table-striped table-hover w-100"></table></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="text-center">
+        <strong>UESVALLE | Agua para Consumo Humano</strong><br>
+        Tablero construido a partir de archivos CSV normalizados mediante script Python.
+      </footer>
+
+    </div>
+  </main>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/esri-leaflet@3.0.14/dist/esri-leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.8/js/dataTables.bootstrap5.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.bootstrap5.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+
+  <script>
+    /*
+      VERSIÓN ESTRUCTURADA DEL PORTAL.
+      Ubicación esperada:
+      /dashboards/seguimiento_ach/seguimiento_ach.html
+
+      Los CSV se leen desde:
+      ../../data/seguimiento_ach/current/
+
+      Esta versión está preparada para la estructura técnica:
+      dashboards/
+      data/
+      scripts/
+      docs/
+    */
+
+    const DATA_BASE = "../../data/seguimiento_ach/current/";
+
+    // Archivos requeridos. Se dejan alternativas para evitar fallos por nombres anteriores.
+    const CSV_DETALLE_OPTIONS = [
+      DATA_BASE + "seguimiento_actividades_ACH_detalle.csv",
+      DATA_BASE + "seguimiento_actividades_ACH_enero_marzo_depurado.csv"
+    ];
+    const CSV_MUNICIPAL_OPTIONS = [
+      DATA_BASE + "seguimiento_actividades_ACH_resumen_municipal.csv"
+    ];
+    const CSV_RESPONSABLE_OPTIONS = [
+      DATA_BASE + "seguimiento_actividades_ACH_resumen_responsable.csv"
+    ];
+    const CSV_ACTIVIDAD_OPTIONS = [
+      DATA_BASE + "seguimiento_actividades_ACH_resumen_actividad.csv",
+      DATA_BASE + "seguimiento_actividades_ACH_resumen_actividades.csv"
+    ];
+
+    // Archivos opcionales. Si no existen, el tablero sigue cargando.
+    const CSV_ARO_OPTIONS = [
+      DATA_BASE + "seguimiento_actividades_ACH_resumen_aro.csv"
+    ];
+    const CSV_TIPO_OPTIONS = [
+      DATA_BASE + "seguimiento_actividades_ACH_resumen_tipo.csv"
+    ];
+
+    let DETALLE = [], MUNICIPAL = [], RESPONSABLE = [], ACTIVIDAD = [], ARO = [], TIPO = [], LIST = [];
+    let charts = {};
+    let DT_DETALLE, DT_MUNICIPAL, DT_RESPONSABLE, DT_ACTIVIDAD, DT_PERSONA_ACTIVIDAD, DT_MUNICIPIO_ACTIVIDAD;
+    let MAP, municipalLayer, municipiosValleLayer, municipiosLabelsLayer, valleContornoLayer;
+    let MUNICIPAL_METRICS = new Map();
+    let PANEL_LAYERS = {}, BASEMAPS = {}, currentBasemap = null;
+
+    const MUNICIPIO_COORDS = {
+      "ALCALA":[4.6747,-75.7828],"ANDALUCIA":[4.1706,-76.1669],"ANSERMANUEVO":[4.7972,-75.9950],
+      "ARGELIA":[4.7297,-76.1197],"BOLIVAR":[4.3386,-76.1831],"BUENAVENTURA":[3.8801,-77.0312],
+      "BUGA":[3.9009,-76.2978],"BUGALAGRANDE":[4.2117,-76.1556],"CAICEDONIA":[4.3324,-75.8267],
+      "CALI":[3.4516,-76.5320],"CALIMA":[3.9294,-76.6250],"CALIMA DARIEN":[3.9294,-76.6250],
+      "CANDELARIA":[3.4067,-76.3483],"CARTAGO":[4.7464,-75.9117],"DAGUA":[3.6578,-76.6880],
+      "EL AGUILA":[4.9081,-76.0422],"EL CAIRO":[4.7622,-76.2211],"EL CERRITO":[3.6855,-76.3137],
+      "EL DOVIO":[4.5072,-76.2381],"FLORIDA":[3.3225,-76.2348],"GINEBRA":[3.7246,-76.2661],
+      "GUACARI":[3.7638,-76.3329],"JAMUNDI":[3.2607,-76.5349],"LA CUMBRE":[3.6506,-76.5692],
+      "LA UNION":[4.5328,-76.1036],"LA VICTORIA":[4.5222,-76.0392],"OBANDO":[4.5758,-75.9739],
+      "PALMIRA":[3.5394,-76.3036],"PRADERA":[3.4211,-76.2447],"RESTREPO":[3.8220,-76.5220],
+      "RIOFRIO":[4.1569,-76.2881],"ROLDANILLO":[4.4126,-76.1546],"SAN PEDRO":[3.9944,-76.2281],
+      "SEVILLA":[4.2689,-75.9308],"TORO":[4.6117,-76.0814],"TRUJILLO":[4.2111,-76.3192],
+      "TULUA":[4.0847,-76.1954],"ULLOA":[4.7044,-75.7400],"VERSALLES":[4.5753,-76.1983],
+      "VIJES":[3.6992,-76.4428],"YOTOCO":[3.8603,-76.3836],"YUMBO":[3.5823,-76.4915],"ZARZAL":[4.3946,-76.0715]
+    };
+
+    function norm(v){
+      return String(v ?? "")
+        .trim()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/\s+/g," ")
+        .toUpperCase();
+    }
+
+    function nombreCorto(nombre){
+      let n = String(nombre ?? "").trim();
+      if(!n) return "Sin dato";
+
+      // Quitar etiquetas operativas que alargan la visualización.
+      n = n
+        .replace(/\bING\.?\s*AGUAS\s*\d*\b/gi, "")
+        .replace(/\bAGUAS\s*\d*\b/gi, "")
+        .replace(/\bINGENIER[OA]\b/gi, "")
+        .replace(/\bCONTRATISTA\b/gi, "")
+        .replace(/\s+/g, " ")
+        .trim();
+
+      const parts = n.split(" ").filter(Boolean);
+      if(parts.length >= 2){
+        return `${capitalizar(parts[0])} ${capitalizar(parts[1])}`;
+      }
+      return capitalizar(n);
+    }
+
+    function capitalizar(texto){
+      return String(texto || "")
+        .toLowerCase()
+        .replace(/(^|\s|\.|-)([a-záéíóúñ])/g, (m, sep, c) => sep + c.toUpperCase());
+    }
+
+    function clasificarActividadJS(codigo){
+      let c = String(codigo ?? "").trim().toUpperCase().replace(",", ".").replace(/\s+/g, "").replace(/\.+$/g, "");
+
+      if(c === "12" || c.startsWith("12.")){
+        return "Actividades Administrativas";
+      }
+
+      const operativos = new Set([
+        "1.1","1.10","1.13","1.17","1.2","1.3","1.4","1.5","1.7","1.8",
+        "2.1","2.10","2.18","2.2","2.20","2.3",
+        "5.2","5.24","5.34","5.4"
+      ]);
+
+      if(operativos.has(c)) return "Operativo";
+      return "OTROS";
+    }
+
+    function num(v){
+      const n = Number(String(v ?? 0).replace(",","."));
+      return Number.isFinite(n) ? n : 0;
+    }
+
+    function fmtInt(v){return new Intl.NumberFormat("es-CO",{maximumFractionDigits:0}).format(num(v))}
+    function fmtPct(v){return new Intl.NumberFormat("es-CO",{style:"percent",minimumFractionDigits:1,maximumFractionDigits:1}).format(num(v))}
+    function uniq(arr){return [...new Set(arr.filter(v => String(v ?? "").trim() !== ""))]}
+
+    function estadoDesdeCumplimiento(c){
+      const v = num(c);
+      if(v <= .30) return "Crítico";
+      if(v <= .60) return "Bajo";
+      if(v <= .80) return "Medio";
+      if(v <= 1.00) return "Cumplido";
+      return "Supera meta";
+    }
+
+    function estadoClass(estado){
+      const e = norm(estado);
+      if(e.includes("CRITICO")) return "bg-critical";
+      if(e.includes("BAJO")) return "bg-low";
+      if(e.includes("MEDIO")) return "bg-medium";
+      if(e.includes("SUPERA")) return "bg-over";
+      if(e.includes("CUMPLIDO")) return "bg-ok";
+      return "bg-nodata";
+    }
+
+    function estadoColor(estado){
+      const e = norm(estado);
+      if(e.includes("CRITICO")) return "#dc2626";
+      if(e.includes("BAJO")) return "#f97316";
+      if(e.includes("MEDIO")) return "#f2c14e";
+      if(e.includes("SUPERA")) return "#2563eb";
+      if(e.includes("CUMPLIDO")) return "#16a34a";
+      return "#6c757d";
+    }
+
+    function estadoRowClass(estado){
+      const e = norm(estado);
+      if(e.includes("CRITICO")) return "row-estado-critico";
+      if(e.includes("BAJO")) return "row-estado-bajo";
+      if(e.includes("MEDIO")) return "row-estado-medio";
+      if(e.includes("SUPERA")) return "row-estado-supera";
+      if(e.includes("CUMPLIDO")) return "row-estado-cumplido";
+      return "";
+    }
+
+    function getVal(r, names, fallback=""){
+      for(const n of names){
+        if(r && Object.prototype.hasOwnProperty.call(r,n) && String(r[n] ?? "").trim() !== "") return r[n];
+      }
+      const keys = Object.keys(r || {});
+      for(const n of names){
+        const k = keys.find(x => norm(x) === norm(n));
+        if(k && String(r[k] ?? "").trim() !== "") return r[k];
+      }
+      return fallback;
+    }
+
+    function normalizeDetalleRow(r){
+      const programado = num(getVal(r,["PROGRAMADO"]));
+      const ejecutado = num(getVal(r,["EJECUTADO","EJECUTADO_RASEM"]));
+      const pendiente = Math.max(0, num(getVal(r,["PENDIENTE_CALCULADO","PENDIENTE"])));
+      let cumplimiento = getVal(r,["CUMPLIMIENTO_CALCULADO","CUMPLIMIENTO"]);
+      cumplimiento = cumplimiento === "" ? (programado > 0 ? ejecutado / programado : 0) : num(cumplimiento);
+      const estado = getVal(r,["ESTADO_CUMPLIMIENTO"], estadoDesdeCumplimiento(cumplimiento));
+      const codigo = getVal(r,["CODIGO","CODIGO_ACTIVIDAD_NORMALIZADO","CODIGO_ACTIVIDAD"]);
+      const actividadesGrupo = getVal(r,["ACTIVIDADES","ACTIVIDAD_GRUPO","CLASIFICACION_ACTIVIDAD"], clasificarActividadJS(codigo));
+      return {
+        ...r,
+        RESPONSABLE:getVal(r,["RESPONSABLE","NOMBRE"]),
+        MUNICIPIO_NORMALIZADO:getVal(r,["MUNICIPIO_NORMALIZADO","MUNICIPIO"]),
+        ES_MUNICIPIO:getVal(r,["ES_MUNICIPIO"]),
+        TIPO_TERRITORIO:getVal(r,["TIPO_TERRITORIO"]),
+        CODIGO:codigo,
+        CODIGO_ACTIVIDAD_NORMALIZADO:codigo,
+        ACTIVIDADES:actividadesGrupo,
+        ARO:getVal(r,["ARO"]),
+        PERIODO_NORMALIZADO:getVal(r,["PERIODO_NORMALIZADO","PERIODO"]),
+        TIPO:getVal(r,["TIPO"]),
+        PROGRAMADO:programado,
+        EJECUTADO:ejecutado,
+        PENDIENTE_VISUAL:pendiente,
+        CUMPLIMIENTO_CALCULADO:cumplimiento,
+        ESTADO_CUMPLIMIENTO:estado
+      };
+    }
+
+    function cleanRows(rows){return (rows || []).filter(r => Object.values(r).some(v => String(v ?? "").trim() !== ""))}
+
+    function parseCSVText(text){
+      return new Promise((resolve,reject)=>{
+        Papa.parse(text, {
+          header:true,
+          skipEmptyLines:true,
+          dynamicTyping:false,
+          complete:res => resolve(cleanRows(res.data)),
+          error:err => reject(err)
+        });
+      });
+    }
+
+    async function loadCSV(url){
+      const finalUrl = url + (url.includes("?") ? "&" : "?") + "_=" + Date.now();
+      const response = await fetch(finalUrl, {cache:"no-store"});
+      if(!response.ok){
+        throw new Error(`No se encontró o no se pudo leer el archivo: ${url} | HTTP ${response.status}`);
+      }
+      const text = await response.text();
+      const rows = await parseCSVText(text);
+      if(!rows.length){
+        throw new Error(`El archivo está vacío o no tiene filas válidas: ${url}`);
+      }
+      return rows;
+    }
+
+    async function loadFirstAvailable(urls, required=true){
+      const errors = [];
+      for(const url of urls){
+        try{
+          return await loadCSV(url);
+        }catch(e){
+          errors.push(e.message || String(e));
+        }
+      }
+      if(required){
+        throw new Error(errors.join("\n"));
+      }
+      console.warn("Archivo opcional no cargado:", urls, errors);
+      return [];
+    }
+
+    function groupSummary(rows, keyFn){
+      const map = new Map();
+      rows.forEach(r => {
+        const key = keyFn(r) || "Sin dato";
+        if(!map.has(key)) map.set(key, []);
+        map.get(key).push(r);
+      });
+      return [...map.entries()].map(([key, arr]) => {
+        const programado = arr.reduce((s,r)=>s+num(r.PROGRAMADO),0);
+        const ejecutado = arr.reduce((s,r)=>s+num(r.EJECUTADO),0);
+        const pendiente = arr.reduce((s,r)=>s+num(r.PENDIENTE_VISUAL),0);
+        return {key, registros:arr.length, programado, ejecutado, pendiente, cumplimiento:programado>0 ? ejecutado/programado : 0};
+      });
+    }
+
+    async function init(){
+      try{
+        [DETALLE, MUNICIPAL, RESPONSABLE, ACTIVIDAD, ARO, TIPO] = await Promise.all([
+          loadFirstAvailable(CSV_DETALLE_OPTIONS, true),
+          loadFirstAvailable(CSV_MUNICIPAL_OPTIONS, true),
+          loadFirstAvailable(CSV_RESPONSABLE_OPTIONS, true),
+          loadFirstAvailable(CSV_ACTIVIDAD_OPTIONS, true),
+          loadFirstAvailable(CSV_ARO_OPTIONS, false),
+          loadFirstAvailable(CSV_TIPO_OPTIONS, false)
+        ]);
+
+        DETALLE = DETALLE.map(normalizeDetalleRow);
+
+        const loadAlert = document.getElementById("loadAlert");
+        loadAlert.innerHTML = `<div class="alert alert-success mb-0">Datos cargados correctamente.</div>`;
+        setTimeout(()=>loadAlert.style.display="none",1800);
+        document.getElementById("lastUpdate").textContent = "Última carga: " + new Date().toLocaleString("es-CO");
+
+        fillFilters();
+        initMap();
+        initLayerPanelUI();
+        applyFilters();
+
+      }catch(e){
+        console.error(e);
+        document.getElementById("lastUpdate").textContent = "Error al cargar datos";
+        document.getElementById("lastUpdate").className = "badge text-bg-danger last-update-badge";
+        document.getElementById("loadAlert").innerHTML = `<div class="alert alert-danger mb-0">
+          <strong>No fue posible cargar los CSV.</strong><br>
+          Verifica que los archivos estén en la raíz del repositorio junto a <code>seguimiento_ach.html</code> y que estés abriendo el tablero desde GitHub Pages, no como archivo local.<br>
+          <hr class="my-2">
+          <div class="small"><b>Detalle técnico:</b><br><pre style="white-space:pre-wrap;margin:0">${String(e.message || e)}</pre></div>
+        </div>`;
+      }
+    }
+
+    function fillSelect(id, values, label="Todos"){
+      const el = document.getElementById(id);
+      const current = el.value;
+      values = [...values].sort((a,b)=>String(a).localeCompare(String(b),"es",{numeric:true}));
+      el.innerHTML = `<option value="">${label}</option>` + values.map(v => `<option>${v}</option>`).join("");
+      if(values.map(String).includes(String(current))) el.value = current;
+    }
+
+    function fillSelectActividades(){
+      const el = document.getElementById("fGrupoActividad");
+      if(!el) return;
+      const current = selectedValues("fGrupoActividad");
+      const orden = ["Operativo", "Actividades Administrativas", "OTROS"];
+      const existentes = new Set(DETALLE.map(d=>d.ACTIVIDADES).filter(v => String(v ?? "").trim() !== ""));
+      const values = orden.filter(v => existentes.has(v));
+      [...existentes].forEach(v => { if(!values.includes(v)) values.push(v); });
+
+      if(el.classList.contains("multi-filter-options")){
+        el.innerHTML = values.map((v, idx) => {
+          const safe = String(v).replaceAll('"','&quot;');
+          const checked = current.includes(String(v)) ? "checked" : "";
+          return `
+            <label class="multi-filter-option" for="fGrupoActividad_${idx}">
+              <input type="checkbox" id="fGrupoActividad_${idx}" value="${safe}" ${checked}>
+              <span>${v}</span>
+            </label>
+          `;
+        }).join("");
+
+        el.querySelectorAll("input[type='checkbox']").forEach(chk => {
+          chk.addEventListener("change", () => updateMultiLabel("fGrupoActividad"));
+        });
+
+        updateMultiLabel("fGrupoActividad");
+        return;
+      }
+
+      el.innerHTML = `<option value="">Todas</option>` + values.map(v => `<option>${v}</option>`).join("");
+      if(values.includes(current[0])) el.value = current[0];
+    }
+
+    function selectedValues(id){
+      const el = document.getElementById(id);
+      if(!el) return [];
+
+      if(el.classList.contains("multi-filter-options")){
+        return Array.from(el.querySelectorAll("input[type='checkbox']:checked"))
+          .map(chk => chk.value)
+          .filter(v => String(v ?? "").trim() !== "");
+      }
+
+      if(el.multiple){
+        return Array.from(el.selectedOptions).map(o => o.value).filter(v => String(v ?? "").trim() !== "");
+      }
+
+      const v = el.value;
+      return String(v ?? "").trim() === "" ? [] : [v];
+    }
+
+    function clearSelect(id){
+      const el = document.getElementById(id);
+      if(!el) return;
+
+      if(el.classList.contains("multi-filter-options")){
+        el.querySelectorAll("input[type='checkbox']").forEach(chk => chk.checked = false);
+        updateMultiLabel(id);
+        return;
+      }
+
+      if(el.multiple){
+        Array.from(el.options).forEach(o => o.selected = false);
+      }else{
+        el.value = "";
+      }
+    }
+
+    function fillMultiSelect(id, values){
+      const el = document.getElementById(id);
+      if(!el) return;
+
+      const current = selectedValues(id);
+      values = [...values].sort((a,b)=>String(a).localeCompare(String(b),"es",{numeric:true}));
+
+      if(el.classList.contains("multi-filter-options")){
+        el.innerHTML = values.map((v, idx) => {
+          const safe = String(v).replaceAll('"','&quot;');
+          const checked = current.includes(String(v)) ? "checked" : "";
+          return `
+            <label class="multi-filter-option" for="${id}_${idx}">
+              <input type="checkbox" id="${id}_${idx}" value="${safe}" ${checked}>
+              <span>${v}</span>
+            </label>
+          `;
+        }).join("");
+
+        el.querySelectorAll("input[type='checkbox']").forEach(chk => {
+          chk.addEventListener("change", () => updateMultiLabel(id));
+        });
+
+        updateMultiLabel(id);
+        return;
+      }
+
+      el.innerHTML = values.map(v => `<option value="${String(v).replaceAll('"','&quot;')}">${v}</option>`).join("");
+      Array.from(el.options).forEach(o => {
+        if(current.includes(o.value)) o.selected = true;
+      });
+    }
+
+    function updateMultiLabel(id){
+      const values = selectedValues(id);
+      const total = document.getElementById(id)?.querySelectorAll("input[type='checkbox']").length || 0;
+
+      if(id === "fMunicipio"){
+        const label = document.getElementById("txtMunicipioMulti");
+        if(!label) return;
+        if(!values.length) label.textContent = "Todos los municipios";
+        else if(values.length === 1) label.textContent = values[0];
+        else label.textContent = `${values.length} municipios seleccionados`;
+      }
+
+      if(id === "fActividad"){
+        const label = document.getElementById("txtCodigoMulti");
+        if(!label) return;
+        if(!values.length) label.textContent = "Todos los códigos";
+        else if(values.length === 1) label.textContent = values[0];
+        else label.textContent = `${values.length} códigos seleccionados`;
+      }
+
+      if(id === "fGrupoActividad"){
+        const label = document.getElementById("txtActividadesMulti");
+        if(!label) return;
+        if(!values.length) label.textContent = "Todas las actividades";
+        else if(values.length === 1) label.textContent = values[0];
+        else label.textContent = `${values.length} actividades seleccionadas`;
+      }
+    }
+
+    function setMultiValue(id, value){
+      clearSelect(id);
+      const el = document.getElementById(id);
+      if(!el) return;
+
+      if(el.classList.contains("multi-filter-options")){
+        el.querySelectorAll("input[type='checkbox']").forEach(chk => {
+          chk.checked = chk.value === value;
+        });
+        updateMultiLabel(id);
+        return;
+      }
+
+      if(el.multiple){
+        Array.from(el.options).forEach(o => { o.selected = o.value === value; });
+      }else{
+        el.value = value;
+      }
+    }
+
+    function setupMultiActions(){
+      document.querySelectorAll("[data-multi-action]").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const id = btn.dataset.target;
+          const action = btn.dataset.multiAction;
+          const el = document.getElementById(id);
+          if(!el) return;
+
+          if(action === "all"){
+            el.querySelectorAll("input[type='checkbox']").forEach(chk => chk.checked = true);
+          }else{
+            el.querySelectorAll("input[type='checkbox']").forEach(chk => chk.checked = false);
+          }
+
+          updateMultiLabel(id);
+          applyFilters();
+        });
+      });
+    }
+
+    function fillFilters(){
+      fillSelect("fPeriodo", uniq(DETALLE.map(d=>d.PERIODO_NORMALIZADO)));
+      fillSelect("fAro", uniq(DETALLE.map(d=>d.ARO)));
+      fillSelect("fTipo", uniq(DETALLE.map(d=>d.TIPO)));
+      fillMultiSelect("fMunicipio", uniq(DETALLE.filter(d=>["SI","SÍ"].includes(norm(d.ES_MUNICIPIO)) || norm(d.TIPO_TERRITORIO)==="MUNICIPIO").map(d=>d.MUNICIPIO_NORMALIZADO)));
+      fillSelect("fResponsable", uniq(DETALLE.map(d=>d.RESPONSABLE)));
+      fillSelect("fEstado", uniq(DETALLE.map(d=>d.ESTADO_CUMPLIMIENTO)));
+      fillSelectActividades();
+      fillMultiSelect("fActividad", uniq(DETALLE.map(d=>d.CODIGO_ACTIVIDAD_NORMALIZADO)));
+      fillSelect("fPersonaDetalle", uniq(DETALLE.map(d=>d.RESPONSABLE)), "Todos los responsables filtrados");
+      fillSelect("fMunicipioDetalle", uniq(DETALLE.filter(d=>["SI","SÍ"].includes(norm(d.ES_MUNICIPIO)) || norm(d.TIPO_TERRITORIO)==="MUNICIPIO").map(d=>d.MUNICIPIO_NORMALIZADO)), "Todos los municipios filtrados");
+
+      ["fPeriodo","fAro","fTipo","fMunicipio","fResponsable","fEstado","fGrupoActividad","fActividad","fTexto"].forEach(id=>{
+        const el = document.getElementById(id);
+        el.addEventListener("change", applyFilters);
+        el.addEventListener("input", applyFilters);
+      });
+
+      document.getElementById("btnFiltrar").addEventListener("click", applyFilters);
+      document.getElementById("btnLimpiar").addEventListener("click", ()=>{
+        ["fPeriodo","fAro","fTipo","fMunicipio","fResponsable","fEstado","fGrupoActividad","fActividad","fTexto","fPersonaDetalle","fMunicipioDetalle"].forEach(id=>clearSelect(id));
+        applyFilters();
+      });
+
+      document.getElementById("fPersonaDetalle").addEventListener("change", renderPersonaActividadSection);
+      document.getElementById("fMunicipioDetalle").addEventListener("change", renderMunicipioActividadSection);
+
+      setupMultiActions();
+    }
+
+    function applyFilters(){
+      const f = {
+        periodo:document.getElementById("fPeriodo").value,
+        aro:document.getElementById("fAro").value,
+        tipo:document.getElementById("fTipo").value,
+        municipios:selectedValues("fMunicipio"),
+        responsable:document.getElementById("fResponsable").value,
+        estado:document.getElementById("fEstado").value,
+        gruposActividad:selectedValues("fGrupoActividad"),
+        codigos:selectedValues("fActividad"),
+        texto:norm(document.getElementById("fTexto").value)
+      };
+
+      LIST = DETALLE.filter(r => {
+        if(f.periodo && String(r.PERIODO_NORMALIZADO)!==f.periodo) return false;
+        if(f.aro && String(r.ARO)!==f.aro) return false;
+        if(f.tipo && String(r.TIPO)!==f.tipo) return false;
+        if(f.municipios.length && !f.municipios.includes(String(r.MUNICIPIO_NORMALIZADO))) return false;
+        if(f.responsable && String(r.RESPONSABLE)!==f.responsable) return false;
+        if(f.estado && String(r.ESTADO_CUMPLIMIENTO)!==f.estado) return false;
+        if(f.gruposActividad.length && !f.gruposActividad.map(norm).includes(norm(r.ACTIVIDADES))) return false;
+        if(f.codigos.length && !f.codigos.includes(String(r.CODIGO_ACTIVIDAD_NORMALIZADO))) return false;
+        if(f.texto){
+          const blob = norm([r.RESPONSABLE,r.MUNICIPIO_NORMALIZADO,r.ACTIVIDADES,r.CODIGO_ACTIVIDAD_NORMALIZADO,r.ARO,r.TIPO,r.ESTADO_CUMPLIMIENTO].join(" "));
+          if(!blob.includes(f.texto)) return false;
+        }
+        return true;
+      });
+
+      renderActiveFilters(f);
+      renderKPIs(LIST);
+      updatePersonaDetalleOptions(LIST);
+      updateMunicipioDetalleOptions(LIST);
+      renderPersonaActividadSection();
+      renderMunicipioActividadSection();
+      renderCharts(LIST);
+      renderMap(LIST);
+      renderTables();
+    }
+
+    function renderActiveFilters(f){
+      const items = [];
+      const add = (label,value) => {if(value) items.push(`<span class="active-filter-chip"><span>${label}:</span> ${value}</span>`)};
+      add("Periodo",f.periodo); add("ARO",f.aro); add("Tipo",f.tipo);
+      add("Municipio", f.municipios.length ? f.municipios.join(", ") : "");
+      add("Responsable",f.responsable);
+      add("Estado",f.estado);
+      add("Actividades", f.gruposActividad.length ? f.gruposActividad.join(", ") : "");
+      add("Código", f.codigos.length ? f.codigos.join(", ") : "");
+      add("Texto",document.getElementById("fTexto").value);
+      document.getElementById("activeFilters").innerHTML = items.length ? items.join("") : `<span class="text-muted">Sin filtros adicionales</span>`;
+    }
+
+
+    function updatePersonaDetalleOptions(rows){
+      const el = document.getElementById("fPersonaDetalle");
+      if(!el) return;
+      const current = el.value;
+      const values = uniq(rows.map(d=>d.RESPONSABLE)).sort((a,b)=>String(a).localeCompare(String(b),"es",{numeric:true}));
+      el.innerHTML = `<option value="">Todos los responsables filtrados</option>` + values.map(v => `<option>${v}</option>`).join("");
+      if(values.includes(current)) el.value = current;
+    }
+
+    function summarizePersonaActividad(rows){
+      const map = new Map();
+      rows.forEach(r=>{
+        const key = [
+          r.RESPONSABLE || "Sin dato",
+          r.TIPO || "Sin dato",
+          r.ARO || "Sin dato",
+          r.CODIGO_ACTIVIDAD_NORMALIZADO || "Sin dato"
+        ].join("||");
+
+        if(!map.has(key)){
+          map.set(key, {
+            RESPONSABLE:r.RESPONSABLE || "Sin dato",
+            TIPO:r.TIPO || "Sin dato",
+            ARO:r.ARO || "Sin dato",
+            ACTIVIDAD:r.CODIGO_ACTIVIDAD_NORMALIZADO || "Sin dato",
+            PROGRAMADO:0,
+            EJECUTADO:0,
+            PENDIENTE:0
+          });
+        }
+
+        const item = map.get(key);
+        item.PROGRAMADO += num(r.PROGRAMADO);
+        item.EJECUTADO += num(r.EJECUTADO);
+        item.PENDIENTE += num(r.PENDIENTE_VISUAL);
+      });
+
+      return [...map.values()].map(r=>{
+        const cumplimiento = r.PROGRAMADO > 0 ? r.EJECUTADO / r.PROGRAMADO : 0;
+        return {...r, CUMPLIMIENTO:cumplimiento, ESTADO:estadoDesdeCumplimiento(cumplimiento)};
+      });
+    }
+
+    function renderPersonaActividadSection(){
+      const select = document.getElementById("fPersonaDetalle");
+      if(!select) return;
+
+      const persona = select.value;
+      const rows = persona ? LIST.filter(r => r.RESPONSABLE === persona) : LIST;
+
+      const programado = rows.reduce((s,r)=>s+num(r.PROGRAMADO),0);
+      const ejecutado = rows.reduce((s,r)=>s+num(r.EJECUTADO),0);
+      const pendiente = rows.reduce((s,r)=>s+num(r.PENDIENTE_VISUAL),0);
+      const cumplimiento = programado > 0 ? ejecutado / programado : 0;
+
+      document.getElementById("personaKpiProgramado").textContent = fmtInt(programado);
+      document.getElementById("personaKpiEjecutado").textContent = fmtInt(ejecutado);
+      document.getElementById("personaKpiPendiente").textContent = fmtInt(pendiente);
+      document.getElementById("personaKpiCumplimiento").textContent = fmtPct(cumplimiento);
+
+      const resumen = summarizePersonaActividad(rows)
+        .sort((a,b)=>b.PENDIENTE-a.PENDIENTE || String(a.RESPONSABLE).localeCompare(String(b.RESPONSABLE),"es"));
+
+      renderPersonaActividadChart(rows, persona);
+      renderPersonaActividadTable(resumen);
+    }
+
+    function renderPersonaActividadChart(rows, persona){
+      const title = document.getElementById("tituloChartPersonaActividad");
+      let data;
+
+      if(persona){
+        title.textContent = "Programado vs ejecutado por código";
+        data = groupSummary(rows, r=>r.CODIGO_ACTIVIDAD_NORMALIZADO)
+          .sort((a,b)=>b.programado-a.programado)
+          .slice(0,12);
+
+        makeBar("chartPersonaActividad", data.map(d=>d.key), [
+          {label:"Programado",data:data.map(d=>d.programado),backgroundColor:"rgba(46,100,210,.30)",borderColor:"#2e64d2",borderWidth:1,borderRadius:6},
+          {label:"Ejecutado",data:data.map(d=>d.ejecutado),backgroundColor:"rgba(25,135,84,.30)",borderColor:"#198754",borderWidth:1,borderRadius:6}
+        ], {horizontal:true,legend:true});
+      }else{
+        title.textContent = "Cumplimiento por responsable";
+        data = groupSummary(rows, r=>r.RESPONSABLE)
+          .map(d=>({...d, cumplimientoPct: Math.round(d.cumplimiento*1000)/10}))
+          .sort((a,b)=>a.cumplimientoPct-b.cumplimientoPct)
+          .slice(0,12);
+
+        destroyChart("chartPersonaActividad");
+        charts.chartPersonaActividad = new Chart(document.getElementById("chartPersonaActividad"), {
+          type:"bar",
+          data:{
+            labels:data.map(d=>nombreCorto(d.key)),
+            datasets:[{
+              label:"% cumplimiento",
+              data:data.map(d=>d.cumplimientoPct),
+              backgroundColor:data.map(d=>estadoColor(estadoDesdeCumplimiento(d.cumplimiento))),
+              borderColor:"#ffffff",
+              borderWidth:1,
+              borderRadius:6
+            }]
+          },
+          plugins:[ChartDataLabels],
+          options:{
+            responsive:true,
+            maintainAspectRatio:false,
+            indexAxis:"y",
+            plugins:{
+              legend:{display:false},
+              datalabels:{
+                anchor:"end",
+                align:"right",
+                offset:-34,
+                clamp:true,
+                clip:true,
+                color:"#111827",
+                font:{weight:700},
+                formatter:v=>`${v}%`
+              }
+            },
+            scales:{
+              x:{beginAtZero:true, suggestedMax:100, ticks:{callback:v=>`${v}%`}}
+            }
+          }
+        });
+      }
+    }
+
+    function renderPersonaActividadTable(resumen){
+      const rows = resumen.map(r=>[
+        r.RESPONSABLE,
+        r.TIPO,
+        r.ARO,
+        r.ACTIVIDAD,
+        fmtInt(r.PROGRAMADO),
+        fmtInt(r.EJECUTADO),
+        fmtInt(r.PENDIENTE),
+        fmtPct(r.CUMPLIMIENTO),
+        `<span class="status-badge ${estadoClass(r.ESTADO)}">${r.ESTADO}</span>`
+      ]);
+
+      if(DT_PERSONA_ACTIVIDAD) DT_PERSONA_ACTIVIDAD.destroy();
+
+      DT_PERSONA_ACTIVIDAD = $("#tblPersonaActividad").DataTable({
+        data:rows,
+        columns:[
+          {title:"Responsable"},
+          {title:"Tipo"},
+          {title:"ARO"},
+          {title:"Código"},
+          {title:"Programado"},
+          {title:"Ejecutado"},
+          {title:"Pendiente"},
+          {title:"Cumplimiento"},
+          {title:"Estado"}
+        ],
+        pageLength:30,
+        lengthMenu:[[10,30,50,100,-1],[10,30,50,100,"Todos"]],
+        order:[[6,"desc"]],
+        scrollX:true,
+        rowCallback:function(row, data){
+          const textEstado = $("<div>").html(data[8]).text();
+          $(row)
+            .removeClass("row-estado-critico row-estado-bajo row-estado-medio row-estado-cumplido row-estado-supera")
+            .addClass(estadoRowClass(textEstado));
+        },
+        language:{url:"https://cdn.datatables.net/plug-ins/1.13.8/i18n/es-ES.json"},
+        dom:"Bfrtip",
+        buttons:[
+          {extend:"excelHtml5",title:"Actividades_por_responsable_ACH",text:"Excel",className:"btn btn-success btn-sm"},
+          {extend:"csvHtml5",title:"Actividades_por_responsable_ACH",text:"CSV",className:"btn btn-outline-secondary btn-sm"}
+        ]
+      });
+    }
+
+
+    function updateMunicipioDetalleOptions(rows){
+      const el = document.getElementById("fMunicipioDetalle");
+      if(!el) return;
+      const current = el.value;
+      const values = uniq(rows
+        .filter(d=>["SI","SÍ"].includes(norm(d.ES_MUNICIPIO)) || norm(d.TIPO_TERRITORIO)==="MUNICIPIO")
+        .map(d=>d.MUNICIPIO_NORMALIZADO))
+        .sort((a,b)=>String(a).localeCompare(String(b),"es",{numeric:true}));
+      el.innerHTML = `<option value="">Todos los municipios filtrados</option>` + values.map(v => `<option>${v}</option>`).join("");
+      if(values.includes(current)) el.value = current;
+    }
+
+    function summarizeMunicipioActividad(rows){
+      const map = new Map();
+      rows.forEach(r=>{
+        const key = [
+          r.MUNICIPIO_NORMALIZADO || "Sin dato",
+          r.ARO || "Sin dato",
+          r.RESPONSABLE || "Sin dato",
+          r.CODIGO_ACTIVIDAD_NORMALIZADO || "Sin dato"
+        ].join("||");
+
+        if(!map.has(key)){
+          map.set(key, {
+            MUNICIPIO:r.MUNICIPIO_NORMALIZADO || "Sin dato",
+            ARO:r.ARO || "Sin dato",
+            RESPONSABLE:r.RESPONSABLE || "Sin dato",
+            ACTIVIDAD:r.CODIGO_ACTIVIDAD_NORMALIZADO || "Sin dato",
+            PROGRAMADO:0,
+            EJECUTADO:0,
+            PENDIENTE:0
+          });
+        }
+
+        const item = map.get(key);
+        item.PROGRAMADO += num(r.PROGRAMADO);
+        item.EJECUTADO += num(r.EJECUTADO);
+        item.PENDIENTE += num(r.PENDIENTE_VISUAL);
+      });
+
+      return [...map.values()].map(r=>{
+        const cumplimiento = r.PROGRAMADO > 0 ? r.EJECUTADO / r.PROGRAMADO : 0;
+        return {...r, CUMPLIMIENTO:cumplimiento, ESTADO:estadoDesdeCumplimiento(cumplimiento)};
+      });
+    }
+
+    function renderMunicipioActividadSection(){
+      const select = document.getElementById("fMunicipioDetalle");
+      if(!select) return;
+
+      const municipio = select.value;
+      const baseRows = LIST.filter(r=>["SI","SÍ"].includes(norm(r.ES_MUNICIPIO)) || norm(r.TIPO_TERRITORIO)==="MUNICIPIO");
+      const rows = municipio ? baseRows.filter(r => r.MUNICIPIO_NORMALIZADO === municipio) : baseRows;
+
+      const programado = rows.reduce((s,r)=>s+num(r.PROGRAMADO),0);
+      const ejecutado = rows.reduce((s,r)=>s+num(r.EJECUTADO),0);
+      const pendiente = rows.reduce((s,r)=>s+num(r.PENDIENTE_VISUAL),0);
+      const cumplimiento = programado > 0 ? ejecutado / programado : 0;
+      const responsables = uniq(rows.map(r=>r.RESPONSABLE)).length;
+      const criticas = summarizeMunicipioActividad(rows).filter(r=>r.CUMPLIMIENTO <= 0.60 && r.PENDIENTE > 0).length;
+
+      document.getElementById("municipioKpiProgramado").textContent = fmtInt(programado);
+      document.getElementById("municipioKpiEjecutado").textContent = fmtInt(ejecutado);
+      document.getElementById("municipioKpiPendiente").textContent = fmtInt(pendiente);
+      document.getElementById("municipioKpiCumplimiento").textContent = fmtPct(cumplimiento);
+      document.getElementById("municipioKpiResponsables").textContent = fmtInt(responsables);
+      document.getElementById("municipioKpiCriticas").textContent = fmtInt(criticas);
+
+      const resumen = summarizeMunicipioActividad(rows)
+        .sort((a,b)=>b.PENDIENTE-a.PENDIENTE || String(a.MUNICIPIO).localeCompare(String(b.MUNICIPIO),"es"));
+
+      renderMunicipioActividadChart(rows, municipio);
+      renderMunicipioActividadTable(resumen);
+    }
+
+    function renderMunicipioActividadChart(rows, municipio){
+      const title = document.getElementById("tituloChartMunicipioActividad");
+      let data;
+
+      if(municipio){
+        title.textContent = "Programado vs ejecutado por código";
+        data = groupSummary(rows, r=>r.CODIGO_ACTIVIDAD_NORMALIZADO)
+          .sort((a,b)=>b.programado-a.programado)
+          .slice(0,12);
+
+        makeBar("chartMunicipioActividad", data.map(d=>d.key), [
+          {label:"Programado",data:data.map(d=>d.programado),backgroundColor:"rgba(46,100,210,.30)",borderColor:"#2e64d2",borderWidth:1,borderRadius:6},
+          {label:"Ejecutado",data:data.map(d=>d.ejecutado),backgroundColor:"rgba(25,135,84,.30)",borderColor:"#198754",borderWidth:1,borderRadius:6},
+          {label:"Pendiente",data:data.map(d=>d.pendiente),backgroundColor:"rgba(249,115,22,.30)",borderColor:"#f97316",borderWidth:1,borderRadius:6}
+        ], {horizontal:true,legend:true});
+      }else{
+        title.textContent = "Cumplimiento por municipio";
+        data = groupSummary(rows, r=>r.MUNICIPIO_NORMALIZADO)
+          .map(d=>({...d, cumplimientoPct: Math.round(d.cumplimiento*1000)/10}))
+          .sort((a,b)=>a.cumplimientoPct-b.cumplimientoPct)
+          .slice(0,15);
+
+        destroyChart("chartMunicipioActividad");
+        charts.chartMunicipioActividad = new Chart(document.getElementById("chartMunicipioActividad"), {
+          type:"bar",
+          data:{
+            labels:data.map(d=>d.key),
+            datasets:[{
+              label:"% cumplimiento",
+              data:data.map(d=>d.cumplimientoPct),
+              backgroundColor:data.map(d=>estadoColor(estadoDesdeCumplimiento(d.cumplimiento))),
+              borderColor:"#ffffff",
+              borderWidth:1,
+              borderRadius:6
+            }]
+          },
+          plugins:[ChartDataLabels],
+          options:{
+            responsive:true,
+            maintainAspectRatio:false,
+            indexAxis:"y",
+            plugins:{
+              legend:{display:false},
+              datalabels:{
+                anchor:"end",
+                align:"right",
+                offset:-34,
+                clamp:true,
+                clip:true,
+                color:"#111827",
+                font:{weight:700},
+                formatter:v=>`${v}%`
+              }
+            },
+            scales:{
+              x:{beginAtZero:true, suggestedMax:100, ticks:{callback:v=>`${v}%`}}
+            },
+            onClick:(evt,elements)=>{
+              if(!elements?.length) return;
+              const selected = data[elements[0].index]?.key;
+              if(selected){
+                document.getElementById("fMunicipioDetalle").value = selected;
+                renderMunicipioActividadSection();
+              }
+            }
+          }
+        });
+      }
+    }
+
+    function renderMunicipioActividadTable(resumen){
+      const rows = resumen.map(r=>[
+        r.MUNICIPIO,
+        r.ARO,
+        r.RESPONSABLE,
+        r.ACTIVIDAD,
+        fmtInt(r.PROGRAMADO),
+        fmtInt(r.EJECUTADO),
+        fmtInt(r.PENDIENTE),
+        fmtPct(r.CUMPLIMIENTO),
+        `<span class="status-badge ${estadoClass(r.ESTADO)}">${r.ESTADO}</span>`
+      ]);
+
+      if(DT_MUNICIPIO_ACTIVIDAD) DT_MUNICIPIO_ACTIVIDAD.destroy();
+
+      DT_MUNICIPIO_ACTIVIDAD = $("#tblMunicipioActividad").DataTable({
+        data:rows,
+        columns:[
+          {title:"Municipio"},
+          {title:"ARO"},
+          {title:"Responsable"},
+          {title:"Código"},
+          {title:"Programado"},
+          {title:"Ejecutado"},
+          {title:"Pendiente"},
+          {title:"Cumplimiento"},
+          {title:"Estado"}
+        ],
+        pageLength:30,
+        lengthMenu:[[10,30,50,100,-1],[10,30,50,100,"Todos"]],
+        order:[[6,"desc"]],
+        scrollX:true,
+        rowCallback:function(row, data){
+          const textEstado = $("<div>").html(data[8]).text();
+          $(row)
+            .removeClass("row-estado-critico row-estado-bajo row-estado-medio row-estado-cumplido row-estado-supera")
+            .addClass(estadoRowClass(textEstado));
+        },
+        language:{url:"https://cdn.datatables.net/plug-ins/1.13.8/i18n/es-ES.json"},
+        dom:"Bfrtip",
+        buttons:[
+          {extend:"excelHtml5",title:"Seguimiento_por_municipio_ACH",text:"Excel",className:"btn btn-success btn-sm"},
+          {extend:"csvHtml5",title:"Seguimiento_por_municipio_ACH",text:"CSV",className:"btn btn-outline-secondary btn-sm"}
+        ]
+      });
+    }
+
+    function renderKPIs(rows){
+      const programado = rows.reduce((s,r)=>s+num(r.PROGRAMADO),0);
+      const ejecutado = rows.reduce((s,r)=>s+num(r.EJECUTADO),0);
+      const pendiente = rows.reduce((s,r)=>s+num(r.PENDIENTE_VISUAL),0);
+      const cumplimiento = programado > 0 ? ejecutado/programado : 0;
+      const responsables = uniq(rows.map(r=>r.RESPONSABLE)).length;
+      const municipios = uniq(rows.filter(r=>["SI","SÍ"].includes(norm(r.ES_MUNICIPIO)) || norm(r.TIPO_TERRITORIO)==="MUNICIPIO").map(r=>r.MUNICIPIO_NORMALIZADO)).length;
+
+      document.getElementById("kpiProgramado").textContent = fmtInt(programado);
+      document.getElementById("kpiEjecutado").textContent = fmtInt(ejecutado);
+      document.getElementById("kpiPendiente").textContent = fmtInt(pendiente);
+      document.getElementById("kpiCumplimiento").textContent = fmtPct(cumplimiento);
+      document.getElementById("kpiResponsables").textContent = fmtInt(responsables);
+      document.getElementById("kpiMunicipios").textContent = fmtInt(municipios);
+    }
+
+    function destroyChart(id){if(charts[id]){charts[id].destroy();charts[id]=null}}
+
+    function makeBar(id, labels, datasets, opts={}){
+      destroyChart(id);
+      charts[id] = new Chart(document.getElementById(id), {
+        type:"bar",
+        data:{labels,datasets},
+        plugins:[ChartDataLabels],
+        options:{
+          responsive:true,
+          maintainAspectRatio:false,
+          indexAxis:opts.horizontal ? "y" : "x",
+          plugins:{
+            legend:{position:"bottom",display:opts.legend !== false},
+            datalabels:{
+              anchor:"end", align: opts.horizontal ? "right" : "top", offset: opts.horizontal ? -24 : 0,
+              clamp:true, clip:true, color:"#111827", font:{weight:700},
+              formatter:v=>Number(v).toLocaleString("es-CO")
+            }
+          },
+          scales:{
+            x:{beginAtZero:true,ticks:{precision:0}},
+            y:{beginAtZero:true,ticks:{precision:0}}
+          },
+          onClick: opts.onClick || undefined
+        }
+      });
+    }
+
+    function renderCharts(rows){
+      const byAro = groupSummary(rows, r=>r.ARO).sort((a,b)=>b.programado-a.programado);
+      makeBar("chartAro", byAro.map(d=>d.key), [
+        {label:"Programado",data:byAro.map(d=>d.programado),backgroundColor:"rgba(46,100,210,.28)",borderColor:"#2e64d2",borderWidth:1,borderRadius:6},
+        {label:"Ejecutado",data:byAro.map(d=>d.ejecutado),backgroundColor:"rgba(25,135,84,.28)",borderColor:"#198754",borderWidth:1,borderRadius:6},
+        {label:"Pendiente",data:byAro.map(d=>d.pendiente),backgroundColor:"rgba(249,115,22,.28)",borderColor:"#f97316",borderWidth:1,borderRadius:6}
+      ], {onClick:(evt,elements)=>{
+        if(!elements?.length) return;
+        const selected = byAro[elements[0].index]?.key;
+        if(selected){
+          document.getElementById("fAro").value = selected;
+          applyFilters();
+        }
+      }});
+
+      const byEstado = groupSummary(rows, r=>r.ESTADO_CUMPLIMIENTO).sort((a,b)=>b.registros-a.registros);
+      destroyChart("chartEstado");
+      charts.chartEstado = new Chart(document.getElementById("chartEstado"), {
+        type:"doughnut",
+        data:{labels:byEstado.map(d=>d.key),datasets:[{data:byEstado.map(d=>d.registros),backgroundColor:byEstado.map(d=>estadoColor(d.key)),borderColor:"#fff",borderWidth:2}]},
+        plugins:[ChartDataLabels],
+        options:{responsive:true,maintainAspectRatio:false,cutout:"48%",plugins:{legend:{position:"bottom"},datalabels:{color:"#111827",font:{weight:700},formatter:(v,ctx)=>{const t=ctx.chart.data.datasets[0].data.reduce((a,b)=>a+b,0); const p=t?Math.round(v/t*1000)/10:0; return p>=4?`${p}%`:"";}}}}
+      });
+
+      const byResp = groupSummary(rows, r=>r.RESPONSABLE).sort((a,b)=>b.pendiente-a.pendiente).slice(0,10);
+      makeBar("chartResponsable", byResp.map(d=>nombreCorto(d.key)), [{label:"Pendiente",data:byResp.map(d=>d.pendiente),backgroundColor:"rgba(249,115,22,.35)",borderColor:"#f97316",borderWidth:1,borderRadius:6}], {horizontal:true,legend:false,onClick:(evt,elements)=>{
+        if(!elements?.length) return;
+        const selected = byResp[elements[0].index]?.key;
+        if(selected){
+          document.getElementById("fResponsable").value = selected;
+          document.getElementById("fPersonaDetalle").value = selected;
+          applyFilters();
+        }
+      }});
+
+      const byMun = groupSummary(rows.filter(r=>["SI","SÍ"].includes(norm(r.ES_MUNICIPIO)) || norm(r.TIPO_TERRITORIO)==="MUNICIPIO"), r=>r.MUNICIPIO_NORMALIZADO).sort((a,b)=>b.pendiente-a.pendiente).slice(0,10);
+      makeBar("chartMunicipio", byMun.map(d=>d.key), [{label:"Pendiente",data:byMun.map(d=>d.pendiente),backgroundColor:"rgba(46,100,210,.35)",borderColor:"#2e64d2",borderWidth:1,borderRadius:6}], {horizontal:true,legend:false,onClick:(evt,elements)=>{
+        if(!elements?.length) return;
+        const selected = byMun[elements[0].index]?.key;
+        if(selected){
+          setMultiValue("fMunicipio", selected);
+          document.getElementById("fMunicipioDetalle").value = selected;
+          applyFilters();
+        }
+      }});
+
+      const byAct = groupSummary(rows, r=>r.CODIGO_ACTIVIDAD_NORMALIZADO).sort((a,b)=>b.pendiente-a.pendiente).slice(0,10);
+      makeBar("chartActividad", byAct.map(d=>d.key), [{label:"Pendiente",data:byAct.map(d=>d.pendiente),backgroundColor:"rgba(181,106,0,.35)",borderColor:"#b56a00",borderWidth:1,borderRadius:6}], {horizontal:true,legend:false,onClick:(evt,elements)=>{
+        if(!elements?.length) return;
+        const selected = byAct[elements[0].index]?.key;
+        if(selected){
+          setMultiValue("fActividad", selected);
+          applyFilters();
+        }
+      }});
+    }
+
+
+    function getMunicipioFeatureName(props){
+      const p = props || {};
+      return p.MPIO_CNMBR || p.MUNICIPIO || p.NOM_MUN || p.NOMBRE || p.MPIO || p.NAME || "";
+    }
+
+    function municipioPolygonStyle(feature){
+      const nombre = norm(getMunicipioFeatureName(feature?.properties || {}));
+      const metric = MUNICIPAL_METRICS.get(nombre);
+      if(!metric){
+        return {
+          color:"#8b5cf6",
+          weight:1.4,
+          fillColor:"#cbd5e1",
+          fillOpacity:0.04
+        };
+      }
+
+      return {
+        color:"#334155",
+        weight:1.6,
+        fillColor:estadoColor(metric.estado),
+        fillOpacity:0.34
+      };
+    }
+
+    function updateMunicipioChoropleth(){
+      if(!municipiosValleLayer) return;
+
+      municipiosValleLayer.setStyle(function(feature){
+        return municipioPolygonStyle(feature);
+      });
+
+      municipiosValleLayer.eachFeature(layer=>{
+        if(layer.bringToBack) layer.bringToBack();
+      });
+      if(valleContornoLayer && valleContornoLayer.bringToFront) valleContornoLayer.bringToFront();
+      if(municipalLayer){
+        municipalLayer.eachLayer(layer=>{
+          if(layer.bringToFront) layer.bringToFront();
+        });
+      }
+    }
+
+    function initMap(){
+      MAP = L.map("map").setView([3.85,-76.45], 8);
+
+      // Paneles separados para que las capas territoriales no tapen los puntos ACH.
+      MAP.createPane("achTerritorialPane");
+      MAP.getPane("achTerritorialPane").classList.add("ach-territorial-pane");
+
+      MAP.createPane("achLabelsPane");
+      MAP.getPane("achLabelsPane").classList.add("ach-labels-pane");
+
+      MAP.createPane("achPointsPane");
+      MAP.getPane("achPointsPane").classList.add("ach-points-pane");
+
+      const osm = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,attribution:"&copy; OpenStreetMap"});
+      const esriImagery = L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",{maxZoom:19,attribution:"Tiles © Esri"});
+      const esriTopo = L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}",{maxZoom:19,attribution:"Tiles © Esri"});
+      const cartoLight = L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",{maxZoom:20,attribution:"&copy; CARTO"});
+      BASEMAPS = {osm, esriImagery, esriTopo, cartoLight};
+      currentBasemap = cartoLight;
+      currentBasemap.addTo(MAP);
+
+      municipalLayer = L.layerGroup().addTo(MAP);
+
+      const URL_MUNICIPIO_VALLE = "https://services5.arcgis.com/l23kE3b7uPnZIuaB/arcgis/rest/services/CARTOGRAFIA_BASE/FeatureServer/2";
+      const URL_VALLE_CONTORNO = "https://services5.arcgis.com/l23kE3b7uPnZIuaB/arcgis/rest/services/Sedes_Educativas_WFL1/FeatureServer/8";
+
+      municipiosValleLayer = L.esri.featureLayer({
+        url:URL_MUNICIPIO_VALLE,
+        pane:"achTerritorialPane",
+        interactive:false,
+        style:municipioPolygonStyle
+      }).addTo(MAP);
+
+      municipiosLabelsLayer = L.layerGroup().addTo(MAP);
+      municipiosValleLayer.on("load",()=>renderMunicipioLabels());
+
+      valleContornoLayer = L.esri.featureLayer({
+        url:URL_VALLE_CONTORNO,
+        pane:"achTerritorialPane",
+        interactive:false,
+        style:{color:"#111827",weight:2.5,fillOpacity:0}
+      }).addTo(MAP);
+
+      PANEL_LAYERS = {municipalAch:municipalLayer, municipiosValle:municipiosValleLayer, municipiosLabels:municipiosLabelsLayer, valleContorno:valleContornoLayer};
+
+      document.getElementById("legend").innerHTML = `
+        <div class="fw-bold mb-2">Estado de cumplimiento</div>
+        <div class="mb-1"><span class="status-badge bg-critical">Crítico</span> ≤ 30%</div>
+        <div class="mb-1"><span class="status-badge bg-low">Bajo</span> 30,1% - 60%</div>
+        <div class="mb-1"><span class="status-badge bg-medium">Medio</span> 60,1% - 80%</div>
+        <div class="mb-1"><span class="status-badge bg-ok">Cumplido</span> 80,1% - 100%</div>
+        <div class="mb-1"><span class="status-badge bg-over">Supera meta</span> > 100%</div>
+      `;
+
+      document.getElementById("btnFit").addEventListener("click",()=>fitMapToMunicipalPoints());
+    }
+
+    function renderMunicipioLabels(){
+      if(!municipiosLabelsLayer || !municipiosValleLayer) return;
+      municipiosLabelsLayer.clearLayers();
+      municipiosValleLayer.eachFeature(layer=>{
+        const p = layer.feature?.properties || {};
+        const nombre = p.MPIO_CNMBR || p.MUNICIPIO || p.NOM_MUN || p.NOMBRE || p.MPIO || p.NAME || "";
+        if(!nombre || !layer.getBounds) return;
+        const b = layer.getBounds();
+        if(!b || !b.isValid()) return;
+        const label = L.marker(b.getCenter(), {interactive:false, pane:"achLabelsPane", icon:L.divIcon({className:"municipio-label", html:`<div>${nombre}</div>`})});
+        municipiosLabelsLayer.addLayer(label);
+      });
+    }
+
+
+    function buildMunicipioPopup(d, munRows){
+      const estado = d.estado;
+      const color = estadoColor(estado);
+      const responsables = [...new Set(munRows.map(r=>r.RESPONSABLE).filter(Boolean))]
+        .sort((a,b)=>String(a).localeCompare(String(b),"es"))
+        .slice(0,8);
+
+      const actividades = groupSummary(munRows, r=>r.CODIGO_ACTIVIDAD_NORMALIZADO)
+        .sort((a,b)=>b.pendiente-a.pendiente)
+        .filter(x=>x.pendiente > 0)
+        .slice(0,5);
+
+      const aros = [...new Set(munRows.map(r=>r.ARO).filter(Boolean))]
+        .sort((a,b)=>String(a).localeCompare(String(b),"es"))
+        .join(", ");
+
+      const excedente = munRows.reduce((s,r)=>{
+        const prog = num(r.PROGRAMADO);
+        const ejec = num(r.EJECUTADO);
+        return s + Math.max(0, ejec - prog);
+      },0);
+
+      const balance = d.ejecutado - d.programado;
+
+      const respHtml = responsables.length
+        ? responsables.map(x=>`<li>${x}</li>`).join("")
+        : `<li>Sin responsables asociados</li>`;
+
+      const actHtml = actividades.length
+        ? actividades.map(x=>`<li><b>${x.key}</b>: ${fmtInt(x.pendiente)} pendientes</li>`).join("")
+        : `<li>Sin actividades pendientes</li>`;
+
+      return `
+        <div class="popup-ach-card">
+          <div class="popup-ach-head" style="background:${color}">
+            <div class="popup-ach-title">${d.key}</div>
+            <div class="popup-ach-subtitle">ARO: ${aros || "Sin dato"}</div>
+            <span class="popup-ach-status" style="background:rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.35)">${estado} · ${fmtPct(d.cumplimiento)}</span>
+          </div>
+
+          <div class="popup-ach-grid">
+            <div class="popup-ach-metric"><small>Programado</small><b>${fmtInt(d.programado)}</b></div>
+            <div class="popup-ach-metric"><small>Ejecutado</small><b>${fmtInt(d.ejecutado)}</b></div>
+            <div class="popup-ach-metric"><small>Pendiente</small><b>${fmtInt(d.pendiente)}</b></div>
+            <div class="popup-ach-metric"><small>Cumplimiento</small><b>${fmtPct(d.cumplimiento)}</b></div>
+            <div class="popup-ach-metric"><small>Excedente</small><b>${fmtInt(excedente)}</b></div>
+            <div class="popup-ach-metric"><small>Balance neto</small><b>${balance >= 0 ? "+" : ""}${fmtInt(balance)}</b></div>
+          </div>
+
+          <div class="popup-ach-section">
+            <div class="popup-ach-section-title">Responsables asociados</div>
+            <ul class="popup-ach-list">${respHtml}</ul>
+          </div>
+
+          <div class="popup-ach-section">
+            <div class="popup-ach-section-title">Actividades con mayor pendiente</div>
+            <ul class="popup-ach-list">${actHtml}</ul>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderMap(rows){
+      if(!municipalLayer) return;
+      municipalLayer.clearLayers();
+
+      const munRows = rows.filter(r=>["SI","SÍ"].includes(norm(r.ES_MUNICIPIO)) || norm(r.TIPO_TERRITORIO)==="MUNICIPIO");
+      const data = groupSummary(munRows, r=>r.MUNICIPIO_NORMALIZADO).map(d => ({...d, estado:estadoDesdeCumplimiento(d.cumplimiento)}));
+
+      MUNICIPAL_METRICS = new Map();
+      data.forEach(d=>{
+        MUNICIPAL_METRICS.set(norm(d.key), d);
+      });
+      updateMunicipioChoropleth();
+
+      let count = 0;
+
+      data.forEach(d=>{
+        const coord = MUNICIPIO_COORDS[norm(d.key)];
+        if(!coord) return;
+        count++;
+        const radius = Math.max(7, Math.min(26, 7 + Math.sqrt(Math.max(0,d.pendiente))));
+        const color = estadoColor(d.estado);
+        const marker = L.circleMarker(coord, {
+          pane:"achPointsPane",
+          radius,
+          color:"#1f2937",
+          weight:1.2,
+          fillColor:color,
+          fillOpacity:.86,
+          bubblingMouseEvents:false
+        });
+        const rowsMunicipio = munRows.filter(r => norm(r.MUNICIPIO_NORMALIZADO) === norm(d.key));
+        marker.bindPopup(buildMunicipioPopup(d, rowsMunicipio), {maxWidth:420});
+        marker.addTo(municipalLayer);
+      });
+
+
+      municipalLayer.eachLayer(layer => {
+        if(layer.bringToFront) layer.bringToFront();
+      });
+
+      document.getElementById("mapCount").textContent = `${count} municipios`;
+      document.getElementById("mapResumen").innerHTML = `<span class="badge rounded-pill" style="background:#2563eb;color:#fff;margin:2px 4px">Municipios representados: ${count}</span>`;
+      fitMapToMunicipalPoints();
+    }
+
+    function fitMapToMunicipalPoints(){
+      if(!municipalLayer) return;
+      const layers = municipalLayer.getLayers();
+      if(!layers.length) return;
+      const bounds = L.latLngBounds(layers.map(l=>l.getLatLng()));
+      MAP.fitBounds(bounds.pad(0.15));
+    }
+
+    function initLayerPanelUI(){
+      const panel = document.getElementById("layerPanel");
+      const toggle = document.getElementById("layerToggle");
+      const close = document.getElementById("layerClose");
+      const legendPanel = document.getElementById("legendPanel");
+      const legendToggle = document.getElementById("legendToggle");
+      const legendClose = document.getElementById("legendClose");
+
+      toggle.addEventListener("click",e=>{e.stopPropagation(); panel.classList.toggle("collapsed"); legendPanel.classList.add("collapsed")});
+      close.addEventListener("click",e=>{e.stopPropagation(); panel.classList.add("collapsed")});
+      legendToggle.addEventListener("click",e=>{e.stopPropagation(); legendPanel.classList.toggle("collapsed"); panel.classList.add("collapsed")});
+      legendClose.addEventListener("click",e=>{e.stopPropagation(); legendPanel.classList.add("collapsed")});
+      panel.addEventListener("click",e=>e.stopPropagation());
+      legendPanel.addEventListener("click",e=>e.stopPropagation());
+      document.getElementById("map").addEventListener("click",()=>{panel.classList.add("collapsed");legendPanel.classList.add("collapsed")});
+
+      document.querySelectorAll("#layerPanel input[type='checkbox']").forEach(chk=>{
+        chk.addEventListener("change", function(){
+          const layer = PANEL_LAYERS[this.dataset.layer];
+          if(!layer) return;
+          if(this.checked){ if(!MAP.hasLayer(layer)) MAP.addLayer(layer); }
+          else{ if(MAP.hasLayer(layer)) MAP.removeLayer(layer); }
+        });
+      });
+
+      document.querySelectorAll("#layerPanel input[name='basemap']").forEach(r=>{
+        r.addEventListener("change",function(){
+          const next = BASEMAPS[this.value];
+          if(!next) return;
+          if(currentBasemap && MAP.hasLayer(currentBasemap)) MAP.removeLayer(currentBasemap);
+          currentBasemap = next;
+          currentBasemap.addTo(MAP);
+        });
+      });
+    }
+
+    function tableDataDetalle(rows){
+      return rows.map(r=>[
+        r.PERIODO_NORMALIZADO || "",
+        r.RESPONSABLE || "",
+        r.TIPO || "",
+        r.ARO || "",
+        r.MUNICIPIO_NORMALIZADO || "",
+        r.CODIGO_ACTIVIDAD_NORMALIZADO || "",
+        fmtInt(r.PROGRAMADO),
+        fmtInt(r.EJECUTADO),
+        fmtInt(r.PENDIENTE_VISUAL),
+        fmtPct(r.CUMPLIMIENTO_CALCULADO),
+        `<span class="status-badge ${estadoClass(r.ESTADO_CUMPLIMIENTO)}">${r.ESTADO_CUMPLIMIENTO}</span>`
+      ]);
+    }
+
+    function buildGenericTable(selector, dtRefName, data, columns, orderCol=0){
+      if(window[dtRefName]) window[dtRefName].destroy();
+      window[dtRefName] = $(selector).DataTable({
+        data, columns, pageLength:30, lengthMenu:[[10,30,50,100,-1],[10,30,50,100,"Todos"]], scrollX:true, order:[[orderCol,"desc"]],
+        language:{url:"https://cdn.datatables.net/plug-ins/1.13.8/i18n/es-ES.json"},
+        dom:"Bfrtip",
+        buttons:[
+          {extend:"excelHtml5",text:"Excel",className:"btn btn-success btn-sm"},
+          {extend:"csvHtml5",text:"CSV",className:"btn btn-outline-secondary btn-sm"},
+          {extend:"print",text:"Imprimir",className:"btn btn-outline-primary btn-sm"}
+        ]
+      });
+    }
+
+    function renderTables(){
+      buildGenericTable("#tblDetalle","DT_DETALLE", tableDataDetalle(LIST), [
+        {title:"Periodo"},{title:"Responsable"},{title:"Tipo"},{title:"ARO"},{title:"Municipio"},{title:"Código"},
+        {title:"Programado"},{title:"Ejecutado"},{title:"Pendiente"},{title:"Cumplimiento"},{title:"Estado"}
+      ], 8);
+
+      const municipalFiltered = MUNICIPAL.filter(r=>{
+        const municipios = selectedValues("fMunicipio");
+        const aro = document.getElementById("fAro").value;
+        const periodo = document.getElementById("fPeriodo").value;
+        if(municipios.length && !municipios.includes(getVal(r,["MUNICIPIO_NORMALIZADO"]))) return false;
+        if(aro && getVal(r,["ARO"]) !== aro) return false;
+        if(periodo && getVal(r,["PERIODO_NORMALIZADO"]) !== periodo) return false;
+        return true;
+      });
+      buildGenericTable("#tblMunicipal","DT_MUNICIPAL", municipalFiltered.map(r=>[
+        getVal(r,["MUNICIPIO_NORMALIZADO"]),getVal(r,["ARO"]),getVal(r,["PERIODO_NORMALIZADO"]),
+        fmtInt(getVal(r,["PROGRAMADO"])),fmtInt(getVal(r,["EJECUTADO"])),fmtInt(Math.max(0,num(getVal(r,["PENDIENTE"])))),
+        fmtPct(getVal(r,["CUMPLIMIENTO"])),`<span class="status-badge ${estadoClass(getVal(r,["ESTADO_CUMPLIMIENTO"]))}">${getVal(r,["ESTADO_CUMPLIMIENTO"])}</span>`
+      ]), [
+        {title:"Municipio"},{title:"ARO"},{title:"Periodo"},{title:"Programado"},{title:"Ejecutado"},{title:"Pendiente"},{title:"Cumplimiento"},{title:"Estado"}
+      ], 5);
+
+      const respFiltered = RESPONSABLE.filter(r=>{
+        const resp = document.getElementById("fResponsable").value;
+        const aro = document.getElementById("fAro").value;
+        const tipo = document.getElementById("fTipo").value;
+        if(resp && getVal(r,["RESPONSABLE"]) !== resp) return false;
+        if(aro && getVal(r,["ARO"]) !== aro) return false;
+        if(tipo && getVal(r,["TIPO"]) !== tipo) return false;
+        return true;
+      });
+      buildGenericTable("#tblResponsable","DT_RESPONSABLE", respFiltered.map(r=>[
+        getVal(r,["RESPONSABLE"]),getVal(r,["TIPO"]),getVal(r,["ARO"]),
+        fmtInt(getVal(r,["PROGRAMADO"])),fmtInt(getVal(r,["EJECUTADO"])),fmtInt(Math.max(0,num(getVal(r,["PENDIENTE"])))),
+        fmtPct(getVal(r,["CUMPLIMIENTO"])),`<span class="status-badge ${estadoClass(getVal(r,["ESTADO_CUMPLIMIENTO"]))}">${getVal(r,["ESTADO_CUMPLIMIENTO"])}</span>`
+      ]), [
+        {title:"Responsable"},{title:"Tipo"},{title:"ARO"},{title:"Programado"},{title:"Ejecutado"},{title:"Pendiente"},{title:"Cumplimiento"},{title:"Estado"}
+      ], 5);
+
+      const actFiltered = ACTIVIDAD.filter(r=>{
+        const grupos = selectedValues("fGrupoActividad");
+        const codigos = selectedValues("fActividad");
+        const aro = document.getElementById("fAro").value;
+        const codigoResumen = getVal(r,["CODIGO","CODIGO_ACTIVIDAD_NORMALIZADO","CODIGO_ACTIVIDAD"]);
+        const grupoResumen = getVal(r,["ACTIVIDADES"], clasificarActividadJS(codigoResumen));
+        if(grupos.length && !grupos.map(norm).includes(norm(grupoResumen))) return false;
+        if(codigos.length && !codigos.includes(codigoResumen)) return false;
+        if(aro && getVal(r,["ARO"]) !== aro) return false;
+        return true;
+      });
+      buildGenericTable("#tblActividad","DT_ACTIVIDAD", actFiltered.map(r=>[
+        getVal(r,["ACTIVIDADES"], clasificarActividadJS(getVal(r,["CODIGO","CODIGO_ACTIVIDAD_NORMALIZADO","CODIGO_ACTIVIDAD"]))),
+        getVal(r,["CODIGO","CODIGO_ACTIVIDAD_NORMALIZADO","CODIGO_ACTIVIDAD"]),getVal(r,["ARO"]),
+        fmtInt(getVal(r,["PROGRAMADO"])),fmtInt(getVal(r,["EJECUTADO"])),fmtInt(Math.max(0,num(getVal(r,["PENDIENTE"])))),
+        fmtPct(getVal(r,["CUMPLIMIENTO"])),`<span class="status-badge ${estadoClass(getVal(r,["ESTADO_CUMPLIMIENTO"]))}">${getVal(r,["ESTADO_CUMPLIMIENTO"])}</span>`
+      ]), [
+        {title:"Actividades"},{title:"Código"},{title:"ARO"},{title:"Programado"},{title:"Ejecutado"},{title:"Pendiente"},{title:"Cumplimiento"},{title:"Estado"}
+      ], 4);
+    }
+
+    document.getElementById("tablasConsultaCollapse")?.addEventListener("shown.bs.collapse",()=>{
+      setTimeout(()=>{
+        [DT_DETALLE,DT_MUNICIPAL,DT_RESPONSABLE,DT_ACTIVIDAD].forEach(dt=>{if(dt) dt.columns.adjust().draw(false)});
+      },180);
+    });
+    document.querySelectorAll("#tablasTabs button[data-bs-toggle='tab']").forEach(btn=>{
+      btn.addEventListener("shown.bs.tab",()=>{
+        [DT_DETALLE,DT_MUNICIPAL,DT_RESPONSABLE,DT_ACTIVIDAD].forEach(dt=>{if(dt) dt.columns.adjust().draw(false)});
+      });
+    });
+
+    document.getElementById("actividadesPersonaCollapse")?.addEventListener("shown.bs.collapse",()=>{
+      setTimeout(()=>{
+        if(charts.chartPersonaActividad) charts.chartPersonaActividad.resize();
+        if(DT_PERSONA_ACTIVIDAD) DT_PERSONA_ACTIVIDAD.columns.adjust().draw(false);
+      },180);
+    });
+
+    document.getElementById("seguimientoMunicipioCollapse")?.addEventListener("shown.bs.collapse",()=>{
+      setTimeout(()=>{
+        if(charts.chartMunicipioActividad) charts.chartMunicipioActividad.resize();
+        if(DT_MUNICIPIO_ACTIVIDAD) DT_MUNICIPIO_ACTIVIDAD.columns.adjust().draw(false);
+      },180);
+    });
+
+    document.getElementById("mapaCumplimientoCollapse")?.addEventListener("shown.bs.collapse",()=>{
+      setTimeout(()=>{
+        if(MAP) MAP.invalidateSize();
+        fitMapToMunicipalPoints();
+      },180);
+    });
+
+    document.getElementById("analiticaPriorizacionCollapse")?.addEventListener("shown.bs.collapse",()=>{
+      setTimeout(()=>{
+        ["chartAro","chartEstado","chartResponsable","chartMunicipio","chartActividad"].forEach(id=>{
+          if(charts[id]) charts[id].resize();
+        });
+      },180);
+    });
+
+    document.getElementById("btnLimpiarFiltrosAnalitica")?.addEventListener("click",()=>{
+      ["fPeriodo","fAro","fTipo","fMunicipio","fResponsable","fEstado","fGrupoActividad","fActividad","fTexto","fPersonaDetalle","fMunicipioDetalle"].forEach(id=>{
+        const el = document.getElementById(id);
+        if(el) clearSelect(id);
+      });
+      applyFilters();
+      const analitica = document.getElementById("seccionAnaliticaPriorizacion");
+      if(analitica) analitica.scrollIntoView({behavior:"smooth", block:"start"});
+    });
+
+    document.addEventListener("DOMContentLoaded", init);
+  </script>
+</body>
+</html>
