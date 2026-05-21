@@ -374,6 +374,49 @@
 .portal-card-tag{display:inline-block;border-radius:999px;background:#eef4ff;color:#1d4ed8;border:1px solid #c7d7fe;padding:.2rem .55rem;font-size:.75rem;font-weight:800}
 </style>
 
+
+<style>
+.dashboard-card{
+  position:relative;
+  display:flex;
+  gap:1rem;
+  min-height:220px;
+  background:#fff;
+  border:1px solid #e5e7eb;
+  border-radius:1.2rem;
+  padding:1.25rem;
+  text-decoration:none;
+  color:#1f2937;
+  box-shadow:0 8px 24px rgba(0,0,0,.06);
+  transition:all .2s ease;
+}
+.dashboard-card:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(29,78,216,.14)}
+.card-icon{
+  width:54px;
+  height:54px;
+  border-radius:16px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:1.7rem;
+  flex:0 0 54px;
+}
+.bg-blue-soft{background:#eef4ff;border:1px solid #c7d7fe;color:#1d4ed8}
+.card-content h3{font-size:1.05rem;font-weight:850;color:#111827;margin:0 0 .65rem}
+.card-content p{font-size:.9rem;color:#475467;line-height:1.45;margin:0}
+.open-btn{
+  position:absolute;
+  right:1rem;
+  bottom:1rem;
+  background:#2e64d2;
+  color:#fff;
+  border-radius:999px;
+  padding:.45rem 1rem;
+  font-weight:800;
+  box-shadow:0 6px 14px rgba(46,100,210,.25);
+}
+</style>
+
 </head>
 
 <body>
@@ -512,14 +555,15 @@
         <div class="dash-desc">Gestión y seguimiento de muestras recolectadas, análisis realizados y resultados reportados.</div>
         <div class="dash-footer"><a class="btn-open" href="dashboards/muestras/muestras.html">Abrir →</a>
 
-      <a class="portal-card process-agua" href="dashboards/mpr/seguimiento_mpr.html">
-        <div class="portal-card-icon">🗺️</div>
-        <div class="portal-card-body">
+      <a href="dashboards/mpr/seguimiento_mpr.html" class="dashboard-card">
+        <div class="card-icon bg-blue-soft">🗺️</div>
+        <div class="card-content">
           <h3>Mapas de Riesgo MPR</h3>
           <p>Seguimiento a sistemas programados frente a visitas 1.3, muestreos 1.4 y actos administrativos 1.5.</p>
-          <span class="portal-card-tag">Agua para Consumo Humano</span>
         </div>
+        <span class="open-btn">Abrir →</span>
       </a>
+
 </div>
       </article>
 
