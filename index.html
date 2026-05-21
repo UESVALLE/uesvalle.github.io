@@ -354,6 +354,26 @@
       .gov-content img{height:28px;}
     }
   </style>
+
+<style>
+.portal-card{
+  display:block;
+  background:#fff;
+  border:1px solid #dbeafe;
+  border-radius:1rem;
+  box-shadow:0 8px 24px rgba(0,0,0,.06);
+  padding:1rem;
+  text-decoration:none;
+  color:#1f2937;
+  transition:all .2s ease;
+}
+.portal-card:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(29,78,216,.14)}
+.portal-card-icon{font-size:2rem;margin-bottom:.5rem}
+.portal-card h3{font-size:1.1rem;font-weight:850;color:#1d4ed8;margin:0 0 .35rem}
+.portal-card p{font-size:.88rem;color:#667085;margin:0 0 .6rem}
+.portal-card-tag{display:inline-block;border-radius:999px;background:#eef4ff;color:#1d4ed8;border:1px solid #c7d7fe;padding:.2rem .55rem;font-size:.75rem;font-weight:800}
+</style>
+
 </head>
 
 <body>
@@ -490,7 +510,17 @@
           <div><h3 class="dash-title">Muestras</h3></div>
         </div>
         <div class="dash-desc">Gestión y seguimiento de muestras recolectadas, análisis realizados y resultados reportados.</div>
-        <div class="dash-footer"><a class="btn-open" href="dashboards/muestras/muestras.html">Abrir →</a></div>
+        <div class="dash-footer"><a class="btn-open" href="dashboards/muestras/muestras.html">Abrir →</a>
+
+      <a class="portal-card process-agua" href="dashboards/mpr/seguimiento_mpr.html">
+        <div class="portal-card-icon">🗺️</div>
+        <div class="portal-card-body">
+          <h3>Mapas de Riesgo MPR</h3>
+          <p>Seguimiento a sistemas programados frente a visitas 1.3, muestreos 1.4 y actos administrativos 1.5.</p>
+          <span class="portal-card-tag">Agua para Consumo Humano</span>
+        </div>
+      </a>
+</div>
       </article>
 
     </section>
