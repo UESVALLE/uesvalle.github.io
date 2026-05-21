@@ -228,6 +228,20 @@ function initSelect2(){$('.searchable-select').select2({width:'100%',placeholder
 function badgeEstado(e){const n=norm(e);let cls='pill-muted';if(n.includes('COMPLETO'))cls='pill-ok';else if(n.includes('PENDIENTE'))cls='pill-warn';else if(n.includes('ALERTA')||n.includes('NO PROGRAMADO'))cls='pill-bad';else if(n.includes('SIN EJECUCION'))cls='pill-muted';return `<span class="status-pill ${cls}">${e||'Sin dato'}</span>`}
 function badgeSiNo(v){return val(v)==='SI'?'<span class="status-pill pill-ok">SI</span>':'<span class="status-pill pill-muted">NO</span>'}
 function splitPeople(v){return String(v||'').split(/[;,|]/).map(x=>val(x)).filter(Boolean)}
+
+function shortName(v){
+  const s=val(v);
+  if(!s) return '';
+  if(s.toUpperCase()==='SIN FUNCIONARIO') return 'Sin funcionario';
+  const parts=s.replace(/\s+/g,' ').trim().split(' ');
+  if(parts.length<=2) return s;
+  return `${parts[0]} ${parts[1]}`;
+}
+function shortPeople(v){
+  const arr=splitPeople(v).map(shortName).filter(Boolean);
+  return arr.length?arr.join('; '):'';
+}
+
 function systemPeople(r){const keys=['FUNCIONARIO_PROGRAMADO','FUNCIONARIO_ASIGNADO','INGENIERO_PROGRAMADO','INGENIERO_ASIGNADO','PROFESIONAL_PROGRAMADO','RESPONSABLE_PROGRAMADO','RESPONSABLE','funcionario_13','funcionario_14','funcionario_15'];let out=[];keys.forEach(k=>out.push(...splitPeople(r[k])));const code=val(r.CODIGO_LLAVE);ACTIVIDADES.filter(a=>val(a.CODIGO_LLAVE)===code).forEach(a=>out.push(...splitPeople(a.FUNCIONARIO)));return [...new Set(out.map(x=>x.trim()).filter(Boolean))];}
 function rowMatchesFuncionario(r,func){if(!func)return true;return systemPeople(r).some(p=>norm(p)===norm(func));}
 function allFuncionarios(){const set=new Set();SISTEMAS.forEach(r=>systemPeople(r).forEach(p=>set.add(p)));ACTIVIDADES.forEach(r=>splitPeople(r.FUNCIONARIO).forEach(p=>set.add(p)));return [...set].filter(Boolean).sort((a,b)=>a.localeCompare(b,'es'));}
