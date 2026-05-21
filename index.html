@@ -1,2461 +1,521 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8"/>
-  <title>Tablero – Encuestas de Saneamiento con Filtros de Agua</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portal de Tableros UESVALLE</title>
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
-  <link href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet"/>
-  <link href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" rel="stylesheet"/>
-  <link href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" rel="stylesheet"/>
-  <link href="https://cdn.datatables.net/1.13.8/css/dataTables.bootstrap5.min.css" rel="stylesheet"/>
-  <link href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.bootstrap5.min.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <style>
     :root{
-      --board-max:1460px;
-      --shadow-soft:0 8px 24px rgba(0,0,0,.06);
-      --border-soft:1px solid #e9ecef;
-      --brand-blue:#2e64d2;
-      --bg-page:#f4f6f8;
-      --text-muted:#667085;
+      --gov-blue:#3366cc;
+      --ues-blue:#2e64d2;
+      --ues-blue-dark:#173b7a;
+      --ues-green:#198754;
+      --ues-amber:#b56a00;
+      --bg:#eef2f7;
+      --card:#ffffff;
+      --text:#1f2937;
+      --muted:#667085;
+      --border:#e5e7eb;
+      --shadow:0 12px 34px rgba(16,24,40,.08);
+      --radius:1.25rem;
     }
-    body{background:var(--bg-page);color:#212529}
-    .gov-banner{background:#2e64d2;height:46px;width:100%;z-index:10}
-    .gov-banner img{height:30px}
-    .bg-shell{background:var(--bg-page);min-height:100vh}
-    .board{max-width:var(--board-max);margin:0 auto;padding:24px 16px 36px}
-    .soft-card,.kpi-card,.chart-card,.nav-card,header{border:0;border-radius:1rem;box-shadow:var(--shadow-soft);background:#fff}
-    .header-ues{border-bottom:var(--border-soft)}
-    .header-ues .brand-strip{display:flex;justify-content:center;align-items:center;gap:.75rem;flex-wrap:wrap}
-    .header-ues .brand-strip img{max-width:100%;height:auto}
-    .board-title{font-size:clamp(1.5rem,2vw,2.1rem);font-weight:800;color:#1f2937;margin:0}
-    .board-subtitle{color:var(--text-muted);font-size:.95rem}
-    .last-update-badge{font-size:.95rem;padding:.5rem .8rem;border-radius:999px}
-    .navbar .nav-link,.navbar .dropdown-toggle{font-weight:600}
-    .dropdown-menu .dropdown-item.active{background:#2e64d2}
-    .nav-processes{display:flex;flex-wrap:wrap;justify-content:center;align-items:center}
-    .process-btn{background:#f8fafc;border:1px solid #d0d5dd;border-radius:999px;padding:.65rem 1rem!important;color:#344054!important;font-weight:700;box-shadow:0 2px 6px rgba(0,0,0,.04);transition:all .2s ease}
-    .process-btn:hover{background:#eef4ff;border-color:#98a2b3}
-    .process-btn.active{background:#2e64d2;color:#fff!important;border-color:#2e64d2}
-    .kpi-card{height:100%}
-    .kpi-value{font-size:clamp(20px,3.2vw,36px);font-weight:800}
-    .filter-label{font-size:.88rem;font-weight:600;color:#475467}
-    .chart-container{height:380px;position:relative}
-    #map{height:78vh;min-height:760px;border-radius:.85rem;overflow:hidden}
-    .map-info,.section-note{font-size:.9rem;color:#6b7280}
-    .badge-map{font-size:.95rem;padding:.45rem .75rem;border-radius:999px}
-    .map-year-help{font-size:.87rem;color:#667085;background:#f8fafc;border:1px solid #e5e7eb;border-radius:.7rem;padding:.65rem .8rem}
 
-    .legend{background:#fff;padding:.5rem .75rem;border-radius:.5rem;line-height:1.2;box-shadow:0 1px 3px rgba(0,0,0,.15)}
-    #legend div{margin:2px 0;font-size:.85rem}
-    #legend i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:6px;vertical-align:middle}
-    .dt-buttons .btn{margin-right:.25rem}
-    .layer-toggle-btn{position:absolute;top:12px;right:12px;z-index:520;width:42px;height:42px;display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:10px;box-shadow:0 8px 20px rgba(0,0,0,.15);cursor:pointer;color:#475467}
-    .layer-toggle-btn:hover,.legend-toggle-btn:hover{background:#f8fafc}
-    .layer-toggle-btn svg,.legend-toggle-btn svg{width:22px;height:22px}
-    .custom-layer-panel{position:absolute;top:12px;right:12px;z-index:530;width:290px;max-height:80%;overflow:auto;background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:14px;box-shadow:0 8px 24px rgba(0,0,0,.18);padding:10px 12px;transition:opacity .18s ease,transform .18s ease}
-    .custom-layer-panel.collapsed,.custom-legend-panel.collapsed{opacity:0;pointer-events:none;transform:translateY(-6px) scale(.98)}
-    .layer-panel-header{font-weight:800;font-size:.95rem;color:#1f2937;margin-bottom:8px}.layer-close-btn{border:none;background:transparent;font-size:20px;line-height:1;color:#667085;cursor:pointer;padding:0 4px}.layer-close-btn:hover{color:#111827}
-    .custom-layer-panel details{border-top:1px solid #e5e7eb;padding-top:8px;margin-top:8px}.custom-layer-panel details:first-of-type{border-top:none;padding-top:0;margin-top:0}.custom-layer-panel summary{cursor:pointer;font-weight:700;color:#334155;margin-bottom:6px;list-style:none}.custom-layer-panel summary::-webkit-details-marker{display:none}.custom-layer-panel label{display:block;font-size:.88rem;color:#475467;margin:5px 0;cursor:pointer}.custom-layer-panel input[type="checkbox"],.custom-layer-panel input[type="radio"]{margin-right:8px}
-    .legend-toggle-btn{position:absolute;bottom:12px;left:12px;z-index:520;width:42px;height:42px;display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:10px;box-shadow:0 8px 20px rgba(0,0,0,.15);cursor:pointer;color:#475467}
-    .custom-legend-panel{position:absolute;bottom:12px;left:12px;z-index:530;width:245px;background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:14px;box-shadow:0 8px 24px rgba(0,0,0,.18);padding:10px 12px;transition:opacity .18s ease,transform .18s ease}
-    .legend-title{font-size:.85rem;font-weight:700;margin-bottom:.4rem;color:#334155}
-    .municipio-label div{background:rgba(255,255,255,.78);color:#5b21b6;border:1px solid rgba(91,33,182,.18);border-radius:8px;padding:2px 6px;font-size:11px;font-weight:700;white-space:nowrap;box-shadow:0 1px 4px rgba(0,0,0,.08)}
-    .rio-label div{background:rgba(255,255,255,.72);color:#0369a1;border:1px solid rgba(3,105,161,.18);border-radius:8px;padding:2px 6px;font-size:10px;font-weight:700;white-space:nowrap;box-shadow:0 1px 4px rgba(0,0,0,.08)}
-    .vereda-label div{background:rgba(255,255,255,.68);color:#475467;border:1px solid rgba(71,84,103,.14);border-radius:6px;padding:1px 5px;font-size:9px;font-weight:600;white-space:nowrap;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+    *{box-sizing:border-box}
 
-    @media (max-width:992px){#map{height:68vh;min-height:620px}}
-    @media (max-width:768px){.custom-layer-panel{width:220px;max-height:65%}}
-    @media (max-width:576px){
-      .board{padding-left:10px;padding-right:10px}
-      .board-title{font-size:1.15rem}
-      #map{height:62vh;min-height:500px}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:linear-gradient(180deg,#f3f6fa 0%,#eef2f7 100%);
+      color:var(--text);
     }
-  
-    .section-block{
-      border:1px solid #e8edf5;
-      border-radius:1.1rem;
-      box-shadow:var(--shadow-soft);
+
+    .gov-bar{
+      background:var(--gov-blue);
+      height:48px;
+      display:flex;
+      align-items:center;
+      color:#fff;
+      font-weight:800;
+      letter-spacing:.02em;
+    }
+
+    .gov-content{
+      width:min(1440px,92vw);
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      gap:.55rem;
+      font-size:1.08rem;
+    }
+
+    .gov-mark{
+      width:28px;
+      height:28px;
+      border-radius:50%;
+      border:2px solid rgba(255,255,255,.65);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:.78rem;
+      font-weight:900;
+    }
+
+    .page{
+      width:min(1440px,92vw);
+      margin:1.6rem auto 2.5rem;
+    }
+
+    .brand-card{
       background:#fff;
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:1.25rem 1.4rem;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height:112px;
+      margin-bottom:1.2rem;
+      border:1px solid rgba(255,255,255,.65);
+    }
+
+    .brand-text{
+      text-align:center;
+      line-height:1.1;
+    }
+
+    .brand-text .top{
+      font-size:clamp(1.05rem,1.9vw,1.65rem);
+      font-weight:900;
+      color:#1f4e78;
+      text-transform:uppercase;
+      letter-spacing:.02em;
+    }
+
+    .brand-text .bottom{
+      font-size:clamp(1rem,1.8vw,1.55rem);
+      font-weight:850;
+      color:#f2a43a;
+      margin-top:.25rem;
+    }
+
+    .hero{
+      background:#fff;
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:2rem;
+      margin-bottom:1.2rem;
+      border:1px solid rgba(255,255,255,.65);
+      position:relative;
       overflow:hidden;
     }
-    .section-header{
-      padding:1rem 1.15rem;
-      border-bottom:1px solid #eef2f6;
+
+    .hero::after{
+      content:"";
+      position:absolute;
+      right:-160px;
+      top:-160px;
+      width:360px;
+      height:360px;
+      background:radial-gradient(circle,rgba(46,100,210,.13),rgba(46,100,210,0) 68%);
+      pointer-events:none;
+    }
+
+    .hero h1{
+      font-size:clamp(2rem,4vw,3.8rem);
+      font-weight:900;
+      letter-spacing:-.04em;
+      line-height:1.02;
+      margin:0;
+      color:#111827;
+    }
+
+    .hero p{
+      margin:.85rem 0 0;
+      color:var(--muted);
+      font-size:clamp(1rem,1.4vw,1.22rem);
+      max-width:940px;
+    }
+
+    .hero-meta{
+      margin-top:1.15rem;
+      display:flex;
+      gap:.55rem;
+      flex-wrap:wrap;
+    }
+
+    .meta-chip{
+      border-radius:999px;
+      background:#eef4ff;
+      color:#1d4ed8;
+      border:1px solid #c7d7fe;
+      font-weight:800;
+      padding:.45rem .75rem;
+      font-size:.86rem;
+    }
+
+    .section-title{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      gap:1rem;
+      margin:1.45rem 0 .85rem;
+    }
+
+    .section-title h2{
+      font-size:clamp(1.25rem,2vw,1.75rem);
+      font-weight:900;
+      margin:0;
+      color:#111827;
+    }
+
+    .section-title span{
+      color:var(--muted);
+      font-size:.92rem;
+    }
+
+    .dashboard-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:1rem;
+    }
+
+    @media (max-width:1100px){
+      .dashboard-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    }
+
+    @media (max-width:720px){
+      .dashboard-grid{grid-template-columns:1fr}
+      .hero{padding:1.35rem}
+    }
+
+    .dash-card{
+      background:#fff;
+      border:1px solid var(--border);
+      border-left:6px solid var(--ues-blue);
+      border-radius:1.15rem;
+      padding:1.2rem;
+      box-shadow:0 8px 22px rgba(16,24,40,.055);
+      transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+      min-height:220px;
+      display:flex;
+      flex-direction:column;
+    }
+
+    .dash-card:hover{
+      transform:translateY(-3px);
+      box-shadow:0 16px 38px rgba(16,24,40,.12);
+      border-color:#c7d7fe;
+    }
+
+    .dash-card.green{border-left-color:var(--ues-green)}
+    .dash-card.amber{border-left-color:var(--ues-amber)}
+    .dash-card.gray{border-left-color:#667085}
+
+    .dash-top{
       display:flex;
       align-items:flex-start;
-      gap:.9rem;
+      gap:.85rem;
+      margin-bottom:.9rem;
     }
-    .section-header__icon{
+
+    .dash-icon{
       width:52px;
       height:52px;
       border-radius:16px;
       display:flex;
       align-items:center;
       justify-content:center;
-      font-size:1.5rem;
-      flex:0 0 52px;
-      box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);
-    }
-    .section-header h5{
-      margin:0;
-      font-weight:800;
-      color:#1f2937;
-    }
-    .section-header .small{
-      margin-top:.2rem;
-    }
-    .section-body{
-      padding:1rem;
-    }
-    .section-body .chart-card{
-      box-shadow:0 4px 14px rgba(0,0,0,.05);
-      border:1px solid #edf0f2;
-      border-radius:1rem;
-      background:#fff;
-    }
-    .section-block--blue{
-      border-color:#b8d0ff;
-    }
-    .section-block--blue .section-header{
-      background:linear-gradient(90deg, rgba(232,240,254,1), rgba(232,240,254,.72));
-      border-bottom-color:#c9dafc;
-    }
-    .section-block--blue .section-header__icon{
-      background:#dfeafe;
-      color:#1d4ed8;
-    }
-    .section-block--green{
-      border-color:#cfe9d7;
-    }
-    .section-block--green .section-header{
-      background:linear-gradient(90deg, rgba(234,247,239,1), rgba(234,247,239,.72));
-      border-bottom-color:#cfe9d7;
-    }
-    .section-block--green .section-header__icon{
-      background:#dff2e6;
-      color:#198754;
-    }
-    .section-block--beige{
-      border-color:#f1dfbf;
-    }
-    .section-block--beige .section-header{
-      background:linear-gradient(90deg, rgba(255,246,232,1), rgba(255,246,232,.72));
-      border-bottom-color:#f1dfbf;
-    }
-    .section-block--beige .section-header__icon{
-      background:#fff0d8;
-      color:#b56a00;
-    }
-
-    .section-system{
-      display:grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
-      gap:1rem;
-    }
-    .section-system__item{
-      border-radius:1rem;
-      padding:1rem 1.1rem;
-      display:flex;
-      align-items:center;
-      gap:.9rem;
-      border:1px solid transparent;
-    }
-    .section-system__icon{
-      width:56px;
-      height:56px;
-      border-radius:999px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
       font-size:1.55rem;
-      flex:0 0 56px;
+      background:#eef4ff;
+      border:1px solid #c7d7fe;
+      flex:0 0 52px;
     }
-    .section-system__title{
-      font-weight:800;
-      line-height:1.15;
-      margin-bottom:.15rem;
-    }
-    .section-system__note{
-      color:#667085;
-      font-size:.95rem;
-    }
-    .section-system__item--green{
+
+    .dash-card.green .dash-icon{
       background:#eaf7ef;
-      border-color:#cfe9d7;
+      border-color:#b9e6c8;
     }
-    .section-system__item--green .section-system__icon{
-      background:#d8efdf;
-      color:#198754;
-    }
-    .section-system__item--green .section-system__title{
-      color:#198754;
-    }
-    .section-system__item--beige{
-      background:#fff6e8;
+
+    .dash-card.amber .dash-icon{
+      background:#fff0d8;
       border-color:#f1dfbf;
     }
-    .section-system__item--beige .section-system__icon{
-      background:#ffeed1;
-      color:#b56a00;
-    }
-    .section-system__item--beige .section-system__title{
-      color:#b56a00;
-    }
-    .section-system__item--blue{
-      background:#e8f0fe;
-      border-color:#c9dafc;
-    }
-    .section-system__item--blue .section-system__icon{
-      background:#dfeafe;
-      color:#1d4ed8;
-    }
-    .section-system__item--blue .section-system__title{
-      color:#1d4ed8;
+
+    .dash-card.gray .dash-icon{
+      background:#f2f4f7;
+      border-color:#d0d5dd;
     }
 
-    @media (max-width: 991px){
-      .section-system{
-        grid-template-columns: 1fr;
-      }
-    }
-
-  
-    .section-block--blue{border-color:#8eb3ff; box-shadow:0 10px 28px rgba(29,78,216,.08);}
-    .section-block--blue .section-header{background:linear-gradient(180deg, #eef4ff 0%, #edf3ff 100%);}
-    .section-block--blue .section-header__icon{background:#e3edff;border:1px solid #bdd1ff;color:#1d4ed8;font-size:1.8rem;}
-    .section-header h5{font-size:2rem; color:#1d4ed8;}
-    .section-header .small{font-size:1rem;color:#475467 !important;}
-
-    .kpi-row-5{display:flex; flex-wrap:nowrap; gap:1rem;}
-    .kpi-row-5 > .col{flex:1 1 20%; min-width:0;}
-    .kpi-modern{padding:1.15rem 1rem !important; border-radius:1.1rem; box-shadow:0 6px 18px rgba(0,0,0,.06); border:1px solid #eef2f7; text-align:center;}
-    .kpi-icon{width:78px;height:78px;border-radius:50%;margin:0 auto 1rem;display:flex;align-items:center;justify-content:center;background:#eaf1ff;color:#2457d6;border:1px solid #d5e3ff;}
-    .kpi-icon svg{width:40px;height:40px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
-    .kpi-label{min-height:92px;display:flex;align-items:center;justify-content:center;font-weight:700;color:#1f2937;font-size:.95rem;line-height:1.25;text-align:center;}
-    .kpi-divider{border-top:2px dotted #d9e1ec; margin:.8rem 0 1rem;}
-    .kpi-value{font-size:clamp(22px,3vw,42px); font-weight:800; color:#2457d6; letter-spacing:.3px;}
-    @media (max-width: 1200px){ .kpi-row-5{flex-wrap:wrap;} .kpi-row-5 > .col{min-width:220px;} .section-header h5{font-size:1.7rem;} }
-
-
-    /* Popup semaforizado */
-    .leaflet-popup.popup-sema-wrap .leaflet-popup-content-wrapper{
-      padding:0;
-      border-radius:22px;
-      overflow:hidden;
-      box-shadow:0 16px 40px rgba(15,23,42,.18);
-    }
-    .leaflet-popup.popup-sema-wrap .leaflet-popup-content{
-      margin:0 !important;
-      width:min(540px, 72vw) !important;
-    }
-    .leaflet-popup.popup-sema-wrap .leaflet-popup-tip{
-      background:#fff;
-    }
-    .leaflet-popup.popup-sema-wrap .leaflet-popup-close-button{
-      color:#98a2b3;
-      font-size:28px;
-      right:16px;
-      top:12px;
-      padding:0;
-      width:28px;
-      height:28px;
-    }
-    .popup-sema{background:#fff; color:#1f2937; font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;}
-    .ps-head{display:flex; align-items:center; gap:12px; padding:16px 18px 10px; border-bottom:1px solid #eef2f7;}
-    .ps-icon{width:44px; height:44px; border-radius:50%; background:#2457d6; color:#fff; display:flex; align-items:center; justify-content:center; font-size:20px; box-shadow:0 8px 22px rgba(36,87,214,.18);}
-    .ps-title{font-size:16px; font-weight:800; color:#0f172a; line-height:1.1;}
-    .ps-body{padding:12px 14px 14px; background:#fcfdff;}
-    .ps-block{background:#fff; border:1px solid #e6ebf2; border-radius:16px; padding:12px; margin-bottom:10px;}
-    .ps-block-title{display:flex; align-items:center; gap:8px; font-size:14px; font-weight:800; color:#2457d6; margin-bottom:10px;}
-    .ps-block-ico{width:24px; height:24px; border-radius:8px; display:inline-flex; align-items:center; justify-content:center; background:#eef4ff; color:#2457d6; font-size:13px;}
-    .ps-grid-basic{display:grid; grid-template-columns:1fr 1fr; gap:10px 14px;}
-    .ps-kv small{display:block; color:#667085; font-size:11px; font-weight:700; margin-bottom:1px;}
-    .ps-kv div{color:#0f172a; font-size:13px; font-weight:800; line-height:1.2; word-break:break-word;}
-    .ps-kv.ps-kv-span{grid-column:1 / -1;}
-    .ps-rows{display:flex; flex-direction:column; gap:8px;}
-    .ps-row{display:flex; align-items:center; justify-content:space-between; gap:10px; border:1px solid; border-radius:12px; padding:8px 10px;}
-    .ps-row-left{display:flex; align-items:center; gap:10px; min-width:0; flex:1 1 auto;}
-    .ps-row-icon{width:28px; height:28px; border-radius:9px; display:flex; align-items:center; justify-content:center; font-size:14px; flex:0 0 auto;}
-    .ps-row-label{font-size:13px; line-height:1.2; color:#1f2937; font-weight:800; flex:1 1 auto;}
-    .ps-chip{display:inline-flex; align-items:center; justify-content:center; min-width:112px; max-width:46%; padding:8px 12px; border-radius:999px; font-size:13px; font-weight:800; text-align:center; line-height:1.05; box-shadow:inset 0 -1px 0 rgba(255,255,255,.25);}
-    .ps-summary{display:flex; align-items:center; justify-content:space-between; gap:10px; background:#f0fdf4; border:1px solid #bbf7d0; border-radius:16px; padding:12px 14px;}
-    .ps-summary-title{display:flex; align-items:center; gap:8px; color:#14532d; font-size:14px; font-weight:800;}
-    .ps-summary-badge{display:inline-flex; align-items:center; justify-content:center; min-width:150px; padding:9px 16px; border-radius:999px; color:#fff; font-size:14px; font-weight:800;}
-    @media (max-width:640px){
-      .leaflet-popup.popup-sema-wrap .leaflet-popup-content{width:min(92vw, 520px) !important;}
-      .ps-grid-basic{grid-template-columns:1fr;}
-      .ps-row{flex-direction:column; align-items:stretch;}
-      .ps-chip{max-width:none; width:100%; min-width:unset;}
-      .ps-summary{flex-direction:column; align-items:stretch;}
-      .ps-summary-badge{width:100%; min-width:unset;}
-    }
-
-
-
-
-    .buenaventura-toggle-header{
-      width:100%;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:1rem;
-      border:1px solid #dbeafe;
-      background:linear-gradient(90deg, rgba(239,246,255,.98), rgba(248,250,252,.98));
-      border-radius:1rem;
-      padding:.9rem 1rem;
-      text-align:left;
-      cursor:pointer;
-      margin-top:1rem;
-      transition:all .2s ease;
-    }
-    .buenaventura-toggle-header:hover{
-      border-color:#93c5fd;
-      box-shadow:0 6px 18px rgba(29,78,216,.08);
-    }
-    .buenaventura-toggle-copy{min-width:0;}
-    .buenaventura-toggle-title{
-      display:flex;
-      align-items:center;
-      gap:.55rem;
-      color:#1e3a8a;
-      font-weight:850;
+    .dash-title{
+      font-weight:900;
+      font-size:1.08rem;
       margin:0;
-      font-size:1rem;
-    }
-    .buenaventura-toggle-note{
-      color:#667085;
-      font-size:.86rem;
-      margin:.25rem 0 0;
-    }
-    .buenaventura-toggle-meta{
-      display:flex;
-      align-items:center;
-      gap:.6rem;
-      flex:0 0 auto;
-    }
-    .buenaventura-toggle-badge{
-      display:inline-flex;
-      align-items:center;
-      padding:.28rem .65rem;
-      border-radius:999px;
-      background:#dbeafe;
-      color:#1d4ed8;
-      font-size:.78rem;
-      font-weight:800;
-      white-space:nowrap;
-    }
-    .buenaventura-toggle-arrow{
-      width:40px;
-      height:40px;
-      border-radius:999px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      border:1px solid #bfdbfe;
-      background:#fff;
-      color:#1d4ed8;
-      transition:all .2s ease;
-      box-shadow:0 2px 6px rgba(0,0,0,.04);
-    }
-    .buenaventura-toggle-arrow svg{
-      width:21px;
-      height:21px;
-      transition:transform .2s ease;
-    }
-    .buenaventura-toggle-header[aria-expanded="true"] .buenaventura-toggle-arrow svg{
-      transform:rotate(90deg);
+      color:#111827;
+      line-height:1.18;
     }
 
-    .map-section-toolbar{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:.75rem;
-      flex-wrap:wrap;
-      margin-bottom:.8rem;
+    .dash-process{
+      color:var(--muted);
+      font-size:.84rem;
+      margin-top:.2rem;
+      font-weight:650;
     }
-    .map-section-toolbar__copy{
+
+    .dash-desc{
       color:#475467;
       font-size:.93rem;
-    }
-    .map-section-toolbar__actions{
-      display:flex;
-      align-items:center;
-      gap:.55rem;
-      flex-wrap:wrap;
-      justify-content:flex-end;
-    }
-    .map-section-note{
-      font-size:.9rem;
-      color:#475467;
-      background:#f8fbff;
-      border:1px solid #dbeafe;
-      border-radius:.9rem;
-      padding:.75rem .9rem;
+      line-height:1.45;
       margin-bottom:1rem;
-    }
-    .map-summary-panel{
-      border:1px solid #dbeafe !important;
-      background:#f8fbff !important;
-      color:#1e3a8a;
-      font-weight:700;
-    }
-    @media (max-width:576px){
-      .buenaventura-toggle-header{align-items:flex-start;}
-      .buenaventura-toggle-meta{align-items:flex-end;flex-direction:column;}
-      .map-section-toolbar__actions{justify-content:flex-start;}
+      flex:1;
     }
 
-
-
-    /* Sección destacada: Filtros entregados */
-    .entregados-section-toggle{
-      width:100%;
-      border:0;
-      background:transparent;
-      padding:0;
-      text-align:left;
-      cursor:pointer;
-      display:block;
-    }
-    .entregados-section-toggle .section-header{
+    .dash-footer{
+      display:flex;
       justify-content:space-between;
       align-items:center;
-      width:100%;
-    }
-    .entregados-section-copy{
-      display:flex;
-      align-items:flex-start;
-      gap:.9rem;
-      min-width:0;
-    }
-    .entregados-toggle-meta{
-      display:flex;
-      align-items:center;
-      gap:.6rem;
-      flex:0 0 auto;
-    }
-    .entregados-toggle-badge{
-      display:inline-flex;
-      align-items:center;
-      padding:.34rem .72rem;
-      border-radius:999px;
-      background:#dcfce7;
-      color:#15803d;
-      border:1px solid #bbf7d0;
-      font-size:.8rem;
-      font-weight:850;
-      white-space:nowrap;
-    }
-    .entregados-toggle-arrow{
-      width:42px;
-      height:42px;
-      border-radius:999px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      border:1px solid #bbf7d0;
-      background:#fff;
-      color:#15803d;
-      transition:all .2s ease;
-      box-shadow:0 2px 6px rgba(0,0,0,.04);
-    }
-    .entregados-toggle-arrow svg{
-      width:22px;
-      height:22px;
-      transition:transform .2s ease;
-    }
-    .entregados-section-toggle[aria-expanded="true"] .entregados-toggle-arrow svg{
-      transform:rotate(90deg);
-    }
-    #seccionFiltrosEntregados{
-      border-color:#b9e6c8;
-      box-shadow:0 10px 28px rgba(25,135,84,.08);
-    }
-    #seccionFiltrosEntregados .section-header{
-      background:linear-gradient(90deg, rgba(234,247,239,1), rgba(234,247,239,.72));
-      border-bottom-color:#cfe9d7;
-    }
-    #seccionFiltrosEntregados .section-header__icon{
-      background:#dff2e6;
-      border:1px solid #b9e6c8;
-      color:#198754;
-      font-size:1.8rem;
-    }
-    #seccionFiltrosEntregados .section-header h5{
-      color:#198754;
-      font-size:2rem;
-    }
-    #seccionFiltrosEntregados .section-body{
-      background:#fff;
-    }
-    #seccionFiltrosEntregados .entregados-collapsible-body{
-      border-top:0;
-      margin-top:0;
-      padding-top:0;
-    }
-    #seccionFiltrosEntregados .entregados-kpi-card{
-      border-color:#d1fae5;
-      box-shadow:0 4px 14px rgba(25,135,84,.06);
-    }
-    @media (max-width:576px){
-      .entregados-section-toggle .section-header{align-items:flex-start;}
-      .entregados-toggle-meta{align-items:flex-end;flex-direction:column;}
-      #seccionFiltrosEntregados .section-header h5{font-size:1.45rem;}
-    }
-
-    .buenaventura-strip{
-      margin-top:1rem;
-      border:1px solid #dbeafe;
-      background:linear-gradient(90deg, rgba(239,246,255,.95), rgba(248,250,252,.98));
-      border-radius:1rem;
-      padding:.9rem 1rem;
-    }
-    .buenaventura-strip__head{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
       gap:.75rem;
       flex-wrap:wrap;
-      margin-bottom:.75rem;
     }
-    .buenaventura-strip__title{
-      display:flex;
-      align-items:center;
-      gap:.55rem;
-      color:#1e3a8a;
-      font-weight:800;
-      margin:0;
-      font-size:1rem;
-    }
-    .buenaventura-strip__badge{
+
+    .status{
       display:inline-flex;
       align-items:center;
-      padding:.28rem .65rem;
       border-radius:999px;
-      background:#dbeafe;
-      color:#1d4ed8;
+      padding:.34rem .65rem;
       font-size:.78rem;
-      font-weight:800;
-      white-space:nowrap;
-    }
-    .buenaventura-strip__note{
-      color:#667085;
-      font-size:.86rem;
-      margin:0;
-    }
-    .buenaventura-mini-grid{
-      display:grid;
-      grid-template-columns:repeat(3, minmax(0, 1fr));
-      gap:.75rem;
-    }
-    .buenaventura-mini-card{
-      background:#fff;
-      border:1px solid #e5e7eb;
-      border-radius:.85rem;
-      padding:.75rem .9rem;
-      box-shadow:0 3px 10px rgba(15,23,42,.04);
-    }
-    .buenaventura-mini-label{
-      color:#667085;
-      font-size:.78rem;
-      font-weight:700;
-      margin-bottom:.2rem;
-    }
-    .buenaventura-mini-value{
-      color:#1f2937;
-      font-size:1.35rem;
       font-weight:850;
-      line-height:1.1;
-    }
-    @media (max-width:768px){
-      .buenaventura-mini-grid{grid-template-columns:1fr;}
     }
 
+    .status.ok{
+      color:#087443;
+      background:#eafaf1;
+      border:1px solid #abefc6;
+    }
 
-    .entregados-kpi-row{
-      display:grid;
-      grid-template-columns:repeat(5, minmax(0, 1fr));
-      gap:1rem;
-      margin-bottom:1rem;
+    .status.transition{
+      color:#92400e;
+      background:#fff7ed;
+      border:1px solid #fed7aa;
     }
-    .entregados-kpi-card{
-      background:#fff;
-      border:1px solid #e5e7eb;
-      border-radius:1rem;
-      padding:1rem;
-      box-shadow:0 4px 14px rgba(0,0,0,.05);
-      text-align:center;
-    }
-    .entregados-kpi-label{
-      min-height:42px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
+
+    .status.pending{
       color:#475467;
-      font-size:.86rem;
-      font-weight:750;
-      line-height:1.2;
-    }
-    .entregados-kpi-value{
-      margin-top:.5rem;
-      color:#198754;
-      font-size:clamp(20px, 2.8vw, 34px);
-      font-weight:850;
-      line-height:1.1;
-    }
-    .entregados-collapsible-body{
-      border-top:1px solid #e5e7eb;
-      margin-top:1rem;
-      padding-top:1rem;
-    }
-    .entregados-section-note{
-      background:#f0fdf4;
-      border:1px solid #bbf7d0;
-      border-radius:.9rem;
-      color:#14532d;
-      font-size:.88rem;
-      padding:.75rem .9rem;
-      margin-bottom:1rem;
-    }
-    @media (max-width:1200px){
-      .entregados-kpi-row{grid-template-columns:repeat(3, minmax(0, 1fr));}
-    }
-    @media (max-width:768px){
-      .entregados-kpi-row{grid-template-columns:1fr;}
-    }
-
-
-    .table-toggle-header{
-      width:100%;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:1rem;
-      padding:0;
-      border:none;
-      background:transparent;
-      text-align:left;
-      cursor:pointer;
-    }
-    .table-toggle-copy{min-width:0;}
-    .table-toggle-header h5{color:#1f2937;}
-    .table-toggle-arrow{
-      flex:0 0 auto;
-      width:44px;
-      height:44px;
-      border-radius:999px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
+      background:#f2f4f7;
       border:1px solid #d0d5dd;
-      background:#f8fafc;
-      color:#475467;
-      transition:all .2s ease;
-      box-shadow:0 2px 6px rgba(0,0,0,.04);
-    }
-    .table-toggle-arrow svg{
-      width:22px;
-      height:22px;
-      display:block;
-      transition:transform .2s ease;
-    }
-    .table-toggle-header:hover .table-toggle-arrow{
-      background:#eef4ff;
-      border-color:#98a2b3;
-      color:#1d4ed8;
-    }
-    .table-toggle-header[aria-expanded="true"] .table-toggle-arrow svg{
-      transform:rotate(90deg);
-    }
-    @media (max-width:576px){
-      .table-toggle-header{align-items:flex-start;}
-      .table-toggle-arrow{margin-top:.15rem;}
     }
 
+    .btn-open{
+      border-radius:999px;
+      background:var(--ues-blue);
+      color:#fff;
+      text-decoration:none;
+      padding:.5rem .85rem;
+      font-weight:850;
+      font-size:.86rem;
+      display:inline-flex;
+      align-items:center;
+      gap:.35rem;
+    }
+
+    .btn-open:hover{
+      background:#1d4ed8;
+      color:#fff;
+    }
+
+    .note{
+      margin-top:1rem;
+      background:#fff;
+      border:1px solid #e5e7eb;
+      border-radius:1rem;
+      padding:1rem 1.15rem;
+      color:#475467;
+      box-shadow:0 8px 22px rgba(16,24,40,.045);
+    }
+
+    .note b{color:#111827}
+
+    footer{
+      color:#667085;
+      text-align:center;
+      padding:1.35rem 0 0;
+      font-size:.9rem;
+    }
   </style>
 </head>
+
 <body>
-  <div class="gov-banner">
-    <div class="container d-flex align-items-center" style="height:100%;">
-      <img src="https://www.gov.co/assets/images/logo.png" alt="GOV.CO">
+  <div class="gov-bar">
+    <div class="gov-content">
+      <span class="gov-mark">CO</span>
+      <span>GOV.CO</span>
+      <span style="font-size:.72rem;border:1px solid rgba(255,255,255,.6);padding:.05rem .28rem;border-radius:.22rem;">BETA</span>
     </div>
   </div>
 
-  <main class="bg-shell">
-    <div class="board">
-      <header class="header-ues py-2 mb-3">
-        <div class="container-fluid px-3">
-          <div class="brand-strip">
-            <img src="https://www.uesvalle.gov.co/info/uesvalle/media/bloque1656.png" alt="UESVALLE" loading="lazy" class="img-fluid">
-          </div>
-        </div>
-      </header>
+  <main class="page">
+    <section class="brand-card">
+      <div class="brand-text">
+        <div class="top">Gobernación del Valle del Cauca</div>
+        <div class="bottom">uesvalle · Unidad Ejecutora de Saneamiento del Valle del Cauca</div>
+      </div>
+    </section>
 
-      <section class="nav-card p-3 mb-3">
-        <nav class="navbar navbar-expand-lg bg-white rounded-4">
-          <div class="container-fluid d-flex flex-column align-items-center">
-            <div class="fw-bold mb-3 fs-5">Procesos</div>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navPrincipal">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-center" id="navPrincipal">
-              <ul class="navbar-nav mb-2 mb-lg-0 nav-processes">
-                <li class="nav-item dropdown mx-2 my-1">
-                  <a class="nav-link dropdown-toggle process-btn active" href="#" role="button" data-bs-toggle="dropdown">
-                    1. Agua para consumo humano y saneamiento básico
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="https://javiermarin7.github.io/UESVALLE/ircas.html">1.1 IRCAS</a></li>
-                    <li><a class="dropdown-item active" href="https://javiermarin7.github.io/UESVALLE/index.html">1.2 Filtros</a></li>
-                    <li><a class="dropdown-item" href="https://javiermarin7.github.io/UESVALLE/seguimiento_ach.html">1.3 Seguimiento Actividades Agua para Consumo Humano</a></li>
-                    <li><a class="dropdown-item" href="https://javiermarin7.github.io/UESVALLE/Dosificacion_cloro.html">1.4 Dosificación de cloro</a></li>
-                    <li><a class="dropdown-item" href="https://javiermarin7.github.io/UESVALLE/Muestras.html">1.5 Muestras</a></li>
-                  </ul>
-                </li>
+    <section class="hero">
+      <h1>Portal de Tableros UESVALLE</h1>
+      <p>
+        Acceso centralizado a tableros de seguimiento, vigilancia, control sanitario y herramientas operativas
+        de apoyo a los procesos institucionales.
+      </p>
+      <div class="hero-meta">
+        <span class="meta-chip">GitHub Pages</span>
+        <span class="meta-chip">Tableros HTML</span>
+        <span class="meta-chip">Datos CSV</span>
+        <span class="meta-chip">Estructura técnica en migración</span>
+      </div>
+    </section>
 
-                <li class="nav-item dropdown mx-2 my-1">
-                  <a class="nav-link dropdown-toggle process-btn" href="#" role="button" data-bs-toggle="dropdown">
-                    2. Alimentos y medicamentos
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item disabled" href="#">Próximamente</a></li>
-                  </ul>
-                </li>
-
-                <li class="nav-item dropdown mx-2 my-1">
-                  <a class="nav-link dropdown-toggle process-btn" href="#" role="button" data-bs-toggle="dropdown">
-                    3. Zoonosis y ETV
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item disabled" href="#">Próximamente</a></li>
-                  </ul>
-                </li>
-
-                <li class="nav-item dropdown mx-2 my-1">
-                  <a class="nav-link dropdown-toggle process-btn" href="#" role="button" data-bs-toggle="dropdown">
-                    4. Establecimientos de interés sanitario
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="https://javiermarin7.github.io/UESVALLE/piscinas.html">4.1 Piscinas</a></li>
-                    <li><a class="dropdown-item" href="https://javiermarin7.github.io/UESVALLE/empresas_plaguicidas.html">4.2 Empresas aplicadoras de plaguicidas</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-      </section>
-
-
-<section class="soft-card p-3 mb-3">
-        <div class="d-flex flex-column flex-lg-row align-items-lg-center">
-          <div class="me-auto">
-            <h1 class="board-title">Tablero – Encuestas de Saneamiento con Filtros de Agua</h1>
-            <div class="board-subtitle mt-1">Fuente: GitHub CSV</div>
-          </div>
-          <div class="mt-2 mt-lg-0">
-            <span id="lastUpdate" class="badge text-bg-success last-update-badge">Cargando…</span>
-          </div>
-        </div>
-      </section>
-
-      <section class="soft-card p-3 mb-3">
-        <div class="row g-3 align-items-end">
-          <div class="col-12 col-sm-6 col-md-2">
-            <label class="form-label filter-label mb-1">Año</label>
-            <select id="fano" class="form-select form-select-sm"><option value="">Todos</option></select>
-          </div>
-          <div class="col-12 col-sm-6 col-md-2">
-            <label class="form-label filter-label mb-1">Mes</label>
-            <select id="fmes" class="form-select form-select-sm"><option value="">Todos</option></select>
-          </div>
-          <div class="col-12 col-sm-6 col-md-3">
-            <label class="form-label filter-label mb-1">Encuestador</label>
-            <select id="fencuestador" class="form-select form-select-sm"><option value="">Todos</option></select>
-          </div>
-          <div class="col-12 col-sm-6 col-md-3">
-            <label class="form-label filter-label mb-1">Municipio</label>
-            <select id="fmpio" class="form-select form-select-sm"><option value="">Todos</option></select>
-          </div>
-          <div class="col-12 col-md-2">
-            <label for="fdesde" class="form-label filter-label mb-1">Desde</label>
-            <input type="date" id="fdesde" class="form-control form-control-sm">
-          </div>
-          <div class="col-12 col-md-2">
-            <label for="fhasta" class="form-label filter-label mb-1">Hasta</label>
-            <input type="date" id="fhasta" class="form-control form-control-sm">
-          </div>
-          <div class="col-12 col-md-10 d-flex gap-2 justify-content-center justify-content-md-end pt-2 flex-wrap">
-            <button id="btnFiltrar" class="btn btn-primary btn-sm px-4">Aplicar filtros</button>
-            <button id="btnLimpiar" class="btn btn-outline-secondary btn-sm px-4">Limpiar</button>
-            <button id="btnCargar" class="btn btn-outline-primary btn-sm px-4">Refrescar datos</button>
-          </div>
-        </div>
-      </section>
-
-      <section class="section-block section-block--blue mb-4">
-        <div class="section-header">
-          <div class="section-header__icon">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19h16"/><path d="M6 17V10"/><path d="M10 17V6"/><path d="M14 17v-3"/><path d="M18 17V8"/><path d="M5 14l4-4 3 2 6-6 1 1"/></svg>
-          </div>
-          <div>
-            <h5>Indicadores de seguimiento</h5>
-            <div class="small text-muted">Resumen general del seguimiento de filtros y su estado físico. No incluye Buenaventura, que se presenta en análisis separado.</div>
-          </div>
-        </div>
-        <div class="section-body">
-          <section class="row g-3 kpi-row-5">
-            <div class="col">
-              <div class="kpi-card kpi-modern h-100">
-                <div class="kpi-icon"><svg viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10.5V20h5v-5h4v5h5v-9.5"/></svg></div>
-                <div class="kpi-label">Seguimiento viviendas con soluciones individuales “Filtros”</div>
-                <div class="kpi-divider"></div>
-                <div id="kpiTotal" class="kpi-value">–</div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="kpi-card kpi-modern h-100">
-                <div class="kpi-icon"><svg viewBox="0 0 24 24"><path d="M12 3v18"/><path d="M4 8h16"/><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M4 8l3-4h10l3 4"/></svg></div>
-                <div class="kpi-label">Filtros entregados</div>
-                <div class="kpi-divider"></div>
-                <div id="kpiEntregados" class="kpi-value">–</div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="kpi-card kpi-modern h-100">
-                <div class="kpi-icon"><svg viewBox="0 0 24 24"><path d="M17 5a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z"/><path d="M7 11a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z"/><path d="M6 18 18 6"/></svg></div>
-                <div class="kpi-label">% seguimiento sobre entregados</div>
-                <div class="kpi-divider"></div>
-                <div id="kpiSeguimiento" class="kpi-value">–</div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="kpi-card kpi-modern h-100">
-                <div class="kpi-icon"><svg viewBox="0 0 24 24"><path d="M7 8h10"/><path d="M6 8h12l-1 10H7L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/><path d="M12 11c1.5 2-.5 2.5 0 4"/></svg></div>
-                <div class="kpi-label">% tanques limpios</div>
-                <div class="kpi-divider"></div>
-                <div id="kpiTanqueLimpio" class="kpi-value">–</div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="kpi-card kpi-modern h-100">
-                <div class="kpi-icon"><svg viewBox="0 0 24 24"><path d="M8 6h8"/><path d="M9 6v3l-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-5l-2-2V6"/><path d="M15 4H9"/><path d="M15 14c1 0 2 .8 2 1.8S16 18 15 18s-2-.8-2-1.8S14 14 15 14Z"/></svg></div>
-                <div class="kpi-label">% vasijas limpias</div>
-                <div class="kpi-divider"></div>
-                <div id="kpiVasijaLimpia" class="kpi-value">–</div>
-              </div>
-            </div>
-          </section>
-
-          <button class="buenaventura-toggle-header" type="button" data-bs-toggle="collapse" data-bs-target="#buenaventuraEspecialCollapse" aria-expanded="false" aria-controls="buenaventuraEspecialCollapse">
-            <div class="buenaventura-toggle-copy">
-              <h6 class="buenaventura-toggle-title">🌊 Buenaventura – análisis separado</h6>
-              <p class="buenaventura-toggle-note">Municipio especial con dinámica territorial diferencial. Se deja plegado para no generar ruido en los indicadores generales.</p>
-            </div>
-            <div class="buenaventura-toggle-meta">
-              <span class="buenaventura-toggle-badge">Ver detalle</span>
-              <span class="buenaventura-toggle-arrow" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </span>
-            </div>
-          </button>
-          <div class="collapse" id="buenaventuraEspecialCollapse">
-            <div class="buenaventura-strip" id="buenaventuraEspecialBlock">
-              <div class="buenaventura-strip__head">
-                <div>
-                  <h6 class="buenaventura-strip__title">🌊 Buenaventura – lectura complementaria</h6>
-                  <p class="buenaventura-strip__note">Estos indicadores se calculan por separado para evitar que la escala de Buenaventura concentre el protagonismo del análisis general.</p>
-                </div>
-                <span class="buenaventura-strip__badge">Municipio especial</span>
-              </div>
-              <div class="buenaventura-mini-grid">
-                <div class="buenaventura-mini-card">
-                  <div class="buenaventura-mini-label">Filtros entregados</div>
-                  <div id="kpiBventuraEntregados" class="buenaventura-mini-value">–</div>
-                </div>
-                <div class="buenaventura-mini-card">
-                  <div class="buenaventura-mini-label">Seguimientos realizados</div>
-                  <div id="kpiBventuraSeguimientos" class="buenaventura-mini-value">–</div>
-                </div>
-                <div class="buenaventura-mini-card">
-                  <div class="buenaventura-mini-label">% seguimiento sobre entregados</div>
-                  <div id="kpiBventuraCobertura" class="buenaventura-mini-value">–</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-
-      <section class="section-block section-block--green mb-4" id="seccionFiltrosEntregados">
-        <button class="entregados-section-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#filtrosEntregadosCollapse" aria-expanded="false" aria-controls="filtrosEntregadosCollapse">
-          <div class="section-header">
-            <div class="entregados-section-copy">
-              <div class="section-header__icon">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><path d="M4 8h16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><rect x="4" y="8" width="16" height="12" rx="2.2" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M4 8l3-4h10l3 4" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </div>
-              <div>
-                <h5>Filtros entregados</h5>
-                <div class="small text-muted">Indicadores de gestión de entrega de filtros. La sección se despliega solo cuando se requiera consultar el detalle analítico, manteniendo limpio el tablero principal.</div>
-              </div>
-            </div>
-            <div class="entregados-toggle-meta">
-              <span class="entregados-toggle-badge">Ver análisis</span>
-              <span class="entregados-toggle-arrow" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </span>
-            </div>
-          </div>
-        </button>
-
-        <div class="collapse" id="filtrosEntregadosCollapse">
-          <div class="section-body">
-            <div class="entregados-collapsible-body">
-            <div class="entregados-section-note">
-              Los indicadores generales de esta sección no incluyen Buenaventura, dado que se presenta como municipio especial en un bloque separado.
-            </div>
-
-            <div class="entregados-kpi-row">
-              <div class="entregados-kpi-card">
-                <div class="entregados-kpi-label">Total filtros entregados</div>
-                <div id="kpiEntTotal" class="entregados-kpi-value">–</div>
-              </div>
-              <div class="entregados-kpi-card">
-                <div class="entregados-kpi-label">Municipios beneficiados</div>
-                <div id="kpiEntMunicipios" class="entregados-kpi-value">–</div>
-              </div>
-              <div class="entregados-kpi-card">
-                <div class="entregados-kpi-label">Filtros entregados a institución educativa</div>
-                <div id="kpiEntInstitucionEducativa" class="entregados-kpi-value">–</div>
-              </div>
-              <div class="entregados-kpi-card">
-                <div class="entregados-kpi-label">Población potencial beneficiada</div>
-                <div id="kpiEntPoblacion" class="entregados-kpi-value">–</div>
-              </div>
-              <div class="entregados-kpi-card">
-                <div class="entregados-kpi-label">Filtros entregados a viviendas</div>
-                <div id="kpiEntViviendas" class="entregados-kpi-value">–</div>
-              </div>
-            </div>
-
-            <div class="row g-3">
-              <div class="col-12 col-lg-4">
-                <div class="chart-card p-3 h-100">
-                  <h6 class="mb-2">Filtros entregados por año</h6>
-                  <div class="chart-container" style="height:280px"><canvas id="chartFiltrosEntregadosAno"></canvas></div>
-                </div>
-              </div>
-              <div class="col-12 col-lg-4">
-                <div class="chart-card p-3 h-100">
-                  <h6 class="mb-2">Filtros entregados por objeto</h6>
-                  <div class="chart-container" style="height:280px"><canvas id="chartFiltrosEntregadosObjeto"></canvas></div>
-                </div>
-              </div>
-              <div class="col-12 col-lg-4">
-                <div class="chart-card p-3 h-100">
-                  <h6 class="mb-2">Top 10 municipios por filtros entregados</h6>
-                  <div class="chart-container" style="height:280px"><canvas id="chartFiltrosEntregadosMunicipio"></canvas></div>
-                </div>
-              </div>
-            </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-
-<section class="section-block section-block--blue mb-4" id="seccionMapaFiltros">
-        <div class="section-header">
-          <div class="section-header__icon">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18 3 21V6l6-3 6 3 6-3v15l-6 3-6-3Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 3v15" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><path d="M15 6v15" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>
-          </div>
-          <div>
-            <h5>Mapa de filtros</h5>
-            <div class="small text-muted">Visualización territorial de los seguimientos realizados y capas de contexto del Valle del Cauca.</div>
-          </div>
-        </div>
-        <div class="section-body">
-          <div class="map-section-toolbar">
-            <div class="map-section-toolbar__copy">Activa capas territoriales, revisa puntos de seguimiento y descarga el GeoJSON filtrado cuando sea necesario.</div>
-            <div class="map-section-toolbar__actions">
-              <span class="badge text-bg-primary badge-map" id="mapCount">0 puntos</span>
-              <div class="btn-group">
-                <button id="btnFit" class="btn btn-sm btn-outline-primary">Ajustar vista</button>
-                <button id="btnGeoJSON" class="btn btn-sm btn-success">Descargar GeoJSON (filtrado)</button>
-              </div>
-            </div>
-          </div>
-          <div class="map-section-note">
-            El mapa principal incluye los <b>seguimientos realizados</b>, además de las capas <b>Territoriales</b> tomadas del tablero IRCAS: Municipios Valle, Veredas, Centros poblados, Vías principales, Ríos y Valle contorno.
-          </div>
-          <div class="position-relative">
-          <div id="map"></div>
-          <div id="layerToggle" class="layer-toggle-btn" title="Capas del mapa">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 8l10 5 10-5-10-5Zm0 7.2L4.4 8 12 4.8 19.6 8 12 10.2Zm-10 3.3 10 5 10-5M2 18l10 5 10-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <div id="layerPanel" class="custom-layer-panel collapsed">
-            <div class="layer-panel-header d-flex justify-content-between align-items-center">
-              <span>Capas del mapa</span>
-              <button id="layerClose" class="layer-close-btn" type="button" aria-label="Cerrar panel">×</button>
-            </div>
-            <details open>
-              <summary>Mapas base</summary>
-              <label><input type="radio" name="basemap" value="cartoLight" checked> Claro CARTO</label>
-              <label><input type="radio" name="basemap" value="esriTopo"> Topográfico Esri</label>
-              <label><input type="radio" name="basemap" value="esriImagery"> Satélite Esri</label>
-              <label><input type="radio" name="basemap" value="osm"> OpenStreetMap</label>
-            </details>
-            <details open>
-              <summary>Capas de datos</summary>
-              <label><input type="checkbox" data-layer="viviendas" checked> Seguimientos realizados (puntos)</label>
-                          </details>
-            <details open>
-              <summary>Territorial</summary>
-              <label><input type="checkbox" data-layer="municipiosValle" checked> Municipios Valle</label>
-              <label><input type="checkbox" data-layer="municipiosValleLabels" checked> Etiquetas municipios Valle</label>
-              <label><input type="checkbox" data-layer="veredasValle" checked> Veredas Valle</label>
-              <label><input type="checkbox" data-layer="centrosPoblados" checked> Centros poblados</label>
-              <label><input type="checkbox" data-layer="viasPrincipales"> Vías principales</label>
-              <label><input type="checkbox" data-layer="rios"> Ríos</label>
-              <label><input type="checkbox" data-layer="riosLabels"> Etiquetas ríos</label>
-              <label><input type="checkbox" data-layer="valleContorno" checked> Valle contorno</label>
-              <label><input type="checkbox" data-layer="municipiosUES"> Municipios UES</label>
-              <label><input type="checkbox" data-layer="turbiedad"> Turbiedad</label>
-            </details>
-          </div>
-          <div id="legendToggle" class="legend-toggle-btn" title="Leyenda del mapa">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 6h14M5 12h14M5 18h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="8" cy="6" r="1.8" fill="currentColor"/><circle cx="12" cy="12" r="1.8" fill="currentColor"/><circle cx="16" cy="18" r="1.8" fill="currentColor"/></svg>
-          </div>
-          <div id="legendPanel" class="custom-legend-panel collapsed">
-            <div class="layer-panel-header d-flex justify-content-between align-items-center">
-              <span>Leyenda</span>
-              <button id="legendClose" class="layer-close-btn" type="button" aria-label="Cerrar leyenda">×</button>
-            </div>
-            <div id="legend"></div>
-          </div>
-        </div>
-          <div id="mapResumen" class="mt-3 p-2 text-center rounded shadow-sm map-summary-panel" style="font-size:0.9rem;"></div>
-        </div>
-      </section>
-
-      <section class="row g-3 mb-4">
-
-        <div class="col-12 col-xl-6">
-          <div class="chart-card p-3 h-100">
-            <div class="d-flex align-items-center justify-content-between mb-2">
-              <h5 class="mb-0">Seguimientos por municipio</h5>
-              <div class="d-flex align-items-center gap-2">
-                <label for="topNSelect" class="small text-muted">Top N</label>
-                <select id="topNSelect" class="form-select form-select-sm" style="width:90px">
-                  <option value="10" selected>10</option>
-                  <option value="15">15</option>
-                  <option value="20">20</option>
-                  <option value="0">Todos</option>
-                </select>
-                <button id="btnClearMunFilter" class="btn btn-sm btn-outline-secondary">Borrar filtro</button>
-              </div>
-            </div>
-            <div class="small text-muted mb-2">Presenta la cantidad de visitas realizadas por municipio. Clic en una barra filtra; Ctrl/Cmd + clic limpia.</div>
-            <div class="chart-container chart-halfline"><canvas id="chartEncuestasMunicipio"></canvas></div>
-          </div>
-        </div>
-
-        <div class="col-12 col-xl-6">
-          <div class="chart-card p-3 h-100">
-            <h5 class="mb-0">Entregados vs seguimientos por municipio</h5>
-            <div class="small text-muted mb-2">Compara la cantidad de filtros entregados frente a los seguimientos realizados por municipio. No incluye Buenaventura, que se presenta en análisis separado.</div>
-            <div class="chart-container chart-halfline"><canvas id="chartEntregadosVsSeguimientos"></canvas></div>
-          </div>
-        </div>
-
-      </section>
-
-      <section class="section-block section-block--green mb-4">
-        <div class="section-header">
-          <div class="section-header__icon">🧼</div>
-          <div>
-            <h5>Indicadores complementarios</h5>
-            <div class="small text-muted">Resumen compacto de fuente y condiciones del filtro.</div>
-          </div>
-        </div>
-        <div class="section-body">
-          <div class="row g-3">
-            <div class="col-12 col-lg-4">
-              <div class="chart-card p-3 h-100">
-                <h6 class="mb-2">Distribución por fuente</h6>
-                <div class="chart-container" style="height:260px"><canvas id="chartFuente"></canvas></div>
-              </div>
-            </div>
-            <div class="col-12 col-lg-4">
-              <div class="chart-card p-3 h-100">
-                <h6 class="mb-2">Tanques con/sin sedimentos</h6>
-                <div class="chart-container" style="height:260px"><canvas id="chartTanqueSedimentos"></canvas></div>
-              </div>
-            </div>
-            <div class="col-12 col-lg-4">
-              <div class="chart-card p-3 h-100">
-                <h6 class="mb-2">Vasijas con/sin sedimentos</h6>
-                <div class="chart-container" style="height:260px"><canvas id="chartVasijaSedimentos"></canvas></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section-block section-block--beige mb-4">
-        <div class="section-header">
-          <div class="section-header__icon">🛠️</div>
-          <div>
-            <h5>Percepción y uso del filtro</h5>
-            <div class="small text-muted">Resumen de respuestas sobre manejo del filtro, percepción del agua y economía del hogar.</div>
-          </div>
-        </div>
-        <div class="section-body">
-          <div class="row g-3">
-            <div class="col-12 col-md-6 col-xl-4">
-              <div class="chart-card p-3 h-100">
-                <h6 class="mb-2">Encargado de recargar el filtro</h6>
-                <div class="chart-container" style="height:260px"><canvas id="chartResponsableFiltro"></canvas></div>
-              </div>
-            </div>
-            <div class="col-12 col-md-6 col-xl-4">
-              <div class="chart-card p-3 h-100">
-                <h6 class="mb-2">Opinión del sabor del agua</h6>
-                <div class="chart-container" style="height:260px"><canvas id="chartSaborAgua"></canvas></div>
-              </div>
-            </div>
-            <div class="col-12 col-md-6 col-xl-4">
-              <div class="chart-card p-3 h-100">
-                <h6 class="mb-2">¿El agua presenta color?</h6>
-                <div class="chart-container" style="height:260px"><canvas id="chartColorAgua"></canvas></div>
-              </div>
-            </div>
-            <div class="col-12 col-md-6 col-xl-6">
-              <div class="chart-card p-3 h-100">
-                <h6 class="mb-2">¿El agua presenta olor?</h6>
-                <div class="chart-container" style="height:260px"><canvas id="chartOlorAgua"></canvas></div>
-              </div>
-            </div>
-            <div class="col-12 col-md-6 col-xl-6">
-              <div class="chart-card p-3 h-100">
-                <h6 class="mb-2">¿Han disminuido los gastos familiares para acceder a agua apta para el consumo?</h6>
-                <div class="chart-container" style="height:260px"><canvas id="chartGastosAgua"></canvas></div>
-              </div>
-            </div>
-          </div>
-        
-
-        </div>
-      </section>
-
-      <section class="soft-card p-3 mb-4">
-        <button class="table-toggle-header" type="button" data-bs-toggle="collapse" data-bs-target="#tablasConsultaCollapse" aria-expanded="false" aria-controls="tablasConsultaCollapse">
-          <div class="table-toggle-copy">
-            <h5 class="mb-1">Tablas de consulta</h5>
-            <div class="section-note mb-0">Las tablas quedan ocultas en pestañas para reducir el ruido visual del tablero. Ábrelas solo cuando necesites consultar, filtrar o exportar registros.</div>
-          </div>
-          <span class="table-toggle-arrow" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </span>
-        </button>
-
-        <div class="collapse mt-3" id="tablasConsultaCollapse">
-<ul class="nav nav-tabs" id="tablasFiltroTabs" role="tablist">
-          <li class="nav-item" role="presentation">
-            <button class="nav-link active fw-semibold" id="tab-resumen-tab" data-bs-toggle="tab" data-bs-target="#tab-resumen" type="button" role="tab" aria-controls="tab-resumen" aria-selected="true">
-              Resumen por municipio
-            </button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <button class="nav-link fw-semibold" id="tab-detalle-tab" data-bs-toggle="tab" data-bs-target="#tab-detalle" type="button" role="tab" aria-controls="tab-detalle" aria-selected="false">
-              Detalle de registros
-            </button>
-          </li>
-          <li class="nav-item" role="presentation">
-            <button class="nav-link fw-semibold" id="tab-entregados-tab" data-bs-toggle="tab" data-bs-target="#tab-entregados" type="button" role="tab" aria-controls="tab-entregados" aria-selected="false">
-              Filtros entregados
-            </button>
-          </li>
-        </ul>
-
-        <div class="tab-content pt-3" id="tablasFiltroTabsContent">
-          <div class="tab-pane fade show active" id="tab-resumen" role="tabpanel" aria-labelledby="tab-resumen-tab" tabindex="0">
-            <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
-              <h6 class="mb-0 me-auto">Resumen por municipio</h6>
-            </div>
-            <div class="table-responsive">
-              <table id="tblResumen" class="table table-striped table-hover w-100"></table>
-            </div>
-          </div>
-
-          <div class="tab-pane fade" id="tab-detalle" role="tabpanel" aria-labelledby="tab-detalle-tab" tabindex="0">
-            <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
-              <h6 class="mb-0 me-auto">Detalle</h6>
-              <select id="tblFiltroMunicipio" class="form-select form-select-sm" style="min-width:200px"><option value="">Tabla: todos los municipios</option></select>
-              <select id="tblFiltroEncuestador" class="form-select form-select-sm" style="min-width:220px"><option value="">Tabla: todos los encuestadores</option></select>
-            </div>
-            <div class="table-responsive">
-              <table id="tbl" class="table table-striped table-hover w-100"></table>
-            </div>
-          </div>
-
-          <div class="tab-pane fade" id="tab-entregados" role="tabpanel" aria-labelledby="tab-entregados-tab" tabindex="0">
-            <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
-              <h6 class="mb-0 me-auto">Filtros entregados</h6>
-              <select id="tblEntregadosMunicipio" class="form-select form-select-sm" style="min-width:200px"><option value="">Entregados: todos los municipios</option></select>
-            </div>
-            <div class="section-note mb-2">Tabla de referencia de filtros entregados con variables completas de entrega. Responde al filtro de año y municipio del tablero.</div>
-            <div class="table-responsive">
-              <table id="tblEntregados" class="table table-striped table-hover w-100"></table>
-            </div>
-          </div>
-        </div>
-        </div>
-      </section>
+    <div class="section-title">
+      <div>
+        <h2>Tableros disponibles</h2>
+        <span>Los tableros marcados como “migrado” ya están dentro de la nueva estructura técnica.</span>
+      </div>
     </div>
+
+    <section class="dashboard-grid">
+      <article class="dash-card green">
+        <div class="dash-top">
+          <div class="dash-icon">📊</div>
+          <div>
+            <h3 class="dash-title">Seguimiento Actividades Agua para Consumo Humano</h3>
+            <div class="dash-process">Proceso 1 · Agua para consumo humano</div>
+          </div>
+        </div>
+        <div class="dash-desc">
+          Seguimiento histórico de actividades programadas, ejecutadas y pendientes. Incluye periodos Enero-Marzo y Enero-Junio.
+        </div>
+        <div class="dash-footer">
+          <span class="status ok">Migrado</span>
+          <a class="btn-open" href="dashboards/seguimiento_ach/seguimiento_ach.html">Abrir →</a>
+        </div>
+      </article>
+
+      <article class="dash-card">
+        <div class="dash-top">
+          <div class="dash-icon">💧</div>
+          <div>
+            <h3 class="dash-title">IRCAS</h3>
+            <div class="dash-process">Proceso 1 · Calidad del agua</div>
+          </div>
+        </div>
+        <div class="dash-desc">
+          Consulta y análisis del Índice de Riesgo de la Calidad del Agua para sistemas de abastecimiento.
+        </div>
+        <div class="dash-footer">
+          <span class="status transition">Temporal en raíz</span>
+          <a class="btn-open" href="ircas.html">Abrir →</a>
+        </div>
+      </article>
+
+      <article class="dash-card">
+        <div class="dash-top">
+          <div class="dash-icon">🚰</div>
+          <div>
+            <h3 class="dash-title">Filtros</h3>
+            <div class="dash-process">Proceso 1 · Seguimiento filtros</div>
+          </div>
+        </div>
+        <div class="dash-desc">
+          Seguimiento a filtros entregados, visitas, condiciones de uso y variables territoriales asociadas.
+        </div>
+        <div class="dash-footer">
+          <span class="status transition">Temporal en raíz</span>
+          <a class="btn-open" href="filtros.html">Abrir →</a>
+        </div>
+      </article>
+
+      <article class="dash-card amber">
+        <div class="dash-top">
+          <div class="dash-icon">🧪</div>
+          <div>
+            <h3 class="dash-title">Dosificación de cloro</h3>
+            <div class="dash-process">Proceso 1 · Herramienta operativa</div>
+          </div>
+        </div>
+        <div class="dash-desc">
+          Calculadora operativa para estimar dosis de cloro y preparación de soluciones en sistemas de desinfección.
+        </div>
+        <div class="dash-footer">
+          <span class="status transition">Temporal en raíz</span>
+          <a class="btn-open" href="Dosificacion_cloro.html">Abrir →</a>
+        </div>
+      </article>
+
+      <article class="dash-card">
+        <div class="dash-top">
+          <div class="dash-icon">🏊</div>
+          <div>
+            <h3 class="dash-title">Piscinas</h3>
+            <div class="dash-process">Proceso 4 · Establecimientos de interés sanitario</div>
+          </div>
+        </div>
+        <div class="dash-desc">
+          Consulta y seguimiento de información relacionada con piscinas y establecimientos asociados.
+        </div>
+        <div class="dash-footer">
+          <span class="status transition">Temporal en raíz</span>
+          <a class="btn-open" href="piscinas.html">Abrir →</a>
+        </div>
+      </article>
+
+      <article class="dash-card">
+        <div class="dash-top">
+          <div class="dash-icon">🌿</div>
+          <div>
+            <h3 class="dash-title">Empresas aplicadoras de plaguicidas</h3>
+            <div class="dash-process">Proceso 4 · Establecimientos de interés sanitario</div>
+          </div>
+        </div>
+        <div class="dash-desc">
+          Visualización y consulta de empresas aplicadoras de plaguicidas con información territorial.
+        </div>
+        <div class="dash-footer">
+          <span class="status transition">Temporal en raíz</span>
+          <a class="btn-open" href="empresas_plaguicidas.html">Abrir →</a>
+        </div>
+      </article>
+
+      <article class="dash-card gray">
+        <div class="dash-top">
+          <div class="dash-icon">🧫</div>
+          <div>
+            <h3 class="dash-title">Muestras</h3>
+            <div class="dash-process">Proceso 1 · Resultados analíticos</div>
+          </div>
+        </div>
+        <div class="dash-desc">
+          Consulta de muestras, resultados analíticos y seguimiento asociado. Requiere migración controlada por volumen de datos.
+        </div>
+        <div class="dash-footer">
+          <span class="status pending">Pendiente migración</span>
+          <a class="btn-open" href="Muestras.html">Abrir →</a>
+        </div>
+      </article>
+    </section>
+
+    <section class="note">
+      <b>Nota técnica:</b> este portal inicia la migración hacia una estructura organizada en
+      <code>dashboards/</code>, <code>data/</code>, <code>scripts/</code> y <code>docs/</code>.
+      Los tableros que aún figuran como “Temporal en raíz” serán movidos progresivamente.
+    </section>
+
+    <footer>
+      UESVALLE · Portal de tableros institucionales
+    </footer>
   </main>
 
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="https://unpkg.com/esri-leaflet@3.0.14/dist/esri-leaflet.js"></script>
-  <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-  <script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
-  <script src="https://cdn.datatables.net/1.13.8/js/dataTables.bootstrap5.min.js"></script>
-  <script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
-  <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.bootstrap5.min.js"></script>
-  <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
-  <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
-  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
-
-  <script>
-    const URL_ENCUESTAS = "https://raw.githubusercontent.com/JavierMarin7/UES_filtros/main/BD_filtros_2024a2026_tablero_validado.csv";
-    const URL_ENTREGADOS = "https://raw.githubusercontent.com/JavierMarin7/UES_filtros/main/Filtros_Entregados_V1.csv";
-
-    const FUENTE_COLOR = {
-      "ACUEDUCTO":"#2b8cbe",
-      "NACIMIENTO":"#31a354",
-      "RIO":"#de2d26",
-      "QUEBRADA":"#9ecae1",
-      "POZO/AJIBE":"#fec44f",
-      "SIN DATO":"#6c757d"
-    };
-
-    const MESES = ["","Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
-
-    const COL = {
-      id:"ID",
-      fecha:"FECHA",
-      encuestador:"ENCUESTADOR",
-      municipio:"MUNICIPIO",
-      vereda:"VEREDA_O_CORREGIMIENTO",
-      nombre:"NOMBRE_ENCUESTADO",
-      latitud:"LATITUD",
-      longitud:"LONGITUD",
-      fuente:"FUENTE_DONDE_TOMA_EL_AGUA",
-      salud:"HAN_DISMUNUIDO_LAS_ENFERMEDADES_ASOCIADAS_AL_AGUA_DESPUES_DEL_USO_DEL_FILTRO",
-      tanqueSed:"LIMPIEZA_DEL_TANQUE_(PRESENCIA_DE_SEDIMENTOS)",
-      vasijaSed:"LIMPIEZA_DE_LA_VASIJA_CERAMICA_(PRESENCIA_DE_SEDIMENTOS)",
-      responsableFiltro:"_QUE_MIEMEBRO_DE_LA_FAMILIA_ES_EL_ENCARGADO_DE_RECARGAR_EL_FILTRO",
-      saborAgua:"QUE_OPINA_DEL_SABOR_DEL_AGUA",
-      colorAgua:"EL_AGUA_PRESENTA_COLOR",
-      olorAgua:"EL_AGUA_PRESENTA_OLOR",
-      gastosAgua:"HAN_DISMINUIDO_LOS_GASTOS_FAMILIARES_PARA_ACCEDERA_AGUA_APTA_ARA_EL_CONSUMO"
-    };
-
-    let RAW = [], LIST = [], ENTREGADOS_RAW = [], RESUMEN_MPIO = [];
-    let MAP, baseOSM, baseEsri;
-    let CAPA_VIVIENDAS;
-    let PANEL_LAYERS = {}, BASEMAPS = {}, currentBasemap = null;
-    let MUNICIPIOS_VALLE_LABELS = null, VEREDAS_VALLE_LABELS = null, RIOS_LABELS = null;
-    let MUNICIPIOS_VALLE_LAYER_REF = null, VEREDAS_VALLE_LAYER_REF = null, selectedMunicipioBounds = null;
-    let DT, DT_RESUMEN, DT_ENTREGADOS, charts = {}, lastText = '';
-    const lastUpdateEl = document.getElementById('lastUpdate');
-
-    const norm = v => (v==null? "" : String(v).trim()
-      .replaceAll("Á","A").replaceAll("É","E").replaceAll("Í","I").replaceAll("Ó","O").replaceAll("Ú","U")
-      .replaceAll("á","a").replaceAll("é","e").replaceAll("í","i").replaceAll("ó","o").replaceAll("ú","u")
-      .toUpperCase());
-
-    function normalizeAnswer(value){
-      const raw = String(value || '').trim();
-      if(!raw) return '';
-      const n = norm(raw);
-      const replacements = {
-        'SI':'Sí','SÍ':'Sí','NO':'No',
-        'MUJER':'Mujer','HOMBRE':'Hombre','AMBOS':'Ambos','OTRO':'Otro','OTRA':'Otra',
-        'MADRE':'Madre','PADRE':'Padre','HIJO':'Hijo','HIJA':'Hija',
-        'BUENO':'Bueno','MALO':'Malo','REGULAR':'Regular',
-        'ACUEDUCTO':'ACUEDUCTO','NACIMIENTO':'NACIMIENTO','RIO':'RIO','RÍO':'RIO',
-        'QUEBRADA':'QUEBRADA','POZO/AJIBE':'POZO/AJIBE','SIN DATO':'SIN DATO'
-      };
-      return replacements[n] || raw.charAt(0).toUpperCase() + raw.slice(1).toLowerCase();
-    }
-
-    function asYesNo(v){
-      const n = norm(v);
-      if(["SI","SÍ","YES","TRUE","1"].includes(n)) return "SI";
-      if(["NO","FALSE","0"].includes(n)) return "NO";
-      return "NO SABE";
-    }
-
-    function pct(p,t){ return !t ? 0 : Math.round((p/t)*1000)/10; }
-    function uniq(a){ return [...new Set(a.filter(x=>x!=null && String(x).trim()!==""))]; }
-
-    function groupBy(rows, keyFn){
-      const m = new Map();
-      for(const r of rows){
-        const k = keyFn(r);
-        if(!m.has(k)) m.set(k, []);
-        m.get(k).push(r);
-      }
-      return m;
-    }
-
-    function countAnswers(rows, field){
-      const out = new Map();
-      for(const r of rows){
-        const val = normalizeAnswer(r[field]);
-        if(!val) continue;
-        out.set(val, (out.get(val) || 0) + 1);
-      }
-      return Array.from(out.entries()).sort((a,b)=>b[1]-a[1]);
-    }
-
-    function iconSeguimiento(){
-      const color = "#2563eb";
-      const svg = encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28"><circle cx="14" cy="14" r="9" fill="${color}" fill-opacity="0.88" stroke="white" stroke-width="3"/></svg>`);
-      return L.icon({iconUrl:`data:image/svg+xml,${svg}`, iconSize:[24,24], iconAnchor:[12,12]});
-    }
-
-
-    function chipPalette(type, value){
-      const n = norm(value || 'SIN DATO');
-      if(type === 'enfermedades'){
-        if(n.startsWith('SI')) return {row:'#fff1f2', rowBorder:'#fecdd3', iconBg:'#fee2e2', iconColor:'#ef4444', chipBg:'#fb5b3d', chipColor:'#fff'};
-        if(n === 'NO SE PRESENTABAN') return {row:'#fffbeb', rowBorder:'#fde68a', iconBg:'#fef3c7', iconColor:'#d97706', chipBg:'#fbbf24', chipColor:'#111827'};
-        if(n === 'NO') return {row:'#fef2f2', rowBorder:'#fecaca', iconBg:'#fee2e2', iconColor:'#dc2626', chipBg:'#ef4444', chipColor:'#fff'};
-        return {row:'#f3f4f6', rowBorder:'#e5e7eb', iconBg:'#e5e7eb', iconColor:'#6b7280', chipBg:'#9ca3af', chipColor:'#fff'};
-      }
-      if(type === 'gastos'){
-        if(n === 'SI') return {row:'#f0fdf4', rowBorder:'#bbf7d0', iconBg:'#dcfce7', iconColor:'#16a34a', chipBg:'#22c55e', chipColor:'#fff'};
-        if(n === 'NO') return {row:'#fff7ed', rowBorder:'#fed7aa', iconBg:'#ffedd5', iconColor:'#ea580c', chipBg:'#f59e0b', chipColor:'#111827'};
-      }
-      if(type === 'sabor'){
-        if(n === 'BUENO') return {row:'#f0fdf4', rowBorder:'#bbf7d0', iconBg:'#dcfce7', iconColor:'#16a34a', chipBg:'#22c55e', chipColor:'#fff'};
-        if(n === 'REGULAR') return {row:'#fffbeb', rowBorder:'#fde68a', iconBg:'#fef3c7', iconColor:'#d97706', chipBg:'#fbbf24', chipColor:'#111827'};
-        if(n === 'MALO') return {row:'#fef2f2', rowBorder:'#fecaca', iconBg:'#fee2e2', iconColor:'#dc2626', chipBg:'#ef4444', chipColor:'#fff'};
-      }
-      if(type === 'booleanAgua'){
-        if(n === 'NO') return {row:'#f0fdf4', rowBorder:'#bbf7d0', iconBg:'#dcfce7', iconColor:'#16a34a', chipBg:'#22c55e', chipColor:'#fff'};
-        if(n === 'SI') return {row:'#fffbeb', rowBorder:'#fde68a', iconBg:'#fef3c7', iconColor:'#d97706', chipBg:'#fbbf24', chipColor:'#111827'};
-      }
-      if(type === 'sedimentos'){
-        if(n === 'NO') return {row:'#f0fdf4', rowBorder:'#bbf7d0', iconBg:'#dcfce7', iconColor:'#16a34a', chipBg:'#22c55e', chipColor:'#fff'};
-        if(n === 'SI') return {row:'#fff7ed', rowBorder:'#fed7aa', iconBg:'#ffedd5', iconColor:'#ea580c', chipBg:'#f59e0b', chipColor:'#111827'};
-      }
-      return {row:'#f8fafc', rowBorder:'#e5e7eb', iconBg:'#e5e7eb', iconColor:'#64748b', chipBg:'#cbd5e1', chipColor:'#111827'};
-    }
-
-    function popupChip(text, pal){
-      return `<span class="ps-chip" style="background:${pal.chipBg};color:${pal.chipColor};">${text}</span>`;
-    }
-
-
-    function popupDisplayText(value){
-      const raw = String(value || '').trim();
-      const n = norm(raw);
-      if(!raw) return 'Sin dato';
-      if(n === 'SI') return 'Sí';
-      if(n === 'NO') return 'No';
-      if(n === 'NO SE PRESENTABAN') return 'No se presentaban';
-      return raw.charAt(0).toUpperCase() + raw.slice(1).toLowerCase();
-    }
-
-    function popupRow(label, value, type, icon){
-      const pal = chipPalette(type, value);
-      const shown = popupDisplayText(value);
-      return `<div class="ps-row" style="background:${pal.row};border-color:${pal.rowBorder};">
-        <div class="ps-row-left">
-          <div class="ps-row-icon" style="background:${pal.iconBg};color:${pal.iconColor};">${icon}</div>
-          <div class="ps-row-label">${label}</div>
-        </div>
-        ${popupChip(shown, pal)}
-      </div>`;
-    }
-
-    function buildSemaforizadoPopup(d){
-      const enfRaw = normalizeAnswer(d.raw?.[COL.salud] || '');
-      const enf = enfRaw || (d.SALUD === 'SI' ? 'Sí' : (d.SALUD === 'NO' ? 'No' : 'Sin dato'));
-      const nombre = d.NOMBRE_ENCUESTADO || '(sin nombre)';
-      const mpio = d.MUNICIPIO || '-';
-      const vereda = d.VEREDA_CORREGIMIENTO || normalizeAnswer(d.raw?.[COL.vereda] || '') || '-';
-      const fuente = d.FUENTE || '-';
-
-      const resumenFav = [
-        chipPalette('enfermedades', enf).chipBg !== '#ef4444',
-        d.GASTOS_AGUA === 'Sí' || d.GASTOS_AGUA === 'SI',
-        d.SABOR_AGUA === 'Bueno',
-        d.COLOR_AGUA === 'No' || d.COLOR_AGUA === 'NO',
-        d.OLOR_AGUA === 'No' || d.OLOR_AGUA === 'NO',
-        d.TANQUE_SED === 'NO' && d.VASIJA_SED === 'NO'
-      ].filter(Boolean).length;
-
-      const clasif = resumenFav >= 5 ? 'Favorable' : (resumenFav >= 3 ? 'Neutral' : 'Alerta');
-      const clasBg = clasif === 'Favorable' ? '#16a34a' : (clasif === 'Neutral' ? '#f59e0b' : '#ef4444');
-      const clasIcon = clasif === 'Favorable' ? '✅' : (clasif === 'Neutral' ? '⚠️' : '🚨');
-      const sedimentosVal = (d.TANQUE_SED === 'SI' || d.VASIJA_SED === 'SI') ? 'SI' : ((d.TANQUE_SED === 'NO' && d.VASIJA_SED === 'NO') ? 'NO' : 'Sin dato');
-
-      return `<div class="popup-sema">
-        <div class="ps-head">
-          <div class="ps-icon">💧</div>
-          <div class="ps-title">Seguimiento de filtro</div>
-        </div>
-        <div class="ps-body">
-          <div class="ps-block">
-            <div class="ps-block-title"><span class="ps-block-ico">🪪</span> Datos básicos</div>
-            <div class="ps-grid-basic">
-              <div class="ps-kv"><small>Municipio</small><div>${mpio}</div></div>
-              <div class="ps-kv"><small>Vereda o corregimiento</small><div>${vereda}</div></div>
-              <div class="ps-kv ps-kv-span"><small>Nombre</small><div>${nombre}</div></div>
-            </div>
-          </div>
-
-          <div class="ps-block">
-            <div class="ps-block-title"><span class="ps-block-ico">💙</span> Impacto percibido</div>
-            <div class="ps-rows">
-              ${popupRow('Fuente de agua', fuente, 'sabor', '🚰')}
-              ${popupRow('Enfermedades asociadas al agua', enf, 'enfermedades', '✳️')}
-              ${popupRow('Gastos familiares', d.GASTOS_AGUA || 'Sin dato', 'gastos', '💲')}
-              ${popupRow('Sabor del agua', d.SABOR_AGUA || 'Sin dato', 'sabor', '🥤')}
-              ${popupRow('Color', d.COLOR_AGUA || 'Sin dato', 'booleanAgua', '💧')}
-              ${popupRow('Olor', d.OLOR_AGUA || 'Sin dato', 'booleanAgua', '〰️')}
-              ${popupRow('Sedimentos (tanque/vasija)', sedimentosVal, 'sedimentos', '🫙')}
-            </div>
-          </div>
-
-          <div class="ps-summary">
-            <div class="ps-summary-title"><span class="ps-block-ico" style="background:#dcfce7;color:#16a34a;">${clasIcon}</span> Clasificación general</div>
-            <div class="ps-summary-badge" style="background:${clasBg};">${clasif}</div>
-          </div>
-        </div>
-      </div>`;
-    }
-
-    function parseFecha(v){
-      if(!v) return null;
-      const d = new Date(v);
-      if(!isNaN(d)) return d;
-      const m = String(v).match(/^(\d{1,2})[\/-](\d{1,2})[\/-](\d{2,4})$/);
-      if(m){
-        const dd = +m[1], mm = +m[2]-1, yy = +m[3] < 100 ? 2000 + +m[3] : +m[3];
-        const dt = new Date(yy, mm, dd);
-        return isNaN(dt) ? null : dt;
-      }
-      return null;
-    }
-
-    function isValidCoord(lat, lon){
-      if (!Number.isFinite(lat) || !Number.isFinite(lon)) return false;
-      if (lat === 0 && lon === 0) return false;
-      if (lat < -90 || lat > 90 || lon < -180 || lon > 180) return false;
-      if (lat < -5 || lat > 15 || lon < -82 || lon > -66) return false;
-      return true;
-    }
-
-    function normalizeMunicipio(v){
-      return normalizeAnswer(v || '').replace(/\s+/g, ' ').trim();
-    }
-
-    function parseNumberFlexible(v){
-      if(v == null) return 0;
-      const s = String(v).trim().replace(/\./g,'').replace(',', '.');
-      const n = Number(s);
-      return Number.isFinite(n) ? n : 0;
-    }
-
-    function cleanHeaderName(name){
-      return String(name || "")
-        .trim()
-        .replace(/\s+/g, " ")
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "");
-    }
-
-    function papaParseText(csvText){
-      return new Promise((resolve,reject)=>{
-        Papa.parse(csvText, {
-          header: true,
-          dynamicTyping: false,
-          skipEmptyLines: true,
-          complete: resolve,
-          error: reject
-        });
-      });
-    }
-
-    async function fetchTextDecoded(url, encoding = 'utf-8'){
-      const response = await fetch(url, { cache: 'no-store' });
-      if(!response.ok) throw new Error(`No se pudo cargar CSV: ${response.status}`);
-      const buffer = await response.arrayBuffer();
-      return new TextDecoder(encoding).decode(buffer);
-    }
-
-    async function fetchCsvWithFallback(url, encoding = 'utf-8'){
-      const finalUrl = url + (url.includes('?') ? '&' : '?') + '_=' + Date.now();
-      try{
-        const txt = await fetchTextDecoded(finalUrl, encoding);
-        const res = await papaParseText(txt);
-        if(res?.data?.length) return res.data;
-        throw new Error('CSV vacío');
-      }catch(e1){
-        const proxy = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(finalUrl);
-        const txt = await fetchTextDecoded(proxy, encoding);
-        const res = await papaParseText(txt);
-        if(res?.data?.length) return res.data;
-        throw e1;
-      }
-    }
-
-    function getMunicipioFeatureName(props){ const p=props||{}; return p.MPIO_CNMBR || p.MUNICIPIO || p.NOM_MUN || p.NOMBRE || p.MPIO || p.NAME || ""; }
-    function getVeredaFeatureName(props){ const p=props||{}; return p.NOMBRE_VER || p.NOMBRE || ""; }
-
-    function renderMunicipiosValleLabels(layerRef){
-      if(!MUNICIPIOS_VALLE_LABELS) return;
-      MUNICIPIOS_VALLE_LABELS.clearLayers();
-      layerRef.eachFeature(function(featureLayer){
-        const nombre = getMunicipioFeatureName(featureLayer.feature?.properties || {});
-        if(!nombre) return;
-        let center = null;
-        if(featureLayer.getBounds){ const b = featureLayer.getBounds(); if(b && b.isValid()) center = b.getCenter(); }
-        if(!center) return;
-        const isSelected = document.getElementById('fmpio')?.value && norm(document.getElementById('fmpio').value) === norm(nombre);
-        const label = L.marker(center, {interactive:false, icon:L.divIcon({className:'municipio-label', html:`<div style="${isSelected ? 'background:rgba(254,240,138,.95);border:1px solid #f59e0b;color:#92400e;font-size:12px;font-weight:800;' : ''}">${nombre}</div>`})});
-        MUNICIPIOS_VALLE_LABELS.addLayer(label);
-      });
-    }
-    function renderVeredasValleLabels(layerRef){
-      if(!VEREDAS_VALLE_LABELS) return; VEREDAS_VALLE_LABELS.clearLayers();
-      layerRef.eachFeature(function(featureLayer){
-        const nombre = getVeredaFeatureName(featureLayer.feature?.properties || {}); if(!nombre) return;
-        let center = null; if(featureLayer.getBounds){ const b=featureLayer.getBounds(); if(b&&b.isValid()) center=b.getCenter(); } if(!center) return;
-        VEREDAS_VALLE_LABELS.addLayer(L.marker(center,{interactive:false,icon:L.divIcon({className:'vereda-label',html:`<div>${nombre}</div>`})}));
-      });
-    }
-    function renderRiosLabels(layerRef){
-      if(!RIOS_LABELS) return; RIOS_LABELS.clearLayers();
-      layerRef.eachFeature(function(featureLayer){
-        const p = featureLayer.feature?.properties || {}; const nombre = p.NOM1_DRENAJE || p.NOMBRE || p.RIO || '';
-        if(!nombre) return; let center = null; if(featureLayer.getBounds) center = featureLayer.getBounds().getCenter(); if(!center) return;
-        RIOS_LABELS.addLayer(L.marker(center,{interactive:false, icon:L.divIcon({className:'rio-label', html:`<div>${nombre}</div>`})}));
-      });
-    }
-    function updateVeredaLabelsVisibility(){
-      if(!MAP || !VEREDAS_VALLE_LABELS) return;
-      const zoomThreshold = 12;
-      const veredasCheck = document.querySelector('#layerPanel input[data-layer="veredasValle"]');
-      const labelsEnabledByLayer = !!(veredasCheck && veredasCheck.checked);
-      if(labelsEnabledByLayer && MAP.getZoom() >= zoomThreshold){ if(!MAP.hasLayer(VEREDAS_VALLE_LABELS)) MAP.addLayer(VEREDAS_VALLE_LABELS); }
-      else { if(MAP.hasLayer(VEREDAS_VALLE_LABELS)) MAP.removeLayer(VEREDAS_VALLE_LABELS); }
-    }
-    function refreshMunicipioHighlight(){
-      selectedMunicipioBounds = null; if(!MUNICIPIOS_VALLE_LAYER_REF) return;
-      const selectedMunicipio = document.getElementById('fmpio')?.value || '';
-      MUNICIPIOS_VALLE_LAYER_REF.eachFeature(function(featureLayer){
-        const nombre = getMunicipioFeatureName(featureLayer.feature?.properties || {});
-        const isSelected = selectedMunicipio && norm(nombre) === norm(selectedMunicipio);
-        featureLayer.setStyle({color:isSelected ? '#d97706' : '#8b5cf6', weight:isSelected ? 4.5 : 2.2, fillColor:isSelected ? '#facc15' : '#c4b5fd', fillOpacity:isSelected ? 0.28 : 0.05});
-        if(isSelected && featureLayer.getBounds){ const b = featureLayer.getBounds(); if(b&&b.isValid()) selectedMunicipioBounds = b; }
-      });
-      renderMunicipiosValleLabels(MUNICIPIOS_VALLE_LAYER_REF);
-    }
-    function initMap(){
-      MAP = L.map('map').setView([4.6,-74.1], 7);
-      baseOSM = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19, attribution:'&copy; OpenStreetMap'});
-      const esriImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{maxZoom:19, attribution:'Tiles © Esri'});
-      const esriTopo = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}',{maxZoom:19, attribution:'Tiles © Esri'});
-      const cartoLight = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{maxZoom:20, attribution:'&copy; CARTO'});
-      BASEMAPS = { osm: baseOSM, esriImagery, esriTopo, cartoLight };
-      currentBasemap = cartoLight; currentBasemap.addTo(MAP);
-      CAPA_VIVIENDAS = L.markerClusterGroup({ chunkedLoading:true, disableClusteringAtZoom:14 });
-      CAPA_VIVIENDAS.addTo(MAP);
-      const URL_MUNICIPIOS_UES = 'https://services5.arcgis.com/l23kE3b7uPnZIuaB/arcgis/rest/services/Municipio_UES/FeatureServer/0';
-      const URL_MUNICIPIO_VALLE = 'https://services5.arcgis.com/l23kE3b7uPnZIuaB/arcgis/rest/services/CARTOGRAFIA_BASE/FeatureServer/2';
-      const URL_VEREDAS_VALLE = 'https://services5.arcgis.com/l23kE3b7uPnZIuaB/arcgis/rest/services/CARTOGRAFIA_BASE/FeatureServer/4';
-      const URL_CENTROS_POBLADOS = 'https://services5.arcgis.com/l23kE3b7uPnZIuaB/arcgis/rest/services/CARTOGRAFIA_BASE/FeatureServer/1';
-      const URL_TURBIEDAD = 'https://services5.arcgis.com/l23kE3b7uPnZIuaB/arcgis/rest/services/Turbiedad/FeatureServer/1';
-      const URL_VIAS_PRINCIPALES = 'https://services5.arcgis.com/l23kE3b7uPnZIuaB/arcgis/rest/services/Sedes_Educativas_WFL1/FeatureServer/3';
-      const URL_RIOS = 'https://services5.arcgis.com/l23kE3b7uPnZIuaB/arcgis/rest/services/Sedes_Educativas_WFL1/FeatureServer/4';
-      const URL_VALLE_CONTORNO = 'https://services5.arcgis.com/l23kE3b7uPnZIuaB/arcgis/rest/services/Sedes_Educativas_WFL1/FeatureServer/8';
-      const municipiosUES = L.esri.featureLayer({url:URL_MUNICIPIOS_UES, style:{color:'#0f766e', weight:2.2, fillColor:'#2dd4bf', fillOpacity:0.04}});
-      const municipiosValle = L.esri.featureLayer({url:URL_MUNICIPIO_VALLE, style:function(feature){ const nombre=getMunicipioFeatureName(feature?.properties||{}); const seleccionado=document.getElementById('fmpio')?.value||''; const isSelected = seleccionado && norm(nombre)===norm(seleccionado); return {color:isSelected ? '#1d4ed8' : '#8b5cf6', weight:isSelected ? 4 : 2.2, fillColor:isSelected ? '#93c5fd' : '#c4b5fd', fillOpacity:isSelected ? 0.18 : 0.05}; }});
-      MUNICIPIOS_VALLE_LAYER_REF = municipiosValle; MUNICIPIOS_VALLE_LABELS = L.layerGroup(); municipiosValle.on('load',()=>renderMunicipiosValleLabels(municipiosValle));
-      const veredasValle = L.esri.featureLayer({url:URL_VEREDAS_VALLE, style:{color:'#c9ced6', weight:0.8, fillColor:'#f5f6f7', fillOpacity:0.02}});
-      VEREDAS_VALLE_LAYER_REF = veredasValle; VEREDAS_VALLE_LABELS = L.layerGroup(); veredasValle.on('load',()=>{ renderVeredasValleLabels(veredasValle); updateVeredaLabelsVisibility(); });
-      const centrosPoblados = L.esri.featureLayer({url:URL_CENTROS_POBLADOS, pointToLayer:(geojson,latlng)=>L.circleMarker(latlng,{radius:4,color:'#b45309',fillColor:'#f59e0b',fillOpacity:0.8,weight:1})});
-      const turbiedad = L.esri.featureLayer({url:URL_TURBIEDAD, pointToLayer:(geojson,latlng)=>L.circleMarker(latlng,{radius:5,color:'#0369a1',fillColor:'#38bdf8',fillOpacity:0.85,weight:1.2})});
-      const viasPrincipales = L.esri.featureLayer({url:URL_VIAS_PRINCIPALES, style:{color:'#475569', weight:1.8}});
-      const rios = L.esri.featureLayer({url:URL_RIOS, style:{color:'#0ea5e9', weight:1.8}}); RIOS_LABELS = L.layerGroup(); rios.on('load',()=>renderRiosLabels(rios));
-      const valleContorno = L.esri.featureLayer({url:URL_VALLE_CONTORNO, style:{color:'#111827', weight:2.5, fillOpacity:0}});
-      centrosPoblados.bindPopup(layer=>{ const p=layer.feature?.properties||{}; return `<div style="min-width:220px"><b>Centro poblado</b><br>${p.NOMBRE || p.CENTRO || '-'}</div>`; });
-      turbiedad.bindPopup(layer=>{ const p=layer.feature?.properties||{}; return `<div style="min-width:220px"><b>Turbiedad</b><br>${p.NOMBRE || p.PUNTO || p.SITIO || '-'}<br><hr style="margin:6px 0"><b>Valor:</b> ${p.TURBIEDAD || p.VALOR || '-'}</div>`; });
-      viasPrincipales.bindPopup(layer=>{ const p=layer.feature?.properties||{}; return `<div style="min-width:220px"><b>Vía principal</b><br>${p.NOMBRE || p.VIA || '-'}</div>`; });
-      rios.bindPopup(layer=>{ const p=layer.feature?.properties||{}; return `<div style="min-width:220px"><b>Río</b><br>${p.NOM1_DRENAJE || p.NOMBRE || p.RIO || '-'}</div>`; });
-      PANEL_LAYERS = { viviendas: CAPA_VIVIENDAS, municipiosValle, municipiosValleLabels: MUNICIPIOS_VALLE_LABELS, veredasValle, veredasValleLabels: VEREDAS_VALLE_LABELS, centrosPoblados, viasPrincipales, rios, riosLabels: RIOS_LABELS, valleContorno, municipiosUES, turbiedad };
-      const legendEl = document.getElementById('legend'); if(legendEl){ legendEl.innerHTML = `
-        <div class="legend-title">Seguimientos realizados</div>
-        <div><i style="background:#2563eb"></i>Punto de seguimiento</div>
-      `; }
-      MAP.on('zoomend',()=>updateVeredaLabelsVisibility());
-      document.getElementById('btnFit')?.addEventListener('click', ()=> fitBoundsToPoints(LIST));
-      document.getElementById('btnGeoJSON')?.addEventListener('click', downloadGeoJSON);
-      setTimeout(() => syncPanelLayersWithMap(), 300);
-    }
-
-    function initCustomLayerPanel(){
-      const checks = document.querySelectorAll('#layerPanel input[type="checkbox"]');
-      checks.forEach(chk => {
-        chk.addEventListener('change', function(){
-          const key = this.dataset.layer; const layer = PANEL_LAYERS[key]; if(!layer) return;
-          if (key === 'municipiosValle') {
-            const labelCheck = document.querySelector('#layerPanel input[data-layer="municipiosValleLabels"]');
-            if (labelCheck) {
-              labelCheck.checked = this.checked;
-              const labelLayer = PANEL_LAYERS['municipiosValleLabels'];
-              if (labelLayer) { if (this.checked) { if (!MAP.hasLayer(labelLayer)) MAP.addLayer(labelLayer); } else { if (MAP.hasLayer(labelLayer)) MAP.removeLayer(labelLayer); } }
-            }
-          }
-          if(this.checked){ if(!MAP.hasLayer(layer)) MAP.addLayer(layer); } else { if(MAP.hasLayer(layer)) MAP.removeLayer(layer); }
-          if(key === 'veredasValle') updateVeredaLabelsVisibility();
-        });
-      });
-    }
-    function initBasemapControls(){
-      const radios = document.querySelectorAll('#layerPanel input[name="basemap"]');
-      radios.forEach(radio => { radio.addEventListener('change', function(){ const key = this.value; const nextBasemap = BASEMAPS[key]; if(!nextBasemap) return; if(currentBasemap && MAP.hasLayer(currentBasemap)) MAP.removeLayer(currentBasemap); currentBasemap = nextBasemap; currentBasemap.addTo(MAP); }); });
-    }
-    function initLayerPanelUI(){
-      const toggle = document.getElementById('layerToggle'); const panel = document.getElementById('layerPanel'); const closeBtn = document.getElementById('layerClose'); const legendToggle = document.getElementById('legendToggle'); const legendPanel = document.getElementById('legendPanel'); const legendClose = document.getElementById('legendClose'); const mapEl = document.getElementById('map');
-      function closePanel(){ if(panel) panel.classList.add('collapsed'); }
-      function closeLegend(){ if(legendPanel) legendPanel.classList.add('collapsed'); }
-      function togglePanel(){ if(panel) panel.classList.toggle('collapsed'); if(legendPanel) legendPanel.classList.add('collapsed'); }
-      function toggleLegend(){ if(legendPanel) legendPanel.classList.toggle('collapsed'); if(panel) panel.classList.add('collapsed'); }
-      toggle?.addEventListener('click', e => { e.stopPropagation(); togglePanel(); });
-      closeBtn?.addEventListener('click', e => { e.stopPropagation(); closePanel(); });
-      legendToggle?.addEventListener('click', e => { e.stopPropagation(); toggleLegend(); });
-      legendClose?.addEventListener('click', e => { e.stopPropagation(); closeLegend(); });
-      panel?.addEventListener('click', e => e.stopPropagation()); legendPanel?.addEventListener('click', e => e.stopPropagation());
-      mapEl?.addEventListener('click', ()=>{ closePanel(); closeLegend(); });
-      document.addEventListener('keydown', e => { if(e.key === 'Escape'){ closePanel(); closeLegend(); } });
-    }
-    function syncPanelLayersWithMap(){
-      const checks = document.querySelectorAll('#layerPanel input[type="checkbox"]');
-      checks.forEach(chk => { const key = chk.dataset.layer; const layer = PANEL_LAYERS[key]; if(!layer) return; if(key === 'veredasValleLabels') return; if(chk.checked){ if(!MAP.hasLayer(layer)) MAP.addLayer(layer); } else { if(MAP.hasLayer(layer)) MAP.removeLayer(layer); } });
-      updateVeredaLabelsVisibility();
-    }
-
-    function fitBoundsToPoints(data){
-      const pts = data.filter(d => isValidCoord(d.LATITUD, d.LONGITUD));
-      if(!pts.length) return;
-      const b = L.latLngBounds(pts.map(d => [d.LATITUD, d.LONGITUD]));
-      MAP.fitBounds(b.pad(0.15));
-    }
-
-    async function loadData(){
-      const btn = document.getElementById('btnCargar');
-      if (btn){ btn.disabled = true; btn.textContent = 'Cargando…'; }
-      try{
-        const [rowsEncuestas, rowsEntregados] = await Promise.all([
-          fetchCsvWithFallback(URL_ENCUESTAS, 'utf-8'),
-          // Filtros_Entregados_V1 puede venir desde Excel en codificación Windows-1252.
-          // Esto evita caracteres dañados como Instituci�n o Mar�a.
-          fetchCsvWithFallback(URL_ENTREGADOS, 'windows-1252')
-        ]);
-
-        RAW = rowsEncuestas.map(r=>{
-          const f = parseFecha(r[COL.fecha]);
-          const lat = Number(String(r[COL.latitud] || '').replace(',','.'));
-          const lon = Number(String(r[COL.longitud] || '').replace(',','.'));
-          return {
-            raw:r,
-            ID: r[COL.id],
-            FECHA: f,
-            FECHA_TXT: f ? f.toISOString().slice(0,10) : (r[COL.fecha] || ""),
-            ANO: f ? f.getFullYear() : null,
-            MES: f ? f.getMonth()+1 : null,
-            ENCUESTADOR: normalizeAnswer(r[COL.encuestador] || ""),
-            MUNICIPIO: normalizeMunicipio(r[COL.municipio] || ""),
-            VEREDA_CORREGIMIENTO: normalizeAnswer(r[COL.vereda] || ""),
-            NOMBRE_ENCUESTADO: r[COL.nombre] || "",
-            FUENTE: normalizeAnswer(r[COL.fuente] || "SIN DATO"),
-            SALUD: asYesNo(r[COL.salud]),
-            TANQUE_SED: asYesNo(r[COL.tanqueSed]),
-            VASIJA_SED: asYesNo(r[COL.vasijaSed]),
-            RESPONSABLE_FILTRO: normalizeAnswer(r[COL.responsableFiltro] || ""),
-            SABOR_AGUA: normalizeAnswer(r[COL.saborAgua] || ""),
-            COLOR_AGUA: normalizeAnswer(r[COL.colorAgua] || ""),
-            OLOR_AGUA: normalizeAnswer(r[COL.olorAgua] || ""),
-            GASTOS_AGUA: normalizeAnswer(r[COL.gastosAgua] || ""),
-            LATITUD: isValidCoord(lat, lon) ? lat : null,
-            LONGITUD: isValidCoord(lat, lon) ? lon : null
-          };
-        });
-
-        ENTREGADOS_RAW = rowsEntregados.map(r => {
-          const clean = {};
-          Object.keys(r || {}).forEach(k => {
-            clean[cleanHeaderName(k)] = r[k];
-          });
-
-          return {
-            raw: r,
-            MUNICIPIO: normalizeMunicipio(clean['Municipio'] || clean['MUNICIPIO'] || ''),
-            ARO: normalizeAnswer(clean['ARO'] || ''),
-            ANO: Number(clean['Año'] || clean['Ano'] || clean['ANO'] || clean['ANIO'] || 0) || null,
-            FILTROS: parseNumberFlexible(
-              clean['No. filtros'] ||
-              clean['No filtros'] ||
-              clean['NO_FILTROS'] ||
-              clean['FILTROS'] ||
-              0
-            )
-          };
-        });
-
-        fillFilterOptions(RAW);
-        applyFiltersAndRender(true);
-        lastText = "Última carga: " + new Date().toLocaleString();
-        if(lastUpdateEl){ lastUpdateEl.textContent = lastText; lastUpdateEl.className = "badge text-bg-success last-update-badge"; }
-      }catch(err){
-        console.error(err);
-        if(lastUpdateEl){ lastUpdateEl.textContent = "Error al cargar datos"; lastUpdateEl.className = "badge text-bg-danger last-update-badge"; }
-        alert("Error al cargar datos. Revisa la consola del navegador (F12) para ver el detalle exacto.");
-      }finally{
-        if (btn){ btn.disabled = false; btn.textContent = 'Refrescar datos'; }
-      }
-    }
-
-    function fillFilterOptions(data){
-      const $ano = document.getElementById('fano');
-      const $mes = document.getElementById('fmes');
-      const $enc = document.getElementById('fencuestador');
-      const $mun = document.getElementById('fmpio');
-      if ($ano) $ano.innerHTML = `<option value="">Todos</option>` + uniq(data.map(d=>d.ANO)).filter(Boolean).sort((a,b)=>a-b).map(v=>`<option>${v}</option>`).join('');
-      if ($mes) $mes.innerHTML = `<option value="">Todos</option>` + uniq(data.map(d=>d.MES)).filter(Boolean).sort((a,b)=>a-b).map(v=>`<option value="${v}">${String(v).padStart(2,'0')} - ${MESES[v]}</option>`).join('');
-      if ($enc) $enc.innerHTML = `<option value="">Todos</option>` + uniq(data.map(d=>d.ENCUESTADOR)).sort((a,b)=>a.localeCompare(b,'es',{numeric:true})).map(v=>`<option>${v}</option>`).join('');
-      if ($mun) $mun.innerHTML = `<option value="">Todos</option>` + uniq(data.map(d=>d.MUNICIPIO)).sort((a,b)=>a.localeCompare(b,'es',{numeric:true})).map(v=>`<option>${v}</option>`).join('');
-    }
-
-    function buildResumenMunicipio(data){
-      const byMun = groupBy(data.filter(d=>d.MUNICIPIO), d=>d.MUNICIPIO);
-      const entregadosByMun = new Map();
-      const currentYear = document.getElementById('fano')?.value || '';
-      const currentMunicipio = document.getElementById('fmpio')?.value || '';
-
-      ENTREGADOS_RAW.forEach(r => {
-        if(!r.MUNICIPIO) return;
-        if(currentYear && r.ANO && String(r.ANO) !== String(currentYear)) return;
-        if(currentMunicipio && norm(r.MUNICIPIO) !== norm(currentMunicipio)) return;
-
-        entregadosByMun.set(r.MUNICIPIO, (entregadosByMun.get(r.MUNICIPIO) || 0) + r.FILTROS);
-      });
-
-      const municipios = Array.from(new Set([...byMun.keys(), ...entregadosByMun.keys()]))
-        .sort((a,b)=>a.localeCompare(b,'es',{numeric:true}));
-
-      RESUMEN_MPIO = municipios.map(m => {
-        const visitados = byMun.has(m) ? byMun.get(m).length : 0;
-        const entregados = entregadosByMun.get(m) || 0;
-        return {
-          MUNICIPIO: m,
-          ENTREGADOS: entregados,
-          VISITADOS: visitados,
-          BRECHA: entregados - visitados,
-          COBERTURA: entregados > 0 ? pct(visitados, entregados) : 0
-        };
-      });
-    }
-
-    function applyFiltersAndRender(resetAll = false){
-      const fano   = document.getElementById('fano')?.value || "";
-      const fmes   = document.getElementById('fmes')?.value || "";
-      const fenc   = document.getElementById('fencuestador')?.value || "";
-      const fmpio  = document.getElementById('fmpio')?.value || "";
-      const fdesde = document.getElementById('fdesde')?.value || "";
-      const fhasta = document.getElementById('fhasta')?.value || "";
-
-      LIST = resetAll ? [...RAW] : RAW.filter(d=>{
-        if(fano && String(d.ANO)!==String(fano)) return false;
-        if(fmes && String(d.MES)!==String(fmes)) return false;
-        if(fenc && d.ENCUESTADOR!==fenc) return false;
-        if(fmpio && d.MUNICIPIO!==fmpio) return false;
-        const fecha = d.FECHA;
-        if(fdesde){ const dd = new Date(fdesde); if(!fecha || fecha < dd) return false; }
-        if(fhasta){ const hh = new Date(fhasta); if(!fecha || fecha > hh) return false; }
-        return true;
-      });
-
-      buildResumenMunicipio(LIST);
-      renderKPIs(LIST);
-      renderMap(LIST);
-      renderCharts(LIST);
-      renderFiltrosEntregadosSection();
-      renderResumenTable();
-      renderEntregadosTable();
-      renderTable(LIST);
-    }
-
-    function renderKPIs(data){
-      // Indicadores principales sin Buenaventura.
-      // Buenaventura se presenta en un bloque separado por su condición de municipio especial.
-      const dataGeneral = data.filter(d => norm(d.MUNICIPIO) !== 'BUENAVENTURA');
-      const resumenGeneral = RESUMEN_MPIO.filter(r => norm(r.MUNICIPIO) !== 'BUENAVENTURA');
-
-      const total = dataGeneral.length;
-      const tanqueLimpio = dataGeneral.filter(d=>d.TANQUE_SED==="NO").length;
-      const vasijaLimpia = dataGeneral.filter(d=>d.VASIJA_SED==="NO").length;
-      const entregados = resumenGeneral.reduce((acc,r)=>acc+r.ENTREGADOS,0);
-      const seguimiento = entregados > 0 ? pct(total, entregados) : 0;
-
-      document.getElementById('kpiTotal').textContent = total.toLocaleString('es-CO');
-      document.getElementById('kpiEntregados').textContent = entregados.toLocaleString('es-CO');
-      document.getElementById('kpiSeguimiento').textContent = `${seguimiento}%`;
-      document.getElementById('kpiTanqueLimpio').textContent = pct(tanqueLimpio,total) + "%";
-      document.getElementById('kpiVasijaLimpia').textContent = pct(vasijaLimpia,total) + "%";
-
-      renderBuenaventuraEspecial(data);
-    }
-
-    function renderBuenaventuraEspecial(data){
-      const block = document.getElementById('buenaventuraEspecialBlock');
-      if(!block) return;
-
-      const entregadosBventura = RESUMEN_MPIO
-        .filter(r => norm(r.MUNICIPIO) === 'BUENAVENTURA')
-        .reduce((acc, r) => acc + (Number(r.ENTREGADOS) || 0), 0);
-
-      const seguimientosBventura = data
-        .filter(d => norm(d.MUNICIPIO) === 'BUENAVENTURA')
-        .length;
-
-      const coberturaBventura = entregadosBventura > 0 ? pct(seguimientosBventura, entregadosBventura) : 0;
-
-      document.getElementById('kpiBventuraEntregados').textContent = entregadosBventura.toLocaleString('es-CO');
-      document.getElementById('kpiBventuraSeguimientos').textContent = seguimientosBventura.toLocaleString('es-CO');
-      document.getElementById('kpiBventuraCobertura').textContent = `${coberturaBventura}%`;
-    }
-
-    function rawEntregaVal(raw, names){
-      for(const name of names){
-        if(raw && raw[name] != null && String(raw[name]).trim() !== '') return raw[name];
-      }
-      return '';
-    }
-
-    function getEntregadosFiltradosGeneral(){
-      const fano = document.getElementById('fano')?.value || "";
-      const fmpio = document.getElementById('fmpio')?.value || "";
-
-      return ENTREGADOS_RAW.filter(r => {
-        if(norm(r.MUNICIPIO) === 'BUENAVENTURA') return false;
-        if(fano && r.ANO && String(r.ANO) !== String(fano)) return false;
-        if(fmpio && norm(r.MUNICIPIO) !== norm(fmpio)) return false;
-        return true;
-      });
-    }
-
-    function renderFiltrosEntregadosSection(){
-      const rows = getEntregadosFiltradosGeneral();
-
-      const totalFiltros = rows.reduce((acc, r) => acc + (Number(r.FILTROS) || 0), 0);
-      const municipios = uniq(rows.map(r => r.MUNICIPIO)).length;
-      const filtrosInstitucionEducativa = rows
-        .filter(r => {
-          const objeto = norm(rawEntregaVal(r.raw, ['Objeto','OBJETO']));
-          return objeto.includes('INSTITUCION EDUCATIVA') || objeto.includes('INSTITUCION') || objeto.includes('EDUCATIVA');
-        })
-        .reduce((acc, r) => acc + (Number(r.FILTROS) || 0), 0);
-      const poblacion = rows.reduce((acc, r) => acc + parseNumberFlexible(rawEntregaVal(r.raw, ['Poblacion','Población','POBLACION'])), 0);
-      const viviendas = rows
-        .filter(r => norm(rawEntregaVal(r.raw, ['Objeto','OBJETO'])).includes('VIVIENDA'))
-        .reduce((acc, r) => acc + (Number(r.FILTROS) || 0), 0);
-
-      const setText = (id, val) => {
-        const el = document.getElementById(id);
-        if(el) el.textContent = Number(val || 0).toLocaleString('es-CO');
-      };
-
-      setText('kpiEntTotal', totalFiltros);
-      setText('kpiEntMunicipios', municipios);
-      setText('kpiEntInstitucionEducativa', filtrosInstitucionEducativa);
-      setText('kpiEntPoblacion', poblacion);
-      setText('kpiEntViviendas', viviendas);
-
-      const byAno = new Map();
-      const byObjeto = new Map();
-      const byMunicipio = new Map();
-
-      rows.forEach(r => {
-        const ano = r.ANO || rawEntregaVal(r.raw, ['Año','Ano','ANIO','AÑO']) || 'Sin dato';
-        const objeto = normalizeAnswer(rawEntregaVal(r.raw, ['Objeto','OBJETO']) || 'Sin dato');
-        const municipio = r.MUNICIPIO || 'Sin dato';
-        const filtros = Number(r.FILTROS) || 0;
-
-        byAno.set(ano, (byAno.get(ano) || 0) + filtros);
-        byObjeto.set(objeto, (byObjeto.get(objeto) || 0) + filtros);
-        byMunicipio.set(municipio, (byMunicipio.get(municipio) || 0) + filtros);
-      });
-
-      const anoPairs = Array.from(byAno.entries()).sort((a,b)=>String(a[0]).localeCompare(String(b[0]), 'es', {numeric:true}));
-      const objetoPairs = Array.from(byObjeto.entries()).sort((a,b)=>b[1]-a[1]);
-      const municipioPairs = Array.from(byMunicipio.entries()).sort((a,b)=>b[1]-a[1]).slice(0, 10);
-
-      renderCompactBarChart('chartFiltrosEntregadosAno', anoPairs, 'Filtros entregados', {
-        backgroundColor:'rgba(16,185,129,.35)',
-        borderColor:'#10b981'
-      });
-      renderPieChart('chartFiltrosEntregadosObjeto', objetoPairs, {
-        colors:['#10b981', '#2e64d2', '#f2c14e', '#d8572a', '#7b6cf6', '#6c757d']
-      });
-      renderCompactBarChart('chartFiltrosEntregadosMunicipio', municipioPairs, 'Filtros entregados', {
-        backgroundColor:'rgba(16,185,129,.35)',
-        borderColor:'#10b981'
-      });
-    }
-
-
-    function renderMap(data){
-      CAPA_VIVIENDAS.clearLayers();
-      refreshMunicipioHighlight();
-      const pts = data.filter(d => isValidCoord(d.LATITUD, d.LONGITUD));
-      document.getElementById('mapCount').textContent = `${pts.length} ${pts.length===1 ? 'punto' : 'puntos'}`;
-
-      const resumenEl = document.getElementById('mapResumen');
-      if (resumenEl){
-        resumenEl.innerHTML = `<span class="badge rounded-pill" style="background:#2563eb;color:#fff;margin:2px 4px">Seguimientos: ${pts.length}</span>`;
-      }
-
-      for (const d of pts){
-        const coordTxt = `${d.LATITUD.toFixed(5)}, ${d.LONGITUD.toFixed(5)}`;
-        const popup = buildSemaforizadoPopup(d);
-        const mk = L.marker([d.LATITUD, d.LONGITUD], { icon: iconSeguimiento() }).bindPopup(popup, {maxWidth: 600, minWidth: 460, className:'popup-sema-wrap'});
-        CAPA_VIVIENDAS.addLayer(mk);
-      }
-
-      if (!MAP.hasLayer(CAPA_VIVIENDAS)) CAPA_VIVIENDAS.addTo(MAP);
-      fitBoundsToPoints(data);
-    }
-
-    function downloadGeoJSON(){
-      const features = LIST.filter(d => isValidCoord(d.LATITUD, d.LONGITUD)).map(d => ({
-        type:"Feature",
-        geometry:{ type:"Point", coordinates:[d.LONGITUD, d.LATITUD] },
-        properties:{
-          ID:d.ID, FECHA:d.FECHA_TXT, ENCUESTADOR:d.ENCUESTADOR, MUNICIPIO:d.MUNICIPIO,
-          NOMBRE_ENCUESTADO:d.NOMBRE_ENCUESTADO, FUENTE:d.FUENTE, SALUD:d.SALUD,
-          TANQUE_SED:d.TANQUE_SED, VASIJA_SED:d.VASIJA_SED
-        }
-      }));
-      const fc = { type:"FeatureCollection", features };
-      const blob = new Blob([JSON.stringify(fc,null,2)], {type:"application/geo+json"});
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'encuestas_filtros_filtrado.geojson';
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-    }
-
-    function ensureChart(id, cfg){
-      const canvas = document.getElementById(id);
-      if(!canvas) return;
-      if(charts[id]) charts[id].destroy();
-      charts[id] = new Chart(canvas.getContext('2d'), cfg);
-    }
-
-    function renderMiniBarChart(canvasId, pairs, label, opts = {}){
-      const labels = pairs.map(x => x[0]);
-      const values = pairs.map(x => x[1]);
-      const percent = opts.percent || false;
-      const maxX = opts.maxX ?? (percent ? 100 : null);
-      ensureChart(canvasId, {
-        type: "bar",
-        data: {
-          labels,
-          datasets: [{
-            label,
-            data: values,
-            backgroundColor: "rgba(46,100,210,.30)",
-            borderColor: "#2e64d2",
-            borderWidth: 1,
-            borderRadius: 6
-          }]
-        },
-        plugins: [ChartDataLabels],
-        options: {
-          maintainAspectRatio: false,
-          responsive: true,
-          indexAxis: "y",
-          plugins: {
-            legend: { display: false },
-            datalabels: {
-              anchor: "end",
-              align: "right",
-              offset: -28,
-              clamp: true,
-              clip: true,
-              color: "#111827",
-              font: { weight: 700 },
-              formatter: v => percent ? `${Number(v).toLocaleString("es-CO")}%` : Number(v).toLocaleString("es-CO")
-            },
-            tooltip: {
-              callbacks: {
-                label: ctx => {
-                  const val = Number(ctx.raw || 0).toLocaleString("es-CO");
-                  return percent ? ` ${ctx.label}: ${val}%` : ` ${ctx.label}: ${val}`;
-                }
-              }
-            }
-          },
-          scales: {
-            x: {
-              beginAtZero: true,
-              ...(maxX !== null ? { max: maxX } : {}),
-              ticks: {
-                precision: percent ? undefined : 0,
-                callback: v => percent ? `${v}%` : Number(v).toLocaleString("es-CO")
-              }
-            }
-          }
-        }
-      });
-    }
-
-
-    function renderPieChart(canvasId, pairs, opts = {}){
-      const labels = pairs.map(x => x[0]);
-      const values = pairs.map(x => x[1]);
-
-      let colors = opts.colors;
-      if(!colors){
-        colors = [
-          "#2e64d2", "#5aa469", "#f2c14e", "#d8572a", "#7b6cf6",
-          "#4cb5ae", "#ef6f6c", "#6c757d", "#8ac926", "#1982c4"
-        ];
-      }
-
-      ensureChart(canvasId, {
-        type: "doughnut",
-        data: {
-          labels,
-          datasets: [{
-            data: values,
-            backgroundColor: labels.map((_, i) => colors[i % colors.length]),
-            borderColor: "#ffffff",
-            borderWidth: 2
-          }]
-        },
-        plugins: [ChartDataLabels],
-        options: {
-          maintainAspectRatio: false,
-          responsive: true,
-          cutout: "48%",
-          plugins: {
-            legend: { position: "bottom" },
-            datalabels: {
-              color: "#111827",
-              font: { weight: 700, size: 11 },
-              formatter: (value, ctx) => {
-                const total = ctx.chart.data.datasets[0].data.reduce((a,b)=>a+b,0);
-                const pct = total ? Math.round((value / total) * 1000) / 10 : 0;
-                return pct >= 4 ? `${pct}%` : "";
-              }
-            },
-            tooltip: {
-              callbacks: {
-                label: (ctx) => {
-                  const total = ctx.dataset.data.reduce((a,b)=>a+b,0);
-                  const val = ctx.raw || 0;
-                  const pct = total ? Math.round((val / total) * 1000) / 10 : 0;
-                  return ` ${ctx.label}: ${Number(val).toLocaleString("es-CO")} (${pct}%)`;
-                }
-              }
-            }
-          }
-        }
-      });
-    }
-
-    function renderCompactBarChart(canvasId, pairs, label, opts = {}){
-      const labels = pairs.map(x => x[0]);
-      const values = pairs.map(x => x[1]);
-      const backgroundColor = opts.backgroundColor || "rgba(46,100,210,.30)";
-      const borderColor = opts.borderColor || "#2e64d2";
-      const percent = opts.percent || false;
-      const maxX = opts.maxX ?? null;
-      ensureChart(canvasId, {
-        type: "bar",
-        data: {
-          labels,
-          datasets: [{
-            label,
-            data: values,
-            backgroundColor: Array.isArray(backgroundColor) ? backgroundColor : labels.map(() => backgroundColor),
-            borderColor: Array.isArray(borderColor) ? borderColor : labels.map(() => borderColor),
-            borderWidth: 1,
-            borderRadius: 6
-          }]
-        },
-        plugins: [ChartDataLabels],
-        options: {
-          maintainAspectRatio: false,
-          responsive: true,
-          indexAxis: "y",
-          plugins: {
-            legend: { display: false },
-            datalabels: {
-              anchor: "end",
-              align: "right",
-              offset: -28,
-              clamp: true,
-              clip: true,
-              color: "#111827",
-              font: { weight: 700 },
-              formatter: v => percent ? `${Number(v).toLocaleString("es-CO")}%` : Number(v).toLocaleString("es-CO")
-            }
-          },
-          scales: {
-            x: {
-              beginAtZero: true,
-              ...(maxX !== null ? { max: maxX } : {}),
-              ticks: { callback: v => percent ? `${v}%` : Number(v).toLocaleString("es-CO") }
-            }
-          }
-        }
-      });
-    }
-
-    function renderGroupedMunicipioChart(){
-      // Se excluye Buenaventura de esta gráfica para mantenerlo en análisis separado.
-      const topN = parseInt(document.getElementById('topNSelect')?.value || '10', 10);
-      let pairs = RESUMEN_MPIO
-        .filter(r => norm(r.MUNICIPIO) !== 'BUENAVENTURA')
-        .map(r => [r.MUNICIPIO, r.ENTREGADOS, r.VISITADOS])
-        .sort((a,b) => (b[1] + b[2]) - (a[1] + a[2]));
-      if(topN > 0) pairs = pairs.slice(0, topN);
-
-      ensureChart('chartEntregadosVsSeguimientos', {
-        type: 'bar',
-        data: {
-          labels: pairs.map(x => x[0]),
-          datasets: [
-            { label: 'Entregados', data: pairs.map(x => x[1]), backgroundColor: 'rgba(16,185,129,.35)', borderColor:'#10b981', borderWidth:1, borderRadius:6 },
-            { label: 'Seguimientos', data: pairs.map(x => x[2]), backgroundColor: 'rgba(46,100,210,.35)', borderColor:'#2e64d2', borderWidth:1, borderRadius:6 }
-          ]
-        },
-        plugins: [ChartDataLabels],
-        options: {
-          maintainAspectRatio:false,
-          responsive:true,
-          indexAxis:'y',
-          plugins:{
-            legend:{ position:'bottom' },
-            datalabels:{
-              anchor:'end',
-              align:'right',
-              offset:-20,
-              clamp:true,
-              clip:true,
-              color:'#111827',
-              font:{ weight:700 },
-              formatter:v => Number(v).toLocaleString('es-CO')
-            }
-          },
-          scales:{ x:{ beginAtZero:true, ticks:{ precision:0 } } }
-        }
-      });
-    }
-
-    function renderCharts(data){
-      const byFuente = groupBy(data.filter(d=>d.FUENTE), d=>d.FUENTE);
-      const byMun = groupBy(data.filter(d=>d.MUNICIPIO), d=>d.MUNICIPIO);
-      const munLabels = Array.from(byMun.keys());
-
-      const selTopN = document.getElementById("topNSelect");
-      const topN = selTopN ? parseInt(selTopN.value) : 10;
-      let pairs = munLabels.map(m => [m, byMun.get(m).length]).sort((a,b)=> b[1]-a[1]);
-      if (topN > 0) pairs = pairs.slice(0, topN);
-      const encMunLabels = pairs.map(x=>x[0]);
-      const encMunCounts = pairs.map(x=>x[1]);
-
-      ensureChart("chartEncuestasMunicipio", {
-        type: "bar",
-        data: {
-          labels: encMunLabels,
-          datasets: [{
-            label: "Seguimientos",
-            data: encMunCounts,
-            backgroundColor: "rgba(46,100,210,.35)",
-            borderColor: "#2e64d2",
-            borderWidth: 1,
-            borderRadius: 6
-          }]
-        },
-        plugins: [ChartDataLabels],
-        options: {
-          maintainAspectRatio: false,
-          responsive: true,
-          indexAxis: "y",
-          plugins: {
-            legend: { display: false },
-            datalabels: {
-              anchor: "end",
-              align: "right",
-              offset: -30,
-              clamp: true,
-              clip: true,
-              color: "#0f172a",
-              font: { weight: 700 },
-              formatter: v => Number(v).toLocaleString("es-CO")
-            },
-            tooltip: { callbacks: { label: c => ` ${c.raw.toLocaleString("es-CO")} seguimientos` } }
-          },
-          scales: { x: { beginAtZero: true, ticks: { precision: 0 } } },
-          onClick: (evt, elements) => {
-            if (!elements?.length) return;
-            const i = elements[0].index;
-            const municipio = encMunLabels[i];
-            const sel = document.getElementById("fmpio");
-            const limpiar = evt.ctrlKey || evt.metaKey;
-            if (limpiar) { sel.value = ""; applyFiltersAndRender(true); }
-            else { sel.value = municipio; applyFiltersAndRender(); }
-            setTimeout(() => fitBoundsToPoints(LIST), 0);
-          }
-        }
-      });
-
-      renderGroupedMunicipioChart();
-
-      const fuentePairs = Array.from(byFuente.entries())
-        .map(([k, rows]) => [normalizeAnswer(k), rows.length])
-        .sort((a,b) => b[1] - a[1]);
-      const fuentePieColors = fuentePairs.map(([name]) => {
-        const k = norm(name);
-        return FUENTE_COLOR[k] || "#2e64d2";
-      });
-      renderPieChart("chartFuente", fuentePairs, { colors: fuentePieColors });
-
-      const totalTanquesSi = data.filter(x => x.TANQUE_SED === "SI").length;
-      const totalTanquesNo = data.filter(x => x.TANQUE_SED === "NO").length;
-      renderPieChart("chartTanqueSedimentos", [["Con sedimentos", totalTanquesSi],["Sin sedimentos", totalTanquesNo]], {
-        colors: ["#d8572a", "#5aa469"]
-      });
-
-      const totalVasijasSi = data.filter(x => x.VASIJA_SED === "SI").length;
-      const totalVasijasNo = data.filter(x => x.VASIJA_SED === "NO").length;
-      renderPieChart("chartVasijaSedimentos", [["Con sedimentos", totalVasijasSi],["Sin sedimentos", totalVasijasNo]], {
-        colors: ["#d8572a", "#5aa469"]
-      });
-
-      const toPercentPairs = (pairs) => {
-        const total = pairs.reduce((acc, item) => acc + item[1], 0);
-        return pairs.map(([label, value]) => [label, total ? Math.round((value / total) * 1000) / 10 : 0]);
-      };
-
-      renderMiniBarChart("chartResponsableFiltro", toPercentPairs(countAnswers(data, "RESPONSABLE_FILTRO")), "% respuestas", { percent: true });
-      renderMiniBarChart("chartSaborAgua", toPercentPairs(countAnswers(data, "SABOR_AGUA")), "% respuestas", { percent: true });
-      renderMiniBarChart("chartColorAgua", toPercentPairs(countAnswers(data, "COLOR_AGUA")), "% respuestas", { percent: true });
-      renderMiniBarChart("chartOlorAgua", toPercentPairs(countAnswers(data, "OLOR_AGUA")), "% respuestas", { percent: true });
-      renderMiniBarChart("chartGastosAgua", toPercentPairs(countAnswers(data, "GASTOS_AGUA")), "% respuestas", { percent: true });
-
-      if (selTopN && !selTopN.dataset.bound) {
-        selTopN.addEventListener("change", () => renderCharts(LIST));
-        selTopN.dataset.bound = "true";
-      }
-    }
-
-    function renderResumenTable(){
-      const rows = RESUMEN_MPIO.map(r => [r.MUNICIPIO, r.ENTREGADOS, r.VISITADOS, r.BRECHA, `${r.COBERTURA}%`]);
-      if(DT_RESUMEN) DT_RESUMEN.destroy();
-      DT_RESUMEN = $("#tblResumen").DataTable({
-        data: rows,
-        columns: [{title:'MUNICIPIO'},{title:'FILTROS ENTREGADOS'},{title:'SEGUIMIENTOS'},{title:'BRECHA'},{title:'% COBERTURA'}],
-        pageLength:10,
-        order:[[1,'desc']],
-        language:{ url:"https://cdn.datatables.net/plug-ins/1.13.8/i18n/es-ES.json" },
-        dom:'Bfrtip',
-        buttons:[
-          { extend:'excelHtml5', title:'Resumen_Filtros_Municipio', text:'Excel', className:'btn btn-success btn-sm' },
-          { extend:'csvHtml5', title:'Resumen_Filtros_Municipio', text:'CSV', className:'btn btn-outline-secondary btn-sm' }
-        ]
-      });
-    }
-
-    function renderEntregadosTable(){
-      const fano = document.getElementById('fano')?.value || "";
-      const fmpio = document.getElementById('fmpio')?.value || "";
-      let rowsBase = ENTREGADOS_RAW.filter(r => {
-        if(fano && r.ANO && String(r.ANO) !== String(fano)) return false;
-        if(fmpio && norm(r.MUNICIPIO) !== norm(fmpio)) return false;
-        return true;
-      });
-
-      const rawVal = (raw, names) => {
-        for(const name of names){
-          if(raw[name] != null && String(raw[name]).trim() !== '') return raw[name];
-        }
-        return '';
-      };
-
-      const rows = rowsBase.map(r => {
-        const raw = r.raw || {};
-        return [
-          rawVal(raw, ['No','NO','N°','Nº']),
-          rawVal(raw, ['ARO']),
-          r.MUNICIPIO || rawVal(raw, ['Municipio','MUNICIPIO']),
-          rawVal(raw, ['Ubicación','UBICACION','Ubicacion','Localidad','LOCALIDAD']),
-          r.FILTROS || rawVal(raw, ['No. filtros','No. filtros ','No filtros','NO_FILTROS','FILTROS']),
-          rawVal(raw, ['Poblacion','Población','POBLACION']),
-          rawVal(raw, ['Objeto','OBJETO']),
-          rawVal(raw, ['Tipo de filtro','TIPO DE FILTRO','Tipo filtro','TIPO_FILTRO']),
-          rawVal(raw, ['Comunidad','COMUNIDAD']),
-          rawVal(raw, ['Enfoque Diferencial','ENFOQUE DIFERENCIAL','Enfoque diferencial','ENFOQUE_DIFERENCIAL']),
-          rawVal(raw, ['Lugar de entrega','LUGAR DE ENTREGA','Lugar Entrega','LUGAR_ENTREGA']),
-          rawVal(raw, ['COD. SISA','COD SISA','CODIGO SISA','CÓDIGO SISA','COD_SISA']),
-          rawVal(raw, ['Fecha de entrega','FECHA DE ENTREGA','Fecha entrega','FECHA_ENTREGA']),
-          r.ANO || rawVal(raw, ['Año','Ano','ANIO','AÑO']),
-          rawVal(raw, ['Equipo','EQUIPO'])
-        ];
-      });
-
-      if(DT_ENTREGADOS) DT_ENTREGADOS.destroy();
-      DT_ENTREGADOS = $("#tblEntregados").DataTable({
-        data: rows,
-        columns: [
-          {title:'No'},
-          {title:'ARO'},
-          {title:'Municipio'},
-          {title:'Ubicación'},
-          {title:'No. filtros'},
-          {title:'Poblacion'},
-          {title:'Objeto'},
-          {title:'Tipo de filtro'},
-          {title:'Comunidad'},
-          {title:'Enfoque Diferencial'},
-          {title:'Lugar de entrega'},
-          {title:'COD. SISA'},
-          {title:'Fecha de entrega'},
-          {title:'Año'},
-          {title:'Equipo'}
-        ],
-        pageLength:10,
-        order:[[2,'asc'],[3,'asc']],
-        scrollX:true,
-        language:{ url:"https://cdn.datatables.net/plug-ins/1.13.8/i18n/es-ES.json" },
-        dom:'Bfrtip',
-        buttons:[
-          { extend:'excelHtml5', title:'Filtros_Entregados', text:'Excel', className:'btn btn-success btn-sm' },
-          { extend:'csvHtml5', title:'Filtros_Entregados', text:'CSV', className:'btn btn-outline-secondary btn-sm' }
-        ]
-      });
-
-      const munVals = uniq(ENTREGADOS_RAW.map(r=>r.MUNICIPIO)).sort((a,b)=>a.localeCompare(b,'es',{numeric:true}));
-      const $mun = document.getElementById('tblEntregadosMunicipio');
-      if($mun){
-        const current = $mun.value;
-        $mun.innerHTML = `<option value="">Entregados: todos los municipios</option>` + munVals.map(v=>`<option>${v}</option>`).join('');
-        if(current && munVals.includes(current)) $mun.value = current;
-        $mun.onchange = function(){
-          DT_ENTREGADOS.column(2).search(this.value ? '^'+this.value.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'$' : '', true, false).draw();
-        };
-        if(fmpio){
-          $mun.value = fmpio;
-          DT_ENTREGADOS.column(2).search('^'+fmpio.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'$', true, false).draw();
-        }
-      }
-    }
-
-    function renderTable(data){
-      const rows = data.map(d=>[
-        d.ID||"", d.FECHA_TXT||"", d.ENCUESTADOR||"", d.MUNICIPIO||"", d.NOMBRE_ENCUESTADO||"",
-        d.FUENTE||"", d.SALUD||"", d.TANQUE_SED||"", d.VASIJA_SED||""
-      ]);
-      if(DT) DT.destroy();
-      DT = $("#tbl").DataTable({
-        data: rows,
-        columns: [
-          {title:'ID'},{title:'FECHA'},{title:'ENCUESTADOR'},{title:'MUNICIPIO'},{title:'NOMBRE_ENCUESTADO'},
-          {title:'FUENTE_DONDE_TOMA_EL_AGUA'},{title:'MEJORA EN SALUD'},{title:'SEDIMENTOS TANQUE'},{title:'SEDIMENTOS VASIJA'}
-        ],
-        pageLength:10,
-        order:[[1,'desc']],
-        language:{ url:"https://cdn.datatables.net/plug-ins/1.13.8/i18n/es-ES.json" },
-        dom:'Bfrtip',
-        buttons:[
-          { extend:'excelHtml5', title:'Encuestas_Filtros_Agua', text:'Excel', className:'btn btn-success btn-sm' },
-          { extend:'csvHtml5', title:'Encuestas_Filtros_Agua', text:'CSV', className:'btn btn-outline-secondary btn-sm' },
-          { extend:'print', text:'Imprimir', className:'btn btn-outline-primary btn-sm' }
-        ]
-      });
-      const munVals = uniq(data.map(d=>d.MUNICIPIO)).sort((a,b)=>a.localeCompare(b,'es',{numeric:true}));
-      const encVals = uniq(data.map(d=>d.ENCUESTADOR)).sort((a,b)=>a.localeCompare(b,'es',{numeric:true}));
-      const $tblMun = document.getElementById('tblFiltroMunicipio');
-      const $tblEnc = document.getElementById('tblFiltroEncuestador');
-      if ($tblMun) $tblMun.innerHTML = `<option value="">Tabla: todos los municipios</option>` + munVals.map(v=>`<option>${v}</option>`).join('');
-      if ($tblEnc) $tblEnc.innerHTML = `<option value="">Tabla: todos los encuestadores</option>` + encVals.map(v=>`<option>${v}</option>`).join('');
-      if ($tblMun) $tblMun.onchange = function(){ DT.column(3).search(this.value ? '^'+this.value.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'$' : '', true, false).draw(); };
-      if ($tblEnc) $tblEnc.onchange = function(){ DT.column(2).search(this.value ? '^'+this.value.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'$' : '', true, false).draw(); };
-    }
-
-    document.getElementById('btnClearMunFilter')?.addEventListener('click', () => {
-      const sel = document.getElementById('fmpio');
-      if (sel) sel.value = "";
-      applyFiltersAndRender(true);
-    });
-    document.getElementById('btnFiltrar')?.addEventListener('click', ()=> applyFiltersAndRender());
-    document.getElementById('btnLimpiar')?.addEventListener('click', ()=>{
-      ['fano','fmes','fencuestador','fmpio','fdesde','fhasta'].forEach(id=>{ const el = document.getElementById(id); if(el) el.value = ""; });
-      applyFiltersAndRender(true);
-    });
-    document.getElementById('btnCargar')?.addEventListener('click', loadData);
-
-    function ajustarTablasConsulta(){
-      if (DT_RESUMEN) DT_RESUMEN.columns.adjust().draw(false);
-      if (DT_ENTREGADOS) DT_ENTREGADOS.columns.adjust().draw(false);
-      if (DT) DT.columns.adjust().draw(false);
-    }
-
-    document.querySelectorAll('#tablasFiltroTabs button[data-bs-toggle="tab"]').forEach(tabBtn => {
-      tabBtn.addEventListener('shown.bs.tab', () => {
-        ajustarTablasConsulta();
-      });
-    });
-
-    document.getElementById('tablasConsultaCollapse')?.addEventListener('shown.bs.collapse', () => {
-      setTimeout(ajustarTablasConsulta, 180);
-    });
-
-    document.getElementById('filtrosEntregadosCollapse')?.addEventListener('shown.bs.collapse', () => {
-      ['chartFiltrosEntregadosAno','chartFiltrosEntregadosObjeto','chartFiltrosEntregadosMunicipio'].forEach(id => {
-        if(charts[id]) charts[id].resize();
-      });
-    });
-
-    initMap();
-    initCustomLayerPanel();
-    initBasemapControls();
-    initLayerPanelUI();
-    loadData();
-  </script>
 </body>
 </html>
