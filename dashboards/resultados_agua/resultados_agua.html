@@ -497,7 +497,7 @@
           <div class="table-toggle-copy">
             <h5 class="mb-1">Consulta de resultados PDF</h5>
             <div class="section-note mb-0">
-              Tabla principal del repositorio. Permite filtrar, exportar, abrir el PDF o copiar la ruta local.
+              Tabla principal del repositorio. Permite filtrar, exportar y descargar el PDF.
             </div>
           </div>
           <span class="table-toggle-arrow" aria-hidden="true">
@@ -545,7 +545,7 @@
                 <div class="col-12">
                   <div class="alert alert-info mb-0">
                     <b>Nota:</b> si el tablero se abre desde GitHub Pages, los enlaces <code>file:///</code> pueden ser bloqueados por seguridad del navegador.
-                    Para consulta interna local, el botón <b>Ver PDF</b> intentará visualizar el documento y también permite abrirlo en una nueva pestaña.
+                    Para consulta interna local o desde GitHub Pages, el botón <b>Descargar PDF</b> usará preferiblemente el enlace individual de Google Drive.
                   </div>
                 </div>
               </div>
@@ -574,7 +574,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-secondary rounded-pill px-3" data-bs-dismiss="modal">Cerrar</button>
-          <button type="button" id="btnOpenPdfNewTab" class="btn btn-primary rounded-pill px-3">Abrir en nueva pestaña</button>
+          <button type="button" id="btnOpenPdfNewTab" class="btn btn-primary rounded-pill px-3">Descargar PDF</button>
         </div>
       </div>
     </div>
@@ -763,6 +763,10 @@
         ARCHIVO_CONTROL: r["ARCHIVO_CONTROL"] || "",
         FUENTE_REGISTRO: r["FUENTE_REGISTRO"] || "",
         FECHA_ACTUALIZACION: r["FECHA_ACTUALIZACION"] || "",
+        DRIVE_FILE_ID: r["DRIVE_FILE_ID"] || "",
+        URL_DRIVE_VIEW: r["URL_DRIVE_VIEW"] || "",
+        URL_DRIVE_PREVIEW: r["URL_DRIVE_PREVIEW"] || "",
+        MATCH_DRIVE: r["MATCH_DRIVE"] || "",
         ERROR: r["ERROR"] || ""
       }));
     }
@@ -936,21 +940,25 @@
 
     let currentPdfTarget = "";
 
-    function openPDF(url, ruta, codigo="", tipo="", aro="", fechaRecepcion="", fechaResultado="", nombrePdf=""){
-      const target = url || ruta || "";
-      if(!target){
-        showToast("No hay ruta disponible para este PDF.", "warning");
+    function openPDF(url, ruta, codigo="", tipo="", aro="", fechaRecepcion="", fechaResultado="", nombrePdf="", driveView="", driveFileId=""){
+      const previewTarget = url || driveView || ruta || "";
+      const downloadTarget = driveFileId
+        ? `https://drive.google.com/uc?export=download&id=${driveFileId}`
+        : (driveView || url || ruta || "");
+
+      if(!previewTarget && !downloadTarget){
+        showToast("No hay enlace disponible para este PDF.", "warning");
         return;
       }
 
-      currentPdfTarget = target;
+      currentPdfTarget = downloadTarget || previewTarget;
 
       const title = document.getElementById("pdfModalLabel");
       const subtitle = document.getElementById("pdfModalSubtitle");
       const viewer = document.getElementById("pdfViewer");
       const openBtn = document.getElementById("btnOpenPdfNewTab");
 
-      if(title) title.textContent = nombrePdf || "Visor de resultado PDF";
+      if(title) title.textContent = nombrePdf || "Resultado PDF";
       if(subtitle){
         subtitle.innerHTML = `
           <b>Código:</b> ${escapeHTML(codigo || "-")} ·
@@ -961,9 +969,18 @@
         `;
       }
 
-      if(viewer) viewer.src = target;
+      if(viewer){
+        if(url && url.includes("/preview")){
+          viewer.src = url;
+        }else if(driveView){
+          viewer.src = driveView.replace("/view?usp=drive_link", "/preview").replace("/view", "/preview");
+        }else{
+          viewer.src = "";
+        }
+      }
 
       if(openBtn){
+        openBtn.textContent = "Descargar PDF";
         openBtn.onclick = () => window.open(currentPdfTarget, "_blank");
       }
 
@@ -1012,7 +1029,7 @@
         d.FECHA_RESULTADOS || "",
         `
           <div class="table-actions">
-            <button class="btn btn-primary btn-table" onclick='openPDF(${JSON.stringify(d.URL_LOCAL)}, ${JSON.stringify(d.RUTA_LOCAL)}, ${JSON.stringify(d.CODIGO_MUESTRA)}, ${JSON.stringify(d.TIPO_CODIGO)}, ${JSON.stringify(d.ARO)}, ${JSON.stringify(d.FECHA_RECEPCION)}, ${JSON.stringify(d.FECHA_RESULTADOS)}, ${JSON.stringify(d.NOMBRE_PDF)})'>Ver PDF</button>
+            <button class="btn btn-primary btn-table" onclick='openPDF(${JSON.stringify(d.URL_DRIVE_PREVIEW || d.URL_DRIVE_VIEW || d.URL_LOCAL)}, ${JSON.stringify(d.RUTA_LOCAL)}, ${JSON.stringify(d.CODIGO_MUESTRA)}, ${JSON.stringify(d.TIPO_CODIGO)}, ${JSON.stringify(d.ARO)}, ${JSON.stringify(d.FECHA_RECEPCION)}, ${JSON.stringify(d.FECHA_RESULTADOS)}, ${JSON.stringify(d.NOMBRE_PDF)}, ${JSON.stringify(d.URL_DRIVE_VIEW)}, ${JSON.stringify(d.DRIVE_FILE_ID)})'>Descargar PDF</button>
           </div>
         `
       ]);
