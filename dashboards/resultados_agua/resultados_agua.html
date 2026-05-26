@@ -46,6 +46,48 @@
     }
     .board-subtitle{ color:var(--text-muted); font-size:.95rem; }
     .last-update-badge{ font-size:.95rem; padding:.5rem .8rem; border-radius:999px; }
+    .header-status{
+      display:flex;
+      flex-direction:column;
+      align-items:flex-end;
+      gap:.25rem;
+      min-width:260px;
+    }
+    .header-status #lastUpdate{
+      font-size:.82rem;
+      padding:.45rem .75rem !important;
+    }
+    .mini-status{
+      font-size:.78rem;
+      color:#1d4ed8;
+      font-weight:800;
+      display:flex;
+      gap:.35rem;
+      align-items:center;
+      justify-content:flex-end;
+      flex-wrap:wrap;
+    }
+    .mini-status button{
+      border:0;
+      background:transparent;
+      color:#1d4ed8;
+      font-weight:850;
+      padding:0;
+      text-decoration:none;
+    }
+    .mini-status button:hover{ text-decoration:underline; }
+    .status-body .alert{
+      border-radius:.8rem;
+      background:#d9f4fb;
+      border:1px solid #aee7f4;
+      color:#24515d;
+      font-size:.95rem;
+      line-height:1.45;
+    }
+    @media (max-width:992px){
+      .header-status{align-items:flex-start; min-width:0;}
+      .mini-status{justify-content:flex-start;}
+    }
 
     .navbar .nav-link,.navbar .dropdown-toggle{ font-weight:600; }
     .dropdown-menu .dropdown-item.active{ background:#2e64d2; }
@@ -282,15 +324,27 @@
       </section>
 
       <section class="soft-card p-3 mb-3">
-        <div class="d-flex flex-column flex-lg-row align-items-lg-center">
+        <div class="d-flex flex-column flex-lg-row align-items-lg-center gap-2">
           <div class="me-auto">
             <h1 class="board-title">Repositorio de Resultados de Agua</h1>
             <div class="board-subtitle mt-1">
               Consulta de resultados PDF descargados desde la plataforma de gestión de muestras.
             </div>
           </div>
-          <div class="mt-2 mt-lg-0">
+          <div class="header-status mt-2 mt-lg-0">
             <span id="lastUpdate" class="badge text-bg-success last-update-badge">Cargando…</span>
+            <div class="mini-status">
+              <span>Estado de carga de datos</span>
+              <button type="button" id="btnToggleStatus">Ver detalle</button>
+              <span id="statusHint">Oculto</span>
+            </div>
+          </div>
+        </div>
+
+        <div id="loadAlert" class="status-body d-none mt-3">
+          <div class="alert alert-info mb-0 py-2">
+            Cargando salidas desde <b>data/resultados_agua/current</b>:
+            índice de resultados, resumen por ARO/tipo y metadata de actualización.
           </div>
         </div>
       </section>
@@ -322,11 +376,7 @@
             <label class="form-label filter-label mb-1">Entidad que remite</label>
             <select id="fEntidad" class="form-select form-select-sm"><option value="">Todas</option></select>
           </div>
-          <div class="col-12 col-md-3">
-            <label class="form-label filter-label mb-1">Estado descarga</label>
-            <select id="fEstadoDescarga" class="form-select form-select-sm"><option value="">Todos</option></select>
-          </div>
-          <div class="col-12 col-md-3">
+          <div class="col-12 col-md-5">
             <label class="form-label filter-label mb-1">Buscar código / PDF</label>
             <input id="fTexto" class="form-control form-control-sm" placeholder="Ej: 20260406-7483-MR"/>
           </div>
@@ -495,7 +545,7 @@
                 <div class="col-12">
                   <div class="alert alert-info mb-0">
                     <b>Nota:</b> si el tablero se abre desde GitHub Pages, los enlaces <code>file:///</code> pueden ser bloqueados por seguridad del navegador.
-                    Para consulta interna local, abre el tablero desde un servidor local o usa el botón <b>Copiar ruta</b>.
+                    Para consulta interna local, el botón <b>Ver PDF</b> intentará visualizar el documento y también permite abrirlo en una nueva pestaña.
                   </div>
                 </div>
               </div>
@@ -507,6 +557,28 @@
 
     </div>
   </main>
+
+
+  <div class="modal fade" id="pdfModal" tabindex="-1" aria-labelledby="pdfModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable" style="max-width:95vw;">
+      <div class="modal-content" style="height:92vh;">
+        <div class="modal-header">
+          <div>
+            <h5 class="modal-title fw-bold" id="pdfModalLabel">Visor de resultado PDF</h5>
+            <div id="pdfModalSubtitle" class="section-note">Cargando información del resultado...</div>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body p-0">
+          <iframe id="pdfViewer" src="" title="Visor PDF" style="width:100%; height:100%; border:0;"></iframe>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary rounded-pill px-3" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" id="btnOpenPdfNewTab" class="btn btn-primary rounded-pill px-3">Abrir en nueva pestaña</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div id="copyToast" class="alert alert-success copy-toast" role="alert">
     Ruta copiada al portapapeles.
@@ -539,7 +611,7 @@
     let selectInstances = {};
 
     const FILTER_IDS = [
-      "fAnio","fAro","fTipo","fFechaRecepcion","fFechaResultado","fEntidad","fEstadoDescarga"
+      "fAnio","fAro","fTipo","fFechaRecepcion","fFechaResultado","fEntidad"
     ];
 
     const TYPE_COLORS = {
@@ -637,7 +709,6 @@
       fillSelect("fFechaRecepcion", uniq(data.map(d => d.FECHA_RECEPCION)).sort(), "Todas");
       fillSelect("fFechaResultado", uniq(data.map(d => d.FECHA_RESULTADOS)).sort(), "Todas");
       fillSelect("fEntidad", uniq(data.map(d => d.ENTIDAD_QUE_REMITE)).sort((a,b)=>a.localeCompare(b,'es')), "Todas");
-      fillSelect("fEstadoDescarga", uniq(data.map(d => d.ESTADO_DESCARGA)).sort((a,b)=>a.localeCompare(b,'es')), "Todos");
       initSearchableSelects();
     }
 
@@ -708,7 +779,6 @@
       const frec = document.getElementById("fFechaRecepcion").value;
       const fres = document.getElementById("fFechaResultado").value;
       const entidad = document.getElementById("fEntidad").value;
-      const estadoDescarga = document.getElementById("fEstadoDescarga").value;
       const texto = norm(document.getElementById("fTexto").value);
 
       LIST = RAW.filter(d => {
@@ -718,7 +788,6 @@
         if(frec && d.FECHA_RECEPCION !== frec) return false;
         if(fres && d.FECHA_RESULTADOS !== fres) return false;
         if(entidad && d.ENTIDAD_QUE_REMITE !== entidad) return false;
-        if(estadoDescarga && d.ESTADO_DESCARGA !== estadoDescarga) return false;
 
         if(texto){
           const hay = [
@@ -735,6 +804,30 @@
       renderCharts(LIST);
       renderTable(LIST);
       renderActiveFilters();
+    }
+
+    function renderLoadStatus(metadata = {}, data = []){
+      const loadAlert = document.getElementById("loadAlert");
+      const alertBox = loadAlert ? loadAlert.querySelector(".alert") : null;
+      if(!alertBox) return;
+
+      const total = metadata.total_resultados_indice ?? data.length ?? 0;
+      const pdfOk = metadata.total_pdf_existentes ?? data.filter(d => norm(d.EXISTE_PDF) === "SI").length;
+      const pdfFaltantes = Math.max(0, Number(total || 0) - Number(pdfOk || 0));
+      const pdfRoot = metadata.pdf_root || "Repositorio PDF no disponible en metadata.";
+      const controlRoot = metadata.control_root || "Control de descargas no disponible en metadata.";
+      const fecha = metadata.fecha_actualizacion || "";
+
+      alertBox.innerHTML = `
+        Cargando salidas desde <b>data/resultados_agua/current</b>:
+        <b>indice_resultados_agua.csv</b>, <b>resumen_resultados_agua.csv</b> y <b>metadata_resultados_agua.json</b>.<br>
+        <b>Registros:</b> ${Number(total || 0).toLocaleString("es-CO")} resultados indexados ·
+        ${Number(pdfOk || 0).toLocaleString("es-CO")} PDF disponibles ·
+        ${Number(pdfFaltantes || 0).toLocaleString("es-CO")} PDF faltantes.<br>
+        <b>Repositorio PDF:</b> <span class="text-break">${escapeHTML(pdfRoot)}</span><br>
+        <b>Control de descargas:</b> <span class="text-break">${escapeHTML(controlRoot)}</span>
+        ${fecha ? `<br><b>Última generación del índice:</b> ${escapeHTML(fecha)}` : ``}
+      `;
     }
 
     function renderKPIs(data){
@@ -841,13 +934,41 @@
       });
     }
 
-    function openPDF(url, ruta){
+    let currentPdfTarget = "";
+
+    function openPDF(url, ruta, codigo="", tipo="", aro="", fechaRecepcion="", fechaResultado="", nombrePdf=""){
       const target = url || ruta || "";
       if(!target){
         showToast("No hay ruta disponible para este PDF.", "warning");
         return;
       }
-      window.open(target, "_blank");
+
+      currentPdfTarget = target;
+
+      const title = document.getElementById("pdfModalLabel");
+      const subtitle = document.getElementById("pdfModalSubtitle");
+      const viewer = document.getElementById("pdfViewer");
+      const openBtn = document.getElementById("btnOpenPdfNewTab");
+
+      if(title) title.textContent = nombrePdf || "Visor de resultado PDF";
+      if(subtitle){
+        subtitle.innerHTML = `
+          <b>Código:</b> ${escapeHTML(codigo || "-")} ·
+          <b>Tipo:</b> ${escapeHTML(tipo || "-")} ·
+          <b>ARO:</b> ${escapeHTML(aro || "-")} ·
+          <b>Recepción:</b> ${escapeHTML(fechaRecepcion || "-")} ·
+          <b>Resultado:</b> ${escapeHTML(fechaResultado || "-")}
+        `;
+      }
+
+      if(viewer) viewer.src = target;
+
+      if(openBtn){
+        openBtn.onclick = () => window.open(currentPdfTarget, "_blank");
+      }
+
+      const modal = new bootstrap.Modal(document.getElementById("pdfModal"));
+      modal.show();
     }
 
     async function copyText(text){
@@ -885,19 +1006,13 @@
       const rows = data.map(d => [
         d.ANIO || "",
         d.ARO || "",
-        d.CODIGO_MUESTRA || "",
         typePill(d.TIPO_CODIGO, d.TIPO_NOMBRE),
+        d.CODIGO_MUESTRA || "",
         d.FECHA_RECEPCION || "",
         d.FECHA_RESULTADOS || "",
-        d.ENTIDAD_QUE_REMITE || "",
-        d.ESTADO || "",
-        pdfStatusPill(d.EXISTE_PDF),
-        d.NOMBRE_PDF || "",
-        `<span class="path-cell" title="${escapeHTML(d.RUTA_LOCAL)}">${escapeHTML(d.RUTA_LOCAL)}</span>`,
         `
           <div class="table-actions">
-            <button class="btn btn-primary btn-table" onclick='openPDF(${JSON.stringify(d.URL_LOCAL)}, ${JSON.stringify(d.RUTA_LOCAL)})'>Abrir PDF</button>
-            <button class="btn btn-outline-secondary btn-table" onclick='copyText(${JSON.stringify(d.RUTA_LOCAL)})'>Copiar ruta</button>
+            <button class="btn btn-primary btn-table" onclick='openPDF(${JSON.stringify(d.URL_LOCAL)}, ${JSON.stringify(d.RUTA_LOCAL)}, ${JSON.stringify(d.CODIGO_MUESTRA)}, ${JSON.stringify(d.TIPO_CODIGO)}, ${JSON.stringify(d.ARO)}, ${JSON.stringify(d.FECHA_RECEPCION)}, ${JSON.stringify(d.FECHA_RESULTADOS)}, ${JSON.stringify(d.NOMBRE_PDF)})'>Ver PDF</button>
           </div>
         `
       ]);
@@ -909,19 +1024,15 @@
         columns: [
           { title:"AÑO" },
           { title:"ARO" },
-          { title:"CÓDIGO MUESTRA" },
           { title:"TIPO" },
+          { title:"CÓDIGO MUESTRA" },
           { title:"FECHA RECEPCIÓN" },
           { title:"FECHA RESULTADO" },
-          { title:"ENTIDAD QUE REMITE" },
-          { title:"ESTADO" },
-          { title:"PDF" },
-          { title:"NOMBRE PDF" },
-          { title:"RUTA LOCAL" },
           { title:"ACCIONES", orderable:false }
         ],
-        pageLength: 10,
-        order: [[4, "asc"], [2, "asc"]],
+        pageLength: 20,
+        lengthMenu: [[20, 50, 100, -1], [20, 50, 100, "Todos"]],
+        order: [[4, "asc"], [3, "asc"]],
         language: { url:"https://cdn.datatables.net/plug-ins/1.13.8/i18n/es-ES.json" },
         dom: "Bfrtip",
         buttons: [
@@ -930,8 +1041,7 @@
           { extend:"print", text:"Imprimir", className:"btn btn-outline-primary btn-sm" }
         ],
         columnDefs: [
-          { targets:[10], visible:false },
-          { targets:[3,8,11], className:"text-center" }
+          { targets:[2,6], className:"text-center" }
         ]
       });
     }
@@ -953,7 +1063,6 @@
       addChip("Fecha recepción", document.getElementById("fFechaRecepcion").value);
       addChip("Fecha resultados", document.getElementById("fFechaResultado").value);
       addChip("Entidad", document.getElementById("fEntidad").value);
-      addChip("Estado descarga", document.getElementById("fEstadoDescarga").value);
       addChip("Texto", document.getElementById("fTexto").value);
 
       document.getElementById("activeFilters").innerHTML = chips.length
@@ -996,6 +1105,8 @@
           document.getElementById("rutaPDFRoot").textContent = "No disponible en metadata.";
         }
 
+        renderLoadStatus(metadata, RAW);
+
         document.getElementById("lastUpdate").className = "badge text-bg-success last-update-badge";
         applyFilters();
       }catch(e){
@@ -1008,6 +1119,23 @@
         btn.textContent = "Refrescar datos";
       }
     }
+
+    document.getElementById("btnToggleStatus")?.addEventListener("click", () => {
+      const body = document.getElementById("loadAlert");
+      const hint = document.getElementById("statusHint");
+      const btn = document.getElementById("btnToggleStatus");
+      if(!body || !hint || !btn) return;
+
+      body.classList.toggle("d-none");
+      const hidden = body.classList.contains("d-none");
+      hint.textContent = hidden ? "Oculto" : "Visible";
+      btn.textContent = hidden ? "Ver detalle" : "Ocultar detalle";
+    });
+
+    document.getElementById("pdfModal")?.addEventListener("hidden.bs.modal", () => {
+      const viewer = document.getElementById("pdfViewer");
+      if(viewer) viewer.src = "";
+    });
 
     document.getElementById("btnFiltrar").addEventListener("click", applyFilters);
     document.getElementById("btnLimpiar").addEventListener("click", clearFilters);
