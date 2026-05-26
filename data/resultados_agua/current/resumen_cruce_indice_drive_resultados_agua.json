@@ -1,0 +1,14 @@
+{
+  "fecha_generacion": "2026-05-26 16:55:05",
+  "indice_resultados": "G:\\Mi unidad\\8.UES\\PAGINA INDICADORES\\UESVALLE\\data\\resultados_agua\\current\\indice_resultados_agua.csv",
+  "indice_drive": "G:\\Mi unidad\\8.UES\\PAGINA INDICADORES\\UESVALLE\\data\\resultados_agua\\current\\indice_drive_resultados_agua.csv",
+  "backup_indice_anterior": "G:\\Mi unidad\\8.UES\\PAGINA INDICADORES\\UESVALLE\\data\\resultados_agua\\archive\\indice_resultados_agua_backup_antes_drive_20260526_165505.csv",
+  "filas_indice_resultados": 33,
+  "filas_indice_drive": 344,
+  "coincidencias_por_nombre_pdf": 6,
+  "coincidencias_por_codigo": 0,
+  "coincidencias_total": 6,
+  "filas_sin_nombre_pdf": 0,
+  "filas_sin_match_drive": 27,
+  "salida_indice_actualizado": "G:\\Mi unidad\\8.UES\\PAGINA INDICADORES\\UESVALLE\\data\\resultados_agua\\current\\indice_resultados_agua.csv"
+}

@@ -1,20 +1,35 @@
 {
-  "fecha_actualizacion": "2026-05-26 09:50:49",
+  "proceso": "generar_inventario_manual_resultados_agua",
+  "fecha_ejecucion": "2026-05-26 14:43:49",
   "portal_root": "G:\\Mi unidad\\8.UES\\PAGINA INDICADORES\\UESVALLE",
-  "repositorio_resultados": "G:\\.shortcut-targets-by-id\\1yROfpmz8yE8ttn9XJ1jioWMULcTpV8XA\\2026\\Agua para consumo\\Resultados_muestras",
-  "pdf_root": "G:\\.shortcut-targets-by-id\\1yROfpmz8yE8ttn9XJ1jioWMULcTpV8XA\\2026\\Agua para consumo\\Resultados_muestras\\PDF_Resultados",
-  "control_root": "G:\\.shortcut-targets-by-id\\1yROfpmz8yE8ttn9XJ1jioWMULcTpV8XA\\2026\\Agua para consumo\\Resultados_muestras\\Control_Descargas",
-  "total_resultados_indice": 33,
-  "total_pdf_existentes": 33,
-  "total_por_aro": {
-    "Cali": 10,
-    "Cartago": 6,
-    "Tulua": 17
+  "input_dir": "G:\\Mi unidad\\8.UES\\PAGINA INDICADORES\\UESVALLE\\scripts\\resultados_agua\\02_inventario_manual",
+  "output_dir": "G:\\Mi unidad\\8.UES\\PAGINA INDICADORES\\UESVALLE\\data\\resultados_agua\\current",
+  "archivos_leidos": {
+    "Cartago": {
+      "archivo": "G:\\Mi unidad\\8.UES\\PAGINA INDICADORES\\UESVALLE\\scripts\\resultados_agua\\02_inventario_manual\\FECHAS CARTAGO.txt",
+      "existe": true,
+      "registros_brutos": 1250
+    },
+    "Cali": {
+      "archivo": "G:\\Mi unidad\\8.UES\\PAGINA INDICADORES\\UESVALLE\\scripts\\resultados_agua\\02_inventario_manual\\FECHAS CALI.txt",
+      "existe": true,
+      "registros_brutos": 1498
+    },
+    "Tulua": {
+      "archivo": "G:\\Mi unidad\\8.UES\\PAGINA INDICADORES\\UESVALLE\\scripts\\resultados_agua\\02_inventario_manual\\FECHAS TULUA.txt",
+      "existe": true,
+      "registros_brutos": 1791
+    }
   },
-  "total_por_tipo": {
-    "MR": 6,
-    "VIG": 27
-  },
-  "archivo_indice": "G:\\Mi unidad\\8.UES\\PAGINA INDICADORES\\UESVALLE\\data\\resultados_agua\\current\\indice_resultados_agua.csv",
-  "archivo_resumen": "G:\\Mi unidad\\8.UES\\PAGINA INDICADORES\\UESVALLE\\data\\resultados_agua\\current\\resumen_resultados_agua.csv"
+  "total_registros_brutos": 4539,
+  "total_codigos_unicos": 4532,
+  "total_filas_duplicadas": 14,
+  "total_codigos_duplicados": 7,
+  "salidas": {
+    "inventario_bruto": "G:\\Mi unidad\\8.UES\\PAGINA INDICADORES\\UESVALLE\\data\\resultados_agua\\current\\inventario_resultados_agua_bruto.csv",
+    "inventario_unico": "G:\\Mi unidad\\8.UES\\PAGINA INDICADORES\\UESVALLE\\data\\resultados_agua\\current\\inventario_resultados_agua.csv",
+    "duplicados": "G:\\Mi unidad\\8.UES\\PAGINA INDICADORES\\UESVALLE\\data\\resultados_agua\\current\\duplicados_inventario_resultados_agua.csv",
+    "resumen_fechas": "G:\\Mi unidad\\8.UES\\PAGINA INDICADORES\\UESVALLE\\data\\resultados_agua\\current\\resumen_fechas_resultados_agua.csv",
+    "resumen_general": "G:\\Mi unidad\\8.UES\\PAGINA INDICADORES\\UESVALLE\\data\\resultados_agua\\current\\resumen_resultados_agua.csv"
+  }
 }
