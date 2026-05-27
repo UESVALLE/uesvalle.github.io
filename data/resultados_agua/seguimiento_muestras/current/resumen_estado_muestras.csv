@@ -1,0 +1,11 @@
+﻿ARO,ESTADO,TIENE_RESULTADO,SEMAFORO_PENDIENTE,TOTAL
+Cali,Analizando,NO,En término,16
+Cali,Finalizada,SI,Finalizada,23
+Cali,Recepcionada,NO,En término,17
+Cartago,Analizando,NO,En término,14
+Cartago,Finalizada,SI,Finalizada,13
+Cartago,Recepcionada,NO,En término,14
+Cartago,Recepcionada,SI,Finalizada,1
+Tulua,Analizando,NO,En término,11
+Tulua,Finalizada,SI,Finalizada,23
+Tulua,Recepcionada,NO,En término,20

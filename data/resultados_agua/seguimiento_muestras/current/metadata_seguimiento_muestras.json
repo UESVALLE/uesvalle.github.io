@@ -1,0 +1,33 @@
+{
+  "fecha_generacion": "2026-05-26 21:54:32",
+  "run_id": "20260526_215431",
+  "version_script": "V2_Historico",
+  "total_registros": 152,
+  "total_con_resultado": 60,
+  "total_sin_resultado": 92,
+  "parametros": {
+    "aros": [
+      "Cartago",
+      "Tuluá",
+      "Cali"
+    ],
+    "dias_rango": 15,
+    "max_paginas": 3,
+    "page_size": 100,
+    "headless": true,
+    "url": "https://gestion-muestras.valledelcauca.gov.co/home/simple-list-samples",
+    "duracion_segundos": 182.08
+  },
+  "salidas_current": {
+    "seguimiento_csv": "G:\\Mi unidad\\8.UES\\PAGINA INDICADORES\\UESVALLE\\data\\resultados_agua\\seguimiento_muestras\\current\\seguimiento_muestras_registradas_agua.csv",
+    "seguimiento_xlsx": "G:\\Mi unidad\\8.UES\\PAGINA INDICADORES\\UESVALLE\\data\\resultados_agua\\seguimiento_muestras\\current\\seguimiento_muestras_registradas_agua.xlsx",
+    "resumen_csv": "G:\\Mi unidad\\8.UES\\PAGINA INDICADORES\\UESVALLE\\data\\resultados_agua\\seguimiento_muestras\\current\\resumen_estado_muestras.csv",
+    "metadata_json": "G:\\Mi unidad\\8.UES\\PAGINA INDICADORES\\UESVALLE\\data\\resultados_agua\\seguimiento_muestras\\current\\metadata_seguimiento_muestras.json"
+  },
+  "salidas_historical": {
+    "seguimiento_csv": "G:\\Mi unidad\\8.UES\\PAGINA INDICADORES\\UESVALLE\\data\\resultados_agua\\seguimiento_muestras\\historical\\seguimiento_muestras_registradas_agua_20260526_215431.csv",
+    "seguimiento_xlsx": "G:\\Mi unidad\\8.UES\\PAGINA INDICADORES\\UESVALLE\\data\\resultados_agua\\seguimiento_muestras\\historical\\seguimiento_muestras_registradas_agua_20260526_215431.xlsx",
+    "resumen_csv": "G:\\Mi unidad\\8.UES\\PAGINA INDICADORES\\UESVALLE\\data\\resultados_agua\\seguimiento_muestras\\historical\\resumen_estado_muestras_20260526_215431.csv",
+    "metadata_json": "G:\\Mi unidad\\8.UES\\PAGINA INDICADORES\\UESVALLE\\data\\resultados_agua\\seguimiento_muestras\\historical\\metadata_seguimiento_muestras_20260526_215431.json"
+  }
+}
