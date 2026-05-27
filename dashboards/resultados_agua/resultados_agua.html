@@ -489,6 +489,24 @@
             <span id="segLastUpdate" class="badge text-bg-light border">Seguimiento: cargando…</span>
           </div>
 
+          <div class="row g-2 align-items-end mb-3">
+            <div class="col-12 col-md-4 col-lg-3">
+              <label class="form-label filter-label mb-1">Estado</label>
+              <select id="fSegEstado" class="form-select form-select-sm">
+                <option value="">Todos</option>
+              </select>
+            </div>
+            <div class="col-12 col-md-4 col-lg-3">
+              <label class="form-label filter-label mb-1">Semáforo seguimiento</label>
+              <select id="fSegSemaforo" class="form-select form-select-sm">
+                <option value="">Todos</option>
+              </select>
+            </div>
+            <div class="col-12 col-md-4 col-lg-3">
+              <button id="btnLimpiarSeguimiento" class="btn btn-outline-secondary btn-sm w-100">Limpiar filtros seguimiento</button>
+            </div>
+          </div>
+
           <section class="row g-3 mb-3 row-cols-1 row-cols-sm-2 row-cols-lg-6">
             <div class="col">
               <div class="kpi-card p-3">
@@ -687,6 +705,8 @@
     let charts = {};
     let seguimientoCharts = {};
     let selectInstances = {};
+    let seguimientoEstadoFilter = "";
+    let seguimientoSemaforoFilter = "";
 
     const FILTER_IDS = [
       "fAnio","fMesRecepcion","fAro","fTipo","fFechaRecepcion"
@@ -926,6 +946,8 @@
     function parseSeguimientoRows(rows){
       return rows.map(r => ({
         ARO: r["ARO"] || "",
+        MUNICIPIO: r["MUNICIPIO"] || r["Municipio"] || r["MUNICIPIO_ACUEDUCTO"] || r["Municipio_acueducto"] || r["Municipio_punto_muestreo"] || r["MUNICIPIO_PUNTO_MUESTREO"] || "",
+        PRESTADOR: r["PRESTADOR"] || r["NOMBRE_PRESTADOR"] || r["Nombre del acueducto"] || r["NOMBRE_ACUEDUCTO"] || r["Nombre de la entidad que remite la muestra"] || r["ENTIDAD_PRESTADORA"] || "",
         USUARIO_ARO: r["USUARIO_ARO"] || "",
         CODIGO_MUESTRA: r["CODIGO_MUESTRA"] || r["Codigo"] || "",
         FECHA_ENVIO: r["FECHA_ENVIO"] || "",
@@ -1228,6 +1250,21 @@
       return `<span class="seguimiento-status ${cls}">${escapeHTML(value || "Sin dato")}</span>`;
     }
 
+
+    function fillSeguimientoFilterOptions(){
+      const estadoEl = document.getElementById("fSegEstado");
+      const semEl = document.getElementById("fSegSemaforo");
+      if(estadoEl){
+        const estados = uniq(SEGUIMIENTO_RAW.map(d => d.ESTADO)).sort((a,b)=>a.localeCompare(b,'es'));
+        estadoEl.innerHTML = `<option value="">Todos</option>` + estados.map(v => `<option value="${escapeHTML(v)}">${escapeHTML(v)}</option>`).join("");
+        estadoEl.value = seguimientoEstadoFilter || "";
+      }
+      if(semEl){
+        const semaforos = uniq(SEGUIMIENTO_RAW.map(d => d.SEMAFORO_PENDIENTE)).sort((a,b)=>a.localeCompare(b,'es'));
+        semEl.innerHTML = `<option value="">Todos</option>` + semaforos.map(v => `<option value="${escapeHTML(v)}">${escapeHTML(v)}</option>`).join("");
+        semEl.value = seguimientoSemaforoFilter || "";
+      }
+    }
     function filterSeguimiento(){
       const anio = document.getElementById("fAnio").value;
       const mes = document.getElementById("fMesRecepcion").value;
@@ -1235,6 +1272,8 @@
       const tipos = getTipoValues();
       const frec = document.getElementById("fFechaRecepcion").value;
       const texto = norm(document.getElementById("fTexto").value);
+      const estadoSeg = document.getElementById("fSegEstado")?.value || seguimientoEstadoFilter || "";
+      const semaforoSeg = document.getElementById("fSegSemaforo")?.value || seguimientoSemaforoFilter || "";
 
       return SEGUIMIENTO_RAW.filter(d => {
         const anioSeg = d.FECHA_RECEPCION ? String(parseDMY(d.FECHA_RECEPCION)?.getFullYear() || "") : "";
@@ -1243,6 +1282,8 @@
         if(aro && d.ARO !== aro) return false;
         if(tipos.length && !tipos.includes(d.TIPO_CODIGO)) return false;
         if(frec && d.FECHA_RECEPCION !== frec) return false;
+        if(estadoSeg && d.ESTADO !== estadoSeg) return false;
+        if(semaforoSeg && d.SEMAFORO_PENDIENTE !== semaforoSeg) return false;
 
         if(texto){
           const hay = [d.CODIGO_MUESTRA, d.ARO, d.TIPO_CODIGO, d.ESTADO, d.SEMAFORO_PENDIENTE].map(norm).join(" | ");
@@ -1285,7 +1326,18 @@
       seguimientoCharts.chartSegEstado = new Chart(document.getElementById("chartSegEstado"), {
         type:"doughnut",
         data:{ labels: estadoPairs.map(x => x[0]), datasets:[{ data: estadoPairs.map(x => x[1]) }] },
-        options:{ maintainAspectRatio:false, plugins:{ legend:{position:"bottom"}, datalabels:{ color:"#111827", font:{weight:700}, formatter:(v)=>v } } }
+        options:{
+          maintainAspectRatio:false,
+          onClick:(evt, elements) => {
+            if(!elements.length) return;
+            const estado = estadoPairs[elements[0].index]?.[0] || "";
+            seguimientoEstadoFilter = (seguimientoEstadoFilter === estado) ? "" : estado;
+            const el = document.getElementById("fSegEstado");
+            if(el) el.value = seguimientoEstadoFilter;
+            applyFilters();
+          },
+          plugins:{ legend:{position:"bottom"}, datalabels:{ color:"#111827", font:{weight:700}, formatter:(v)=>v } }
+        }
       });
 
       const aroPairs = groupCount(data, "ARO");
@@ -1294,7 +1346,19 @@
       seguimientoCharts.chartSegAro = new Chart(document.getElementById("chartSegAro"), {
         type:"bar",
         data:{ labels: aroPairs.map(x => x[0]), datasets:[{ label:"Muestras", data: aroPairs.map(x => x[1]), borderWidth:1, borderRadius:7 }] },
-        options:{ maintainAspectRatio:false, layout:{padding:{top:24}}, plugins:{ legend:{display:false}, datalabels:{anchor:"end", align:"end", offset:4, clip:false, color:"#111827", font:{weight:700}} }, scales:{y:{beginAtZero:true, suggestedMax:Math.ceil(maxAro*1.18), ticks:{precision:0}}} }
+        options:{
+          maintainAspectRatio:false,
+          layout:{padding:{top:24}},
+          onClick:(evt, elements) => {
+            if(!elements.length) return;
+            const aro = aroPairs[elements[0].index]?.[0] || "";
+            const current = document.getElementById("fAro")?.value || "";
+            setSelectValue("fAro", current === aro ? "" : aro);
+            applyFilters();
+          },
+          plugins:{ legend:{display:false}, datalabels:{anchor:"end", align:"end", offset:4, clip:false, color:"#111827", font:{weight:700}} },
+          scales:{y:{beginAtZero:true, suggestedMax:Math.ceil(maxAro*1.18), ticks:{precision:0}}}
+        }
       });
 
       const semPairs = groupCount(data, "SEMAFORO_PENDIENTE");
@@ -1302,13 +1366,26 @@
       seguimientoCharts.chartSegSemaforo = new Chart(document.getElementById("chartSegSemaforo"), {
         type:"pie",
         data:{ labels: semPairs.map(x => x[0]), datasets:[{ data: semPairs.map(x => x[1]) }] },
-        options:{ maintainAspectRatio:false, plugins:{ legend:{position:"bottom"}, datalabels:{ color:"#111827", font:{weight:700}, formatter:(v)=>v } } }
+        options:{
+          maintainAspectRatio:false,
+          onClick:(evt, elements) => {
+            if(!elements.length) return;
+            const semaforo = semPairs[elements[0].index]?.[0] || "";
+            seguimientoSemaforoFilter = (seguimientoSemaforoFilter === semaforo) ? "" : semaforo;
+            const el = document.getElementById("fSegSemaforo");
+            if(el) el.value = seguimientoSemaforoFilter;
+            applyFilters();
+          },
+          plugins:{ legend:{position:"bottom"}, datalabels:{ color:"#111827", font:{weight:700}, formatter:(v)=>v } }
+        }
       });
     }
 
     function renderSeguimientoTable(data){
       const rows = data.map(d => [
         d.ARO || "",
+        d.MUNICIPIO || "Sin dato",
+        d.PRESTADOR || "Sin dato",
         d.CODIGO_MUESTRA || "",
         typePill(d.TIPO_CODIGO, d.TIPO),
         d.FECHA_RECEPCION || "",
@@ -1323,6 +1400,8 @@
         data: rows,
         columns: [
           {title:"ARO"},
+          {title:"MUNICIPIO"},
+          {title:"PRESTADOR"},
           {title:"CÓDIGO"},
           {title:"TIPO"},
           {title:"FECHA RECEPCIÓN"},
@@ -1331,9 +1410,9 @@
           {title:"DÍAS"},
           {title:"SEMÁFORO"}
         ],
-        pageLength: 10,
-        lengthMenu: [[10,20,50,100,-1],[10,20,50,100,"Todos"]],
-        order: [[3,"desc"],[1,"asc"]],
+        pageLength: 20,
+        lengthMenu: [[20,50,100,-1],[20,50,100,"Todos"]],
+        order: [[5,"desc"],[3,"asc"]],
         language: { url:"https://cdn.datatables.net/plug-ins/1.13.8/i18n/es-ES.json" },
         dom: "Bfrtip",
         buttons: [
@@ -1341,8 +1420,8 @@
           { extend:"csvHtml5", title:"seguimiento_muestras_registradas_agua", text:"CSV", className:"btn btn-outline-secondary btn-sm" }
         ],
         columnDefs:[
-          {targets:[2,5,7], className:"text-center"},
-          {targets:[3,4], render:function(data, type){ if(type==="sort"||type==="type"){ const dt=parseDMY(data); return dt?dt.getTime():0; } return data || ""; }}
+          {targets:[4,7,9], className:"text-center"},
+          {targets:[5,6], render:function(data, type){ if(type==="sort"||type==="type"){ const dt=parseDMY(data); return dt?dt.getTime():0; } return data || ""; }}
         ]
       });
     }
@@ -1499,6 +1578,21 @@
     document.getElementById("btnLimpiar").addEventListener("click", clearFilters);
     document.getElementById("btnClearActiveFilters").addEventListener("click", clearFilters);
     document.getElementById("btnRefrescar").addEventListener("click", loadData);
+    document.getElementById("fSegEstado")?.addEventListener("change", (e) => {
+      seguimientoEstadoFilter = e.target.value || "";
+      applyFilters();
+    });
+    document.getElementById("fSegSemaforo")?.addEventListener("change", (e) => {
+      seguimientoSemaforoFilter = e.target.value || "";
+      applyFilters();
+    });
+    document.getElementById("btnLimpiarSeguimiento")?.addEventListener("click", () => {
+      seguimientoEstadoFilter = "";
+      seguimientoSemaforoFilter = "";
+      if(document.getElementById("fSegEstado")) document.getElementById("fSegEstado").value = "";
+      if(document.getElementById("fSegSemaforo")) document.getElementById("fSegSemaforo").value = "";
+      applyFilters();
+    });
 
     document.getElementById("fTexto").addEventListener("keydown", (e) => {
       if(e.key === "Enter") applyFilters();
