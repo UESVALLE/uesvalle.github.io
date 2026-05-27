@@ -9,3 +9,8 @@ scripts/resultados_agua/logs/
 scripts/resultados_agua/04_seguimiento_muestras/Nueva carpeta/
 **/~$*.xlsx
 **/~$*.xls
+
+# Archivos locales/pruebas resultados agua
+scripts/resultados_agua/01_operativos/Descargar_Resultados_Agua_UESVALLE.py
+scripts/resultados_agua/01_operativos/Nueva carpeta/
+scripts/resultados_agua/03_versiones_prueba/Descargar_Resultados_Agua_UESVALLE_V7.py
