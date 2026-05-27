@@ -46,48 +46,6 @@
     }
     .board-subtitle{ color:var(--text-muted); font-size:.95rem; }
     .last-update-badge{ font-size:.95rem; padding:.5rem .8rem; border-radius:999px; }
-    .header-status{
-      display:flex;
-      flex-direction:column;
-      align-items:flex-end;
-      gap:.25rem;
-      min-width:260px;
-    }
-    .header-status #lastUpdate{
-      font-size:.82rem;
-      padding:.45rem .75rem !important;
-    }
-    .mini-status{
-      font-size:.78rem;
-      color:#1d4ed8;
-      font-weight:800;
-      display:flex;
-      gap:.35rem;
-      align-items:center;
-      justify-content:flex-end;
-      flex-wrap:wrap;
-    }
-    .mini-status button{
-      border:0;
-      background:transparent;
-      color:#1d4ed8;
-      font-weight:850;
-      padding:0;
-      text-decoration:none;
-    }
-    .mini-status button:hover{ text-decoration:underline; }
-    .status-body .alert{
-      border-radius:.8rem;
-      background:#d9f4fb;
-      border:1px solid #aee7f4;
-      color:#24515d;
-      font-size:.95rem;
-      line-height:1.45;
-    }
-    @media (max-width:992px){
-      .header-status{align-items:flex-start; min-width:0;}
-      .mini-status{justify-content:flex-start;}
-    }
 
     .navbar .nav-link,.navbar .dropdown-toggle{ font-weight:600; }
     .dropdown-menu .dropdown-item.active{ background:#2e64d2; }
@@ -114,9 +72,9 @@
     .filter-label{ font-size:.88rem; font-weight:600; color:#475467; }
     .section-note{ font-size:.9rem; color:#6b7280; }
     .chart-container{ height:380px; position:relative; }
+    @media (min-width: 992px){ .row-cols-lg-7 > *{ flex:0 0 auto; width:14.2857%; } }
     .chart-container-small{ height:300px; position:relative; }
     .chart-card canvas{ cursor:pointer; }
-    .chart-filter-hint{ font-size:.78rem; color:#1d4ed8; font-weight:700; }
 
     .type-pill{
       display:inline-block; border-radius:999px; padding:.28rem .7rem;
@@ -177,20 +135,6 @@
       font-size:.76rem;
       font-weight:700;
     }
-    .action-state{
-      display:inline-block;
-      border-radius:999px;
-      padding:.18rem .55rem;
-      font-size:.76rem;
-      font-weight:800;
-      border:1px solid #d0d5dd;
-      background:#f8fafc;
-      color:#475467;
-      white-space:nowrap;
-    }
-    .action-local{ background:#fff7ed; color:#9a3412; border-color:#fed7aa; }
-    .action-none{ background:#f1f5f9; color:#475569; border-color:#cbd5e1; }
-
 
     .table-toggle-header{
       width:100%;
@@ -340,58 +284,48 @@
       </section>
 
       <section class="soft-card p-3 mb-3">
-        <div class="d-flex flex-column flex-lg-row align-items-lg-center gap-2">
+        <div class="d-flex flex-column flex-lg-row align-items-lg-center">
           <div class="me-auto">
-            <h1 class="board-title">Tablero de Consulta y Seguimiento de Resultados de Agua</h1>
+            <h1 class="board-title">Repositorio de Resultados de Agua</h1>
             <div class="board-subtitle mt-1">
-              Consulta, seguimiento documental y control de disponibilidad de resultados PDF descargados desde la plataforma de gestión de muestras.
+              Consulta de resultados PDF descargados desde la plataforma de gestión de muestras.
             </div>
           </div>
-          <div class="header-status mt-2 mt-lg-0">
+          <div class="mt-2 mt-lg-0">
             <span id="lastUpdate" class="badge text-bg-success last-update-badge">Cargando…</span>
-            <div class="mini-status">
-              <span>Estado de carga de datos</span>
-              <button type="button" id="btnToggleStatus">Ver detalle</button>
-              <span id="statusHint">Oculto</span>
-            </div>
-          </div>
-        </div>
-
-        <div id="loadAlert" class="status-body d-none mt-3">
-          <div class="alert alert-info mb-0 py-2">
-            Cargando información desde <b>data/resultados_agua/current</b>:
-            índice de resultados, metadata, disponibilidad de PDF y enlaces Drive.
           </div>
         </div>
       </section>
 
       <section class="soft-card p-3 mb-3">
-        <div class="row g-3 align-items-end">
-          <div class="col-12 col-sm-6 col-lg-2">
+        <div class="row g-2 align-items-end">
+          <div class="col-6 col-lg-1">
             <label class="form-label filter-label mb-1">Año</label>
             <select id="fAnio" class="form-select form-select-sm"><option value="">Todos</option></select>
           </div>
-          <div class="col-12 col-sm-6 col-lg-3">
+          <div class="col-6 col-lg-2">
+            <label class="form-label filter-label mb-1">Mes recepción</label>
+            <select id="fMesRecepcion" class="form-select form-select-sm"><option value="">Todos</option></select>
+          </div>
+          <div class="col-6 col-lg-2">
             <label class="form-label filter-label mb-1">ARO</label>
             <select id="fAro" class="form-select form-select-sm"><option value="">Todos</option></select>
           </div>
-          <div class="col-12 col-sm-6 col-lg-3">
+          <div class="col-6 col-lg-2">
             <label class="form-label filter-label mb-1">Tipo resultado</label>
             <select id="fTipo" class="form-select form-select-sm" multiple></select>
           </div>
-          <div class="col-12 col-sm-6 col-lg-2">
+          <div class="col-6 col-lg-2">
             <label class="form-label filter-label mb-1">Fecha recepción</label>
             <select id="fFechaRecepcion" class="form-select form-select-sm"><option value="">Todas</option></select>
           </div>
-
-          <div class="col-12 col-lg-8">
-            <label class="form-label filter-label mb-1">Buscar código / PDF</label>
+          <div class="col-12 col-lg-2">
+            <label class="form-label filter-label mb-1">Código</label>
             <input id="fTexto" class="form-control form-control-sm" placeholder="Ej: 20260406-7483-MR"/>
           </div>
-
-          <div class="col-12 col-lg-4 d-flex gap-2 justify-content-lg-end pt-2">
-            <button id="btnFiltrar" class="btn btn-primary btn-sm px-3 w-100">Aplicar</button>
-            <button id="btnLimpiar" class="btn btn-outline-secondary btn-sm px-3 w-100">Limpiar</button>
+          <div class="col-12 col-lg-1 d-flex gap-2 justify-content-lg-end pt-2">
+            <button id="btnFiltrar" class="btn btn-primary btn-sm px-2 w-100">Aplicar</button>
+            <button id="btnLimpiar" class="btn btn-outline-secondary btn-sm px-2 w-100">Limpiar</button>
           </div>
         </div>
       </section>
@@ -411,47 +345,54 @@
         </div>
       </section>
 
-      <section class="row g-3 mb-3">
-        <div class="col-12 col-sm-6 col-lg-2">
+      <section class="row g-3 mb-3 row-cols-1 row-cols-sm-2 row-cols-lg-7">
+        <div class="col">
           <div class="kpi-card p-3">
-            <div class="kpi-label">Resultados indexados</div>
+            <div class="kpi-label">Resultados</div>
             <div id="kpiTotal" class="kpi-value">–</div>
             <div class="kpi-mini">Registros filtrados</div>
           </div>
         </div>
-        <div class="col-12 col-sm-6 col-lg-2">
+        <div class="col">
           <div class="kpi-card p-3">
             <div class="kpi-label">PDF disponibles</div>
             <div id="kpiPDF" class="kpi-value">–</div>
-            <div class="kpi-mini">Con archivo físico validado</div>
+            <div class="kpi-mini">Con enlace o archivo validado</div>
           </div>
         </div>
-        <div class="col-12 col-sm-6 col-lg-2">
+        <div class="col">
           <div class="kpi-card p-3">
-            <div class="kpi-label">Mapas de Riesgo</div>
+            <div class="kpi-label">MR</div>
             <div id="kpiMR" class="kpi-value">–</div>
-            <div class="kpi-mini">Tipo MR</div>
+            <div class="kpi-mini">Mapas de Riesgo</div>
           </div>
         </div>
-        <div class="col-12 col-sm-6 col-lg-2">
+        <div class="col">
           <div class="kpi-card p-3">
-            <div class="kpi-label">Vigilancia rutinaria</div>
+            <div class="kpi-label">VDM</div>
+            <div id="kpiVDM" class="kpi-value">–</div>
+            <div class="kpi-mini">Vigilancia de Mapas</div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="kpi-card p-3">
+            <div class="kpi-label">VIG</div>
             <div id="kpiVIG" class="kpi-value">–</div>
-            <div class="kpi-mini">Tipo VIG</div>
+            <div class="kpi-mini">Vigilancia Rutinaria</div>
           </div>
         </div>
-        <div class="col-12 col-sm-6 col-lg-2">
+        <div class="col">
           <div class="kpi-card p-3">
-            <div class="kpi-label">ARO con registros</div>
-            <div id="kpiARO" class="kpi-value">–</div>
-            <div class="kpi-mini">Áreas operativas</div>
+            <div class="kpi-label">DIAG</div>
+            <div id="kpiDIAG" class="kpi-value">–</div>
+            <div class="kpi-mini">Apoyo Diagnóstico</div>
           </div>
         </div>
-        <div class="col-12 col-sm-6 col-lg-2">
+        <div class="col">
           <div class="kpi-card p-3">
-            <div class="kpi-label">Última actualización</div>
-            <div id="kpiActualizacion" class="kpi-value" style="font-size:1.05rem;">–</div>
-            <div class="kpi-mini">Según metadata</div>
+            <div class="kpi-label">DSAN</div>
+            <div id="kpiDSAN" class="kpi-value">–</div>
+            <div class="kpi-mini">Diagnóstico Sanitario</div>
           </div>
         </div>
       </section>
@@ -462,7 +403,7 @@
             <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-2">
               <div>
                 <h5 class="mb-0">Resultados por tipo</h5>
-                <div class="section-note">Distribución de registros filtrados por clasificación.</div><div class="chart-filter-hint">Clic sobre una barra para filtrar.</div>
+                <div class="section-note">Distribución de registros filtrados por clasificación.</div>
               </div>
             </div>
             <div class="chart-container-small">
@@ -476,7 +417,7 @@
             <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-2">
               <div>
                 <h5 class="mb-0">Resultados por ARO</h5>
-                <div class="section-note">Cantidad de resultados por área operativa.</div><div class="chart-filter-hint">Clic sobre una sección para filtrar.</div>
+                <div class="section-note">Cantidad de resultados por área operativa.</div>
               </div>
             </div>
             <div class="chart-container-small">
@@ -490,7 +431,7 @@
             <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-2">
               <div>
                 <h5 class="mb-0">Disponibilidad PDF</h5>
-                <div class="section-note">Validación física de archivos.</div><div class="chart-filter-hint">Clic sobre una sección para filtrar.</div>
+                <div class="section-note">Validación física de archivos.</div>
               </div>
             </div>
             <div class="chart-container-small">
@@ -505,7 +446,7 @@
           <div class="table-toggle-copy">
             <h5 class="mb-1">Consulta de resultados PDF</h5>
             <div class="section-note mb-0">
-              Tabla principal del repositorio. Permite filtrar, exportar y descargar el PDF.
+              Tabla principal del repositorio. Permite filtrar, exportar y ver el PDF asociado.
             </div>
           </div>
           <span class="table-toggle-arrow" aria-hidden="true">
@@ -553,7 +494,7 @@
                 <div class="col-12">
                   <div class="alert alert-info mb-0">
                     <b>Nota:</b> si el tablero se abre desde GitHub Pages, los enlaces <code>file:///</code> pueden ser bloqueados por seguridad del navegador.
-                    Para consulta interna local o desde GitHub Pages, el botón <b>Descargar PDF</b> usará preferiblemente el enlace individual de Google Drive.
+                    Para consulta web se usa preferiblemente el enlace individual de Google Drive.
                   </div>
                 </div>
               </div>
@@ -565,28 +506,6 @@
 
     </div>
   </main>
-
-
-  <div class="modal fade" id="pdfModal" tabindex="-1" aria-labelledby="pdfModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable" style="max-width:95vw;">
-      <div class="modal-content" style="height:92vh;">
-        <div class="modal-header">
-          <div>
-            <h5 class="modal-title fw-bold" id="pdfModalLabel">Visor de resultado PDF</h5>
-            <div id="pdfModalSubtitle" class="section-note">Cargando información del resultado...</div>
-          </div>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-        </div>
-        <div class="modal-body p-0">
-          <iframe id="pdfViewer" src="" title="Visor PDF" style="width:100%; height:100%; border:0;"></iframe>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-outline-secondary rounded-pill px-3" data-bs-dismiss="modal">Cerrar</button>
-          <button type="button" id="btnOpenPdfNewTab" class="btn btn-primary rounded-pill px-3">Ver PDF</button>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <div id="copyToast" class="alert alert-success copy-toast" role="alert">
     Ruta copiada al portapapeles.
@@ -617,10 +536,9 @@
     let DT = null;
     let charts = {};
     let selectInstances = {};
-    let chartPdfFilter = "";
 
     const FILTER_IDS = [
-      "fAnio","fAro","fTipo","fFechaRecepcion"
+      "fAnio","fMesRecepcion","fAro","fTipo","fFechaRecepcion"
     ];
 
     const TYPE_COLORS = {
@@ -631,6 +549,18 @@
       "DSAN": "#7c3aed",
       "SIN DATO": "#64748b"
     };
+
+    const TYPE_NAMES = {
+      "MR": "Mapas de Riesgo",
+      "VDM": "Vigilancia de Mapas",
+      "VIG": "Vigilancia Rutinaria",
+      "DIAG": "Apoyo Diagnóstico",
+      "DSAN": "Diagnóstico Sanitario",
+      "SIN DATO": "Sin dato"
+    };
+
+    const MONTH_NAMES = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
+    let chartPdfFilter = "";
 
     function norm(v){
       return (v == null ? "" : String(v).trim())
@@ -661,24 +591,21 @@
       });
     }
 
-    function getFieldValue(id){
-      const el = document.getElementById(id);
-      if(!el) return "";
-      if(el.tomselect){
-        const value = el.tomselect.getValue();
-        return Array.isArray(value) ? value : String(value || "");
-      }
-      return el.value || "";
+    function monthKeyFromDate(v){
+      const d = parseDMY(v);
+      if(!d) return "";
+      return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}`;
     }
 
-    function getCurrentFilterState(){
-      return {
-        anio: getFieldValue("fAnio"),
-        aro: getFieldValue("fAro"),
-        tipos: getTipoValues(),
-        frec: getFieldValue("fFechaRecepcion"),
-        texto: document.getElementById("fTexto")?.value || ""
-      };
+    function monthLabel(key){
+      const m = String(key || "").match(/^(\d{4})-(\d{2})$/);
+      if(!m) return key || "";
+      return `${m[1]}-${m[2]} ${MONTH_NAMES[Number(m[2])-1]}`;
+    }
+
+    function typeLabelForChart(code){
+      const c = norm(code) || "SIN DATO";
+      return [c, TYPE_NAMES[c] || "Sin dato"];
     }
 
     function escapeHTML(v){
@@ -720,11 +647,16 @@
       const el = document.getElementById(id);
       const isMulti = id === "fTipo";
 
+      const opts = values.map(v => {
+        const value = typeof v === "object" ? v.value : v;
+        const text = typeof v === "object" ? v.text : v;
+        return `<option value="${escapeHTML(value)}">${escapeHTML(text)}</option>`;
+      }).join("");
+
       if(isMulti){
-        el.innerHTML = values.map(v => `<option value="${escapeHTML(v)}">${escapeHTML(v)}</option>`).join("");
+        el.innerHTML = opts;
       }else{
-        el.innerHTML = `<option value="">${allLabel}</option>` +
-          values.map(v => `<option value="${escapeHTML(v)}">${escapeHTML(v)}</option>`).join("");
+        el.innerHTML = `<option value="">${allLabel}</option>` + opts;
       }
     }
 
@@ -744,7 +676,6 @@
           placeholder: isMulti ? "Seleccione uno o varios..." : "Buscar o seleccionar...",
           plugins: isMulti ? ["remove_button"] : [],
           onChange: function(){
-            refreshFilterOptions();
             applyFilters();
           }
         });
@@ -753,67 +684,11 @@
 
     function fillFilters(data){
       fillSelect("fAnio", uniq(data.map(d => d.ANIO)).sort((a,b)=>String(b).localeCompare(String(a))), "Todos");
+      fillSelect("fMesRecepcion", uniq(data.map(d => monthKeyFromDate(d.FECHA_RECEPCION))).sort((a,b)=>String(b).localeCompare(String(a))).map(k => ({value:k, text:monthLabel(k)})), "Todos");
       fillSelect("fAro", uniq(data.map(d => d.ARO)).sort((a,b)=>a.localeCompare(b,'es')), "Todos");
       fillSelect("fTipo", uniq(data.map(d => d.TIPO_CODIGO)).sort((a,b)=>a.localeCompare(b,'es')));
       fillSelect("fFechaRecepcion", sortDatesDesc(uniq(data.map(d => d.FECHA_RECEPCION))), "Todas");
       initSearchableSelects();
-    }
-
-    function dataForFilterOptions(excludeId){
-      const st = getCurrentFilterState();
-      const texto = norm(st.texto);
-
-      return RAW.filter(d => {
-        if(excludeId !== "fAnio" && st.anio && d.ANIO !== st.anio) return false;
-        if(excludeId !== "fAro" && st.aro && d.ARO !== st.aro) return false;
-        if(excludeId !== "fTipo" && st.tipos.length && !st.tipos.includes(d.TIPO_CODIGO)) return false;
-        if(excludeId !== "fFechaRecepcion" && st.frec && d.FECHA_RECEPCION !== st.frec) return false;
-        if(chartPdfFilter && norm(d.EXISTE_PDF) !== chartPdfFilter) return false;
-
-        if(texto){
-          const hay = [
-            d.CODIGO_MUESTRA, d.NOMBRE_PDF, d.ENTIDAD_QUE_REMITE, d.ARO,
-            d.TIPO_CODIGO, d.TIPO_NOMBRE, d.LOTE_DESCARGA
-          ].map(norm).join(" | ");
-          if(!hay.includes(texto)) return false;
-        }
-
-        return true;
-      });
-    }
-
-    function refreshFilterOptions(){
-      const previous = getCurrentFilterState();
-
-      const setOptions = (id, values, allLabel="Todos") => {
-        const el = document.getElementById(id);
-        const instance = el?.tomselect;
-        if(!instance) return;
-
-        const current = instance.getValue();
-        instance.clearOptions();
-
-        if(id !== "fTipo"){
-          instance.addOption({value:"", text:allLabel});
-        }
-
-        values.forEach(v => instance.addOption({value:v, text:v}));
-        instance.refreshOptions(false);
-
-        if(Array.isArray(current)){
-          const valid = current.filter(v => values.includes(v));
-          instance.setValue(valid, true);
-        }else if(current && values.includes(current)){
-          instance.setValue(current, true);
-        }else if(id !== "fTipo"){
-          instance.setValue("", true);
-        }
-      };
-
-      setOptions("fAnio", uniq(dataForFilterOptions("fAnio").map(d => d.ANIO)).sort((a,b)=>String(b).localeCompare(String(a))), "Todos");
-      setOptions("fAro", uniq(dataForFilterOptions("fAro").map(d => d.ARO)).sort((a,b)=>a.localeCompare(b,'es')), "Todos");
-      setOptions("fTipo", uniq(dataForFilterOptions("fTipo").map(d => d.TIPO_CODIGO)).sort((a,b)=>a.localeCompare(b,'es')));
-      setOptions("fFechaRecepcion", sortDatesDesc(uniq(dataForFilterOptions("fFechaRecepcion").map(d => d.FECHA_RECEPCION))), "Todas");
     }
 
     async function fetchCSV(){
@@ -882,6 +757,7 @@
 
     function applyFilters(){
       const anio = document.getElementById("fAnio").value;
+      const mes = document.getElementById("fMesRecepcion").value;
       const aro = document.getElementById("fAro").value;
       const tipos = getTipoValues();
       const frec = document.getElementById("fFechaRecepcion").value;
@@ -889,6 +765,7 @@
 
       LIST = RAW.filter(d => {
         if(anio && d.ANIO !== anio) return false;
+        if(mes && monthKeyFromDate(d.FECHA_RECEPCION) !== mes) return false;
         if(aro && d.ARO !== aro) return false;
         if(tipos.length && !tipos.includes(d.TIPO_CODIGO)) return false;
         if(frec && d.FECHA_RECEPCION !== frec) return false;
@@ -896,7 +773,7 @@
 
         if(texto){
           const hay = [
-            d.CODIGO_MUESTRA, d.NOMBRE_PDF, d.ENTIDAD_QUE_REMITE, d.ARO,
+            d.CODIGO_MUESTRA, d.NOMBRE_PDF, d.ARO,
             d.TIPO_CODIGO, d.TIPO_NOMBRE, d.LOTE_DESCARGA
           ].map(norm).join(" | ");
           if(!hay.includes(texto)) return false;
@@ -911,58 +788,18 @@
       renderActiveFilters();
     }
 
-    function renderLoadStatus(metadata = {}, data = []){
-      const loadAlert = document.getElementById("loadAlert");
-      const alertBox = loadAlert ? loadAlert.querySelector(".alert") : null;
-      if(!alertBox) return;
-
-      const total = data.length;
-      const pdfOk = data.filter(d => norm(d.EXISTE_PDF) === "SI").length;
-      const driveOk = data.filter(d => String(d.URL_DRIVE_PREVIEW || "").trim() !== "").length;
-      const driveNo = Math.max(0, pdfOk - driveOk);
-      const sinPdf = Math.max(0, total - pdfOk);
-
-      const pdfRoot = metadata.pdf_root || "Repositorio PDF no disponible en metadata.";
-      const controlRoot = metadata.control_root || "Control de descargas no disponible en metadata.";
-      const fecha = metadata.fecha_actualizacion || data.find(d => d.FECHA_ACTUALIZACION)?.FECHA_ACTUALIZACION || "";
-
-      alertBox.innerHTML = `
-        <div class="fw-bold mb-1">Estado de carga de datos del tablero</div>
-        <div>
-          Fuente principal: <b>data/resultados_agua/current/indice_resultados_agua.csv</b>.
-        </div>
-        <div class="mt-1">
-          <b>Registros indexados:</b> ${Number(total || 0).toLocaleString("es-CO")} ·
-          <b>PDF disponibles:</b> ${Number(pdfOk || 0).toLocaleString("es-CO")} ·
-          <b>PDF con enlace Drive:</b> ${Number(driveOk || 0).toLocaleString("es-CO")} ·
-          <b>PDF local/no visible web:</b> ${Number(driveNo || 0).toLocaleString("es-CO")} ·
-          <b>Sin PDF:</b> ${Number(sinPdf || 0).toLocaleString("es-CO")}
-        </div>
-        <div class="mt-1">
-          <b>Repositorio PDF:</b> <span class="text-break">${escapeHTML(pdfRoot)}</span>
-        </div>
-        <div>
-          <b>Control de descargas:</b> <span class="text-break">${escapeHTML(controlRoot)}</span>
-        </div>
-        ${fecha ? `<div><b>Última generación del índice:</b> ${escapeHTML(fecha)}</div>` : ``}
-      `;
-    }
-
     function renderKPIs(data){
       const total = data.length;
       const pdfOk = data.filter(d => norm(d.EXISTE_PDF) === "SI").length;
-      const mr = data.filter(d => norm(d.TIPO_CODIGO) === "MR").length;
-      const vig = data.filter(d => norm(d.TIPO_CODIGO) === "VIG").length;
-      const aros = uniq(data.map(d => d.ARO)).length;
+      const countType = (t) => data.filter(d => norm(d.TIPO_CODIGO) === t).length;
 
       document.getElementById("kpiTotal").textContent = total.toLocaleString("es-CO");
       document.getElementById("kpiPDF").textContent = pdfOk.toLocaleString("es-CO");
-      document.getElementById("kpiMR").textContent = mr.toLocaleString("es-CO");
-      document.getElementById("kpiVIG").textContent = vig.toLocaleString("es-CO");
-      document.getElementById("kpiARO").textContent = aros.toLocaleString("es-CO");
-
-      const last = RAW[0]?.FECHA_ACTUALIZACION || "";
-      document.getElementById("kpiActualizacion").textContent = last ? last.substring(0,16) : "–";
+      document.getElementById("kpiMR").textContent = countType("MR").toLocaleString("es-CO");
+      document.getElementById("kpiVDM").textContent = countType("VDM").toLocaleString("es-CO");
+      document.getElementById("kpiVIG").textContent = countType("VIG").toLocaleString("es-CO");
+      document.getElementById("kpiDIAG").textContent = countType("DIAG").toLocaleString("es-CO");
+      document.getElementById("kpiDSAN").textContent = countType("DSAN").toLocaleString("es-CO");
     }
 
     function destroyChart(id){
@@ -981,40 +818,29 @@
     function setSelectValue(id, value){
       const el = document.getElementById(id);
       if(!el) return;
-      if(el.tomselect){
-        el.tomselect.setValue(value, true);
-      }else{
-        el.value = Array.isArray(value) ? (value[0] || "") : value;
-      }
+      if(el.tomselect) el.tomselect.setValue(value, true);
+      else el.value = value || "";
     }
 
-    function applyChartFilter(kind, value){
-      if(kind === "tipo"){
-        const current = getTipoValues();
-        const alreadySelected = current.length === 1 && current[0] === value;
-        setSelectValue("fTipo", alreadySelected ? [] : [value]);
-      }
+    function setMultiValue(id, values){
+      const el = document.getElementById(id);
+      if(!el) return;
+      if(el.tomselect) el.tomselect.setValue(values, true);
+      else el.value = values?.[0] || "";
+    }
 
-      if(kind === "aro"){
-        const current = document.getElementById("fAro").value || "";
-        setSelectValue("fAro", current === value ? "" : value);
-      }
-
-      if(kind === "pdf"){
-        chartPdfFilter = chartPdfFilter === value ? "" : value;
-      }
-
-      refreshFilterOptions();
-      applyFilters();
+    function clearPdfFilter(){
+      chartPdfFilter = "";
     }
 
     function renderCharts(data){
       const tipoPairs = groupCount(data, "TIPO_CODIGO");
+      const maxTipo = Math.max(0, ...tipoPairs.map(x => x[1]));
       destroyChart("chartTipo");
       charts.chartTipo = new Chart(document.getElementById("chartTipo"), {
         type:"bar",
         data:{
-          labels: tipoPairs.map(x => x[0]),
+          labels: tipoPairs.map(x => typeLabelForChart(x[0])),
           datasets:[{
             label:"Resultados",
             data: tipoPairs.map(x => x[1]),
@@ -1026,17 +852,29 @@
         },
         options:{
           maintainAspectRatio:false,
-          onClick:(evt, elements, chart) => {
+          layout:{ padding:{ top:26 } },
+          onClick:(evt, elements) => {
             if(!elements.length) return;
-            const label = chart.data.labels[elements[0].index];
-            applyChartFilter("tipo", label);
+            const code = tipoPairs[elements[0].index]?.[0] || "";
+            setMultiValue("fTipo", code ? [code] : []);
+            applyFilters();
           },
           plugins:{
             legend:{display:false},
-            tooltip:{callbacks:{afterBody:()=>"Clic para filtrar el tablero"}},
-            datalabels:{ anchor:"end", align:"top", color:"#111827", font:{weight:700} }
+            tooltip:{
+              callbacks:{
+                title:(items) => {
+                  const code = tipoPairs[items[0].dataIndex]?.[0] || "SIN DATO";
+                  return `${code} - ${TYPE_NAMES[norm(code)] || "Sin dato"}`;
+                }
+              }
+            },
+            datalabels:{ anchor:"end", align:"end", offset:4, clip:false, color:"#111827", font:{weight:700} }
           },
-          scales:{ y:{ beginAtZero:true, ticks:{ precision:0 } } }
+          scales:{
+            y:{ beginAtZero:true, suggestedMax: Math.ceil(maxTipo * 1.18), ticks:{ precision:0 } },
+            x:{ ticks:{ font:{ weight:700 } } }
+          }
         }
       });
 
@@ -1046,25 +884,19 @@
         type:"doughnut",
         data:{
           labels: aroPairs.map(x => x[0]),
-          datasets:[{
-            data: aroPairs.map(x => x[1])
-          }]
+          datasets:[{ data: aroPairs.map(x => x[1]) }]
         },
         options:{
           maintainAspectRatio:false,
-          onClick:(evt, elements, chart) => {
+          onClick:(evt, elements) => {
             if(!elements.length) return;
-            const label = chart.data.labels[elements[0].index];
-            applyChartFilter("aro", label);
+            const aro = aroPairs[elements[0].index]?.[0] || "";
+            setSelectValue("fAro", aro);
+            applyFilters();
           },
           plugins:{
             legend:{ position:"bottom" },
-            tooltip:{callbacks:{afterBody:()=>"Clic para filtrar el tablero"}},
-            datalabels:{
-              color:"#111827",
-              font:{weight:700},
-              formatter:(value, ctx) => value
-            }
+            datalabels:{ color:"#111827", font:{weight:700}, formatter:(value) => value }
           }
         }
       });
@@ -1077,78 +909,31 @@
           labels: pdfPairs.map(x => x[0] === "SI" ? "PDF disponible" : "Sin PDF"),
           datasets:[{
             data: pdfPairs.map(x => x[1]),
-            backgroundColor: pdfPairs.map(x => x[0] === "SI" ? "#16a34a" : "#dc2626"),
-            metaValues: pdfPairs.map(x => x[0])
+            backgroundColor: pdfPairs.map(x => x[0] === "SI" ? "#16a34a" : "#dc2626")
           }]
         },
         options:{
           maintainAspectRatio:false,
-          onClick:(evt, elements, chart) => {
+          onClick:(evt, elements) => {
             if(!elements.length) return;
-            const rawValue = chart.data.datasets[0].metaValues[elements[0].index] || "";
-            applyChartFilter("pdf", norm(rawValue) === "SI" ? "SI" : "NO");
+            chartPdfFilter = norm(pdfPairs[elements[0].index]?.[0] || "");
+            applyFilters();
           },
           plugins:{
             legend:{ position:"bottom" },
-            tooltip:{callbacks:{afterBody:()=>"Clic para filtrar el tablero"}},
-            datalabels:{
-              color:"#111827",
-              font:{weight:700},
-              formatter:(value) => value
-            }
+            datalabels:{ color:"#111827", font:{weight:700}, formatter:(value) => value }
           }
         }
       });
     }
 
-    let currentPdfTarget = "";
-
-    function openPDF(url, ruta, codigo="", tipo="", aro="", fechaRecepcion="", fechaResultado="", nombrePdf="", driveView="", driveFileId=""){
-      const previewTarget = url || driveView || ruta || "";
-      const downloadTarget = driveFileId
-        ? `https://drive.google.com/uc?export=download&id=${driveFileId}`
-        : (driveView || url || ruta || "");
-
-      if(!previewTarget && !downloadTarget){
+    function openPDF(url, ruta){
+      const target = url || ruta || "";
+      if(!target){
         showToast("No hay enlace disponible para este PDF.", "warning");
         return;
       }
-
-      currentPdfTarget = downloadTarget || previewTarget;
-
-      const title = document.getElementById("pdfModalLabel");
-      const subtitle = document.getElementById("pdfModalSubtitle");
-      const viewer = document.getElementById("pdfViewer");
-      const openBtn = document.getElementById("btnOpenPdfNewTab");
-
-      if(title) title.textContent = nombrePdf || "Resultado PDF";
-      if(subtitle){
-        subtitle.innerHTML = `
-          <b>Código:</b> ${escapeHTML(codigo || "-")} ·
-          <b>Tipo:</b> ${escapeHTML(tipo || "-")} ·
-          <b>ARO:</b> ${escapeHTML(aro || "-")} ·
-          <b>Recepción:</b> ${escapeHTML(fechaRecepcion || "-")} ·
-          <b>Resultado:</b> ${escapeHTML(fechaResultado || "-")}
-        `;
-      }
-
-      if(viewer){
-        if(url && url.includes("/preview")){
-          viewer.src = url;
-        }else if(driveView){
-          viewer.src = driveView.replace("/view?usp=drive_link", "/preview").replace("/view", "/preview");
-        }else{
-          viewer.src = "";
-        }
-      }
-
-      if(openBtn){
-        openBtn.textContent = "Descargar PDF";
-        openBtn.onclick = () => window.open(currentPdfTarget, "_blank");
-      }
-
-      const modal = new bootstrap.Modal(document.getElementById("pdfModal"));
-      modal.show();
+      window.open(target, "_blank");
     }
 
     async function copyText(text){
@@ -1184,16 +969,12 @@
 
     function renderTable(data){
       const rows = data.map(d => {
-        const hasDrive = String(d.URL_DRIVE_PREVIEW || "").trim() !== "";
-        const hasLocal = String(d.URL_LOCAL || d.RUTA_LOCAL || "").trim() !== "";
+        const driveUrl = d.URL_DRIVE_VIEW || d.URL_DRIVE_PREVIEW || "";
+        const localUrl = d.URL_LOCAL || d.RUTA_LOCAL || "";
         let actionHtml = "";
 
-        if(hasDrive){
-          actionHtml = `
-            <button class="btn btn-primary btn-table" onclick='openPDF(${JSON.stringify(d.URL_DRIVE_PREVIEW || d.URL_DRIVE_VIEW)}, ${JSON.stringify(d.RUTA_LOCAL)}, ${JSON.stringify(d.CODIGO_MUESTRA)}, ${JSON.stringify(d.TIPO_CODIGO)}, ${JSON.stringify(d.ARO)}, ${JSON.stringify(d.FECHA_RECEPCION)}, ${JSON.stringify(d.FECHA_RESULTADOS)}, ${JSON.stringify(d.NOMBRE_PDF)}, ${JSON.stringify(d.URL_DRIVE_VIEW)}, ${JSON.stringify(d.DRIVE_FILE_ID)})'>Ver PDF</button>
-          `;
-        }else if(hasLocal){
-          actionHtml = `<span class="action-state action-local" title="El PDF existe en ruta local, pero no tiene enlace Drive para visualización web.">PDF local / no visible web</span>`;
+        if(driveUrl || localUrl){
+          actionHtml = `<button class="btn btn-primary btn-table" onclick='openPDF(${JSON.stringify(driveUrl || localUrl)}, ${JSON.stringify(d.RUTA_LOCAL)})'>Ver PDF</button>`;
         }else{
           actionHtml = `<span class="action-state action-none">Sin PDF</span>`;
         }
@@ -1205,11 +986,7 @@
           d.CODIGO_MUESTRA || "",
           d.FECHA_RECEPCION || "",
           d.FECHA_RESULTADOS || "",
-          `
-            <div class="table-actions">
-              ${actionHtml}
-            </div>
-          `
+          `<div class="table-actions">${actionHtml}</div>`
         ];
       });
 
@@ -1259,6 +1036,8 @@
       };
 
       addChip("Año", document.getElementById("fAnio").value);
+      const mes = document.getElementById("fMesRecepcion").value;
+      if(mes) addChip("Mes recepción", monthLabel(mes));
       addChip("ARO", document.getElementById("fAro").value);
 
       const tipos = getTipoValues();
@@ -1267,10 +1046,8 @@
       }
 
       addChip("Fecha recepción", document.getElementById("fFechaRecepcion").value);
-      if(chartPdfFilter){
-        chips.push(`<span class="active-filter-chip"><span class="label">PDF:</span> ${chartPdfFilter === "SI" ? "Disponible" : "Sin PDF"}</span>`);
-      }
-      addChip("Texto", document.getElementById("fTexto").value);
+      if(chartPdfFilter) addChip("PDF", chartPdfFilter === "SI" ? "PDF disponible" : "Sin PDF");
+      addChip("Código", document.getElementById("fTexto").value);
 
       document.getElementById("activeFilters").innerHTML = chips.length
         ? chips.join("")
@@ -1284,9 +1061,8 @@
         if(el.tomselect) el.tomselect.clear(true);
         else el.value = "";
       });
-      chartPdfFilter = "";
       document.getElementById("fTexto").value = "";
-      refreshFilterOptions();
+      chartPdfFilter = "";
       applyFilters();
     }
 
@@ -1303,7 +1079,6 @@
 
         if(metadata?.fecha_actualizacion){
           document.getElementById("lastUpdate").textContent = "Actualizado: " + metadata.fecha_actualizacion;
-          document.getElementById("kpiActualizacion").textContent = metadata.fecha_actualizacion.substring(0,16);
         }else{
           document.getElementById("lastUpdate").textContent = "Última carga: " + new Date().toLocaleString();
         }
@@ -1313,8 +1088,6 @@
         }else{
           document.getElementById("rutaPDFRoot").textContent = "No disponible en metadata.";
         }
-
-        renderLoadStatus(metadata, RAW);
 
         document.getElementById("lastUpdate").className = "badge text-bg-success last-update-badge";
         applyFilters();
@@ -1329,37 +1102,17 @@
       }
     }
 
-    document.getElementById("btnToggleStatus")?.addEventListener("click", () => {
-      const body = document.getElementById("loadAlert");
-      const hint = document.getElementById("statusHint");
-      const btn = document.getElementById("btnToggleStatus");
-      if(!body || !hint || !btn) return;
-
-      body.classList.toggle("d-none");
-      const hidden = body.classList.contains("d-none");
-      hint.textContent = hidden ? "Oculto" : "Visible";
-      btn.textContent = hidden ? "Ver detalle" : "Ocultar detalle";
-    });
-
-    document.getElementById("pdfModal")?.addEventListener("hidden.bs.modal", () => {
-      const viewer = document.getElementById("pdfViewer");
-      if(viewer) viewer.src = "";
-    });
-
     document.getElementById("btnFiltrar").addEventListener("click", applyFilters);
     document.getElementById("btnLimpiar").addEventListener("click", clearFilters);
     document.getElementById("btnClearActiveFilters").addEventListener("click", clearFilters);
     document.getElementById("btnRefrescar").addEventListener("click", loadData);
 
     document.getElementById("fTexto").addEventListener("keydown", (e) => {
-      if(e.key === "Enter"){
-        refreshFilterOptions();
-        applyFilters();
-      }
+      if(e.key === "Enter") applyFilters();
     });
 
     document.getElementById("fTexto").addEventListener("input", () => {
-      refreshFilterOptions();
+      applyFilters();
     });
 
     document.getElementById("resultadosConsultaCollapse")?.addEventListener("shown.bs.collapse", () => {
