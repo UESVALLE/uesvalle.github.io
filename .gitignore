@@ -1,3 +1,11 @@
 
 data/mpr/raw/Codigos_poa.xlsx
 data/mpr/raw/~.xlsx
+
+# Archivos locales generados por procesos UESVALLE
+data/resultados_agua/archive/
+data/resultados_agua/seguimiento_muestras/historical/
+scripts/resultados_agua/logs/
+scripts/resultados_agua/04_seguimiento_muestras/Nueva carpeta/
+**/~$*.xlsx
+**/~$*.xls
