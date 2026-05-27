@@ -115,6 +115,8 @@
     .section-note{ font-size:.9rem; color:#6b7280; }
     .chart-container{ height:380px; position:relative; }
     .chart-container-small{ height:300px; position:relative; }
+    .chart-card canvas{ cursor:pointer; }
+    .chart-filter-hint{ font-size:.78rem; color:#1d4ed8; font-weight:700; }
 
     .type-pill{
       display:inline-block; border-radius:999px; padding:.28rem .7rem;
@@ -365,37 +367,29 @@
 
       <section class="soft-card p-3 mb-3">
         <div class="row g-3 align-items-end">
-          <div class="col-12 col-sm-6 col-md-2">
+          <div class="col-12 col-sm-6 col-lg-2">
             <label class="form-label filter-label mb-1">Año</label>
             <select id="fAnio" class="form-select form-select-sm"><option value="">Todos</option></select>
           </div>
-          <div class="col-12 col-sm-6 col-md-2">
+          <div class="col-12 col-sm-6 col-lg-3">
             <label class="form-label filter-label mb-1">ARO</label>
             <select id="fAro" class="form-select form-select-sm"><option value="">Todos</option></select>
           </div>
-          <div class="col-12 col-sm-6 col-md-2">
+          <div class="col-12 col-sm-6 col-lg-3">
             <label class="form-label filter-label mb-1">Tipo resultado</label>
             <select id="fTipo" class="form-select form-select-sm" multiple></select>
           </div>
-          <div class="col-12 col-sm-6 col-md-3">
+          <div class="col-12 col-sm-6 col-lg-2">
             <label class="form-label filter-label mb-1">Fecha recepción</label>
             <select id="fFechaRecepcion" class="form-select form-select-sm"><option value="">Todas</option></select>
           </div>
-          <div class="col-12 col-sm-6 col-md-3">
-            <label class="form-label filter-label mb-1">Fecha resultados</label>
-            <select id="fFechaResultado" class="form-select form-select-sm"><option value="">Todas</option></select>
-          </div>
 
-          <div class="col-12 col-md-4">
-            <label class="form-label filter-label mb-1">Entidad que remite</label>
-            <select id="fEntidad" class="form-select form-select-sm"><option value="">Todas</option></select>
-          </div>
-          <div class="col-12 col-md-5">
+          <div class="col-12 col-lg-8">
             <label class="form-label filter-label mb-1">Buscar código / PDF</label>
             <input id="fTexto" class="form-control form-control-sm" placeholder="Ej: 20260406-7483-MR"/>
           </div>
 
-          <div class="col-12 col-md-2 d-flex gap-2 justify-content-md-end pt-2">
+          <div class="col-12 col-lg-4 d-flex gap-2 justify-content-lg-end pt-2">
             <button id="btnFiltrar" class="btn btn-primary btn-sm px-3 w-100">Aplicar</button>
             <button id="btnLimpiar" class="btn btn-outline-secondary btn-sm px-3 w-100">Limpiar</button>
           </div>
@@ -468,7 +462,7 @@
             <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-2">
               <div>
                 <h5 class="mb-0">Resultados por tipo</h5>
-                <div class="section-note">Distribución de registros filtrados por clasificación.</div>
+                <div class="section-note">Distribución de registros filtrados por clasificación.</div><div class="chart-filter-hint">Clic sobre una barra para filtrar.</div>
               </div>
             </div>
             <div class="chart-container-small">
@@ -482,7 +476,7 @@
             <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-2">
               <div>
                 <h5 class="mb-0">Resultados por ARO</h5>
-                <div class="section-note">Cantidad de resultados por área operativa.</div>
+                <div class="section-note">Cantidad de resultados por área operativa.</div><div class="chart-filter-hint">Clic sobre una sección para filtrar.</div>
               </div>
             </div>
             <div class="chart-container-small">
@@ -496,7 +490,7 @@
             <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-2">
               <div>
                 <h5 class="mb-0">Disponibilidad PDF</h5>
-                <div class="section-note">Validación física de archivos.</div>
+                <div class="section-note">Validación física de archivos.</div><div class="chart-filter-hint">Clic sobre una sección para filtrar.</div>
               </div>
             </div>
             <div class="chart-container-small">
@@ -588,7 +582,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-secondary rounded-pill px-3" data-bs-dismiss="modal">Cerrar</button>
-          <button type="button" id="btnOpenPdfNewTab" class="btn btn-primary rounded-pill px-3">Descargar PDF</button>
+          <button type="button" id="btnOpenPdfNewTab" class="btn btn-primary rounded-pill px-3">Ver PDF</button>
         </div>
       </div>
     </div>
@@ -623,9 +617,10 @@
     let DT = null;
     let charts = {};
     let selectInstances = {};
+    let chartPdfFilter = "";
 
     const FILTER_IDS = [
-      "fAnio","fAro","fTipo","fFechaRecepcion","fFechaResultado","fEntidad"
+      "fAnio","fAro","fTipo","fFechaRecepcion"
     ];
 
     const TYPE_COLORS = {
@@ -682,8 +677,6 @@
         aro: getFieldValue("fAro"),
         tipos: getTipoValues(),
         frec: getFieldValue("fFechaRecepcion"),
-        fres: getFieldValue("fFechaResultado"),
-        entidad: getFieldValue("fEntidad"),
         texto: document.getElementById("fTexto")?.value || ""
       };
     }
@@ -763,8 +756,6 @@
       fillSelect("fAro", uniq(data.map(d => d.ARO)).sort((a,b)=>a.localeCompare(b,'es')), "Todos");
       fillSelect("fTipo", uniq(data.map(d => d.TIPO_CODIGO)).sort((a,b)=>a.localeCompare(b,'es')));
       fillSelect("fFechaRecepcion", sortDatesDesc(uniq(data.map(d => d.FECHA_RECEPCION))), "Todas");
-      fillSelect("fFechaResultado", sortDatesDesc(uniq(data.map(d => d.FECHA_RESULTADOS))), "Todas");
-      fillSelect("fEntidad", uniq(data.map(d => d.ENTIDAD_QUE_REMITE)).sort((a,b)=>a.localeCompare(b,'es')), "Todas");
       initSearchableSelects();
     }
 
@@ -777,8 +768,7 @@
         if(excludeId !== "fAro" && st.aro && d.ARO !== st.aro) return false;
         if(excludeId !== "fTipo" && st.tipos.length && !st.tipos.includes(d.TIPO_CODIGO)) return false;
         if(excludeId !== "fFechaRecepcion" && st.frec && d.FECHA_RECEPCION !== st.frec) return false;
-        if(excludeId !== "fFechaResultado" && st.fres && d.FECHA_RESULTADOS !== st.fres) return false;
-        if(excludeId !== "fEntidad" && st.entidad && d.ENTIDAD_QUE_REMITE !== st.entidad) return false;
+        if(chartPdfFilter && norm(d.EXISTE_PDF) !== chartPdfFilter) return false;
 
         if(texto){
           const hay = [
@@ -824,8 +814,6 @@
       setOptions("fAro", uniq(dataForFilterOptions("fAro").map(d => d.ARO)).sort((a,b)=>a.localeCompare(b,'es')), "Todos");
       setOptions("fTipo", uniq(dataForFilterOptions("fTipo").map(d => d.TIPO_CODIGO)).sort((a,b)=>a.localeCompare(b,'es')));
       setOptions("fFechaRecepcion", sortDatesDesc(uniq(dataForFilterOptions("fFechaRecepcion").map(d => d.FECHA_RECEPCION))), "Todas");
-      setOptions("fFechaResultado", sortDatesDesc(uniq(dataForFilterOptions("fFechaResultado").map(d => d.FECHA_RESULTADOS))), "Todas");
-      setOptions("fEntidad", uniq(dataForFilterOptions("fEntidad").map(d => d.ENTIDAD_QUE_REMITE)).sort((a,b)=>a.localeCompare(b,'es')), "Todas");
     }
 
     async function fetchCSV(){
@@ -897,8 +885,6 @@
       const aro = document.getElementById("fAro").value;
       const tipos = getTipoValues();
       const frec = document.getElementById("fFechaRecepcion").value;
-      const fres = document.getElementById("fFechaResultado").value;
-      const entidad = document.getElementById("fEntidad").value;
       const texto = norm(document.getElementById("fTexto").value);
 
       LIST = RAW.filter(d => {
@@ -906,8 +892,7 @@
         if(aro && d.ARO !== aro) return false;
         if(tipos.length && !tipos.includes(d.TIPO_CODIGO)) return false;
         if(frec && d.FECHA_RECEPCION !== frec) return false;
-        if(fres && d.FECHA_RESULTADOS !== fres) return false;
-        if(entidad && d.ENTIDAD_QUE_REMITE !== entidad) return false;
+        if(chartPdfFilter && norm(d.EXISTE_PDF) !== chartPdfFilter) return false;
 
         if(texto){
           const hay = [
@@ -993,6 +978,36 @@
       return Object.entries(out).sort((a,b)=>b[1]-a[1] || a[0].localeCompare(b[0], 'es'));
     }
 
+    function setSelectValue(id, value){
+      const el = document.getElementById(id);
+      if(!el) return;
+      if(el.tomselect){
+        el.tomselect.setValue(value, true);
+      }else{
+        el.value = Array.isArray(value) ? (value[0] || "") : value;
+      }
+    }
+
+    function applyChartFilter(kind, value){
+      if(kind === "tipo"){
+        const current = getTipoValues();
+        const alreadySelected = current.length === 1 && current[0] === value;
+        setSelectValue("fTipo", alreadySelected ? [] : [value]);
+      }
+
+      if(kind === "aro"){
+        const current = document.getElementById("fAro").value || "";
+        setSelectValue("fAro", current === value ? "" : value);
+      }
+
+      if(kind === "pdf"){
+        chartPdfFilter = chartPdfFilter === value ? "" : value;
+      }
+
+      refreshFilterOptions();
+      applyFilters();
+    }
+
     function renderCharts(data){
       const tipoPairs = groupCount(data, "TIPO_CODIGO");
       destroyChart("chartTipo");
@@ -1011,8 +1026,14 @@
         },
         options:{
           maintainAspectRatio:false,
+          onClick:(evt, elements, chart) => {
+            if(!elements.length) return;
+            const label = chart.data.labels[elements[0].index];
+            applyChartFilter("tipo", label);
+          },
           plugins:{
             legend:{display:false},
+            tooltip:{callbacks:{afterBody:()=>"Clic para filtrar el tablero"}},
             datalabels:{ anchor:"end", align:"top", color:"#111827", font:{weight:700} }
           },
           scales:{ y:{ beginAtZero:true, ticks:{ precision:0 } } }
@@ -1031,8 +1052,14 @@
         },
         options:{
           maintainAspectRatio:false,
+          onClick:(evt, elements, chart) => {
+            if(!elements.length) return;
+            const label = chart.data.labels[elements[0].index];
+            applyChartFilter("aro", label);
+          },
           plugins:{
             legend:{ position:"bottom" },
+            tooltip:{callbacks:{afterBody:()=>"Clic para filtrar el tablero"}},
             datalabels:{
               color:"#111827",
               font:{weight:700},
@@ -1050,13 +1077,20 @@
           labels: pdfPairs.map(x => x[0] === "SI" ? "PDF disponible" : "Sin PDF"),
           datasets:[{
             data: pdfPairs.map(x => x[1]),
-            backgroundColor: pdfPairs.map(x => x[0] === "SI" ? "#16a34a" : "#dc2626")
+            backgroundColor: pdfPairs.map(x => x[0] === "SI" ? "#16a34a" : "#dc2626"),
+            metaValues: pdfPairs.map(x => x[0])
           }]
         },
         options:{
           maintainAspectRatio:false,
+          onClick:(evt, elements, chart) => {
+            if(!elements.length) return;
+            const rawValue = chart.data.datasets[0].metaValues[elements[0].index] || "";
+            applyChartFilter("pdf", norm(rawValue) === "SI" ? "SI" : "NO");
+          },
           plugins:{
             legend:{ position:"bottom" },
+            tooltip:{callbacks:{afterBody:()=>"Clic para filtrar el tablero"}},
             datalabels:{
               color:"#111827",
               font:{weight:700},
@@ -1156,7 +1190,7 @@
 
         if(hasDrive){
           actionHtml = `
-            <button class="btn btn-primary btn-table" onclick='openPDF(${JSON.stringify(d.URL_DRIVE_PREVIEW || d.URL_DRIVE_VIEW)}, ${JSON.stringify(d.RUTA_LOCAL)}, ${JSON.stringify(d.CODIGO_MUESTRA)}, ${JSON.stringify(d.TIPO_CODIGO)}, ${JSON.stringify(d.ARO)}, ${JSON.stringify(d.FECHA_RECEPCION)}, ${JSON.stringify(d.FECHA_RESULTADOS)}, ${JSON.stringify(d.NOMBRE_PDF)}, ${JSON.stringify(d.URL_DRIVE_VIEW)}, ${JSON.stringify(d.DRIVE_FILE_ID)})'>Descargar PDF</button>
+            <button class="btn btn-primary btn-table" onclick='openPDF(${JSON.stringify(d.URL_DRIVE_PREVIEW || d.URL_DRIVE_VIEW)}, ${JSON.stringify(d.RUTA_LOCAL)}, ${JSON.stringify(d.CODIGO_MUESTRA)}, ${JSON.stringify(d.TIPO_CODIGO)}, ${JSON.stringify(d.ARO)}, ${JSON.stringify(d.FECHA_RECEPCION)}, ${JSON.stringify(d.FECHA_RESULTADOS)}, ${JSON.stringify(d.NOMBRE_PDF)}, ${JSON.stringify(d.URL_DRIVE_VIEW)}, ${JSON.stringify(d.DRIVE_FILE_ID)})'>Ver PDF</button>
           `;
         }else if(hasLocal){
           actionHtml = `<span class="action-state action-local" title="El PDF existe en ruta local, pero no tiene enlace Drive para visualización web.">PDF local / no visible web</span>`;
@@ -1233,8 +1267,9 @@
       }
 
       addChip("Fecha recepción", document.getElementById("fFechaRecepcion").value);
-      addChip("Fecha resultados", document.getElementById("fFechaResultado").value);
-      addChip("Entidad", document.getElementById("fEntidad").value);
+      if(chartPdfFilter){
+        chips.push(`<span class="active-filter-chip"><span class="label">PDF:</span> ${chartPdfFilter === "SI" ? "Disponible" : "Sin PDF"}</span>`);
+      }
       addChip("Texto", document.getElementById("fTexto").value);
 
       document.getElementById("activeFilters").innerHTML = chips.length
@@ -1249,6 +1284,7 @@
         if(el.tomselect) el.tomselect.clear(true);
         else el.value = "";
       });
+      chartPdfFilter = "";
       document.getElementById("fTexto").value = "";
       refreshFilterOptions();
       applyFilters();
