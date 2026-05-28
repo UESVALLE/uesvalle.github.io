@@ -78,6 +78,113 @@
 </style>
 </head>
 <body>
+
+<!-- ============================================================
+BLOQUE DE ACCESO UESVALLE - INICIO
+============================================================ -->
+<div id="loginScreen" style="
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,#f1f5f9,#e0f2fe);
+  font-family:Arial, sans-serif;
+  padding:20px;
+">
+  <div style="
+    background:white;
+    padding:34px;
+    border-radius:18px;
+    box-shadow:0 14px 35px rgba(15,23,42,.16);
+    width:380px;
+    max-width:95%;
+    text-align:center;
+    border:1px solid #e5e7eb;
+  ">
+    <div style="
+      width:64px;
+      height:64px;
+      margin:0 auto 16px auto;
+      border-radius:18px;
+      background:#0f766e;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:white;
+      font-size:30px;
+      font-weight:800;
+    ">
+      U
+    </div>
+
+    <h2 style="margin:0 0 8px 0;color:#0f172a;font-size:24px;">
+      Acceso UESVALLE
+    </h2>
+
+    <p style="margin:0 0 20px 0;color:#64748b;font-size:14px;">
+      Ingrese la contraseña para consultar los tableros.
+    </p>
+
+    <input
+      id="passwordInput"
+      type="password"
+      placeholder="Contraseña"
+      autocomplete="current-password"
+      onkeydown="if(event.key === 'Enter') validarAcceso();"
+      style="
+        width:100%;
+        box-sizing:border-box;
+        padding:13px 14px;
+        margin:0 0 14px 0;
+        border:1px solid #cbd5e1;
+        border-radius:10px;
+        font-size:15px;
+        outline:none;
+      "
+    >
+
+    <button
+      onclick="validarAcceso()"
+      style="
+        width:100%;
+        padding:13px;
+        background:#0f766e;
+        color:white;
+        border:none;
+        border-radius:10px;
+        font-weight:800;
+        font-size:15px;
+        cursor:pointer;
+      "
+    >
+      Ingresar
+    </button>
+
+    <div id="loginError" style="
+      display:none;
+      margin-top:14px;
+      color:#b91c1c;
+      background:#fee2e2;
+      border:1px solid #fecaca;
+      border-radius:10px;
+      padding:10px;
+      font-size:13px;
+      font-weight:700;
+    ">
+      Contraseña incorrecta.
+    </div>
+
+    <p style="margin:18px 0 0 0;color:#94a3b8;font-size:12px;">
+      Portal de tableros institucionales
+    </p>
+  </div>
+</div>
+
+<div id="dashboardContent" style="display:none;">
+<!-- ============================================================
+BLOQUE DE ACCESO UESVALLE - FIN
+============================================================ -->
+
 <div class="gov-banner"><div class="container d-flex align-items-center" style="height:100%"><img src="https://www.gov.co/assets/images/logo.png" alt="GOV.CO"></div></div>
 <main><div class="board">
 <header class="p-2 mb-3"><div class="d-flex justify-content-center"><img src="https://www.uesvalle.gov.co/info/uesvalle/media/bloque1656.png" alt="UESVALLE"></div></header>
@@ -512,6 +619,63 @@ document.addEventListener('click', function(e){
 
 init();
 </script>
+
+</div>
+
+<!-- ============================================================
+SCRIPT DE ACCESO UESVALLE - INICIO
+============================================================ -->
+<script>
+const PASSWORD_TABLERO = "Uesvalle2026";
+const ACCESS_KEY_UESVALLE = "accesoTableroUESVALLE";
+
+function mostrarTableroUESVALLE() {
+  const loginScreen = document.getElementById("loginScreen");
+  const dashboardContent = document.getElementById("dashboardContent");
+
+  if (loginScreen) loginScreen.style.display = "none";
+  if (dashboardContent) dashboardContent.style.display = "block";
+
+  setTimeout(() => {
+    window.dispatchEvent(new Event("resize"));
+  }, 300);
+}
+
+function validarAcceso() {
+  const input = document.getElementById("passwordInput");
+  const error = document.getElementById("loginError");
+  const pass = input ? input.value : "";
+
+  if (pass === PASSWORD_TABLERO) {
+    localStorage.setItem(ACCESS_KEY_UESVALLE, "ok");
+    mostrarTableroUESVALLE();
+  } else {
+    if (error) error.style.display = "block";
+    if (input) {
+      input.value = "";
+      input.focus();
+    }
+  }
+}
+
+function cerrarSesionTablero() {
+  localStorage.removeItem(ACCESS_KEY_UESVALLE);
+  location.reload();
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+  if (localStorage.getItem(ACCESS_KEY_UESVALLE) === "ok") {
+    mostrarTableroUESVALLE();
+  } else {
+    const input = document.getElementById("passwordInput");
+    if (input) input.focus();
+  }
+});
+</script>
+<!-- ============================================================
+SCRIPT DE ACCESO UESVALLE - FIN
+============================================================ -->
+
 </body>
 </html>
 
