@@ -817,6 +817,12 @@
       .compare-map{ height:420px; }
     }
 
+    @media (max-width: 1400px){
+      .main-kpi-row{
+        grid-template-columns:repeat(4,minmax(0,1fr));
+      }
+    }
+
     @media (max-width: 1200px){
       .historical-kpi-row{
         grid-template-columns:repeat(4,minmax(0,1fr));
@@ -830,6 +836,9 @@
       .custom-layer-panel{
         width:220px;
         max-height:65%;
+      }
+      .main-kpi-row{
+        grid-template-columns:repeat(2,minmax(0,1fr));
       }
       .historical-kpi-row{
         grid-template-columns:repeat(2,minmax(0,1fr));
@@ -1084,12 +1093,49 @@
         </div>
       </section>
 
-      <section class="row g-3 mb-3">
-        <div class="col-12 col-sm-6 col-lg-2"><div class="kpi-card p-3"><div class="kpi-label">Sistemas</div><div id="kpiSistemas" class="kpi-value">–</div></div></div>
-        <div class="col-12 col-sm-6 col-lg-2"><div class="kpi-card p-3"><div class="kpi-label">IRCA promedio</div><div id="kpiPromedio" class="kpi-value">–</div><div class="kpi-mini">Promedio histórico filtrado</div></div></div>
-        <div class="col-12 col-sm-6 col-lg-2"><div class="kpi-card p-3"><div class="kpi-label">IRCA bloque seleccionado</div><div id="kpiIRCAActual" class="kpi-value">–</div><div class="kpi-mini">Promedio del bloque activo</div></div></div>
-        <div class="col-12 col-sm-6 col-lg-3"><div class="kpi-card p-3"><div class="kpi-label">Población</div><div id="kpiPoblacion" class="kpi-value">–</div><div class="kpi-mini">Suma de registros filtrados</div></div></div>
-        <div class="col-12 col-sm-6 col-lg-3"><div class="kpi-card p-3"><div class="kpi-label">Suscriptores</div><div id="kpiSuscriptores" class="kpi-value">–</div><div class="kpi-mini">Suma de registros filtrados</div></div></div>
+      <section class="row g-3 mb-3 main-kpi-row">
+        <div class="col-12 col-sm-6 col-lg-2">
+          <div class="kpi-card p-3">
+            <div class="kpi-label">Sistemas</div>
+            <div id="kpiSistemas" class="kpi-value">–</div>
+            <div class="kpi-mini">Universo filtrado</div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-2">
+          <div class="kpi-card p-3">
+            <div class="kpi-label">IRCA reportados</div>
+            <div id="kpiIRCAReportados" class="kpi-value">–</div>
+            <div id="kpiIRCAReportadosMini" class="kpi-mini">Con dato en el bloque activo</div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-2">
+          <div class="kpi-card p-3">
+            <div class="kpi-label">Sin IRCA reportado</div>
+            <div id="kpiIRCASinDato" class="kpi-value">–</div>
+            <div id="kpiIRCASinDatoMini" class="kpi-mini">Sin dato en el bloque activo</div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-2">
+          <div class="kpi-card p-3">
+            <div class="kpi-label">IRCA promedio</div>
+            <div id="kpiIRCAActual" class="kpi-value">–</div>
+            <div id="kpiIRCAActualMini" class="kpi-mini">Promedio con dato en el bloque activo</div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-2">
+          <div class="kpi-card p-3">
+            <div class="kpi-label">Población</div>
+            <div id="kpiPoblacion" class="kpi-value">–</div>
+            <div class="kpi-mini">Suma filtrada</div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-2">
+          <div class="kpi-card p-3">
+            <div class="kpi-label">Suscriptores</div>
+            <div id="kpiSuscriptores" class="kpi-value">–</div>
+            <div class="kpi-mini">Suma filtrada</div>
+          </div>
+        </div>
       </section>
 
       <section class="soft-card p-3 mb-3 collapsible-block irca-summary-block">
@@ -2900,6 +2946,11 @@
       const activeYear = getSelectedBlock();
 
       const total = data.length;
+      const conIRCA = data.filter(d => Number.isFinite(d.IRCA_ACTUAL)).length;
+      const sinIRCA = total - conIRCA;
+      const pctConIRCA = pct(conIRCA, total);
+      const pctSinIRCA = pct(sinIRCA, total);
+      const blockShort = getBlockShortLabel(activeYear);
       const promedio = avg(data.map(d => d.IRCA_Promedio));
       const ircaActual = avg(data.map(d => d.IRCA_ACTUAL));
       const poblacion = data.reduce((acc, d) => acc + (d.POBLACION || 0), 0);
@@ -2914,8 +2965,12 @@
       const totalConDatoRiesgo = sinRiesgo + bajo + medio + alto + inviable;
 
       document.getElementById("kpiSistemas").textContent = total.toLocaleString("es-CO");
-      document.getElementById("kpiPromedio").textContent = promedio.toFixed(2);
+      document.getElementById("kpiIRCAReportados").textContent = conIRCA.toLocaleString("es-CO");
+      document.getElementById("kpiIRCASinDato").textContent = sinIRCA.toLocaleString("es-CO");
+      document.getElementById("kpiIRCAReportadosMini").textContent = `${pctConIRCA}% con dato en ${blockShort}`;
+      document.getElementById("kpiIRCASinDatoMini").textContent = `${pctSinIRCA}% sin dato en ${blockShort}`;
       document.getElementById("kpiIRCAActual").textContent = ircaActual.toFixed(2);
+      document.getElementById("kpiIRCAActualMini").textContent = `Promedio con dato en ${blockShort}`;
       document.getElementById("kpiPoblacion").textContent = poblacion.toLocaleString("es-CO");
       document.getElementById("kpiSuscriptores").textContent = suscriptores.toLocaleString("es-CO");
 
