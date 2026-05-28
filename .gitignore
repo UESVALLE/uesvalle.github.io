@@ -16,3 +16,7 @@ scripts/resultados_agua/01_operativos/Nueva carpeta/
 scripts/resultados_agua/03_versiones_prueba/Descargar_Resultados_Agua_UESVALLE_V7.py
 
 data/resultados_agua/seguimiento_muestras/archive/
+
+data/ircas/archive/
+data/ircas/input/
+data/ircas/logs/
