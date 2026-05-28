@@ -1,0 +1,27 @@
+{
+  "version_procesamiento": "IRCA_2020_2026_V4_METADATA",
+  "fecha_generacion": "2026-05-28T00:56:22",
+  "stamp": "20260528_005621",
+  "archivo_salida": "data/ircas/current/IRCAS.csv",
+  "registros_generados": 690,
+  "registros_con_ultimo_irca_reportado": 637,
+  "registros_con_irca_2026": 398,
+  "registros_sin_irca_2026": 292,
+  "registros_sin_coordenadas_completas": 50,
+  "comparacion_2026": {
+    "se_agrego_2026": 0,
+    "se_actualizo_2026": 0,
+    "sin_cambio_2026": 396,
+    "sin_2026_en_ambas_versiones": 238,
+    "se_elimino_2026": 0,
+    "mensaje": "No se identificaron cambios en los registros IRCA 2026 frente a la versión anterior.",
+    "detalle": "Sin cambio: 396; sin dato 2026: 238; eliminados: 0.",
+    "sistemas_cambiados_muestra": []
+  },
+  "reportes": {
+    "control_generacion": "G:\\Mi unidad\\8.UES\\PAGINA INDICADORES\\UESVALLE\\data\\ircas\\logs\\control_generacion_ircas_20260528_005621.csv",
+    "control_coordenadas": "G:\\Mi unidad\\8.UES\\PAGINA INDICADORES\\UESVALLE\\data\\ircas\\logs\\control_coordenadas_ircas_20260528_005621.csv",
+    "comparacion_2026_detalle": "G:\\Mi unidad\\8.UES\\PAGINA INDICADORES\\UESVALLE\\data\\ircas\\logs\\comparacion_actualizacion_irca_2026_detalle_20260528_005621.csv",
+    "comparacion_2026_resumen": "G:\\Mi unidad\\8.UES\\PAGINA INDICADORES\\UESVALLE\\data\\ircas\\logs\\comparacion_actualizacion_irca_2026_resumen_20260528_005621.csv"
+  }
+}
