@@ -20,3 +20,13 @@ data/resultados_agua/seguimiento_muestras/archive/
 data/ircas/archive/
 data/ircas/input/
 data/ircas/logs/
+
+# Credenciales locales SISA
+scripts/mpr/config_sisa.env
+
+# Archivos temporales y logs de automatizaciones
+archive/
+# Censos crudos MPR descargados desde SISA
+data/mpr/raw/censo_visitasMPR.xlsx
+data/mpr/raw/censo_visitasMPR_backup_*.xlsx
+data/mpr/historical/

@@ -1,9 +1,8 @@
 @echo off
-chcp 65001 >nul
 setlocal
 
 echo ==============================================================================
-echo NORMALIZAR SEGUIMIENTO MAPAS DE RIESGO MPR - UESVALLE V1.2
+echo NORMALIZAR SEGUIMIENTO MAPAS DE RIESGO MPR - UESVALLE
 echo ==============================================================================
 
 set "PYTHON_EXE=C:\Users\Javier\miniconda3\envs\analitica\python.exe"
@@ -15,8 +14,30 @@ echo Script: %SCRIPT%
 echo Python: %PYTHON_EXE%
 echo.
 
+if not exist "%PYTHON_EXE%" (
+    echo [ERROR] No existe el ejecutable de Python:
+    echo %PYTHON_EXE%
+    pause
+    exit /b 1
+)
+
+if not exist "%SCRIPT%" (
+    echo [ERROR] No existe el script:
+    echo %SCRIPT%
+    pause
+    exit /b 1
+)
+
+cd /d "%REPO_ROOT%"
 "%PYTHON_EXE%" "%SCRIPT%"
 
+if errorlevel 1 (
+    echo.
+    echo [ERROR] El proceso termino con errores. Revise los mensajes anteriores.
+    pause
+    exit /b 1
+)
+
 echo.
-echo Proceso finalizado.
+echo Proceso finalizado correctamente.
 pause

@@ -1,17 +1,19 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 """
 Normalización tablero Mapas de Riesgo MPR - UESVALLE
-Versión V1.3
+Versión V2.0
 
 Uso esperado desde la raíz del repositorio:
     python scripts/mpr/normalizar_mpr.py
 
 Entradas esperadas:
+    data/mpr/raw/censo_visitasMPR.xlsx
     data/mpr/raw/Programados.csv
-    data/mpr/raw/1.3_VisitasMPR.csv
-    data/mpr/raw/1.4_MuestreoMPR.csv
     data/mpr/raw/Codigos_poa.csv
-    data/mpr/raw/1.5_ResolucionesMPR.csv  (opcional, cuando exista)
+
+Nota:
+    El censo SISA es la fuente única de actividades ejecutadas.
+    El script filtra únicamente actividades MPR: 1.3, 1.4 y 1.5.
 
 Salidas:
     data/mpr/current/seguimiento_mpr_sistemas.csv
@@ -46,12 +48,12 @@ OUT_DIR.mkdir(parents=True, exist_ok=True)
 HIST_DIR.mkdir(parents=True, exist_ok=True)
 
 FILES = {
+    "censo": RAW_DIR / "censo_visitasMPR.xlsx",
     "programados": RAW_DIR / "Programados.csv",
-    "visitas_13": RAW_DIR / "1.3_VisitasMPR.csv",
-    "muestreo_14": RAW_DIR / "1.4_MuestreoMPR.csv",
-    "resolucion_15": RAW_DIR / "1.5_ResolucionesMPR.csv",
     "codigos_poa": RAW_DIR / "Codigos_poa.csv",
 }
+
+ACTIVIDADES_MPR = ["1.3", "1.4", "1.5"]
 
 
 def read_csv_smart(path: Path) -> pd.DataFrame:
@@ -64,6 +66,31 @@ def read_csv_smart(path: Path) -> pd.DataFrame:
         except Exception as exc:
             last_error = exc
     raise RuntimeError(f"No fue posible leer {path}: {last_error}")
+
+
+def read_excel_smart(path: Path) -> pd.DataFrame:
+    if not path.exists():
+        return pd.DataFrame()
+    try:
+        return pd.read_excel(path, dtype=str)
+    except Exception as exc:
+        raise RuntimeError(f"No fue posible leer {path}: {exc}")
+
+
+def normalize_activity_code(value) -> str:
+    if pd.isna(value):
+        return ""
+    s = str(value).strip().replace(",", ".")
+    s = re.sub(r"\s+", "", s)
+    if s.lower() in ["nan", "none", "null", ""]:
+        return ""
+    try:
+        f = float(s)
+        if f.is_integer():
+            return str(int(f))
+        return str(f).rstrip("0").rstrip(".")
+    except Exception:
+        return s
 
 
 def clean_text(value) -> str:
@@ -153,7 +180,8 @@ def standardize_activity(df: pd.DataFrame, actividad_default: str, fuente_archiv
     codigo_ant_col = find_col(df, ["CODIGO_ANTIGUO", "CODIGO ANTERIOR", "CODIGO_ANTERIOR", "CODIGO ANTIGUO"])
     codigo_sis_col = find_col(df, ["CODIGO_SISTEMA", "CODIGO SISTEMA", "CODIGO IVC", "CODIGO_IVC"])
 
-    df["ACTIVIDAD"] = df["ACTIVIDAD"].replace("", np.nan).fillna(actividad_default).astype(str).str.strip()
+    df["ACTIVIDAD"] = df["ACTIVIDAD"].map(normalize_activity_code)
+    df["ACTIVIDAD"] = df["ACTIVIDAD"].replace("", np.nan).fillna(actividad_default).map(normalize_activity_code)
     df["CODIGO_ANTERIOR"] = df[codigo_ant_col].map(normalize_code) if codigo_ant_col else ""
     df["CODIGO_SISTEMA_LIMPIO"] = df[codigo_sis_col].map(normalize_code) if codigo_sis_col else ""
     df["CODIGO_LLAVE"] = df["CODIGO_ANTERIOR"]
@@ -329,7 +357,7 @@ def agg_activity_flags(acts: pd.DataFrame, code: str, prefix: str) -> pd.DataFra
 
 def main():
     print("=" * 100)
-    print("NORMALIZACIÓN SEGUIMIENTO MAPAS DE RIESGO MPR - UESVALLE | V1.4")
+    print("NORMALIZACIÓN SEGUIMIENTO MAPAS DE RIESGO MPR - UESVALLE | V2.0")
     print("=" * 100)
     print(f"Repo raíz: {REPO_ROOT}")
     print(f"Entradas : {RAW_DIR}")
@@ -337,21 +365,33 @@ def main():
 
     print("\nVerificación de archivos de entrada:")
     for nombre, ruta in FILES.items():
-        obligatorio = nombre in ["programados", "visitas_13", "muestreo_14", "codigos_poa"]
+        obligatorio = nombre in ["censo", "programados", "codigos_poa"]
         estado = "OK" if ruta.exists() else ("FALTA OBLIGATORIO" if obligatorio else "No cargado opcional")
         print(f" - {nombre}: {estado} | {ruta}")
 
+    censo = read_excel_smart(FILES["censo"])
     programados = read_csv_smart(FILES["programados"])
-    visitas13 = read_csv_smart(FILES["visitas_13"])
-    muestreo14 = read_csv_smart(FILES["muestreo_14"])
-    resol15 = read_csv_smart(FILES["resolucion_15"])
     codigos = read_csv_smart(FILES["codigos_poa"])
 
+    print(f"Censo SISA leído: {len(censo):,}")
+    print(f"Columnas Censo: {', '.join(censo.columns.astype(str)) if not censo.empty else 'SIN COLUMNAS'}")
     print(f"Programados leídos: {len(programados):,}")
     print(f"Columnas Programados: {', '.join(programados.columns.astype(str)) if not programados.empty else 'SIN COLUMNAS'}")
-    print(f"1.3 Visitas: {len(visitas13):,}")
-    print(f"1.4 Muestreo: {len(muestreo14):,}")
-    print(f"1.5 Resolución: {len(resol15):,} {'(opcional no cargado)' if resol15.empty else ''}")
+
+    if censo.empty:
+        raise RuntimeError("El archivo censo_visitasMPR.xlsx está vacío o no fue leído correctamente.")
+    actividad_col = find_col(censo, ["ACTIVIDAD", "CODIGO ACTIVIDAD", "CÓDIGO ACTIVIDAD", "CODIGO_POA", "Código"])
+    if actividad_col is None:
+        raise RuntimeError("No se encontró la columna ACTIVIDAD en censo_visitasMPR.xlsx.")
+
+    censo = censo.copy()
+    censo["ACTIVIDAD"] = censo[actividad_col].map(normalize_activity_code)
+    censo_mpr = censo[censo["ACTIVIDAD"].isin(ACTIVIDADES_MPR)].copy()
+
+    print("Actividades MPR extraídas desde censo:")
+    print(f" - 1.3 Visitas: {(censo_mpr['ACTIVIDAD'] == '1.3').sum():,}")
+    print(f" - 1.4 Muestreo: {(censo_mpr['ACTIVIDAD'] == '1.4').sum():,}")
+    print(f" - 1.5 Resolución: {(censo_mpr['ACTIVIDAD'] == '1.5').sum():,}")
 
     # Programados como universo base.
     base = programados.copy()
@@ -405,10 +445,11 @@ def main():
     print(f"Programados válidos después de limpieza: {len(base):,} (removidos {before-len(base):,})")
     print(f"Programados con funcionario: {(base['FUNCIONARIO_PROGRAMADO'].astype(str).str.strip().ne('')).sum():,}")
 
-    # Actividades ejecutadas.
-    act13 = standardize_activity(visitas13, "1.3", "1.3_VisitasMPR.csv")
-    act14 = standardize_activity(muestreo14, "1.4", "1.4_MuestreoMPR.csv")
-    act15 = standardize_activity(resol15, "1.5", "1.5_ResolucionesMPR.csv") if not resol15.empty else pd.DataFrame()
+    # Actividades ejecutadas desde fuente única censo_visitasMPR.xlsx.
+    # Se filtran únicamente actividades MPR: 1.3, 1.4 y 1.5.
+    act13 = standardize_activity(censo_mpr[censo_mpr["ACTIVIDAD"].eq("1.3")], "1.3", "censo_visitasMPR.xlsx")
+    act14 = standardize_activity(censo_mpr[censo_mpr["ACTIVIDAD"].eq("1.4")], "1.4", "censo_visitasMPR.xlsx")
+    act15 = standardize_activity(censo_mpr[censo_mpr["ACTIVIDAD"].eq("1.5")], "1.5", "censo_visitasMPR.xlsx")
     actividades = pd.concat([act13, act14, act15], ignore_index=True)
 
     # Cruce programado vs ejecutado.
@@ -583,11 +624,15 @@ def main():
         print(f"[OK] {name}: {len(df):,} registros")
 
     metadata = {
-        "version_script": "V1.4",
+        "version_script": "V2.0",
         "fecha_generacion": datetime.now().isoformat(timespec="seconds"),
         "repo_root": str(REPO_ROOT),
         "raw_dir": str(RAW_DIR),
         "out_dir": str(OUT_DIR),
+        "fuente_actividades": "censo_visitasMPR.xlsx",
+        "actividades_mpr_filtradas": ACTIVIDADES_MPR,
+        "censo_registros_leidos": int(len(censo)),
+        "censo_registros_mpr_13_14_15": int(len(censo_mpr)),
         "programados": int(len(base)),
         "programados_leidos": int(len(programados)),
         "programados_con_codigo": int((seguimiento_out["CODIGO_VALIDO"] == "SI").sum()),
