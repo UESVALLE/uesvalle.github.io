@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Tablero – Calidad del Agua en Sedes Educativas | UESVALLE</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet"/>
+<link href="https://cdn.datatables.net/1.13.8/css/dataTables.bootstrap5.min.css" rel="stylesheet"/>
+<link href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.bootstrap5.min.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/css/tom-select.bootstrap5.min.css" rel="stylesheet"/>
+<style>
+:root{--board-max:1480px;--blue:#2e64d2;--blue-dark:#14213d;--bg:#f4f6f8;--muted:#667085;--shadow:0 8px 24px rgba(0,0,0,.06);--border:#e5e7eb;--green:#00b050;--low:#c6e0b4;--yellow:#facc15;--orange:#f59e0b;--red:#ef4444;--gray:#94a3b8}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:#212529;font-family:Arial,system-ui,sans-serif}
+.gov-banner{background:#2e64d2;height:46px;width:100%}.gov-banner img{height:30px}.board{max-width:var(--board-max);margin:0 auto;padding:22px 16px 36px}
+.soft-card,.kpi-card,.chart-card,.nav-card,header{border:0;border-radius:1rem;background:#fff;box-shadow:var(--shadow)}
+.header-ues{border-bottom:1px solid #e9ecef}.header-ues img{max-width:100%;height:auto}.board-title{font-size:clamp(1.5rem,2vw,2.05rem);font-weight:800;color:#1f2937;margin:0}.board-subtitle{color:var(--muted);font-size:.93rem}
+.navbar .nav-link,.navbar .dropdown-toggle{font-weight:600}.process-btn{background:#f8fafc;border:1px solid #d0d5dd;border-radius:999px;padding:.65rem 1rem!important;color:#344054!important;font-weight:700}.process-btn.active{background:var(--blue);color:#fff!important;border-color:var(--blue)}
+.table-toggle-header{width:100%;display:flex;align-items:center;justify-content:space-between;gap:1rem;border:0;background:transparent;text-align:left;cursor:pointer}.table-toggle-arrow{width:42px;height:42px;flex:0 0 auto;border-radius:999px;display:flex;align-items:center;justify-content:center;border:1px solid #d0d5dd;background:#f8fafc;color:#475467}.table-toggle-arrow svg{width:21px;height:21px;transition:transform .2s}.table-toggle-header[aria-expanded="true"] .table-toggle-arrow svg{transform:rotate(90deg)}
+.section-note{font-size:.88rem;color:var(--muted)}.filter-label{font-size:.86rem;color:#475467;font-weight:700}.status-line{font-size:.8rem;color:#475467}.last-update-badge{font-size:.88rem;padding:.5rem .75rem;border-radius:999px}
+.kpi-grid{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:.85rem}.kpi-card{padding:1rem;height:100%}.kpi-label{font-size:.82rem;color:var(--muted);min-height:37px;line-height:1.2}.kpi-value{font-size:clamp(20px,2.1vw,29px);font-weight:800;line-height:1.05;color:#111827}.kpi-mini{font-size:.75rem;color:#667085;margin-top:.35rem}
+.risk-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:.8rem}.risk-card{border-radius:1rem;padding:.8rem;text-align:center;border:1px solid rgba(0,0,0,.06);background:#fff}.risk-pill{display:inline-flex;border-radius:999px;padding:.3rem .65rem;font-size:.73rem;font-weight:800;min-height:29px;align-items:center}.risk-card .count{font-size:1.55rem;font-weight:800;margin-top:.45rem}.risk-card .students{font-size:.78rem;color:#475467;margin-top:.25rem}
+.active-filters-wrap{display:flex;gap:6px;flex-wrap:wrap}.active-filter-chip{display:inline-flex;align-items:center;gap:5px;background:#eef4ff;border:1px solid #c7d7fe;color:#1d4ed8;border-radius:999px;padding:5px 9px;font-size:.78rem;font-weight:700}.active-filter-chip .label{color:#475467}
+.chart-container{height:360px;position:relative}.chart-container-wide{height:390px;position:relative}
+#map{height:72vh;min-height:690px;border-radius:.85rem;overflow:hidden}.map-info{border:1px solid #e5e7eb;background:#f8fafc;border-radius:.75rem;padding:.7rem .85rem;font-size:.88rem;color:#475467}.badge-map{font-size:.9rem;padding:.45rem .75rem;border-radius:999px}
+.map-panel{position:absolute;right:12px;top:12px;z-index:500;background:#fff;border-radius:12px;padding:10px 12px;box-shadow:0 7px 20px rgba(0,0,0,.16);width:235px;border:1px solid rgba(0,0,0,.08)}.map-panel h6{font-size:.87rem;font-weight:800;margin:0 0 8px}.map-panel label{display:block;font-size:.82rem;color:#475467;margin:5px 0}.map-panel input{margin-right:7px}.legend-panel{position:absolute;left:12px;bottom:12px;z-index:500;background:#fff;border-radius:12px;padding:10px 12px;box-shadow:0 7px 20px rgba(0,0,0,.16);border:1px solid rgba(0,0,0,.08)}.legend-panel .legend-title{font-weight:800;font-size:.82rem;margin-bottom:6px}.legend-row{font-size:.77rem;color:#374151;margin:4px 0}.legend-row i{width:13px;height:13px;border-radius:50%;display:inline-block;vertical-align:middle;margin-right:7px;border:1px solid rgba(0,0,0,.12)}
+.sede-popup{min-width:300px;max-width:390px}.sede-popup .title{font-weight:800;color:#1f2937;font-size:.97rem;margin-bottom:4px}.sede-popup .sub{font-size:.83rem;color:#667085;margin-bottom:8px}.sede-popup .rowx{font-size:.83rem;color:#334155;margin:4px 0;line-height:1.32}.sede-popup .rowx b{color:#374151}.sede-popup .section{border-top:1px solid #e5e7eb;margin-top:8px;padding-top:8px}.risk-label{display:inline-flex;font-size:.73rem;font-weight:800;border-radius:999px;padding:4px 8px;align-items:center}
+.priority-tag{border-radius:999px;padding:4px 8px;font-size:.74rem;font-weight:800}.analytic-note{font-size:.83rem;color:#475467;background:#f8fafc;border:1px dashed #d0d5dd;border-radius:.75rem;padding:.7rem .85rem}.table th{white-space:nowrap;font-size:.82rem}.table td{font-size:.84rem;vertical-align:middle}
+.query-tabs .nav-link{font-weight:700;color:#475467}.query-tabs .nav-link.active{color:#1d4ed8;background:#eef4ff;border-color:#b8d0ff #b8d0ff #fff}.tab-pane-card{border:1px solid #edf0f2;border-top:0;border-radius:0 0 1rem 1rem;padding:1rem;background:#fff}
+@media(max-width:1300px){.kpi-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.risk-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:768px){.kpi-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.risk-grid{grid-template-columns:repeat(2,minmax(0,1fr))}#map{min-height:560px}.map-panel{width:205px}}
+
+/* V2 · Indicadores tipo tablero Filtros */
+.section-block{
+  border:1px solid #8eb3ff;
+  border-radius:1.1rem;
+  box-shadow:0 10px 28px rgba(29,78,216,.08);
+  background:#fff;
+  overflow:hidden;
+}
+.section-header{
+  padding:1rem 1.15rem;
+  border-bottom:1px solid #c9dafc;
+  display:flex;
+  align-items:center;
+  gap:.9rem;
+  background:linear-gradient(180deg,#eef4ff 0%,#edf3ff 100%);
+}
+.section-header__icon{
+  width:58px;height:58px;border-radius:16px;display:flex;align-items:center;justify-content:center;
+  flex:0 0 58px;background:#e3edff;border:1px solid #bdd1ff;color:#1d4ed8;
+}
+.section-header__icon svg{width:34px;height:34px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.section-header h5{font-size:clamp(1.45rem,2vw,2rem);font-weight:850;color:#1d4ed8;margin:0}
+.section-header .small{font-size:1rem;color:#475467}
+.section-body{padding:1rem 1.15rem}
+.kpi-row-6{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:1rem}
+.kpi-modern{
+  padding:1.05rem .85rem;border-radius:1.05rem;background:#fff;border:1px solid #eef2f7;
+  box-shadow:0 6px 18px rgba(0,0,0,.06);text-align:center;min-height:292px;
+}
+.kpi-icon{
+  width:70px;height:70px;border-radius:50%;margin:0 auto .8rem;display:flex;align-items:center;justify-content:center;
+  background:#eaf1ff;color:#2457d6;border:1px solid #d5e3ff;
+}
+.kpi-icon svg{width:37px;height:37px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.kpi-modern .kpi-label{
+  min-height:76px;display:flex;justify-content:center;align-items:center;font-weight:750;
+  color:#1f2937;font-size:.88rem;line-height:1.25;text-align:center;
+}
+.kpi-divider{border-top:2px dotted #d9e1ec;margin:.7rem 0 .85rem}
+.kpi-modern .kpi-value{font-size:clamp(23px,2.6vw,38px);font-weight:850;color:#2457d6}
+.kpi-modern .kpi-mini{font-size:.77rem;margin-top:.35rem;color:#667085}
+.school-marker{
+  width:25px;height:25px;border-radius:7px;border:2px solid #fff;box-shadow:0 3px 9px rgba(15,23,42,.28);
+  display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;line-height:1;
+}
+.aqueduct-marker{
+  width:29px;height:29px;border-radius:999px;background:#0891b2;border:2px solid #fff;
+  box-shadow:0 4px 12px rgba(8,145,178,.40);display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:16px;line-height:1;
+}
+.legend-symbol{
+  display:inline-flex;width:20px;height:20px;align-items:center;justify-content:center;margin-right:7px;
+  vertical-align:middle;color:#fff;font-size:11px;font-weight:800;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.18)
+}
+.legend-symbol.school{border-radius:6px;background:#f59e0b}
+.legend-symbol.water{border-radius:999px;background:#0891b2}
+.table-responsive{overflow-x:auto}
+#tblPriority,#tblNoGeo,#tblDetail{width:100%!important}
+#tblPriority th,#tblNoGeo th,#tblDetail th{white-space:nowrap;font-size:.84rem}
+#tblPriority td,#tblNoGeo td,#tblDetail td{white-space:normal;vertical-align:middle;font-size:.88rem}
+@media(max-width:1300px){.kpi-row-6{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:768px){.kpi-row-6{grid-template-columns:1fr}.kpi-modern{min-height:auto}}
+
+
+/* V3 · Homologación visual, exportación y filtros removibles */
+.nav-processes{gap:.15rem}
+@media(max-width:1200px){.nav-processes .process-btn{font-size:.86rem;padding:.55rem .72rem!important}}
+.section-unified{
+  border:1px solid #8eb3ff!important;border-radius:1.1rem!important;
+  box-shadow:0 10px 28px rgba(29,78,216,.08)!important;background:#fff;overflow:hidden;padding:0!important;
+}
+.section-unified > .table-toggle-header{
+  width:100%;display:flex;align-items:center;gap:.9rem;padding:1rem 1.15rem!important;
+  border:0;border-bottom:1px solid #c9dafc;background:linear-gradient(180deg,#eef4ff 0%,#edf3ff 100%);
+  text-align:left;cursor:pointer;
+}
+.section-unified > .table-toggle-header .section-title-icon{
+  width:58px;height:58px;border-radius:16px;display:flex;align-items:center;justify-content:center;flex:0 0 58px;
+  background:#e3edff;border:1px solid #bdd1ff;color:#1d4ed8;
+}
+.section-unified > .table-toggle-header .section-title-icon svg{
+  width:34px;height:34px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round
+}
+.section-unified > .table-toggle-header .section-title-copy{min-width:0;flex:1 1 auto}
+.section-unified > .table-toggle-header h5{font-size:clamp(1.4rem,2vw,2rem);font-weight:850;color:#1d4ed8;margin:0}
+.section-unified > .table-toggle-header .section-note{font-size:1rem;color:#475467;margin-top:.2rem}
+.section-unified > .collapse{padding:1rem 1.15rem;margin-top:0!important;background:#fff}
+.section-unified .table-toggle-arrow{
+  flex:0 0 auto;width:44px;height:44px;border-radius:999px;display:flex;align-items:center;justify-content:center;
+  border:1px solid #bdd1ff;background:#fff;color:#1d4ed8;box-shadow:0 2px 6px rgba(0,0,0,.04);
+}
+.active-filters-shell{
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+  background:#fff;border:1px solid #e6eaf1;border-radius:1rem;padding:.72rem 1rem;
+  box-shadow:0 6px 16px rgba(15,23,42,.05);margin-bottom:1rem;
+}
+.active-filters-left{display:flex;align-items:center;gap:.45rem;flex-wrap:wrap}
+.active-filters-left h6{font-weight:850;font-size:.92rem;color:#344054;margin:0 .35rem 0 0}
+.active-filter-chip{
+  display:inline-flex;align-items:center;gap:.38rem;background:#eef4ff;border:1px solid #c7d7fe;
+  color:#1d4ed8;border-radius:999px;padding:.27rem .34rem .27rem .62rem;font-size:.78rem;font-weight:750;
+}
+.active-filter-chip .label{color:#475467;font-weight:700}
+.active-filter-remove{
+  width:19px;height:19px;border:0;border-radius:999px;background:#dbeafe;color:#1d4ed8;
+  display:inline-flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;line-height:1;
+  cursor:pointer;padding:0;
+}
+.active-filter-remove:hover{background:#bfdbfe}
+.dt-buttons{display:flex;gap:.35rem;margin-bottom:.75rem}
+.dt-buttons .btn{border-radius:.55rem!important;font-weight:700;padding:.38rem .75rem}
+.table-download-note{font-size:.83rem;color:#667085;margin-bottom:.75rem}
+
+
+/* V4 · Corrección de filtros desplegables y ampliación de priorización */
+#seccionFiltros{
+  overflow:visible !important;
+  position:relative;
+  z-index:1200;
+}
+#seccionFiltros > .collapse.show,
+#filtersCollapse{
+  overflow:visible !important;
+}
+#seccionFiltros .ts-wrapper,
+#seccionFiltros .ts-control{
+  position:relative;
+  z-index:1;
+}
+.ts-dropdown{
+  z-index:5000 !important;
+  box-shadow:0 12px 28px rgba(15,23,42,.16);
+  border-radius:.55rem;
+}
+.priority-method-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:.8rem;
+  margin-bottom:1rem;
+}
+.priority-method-card{
+  background:#f8fbff;
+  border:1px solid #dbeafe;
+  border-radius:.9rem;
+  padding:.8rem .9rem;
+}
+.priority-method-title{
+  display:flex;
+  align-items:center;
+  gap:.45rem;
+  font-weight:850;
+  color:#1d4ed8;
+  font-size:.9rem;
+  margin-bottom:.3rem;
+}
+.priority-method-text{
+  color:#475467;
+  font-size:.82rem;
+  line-height:1.42;
+}
+.priority-method-badge{
+  width:25px;height:25px;border-radius:8px;background:#e3edff;
+  display:inline-flex;align-items:center;justify-content:center;font-weight:900;color:#1d4ed8;
+}
+.priority-table-head{
+  display:flex;align-items:start;justify-content:space-between;gap:.8rem;flex-wrap:wrap;margin-bottom:.75rem;
+}
+.priority-table-note{
+  font-size:.8rem;color:#667085;max-width:430px;line-height:1.4;
+}
+.priority-table-wrap{
+  max-height:430px;
+  overflow:auto;
+  border:1px solid #eef2f6;
+  border-radius:.65rem;
+}
+.priority-table-wrap table{margin-bottom:0}
+.priority-table-wrap thead th{
+  position:sticky;top:0;background:#f8fafc;z-index:2;white-space:nowrap;
+  font-size:.76rem;color:#344054;
+}
+.priority-table-wrap tbody td{font-size:.78rem;vertical-align:middle}
+.priority-system-name{min-width:230px;line-height:1.28}
+.priority-code{white-space:nowrap;color:#475467;font-size:.76rem}
+.priority-action{
+  display:inline-flex;align-items:center;border-radius:999px;padding:.18rem .48rem;
+  font-size:.7rem;font-weight:800;white-space:nowrap;
+}
+.priority-action.urgent{background:#fee2e2;color:#b91c1c}
+.priority-action.follow{background:#fff7ed;color:#c2410c}
+@media(max-width:992px){
+  .priority-method-grid{grid-template-columns:1fr}
+}
+
+</style>
+</head>
+<body>
+<div id="loginScreen" style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#f1f5f9,#e0f2fe);padding:20px;">
+  <div style="background:white;padding:34px;border-radius:18px;box-shadow:0 14px 35px rgba(15,23,42,.16);width:380px;max-width:95%;text-align:center;border:1px solid #e5e7eb;">
+    <div style="width:64px;height:64px;margin:0 auto 16px;border-radius:18px;background:#0f766e;display:flex;align-items:center;justify-content:center;color:#fff;font-size:30px;font-weight:800;">U</div>
+    <h2 style="margin:0 0 8px;color:#0f172a;font-size:24px;">Acceso UESVALLE</h2>
+    <p style="margin:0 0 20px;color:#64748b;font-size:14px;">Ingrese la contraseña para consultar los tableros.</p>
+    <input id="passwordInput" type="password" placeholder="Contraseña" autocomplete="current-password" onkeydown="if(event.key==='Enter') validarAcceso();" style="width:100%;padding:13px 14px;margin:0 0 14px;border:1px solid #cbd5e1;border-radius:10px;font-size:15px;"/>
+    <button onclick="validarAcceso()" style="width:100%;padding:13px;background:#0f766e;color:white;border:none;border-radius:10px;font-weight:800;font-size:15px;cursor:pointer;">Ingresar</button>
+    <div id="loginError" style="display:none;margin-top:14px;color:#b91c1c;background:#fee2e2;border:1px solid #fecaca;border-radius:10px;padding:10px;font-size:13px;font-weight:700;">Contraseña incorrecta.</div>
+    <p style="margin:18px 0 0;color:#94a3b8;font-size:12px;">Portal de tableros institucionales</p>
+  </div>
+</div>
+<div id="dashboardContent" style="display:none;">
+<div class="gov-banner"><div class="container d-flex align-items-center" style="height:100%;"><img src="https://www.gov.co/assets/images/logo.png" alt="GOV.CO"/></div></div>
+<main><div class="board">
+<header class="header-ues py-2 mb-3"><div class="container-fluid px-3 text-center"><img src="https://www.uesvalle.gov.co/info/uesvalle/media/bloque1656.png" alt="UESVALLE" loading="lazy" class="img-fluid"/></div></header>
+<section class="nav-card p-3 mb-3"><nav class="navbar navbar-expand-lg bg-white rounded-4"><div class="container-fluid d-flex flex-column align-items-center"><div class="w-100 d-flex justify-content-start mb-2"><a href="../../index.html" class="btn btn-outline-primary btn-sm rounded-pill px-3 fw-bold">← Portal de Tableros</a></div><div class="fw-bold mb-3 fs-5">Procesos</div><ul class="navbar-nav nav-processes flex-wrap justify-content-center">
+<li class="nav-item dropdown mx-2 my-1"><a class="nav-link dropdown-toggle process-btn active" href="#" role="button" data-bs-toggle="dropdown">1. Agua para consumo humano y saneamiento básico</a><ul class="dropdown-menu"><li><a class="dropdown-item" href="../ircas/ircas.html">1.1 IRCAS</a></li><li><a class="dropdown-item" href="../filtros/filtros.html">1.2 Filtros</a></li><li><a class="dropdown-item" href="../seguimiento_ach/seguimiento_ach.html">1.3 Seguimiento Actividades Agua para Consumo Humano</a></li><li><a class="dropdown-item" href="../dosificacion_cloro/dosificacion_cloro.html">1.4 Dosificación de cloro</a></li><li><a class="dropdown-item" href="../muestras/muestras.html">1.5 Muestras</a></li><li><a class="dropdown-item" href="../mpr/seguimiento_mpr.html">1.6 Mapas de Riesgo MPR</a></li><li><a class="dropdown-item active" href="../sedes_educativas/sedes_educativas.html">1.7 Sedes Educativas</a></li></ul></li>
+<li class="nav-item dropdown mx-2 my-1"><a class="nav-link dropdown-toggle process-btn" href="#" role="button" data-bs-toggle="dropdown">2. Alimentos y medicamentos</a><ul class="dropdown-menu"><li><a class="dropdown-item disabled" href="#">Próximamente</a></li></ul></li>
+<li class="nav-item dropdown mx-2 my-1"><a class="nav-link dropdown-toggle process-btn" href="#" role="button" data-bs-toggle="dropdown">3. Zoonosis y ETV</a><ul class="dropdown-menu"><li><a class="dropdown-item disabled" href="#">Próximamente</a></li></ul></li>
+<li class="nav-item dropdown mx-2 my-1"><a class="nav-link dropdown-toggle process-btn" href="#" role="button" data-bs-toggle="dropdown">4. Establecimientos de interés sanitario</a><ul class="dropdown-menu"><li><a class="dropdown-item" href="../piscinas/piscinas.html">4.1 Piscinas</a></li><li><a class="dropdown-item" href="../empresas_plaguicidas/empresas_plaguicidas.html">4.2 Empresas aplicadoras de plaguicidas</a></li></ul></li>
+</ul></div></nav></section>
+<section class="soft-card p-3 mb-3"><div class="d-flex flex-column flex-lg-row align-items-lg-center gap-3"><div class="me-auto"><h1 class="board-title">Calidad del Agua en Sedes Educativas</h1><div class="board-subtitle mt-1">Condición sanitaria del agua que abastece las instituciones educativas en municipios de jurisdicción UESVALLE.</div><div class="board-subtitle mt-1">Fuente operativa: <b>data/sedes_educativas/current/sedes_educativas_irca_consolidado.csv</b></div></div><div class="text-lg-end"><span id="lastUpdate" class="badge text-bg-success last-update-badge">Cargando datos…</span><div id="loadStatus" class="status-line mt-2">Preparando información del tablero.</div></div></div></section>
+<section class="soft-card section-unified p-3 mb-3">
+<button class="table-toggle-header" type="button" data-bs-toggle="collapse" data-bs-target="#filtersCollapse" aria-expanded="true"><span class="section-title-icon"><svg viewBox="0 0 24 24"><path d="M3 5h18l-7 8v5l-4 2v-7L3 5z"/></svg></span><div class="section-title-copy"><h5>Filtros del tablero</h5><div class="section-note">Filtra sedes, estudiantes, mapa, gráficos y tablas de priorización.</div></div><span class="table-toggle-arrow"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
+<div class="collapse show mt-3" id="filtersCollapse"><div class="row g-3 align-items-end">
+<div class="col-12 col-md-3"><label class="form-label filter-label mb-1">Municipio</label><select id="fMunicipio" class="form-select form-select-sm"><option value="">Todos</option></select></div>
+<div class="col-12 col-md-2"><label class="form-label filter-label mb-1">Zona</label><select id="fZona" class="form-select form-select-sm"><option value="">Todas</option></select></div>
+<div class="col-12 col-md-3"><label class="form-label filter-label mb-1">Nivel de riesgo IRCA</label><select id="fRiesgo" class="form-select form-select-sm" multiple></select></div>
+<div class="col-12 col-md-4"><label class="form-label filter-label mb-1">Acueducto abastecedor</label><select id="fAcueducto" class="form-select form-select-sm"><option value="">Todos</option></select></div>
+<div class="col-12 col-md-3"><label class="form-label filter-label mb-1">Concepto sanitario</label><select id="fConcepto" class="form-select form-select-sm"><option value="">Todos</option></select></div>
+<div class="col-12 col-md-3"><label class="form-label filter-label mb-1">Estado georreferenciación</label><select id="fGeo" class="form-select form-select-sm"><option value="">Todos</option></select></div>
+<div class="col-12 col-md-3"><label class="form-label filter-label mb-1">Conectada a acueducto</label><select id="fConexion" class="form-select form-select-sm"><option value="">Todas</option></select></div>
+<div class="col-12 col-md-3"><label class="form-label filter-label mb-1">Prioridad analítica</label><select id="fPrioridad" class="form-select form-select-sm" multiple></select></div>
+<div class="col-12 d-flex justify-content-center gap-2 pt-2"><button id="btnApply" class="btn btn-primary btn-sm px-4">Aplicar filtros</button><button id="btnClear" class="btn btn-outline-secondary btn-sm px-4">Limpiar</button><button id="btnReload" class="btn btn-outline-primary btn-sm px-4">Refrescar datos</button></div>
+</div></div></section>
+<section class="active-filters-shell"><div class="active-filters-left"><h6>Filtros activos:</h6><div id="activeFilters" class="active-filters-wrap"><span class="text-muted small">Sin filtros adicionales</span></div></div><button id="btnClearActive" class="btn btn-outline-danger btn-sm rounded-pill px-3">Limpiar todos</button></section>
+
+<section class="section-block mb-4" id="seccionIndicadoresSedes">
+  <div class="section-header">
+    <div class="section-header__icon">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19h16"/><path d="M6 17V10"/><path d="M10 17V6"/><path d="M14 17v-3"/><path d="M18 17V8"/><path d="M5 14l4-4 3 2 6-6 1 1"/></svg>
+    </div>
+    <div>
+      <h5>Indicadores de calidad del agua en sedes educativas</h5>
+      <div class="small">Resumen de las sedes evaluadas y de los estudiantes asociados a sistemas con riesgo sanitario.</div>
+    </div>
+  </div>
+  <div class="section-body">
+    <div class="kpi-row-6">
+      <div class="kpi-modern">
+        <div class="kpi-icon"><svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V8l7-4 7 4v13"/><path d="M9 11h1M14 11h1M9 15h1M14 15h1"/><path d="M11 21v-3h2v3"/></svg></div>
+        <div class="kpi-label">Sedes educativas evaluadas</div>
+        <div class="kpi-divider"></div>
+        <div id="kpiSedes" class="kpi-value">–</div>
+        <div class="kpi-mini">Universo filtrado</div>
+      </div>
+      <div class="kpi-modern">
+        <div class="kpi-icon"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-8 0v2"/><circle cx="12" cy="7" r="4"/><path d="M4 21v-2a4 4 0 0 1 3-3.87M20 21v-2a4 4 0 0 0-3-3.87"/></svg></div>
+        <div class="kpi-label">Estudiantes asociados</div>
+        <div class="kpi-divider"></div>
+        <div id="kpiEst" class="kpi-value">–</div>
+        <div class="kpi-mini">Suma filtrada</div>
+      </div>
+      <div class="kpi-modern">
+        <div class="kpi-icon"><svg viewBox="0 0 24 24"><path d="M12 2s6 6.2 6 11a6 6 0 1 1-12 0c0-4.8 6-11 6-11z"/><path d="M12 9v5"/><path d="M12 17h.01"/></svg></div>
+        <div class="kpi-label">Sedes en riesgo medio o superior</div>
+        <div class="kpi-divider"></div>
+        <div id="kpiMedioMas" class="kpi-value">–</div>
+        <div class="kpi-mini">Medio + alto + inviable</div>
+      </div>
+      <div class="kpi-modern">
+        <div class="kpi-icon"><svg viewBox="0 0 24 24"><path d="M3 20h18"/><path d="M5 18V9h14v9"/><path d="M9 13h6"/><path d="M12 4v5"/><path d="M9 7l3-3 3 3"/></svg></div>
+        <div class="kpi-label">Estudiantes en riesgo medio o superior</div>
+        <div class="kpi-divider"></div>
+        <div id="kpiEstMedioMas" class="kpi-value">–</div>
+        <div class="kpi-mini">Exposición potencial</div>
+      </div>
+      <div class="kpi-modern">
+        <div class="kpi-icon"><svg viewBox="0 0 24 24"><path d="M12 9v4"/><path d="M12 17h.01"/><path d="M10.3 3.3 2.8 16.2A2 2 0 0 0 4.5 19h15a2 2 0 0 0 1.7-2.8L13.7 3.3a2 2 0 0 0-3.4 0z"/></svg></div>
+        <div class="kpi-label">Sedes en alto o inviable sanitariamente</div>
+        <div class="kpi-divider"></div>
+        <div id="kpiCriticas" class="kpi-value">–</div>
+        <div class="kpi-mini">Prioridad sanitaria</div>
+      </div>
+      <div class="kpi-modern">
+        <div class="kpi-icon"><svg viewBox="0 0 24 24"><path d="M12 2s5.5 6 5.5 10.5a5.5 5.5 0 1 1-11 0C6.5 8 12 2 12 2z"/><path d="M9 19l-2 2M15 19l2 2"/><path d="M9 13h6"/></svg></div>
+        <div class="kpi-label">Estudiantes en alto o inviable sanitariamente</div>
+        <div class="kpi-divider"></div>
+        <div id="kpiEstCriticos" class="kpi-value">–</div>
+        <div class="kpi-mini">Población prioritaria</div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="soft-card section-unified p-3 mb-3"><button class="table-toggle-header" type="button" data-bs-toggle="collapse" data-bs-target="#riskCollapse" aria-expanded="true"><span class="section-title-icon"><svg viewBox="0 0 24 24"><path d="M12 2s6 6.2 6 11a6 6 0 1 1-12 0c0-4.8 6-11 6-11z"/><path d="M12 9v5"/><path d="M12 17h.01"/></svg></span><div class="section-title-copy"><h5>Resumen de clasificación sanitaria</h5><div class="section-note">Distribución de sedes educativas y estudiantes asociados por nivel de riesgo IRCA.</div></div><span class="table-toggle-arrow"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button><div class="collapse show mt-3" id="riskCollapse"><div id="riskCards" class="risk-grid"></div><div class="row g-3 mt-2"><div class="col-12 col-xl-6"><div class="chart-card p-3"><h6 class="fw-bold mb-1">Sedes por nivel de riesgo</h6><div class="section-note mb-2">Haz clic en una barra para filtrar por riesgo.</div><div class="chart-container"><canvas id="chartSedesRiesgo"></canvas></div></div></div><div class="col-12 col-xl-6"><div class="chart-card p-3"><h6 class="fw-bold mb-1">Estudiantes asociados por riesgo</h6><div class="section-note mb-2">Población estudiantil potencialmente expuesta.</div><div class="chart-container"><canvas id="chartEstudiantesRiesgo"></canvas></div></div></div></div></div></section>
+<section class="soft-card section-unified p-3 mb-3"><button class="table-toggle-header" type="button" data-bs-toggle="collapse" data-bs-target="#mapCollapse" aria-expanded="true"><span class="section-title-icon"><svg viewBox="0 0 24 24"><path d="M9 18 3 21V6l6-3 6 3 6-3v15l-6 3-6-3Z"/><path d="M9 3v15"/><path d="M15 6v15"/></svg></span><div class="section-title-copy"><h5>Mapa de sedes educativas y calidad del agua</h5><div class="section-note">Las sedes se representan por nivel de riesgo IRCA y los acueductos maestros con un marcador de gota para identificar el sistema abastecedor.</div></div><span id="mapCount" class="badge text-bg-primary badge-map ms-auto me-2">0 sedes</span><span class="table-toggle-arrow"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button><div class="collapse show mt-3" id="mapCollapse"><div class="map-info mb-3"><b>Cobertura espacial:</b> las sedes sin coordenadas permanecen en KPIs y tablas, pero no pueden visualizarse en el mapa hasta completar la georreferenciación.</div><div class="position-relative"><div id="map"></div><div class="map-panel"><h6>Capas de referencia</h6><label><input id="toggleMunicipios" type="checkbox" checked/> Municipios Valle</label><label><input id="toggleSedes" type="checkbox" checked/> Sedes educativas filtradas</label><label><input id="toggleAcueductos" type="checkbox" checked/> Acueductos maestros</label><label><input id="toggleCritical" type="checkbox"/> Mostrar solo alto/inviable</label></div><div id="mapLegend" class="legend-panel"></div></div></div></section>
+<section class="soft-card section-unified p-3 mb-3"><button class="table-toggle-header" type="button" data-bs-toggle="collapse" data-bs-target="#analyticsCollapse" aria-expanded="true"><span class="section-title-icon"><svg viewBox="0 0 24 24"><path d="M4 19h16"/><path d="M6 17v-5"/><path d="M11 17V7"/><path d="M16 17v-9"/><path d="M21 17V4"/></svg></span><div class="section-title-copy"><h5>Priorización territorial y operativa</h5><div class="section-note">Rankings para orientar seguimiento por municipio, sistema abastecedor y sede educativa.</div></div><span class="table-toggle-arrow"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button><div class="collapse show mt-3" id="analyticsCollapse"><div class="analytic-note mb-3"><b>¿Para qué sirve este módulo?</b> Identifica territorios y sistemas abastecedores donde coinciden sedes educativas clasificadas en <b>riesgo alto</b> o <b>inviable sanitariamente</b>, junto con la cantidad de estudiantes asociados. El resultado permite orientar revisión técnica, seguimiento sanitario y priorización de visitas.</div>
+<div class="priority-method-grid">
+  <div class="priority-method-card">
+    <div class="priority-method-title"><span class="priority-method-badge">1</span> Riesgo sanitario</div>
+    <div class="priority-method-text">Se priorizan sedes con clasificación <b>ALTO</b> o <b>INVIABLE SANITARIAMENTE</b>, por representar la condición más crítica en la base disponible.</div>
+  </div>
+  <div class="priority-method-card">
+    <div class="priority-method-title"><span class="priority-method-badge">2</span> Exposición estudiantil</div>
+    <div class="priority-method-text">Se incorpora el número de estudiantes asociados para reconocer dónde una condición crítica puede afectar a mayor población escolar.</div>
+  </div>
+  <div class="priority-method-card">
+    <div class="priority-method-title"><span class="priority-method-badge">3</span> Acción operativa</div>
+    <div class="priority-method-text">Los resultados son una señal de priorización. Deben complementarse con validación del acueducto, visita, muestreo y actuación sanitaria correspondiente.</div>
+  </div>
+</div><div class="row g-3"><div class="col-12 col-xl-5"><div class="chart-card p-3 h-100"><h6 class="fw-bold">Municipios con más sedes alto/inviable</h6><div class="section-note mb-2">Ordena municipios según el número de sedes en las clasificaciones sanitarias más críticas.</div><div class="chart-container-wide"><canvas id="chartMunicipios"></canvas></div></div></div><div class="col-12 col-xl-7"><div class="chart-card p-3 h-100"><div class="priority-table-head"><div><h6 class="fw-bold mb-1">Sistemas abastecedores con sedes críticas</h6><div class="section-note">Sistemas asociados a sedes en riesgo alto o inviable dentro del filtro activo.</div></div><div class="priority-table-note">La columna <b>acción sugerida</b> orienta la revisión inicial y no reemplaza el procedimiento sanitario.</div></div><div class="priority-table-wrap"><table class="table table-sm table-hover"><thead><tr><th>#</th><th>Acueducto / sistema</th><th>Código SISA</th><th>Municipio(s)</th><th class="text-end">Alto</th><th class="text-end">Inviable</th><th class="text-end">Sedes críticas</th><th class="text-end">Estudiantes</th><th>Acción sugerida</th></tr></thead><tbody id="topAcueductos"></tbody></table></div></div></div></div></div></section>
+<section class="soft-card section-unified p-3 mb-4"><button class="table-toggle-header" type="button" data-bs-toggle="collapse" data-bs-target="#tablesCollapse" aria-expanded="false"><span class="section-title-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 4v16M15 4v16"/></svg></span><div class="section-title-copy"><h5>Consulta detallada y control de calidad</h5><div class="section-note">Consulta sedes prioritarias y registros que requieren completar ubicación o validar cruce.</div></div><span class="table-toggle-arrow"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button><div class="collapse mt-3" id="tablesCollapse"><ul class="nav nav-tabs query-tabs" role="tablist"><li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tabPriority" type="button">Sedes prioritarias</button></li><li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tabNoGeo" type="button">Sin coordenadas</button></li><li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tabDetail" type="button">Detalle general</button></li></ul><div class="tab-content"><div class="tab-pane fade show active tab-pane-card" id="tabPriority"><div class="table-download-note">Descarga la tabla filtrada en formato Excel o CSV.</div><div class="table-responsive"><table id="tblPriority" class="table table-striped table-hover w-100"></table></div></div><div class="tab-pane fade tab-pane-card" id="tabNoGeo"><div class="table-download-note">Descarga la tabla filtrada en formato Excel o CSV.</div><div class="table-responsive"><table id="tblNoGeo" class="table table-striped table-hover w-100"></table></div></div><div class="tab-pane fade tab-pane-card" id="tabDetail"><div class="table-download-note">Descarga la tabla filtrada en formato Excel o CSV.</div><div class="table-responsive"><table id="tblDetail" class="table table-striped table-hover w-100"></table></div></div></div></div></section>
+</div></main></div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/esri-leaflet@3.0.14/dist/esri-leaflet.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.8/js/dataTables.bootstrap5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.bootstrap5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tom-select@2.3.1/dist/js/tom-select.complete.min.js"></script>
+<script>
+const PASSWORD_TABLERO="Uesvalle2026"; const ACCESS_KEY_UESVALLE="accesoTableroUESVALLE";
+function mostrarTableroUESVALLE(){document.getElementById('loginScreen').style.display='none';document.getElementById('dashboardContent').style.display='block';setTimeout(()=>{window.dispatchEvent(new Event('resize'));if(MAP) MAP.invalidateSize();},350)}
+function validarAcceso(){const input=document.getElementById('passwordInput'), error=document.getElementById('loginError');if(input.value===PASSWORD_TABLERO){localStorage.setItem(ACCESS_KEY_UESVALLE,'ok');mostrarTableroUESVALLE()}else{error.style.display='block';input.value='';input.focus()}}
+window.addEventListener('DOMContentLoaded',()=>{if(localStorage.getItem(ACCESS_KEY_UESVALLE)==='ok') mostrarTableroUESVALLE();else document.getElementById('passwordInput').focus(); initDashboard();});
+const CSV_URL="../../data/sedes_educativas/current/sedes_educativas_irca_consolidado.csv";
+const METADATA_URL="../../data/sedes_educativas/current/metadata_sedes_educativas.json";
+const ACUEDUCTOS_URL="../../data/sedes_educativas/current/maestro_acueductos_mapa.csv";
+const RISK_ORDER=['SIN RIESGO','BAJO','MEDIO','ALTO','INVIABLE SANITARIAMENTE','SIN DATO'];
+const RISK_COLORS={'SIN RIESGO':'#00b050','BAJO':'#c6e0b4','MEDIO':'#facc15','ALTO':'#f59e0b','INVIABLE SANITARIAMENTE':'#ef4444','SIN DATO':'#94a3b8'};
+let RAW=[], LIST=[], ACUEDUCTOS=[], META=null, MAP=null, SEDES_LAYER=null, ACUEDUCTOS_LAYER=null, MUNICIPIOS_LAYER=null, charts={}, tables={}, selects={};
+function clean(v){return v==null?'':String(v).trim()} function norm(v){return clean(v).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toUpperCase()}
+function num(v){const n=Number(String(v??'').replace(',','.'));return Number.isFinite(n)?n:0} function unique(arr){return [...new Set(arr.filter(x=>clean(x)!==''))].sort((a,b)=>String(a).localeCompare(String(b),'es'))}
+function fmt(v){return Number(v||0).toLocaleString('es-CO')} function esc(v){return clean(v).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#39;')}
+function riskColor(r){return RISK_COLORS[norm(r)]||RISK_COLORS['SIN DATO']} function riskText(r){return ['SIN RIESGO','INVIABLE SANITARIAMENTE'].includes(norm(r))?'#fff':'#111827'}
+function parseRows(rows){return rows.map(r=>({ ...r, ESTUDIANTES_ACTUAL:num(r.ESTUDIANTES_ACTUAL), LONGITUD:num(r.LONGITUD)||null, LATITUD:num(r.LATITUD)||null, SCORE_PRIORIDAD:num(r.SCORE_PRIORIDAD), NIVEL_RIESGO_IRCA:norm(r.NIVEL_RIESGO_IRCA)||'SIN DATO', ZONA_IRCA:norm(r.ZONA_IRCA), ESTADO_GEORREFERENCIACION:norm(r.ESTADO_GEORREFERENCIACION), NIVEL_PRIORIDAD:norm(r.NIVEL_PRIORIDAD)}))}
+
+function parseAcueductos(rows){return rows.map(r=>({ ...r, MUNICIPIO:norm(r.MUNICIPIO), LATITUD:num(r.LATITUD)||null, LONGITUD:num(r.LONGITUD)||null, POBLACION:num(r.POBLACION), SUSCRIPTORES:num(r.SUSCRIPTORES), CODIGO_SISTEMA:String(r.CODIGO_SISTEMA||''), PERSONA_PRESTADORA:String(r.PERSONA_PRESTADORA||'') })).filter(d=>Number.isFinite(d.LATITUD)&&Number.isFinite(d.LONGITUD))}
+function setOptions(id, values, all='Todos'){const el=document.getElementById(id);el.innerHTML=`<option value="">${all}</option>`+values.map(v=>`<option value="${esc(v)}">${esc(v)}</option>`).join('')}
+function initSelect(id,multiple=false){if(selects[id]) selects[id].destroy(); selects[id]=new TomSelect('#'+id,{create:false,allowEmptyOption:!multiple,plugins:multiple?['remove_button']:[],maxOptions:3000,dropdownParent:'body',placeholder:multiple?'Seleccione uno o varios...':'Buscar o seleccionar...'});}
+function populateFilters(){setOptions('fMunicipio',unique(RAW.map(d=>d.MUNICIPIO)));setOptions('fZona',unique(RAW.map(d=>d.ZONA_IRCA)),'Todas');document.getElementById('fRiesgo').innerHTML=RISK_ORDER.map(v=>`<option value="${v}">${v}</option>`).join('');setOptions('fAcueducto',unique(RAW.map(d=>d.NOMBRE_ACUEDUCTO)));setOptions('fConcepto',unique(RAW.map(d=>d.CONCEPTO_SANITARIO)));setOptions('fGeo',unique(RAW.map(d=>d.ESTADO_GEORREFERENCIACION)));setOptions('fConexion',unique(RAW.map(d=>d.CONECTADA_ACUEDUCTO)),'Todas');document.getElementById('fPrioridad').innerHTML=['MUY ALTA','ALTA','MEDIA','BAJA'].map(v=>`<option value="${v}">${v}</option>`).join('');['fMunicipio','fZona','fRiesgo','fAcueducto','fConcepto','fGeo','fConexion','fPrioridad'].forEach(id=>initSelect(id,['fRiesgo','fPrioridad'].includes(id)));}
+function selected(id){return selects[id]?selects[id].getValue():document.getElementById(id).value}
+function filterRows(){const riesgos=selected('fRiesgo')||[], prioridades=selected('fPrioridad')||[];return RAW.filter(d=>(!selected('fMunicipio')||d.MUNICIPIO===selected('fMunicipio'))&&(!selected('fZona')||d.ZONA_IRCA===selected('fZona'))&&(!riesgos.length||riesgos.includes(d.NIVEL_RIESGO_IRCA))&&(!selected('fAcueducto')||d.NOMBRE_ACUEDUCTO===selected('fAcueducto'))&&(!selected('fConcepto')||d.CONCEPTO_SANITARIO===selected('fConcepto'))&&(!selected('fGeo')||d.ESTADO_GEORREFERENCIACION===selected('fGeo'))&&(!selected('fConexion')||d.CONECTADA_ACUEDUCTO===selected('fConexion'))&&(!prioridades.length||prioridades.includes(d.NIVEL_PRIORIDAD)))}
+function sumRows(data,condition=()=>true){return data.filter(condition).reduce((a,d)=>a+d.ESTUDIANTES_ACTUAL,0)}
+function renderFilters(){
+  const chips=[];
+  const add=(label,value,id,multiple=false)=>{
+    if(multiple){
+      (Array.isArray(value)?value:[]).forEach(v=>chips.push(`<span class="active-filter-chip"><span class="label">${label}:</span>${esc(v)}<button class="active-filter-remove" type="button" data-filter="${id}" data-value="${esc(v)}" title="Quitar filtro">×</button></span>`));
+    }else if(value){
+      chips.push(`<span class="active-filter-chip"><span class="label">${label}:</span>${esc(value)}<button class="active-filter-remove" type="button" data-filter="${id}" title="Quitar filtro">×</button></span>`);
+    }
+  };
+  add('Municipio',selected('fMunicipio'),'fMunicipio');
+  add('Zona',selected('fZona'),'fZona');
+  add('Riesgo',selected('fRiesgo'),'fRiesgo',true);
+  add('Acueducto',selected('fAcueducto'),'fAcueducto');
+  add('Concepto',selected('fConcepto'),'fConcepto');
+  add('Georreferenciación',selected('fGeo'),'fGeo');
+  add('Conexión',selected('fConexion'),'fConexion');
+  add('Prioridad',selected('fPrioridad'),'fPrioridad',true);
+  document.getElementById('activeFilters').innerHTML=chips.length?chips.join(''):'<span class="text-muted small">Sin filtros adicionales</span>';
+}
+function removeActiveFilter(id,value){
+  const control=selects[id];
+  if(!control) return;
+  const current=control.getValue();
+  if(Array.isArray(current)){control.setValue(current.filter(v=>v!==value),true)}
+  else{control.clear(true)}
+  applyFilters();
+}
+function renderKPIs(data){const medio=data.filter(d=>['MEDIO','ALTO','INVIABLE SANITARIAMENTE'].includes(d.NIVEL_RIESGO_IRCA)), crit=data.filter(d=>['ALTO','INVIABLE SANITARIAMENTE'].includes(d.NIVEL_RIESGO_IRCA));document.getElementById('kpiSedes').textContent=fmt(data.length);document.getElementById('kpiEst').textContent=fmt(sumRows(data));document.getElementById('kpiMedioMas').textContent=fmt(medio.length);document.getElementById('kpiEstMedioMas').textContent=fmt(sumRows(medio));document.getElementById('kpiCriticas').textContent=fmt(crit.length);document.getElementById('kpiEstCriticos').textContent=fmt(sumRows(crit))}
+function distributions(data){return RISK_ORDER.map(r=>({risk:r,sedes:data.filter(d=>d.NIVEL_RIESGO_IRCA===r).length,est:sumRows(data,d=>d.NIVEL_RIESGO_IRCA===r)}))}
+function renderRiskCards(data){const ds=distributions(data);document.getElementById('riskCards').innerHTML=ds.map(x=>`<div class="risk-card" role="button" data-risk="${x.risk}"><span class="risk-pill" style="background:${riskColor(x.risk)};color:${riskText(x.risk)}">${x.risk}</span><div class="count">${fmt(x.sedes)}</div><div class="students">${fmt(x.est)} estudiantes</div></div>`).join('');document.querySelectorAll('[data-risk]').forEach(el=>el.addEventListener('click',()=>{selects.fRiesgo.setValue([el.dataset.risk]);applyFilters()}));renderRiskCharts(ds)}
+function destroyChart(k){if(charts[k]) charts[k].destroy()}
+function renderRiskCharts(ds){destroyChart('riskSedes');charts.riskSedes=new Chart(document.getElementById('chartSedesRiesgo'),{type:'bar',data:{labels:ds.map(d=>d.risk),datasets:[{label:'Sedes',data:ds.map(d=>d.sedes),backgroundColor:ds.map(d=>riskColor(d.risk)),borderWidth:1}]},options:{maintainAspectRatio:false,responsive:true,onClick:(e,items)=>{if(items.length){selects.fRiesgo.setValue([ds[items[0].index].risk]);applyFilters()}},plugins:{legend:{display:false}},scales:{y:{beginAtZero:true}}}});destroyChart('riskEst');charts.riskEst=new Chart(document.getElementById('chartEstudiantesRiesgo'),{type:'bar',data:{labels:ds.map(d=>d.risk),datasets:[{label:'Estudiantes',data:ds.map(d=>d.est),backgroundColor:ds.map(d=>riskColor(d.risk))}]},options:{maintainAspectRatio:false,responsive:true,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,ticks:{callback:v=>Number(v).toLocaleString('es-CO')}}}}})}
+function initMap(){MAP=L.map('map',{zoomControl:true}).setView([3.75,-76.35],8);L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{maxZoom:20,attribution:'&copy; CARTO'}).addTo(MAP);MUNICIPIOS_LAYER=L.esri.featureLayer({url:'https://services5.arcgis.com/l23kE3b7uPnZIuaB/arcgis/rest/services/CARTOGRAFIA_BASE/FeatureServer/2',style:{color:'#8b5cf6',weight:1.7,fillColor:'#c4b5fd',fillOpacity:.035}}).addTo(MAP);ACUEDUCTOS_LAYER=L.layerGroup().addTo(MAP);SEDES_LAYER=L.layerGroup().addTo(MAP);document.getElementById('toggleMunicipios').addEventListener('change',e=>e.target.checked?MUNICIPIOS_LAYER.addTo(MAP):MAP.removeLayer(MUNICIPIOS_LAYER));document.getElementById('toggleSedes').addEventListener('change',e=>e.target.checked?SEDES_LAYER.addTo(MAP):MAP.removeLayer(SEDES_LAYER));document.getElementById('toggleAcueductos').addEventListener('change',e=>e.target.checked?ACUEDUCTOS_LAYER.addTo(MAP):MAP.removeLayer(ACUEDUCTOS_LAYER));document.getElementById('toggleCritical').addEventListener('change',()=>renderMap(LIST));document.getElementById('mapLegend').innerHTML='<div class="legend-title">Elementos del mapa</div><div class="legend-row"><span class="legend-symbol school">🏫</span>Sede educativa (color por riesgo)</div><div class="legend-row"><span class="legend-symbol water">💧</span>Acueducto maestro</div><hr style="margin:.5rem 0"/><div class="legend-title">Nivel de riesgo IRCA de la sede</div>'+RISK_ORDER.map(r=>`<div class="legend-row"><i style="background:${riskColor(r)}"></i>${r}</div>`).join('')}
+function schoolIcon(risk){return L.divIcon({className:'',html:`<div class="school-marker" style="background:${riskColor(risk)}">🏫</div>`,iconSize:[25,25],iconAnchor:[12,12],popupAnchor:[0,-12]})}
+function aqueductIcon(){return L.divIcon({className:'',html:'<div class="aqueduct-marker">💧</div>',iconSize:[29,29],iconAnchor:[14,14],popupAnchor:[0,-14]})}
+function popup(d){return `<div class="sede-popup"><div class="title">${esc(d.NOMBRE_SEDE_IRCA)}</div><div class="sub">${esc(d.MUNICIPIO)} · ${esc(d.ZONA_IRCA)}</div><div class="rowx"><b>Estudiantes:</b> ${fmt(d.ESTUDIANTES_ACTUAL)}</div><div class="rowx"><b>Dirección:</b> ${esc(d.DIRECCION_IRCA||d.DIRECCION_MAPA||'-')}</div><div class="section"><div class="rowx"><b>Acueducto asociado:</b> ${esc(d.NOMBRE_ACUEDUCTO||'-')}</div><div class="rowx"><b>Código SISA:</b> ${esc(d.CODIGO_SISA_ACUEDUCTO||'-')}</div><div class="rowx"><b>Riesgo:</b> <span class="risk-label" style="background:${riskColor(d.NIVEL_RIESGO_IRCA)};color:${riskText(d.NIVEL_RIESGO_IRCA)}">${esc(d.NIVEL_RIESGO_IRCA)}</span></div><div class="rowx"><b>Concepto:</b> ${esc(d.CONCEPTO_SANITARIO||'-')}</div><div class="rowx"><b>Fecha visita:</b> ${esc(d.FECHA_VISITA||'-')}</div></div><div class="section"><div class="rowx"><b>Prioridad:</b> ${esc(d.NIVEL_PRIORIDAD)} (${d.SCORE_PRIORIDAD.toFixed(2)})</div><div class="rowx"><b>Estado cruce:</b> ${esc(d.ESTADO_CRUCE)}</div></div></div>`}
+function popupAcueducto(d){return `<div class="sede-popup"><div class="title">💧 ${esc(d.PERSONA_PRESTADORA||'Acueducto')}</div><div class="sub">${esc(d.MUNICIPIO||'-')} · ${esc(d.AMBITO||d.TIPO_SISTEMA||'-')}</div><div class="section"><div class="rowx"><b>Código sistema:</b> ${esc(d.CODIGO_SISTEMA||'-')}</div><div class="rowx"><b>ARO:</b> ${esc(d.ARO||'-')}</div><div class="rowx"><b>Localidades abastecidas:</b> ${esc(d.LOCALIDADES_ABASTECIDAS||'-')}</div><div class="rowx"><b>Población:</b> ${fmt(d.POBLACION||0)}</div><div class="rowx"><b>Suscriptores:</b> ${fmt(d.SUSCRIPTORES||0)}</div><div class="rowx"><b>Tratamiento:</b> ${esc(d.TIPO_SISTEMA_TRATAMIENTO||'-')}</div></div></div>`}
+function renderMap(data){SEDES_LAYER.clearLayers();ACUEDUCTOS_LAYER.clearLayers();const criticalOnly=document.getElementById('toggleCritical').checked;const municipio=selected('fMunicipio');const pts=data.filter(d=>d.ESTADO_GEORREFERENCIACION==='GEORREFERENCIADA'&&Number.isFinite(d.LATITUD)&&Number.isFinite(d.LONGITUD)&&(!criticalOnly||['ALTO','INVIABLE SANITARIAMENTE'].includes(d.NIVEL_RIESGO_IRCA)));pts.forEach(d=>SEDES_LAYER.addLayer(L.marker([d.LATITUD,d.LONGITUD],{icon:schoolIcon(d.NIVEL_RIESGO_IRCA)}).bindPopup(popup(d))));const acueductosVisibles=ACUEDUCTOS.filter(d=>!municipio||d.MUNICIPIO===norm(municipio));acueductosVisibles.forEach(d=>ACUEDUCTOS_LAYER.addLayer(L.marker([d.LATITUD,d.LONGITUD],{icon:aqueductIcon()}).bindPopup(popupAcueducto(d))));document.getElementById('mapCount').textContent=`${fmt(pts.length)} sedes · ${fmt(acueductosVisibles.length)} acueductos`;const allPts=[...pts.map(d=>[d.LATITUD,d.LONGITUD]),...acueductosVisibles.map(d=>[d.LATITUD,d.LONGITUD])];if(allPts.length){MAP.fitBounds(L.latLngBounds(allPts).pad(.12))}}
+function renderAnalytics(data){
+  const critical=data.filter(d=>['ALTO','INVIABLE SANITARIAMENTE'].includes(d.NIVEL_RIESGO_IRCA));
+  const byM={};
+  critical.forEach(d=>{
+    if(!byM[d.MUNICIPIO]) byM[d.MUNICIPIO]={sedes:0,est:0};
+    byM[d.MUNICIPIO].sedes++;
+    byM[d.MUNICIPIO].est+=d.ESTUDIANTES_ACTUAL;
+  });
+  const municipalities=Object.entries(byM).map(([name,v])=>({name,...v})).sort((a,b)=>b.sedes-a.sedes||b.est-a.est).slice(0,12);
+  destroyChart('mun');
+  charts.mun=new Chart(document.getElementById('chartMunicipios'),{
+    type:'bar',
+    data:{labels:municipalities.map(x=>x.name),datasets:[{label:'Sedes alto/inviable',data:municipalities.map(x=>x.sedes),backgroundColor:'#ef4444'}]},
+    options:{indexAxis:'y',maintainAspectRatio:false,responsive:true,plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>` ${fmt(ctx.raw)} sedes críticas`}}},scales:{x:{beginAtZero:true,ticks:{precision:0}}}}
+  });
+
+  const byA={};
+  critical.forEach(d=>{
+    const code=d.CODIGO_SISA_ACUEDUCTO||'SIN CODIGO';
+    const name=d.NOMBRE_ACUEDUCTO||'Sin nombre de acueducto';
+    const key=code+'|'+name;
+    if(!byA[key]) byA[key]={code,name,mun:new Set(),alto:0,inviable:0,sedes:0,est:0};
+    byA[key].mun.add(d.MUNICIPIO);
+    byA[key].sedes++;
+    byA[key].est+=d.ESTUDIANTES_ACTUAL;
+    if(d.NIVEL_RIESGO_IRCA==='ALTO') byA[key].alto++;
+    if(d.NIVEL_RIESGO_IRCA==='INVIABLE SANITARIAMENTE') byA[key].inviable++;
+  });
+  const systems=Object.values(byA).sort((a,b)=>b.inviable-a.inviable||b.sedes-a.sedes||b.est-a.est).slice(0,15);
+  document.getElementById('topAcueductos').innerHTML=systems.map((a,i)=>{
+    const action=a.inviable>0
+      ? '<span class="priority-action urgent">Revisión prioritaria</span>'
+      : '<span class="priority-action follow">Seguimiento reforzado</span>';
+    return `<tr><td class="fw-bold">${i+1}</td><td class="priority-system-name">${esc(a.name)}</td><td class="priority-code">${esc(a.code)}</td><td>${esc([...a.mun].join(', '))}</td><td class="text-end">${fmt(a.alto)}</td><td class="text-end fw-bold">${fmt(a.inviable)}</td><td class="text-end fw-bold">${fmt(a.sedes)}</td><td class="text-end">${fmt(a.est)}</td><td>${action}</td></tr>`;
+  }).join('')||'<tr><td colspan="9" class="text-muted text-center py-3">No se identifican sedes clasificadas en riesgo alto o inviable para la selección actual.</td></tr>';
+}
+function dt(id,data,columns){
+  if(tables[id]){tables[id].clear().rows.add(data).draw();return}
+  const exportTitle={tblPriority:'Sedes_Educativas_Prioritarias',tblNoGeo:'Sedes_Educativas_Sin_Coordenadas',tblDetail:'Sedes_Educativas_Detalle_General'}[id]||'Sedes_Educativas';
+  tables[id]=$('#'+id).DataTable({
+    data,columns,language:{url:'https://cdn.datatables.net/plug-ins/1.13.8/i18n/es-ES.json'},pageLength:10,autoWidth:false,dom:'Bfrtip',
+    buttons:[
+      {extend:'excelHtml5',title:exportTitle,text:'Descargar Excel',className:'btn btn-success btn-sm'},
+      {extend:'csvHtml5',title:exportTitle,text:'Descargar CSV',className:'btn btn-outline-secondary btn-sm'}
+    ],
+    order:[[0,'desc']]
+  })
+}
+function renderTables(data){const priority=[...data].sort((a,b)=>b.SCORE_PRIORIDAD-a.SCORE_PRIORIDAD).map(d=>[d.SCORE_PRIORIDAD,d.NIVEL_PRIORIDAD,d.MUNICIPIO,d.NOMBRE_SEDE_IRCA,d.NIVEL_RIESGO_IRCA,d.ESTUDIANTES_ACTUAL,d.NOMBRE_ACUEDUCTO,d.ESTADO_GEORREFERENCIACION]);dt('tblPriority',priority,[{title:'Score'},{title:'Prioridad'},{title:'Municipio'},{title:'Sede educativa'},{title:'Riesgo'},{title:'Estudiantes'},{title:'Acueducto'},{title:'Mapa'}]);const ng=data.filter(d=>d.ESTADO_GEORREFERENCIACION==='SIN_COORDENADAS').map(d=>[d.ESTUDIANTES_ACTUAL,d.MUNICIPIO,d.NOMBRE_SEDE_IRCA,d.NIVEL_RIESGO_IRCA,d.ESTADO_CRUCE,d.NOMBRE_ACUEDUCTO]);dt('tblNoGeo',ng,[{title:'Estudiantes'},{title:'Municipio'},{title:'Sede educativa'},{title:'Riesgo'},{title:'Estado cruce'},{title:'Acueducto'}]);const detail=data.map(d=>[d.MUNICIPIO,d.NOMBRE_SEDE_IRCA,d.ZONA_IRCA,d.NIVEL_RIESGO_IRCA,d.ESTUDIANTES_ACTUAL,d.NOMBRE_ACUEDUCTO,d.CONCEPTO_SANITARIO,d.ESTADO_GEORREFERENCIACION]);dt('tblDetail',detail,[{title:'Municipio'},{title:'Sede educativa'},{title:'Zona'},{title:'Riesgo'},{title:'Estudiantes'},{title:'Acueducto'},{title:'Concepto sanitario'},{title:'Georreferenciación'}])}
+function applyFilters(){LIST=filterRows();renderFilters();renderKPIs(LIST);renderRiskCards(LIST);renderMap(LIST);renderAnalytics(LIST);renderTables(LIST)}
+function clearFilters(){Object.values(selects).forEach(s=>s.clear(true));document.getElementById('toggleCritical').checked=false;applyFilters()}
+async function loadData(){document.getElementById('loadStatus').textContent='Cargando base consolidada de sedes educativas y maestro de acueductos…';try{const [csv,meta,acu]=await Promise.all([new Promise((resolve,reject)=>Papa.parse(CSV_URL+'?_='+Date.now(),{download:true,header:true,skipEmptyLines:true,complete:resolve,error:reject})),fetch(METADATA_URL+'?_='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.json():null).catch(()=>null),new Promise((resolve,reject)=>Papa.parse(ACUEDUCTOS_URL+'?_='+Date.now(),{download:true,header:true,skipEmptyLines:true,complete:resolve,error:reject}))]);RAW=parseRows(csv.data);ACUEDUCTOS=parseAcueductos(acu.data);META=meta;populateFilters();applyFilters();const dt=META&&META.fecha_generacion?new Date(META.fecha_generacion):new Date();document.getElementById('lastUpdate').textContent='Actualizado: '+dt.toLocaleString('es-CO');document.getElementById('loadStatus').textContent=`${fmt(RAW.length)} sedes cargadas · ${fmt(RAW.filter(d=>d.ESTADO_GEORREFERENCIACION==='GEORREFERENCIADA').length)} visibles en mapa · ${fmt(ACUEDUCTOS.length)} acueductos georreferenciados.`}catch(err){console.error(err);document.getElementById('lastUpdate').className='badge text-bg-danger last-update-badge';document.getElementById('lastUpdate').textContent='Error al cargar datos';document.getElementById('loadStatus').textContent='Verifique los CSV publicados en data/sedes_educativas/current, incluido maestro_acueductos_mapa.csv.'}}
+function adjustVisibleTables(){Object.values(tables).forEach(t=>{if(t){t.columns.adjust().draw(false)}})}
+function initDashboard(){initMap();document.getElementById('activeFilters').addEventListener('click',e=>{const btn=e.target.closest('.active-filter-remove');if(btn){removeActiveFilter(btn.dataset.filter,btn.dataset.value||'')}});document.getElementById('tablesCollapse').addEventListener('shown.bs.collapse',()=>setTimeout(adjustVisibleTables,120));document.querySelectorAll('button[data-bs-toggle="tab"]').forEach(btn=>btn.addEventListener('shown.bs.tab',()=>setTimeout(adjustVisibleTables,120)));document.getElementById('btnApply').addEventListener('click',applyFilters);document.getElementById('btnClear').addEventListener('click',clearFilters);document.getElementById('btnClearActive').addEventListener('click',clearFilters);document.getElementById('btnReload').addEventListener('click',loadData);loadData()}
+</script>
+</body>
+</html>

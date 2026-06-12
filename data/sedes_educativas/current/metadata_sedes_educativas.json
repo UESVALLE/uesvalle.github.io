@@ -1,0 +1,60 @@
+{
+  "fecha_generacion": "2026-06-12T15:40:07",
+  "fecha_corte_validacion": "2026-06-04",
+  "fuentes": [
+    "Escuelas_IRCAS.xlsx",
+    "SedesUESVALLE.xlsx",
+    "maestro_acueductos_uesvalle_2026_actualizado.csv",
+    "MEN_SEDES_EDUCATIVAS_PREESCOLAR_BASICA_Y_MEDIA_20260605.csv"
+  ],
+  "acueductos_georreferenciados": 640,
+  "sedes_coordenadas_complementadas_men": 68,
+  "sedes_matricula_complementada_sedesuesvalle": 59,
+  "sedes_matricula_complementada_men": 15,
+  "registros_sedes_irca": 977,
+  "sedes_georreferenciadas": 847,
+  "sedes_sin_coordenadas": 130,
+  "sedes_alto_inviable": 246,
+  "estudiantes_alto_inviable": 6354,
+  "riesgo_sedes": {
+    "SIN RIESGO": 497,
+    "BAJO": 15,
+    "MEDIO": 66,
+    "ALTO": 139,
+    "INVIABLE SANITARIAMENTE": 107,
+    "SIN DATO": 153
+  },
+  "riesgo_estudiantes": {
+    "SIN RIESGO": 63927,
+    "BAJO": 765,
+    "MEDIO": 2674,
+    "ALTO": 3728,
+    "INVIABLE SANITARIAMENTE": 2626,
+    "SIN DATO": 2286
+  },
+  "estado_cruce": {
+    "CRUCE_OK": 732,
+    "CRUCE_OK_CONTROLADO": 26,
+    "CRUCE_RECUPERADO": 104,
+    "VALIDAR_DUPLICADO": 14,
+    "PENDIENTE": 101
+  },
+  "grupo_seguimiento_sedes": {
+    "RUTINARIO": 512,
+    "PREVENTIVO": 66,
+    "PRIORITARIO": 246,
+    "BRECHA INFORMACION": 153
+  },
+  "grupo_seguimiento_estudiantes": {
+    "RUTINARIO": 64692,
+    "PREVENTIVO": 2674,
+    "PRIORITARIO": 6354,
+    "BRECHA INFORMACION": 2286
+  },
+  "calidad_dato_sedes": {
+    "ALTA": 676,
+    "BAJA": 223,
+    "MEDIA": 78
+  },
+  "brechas_informacion_sedes": 301
+}
