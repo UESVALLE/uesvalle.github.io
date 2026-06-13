@@ -1,32 +1,42 @@
+# ==========================================================
+# ARCHIVOS LOCALES - NO SUBIR A GITHUB
+# ==========================================================
 
-data/mpr/raw/Codigos_poa.xlsx
-data/mpr/raw/~.xlsx
+# Scripts locales de procesamiento
+scripts/
 
-# Archivos locales generados por procesos UESVALLE
-data/resultados_agua/archive/
-data/resultados_agua/seguimiento_muestras/historical/
-scripts/resultados_agua/logs/
-scripts/resultados_agua/04_seguimiento_muestras/Nueva carpeta/
+# Credenciales y variables de entorno
+.env
+.env.*
+!.env.example
+*.env
+
+# Logs y temporales
+logs/
+*.log
+*.tmp
+__pycache__/
+*.pyc
 **/~$*.xlsx
 **/~$*.xls
 
-# Archivos locales/pruebas resultados agua
-scripts/resultados_agua/01_operativos/Descargar_Resultados_Agua_UESVALLE.py
-scripts/resultados_agua/01_operativos/Nueva carpeta/
-scripts/resultados_agua/03_versiones_prueba/Descargar_Resultados_Agua_UESVALLE_V7.py
-
-data/resultados_agua/seguimiento_muestras/archive/
-
-data/ircas/archive/
-data/ircas/input/
-data/ircas/logs/
-
-# Credenciales locales SISA
-scripts/mpr/config_sisa.env
-
-# Archivos temporales y logs de automatizaciones
+# Carpetas de archivo/histórico local
 archive/
-# Censos crudos MPR descargados desde SISA
-data/mpr/raw/censo_visitasMPR.xlsx
-data/mpr/raw/censo_visitasMPR_backup_*.xlsx
-data/mpr/historical/
+data/**/archive/
+data/**/historical/
+data/**/logs/
+
+# Datos fuente o brutos
+data/raw/
+data/**/raw/
+
+# Archivos temporales de Excel
+~$*.xlsx
+~$*.xls
+
+# Configuración local de VS Code
+.vscode/
+.vscodesettings.json
+
+# Insumos locales por módulo
+data/**/input/
