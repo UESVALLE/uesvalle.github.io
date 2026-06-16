@@ -1,5 +1,5 @@
 {
-  "fecha_generacion": "2026-06-12T15:40:07",
+  "fecha_generacion": "2026-06-16T17:11:54",
   "fecha_corte_validacion": "2026-06-04",
   "fuentes": [
     "Escuelas_IRCAS.xlsx",
@@ -34,10 +34,10 @@
   },
   "estado_cruce": {
     "CRUCE_OK": 732,
-    "CRUCE_OK_CONTROLADO": 26,
+    "PENDIENTE": 101,
     "CRUCE_RECUPERADO": 104,
-    "VALIDAR_DUPLICADO": 14,
-    "PENDIENTE": 101
+    "CRUCE_OK_CONTROLADO": 26,
+    "VALIDAR_DUPLICADO": 14
   },
   "grupo_seguimiento_sedes": {
     "RUTINARIO": 512,
@@ -52,9 +52,9 @@
     "BRECHA INFORMACION": 2286
   },
   "calidad_dato_sedes": {
-    "ALTA": 676,
     "BAJA": 223,
-    "MEDIA": 78
+    "MEDIA": 78,
+    "ALTA": 676
   },
   "brechas_informacion_sedes": 301
 }
