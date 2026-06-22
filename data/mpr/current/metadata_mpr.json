@@ -1,6 +1,17 @@
 {
-  "version_script": "V2.0",
-  "fecha_generacion": "2026-06-22T09:34:04",
+  "version_script": "V2.1",
+  "fecha_actualizacion_tablero": "2026-06-22T09:45:36",
+  "fecha_generacion": "2026-06-22T09:45:36",
+  "fecha_ejecucion_normalizacion": "2026-06-22T09:45:36",
+  "fecha_corte_reporte_sisa": "",
+  "fecha_maxima_visita_censo": "2026-06-20",
+  "fecha_maxima_cargue_sisa": "2026-06-22",
+  "descripcion_fecha": {
+    "fecha_actualizacion_tablero": "Fecha y hora en que se ejecutó la normalización y se regeneraron los archivos data/mpr/current.",
+    "fecha_corte_reporte_sisa": "Fecha final solicitada al reporte de SISA.",
+    "fecha_maxima_visita_censo": "Fecha de visita más reciente encontrada en el censo descargado.",
+    "fecha_maxima_cargue_sisa": "Fecha de cargue más reciente encontrada en el censo descargado, si existe."
+  },
   "repo_root": "G:\\Mi unidad\\8.UES\\PAGINA INDICADORES\\UESVALLE",
   "raw_dir": "G:\\Mi unidad\\8.UES\\PAGINA INDICADORES\\UESVALLE\\data\\mpr\\raw",
   "out_dir": "G:\\Mi unidad\\8.UES\\PAGINA INDICADORES\\UESVALLE\\data\\mpr\\current",
