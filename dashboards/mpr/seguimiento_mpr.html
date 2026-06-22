@@ -76,8 +76,48 @@
 .leyenda-dot{width:12px;height:12px;border-radius:4px;display:inline-block}
 @media(max-width:992px){.seguimiento-resumen{grid-template-columns:repeat(2,1fr)}}@media(max-width:1200px){.kpi-grid{grid-template-columns:repeat(4,1fr)}.poa-grid{grid-template-columns:1fr}.detail-kpi-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:992px){.header-status{align-items:flex-start}#dashboardTabs{justify-content:flex-start!important;overflow-x:auto!important}.filter-actions{width:100%;justify-content:center}.active-filter-line{flex-wrap:wrap;white-space:normal}.active-filter-line #activeFilters{flex-wrap:wrap}}@media(max-width:768px){.kpi-grid{grid-template-columns:repeat(2,1fr)}.board{padding-left:10px;padding-right:10px}.sec-ico{display:none}#dashboardTabs .nav-link{width:auto!important;border-radius:999px!important}}
 </style>
+
+<style id="mpr-update-info-style">
+  .mpr-update-info{
+    margin: 14px auto 18px auto;
+    padding: 12px 16px;
+    max-width: 1180px;
+    border: 1px solid rgba(15, 23, 42, 0.12);
+    border-radius: 14px;
+    background: linear-gradient(135deg, rgba(248,250,252,.96), rgba(239,246,255,.96));
+    box-shadow: 0 8px 24px rgba(15,23,42,.06);
+    font-family: inherit;
+  }
+  .mpr-update-info__title{
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 4px;
+  }
+  .mpr-update-info__grid{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 18px;
+    font-size: 0.82rem;
+    color: #334155;
+  }
+  .mpr-update-info__grid strong{color:#0f172a;}
+</style>
+
 </head>
 <body>
+
+<div id="mprUpdateInfo" class="mpr-update-info" aria-label="Fecha de actualización del tablero MPR">
+  <div class="mpr-update-info__title">Actualización de información MPR</div>
+  <div class="mpr-update-info__grid">
+    <span><strong>Actualización tablero:</strong> <span id="mprFechaActualizacion">Cargando...</span></span>
+    <span><strong>Corte SISA:</strong> <span id="mprFechaCorteSisa">Cargando...</span></span>
+    <span><strong>Última visita en censo:</strong> <span id="mprFechaUltimaVisita">Cargando...</span></span>
+    <span><strong>Registros MPR:</strong> <span id="mprRegistrosMpr">Cargando...</span></span>
+  </div>
+</div>
+
+
 
 <!-- ============================================================
 BLOQUE DE ACCESO UESVALLE - INICIO
@@ -675,6 +715,43 @@ window.addEventListener("DOMContentLoaded", () => {
 <!-- ============================================================
 SCRIPT DE ACCESO UESVALLE - FIN
 ============================================================ -->
+
+
+<script id="mpr-update-info-script">
+(function(){
+  function formatDateTime(value){
+    if(!value) return "No disponible";
+    const d = new Date(value);
+    if(!isNaN(d.getTime())){
+      return d.toLocaleString("es-CO", {
+        year:"numeric", month:"2-digit", day:"2-digit",
+        hour:"2-digit", minute:"2-digit"
+      });
+    }
+    return value;
+  }
+  function setText(id, value){
+    const el = document.getElementById(id);
+    if(el) el.textContent = value || "No disponible";
+  }
+  fetch("../../data/mpr/current/metadata_mpr.json?ts=" + Date.now())
+    .then(r => r.json())
+    .then(m => {
+      setText("mprFechaActualizacion", formatDateTime(m.fecha_actualizacion_tablero || m.fecha_generacion));
+      setText("mprFechaCorteSisa", m.fecha_corte_reporte_sisa || "No disponible");
+      setText("mprFechaUltimaVisita", m.fecha_maxima_visita_censo || "No disponible");
+      const reg = (m.censo_registros_mpr_13_14_15 ?? m.actividades_ejecutadas ?? "No disponible");
+      const censo = (m.censo_registros_leidos ?? "");
+      setText("mprRegistrosMpr", censo ? (reg + " MPR / " + censo + " censo") : String(reg));
+    })
+    .catch(() => {
+      setText("mprFechaActualizacion", "No fue posible leer metadata_mpr.json");
+      setText("mprFechaCorteSisa", "No disponible");
+      setText("mprFechaUltimaVisita", "No disponible");
+      setText("mprRegistrosMpr", "No disponible");
+    });
+})();
+</script>
 
 </body>
 </html>
