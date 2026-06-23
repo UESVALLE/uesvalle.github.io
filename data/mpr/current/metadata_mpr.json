@@ -1,11 +1,11 @@
 {
   "version_script": "V2.1",
-  "fecha_actualizacion_tablero": "2026-06-22T09:45:36",
-  "fecha_generacion": "2026-06-22T09:45:36",
-  "fecha_ejecucion_normalizacion": "2026-06-22T09:45:36",
+  "fecha_actualizacion_tablero": "2026-06-23T15:59:39",
+  "fecha_generacion": "2026-06-23T15:59:39",
+  "fecha_ejecucion_normalizacion": "2026-06-23T15:59:39",
   "fecha_corte_reporte_sisa": "",
-  "fecha_maxima_visita_censo": "2026-06-20",
-  "fecha_maxima_cargue_sisa": "2026-06-22",
+  "fecha_maxima_visita_censo": "2026-06-22",
+  "fecha_maxima_cargue_sisa": "2026-06-23",
   "descripcion_fecha": {
     "fecha_actualizacion_tablero": "Fecha y hora en que se ejecutó la normalización y se regeneraron los archivos data/mpr/current.",
     "fecha_corte_reporte_sisa": "Fecha final solicitada al reporte de SISA.",
@@ -21,7 +21,7 @@
     "1.4",
     "1.5"
   ],
-  "censo_registros_leidos": 3110,
+  "censo_registros_leidos": 3157,
   "censo_registros_mpr_13_14_15": 95,
   "programados": 74,
   "programados_leidos": 74,
