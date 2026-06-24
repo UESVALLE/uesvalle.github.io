@@ -902,6 +902,158 @@
       min-height:96px;
     }
 
+
+/* IRCAS filtros compactos V1 */
+#filtersCollapse{
+  margin-top:.55rem!important;
+}
+
+#filtersCollapse .filter-grid-compact{
+  row-gap:.55rem!important;
+}
+
+#filtersCollapse .filter-label{
+  font-size:.76rem;
+  line-height:1.05;
+  margin-bottom:.18rem!important;
+  font-weight:750;
+  color:#344054;
+}
+
+#filtersCollapse .form-select-sm,
+#filtersCollapse .ts-wrapper.single .ts-control,
+#filtersCollapse .ts-wrapper.multi .ts-control{
+  min-height:30px!important;
+  font-size:.78rem!important;
+}
+
+#filtersCollapse .ts-wrapper.multi .ts-control{
+  height:32px!important;
+  max-height:32px!important;
+  flex-wrap:nowrap!important;
+  align-items:center!important;
+  overflow-x:auto!important;
+  overflow-y:hidden!important;
+  padding:2px 30px 2px 6px!important;
+  scrollbar-width:thin;
+}
+
+#filtersCollapse .ts-wrapper.multi .ts-control::-webkit-scrollbar{
+  height:4px;
+}
+
+#filtersCollapse .ts-wrapper.multi .ts-control > div.item{
+  margin:1px 3px 1px 0!important;
+  padding:2px 5px!important;
+  max-width:128px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  font-size:.72rem;
+  line-height:1.05;
+  border-radius:.35rem;
+}
+
+#filtersCollapse .ts-wrapper.multi .ts-control > input{
+  min-width:96px!important;
+  flex:0 0 96px!important;
+  font-size:.72rem!important;
+}
+
+#filtersCollapse .ts-wrapper.single .ts-control{
+  padding-top:2px!important;
+  padding-bottom:2px!important;
+}
+
+#filtersCollapse .ts-dropdown{
+  font-size:.78rem;
+}
+
+#filtersCollapse .filter-actions{
+  margin-top:.2rem!important;
+  padding-top:.2rem!important;
+}
+
+#filtersCollapse .filter-actions .btn{
+  padding:.26rem 1.05rem!important;
+  font-size:.78rem!important;
+  line-height:1.25;
+}
+
+#filtersCollapse .ts-wrapper{
+  min-height:30px;
+}
+
+#filtersCollapse .ts-wrapper.multi.has-items .ts-control{
+  padding-bottom:2px!important;
+}
+
+@media (max-width: 768px){
+  #filtersCollapse .ts-wrapper.multi .ts-control{
+    height:auto!important;
+    max-height:58px!important;
+    flex-wrap:wrap!important;
+    overflow-y:auto!important;
+    overflow-x:hidden!important;
+  }
+
+  #filtersCollapse .ts-wrapper.multi .ts-control > div.item{
+    max-width:170px;
+  }
+}
+
+
+/* IRCAS KPIs centrados V1 */
+.main-kpi-row .kpi-card,
+.historical-kpi-row .kpi-card,
+.risk-kpi-grid .kpi-card{
+  text-align:center;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
+
+.main-kpi-row .kpi-label,
+.historical-kpi-row .kpi-label,
+.risk-kpi-grid .kpi-label,
+.main-kpi-row .kpi-mini,
+.historical-kpi-row .kpi-mini,
+.risk-kpi-grid .kpi-mini{
+  text-align:center;
+  width:100%;
+}
+
+.main-kpi-row .kpi-value,
+.historical-kpi-row .kpi-value,
+.risk-kpi-grid .kpi-value{
+  text-align:center;
+  width:100%;
+}
+
+.historical-kpi-row .risk-pill,
+.risk-kpi-grid .risk-pill{
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.historical-section-head{
+  align-items:center!important;
+}
+
+.historical-section-head h5,
+.historical-section-head .section-note{
+  text-align:left;
+}
+
+@media (max-width: 768px){
+  .historical-section-head h5,
+  .historical-section-head .section-note{
+    text-align:center;
+    width:100%;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -1093,7 +1245,7 @@ BLOQUE DE ACCESO UESVALLE - FIN
         <div class="d-flex flex-column flex-lg-row align-items-lg-center gap-2">
           <div class="me-auto">
             <h1 class="board-title mb-1">Tablero Índice de Riesgo de Calidad del Agua - IRCA </h1>
-            <div class="board-subtitle mt-1">Fuente: GitHub CSV · Base oficial: <b>data/ircas/current/IRCAS.csv</b></div>
+            <div class="board-subtitle mt-1">Fuente: UESVALLE</div>
           </div>
           <div class="header-status">
             <span id="lastUpdate" class="badge text-bg-success last-update-badge">Cargando…</span>
@@ -1113,17 +1265,17 @@ BLOQUE DE ACCESO UESVALLE - FIN
         <button class="table-toggle-header" type="button" data-bs-toggle="collapse" data-bs-target="#filtersCollapse" aria-expanded="true" aria-controls="filtersCollapse">
           <div class="table-toggle-copy">
             <h5 class="mb-1">Filtros del tablero</h5>
-            <div class="section-note mb-0">Selecciona el bloque IRCA y las variables operativas para actualizar KPIs, mapa, gráficos y tablas.</div>
+            <div class="section-note mb-0">Selecciona uno o varios años IRCA y las variables operativas para actualizar KPIs, mapa, gráficos y tablas.</div>
           </div>
           <span class="table-toggle-arrow" aria-hidden="true">
             <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
         </button>
         <div class="collapse show mt-3" id="filtersCollapse">
-        <div class="row g-3 align-items-end">
+        <div class="row g-2 align-items-end filter-grid-compact">
           <div class="col-12 col-sm-6 col-md-2">
-            <label class="form-label filter-label mb-1">Bloque de análisis IRCA</label>
-            <select id="fano" class="form-select form-select-sm"></select>
+            <label class="form-label filter-label mb-1">Año IRCA</label>
+            <select id="fano" class="form-select form-select-sm" multiple></select>
           </div>
 
           <div class="col-12 col-sm-6 col-md-3">
@@ -1147,11 +1299,11 @@ BLOQUE DE ACCESO UESVALLE - FIN
           </div>
 
           <div class="col-12 col-sm-6 col-md-2">
-            <label class="form-label filter-label mb-1">Tipo sistema agrupado</label>
-            <select id="ftipoSistema" class="form-select form-select-sm"><option value="">Todos</option></select>
+            <label class="form-label filter-label mb-1">Tipo sistema</label>
+            <select id="ftipoSistema" class="form-select form-select-sm" multiple></select>
           </div>
 
-          <div class="col-12 col-sm-6 col-md-3">
+          <div class="col-12 col-sm-6 col-md-2">
             <label class="form-label filter-label mb-1">Algún tipo tratamiento</label>
             <select id="falgunTrat" class="form-select form-select-sm"><option value="">Todos</option></select>
           </div>
@@ -1161,17 +1313,17 @@ BLOQUE DE ACCESO UESVALLE - FIN
             <select id="fprestador" class="form-select form-select-sm"><option value="">Todos</option></select>
           </div>
 
-          <div class="col-12 col-sm-6 col-md-3">
+          <div class="col-12 col-sm-6 col-md-2">
             <label class="form-label filter-label mb-1">Forma organizativa</label>
             <select id="fformaOrg" class="form-select form-select-sm"><option value="">Todos</option></select>
           </div>
 
           <div class="col-12 col-sm-6 col-md-2">
             <label class="form-label filter-label mb-1">Punto de toma</label>
-            <select id="fpuntoToma" class="form-select form-select-sm"><option value="">Todos</option></select>
+            <select id="fpuntoToma" class="form-select form-select-sm" multiple></select>
           </div>
 
-          <div class="col-12 col-md-12 d-flex gap-2 justify-content-center pt-2 flex-wrap">
+          <div class="col-12 d-flex gap-2 justify-content-center pt-1 flex-wrap filter-actions">
             <button id="btnFiltrar" class="btn btn-primary btn-sm px-4">Aplicar filtros</button>
             <button id="btnLimpiar" class="btn btn-outline-secondary btn-sm px-4">Limpiar</button>
             <button id="btnCargar" class="btn btn-outline-primary btn-sm px-4">Refrescar datos</button>
@@ -1867,8 +2019,66 @@ BLOQUE DE ACCESO UESVALLE - FIN
       return /^\d{4}$/.test(String(block || ""));
     }
 
+    function getMultiSelectValues(id){
+      const el = document.getElementById(id);
+      if(!el) return [];
+      if(el.tomselect){
+        const value = el.tomselect.getValue();
+        return Array.isArray(value) ? value.filter(Boolean) : (value ? [value] : []);
+      }
+      return Array.from(el.selectedOptions || []).map(o => o.value).filter(Boolean);
+    }
+
+    function setDefaultAnalysisSelection(){
+      const el = document.getElementById("fano");
+      if(!el) return;
+      if(el.tomselect){
+        el.tomselect.setValue([DEFAULT_ANALYSIS_BLOCK], true);
+      }else{
+        Array.from(el.options || []).forEach(o => { o.selected = o.value === DEFAULT_ANALYSIS_BLOCK; });
+      }
+    }
+
+    function getSelectedBlocks(){
+      if(chartYearFilter) return [chartYearFilter];
+      const selected = getMultiSelectValues("fano");
+      return selected.length ? selected : [DEFAULT_ANALYSIS_BLOCK];
+    }
+
     function getSelectedBlock(){
-      return chartYearFilter || document.getElementById("fano")?.value || DEFAULT_ANALYSIS_BLOCK;
+      const blocks = getSelectedBlocks();
+      if(blocks.includes("ULTIMO")) return "ULTIMO";
+      const years = blocks.filter(isYearBlock).sort((a,b) => Number(b) - Number(a));
+      return years[0] || blocks[0] || DEFAULT_ANALYSIS_BLOCK;
+    }
+
+    function rowHasAnyBlockData(d, blocks){
+      const selected = (blocks && blocks.length) ? blocks : [getSelectedBlock()];
+      return selected.some(block => {
+        const irca = d[getIRCAField(block)];
+        const riesgo = norm(d[getRiskField(block)] || "");
+        const fecha = String(d[getFechaField(block)] || "").trim();
+        return Number.isFinite(irca) || (riesgo && riesgo !== "SIN DATO") || fecha;
+      });
+    }
+
+    function getPuntoValuesForSelectedBlocks(d, blocks = getSelectedBlocks()){
+      const selected = (blocks && blocks.length) ? blocks : [getSelectedBlock()];
+      return uniq(selected.map(block => d[getPuntoField(block)]).filter(v => String(v || "").trim() !== ""));
+    }
+
+    function rowMatchesSelectedPoints(d, selectedPoints, blocks = getSelectedBlocks()){
+      if(!selectedPoints || !selectedPoints.length) return true;
+      const puntos = getPuntoValuesForSelectedBlocks(d, blocks);
+      return puntos.some(p => selectedPoints.includes(p));
+    }
+
+    function isValidValleCoord(lat, lon){
+      if(!Number.isFinite(lat) || !Number.isFinite(lon)) return false;
+      if(lat === 0 && lon === 0) return false;
+      if(lat < 3.0 || lat > 5.2) return false;
+      if(lon < -77.9 || lon > -75.3) return false;
+      return true;
     }
 
     function getBlockLabel(block){
@@ -1910,6 +2120,13 @@ BLOQUE DE ACCESO UESVALLE - FIN
       const el = document.getElementById(id);
       el.innerHTML = `<option value="">${allLabel}</option>` +
         values.map(v => `<option value="${String(v).replaceAll('"','&quot;')}">${v}</option>`).join("");
+    }
+
+    function fillMultiSelect(id, values){
+      const el = document.getElementById(id);
+      el.innerHTML = values
+        .map(v => `<option value="${String(v).replaceAll('"','&quot;')}">${v}</option>`)
+        .join("");
     }
 
     function parseRows(rows){
@@ -2010,7 +2227,7 @@ BLOQUE DE ACCESO UESVALLE - FIN
 
       setStatusMessage(`
         <b>Datos IRCAS cargados correctamente.</b><br>
-        Fuente: <b>data/ircas/current/IRCAS.csv</b>. Registros cargados: <b>${Number(registros).toLocaleString("es-CO")}</b>.
+        Fuente: <b>UESVALLE</b>. Registros cargados: <b>${Number(registros).toLocaleString("es-CO")}</b>.
         Registros con IRCA 2026: <b>${String(con2026).toLocaleString ? Number(con2026 || 0).toLocaleString("es-CO") : con2026}</b>.
         Registros sin IRCA 2026: <b>${String(sin2026).toLocaleString ? Number(sin2026 || 0).toLocaleString("es-CO") : sin2026}</b>.
         Registros sin coordenadas completas: <b>${String(sinCoord).toLocaleString ? Number(sinCoord || 0).toLocaleString("es-CO") : sinCoord}</b>.<br>
@@ -2022,7 +2239,7 @@ BLOQUE DE ACCESO UESVALLE - FIN
       FILTER_IDS.forEach(id => {
         if (selectInstances[id]) selectInstances[id].destroy();
         const el = document.getElementById(id);
-        const isMulti = id === "ftipo";
+        const isMulti = ["fano","ftipo","ftipoSistema","fpuntoToma"].includes(id);
 
         selectInstances[id] = new TomSelect(el, {
           create: false,
@@ -2034,31 +2251,31 @@ BLOQUE DE ACCESO UESVALLE - FIN
           plugins: isMulti ? ["remove_button"] : []
         });
 
-        el.tomselect.on("change", () => { cascadeFilterOptions(); });
+        el.tomselect.on("change", () => { if(id === "fano") chartYearFilter = ""; cascadeFilterOptions(); });
       });
     }
 
     function fillFilters(data){
       fillAnalysisBlockSelect("fano");
-      document.getElementById("fano").value = DEFAULT_ANALYSIS_BLOCK;
       fillSelect("fmunicipio", uniq(data.map(d => d.MUNICIPIO)).sort((a,b)=>a.localeCompare(b,'es')));
       fillSelect("faro", uniq(data.map(d => d.ARO)).sort((a,b)=>a.localeCompare(b,'es')));
       fillSelect("fcodivc", uniq(data.map(d => d.CODIGO_IVC)).sort((a,b)=>String(a).localeCompare(String(b),'es')));
-      refreshSingleSelect("ftipo", uniq(data.map(d => d.TIPO)).sort((a,b)=>a.localeCompare(b,'es')));
-      fillSelect("ftipoSistema", uniq(data.map(d => d.TIPO_SISTEMA_TRATAMIENTO_AGRUPADO)).sort((a,b)=>a.localeCompare(b,'es')));
+      fillMultiSelect("ftipo", uniq(data.map(d => d.TIPO)).sort((a,b)=>a.localeCompare(b,'es')));
+      fillMultiSelect("ftipoSistema", uniq(data.map(d => d.TIPO_SISTEMA_TRATAMIENTO_AGRUPADO)).sort((a,b)=>a.localeCompare(b,'es')));
       fillSelect("falgunTrat", uniq(data.map(d => String(d.ALGUN_TIPO_TRATAMIENTO))).sort((a,b)=>a.localeCompare(b,'es')));
       fillSelect("fprestador", uniq(data.map(d => d.PERSONA_PRESTADORA)).sort((a,b)=>a.localeCompare(b,'es')));
       fillSelect("fformaOrg", uniq(data.map(d => d.FORMA_ORGANIZATIVA)).sort((a,b)=>a.localeCompare(b,'es')));
-      fillSelect("fpuntoToma", uniq(data.map(d => d[getPuntoField(getSelectedBlock())])).sort((a,b)=>a.localeCompare(b,'es')));
+      fillMultiSelect("fpuntoToma", uniq(data.flatMap(d => getPuntoValuesForSelectedBlocks(d, [DEFAULT_ANALYSIS_BLOCK]))).sort((a,b)=>a.localeCompare(b,'es')));
       initSearchableSelects();
+      setDefaultAnalysisSelection();
     }
 
     function getCurrentFilterValues() {
       const values = {};
       FILTER_IDS.forEach(id => {
         const el = document.getElementById(id);
-        if (id === "ftipo") {
-          values[id] = el?.tomselect ? el.tomselect.getValue() : [];
+        if (["fano","ftipo","ftipoSistema","fpuntoToma"].includes(id)) {
+          values[id] = el?.tomselect ? el.tomselect.getValue() : getMultiSelectValues(id);
         } else {
           values[id] = el ? el.value : "";
         }
@@ -2068,23 +2285,25 @@ BLOQUE DE ACCESO UESVALLE - FIN
 
     function getFilteredDataExcluding(targetId) {
       const values = getCurrentFilterValues();
+      const selectedBlocks = values.fano?.length ? values.fano : [DEFAULT_ANALYSIS_BLOCK];
       return RAW.filter(d => {
+        if (targetId !== "fano" && selectedBlocks.length && !rowHasAnyBlockData(d, selectedBlocks)) return false;
         if (targetId !== "fmunicipio" && values.fmunicipio && d.MUNICIPIO !== values.fmunicipio) return false;
         if (targetId !== "faro" && values.faro && d.ARO !== values.faro) return false;
         if (targetId !== "fcodivc" && values.fcodivc && String(d.CODIGO_IVC) !== values.fcodivc) return false;
         if (targetId !== "ftipo" && values.ftipo?.length && !values.ftipo.includes(d.TIPO)) return false;
-        if (targetId !== "ftipoSistema" && values.ftipoSistema && d.TIPO_SISTEMA_TRATAMIENTO_AGRUPADO !== values.ftipoSistema) return false;
+        if (targetId !== "ftipoSistema" && values.ftipoSistema?.length && !values.ftipoSistema.includes(d.TIPO_SISTEMA_TRATAMIENTO_AGRUPADO)) return false;
         if (targetId !== "falgunTrat" && values.falgunTrat && String(d.ALGUN_TIPO_TRATAMIENTO) !== values.falgunTrat) return false;
         if (targetId !== "fprestador" && values.fprestador && d.PERSONA_PRESTADORA !== values.fprestador) return false;
         if (targetId !== "fformaOrg" && values.fformaOrg && d.FORMA_ORGANIZATIVA !== values.fformaOrg) return false;
-        if (targetId !== "fpuntoToma" && values.fpuntoToma && d[getPuntoField(values.fano || DEFAULT_ANALYSIS_BLOCK)] !== values.fpuntoToma) return false;
+        if (targetId !== "fpuntoToma" && values.fpuntoToma?.length && !rowMatchesSelectedPoints(d, values.fpuntoToma, selectedBlocks)) return false;
         return true;
       });
     }
 
     function refreshSingleSelect(id, values, keepValue = true, allLabel = "Todos") {
       const el = document.getElementById(id);
-      const isMulti = id === "ftipo";
+      const isMulti = ["fano","ftipo","ftipoSistema","fpuntoToma"].includes(id);
       const currentValue = keepValue
         ? (isMulti
             ? (el.tomselect ? el.tomselect.getValue() : [])
@@ -2113,7 +2332,11 @@ BLOQUE DE ACCESO UESVALLE - FIN
         if (isMulti) {
           const validValues = (Array.isArray(currentValue) ? currentValue : [currentValue])
             .filter(v => values.includes(v));
-          if (validValues.length) selectInstances[id].setValue(validValues, true);
+          if (validValues.length) {
+            selectInstances[id].setValue(validValues, true);
+          } else if (id === "fano") {
+            selectInstances[id].setValue([DEFAULT_ANALYSIS_BLOCK], true);
+          }
         } else {
           if (currentValue && values.includes(currentValue)) {
             document.getElementById(id).value = currentValue;
@@ -2147,16 +2370,22 @@ BLOQUE DE ACCESO UESVALLE - FIN
       refreshSingleSelect("falgunTrat", uniq(dataAlguno.map(d => String(d.ALGUN_TIPO_TRATAMIENTO))).sort((a,b)=>a.localeCompare(b,'es')));
       refreshSingleSelect("fprestador", uniq(dataPrestador.map(d => d.PERSONA_PRESTADORA)).sort((a,b)=>a.localeCompare(b,'es')));
       refreshSingleSelect("fformaOrg", uniq(dataForma.map(d => d.FORMA_ORGANIZATIVA)).sort((a,b)=>a.localeCompare(b,'es')));
-      refreshSingleSelect("fpuntoToma", uniq(dataPunto.map(d => d[getPuntoField(getSelectedBlock())])).sort((a,b)=>a.localeCompare(b,'es')));
+      refreshSingleSelect("fpuntoToma", uniq(dataPunto.flatMap(d => getPuntoValuesForSelectedBlocks(d, getSelectedBlocks()))).sort((a,b)=>a.localeCompare(b,'es')));
 
       if (selectInstances["fano"]) {
-        const selectedBlock = getSelectedBlock();
+        const selectedBlocks = getSelectedBlocks();
         selectInstances["fano"].destroy();
         fillAnalysisBlockSelect("fano");
-        document.getElementById("fano").value = selectedBlock;
         selectInstances["fano"] = new TomSelect(document.getElementById("fano"), {
-          create: false, allowEmptyOption: false, searchField: ["text"], placeholder: "Seleccionar bloque IRCA..."
+          create: false,
+          allowEmptyOption: false,
+          maxOptions: 5000,
+          searchField: ["text"],
+          placeholder: "Seleccione uno o varios años IRCA...",
+          plugins: ["remove_button"]
         });
+        const validBlocks = selectedBlocks.filter(v => ANALYSIS_BLOCKS.some(x => x.value === v));
+        selectInstances["fano"].setValue(validBlocks.length ? validBlocks : [DEFAULT_ANALYSIS_BLOCK], true);
         document.getElementById("fano").tomselect.on("change", () => { chartYearFilter = ""; cascadeFilterOptions(); applyFilters(); });
       }
     }
@@ -2176,7 +2405,7 @@ BLOQUE DE ACCESO UESVALLE - FIN
           <div class="popup-row"><span class="popup-label">Código IVC:</span> ${d.CODIGO_IVC || "-"}</div>
 
           <div class="popup-section">
-            <div class="popup-row"><span class="popup-label">Tipo agrupado:</span> ${d.TIPO_SISTEMA_TRATAMIENTO_AGRUPADO || "-"}</div>
+            <div class="popup-row"><span class="popup-label">Tipo sistema:</span> ${d.TIPO_SISTEMA_TRATAMIENTO_AGRUPADO || "-"}</div>
             <div class="popup-row"><span class="popup-label">Tipo sistema tratamiento:</span> ${d.TIPO_SISTEMA_TRATAMIENTO || "-"}</div>
             <div class="popup-row"><span class="popup-label">Localidades abastecidas:</span> ${d.LOCALIDADES_ABASTECIDAS || "-"}</div>
             <div class="popup-row"><span class="popup-label">Forma organizativa:</span> ${d.FORMA_ORGANIZATIVA || "-"}</div>
@@ -2338,8 +2567,9 @@ BLOQUE DE ACCESO UESVALLE - FIN
       if(!wrap) return;
 
       const chips = [];
-      const year = getSelectedBlock();
-      chips.push(`<span class="active-filter-chip"><span class="label">Año:</span> ${year}</span>`);
+      const years = getSelectedBlocks();
+      const yearLabels = years.map(getBlockLabel).join(", ");
+      chips.push(`<span class="active-filter-chip"><span class="label">Año IRCA:</span> ${yearLabels}</span>`);
 
       const addChip = (label, value) => { if(value) chips.push(`<span class="active-filter-chip"><span class="label">${label}:</span> ${value}</span>`); };
 
@@ -2352,11 +2582,21 @@ BLOQUE DE ACCESO UESVALLE - FIN
       if (tiposActivos.length) {
         chips.push(`<span class="active-filter-chip"><span class="label">Tipo:</span> ${tiposActivos.join(", ")}</span>`);
       }
-      addChip("Tipo sistema agrupado", document.getElementById("ftipoSistema")?.value);
+            const tipoSistemaActivos = document.getElementById("ftipoSistema")?.tomselect
+        ? document.getElementById("ftipoSistema").tomselect.getValue()
+        : [];
+      if (tipoSistemaActivos.length) {
+        chips.push(`<span class="active-filter-chip"><span class="label">Tipo sistema:</span> ${tipoSistemaActivos.join(", ")}</span>`);
+      }
       addChip("Tratamiento", document.getElementById("falgunTrat")?.value);
       addChip("Prestador", document.getElementById("fprestador")?.value);
       addChip("Forma organizativa", document.getElementById("fformaOrg")?.value);
-      addChip("Punto de toma", document.getElementById("fpuntoToma")?.value);
+            const puntosActivos = document.getElementById("fpuntoToma")?.tomselect
+        ? document.getElementById("fpuntoToma").tomselect.getValue()
+        : [];
+      if (puntosActivos.length) {
+        chips.push(`<span class="active-filter-chip"><span class="label">Punto de toma:</span> ${puntosActivos.join(", ")}</span>`);
+      }
       if(chartMunicipioFilter) chips.push(`<span class="active-filter-chip"><span class="label">Gráfico municipio:</span> ${chartMunicipioFilter}</span>`);
       if(chartRiskFilter) chips.push(`<span class="active-filter-chip"><span class="label">Gráfico riesgo:</span> ${chartRiskFilter}</span>`);
       if(mapRiskBadgeFilter) chips.push(`<span class="active-filter-chip"><span class="label">Mapa riesgo:</span> ${mapRiskBadgeFilter}</span>`);
@@ -2366,7 +2606,7 @@ BLOQUE DE ACCESO UESVALLE - FIN
     }
 
     function initMainMap(){
-      MAP = L.map("map", { zoomControl: true }).setView([3.9, -76.3], 8);
+      MAP = L.map("map", { zoomControl: true }).setView([4.05, -76.25], 8);
 
       const osm = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         maxZoom: 19, attribution: "&copy; OpenStreetMap"
@@ -2862,7 +3102,7 @@ BLOQUE DE ACCESO UESVALLE - FIN
 
       resumenEl.innerHTML = `
         <div class="map-summary-line">
-          <span><strong>Bloque IRCA:</strong> ${escapeHTML(getBlockLabel(year))}</span>
+          <span><strong>Año IRCA:</strong> ${escapeHTML(getSelectedBlocks().map(getBlockLabel).join(", "))}</span>
           <span>·</span>
           <span><strong>Municipio:</strong> ${escapeHTML(municipio)}</span>
           <span>·</span>
@@ -2905,7 +3145,7 @@ BLOQUE DE ACCESO UESVALLE - FIN
     function buildHeatLayer(data, year){
       const layer = YEAR_LAYERS["Analítica · Heatmap riesgo poblacional"];
       layer.clearLayers();
-      const pts = data.filter(d => Number.isFinite(d.LATITUD) && Number.isFinite(d.LONGITUD));
+      const pts = data.filter(d => isValidValleCoord(d.LATITUD, d.LONGITUD));
       if(!pts.length) return;
 
       const values = pts.map(d => (d.POBLACION || 0) * riskFactor(d[getRiskField(year)]));
@@ -2940,14 +3180,14 @@ BLOQUE DE ACCESO UESVALLE - FIN
       clearMainLayers();
 
       const years = ["2020","2021","2022","2023","2024","2025","2026"];
-      const ptsActual = data.filter(d => Number.isFinite(d.LATITUD) && Number.isFinite(d.LONGITUD));
+      const ptsActual = data.filter(d => isValidValleCoord(d.LATITUD, d.LONGITUD));
       document.getElementById("mapCount").textContent = `${ptsActual.length} sistemas`;
       renderMapResumenIRCA(data);
 
       years.forEach(year => {
         const layer = YEAR_LAYERS[`IRCAS · ${year}`];
         data.forEach(d => {
-          if(!Number.isFinite(d.LATITUD) || !Number.isFinite(d.LONGITUD)) return;
+          if(!isValidValleCoord(d.LATITUD, d.LONGITUD)) return;
           layer.addLayer(createCircleMarker(d, year));
         });
       });
@@ -2957,15 +3197,21 @@ BLOQUE DE ACCESO UESVALLE - FIN
 
       if(ptsActual.length){
         const bounds = L.latLngBounds(ptsActual.map(d => [d.LATITUD, d.LONGITUD]));
-        MAP.fitBounds(bounds.pad(0.12));
+        if(bounds && bounds.isValid()){
+          MAP.fitBounds(bounds.pad(0.12), { maxZoom: 11 });
+        }else{
+          MAP.setView([4.05, -76.25], 8);
+        }
+      }else{
+        MAP.setView([4.05, -76.25], 8);
       }
 
       syncPanelLayersWithMap();
     }
 
     function initCompareMaps(){
-      MAP_COMPARE_2020 = L.map("mapCompare2020", { zoomControl: true }).setView([3.9, -76.3], 8);
-      MAP_COMPARE_2025 = L.map("mapCompare2025", { zoomControl: true }).setView([3.9, -76.3], 8);
+      MAP_COMPARE_2020 = L.map("mapCompare2020", { zoomControl: true }).setView([4.05, -76.25], 8);
+      MAP_COMPARE_2025 = L.map("mapCompare2025", { zoomControl: true }).setView([4.05, -76.25], 8);
 
       const cartoLight2020 = L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", { maxZoom: 20, attribution: "&copy; CARTO" });
       const cartoLight2025 = L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", { maxZoom: 20, attribution: "&copy; CARTO" });
@@ -3016,7 +3262,7 @@ BLOQUE DE ACCESO UESVALLE - FIN
       compareLayer2020.clearLayers();
       compareLayer2025.clearLayers();
 
-      const pts = data.filter(d => Number.isFinite(d.LATITUD) && Number.isFinite(d.LONGITUD));
+      const pts = data.filter(d => isValidValleCoord(d.LATITUD, d.LONGITUD));
       if(!pts.length) return;
 
       pts.forEach(d => {
@@ -3025,8 +3271,10 @@ BLOQUE DE ACCESO UESVALLE - FIN
       });
 
       const bounds = L.latLngBounds(pts.map(d => [d.LATITUD, d.LONGITUD]));
-      MAP_COMPARE_2020.fitBounds(bounds.pad(0.12));
-      MAP_COMPARE_2025.fitBounds(bounds.pad(0.12));
+      if(bounds && bounds.isValid()){
+        MAP_COMPARE_2020.fitBounds(bounds.pad(0.12), { maxZoom: 11 });
+        MAP_COMPARE_2025.fitBounds(bounds.pad(0.12), { maxZoom: 11 });
+      }
     }
 
     function classifyIRCAValue(value){
@@ -3600,7 +3848,7 @@ BLOQUE DE ACCESO UESVALLE - FIN
           { title:"ARO" },
           { title:"PERSONA_PRESTADORA" },
           { title:"FORMA_ORGANIZATIVA" },
-          { title:"TIPO_SISTEMA_TRATAMIENTO_AGRUPADO" },
+          { title:"TIPO_SISTEMA" },
           { title:"TIPO_SISTEMA_TRATAMIENTO" },
           { title:"ALGUN_TIPO_TRATAMIENTO" },
           { title:"LOCALIDADES_ABASTECIDAS" },
@@ -3624,12 +3872,16 @@ BLOQUE DE ACCESO UESVALLE - FIN
     }
 
     function applyFilters(){
+      if (chartYearFilter && document.getElementById("fano")?.tomselect) {
+        document.getElementById("fano").tomselect.setValue([chartYearFilter], true);
+      }
+
+      const selectedBlocks = getSelectedBlocks();
       const year = getSelectedBlock();
       const riskField = getRiskField(year);
 
-      if (chartYearFilter) document.getElementById("fano").value = chartYearFilter;
-
       LIST = RAW.filter(d => {
+        if(selectedBlocks.length && !rowHasAnyBlockData(d, selectedBlocks)) return false;
         if(document.getElementById("fmunicipio").value && d.MUNICIPIO !== document.getElementById("fmunicipio").value) return false;
         if(document.getElementById("faro").value && d.ARO !== document.getElementById("faro").value) return false;
         if(document.getElementById("fcodivc").value && String(d.CODIGO_IVC) !== document.getElementById("fcodivc").value) return false;
@@ -3637,12 +3889,18 @@ BLOQUE DE ACCESO UESVALLE - FIN
           ? document.getElementById("ftipo").tomselect.getValue()
           : [];
         if (tiposSeleccionados.length && !tiposSeleccionados.includes(d.TIPO)) return false;
-        if(document.getElementById("ftipoSistema").value && d.TIPO_SISTEMA_TRATAMIENTO_AGRUPADO !== document.getElementById("ftipoSistema").value) return false;
+                const tiposSistemaSeleccionados = document.getElementById("ftipoSistema")?.tomselect
+          ? document.getElementById("ftipoSistema").tomselect.getValue()
+          : [];
+        if(tiposSistemaSeleccionados.length && !tiposSistemaSeleccionados.includes(d.TIPO_SISTEMA_TRATAMIENTO_AGRUPADO)) return false;
         if(mapTreatmentBadgeFilter && norm(d.TIPO_SISTEMA_TRATAMIENTO_AGRUPADO || "SIN DATO") !== norm(mapTreatmentBadgeFilter)) return false;
         if(document.getElementById("falgunTrat").value && String(d.ALGUN_TIPO_TRATAMIENTO) !== document.getElementById("falgunTrat").value) return false;
         if(document.getElementById("fprestador").value && d.PERSONA_PRESTADORA !== document.getElementById("fprestador").value) return false;
         if(document.getElementById("fformaOrg").value && d.FORMA_ORGANIZATIVA !== document.getElementById("fformaOrg").value) return false;
-        if(document.getElementById("fpuntoToma").value && d[getPuntoField(year)] !== document.getElementById("fpuntoToma").value) return false;
+                const puntosSeleccionados = document.getElementById("fpuntoToma")?.tomselect
+          ? document.getElementById("fpuntoToma").tomselect.getValue()
+          : [];
+        if(puntosSeleccionados.length && !rowMatchesSelectedPoints(d, puntosSeleccionados, selectedBlocks)) return false;
 
         if(chartMunicipioFilter && d.MUNICIPIO !== chartMunicipioFilter) return false;
         if(chartRiskFilter && norm(d[riskField] || "SIN DATO") !== norm(chartRiskFilter)) return false;
@@ -3722,7 +3980,7 @@ BLOQUE DE ACCESO UESVALLE - FIN
       mapRiskBadgeFilter = "";
       mapTreatmentBadgeFilter = "";
 
-      document.getElementById("fano").value = DEFAULT_ANALYSIS_BLOCK;
+      setDefaultAnalysisSelection();
       ["fmunicipio","faro","fcodivc","ftipo","ftipoSistema","falgunTrat","fprestador","fformaOrg","fpuntoToma"]
         .forEach(id => {
           const el = document.getElementById(id);
@@ -3746,7 +4004,7 @@ BLOQUE DE ACCESO UESVALLE - FIN
       mapRiskBadgeFilter = "";
       mapTreatmentBadgeFilter = "";
 
-      document.getElementById("fano").value = DEFAULT_ANALYSIS_BLOCK;
+      setDefaultAnalysisSelection();
       ["fmunicipio","faro","fcodivc","ftipo","ftipoSistema","falgunTrat","fprestador","fformaOrg","fpuntoToma"]
         .forEach(id => {
           const el = document.getElementById(id);
