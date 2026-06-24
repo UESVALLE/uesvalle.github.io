@@ -1,27 +1,198 @@
 {
   "version_procesamiento": "IRCA_2020_2026_V4_METADATA",
-  "fecha_generacion": "2026-05-28T00:56:22",
-  "stamp": "20260528_005621",
+  "fecha_generacion": "2026-06-24T15:29:27",
+  "stamp": "20260624_152926",
   "archivo_salida": "data/ircas/current/IRCAS.csv",
   "registros_generados": 690,
-  "registros_con_ultimo_irca_reportado": 637,
-  "registros_con_irca_2026": 398,
-  "registros_sin_irca_2026": 292,
-  "registros_sin_coordenadas_completas": 50,
+  "registros_con_ultimo_irca_reportado": 638,
+  "registros_con_irca_2026": 477,
+  "registros_sin_irca_2026": 213,
+  "registros_sin_coordenadas_completas": 44,
   "comparacion_2026": {
-    "se_agrego_2026": 0,
-    "se_actualizo_2026": 0,
-    "sin_cambio_2026": 396,
-    "sin_2026_en_ambas_versiones": 238,
+    "se_agrego_2026": 78,
+    "se_actualizo_2026": 123,
+    "sin_cambio_2026": 273,
+    "sin_2026_en_ambas_versiones": 160,
     "se_elimino_2026": 0,
-    "mensaje": "No se identificaron cambios en los registros IRCA 2026 frente a la versión anterior.",
-    "detalle": "Sin cambio: 396; sin dato 2026: 238; eliminados: 0.",
-    "sistemas_cambiados_muestra": []
+    "mensaje": "Se incorporaron o actualizaron registros IRCA 2026 en 201 sistemas.",
+    "detalle": "Agregados: 78; actualizados: 123; sin cambio: 273; sin dato 2026: 160.",
+    "sistemas_cambiados_muestra": [
+      {
+        "codigo_sistema": "1000",
+        "municipio": "EL CAIRO",
+        "persona_prestadora": "JUNTA ADMINISTRADORA ACUEDUCTO CAMELLONES BAJO",
+        "irca_2026": "59.71",
+        "nivel_riesgo_2026": "ALTO"
+      },
+      {
+        "codigo_sistema": "10121",
+        "municipio": "LA CUMBRE",
+        "persona_prestadora": "ASOCIACION DE SUSCRIPTORES DEL ACUEDUCTO ZARAGOZA, BITACO. AGUAZ",
+        "irca_2026": "0.00",
+        "nivel_riesgo_2026": "SIN RIESGO"
+      },
+      {
+        "codigo_sistema": "105",
+        "municipio": "LA CUMBRE",
+        "persona_prestadora": "JUARCO- JUNTA DEL ACUEDUCTO DE LAS VEREDAS ARBOLEDAS Y CORDOBITAS DEL MUNICIPIO DE LA CUMBRE",
+        "irca_2026": "29.79",
+        "nivel_riesgo_2026": "MEDIO"
+      },
+      {
+        "codigo_sistema": "10699",
+        "municipio": "CAICEDONIA",
+        "persona_prestadora": "JUNTA ACCION COMUNAL VEREDA BURILA",
+        "irca_2026": "51.06",
+        "nivel_riesgo_2026": "ALTO"
+      },
+      {
+        "codigo_sistema": "107",
+        "municipio": "LA CUMBRE",
+        "persona_prestadora": "ASOCIACION COMUNITARIA ADMINISTRADORA DEL ACUEDUCTO DE PAVAS - ACAAPAVAS",
+        "irca_2026": "0.00",
+        "nivel_riesgo_2026": "SIN RIESGO"
+      },
+      {
+        "codigo_sistema": "108",
+        "municipio": "LA CUMBRE",
+        "persona_prestadora": "ASOCIACION DE USUARIOS DEL ACUEDUCTO DE PARRAGA",
+        "irca_2026": "0.00",
+        "nivel_riesgo_2026": "SIN RIESGO"
+      },
+      {
+        "codigo_sistema": "109",
+        "municipio": "LA CUMBRE",
+        "persona_prestadora": "JUNTA DE AGUAS VEREDA LA VENTURA - JAGUVEN",
+        "irca_2026": "29.79",
+        "nivel_riesgo_2026": "MEDIO"
+      },
+      {
+        "codigo_sistema": "11052",
+        "municipio": "CAICEDONIA",
+        "persona_prestadora": "ASOCIACION DE USUARIOS DEL ACUEDUCTO DE LA VEREDA SAN GERARDO DE CAICEDONIA",
+        "irca_2026": "45.87",
+        "nivel_riesgo_2026": "ALTO"
+      },
+      {
+        "codigo_sistema": "1114",
+        "municipio": "CALIMA",
+        "persona_prestadora": "ACUEDUCTO RURAL LA GAVIOTA BAJA - ACUAGAVIOTA",
+        "irca_2026": "0.00",
+        "nivel_riesgo_2026": "SIN RIESGO"
+      },
+      {
+        "codigo_sistema": "1124",
+        "municipio": "SAN PEDRO",
+        "persona_prestadora": "ASOCIACION DE USUARIOS DEL ACUEDUCTO MONTERREDONDO ESP",
+        "irca_2026": "0.00",
+        "nivel_riesgo_2026": "SIN RIESGO"
+      },
+      {
+        "codigo_sistema": "1128",
+        "municipio": "BOLIVAR",
+        "persona_prestadora": "ASOCIACION DE USUARIOS ACUEDUCTO LA MARIA",
+        "irca_2026": "79.14",
+        "nivel_riesgo_2026": "ALTO"
+      },
+      {
+        "codigo_sistema": "12526",
+        "municipio": "LA CUMBRE",
+        "persona_prestadora": "JUNTA DE AGUAS VEREDA LA VENTURA JAGUVEN - SECTOR EL BOSQUE",
+        "irca_2026": "29.79",
+        "nivel_riesgo_2026": "MEDIO"
+      },
+      {
+        "codigo_sistema": "1275",
+        "municipio": "VERSALLES",
+        "persona_prestadora": "ASOCIACION COMUNITARIA ADMINISTRADORA DEL ACUEDUCTO DE PUENTE TIERRA ASOCOAPT",
+        "irca_2026": "94.57",
+        "nivel_riesgo_2026": "INVIABLE SANITARIAMENTE"
+      },
+      {
+        "codigo_sistema": "12882",
+        "municipio": "CALIMA",
+        "persona_prestadora": "ASOCIACION DEL ACUEDUCTO RURAL DE BELLAVISTA ALTO",
+        "irca_2026": "58.39",
+        "nivel_riesgo_2026": "ALTO"
+      },
+      {
+        "codigo_sistema": "12976",
+        "municipio": "DAGUA",
+        "persona_prestadora": "CONDOMINIO CAMPESTRE COLINAS DE TOCOTA",
+        "irca_2026": "91.73",
+        "nivel_riesgo_2026": "INVIABLE SANITARIAMENTE"
+      },
+      {
+        "codigo_sistema": "12979",
+        "municipio": "DAGUA",
+        "persona_prestadora": "CONJUNTO CAMPESTRE AMBICHINTE",
+        "irca_2026": "0.00",
+        "nivel_riesgo_2026": "SIN RIESGO"
+      },
+      {
+        "codigo_sistema": "13515",
+        "municipio": "RIO FRIO",
+        "persona_prestadora": "ACUEDUCTO VEREDA EL RUBI SECTOR LA CANCHA",
+        "irca_2026": "57.55",
+        "nivel_riesgo_2026": "ALTO"
+      },
+      {
+        "codigo_sistema": "1369",
+        "municipio": "LA CUMBRE",
+        "persona_prestadora": "JUNTA ADMINISTRADORA DEL SERVICIO PUBLICO DEL AGUA DE LA VEREDA CHICORALITO - CHICOAGUAS TANQUE # 7A",
+        "irca_2026": "21.58",
+        "nivel_riesgo_2026": "MEDIO"
+      },
+      {
+        "codigo_sistema": "1372",
+        "municipio": "LA CUMBRE",
+        "persona_prestadora": "ASOCIACION DE USUARIOS ANTIGUO ACUEDUCTO BITACO - SUANABIT",
+        "irca_2026": "29.79",
+        "nivel_riesgo_2026": "MEDIO"
+      },
+      {
+        "codigo_sistema": "1375",
+        "municipio": "LA CUMBRE",
+        "persona_prestadora": "ASOCIACION COMUNITARIA ADMINISTRADORA ACUEDUCTO BITACO-ASCABI",
+        "irca_2026": "0.00",
+        "nivel_riesgo_2026": "SIN RIESGO"
+      },
+      {
+        "codigo_sistema": "1378",
+        "municipio": "LA CUMBRE",
+        "persona_prestadora": "ASOCIACION DE USUARIOS DEL ACUEDUCTO DE SANTA FE DEL MUNICIPIO DE LA CUMBRE",
+        "irca_2026": "0.00",
+        "nivel_riesgo_2026": "SIN RIESGO"
+      },
+      {
+        "codigo_sistema": "1380",
+        "municipio": "LA CUMBRE",
+        "persona_prestadora": "ASOCIACION COMUNITARIA ALTO SANO EMPRESA DE SERVICIOS PUBLICOS - ASOALTOSANO E.S.P.",
+        "irca_2026": "0.00",
+        "nivel_riesgo_2026": "SIN RIESGO"
+      },
+      {
+        "codigo_sistema": "13850",
+        "municipio": "BOLIVAR",
+        "persona_prestadora": "ACUEDUCTO RURAL EL FUSIL",
+        "irca_2026": "57.55",
+        "nivel_riesgo_2026": "ALTO"
+      },
+      {
+        "codigo_sistema": "1394",
+        "municipio": "EL CERRITO",
+        "persona_prestadora": "JUNTA DE ACCION COMUNAL DE SANTA LUISA",
+        "irca_2026": "56.74",
+        "nivel_riesgo_2026": "ALTO"
+      },
+      {
+        "codigo_sistema": "1395",
+        "municipio": "EL CERRITO",
+        "persona_prestadora": "ACUASALUD AUJI",
+        "irca_2026": "0.00",
+        "nivel_riesgo_2026": "SIN RIESGO"
+      }
+    ]
   },
-  "reportes": {
-    "control_generacion": "G:\\Mi unidad\\8.UES\\PAGINA INDICADORES\\UESVALLE\\data\\ircas\\logs\\control_generacion_ircas_20260528_005621.csv",
-    "control_coordenadas": "G:\\Mi unidad\\8.UES\\PAGINA INDICADORES\\UESVALLE\\data\\ircas\\logs\\control_coordenadas_ircas_20260528_005621.csv",
-    "comparacion_2026_detalle": "G:\\Mi unidad\\8.UES\\PAGINA INDICADORES\\UESVALLE\\data\\ircas\\logs\\comparacion_actualizacion_irca_2026_detalle_20260528_005621.csv",
-    "comparacion_2026_resumen": "G:\\Mi unidad\\8.UES\\PAGINA INDICADORES\\UESVALLE\\data\\ircas\\logs\\comparacion_actualizacion_irca_2026_resumen_20260528_005621.csv"
-  }
+  "reportes": {}
 }
