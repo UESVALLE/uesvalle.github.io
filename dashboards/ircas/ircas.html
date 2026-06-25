@@ -903,106 +903,6 @@
     }
 
 
-/* IRCAS filtros compactos V1 */
-#filtersCollapse{
-  margin-top:.55rem!important;
-}
-
-#filtersCollapse .filter-grid-compact{
-  row-gap:.55rem!important;
-}
-
-#filtersCollapse .filter-label{
-  font-size:.76rem;
-  line-height:1.05;
-  margin-bottom:.18rem!important;
-  font-weight:750;
-  color:#344054;
-}
-
-#filtersCollapse .form-select-sm,
-#filtersCollapse .ts-wrapper.single .ts-control,
-#filtersCollapse .ts-wrapper.multi .ts-control{
-  min-height:30px!important;
-  font-size:.78rem!important;
-}
-
-#filtersCollapse .ts-wrapper.multi .ts-control{
-  height:32px!important;
-  max-height:32px!important;
-  flex-wrap:nowrap!important;
-  align-items:center!important;
-  overflow-x:auto!important;
-  overflow-y:hidden!important;
-  padding:2px 30px 2px 6px!important;
-  scrollbar-width:thin;
-}
-
-#filtersCollapse .ts-wrapper.multi .ts-control::-webkit-scrollbar{
-  height:4px;
-}
-
-#filtersCollapse .ts-wrapper.multi .ts-control > div.item{
-  margin:1px 3px 1px 0!important;
-  padding:2px 5px!important;
-  max-width:128px;
-  overflow:hidden;
-  text-overflow:ellipsis;
-  white-space:nowrap;
-  font-size:.72rem;
-  line-height:1.05;
-  border-radius:.35rem;
-}
-
-#filtersCollapse .ts-wrapper.multi .ts-control > input{
-  min-width:96px!important;
-  flex:0 0 96px!important;
-  font-size:.72rem!important;
-}
-
-#filtersCollapse .ts-wrapper.single .ts-control{
-  padding-top:2px!important;
-  padding-bottom:2px!important;
-}
-
-#filtersCollapse .ts-dropdown{
-  font-size:.78rem;
-}
-
-#filtersCollapse .filter-actions{
-  margin-top:.2rem!important;
-  padding-top:.2rem!important;
-}
-
-#filtersCollapse .filter-actions .btn{
-  padding:.26rem 1.05rem!important;
-  font-size:.78rem!important;
-  line-height:1.25;
-}
-
-#filtersCollapse .ts-wrapper{
-  min-height:30px;
-}
-
-#filtersCollapse .ts-wrapper.multi.has-items .ts-control{
-  padding-bottom:2px!important;
-}
-
-@media (max-width: 768px){
-  #filtersCollapse .ts-wrapper.multi .ts-control{
-    height:auto!important;
-    max-height:58px!important;
-    flex-wrap:wrap!important;
-    overflow-y:auto!important;
-    overflow-x:hidden!important;
-  }
-
-  #filtersCollapse .ts-wrapper.multi .ts-control > div.item{
-    max-width:170px;
-  }
-}
-
-
 /* IRCAS KPIs centrados V1 */
 .main-kpi-row .kpi-card,
 .historical-kpi-row .kpi-card,
@@ -1053,6 +953,229 @@
     width:100%;
   }
 }
+
+
+
+
+/* IRCAS filtros dos filas + checkbox multiselect limpio V4 */
+#filtersCollapse{
+  margin-top:.65rem!important;
+}
+
+#filtersCollapse .filters-two-rows{
+  display:block;
+  width:100%;
+}
+
+#filtersCollapse .filters-two-rows .row{
+  --bs-gutter-x:.65rem;
+  --bs-gutter-y:.55rem;
+}
+
+#filtersCollapse .filter-label{
+  font-size:.77rem!important;
+  line-height:1.05!important;
+  margin-bottom:.18rem!important;
+  font-weight:750!important;
+  color:#344054!important;
+}
+
+#filtersCollapse .form-select-sm,
+#filtersCollapse .ts-wrapper.single .ts-control,
+#filtersCollapse .checkbox-multiselect-button{
+  min-height:34px!important;
+  height:34px!important;
+  font-size:12px!important;
+  line-height:1.15!important;
+}
+
+#filtersCollapse .ts-wrapper.single .ts-control{
+  padding:4px 9px!important;
+}
+
+#filtersCollapse .filter-actions{
+  margin-top:.35rem!important;
+  padding-top:.15rem!important;
+}
+
+#filtersCollapse .filter-actions .btn{
+  padding:.30rem 1.15rem!important;
+  font-size:.78rem!important;
+  line-height:1.2!important;
+}
+
+.checkbox-multiselect,
+.checkbox-multiselect *{
+  font-family:inherit!important;
+  box-sizing:border-box!important;
+}
+
+.checkbox-multiselect{
+  position:relative;
+  width:100%;
+  font-size:12px!important;
+  line-height:1.15!important;
+}
+
+.checkbox-multiselect-button{
+  width:100%;
+  border:1px solid #d0d5dd;
+  border-radius:6px;
+  background:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:.55rem;
+  padding:4px 9px!important;
+  color:#344054;
+  cursor:pointer;
+  text-align:left;
+  font-weight:600!important;
+}
+
+.checkbox-multiselect-button:hover,
+.checkbox-multiselect.open .checkbox-multiselect-button{
+  border-color:#8fb4ff;
+  box-shadow:0 0 0 .18rem rgba(37,99,235,.16);
+}
+
+.checkbox-multiselect-summary{
+  min-width:0;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  font-size:12px!important;
+  line-height:1.15!important;
+  font-weight:600!important;
+}
+
+.checkbox-multiselect-caret{
+  flex:0 0 auto;
+  color:#475467;
+  font-size:10px!important;
+  line-height:1!important;
+}
+
+.checkbox-multiselect-menu{
+  display:none;
+  position:fixed;
+  z-index:20000;
+  min-width:240px;
+  max-width:min(460px, calc(100vw - 24px));
+  max-height:260px;
+  overflow:auto;
+  background:#fff;
+  border:1px solid #d0d5dd;
+  border-radius:8px;
+  box-shadow:0 16px 34px rgba(15,23,42,.22);
+  padding:6px;
+  font-size:12px!important;
+  line-height:1.15!important;
+}
+
+.checkbox-multiselect-menu.open{
+  display:block;
+}
+
+.checkbox-multiselect-tools{
+  display:flex;
+  gap:4px;
+  margin-bottom:5px;
+  position:sticky;
+  top:0;
+  background:#fff;
+  padding-bottom:5px;
+  z-index:1;
+}
+
+.checkbox-multiselect-tools button{
+  border:1px solid #d0d5dd;
+  background:#f8fafc;
+  color:#344054;
+  border-radius:5px;
+  padding:3px 7px;
+  font-size:11px!important;
+  line-height:1.1!important;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.checkbox-multiselect-tools button:hover{
+  background:#eef4ff;
+  border-color:#98b9ff;
+  color:#1d4ed8;
+}
+
+.checkbox-multiselect-search{
+  width:100%;
+  height:28px;
+  border:1px solid #d0d5dd;
+  border-radius:5px;
+  padding:4px 7px;
+  font-size:11px!important;
+  line-height:1.15!important;
+  margin-bottom:5px;
+  outline:none;
+}
+
+.checkbox-multiselect-option{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  padding:4px 6px;
+  min-height:24px;
+  border-radius:5px;
+  cursor:pointer;
+  color:#344054;
+  font-size:12px!important;
+  line-height:1.15!important;
+}
+
+.checkbox-multiselect-option:hover{
+  background:#f1f5f9;
+}
+
+.checkbox-multiselect-option input[type="checkbox"]{
+  width:12px!important;
+  height:12px!important;
+  min-width:12px!important;
+  min-height:12px!important;
+  margin:0!important;
+  transform:none!important;
+  flex:0 0 auto;
+}
+
+.checkbox-multiselect-option span{
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:normal;
+  font-size:12px!important;
+  line-height:1.15!important;
+  font-weight:400!important;
+}
+
+.checkbox-multiselect-count{
+  color:#667085;
+  font-weight:600;
+}
+
+.checkbox-multiselect-empty{
+  color:#667085;
+  font-size:11px!important;
+  line-height:1.15!important;
+  padding:5px;
+}
+
+select.checkbox-native-hidden{
+  display:none!important;
+}
+
+@media (max-width:991.98px){
+  #filtersCollapse .filters-two-rows .row{
+    --bs-gutter-y:.65rem;
+  }
+}
+
 
 </style>
 </head>
@@ -1261,7 +1384,7 @@ BLOQUE DE ACCESO UESVALLE - FIN
         </div>
       </section>
 
-      <section class="soft-card p-3 mb-3 collapsible-block">
+            <section class="soft-card p-3 mb-3 collapsible-block">
         <button class="table-toggle-header" type="button" data-bs-toggle="collapse" data-bs-target="#filtersCollapse" aria-expanded="true" aria-controls="filtersCollapse">
           <div class="table-toggle-copy">
             <h5 class="mb-1">Filtros del tablero</h5>
@@ -1271,68 +1394,75 @@ BLOQUE DE ACCESO UESVALLE - FIN
             <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
         </button>
+
         <div class="collapse show mt-3" id="filtersCollapse">
-        <div class="row g-2 align-items-end filter-grid-compact">
-          <div class="col-12 col-sm-6 col-md-2">
-            <label class="form-label filter-label mb-1">Año IRCA</label>
-            <select id="fano" class="form-select form-select-sm" multiple></select>
-          </div>
+          <div class="filters-two-rows">
 
-          <div class="col-12 col-sm-6 col-md-3">
-            <label class="form-label filter-label mb-1">Municipio</label>
-            <select id="fmunicipio" class="form-select form-select-sm"><option value="">Todos</option></select>
-          </div>
+            <div class="row g-2 align-items-end">
+              <div class="col-12 col-lg-3 filter-field-year">
+                <label class="form-label filter-label mb-1">Año IRCA</label>
+                <select id="fano" class="form-select form-select-sm" multiple></select>
+              </div>
 
-          <div class="col-12 col-sm-6 col-md-3">
-            <label class="form-label filter-label mb-1">ARO</label>
-            <select id="faro" class="form-select form-select-sm"><option value="">Todos</option></select>
-          </div>
+              <div class="col-12 col-lg-3 filter-field-municipio">
+                <label class="form-label filter-label mb-1">Municipio</label>
+                <select id="fmunicipio" class="form-select form-select-sm"><option value="">Todos</option></select>
+              </div>
 
-          <div class="col-12 col-sm-6 col-md-2">
-            <label class="form-label filter-label mb-1">Código IVC</label>
-            <select id="fcodivc" class="form-select form-select-sm"><option value="">Todos</option></select>
-          </div>
+              <div class="col-12 col-lg-3 filter-field-tipo">
+                <label class="form-label filter-label mb-1">Tipo</label>
+                <select id="ftipo" class="form-select form-select-sm" multiple></select>
+              </div>
 
-          <div class="col-12 col-sm-6 col-md-2">
-            <label class="form-label filter-label mb-1">Tipo</label>
-            <select id="ftipo" class="form-select form-select-sm" multiple></select>
-          </div>
+              <div class="col-12 col-lg-3 filter-field-tipo-sistema">
+                <label class="form-label filter-label mb-1">Tipo sistema</label>
+                <select id="ftipoSistema" class="form-select form-select-sm" multiple></select>
+              </div>
+            </div>
 
-          <div class="col-12 col-sm-6 col-md-2">
-            <label class="form-label filter-label mb-1">Tipo sistema</label>
-            <select id="ftipoSistema" class="form-select form-select-sm" multiple></select>
-          </div>
+            <div class="row g-2 align-items-end mt-1">
+              <div class="col-12 col-lg-2 filter-field-tratamiento">
+                <label class="form-label filter-label mb-1">Algún tipo tratamiento</label>
+                <select id="falgunTrat" class="form-select form-select-sm"><option value="">Todos</option></select>
+              </div>
 
-          <div class="col-12 col-sm-6 col-md-2">
-            <label class="form-label filter-label mb-1">Algún tipo tratamiento</label>
-            <select id="falgunTrat" class="form-select form-select-sm"><option value="">Todos</option></select>
-          </div>
+              <div class="col-12 col-lg-3 filter-field-prestador">
+                <label class="form-label filter-label mb-1">Persona prestadora</label>
+                <select id="fprestador" class="form-select form-select-sm"><option value="">Todos</option></select>
+              </div>
 
-          <div class="col-12 col-sm-6 col-md-4">
-            <label class="form-label filter-label mb-1">Persona prestadora</label>
-            <select id="fprestador" class="form-select form-select-sm"><option value="">Todos</option></select>
-          </div>
+              <div class="col-12 col-lg-2 filter-field-forma">
+                <label class="form-label filter-label mb-1">Forma organizativa</label>
+                <select id="fformaOrg" class="form-select form-select-sm"><option value="">Todos</option></select>
+              </div>
 
-          <div class="col-12 col-sm-6 col-md-2">
-            <label class="form-label filter-label mb-1">Forma organizativa</label>
-            <select id="fformaOrg" class="form-select form-select-sm"><option value="">Todos</option></select>
-          </div>
+              <div class="col-12 col-lg-2 filter-field-punto">
+                <label class="form-label filter-label mb-1">Punto de toma</label>
+                <select id="fpuntoToma" class="form-select form-select-sm" multiple></select>
+              </div>
 
-          <div class="col-12 col-sm-6 col-md-2">
-            <label class="form-label filter-label mb-1">Punto de toma</label>
-            <select id="fpuntoToma" class="form-select form-select-sm" multiple></select>
-          </div>
+              <div class="col-12 col-lg-1 filter-field-codigo">
+                <label class="form-label filter-label mb-1">Código IVC</label>
+                <select id="fcodivc" class="form-select form-select-sm"><option value="">Todos</option></select>
+              </div>
 
-          <div class="col-12 d-flex gap-2 justify-content-center pt-1 flex-wrap filter-actions">
-            <button id="btnFiltrar" class="btn btn-primary btn-sm px-4">Aplicar filtros</button>
-            <button id="btnLimpiar" class="btn btn-outline-secondary btn-sm px-4">Limpiar</button>
-            <button id="btnCargar" class="btn btn-outline-primary btn-sm px-4">Refrescar datos</button>
+              <div class="col-12 col-lg-2 filter-field-aro">
+                <label class="form-label filter-label mb-1">ARO</label>
+                <select id="faro" class="form-select form-select-sm"><option value="">Todos</option></select>
+              </div>
+            </div>
+
+            <div class="d-flex gap-2 justify-content-center pt-2 flex-wrap filter-actions">
+              <button id="btnFiltrar" class="btn btn-primary btn-sm px-4">Actualizar filtros</button>
+              <button id="btnLimpiar" class="btn btn-outline-secondary btn-sm px-4">Limpiar</button>
+              <button id="btnCargar" class="btn btn-outline-primary btn-sm px-4">Refrescar datos</button>
+            </div>
+
           </div>
-        </div>
         </div>
       </section>
 
-      <section class="soft-card collapsible-block active-filters-card">
+<section class="soft-card collapsible-block active-filters-card">
         <button class="table-toggle-header" type="button" data-bs-toggle="collapse" data-bs-target="#activeFiltersCollapse" aria-expanded="true" aria-controls="activeFiltersCollapse">
           <div class="table-toggle-copy">
             <h5>Filtros activos</h5>
@@ -1846,6 +1976,263 @@ BLOQUE DE ACCESO UESVALLE - FIN
   <script>
     Chart.register(ChartDataLabels);
 
+    class CheckboxMultiSelect{
+      constructor(el, opts = {}){
+        this.el = el;
+        this.opts = opts || {};
+        this.handlers = { change: [] };
+        this.placeholder = this.opts.placeholder || "Seleccione uno o varios...";
+        this.wrapper = null;
+        this.button = null;
+        this.summary = null;
+        this.menu = null;
+        this.searchInput = null;
+        this.optionsBox = null;
+        this.boundClose = (e) => {
+          if(this.wrapper?.contains(e.target) || this.menu?.contains(e.target)) return;
+          this.close();
+        };
+        this.boundReposition = () => {
+          if(this.menu?.classList.contains("open")) this.positionMenu();
+        };
+
+        this.el.classList.add("checkbox-native-hidden");
+        this.el.tomselect = this;
+        this.build();
+        this.renderOptions();
+        this.updateSummary();
+      }
+
+      getValue(){
+        return Array.from(this.el.selectedOptions || []).map(o => o.value).filter(Boolean);
+      }
+
+      setValue(values, silent = false){
+        const selected = Array.isArray(values) ? values.map(String) : (values ? [String(values)] : []);
+        Array.from(this.el.options || []).forEach(o => {
+          o.selected = selected.includes(String(o.value));
+        });
+        this.renderOptions(this.searchInput ? this.searchInput.value : "");
+        this.updateSummary();
+        if(!silent) this.trigger("change");
+      }
+
+      clear(silent = false){
+        Array.from(this.el.options || []).forEach(o => { o.selected = false; });
+        this.renderOptions(this.searchInput ? this.searchInput.value : "");
+        this.updateSummary();
+        if(!silent) this.trigger("change");
+      }
+
+      destroy(){
+        document.removeEventListener("click", this.boundClose);
+        window.removeEventListener("resize", this.boundReposition);
+        window.removeEventListener("scroll", this.boundReposition, true);
+
+        if(this.menu && this.menu.parentNode) this.menu.parentNode.removeChild(this.menu);
+        if(this.wrapper && this.wrapper.parentNode) this.wrapper.parentNode.removeChild(this.wrapper);
+
+        this.el.classList.remove("checkbox-native-hidden");
+        this.el.tomselect = null;
+      }
+
+      on(eventName, callback){
+        if(!this.handlers[eventName]) this.handlers[eventName] = [];
+        this.handlers[eventName].push(callback);
+      }
+
+      trigger(eventName){
+        (this.handlers[eventName] || []).forEach(cb => {
+          try{ cb(this.getValue()); }catch(e){ console.warn(e); }
+        });
+      }
+
+      build(){
+        this.wrapper = document.createElement("div");
+        this.wrapper.className = "checkbox-multiselect";
+
+        this.button = document.createElement("button");
+        this.button.type = "button";
+        this.button.className = "checkbox-multiselect-button";
+
+        this.summary = document.createElement("span");
+        this.summary.className = "checkbox-multiselect-summary";
+
+        const caret = document.createElement("span");
+        caret.className = "checkbox-multiselect-caret";
+        caret.textContent = "▼";
+
+        this.button.appendChild(this.summary);
+        this.button.appendChild(caret);
+
+        this.menu = document.createElement("div");
+        this.menu.className = "checkbox-multiselect-menu";
+
+        const tools = document.createElement("div");
+        tools.className = "checkbox-multiselect-tools";
+
+        const btnAll = document.createElement("button");
+        btnAll.type = "button";
+        btnAll.textContent = "Todo";
+        btnAll.addEventListener("click", e => {
+          e.preventDefault();
+          e.stopPropagation();
+          const visibleValues = Array.from(this.optionsBox.querySelectorAll("[data-value]")).map(x => x.dataset.value);
+          const current = new Set(this.getValue());
+          visibleValues.forEach(v => current.add(v));
+          this.setValue(Array.from(current), false);
+        });
+
+        const btnNone = document.createElement("button");
+        btnNone.type = "button";
+        btnNone.textContent = "Limpiar";
+        btnNone.addEventListener("click", e => {
+          e.preventDefault();
+          e.stopPropagation();
+          this.clear(false);
+        });
+
+        tools.appendChild(btnAll);
+        tools.appendChild(btnNone);
+
+        this.searchInput = document.createElement("input");
+        this.searchInput.type = "text";
+        this.searchInput.className = "checkbox-multiselect-search";
+        this.searchInput.placeholder = "Buscar...";
+        this.searchInput.addEventListener("input", () => this.renderOptions(this.searchInput.value));
+        this.searchInput.addEventListener("click", e => e.stopPropagation());
+
+        this.optionsBox = document.createElement("div");
+
+        this.menu.appendChild(tools);
+        this.menu.appendChild(this.searchInput);
+        this.menu.appendChild(this.optionsBox);
+
+        this.wrapper.appendChild(this.button);
+        this.el.insertAdjacentElement("afterend", this.wrapper);
+        document.body.appendChild(this.menu);
+
+        this.button.addEventListener("click", e => {
+          e.preventDefault();
+          e.stopPropagation();
+          this.toggle();
+        });
+
+        this.menu.addEventListener("click", e => e.stopPropagation());
+        document.addEventListener("click", this.boundClose);
+        window.addEventListener("resize", this.boundReposition);
+        window.addEventListener("scroll", this.boundReposition, true);
+      }
+
+      toggle(){
+        const isOpen = this.menu.classList.contains("open");
+        document.querySelectorAll(".checkbox-multiselect").forEach(w => w.classList.remove("open"));
+        document.querySelectorAll(".checkbox-multiselect-menu.open").forEach(m => m.classList.remove("open"));
+
+        if(!isOpen){
+          this.wrapper.classList.add("open");
+          this.menu.classList.add("open");
+          this.positionMenu();
+          setTimeout(() => this.searchInput?.focus(), 30);
+        }
+      }
+
+      close(){
+        if(this.wrapper) this.wrapper.classList.remove("open");
+        if(this.menu) this.menu.classList.remove("open");
+      }
+
+      positionMenu(){
+        if(!this.button || !this.menu) return;
+
+        const rect = this.button.getBoundingClientRect();
+        const margin = 8;
+        const minWidth = Math.max(rect.width, 280);
+        const width = Math.min(minWidth, window.innerWidth - margin * 2);
+        let left = rect.left;
+        if(left + width > window.innerWidth - margin) left = window.innerWidth - width - margin;
+        if(left < margin) left = margin;
+
+        const belowSpace = window.innerHeight - rect.bottom - margin;
+        const aboveSpace = rect.top - margin;
+        const menuHeight = Math.min(310, Math.max(180, Math.max(belowSpace, aboveSpace) - 4));
+        let top = rect.bottom + 4;
+
+        if(belowSpace < 190 && aboveSpace > belowSpace){
+          top = Math.max(margin, rect.top - menuHeight - 4);
+        }
+
+        this.menu.style.left = `${left}px`;
+        this.menu.style.top = `${top}px`;
+        this.menu.style.width = `${width}px`;
+        this.menu.style.maxHeight = `${menuHeight}px`;
+      }
+
+      renderOptions(query = ""){
+        if(!this.optionsBox) return;
+        const q = norm(query || "");
+        const selected = new Set(this.getValue());
+
+        const options = Array.from(this.el.options || [])
+          .filter(o => String(o.value || "").trim() !== "")
+          .filter(o => !q || norm(o.textContent || o.value).includes(q));
+
+        if(!options.length){
+          this.optionsBox.innerHTML = `<div class="checkbox-multiselect-empty">Sin opciones disponibles</div>`;
+          return;
+        }
+
+        this.optionsBox.innerHTML = "";
+        options.forEach(o => {
+          const row = document.createElement("label");
+          row.className = "checkbox-multiselect-option";
+          row.dataset.value = o.value;
+
+          const cb = document.createElement("input");
+          cb.type = "checkbox";
+          cb.checked = selected.has(o.value);
+          cb.addEventListener("change", () => {
+            const current = new Set(this.getValue());
+            if(cb.checked) current.add(o.value);
+            else current.delete(o.value);
+            this.setValue(Array.from(current), false);
+          });
+
+          const txt = document.createElement("span");
+          txt.textContent = o.textContent || o.value;
+
+          row.appendChild(cb);
+          row.appendChild(txt);
+          this.optionsBox.appendChild(row);
+        });
+
+        if(this.menu?.classList.contains("open")) this.positionMenu();
+      }
+
+      updateSummary(){
+        const values = this.getValue();
+        if(!values.length){
+          this.summary.textContent = this.placeholder;
+          this.summary.classList.add("checkbox-multiselect-count");
+          return;
+        }
+
+        this.summary.classList.remove("checkbox-multiselect-count");
+
+        const labels = values.map(v => {
+          const opt = Array.from(this.el.options || []).find(o => o.value === v);
+          return opt ? opt.textContent : v;
+        });
+
+        if(labels.length <= 2){
+          this.summary.textContent = labels.join(", ");
+        }else{
+          this.summary.textContent = `${labels.length} seleccionados · ${labels.slice(0,2).join(", ")}`;
+        }
+      }
+    }
+
+
     const CSV_URL = "../../data/ircas/current/IRCAS.csv";
     const METADATA_URL = "../../data/ircas/current/metadata_ircas.json";
     const DEFAULT_ANALYSIS_BLOCK = "ULTIMO";
@@ -1898,6 +2285,8 @@ BLOQUE DE ACCESO UESVALLE - FIN
     let MUNICIPIOS_VALLE_LAYER_REF = null;
     let VEREDAS_VALLE_LAYER_REF = null;
     let selectedMunicipioBounds = null;
+    const VALLE_CENTER = [4.05, -76.25];
+    const VALLE_DEFAULT_ZOOM = 9;
 
     let chartRiskFilter = "";
     let chartMunicipioFilter = "";
@@ -2028,7 +2417,6 @@ BLOQUE DE ACCESO UESVALLE - FIN
       }
       return Array.from(el.selectedOptions || []).map(o => o.value).filter(Boolean);
     }
-
     function setDefaultAnalysisSelection(){
       const el = document.getElementById("fano");
       if(!el) return;
@@ -2235,13 +2623,30 @@ BLOQUE DE ACCESO UESVALLE - FIN
       `, "success");
     }
 
+
+    let autoFilterTimer = null;
+    let autoFilterRunning = false;
+
+    function requestAutoApplyFilters(){
+      clearTimeout(autoFilterTimer);
+      autoFilterTimer = setTimeout(() => {
+        if(autoFilterRunning) return;
+        autoFilterRunning = true;
+        try{
+          applyFilters();
+        }finally{
+          autoFilterRunning = false;
+        }
+      }, 250);
+    }
+
     function initSearchableSelects() {
       FILTER_IDS.forEach(id => {
         if (selectInstances[id]) selectInstances[id].destroy();
         const el = document.getElementById(id);
         const isMulti = ["fano","ftipo","ftipoSistema","fpuntoToma"].includes(id);
 
-        selectInstances[id] = new TomSelect(el, {
+        selectInstances[id] = new (isMulti ? CheckboxMultiSelect : TomSelect)(el, {
           create: false,
           allowEmptyOption: !isMulti,
           maxOptions: 5000,
@@ -2251,7 +2656,7 @@ BLOQUE DE ACCESO UESVALLE - FIN
           plugins: isMulti ? ["remove_button"] : []
         });
 
-        el.tomselect.on("change", () => { if(id === "fano") chartYearFilter = ""; cascadeFilterOptions(); });
+        el.tomselect.on("change", () => { if(id === "fano") chartYearFilter = ""; requestAutoApplyFilters(); });
       });
     }
 
@@ -2318,7 +2723,7 @@ BLOQUE DE ACCESO UESVALLE - FIN
         fillSelect(id, values, allLabel);
       }
 
-      selectInstances[id] = new TomSelect(el, {
+      selectInstances[id] = new (isMulti ? CheckboxMultiSelect : TomSelect)(el, {
         create: false,
         allowEmptyOption: !isMulti,
         maxOptions: 5000,
@@ -2348,7 +2753,7 @@ BLOQUE DE ACCESO UESVALLE - FIN
         }
       }
 
-      document.getElementById(id).tomselect.on("change", () => { cascadeFilterOptions(); });
+      document.getElementById(id).tomselect.on("change", () => { if(id === "fano") chartYearFilter = ""; requestAutoApplyFilters(); });
     }
 
     function cascadeFilterOptions() {
@@ -2372,22 +2777,6 @@ BLOQUE DE ACCESO UESVALLE - FIN
       refreshSingleSelect("fformaOrg", uniq(dataForma.map(d => d.FORMA_ORGANIZATIVA)).sort((a,b)=>a.localeCompare(b,'es')));
       refreshSingleSelect("fpuntoToma", uniq(dataPunto.flatMap(d => getPuntoValuesForSelectedBlocks(d, getSelectedBlocks()))).sort((a,b)=>a.localeCompare(b,'es')));
 
-      if (selectInstances["fano"]) {
-        const selectedBlocks = getSelectedBlocks();
-        selectInstances["fano"].destroy();
-        fillAnalysisBlockSelect("fano");
-        selectInstances["fano"] = new TomSelect(document.getElementById("fano"), {
-          create: false,
-          allowEmptyOption: false,
-          maxOptions: 5000,
-          searchField: ["text"],
-          placeholder: "Seleccione uno o varios años IRCA...",
-          plugins: ["remove_button"]
-        });
-        const validBlocks = selectedBlocks.filter(v => ANALYSIS_BLOCKS.some(x => x.value === v));
-        selectInstances["fano"].setValue(validBlocks.length ? validBlocks : [DEFAULT_ANALYSIS_BLOCK], true);
-        document.getElementById("fano").tomselect.on("change", () => { chartYearFilter = ""; cascadeFilterOptions(); applyFilters(); });
-      }
     }
 
     function popupRiskTextColor(riesgo){
@@ -2606,7 +2995,7 @@ BLOQUE DE ACCESO UESVALLE - FIN
     }
 
     function initMainMap(){
-      MAP = L.map("map", { zoomControl: true }).setView([4.05, -76.25], 8);
+      MAP = L.map("map", { zoomControl: true }).setView(VALLE_CENTER, VALLE_DEFAULT_ZOOM);
 
       const osm = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         maxZoom: 19, attribution: "&copy; OpenStreetMap"
@@ -3176,6 +3565,38 @@ BLOQUE DE ACCESO UESVALLE - FIN
       });
     }
 
+    function focusMainMap(data = LIST){
+      if(!MAP) return;
+
+      const targetData = Array.isArray(data) ? data : [];
+      const selectedMunicipio = document.getElementById("fmunicipio")?.value || "";
+      const pts = targetData.filter(d => isValidValleCoord(d.LATITUD, d.LONGITUD));
+
+      MAP.invalidateSize();
+
+      if(selectedMunicipio && selectedMunicipioBounds){
+        MAP.fitBounds(selectedMunicipioBounds.pad(0.15), { maxZoom: 12 });
+        return;
+      }
+
+      if(pts.length === 1){
+        MAP.setView([pts[0].LATITUD, pts[0].LONGITUD], 12);
+        return;
+      }
+
+      if(pts.length > 1 && pts.length <= 120){
+        const bounds = L.latLngBounds(pts.map(d => [d.LATITUD, d.LONGITUD]));
+        if(bounds && bounds.isValid()){
+          MAP.fitBounds(bounds.pad(0.18), { maxZoom: 11 });
+          return;
+        }
+      }
+
+      // Vista institucional por defecto: Valle del Cauca.
+      // Se evita hacer fitBounds sobre todos los sistemas porque visualmente aleja el mapa.
+      MAP.setView(VALLE_CENTER, VALLE_DEFAULT_ZOOM);
+    }
+
     function renderMainMap(data){
       clearMainLayers();
 
@@ -3194,24 +3615,12 @@ BLOQUE DE ACCESO UESVALLE - FIN
 
       const selectedYear = getSelectedBlock();
       buildHeatLayer(data, selectedYear);
-
-      if(ptsActual.length){
-        const bounds = L.latLngBounds(ptsActual.map(d => [d.LATITUD, d.LONGITUD]));
-        if(bounds && bounds.isValid()){
-          MAP.fitBounds(bounds.pad(0.12), { maxZoom: 11 });
-        }else{
-          MAP.setView([4.05, -76.25], 8);
-        }
-      }else{
-        MAP.setView([4.05, -76.25], 8);
-      }
-
       syncPanelLayersWithMap();
     }
 
     function initCompareMaps(){
-      MAP_COMPARE_2020 = L.map("mapCompare2020", { zoomControl: true }).setView([4.05, -76.25], 8);
-      MAP_COMPARE_2025 = L.map("mapCompare2025", { zoomControl: true }).setView([4.05, -76.25], 8);
+      MAP_COMPARE_2020 = L.map("mapCompare2020", { zoomControl: true }).setView(VALLE_CENTER, VALLE_DEFAULT_ZOOM);
+      MAP_COMPARE_2025 = L.map("mapCompare2025", { zoomControl: true }).setView(VALLE_CENTER, VALLE_DEFAULT_ZOOM);
 
       const cartoLight2020 = L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", { maxZoom: 20, attribution: "&copy; CARTO" });
       const cartoLight2025 = L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", { maxZoom: 20, attribution: "&copy; CARTO" });
@@ -3258,23 +3667,61 @@ BLOQUE DE ACCESO UESVALLE - FIN
       sync(MAP_COMPARE_2025, MAP_COMPARE_2020);
     }
 
+    function focusCompareMaps(data = LIST){
+      if(!MAP_COMPARE_2020 || !MAP_COMPARE_2025) return;
+
+      const targetData = Array.isArray(data) ? data : [];
+      const selectedMunicipio = document.getElementById("fmunicipio")?.value || "";
+      const pts = targetData.filter(d => isValidValleCoord(d.LATITUD, d.LONGITUD));
+
+      MAP_COMPARE_2020.invalidateSize();
+      MAP_COMPARE_2025.invalidateSize();
+
+      syncLock = true;
+      try{
+        if(selectedMunicipio && selectedMunicipioBounds){
+          MAP_COMPARE_2020.fitBounds(selectedMunicipioBounds.pad(0.15), { maxZoom: 12 });
+          MAP_COMPARE_2025.fitBounds(selectedMunicipioBounds.pad(0.15), { maxZoom: 12 });
+          return;
+        }
+
+        if(pts.length === 1){
+          const center = [pts[0].LATITUD, pts[0].LONGITUD];
+          MAP_COMPARE_2020.setView(center, 12);
+          MAP_COMPARE_2025.setView(center, 12);
+          return;
+        }
+
+        if(pts.length > 1 && pts.length <= 120){
+          const bounds = L.latLngBounds(pts.map(d => [d.LATITUD, d.LONGITUD]));
+          if(bounds && bounds.isValid()){
+            MAP_COMPARE_2020.fitBounds(bounds.pad(0.18), { maxZoom: 11 });
+            MAP_COMPARE_2025.fitBounds(bounds.pad(0.18), { maxZoom: 11 });
+            return;
+          }
+        }
+
+        // Vista institucional por defecto: Valle del Cauca.
+        // Se evita usar fitBounds con todos los puntos porque puede alejar los mapas de comparación.
+        MAP_COMPARE_2020.setView(VALLE_CENTER, VALLE_DEFAULT_ZOOM);
+        MAP_COMPARE_2025.setView(VALLE_CENTER, VALLE_DEFAULT_ZOOM);
+      }finally{
+        syncLock = false;
+      }
+    }
+
     function renderCompareMaps(data){
       compareLayer2020.clearLayers();
       compareLayer2025.clearLayers();
 
       const pts = data.filter(d => isValidValleCoord(d.LATITUD, d.LONGITUD));
-      if(!pts.length) return;
 
       pts.forEach(d => {
         compareLayer2020.addLayer(createCircleMarker(d, "2020"));
         compareLayer2025.addLayer(createCircleMarker(d, "2026"));
       });
 
-      const bounds = L.latLngBounds(pts.map(d => [d.LATITUD, d.LONGITUD]));
-      if(bounds && bounds.isValid()){
-        MAP_COMPARE_2020.fitBounds(bounds.pad(0.12), { maxZoom: 11 });
-        MAP_COMPARE_2025.fitBounds(bounds.pad(0.12), { maxZoom: 11 });
-      }
+      focusCompareMaps(data);
     }
 
     function classifyIRCAValue(value){
@@ -3920,15 +4367,12 @@ BLOQUE DE ACCESO UESVALLE - FIN
       renderRiskAnalysis(LIST);
       renderMainMap(LIST);
       refreshMunicipioHighlight();
+      focusMainMap(LIST);
       renderCompareMaps(LIST);
       renderAnalytics(LIST);
       renderCharts(LIST);
       renderTable(LIST);
       renderActiveFilters();
-
-      if(selectedMunicipioBounds){
-        MAP.fitBounds(selectedMunicipioBounds.pad(0.15));
-      }
     }
 
     async function loadData(){
@@ -3971,7 +4415,10 @@ BLOQUE DE ACCESO UESVALLE - FIN
       document.getElementById("statusHint").textContent = oculto ? "Oculto" : "Visible";
     });
 
-    document.getElementById("btnFiltrar").addEventListener("click", applyFilters);
+    document.getElementById("btnFiltrar").addEventListener("click", () => {
+      cascadeFilterOptions();
+      applyFilters();
+    });
 
     document.getElementById("btnLimpiar").addEventListener("click", () => {
       chartRiskFilter = "";
@@ -4086,7 +4533,16 @@ function mostrarTableroUESVALLE() {
 
   setTimeout(() => {
     window.dispatchEvent(new Event("resize"));
-  }, 300);
+    try {
+      if (typeof MAP !== "undefined" && MAP) MAP.invalidateSize();
+      if (typeof MAP_COMPARE_2020 !== "undefined" && MAP_COMPARE_2020) MAP_COMPARE_2020.invalidateSize();
+      if (typeof MAP_COMPARE_2025 !== "undefined" && MAP_COMPARE_2025) MAP_COMPARE_2025.invalidateSize();
+      if (typeof focusMainMap === "function") focusMainMap();
+      if (typeof focusCompareMaps === "function") focusCompareMaps();
+    } catch (e) {
+      console.warn("No se pudo reajustar el mapa al mostrar el tablero", e);
+    }
+  }, 350);
 }
 
 function validarAcceso() {
@@ -4126,10 +4582,3 @@ SCRIPT DE ACCESO UESVALLE - FIN
 
 </body>
 </html>
-
-
-
-
-
-
-
