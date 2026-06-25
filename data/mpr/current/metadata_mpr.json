@@ -1,8 +1,8 @@
 {
-  "version_script": "V2.3",
-  "fecha_actualizacion_tablero": "2026-06-25T16:12:46",
-  "fecha_generacion": "2026-06-25T16:12:46",
-  "fecha_ejecucion_normalizacion": "2026-06-25T16:12:46",
+  "version_script": "V2.7",
+  "fecha_actualizacion_tablero": "2026-06-25T16:38:55",
+  "fecha_generacion": "2026-06-25T16:38:55",
+  "fecha_ejecucion_normalizacion": "2026-06-25T16:38:55",
   "fecha_corte_reporte_sisa": "",
   "fecha_maxima_visita_censo": "2026-06-24",
   "fecha_maxima_cargue_sisa": "2026-06-25",
@@ -16,6 +16,8 @@
   "raw_dir": "G:\\Mi unidad\\8.UES\\PAGINA INDICADORES\\UESVALLE\\data\\mpr\\raw",
   "out_dir": "G:\\Mi unidad\\8.UES\\PAGINA INDICADORES\\UESVALLE\\data\\mpr\\current",
   "fuente_actividades": "censo_visitasMPR.xlsx",
+  "fuente_programados_local": "G:\\Mi unidad\\8.UES\\PAGINA INDICADORES\\UESVALLE\\data\\mpr\\raw\\Programados.xlsx",
+  "salida_programados_publicable": "G:\\Mi unidad\\8.UES\\PAGINA INDICADORES\\UESVALLE\\data\\mpr\\current\\programados_mpr.csv",
   "actividades_mpr_filtradas": [
     "1.3",
     "1.4",
@@ -39,6 +41,7 @@
   "ejecutados_14": 25,
   "ejecutados_15": 0,
   "salidas": [
+    "programados_mpr.csv",
     "seguimiento_mpr_sistemas.csv",
     "actividades_mpr_ejecutadas.csv",
     "resumen_mpr_aro.csv",
