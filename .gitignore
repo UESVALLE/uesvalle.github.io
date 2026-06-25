@@ -40,3 +40,9 @@ data/**/raw/
 
 # Insumos locales por módulo
 data/**/input/
+# MPR - archivos locales/no publicar
+/scripts/mpr/config_sisa.env
+/data/mpr/raw/censo_visitasMPR.xlsx
+/data/mpr/raw/censo_visitasMPR_backup_*.xlsx
+/data/mpr/historical/
+*.backup_fecha_mpr_*.html
