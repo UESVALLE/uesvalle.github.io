@@ -1177,6 +1177,86 @@ select.checkbox-native-hidden{
 }
 
 
+
+
+
+
+/* IRCAS KPIs principales en una fila V3 */
+.active-filters-card{
+  margin-bottom:1.05rem!important;
+  position:relative;
+  z-index:1;
+}
+
+.main-kpi-row{
+  display:grid!important;
+  grid-template-columns:repeat(7,minmax(0,1fr))!important;
+  gap:.75rem!important;
+  margin:0 0 1rem 0!important;
+  align-items:stretch!important;
+  position:relative;
+  z-index:0;
+}
+
+.main-kpi-row > [class*="col-"]{
+  width:auto!important;
+  max-width:none!important;
+  padding:0!important;
+  margin:0!important;
+}
+
+.main-kpi-row .kpi-card{
+  min-height:118px;
+  padding:.72rem .45rem!important;
+  border-radius:.9rem;
+}
+
+.main-kpi-row .kpi-label{
+  min-height:24px;
+  font-size:.76rem;
+  line-height:1.08;
+  margin-bottom:.12rem;
+}
+
+.main-kpi-row .kpi-value{
+  font-size:clamp(17px,1.45vw,25px);
+  line-height:1;
+  letter-spacing:0;
+  margin:.16rem 0;
+}
+
+.main-kpi-row .kpi-mini{
+  font-size:.68rem;
+  line-height:1.12;
+  padding:0 .08rem;
+}
+
+@media (max-width: 1199.98px){
+  .main-kpi-row{
+    grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  }
+}
+
+@media (max-width: 768px){
+  .main-kpi-row{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  }
+}
+
+@media (max-width: 576px){
+  .main-kpi-row{
+    grid-template-columns:1fr!important;
+  }
+}
+
+
+
+/* IRCAS selector de comparación */
+#fCompareYear{
+  font-size:.82rem;
+  font-weight:650;
+}
+
 </style>
 </head>
 <body>
@@ -1487,21 +1567,21 @@ BLOQUE DE ACCESO UESVALLE - FIN
           <div class="kpi-card p-3">
             <div class="kpi-label">Sistemas</div>
             <div id="kpiSistemas" class="kpi-value">–</div>
-            <div class="kpi-mini">Universo filtrado</div>
+            <div class="kpi-mini">Universo de acueductos filtrado</div>
           </div>
         </div>
         <div class="col-12 col-sm-6 col-lg-2">
           <div class="kpi-card p-3">
             <div class="kpi-label">IRCA reportados</div>
             <div id="kpiIRCAReportados" class="kpi-value">–</div>
-            <div id="kpiIRCAReportadosMini" class="kpi-mini">Con dato en el bloque activo</div>
+            <div id="kpiIRCAReportadosMini" class="kpi-mini">Registros IRCA válidos</div>
           </div>
         </div>
         <div class="col-12 col-sm-6 col-lg-2">
           <div class="kpi-card p-3">
             <div class="kpi-label">Sin IRCA reportado</div>
             <div id="kpiIRCASinDato" class="kpi-value">–</div>
-            <div id="kpiIRCASinDatoMini" class="kpi-mini">Sin dato en el bloque activo</div>
+            <div id="kpiIRCASinDatoMini" class="kpi-mini">Registros esperados sin dato</div>
           </div>
         </div>
         <div class="col-12 col-sm-6 col-lg-2">
@@ -1522,6 +1602,13 @@ BLOQUE DE ACCESO UESVALLE - FIN
           <div class="kpi-card p-3">
             <div class="kpi-label">Suscriptores</div>
             <div id="kpiSuscriptores" class="kpi-value">–</div>
+            <div class="kpi-mini">Suma filtrada</div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-2">
+          <div class="kpi-card p-3">
+            <div class="kpi-label">Localidades</div>
+            <div id="kpiLocalidades" class="kpi-value">–</div>
             <div class="kpi-mini">Suma filtrada</div>
           </div>
         </div>
@@ -1762,24 +1849,38 @@ BLOQUE DE ACCESO UESVALLE - FIN
       <section class="soft-card p-3 mb-4 collapsible-block">
         <button class="table-toggle-header" type="button" data-bs-toggle="collapse" data-bs-target="#compareMapsCollapse" aria-expanded="true" aria-controls="compareMapsCollapse">
           <div class="table-toggle-copy">
-            <h5 class="mb-1">Comparación sincronizada 2020 vs 2026</h5>
-            <div class="section-note mb-0">Ambos mapas se desplazan y hacen zoom al mismo tiempo para comparar visualmente la evolución.</div>
+            <h5 id="compareTitle" class="mb-1">Comparación sincronizada 2020 vs 2026</h5>
+            <div class="section-note mb-0">El mapa derecho queda fijo en IRCA 2026. Selecciona el año del mapa izquierdo para comparar la evolución.</div>
           </div>
           <span class="table-toggle-arrow" aria-hidden="true">
             <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
         </button>
         <div class="collapse show mt-3" id="compareMapsCollapse">
-        <div class="row g-3">
-          <div class="col-12 col-xl-6">
-            <div class="compare-title">IRCA 2020</div>
-            <div id="mapCompare2020" class="compare-map"></div>
+          <div class="d-flex align-items-end justify-content-between flex-wrap gap-2 mb-3">
+            <div>
+              <div class="section-note mb-1">Año comparativo contra IRCA 2026</div>
+              <select id="fCompareYear" class="form-select form-select-sm" style="min-width:220px;">
+                <option value="2020" selected>IRCA 2020</option>
+                <option value="2021">IRCA 2021</option>
+                <option value="2022">IRCA 2022</option>
+                <option value="2023">IRCA 2023</option>
+                <option value="2024">IRCA 2024</option>
+                <option value="2025">IRCA 2025</option>
+              </select>
+            </div>
+            <div class="section-note">Los dos mapas mantienen desplazamiento y zoom sincronizados.</div>
           </div>
-          <div class="col-12 col-xl-6">
-            <div class="compare-title">IRCA 2026</div>
-            <div id="mapCompare2025" class="compare-map"></div>
+          <div class="row g-3">
+            <div class="col-12 col-xl-6">
+              <div id="compareLeftTitle" class="compare-title">IRCA 2020</div>
+              <div id="mapCompare2020" class="compare-map"></div>
+            </div>
+            <div class="col-12 col-xl-6">
+              <div id="compareRightTitle" class="compare-title">IRCA 2026</div>
+              <div id="mapCompare2025" class="compare-map"></div>
+            </div>
           </div>
-        </div>
         </div>
       </section>
 
@@ -2294,6 +2395,7 @@ BLOQUE DE ACCESO UESVALLE - FIN
     let mapRiskBadgeFilter = "";
     let mapTreatmentBadgeFilter = "";
     let riskMetricMode = "poblacion";
+    let compareYear = "2020";
 
     let MAP;
     let YEAR_LAYERS = {};
@@ -2530,6 +2632,7 @@ BLOQUE DE ACCESO UESVALLE - FIN
         TIPO_SISTEMA_TRATAMIENTO_AGRUPADO: r["TIPO_SISTEMA_TRATAMIENTO_AGRUPADO"] ?? r["TIPO_SISTEMA_TRATAMIENTO"] ?? "Sin Dato",
         ALGUN_TIPO_TRATAMIENTO: r["ALGUN_TIPO_TRATAMIENTO"] ?? "",
         LOCALIDADES_ABASTECIDAS: r["LOCALIDADES ABASTECIDAS"] ?? "",
+        NUMERO_LOCALIDADES: toNumber(r["NUMERO_LOCALIDADES"]),
         SUSCRIPTORES: toNumber(r["SUSCRIPTORES"]),
         POBLACION: toNumber(r["POBLACION"]),
         ULTIMO_IRCA_REPORTADO: toNumber(r["Ultimo_IRCA_reportado"]),
@@ -3714,10 +3817,19 @@ BLOQUE DE ACCESO UESVALLE - FIN
       compareLayer2020.clearLayers();
       compareLayer2025.clearLayers();
 
+      const leftYear = compareYear || "2020";
+      const compareTitle = document.getElementById("compareTitle");
+      const leftTitle = document.getElementById("compareLeftTitle");
+      const rightTitle = document.getElementById("compareRightTitle");
+
+      if(compareTitle) compareTitle.textContent = `Comparación sincronizada ${leftYear} vs 2026`;
+      if(leftTitle) leftTitle.textContent = `IRCA ${leftYear}`;
+      if(rightTitle) rightTitle.textContent = "IRCA 2026";
+
       const pts = data.filter(d => isValidValleCoord(d.LATITUD, d.LONGITUD));
 
       pts.forEach(d => {
-        compareLayer2020.addLayer(createCircleMarker(d, "2020"));
+        compareLayer2020.addLayer(createCircleMarker(d, leftYear));
         compareLayer2025.addLayer(createCircleMarker(d, "2026"));
       });
 
@@ -3744,19 +3856,25 @@ BLOQUE DE ACCESO UESVALLE - FIN
       return `rgba(${r}, ${g}, ${b}, ${alpha})`;
     }
 
-    function renderKPIs(data){
+    function renderKPIs(data, universeData = data, selectedBlocks = getSelectedBlocks()){
       const activeYear = getSelectedBlock();
 
-      const total = data.length;
-      const conIRCA = data.filter(d => Number.isFinite(d.IRCA_ACTUAL)).length;
-      const sinIRCA = total - conIRCA;
-      const pctConIRCA = pct(conIRCA, total);
-      const pctSinIRCA = pct(sinIRCA, total);
-      const blockShort = getBlockShortLabel(activeYear);
-      const promedio = avg(data.map(d => d.IRCA_Promedio));
+      const total = universeData.length;
+      const blocksForCount = selectedBlocks && selectedBlocks.length ? selectedBlocks : [activeYear];
+      const expectedReports = total * blocksForCount.length;
+      const conIRCA = universeData.reduce((acc, d) => {
+        return acc + blocksForCount.reduce((n, block) => n + (Number.isFinite(d[getIRCAField(block)]) ? 1 : 0), 0);
+      }, 0);
+      const sinIRCA = Math.max(expectedReports - conIRCA, 0);
+      const pctConIRCA = pct(conIRCA, expectedReports);
+      const pctSinIRCA = pct(sinIRCA, expectedReports);
+      const blockShort = blocksForCount.length === 1
+        ? getBlockShortLabel(blocksForCount[0])
+        : `${blocksForCount.length} bloques IRCA`;
       const ircaActual = avg(data.map(d => d.IRCA_ACTUAL));
-      const poblacion = data.reduce((acc, d) => acc + (d.POBLACION || 0), 0);
-      const suscriptores = data.reduce((acc, d) => acc + (d.SUSCRIPTORES || 0), 0);
+      const poblacion = universeData.reduce((acc, d) => acc + (d.POBLACION || 0), 0);
+      const suscriptores = universeData.reduce((acc, d) => acc + (d.SUSCRIPTORES || 0), 0);
+      const localidades = universeData.reduce((acc, d) => acc + (d.NUMERO_LOCALIDADES || 0), 0);
 
       const sinRiesgo = data.filter(d => norm(d.RIESGO_ACTUAL) === "SIN RIESGO").length;
       const bajo = data.filter(d => norm(d.RIESGO_ACTUAL) === "BAJO").length;
@@ -3769,12 +3887,13 @@ BLOQUE DE ACCESO UESVALLE - FIN
       document.getElementById("kpiSistemas").textContent = total.toLocaleString("es-CO");
       document.getElementById("kpiIRCAReportados").textContent = conIRCA.toLocaleString("es-CO");
       document.getElementById("kpiIRCASinDato").textContent = sinIRCA.toLocaleString("es-CO");
-      document.getElementById("kpiIRCAReportadosMini").textContent = `${pctConIRCA}% con dato en ${blockShort}`;
-      document.getElementById("kpiIRCASinDatoMini").textContent = `${pctSinIRCA}% sin dato en ${blockShort}`;
+      document.getElementById("kpiIRCAReportadosMini").textContent = `${pctConIRCA}% de reportes esperados · ${blockShort}`;
+      document.getElementById("kpiIRCASinDatoMini").textContent = `${pctSinIRCA}% sin dato · ${blockShort}`;
       document.getElementById("kpiIRCAActual").textContent = ircaActual.toFixed(2);
-      document.getElementById("kpiIRCAActualMini").textContent = `Promedio con dato en ${blockShort}`;
+      document.getElementById("kpiIRCAActualMini").textContent = `Promedio con dato en ${getBlockShortLabel(activeYear)}`;
       document.getElementById("kpiPoblacion").textContent = poblacion.toLocaleString("es-CO");
       document.getElementById("kpiSuscriptores").textContent = suscriptores.toLocaleString("es-CO");
+      document.getElementById("kpiLocalidades").textContent = localidades.toLocaleString("es-CO");
 
       const yearlyValues = {
         "2020": avg(data.map(d => d.IRCA_2020)),
@@ -4318,6 +4437,34 @@ BLOQUE DE ACCESO UESVALLE - FIN
       });
     }
 
+
+    function getKPIUniverseData(selectedBlocks = getSelectedBlocks()){
+      const tiposSeleccionados = document.getElementById("ftipo")?.tomselect
+        ? document.getElementById("ftipo").tomselect.getValue()
+        : [];
+      const tiposSistemaSeleccionados = document.getElementById("ftipoSistema")?.tomselect
+        ? document.getElementById("ftipoSistema").tomselect.getValue()
+        : [];
+      const puntosSeleccionados = document.getElementById("fpuntoToma")?.tomselect
+        ? document.getElementById("fpuntoToma").tomselect.getValue()
+        : [];
+
+      return RAW.filter(d => {
+        if(document.getElementById("fmunicipio").value && d.MUNICIPIO !== document.getElementById("fmunicipio").value) return false;
+        if(document.getElementById("faro").value && d.ARO !== document.getElementById("faro").value) return false;
+        if(document.getElementById("fcodivc").value && String(d.CODIGO_IVC) !== document.getElementById("fcodivc").value) return false;
+        if(tiposSeleccionados.length && !tiposSeleccionados.includes(d.TIPO)) return false;
+        if(tiposSistemaSeleccionados.length && !tiposSistemaSeleccionados.includes(d.TIPO_SISTEMA_TRATAMIENTO_AGRUPADO)) return false;
+        if(mapTreatmentBadgeFilter && norm(d.TIPO_SISTEMA_TRATAMIENTO_AGRUPADO || "SIN DATO") !== norm(mapTreatmentBadgeFilter)) return false;
+        if(document.getElementById("falgunTrat").value && String(d.ALGUN_TIPO_TRATAMIENTO) !== document.getElementById("falgunTrat").value) return false;
+        if(document.getElementById("fprestador").value && d.PERSONA_PRESTADORA !== document.getElementById("fprestador").value) return false;
+        if(document.getElementById("fformaOrg").value && d.FORMA_ORGANIZATIVA !== document.getElementById("fformaOrg").value) return false;
+        if(puntosSeleccionados.length && !rowMatchesSelectedPoints(d, puntosSeleccionados, selectedBlocks)) return false;
+        if(chartMunicipioFilter && d.MUNICIPIO !== chartMunicipioFilter) return false;
+        return true;
+      });
+    }
+
     function applyFilters(){
       if (chartYearFilter && document.getElementById("fano")?.tomselect) {
         document.getElementById("fano").tomselect.setValue([chartYearFilter], true);
@@ -4363,7 +4510,8 @@ BLOQUE DE ACCESO UESVALLE - FIN
         ANO_ACTUAL: getBlockLabel(year)
       }));
 
-      renderKPIs(LIST);
+      const KPI_UNIVERSE = getKPIUniverseData(selectedBlocks);
+      renderKPIs(LIST, KPI_UNIVERSE, selectedBlocks);
       renderRiskAnalysis(LIST);
       renderMainMap(LIST);
       refreshMunicipioHighlight();
@@ -4406,6 +4554,11 @@ BLOQUE DE ACCESO UESVALLE - FIN
         btn.textContent = "Refrescar datos";
       }
     }
+
+    document.getElementById("fCompareYear")?.addEventListener("change", () => {
+      compareYear = document.getElementById("fCompareYear")?.value || "2020";
+      renderCompareMaps(LIST);
+    });
 
     document.getElementById("btnToggleStatus")?.addEventListener("click", () => {
       const box = document.getElementById("loadAlert");
