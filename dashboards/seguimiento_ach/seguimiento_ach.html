@@ -261,6 +261,7 @@
     .bg-critical{background:var(--critical)}
     .bg-low{background:var(--low)}
     .bg-medium{background:var(--medium);color:#111827}
+    .bg-high{background:#84cc16;color:#111827}
     .bg-ok{background:var(--ok)}
     .bg-over{background:var(--over)}
     .bg-nodata{background:var(--nodata)}
@@ -313,12 +314,14 @@
     .row-estado-critico td{background:#fee2e2 !important;}
     .row-estado-bajo td{background:#ffedd5 !important;}
     .row-estado-medio td{background:#fef3c7 !important;}
+    .row-estado-alto td{background:#ecfccb !important;}
     .row-estado-cumplido td{background:#dcfce7 !important;}
     .row-estado-supera td{background:#dbeafe !important;}
 
     .row-estado-critico td:first-child{border-left:5px solid #dc2626;}
     .row-estado-bajo td:first-child{border-left:5px solid #f97316;}
     .row-estado-medio td:first-child{border-left:5px solid #f2c14e;}
+    .row-estado-alto td:first-child{border-left:5px solid #84cc16;}
     .row-estado-cumplido td:first-child{border-left:5px solid #16a34a;}
     .row-estado-supera td:first-child{border-left:5px solid #2563eb;}
 
@@ -365,6 +368,21 @@
       font-weight:850;
       line-height:1.1;
     }
+
+    .municipio-kpi-card.kpi-clickable{
+      cursor:pointer;
+      transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+    }
+    .municipio-kpi-card.kpi-clickable:hover{
+      transform:translateY(-1px);
+      border-color:#98b9ff;
+      box-shadow:0 8px 22px rgba(29,78,216,.10);
+    }
+    .municipio-kpi-card.kpi-active{
+      border-color:#1d4ed8;
+      box-shadow:0 0 0 3px rgba(29,78,216,.12), 0 8px 22px rgba(29,78,216,.10);
+    }
+
     .municipio-section-note{
       background:#eff6ff;
       border:1px solid #bfdbfe;
@@ -567,6 +585,115 @@
       margin-top:.35rem;
     }
 
+
+
+    /* ============================================================
+       Estado de carga de datos ACH
+    ============================================================ */
+    .ach-load-status{
+      border:1px solid #bfdbfe;
+      border-radius:1rem;
+      background:linear-gradient(180deg,#eff6ff 0%,#f8fbff 100%);
+      padding:1rem;
+      color:#1e3a8a;
+    }
+    .ach-load-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:1rem;
+      flex-wrap:wrap;
+      margin-bottom:.85rem;
+    }
+    .ach-load-title{
+      display:flex;
+      align-items:center;
+      gap:.6rem;
+      font-weight:850;
+      color:#1d4ed8;
+      font-size:1.05rem;
+      margin:0;
+    }
+    .ach-load-subtitle{
+      color:#475467;
+      font-size:.88rem;
+      margin-top:.2rem;
+    }
+    .ach-load-actions{
+      display:flex;
+      align-items:center;
+      gap:.5rem;
+      flex-wrap:wrap;
+    }
+    .ach-load-updated{
+      display:inline-flex;
+      align-items:center;
+      padding:.45rem .75rem;
+      border-radius:999px;
+      background:#198754;
+      color:#fff;
+      font-weight:800;
+      font-size:.84rem;
+      white-space:nowrap;
+    }
+    .ach-load-toggle{
+      border:1px solid #c7d7fe;
+      background:#fff;
+      color:#1d4ed8;
+      border-radius:999px;
+      font-weight:800;
+      font-size:.82rem;
+      padding:.4rem .7rem;
+      cursor:pointer;
+    }
+    .ach-load-toggle:hover{background:#eef4ff}
+    .ach-load-grid{
+      display:grid;
+      grid-template-columns:repeat(6,minmax(0,1fr));
+      gap:.75rem;
+      margin-bottom:.9rem;
+    }
+    .ach-load-card{
+      background:#fff;
+      border:1px solid #dbeafe;
+      border-radius:.9rem;
+      padding:.75rem;
+      box-shadow:0 3px 10px rgba(29,78,216,.06);
+      min-height:86px;
+    }
+    .ach-load-card small{
+      display:block;
+      color:#64748b;
+      font-weight:750;
+      font-size:.74rem;
+      line-height:1.15;
+      min-height:32px;
+    }
+    .ach-load-card b{
+      display:block;
+      color:#1d4ed8;
+      font-size:clamp(18px,2vw,27px);
+      font-weight:900;
+      line-height:1.05;
+      margin-top:.35rem;
+    }
+    .ach-load-detail{
+      background:#fff;
+      border:1px solid #dbeafe;
+      border-radius:.9rem;
+      padding:.85rem .95rem;
+      color:#24406f;
+      font-size:.92rem;
+      line-height:1.45;
+    }
+    .ach-load-detail p{margin:0 0 .45rem 0}
+    .ach-load-detail p:last-child{margin-bottom:0}
+    .ach-load-ok{font-weight:850;color:#14532d}
+    .ach-load-muted{color:#64748b}
+    @media (max-width:1200px){.ach-load-grid{grid-template-columns:repeat(3,minmax(0,1fr));}}
+    @media (max-width:768px){.ach-load-grid{grid-template-columns:1fr;}.ach-load-head{align-items:stretch}.ach-load-actions{justify-content:flex-start}}
+
+
     .dt-buttons .btn{margin-right:.25rem}
     .table{font-size:.86rem}
     footer{color:#667085;font-size:.86rem;padding-bottom:2rem}
@@ -626,7 +753,62 @@
       .custom-layer-panel{width:230px;max-height:65%}
       .board{padding-left:10px;padding-right:10px}
     }
-  </style>
+  
+
+/* ACH estado de carga compacto tipo IRCAS V3 */
+.header-status{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:.25rem;
+  min-width:260px;
+}
+.header-status #lastUpdate{
+  font-size:.86rem;
+  padding:.45rem .8rem!important;
+  border-radius:999px;
+}
+.mini-status{
+  font-size:.82rem;
+  color:#1d4ed8;
+  font-weight:800;
+  display:flex;
+  gap:.35rem;
+  align-items:center;
+  justify-content:flex-end;
+  flex-wrap:wrap;
+}
+.mini-status button{
+  border:0;
+  background:transparent;
+  color:#1d4ed8;
+  font-weight:850;
+  padding:0;
+  text-decoration:none;
+}
+.mini-status button:hover{text-decoration:underline;}
+.mini-status #statusHint{
+  font-size:.74rem;
+  color:#475467;
+  border:1px solid #d0d5dd;
+  border-radius:999px;
+  padding:.08rem .45rem;
+  background:#f8fafc;
+}
+.status-body{margin-top:.65rem;}
+.status-body.d-none{display:none!important;}
+.status-body .alert{
+  padding:.65rem .85rem!important;
+  font-size:.86rem;
+  line-height:1.38;
+}
+.status-body pre{font-size:.78rem;}
+@media(max-width:992px){
+  .header-status{align-items:flex-start;min-width:0;width:100%;}
+  .mini-status{justify-content:flex-start;}
+}
+
+</style>
 </head>
 
 <body>
@@ -798,20 +980,24 @@ BLOQUE DE ACCESO UESVALLE - FIN
         </nav>
       </section>
 
-      <section class="soft-card p-3 mb-3">
-        <div class="d-flex flex-column flex-lg-row align-items-lg-center">
+      <section class="soft-card p-3 mb-2">
+        <div class="d-flex flex-column flex-lg-row align-items-lg-center gap-2">
           <div class="me-auto">
-            <h1 class="board-title">Seguimiento Actividades Agua para Consumo Humano</h1>
+            <h1 class="board-title mb-1">Seguimiento Actividades Agua para Consumo Humano</h1>
             <div class="board-subtitle mt-1">Proceso Agua para Consumo Humano | Actividades programadas, ejecutadas y pendientes | Fuente: GitHub CSV</div>
           </div>
-          <div class="mt-2 mt-lg-0">
+          <div class="header-status">
             <span id="lastUpdate" class="badge text-bg-success last-update-badge">Cargando…</span>
+            <div class="mini-status">
+              <span>Estado de carga de datos</span>
+              <button type="button" id="btnToggleStatus">Ver detalle</button>
+              <span id="statusHint">Oculto</span>
+            </div>
           </div>
         </div>
-      </section>
-
-      <section id="loadAlert" class="soft-card p-3 mb-3">
-        <div class="alert alert-info mb-0">Cargando archivos CSV de seguimiento...</div>
+        <div id="loadAlert" class="status-body d-none mt-2">
+          <div class="alert alert-info mb-0">Cargando archivos CSV de seguimiento ACH.</div>
+        </div>
       </section>
 
       <section class="soft-card p-3 mb-3">
@@ -899,16 +1085,22 @@ BLOQUE DE ACCESO UESVALLE - FIN
         <div id="activeFilters"><span class="text-muted">Sin filtros adicionales</span></div>
       </section>
 
-      <section class="section-block section-block--blue mb-4">
-        <div class="section-header">
-          <div class="section-header__icon">📊</div>
-          <div>
-            <h5>Indicadores de seguimiento</h5>
-            <div class="small text-muted">Resumen general de actividades programadas, ejecutadas y pendientes del periodo filtrado.</div>
+      <section class="section-block section-block--blue mb-4" id="seccionIndicadoresSeguimiento">
+        <button class="table-toggle-header section-header" type="button" data-bs-toggle="collapse" data-bs-target="#indicadoresSeguimientoCollapse" aria-expanded="true" aria-controls="indicadoresSeguimientoCollapse">
+          <div class="d-flex align-items-start gap-3 table-toggle-copy">
+            <div class="section-header__icon">📊</div>
+            <div>
+              <h5>Indicadores de seguimiento</h5>
+              <div class="small text-muted">Resumen general de actividades programadas, ejecutadas y pendientes del periodo filtrado.</div>
+            </div>
           </div>
-        </div>
-        <div class="section-body">
-          <div class="kpi-row-6">
+          <span class="table-toggle-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </button>
+        <div class="collapse show" id="indicadoresSeguimientoCollapse">
+          <div class="section-body">
+            <div class="kpi-row-6">
             <div class="kpi-card">
               <div class="kpi-icon">📌</div>
               <div class="kpi-label">Actividades programadas</div>
@@ -946,6 +1138,7 @@ BLOQUE DE ACCESO UESVALLE - FIN
               <div id="kpiMunicipios" class="kpi-value">–</div>
             </div>
           </div>
+        </div>
         </div>
       </section>
 
@@ -1135,7 +1328,7 @@ BLOQUE DE ACCESO UESVALLE - FIN
                 <div class="municipio-kpi-label">Ejecutado</div>
                 <div id="municipioKpiEjecutado" class="municipio-kpi-value">–</div>
               </div>
-              <div class="municipio-kpi-card">
+              <div class="municipio-kpi-card kpi-clickable" id="municipioKpiPendienteCard" title="Mostrar actividades pendientes">
                 <div class="municipio-kpi-label">Pendiente</div>
                 <div id="municipioKpiPendiente" class="municipio-kpi-value">–</div>
               </div>
@@ -1147,7 +1340,7 @@ BLOQUE DE ACCESO UESVALLE - FIN
                 <div class="municipio-kpi-label">Responsables</div>
                 <div id="municipioKpiResponsables" class="municipio-kpi-value">–</div>
               </div>
-              <div class="municipio-kpi-card">
+              <div class="municipio-kpi-card kpi-clickable" id="municipioKpiCriticasCard" title="Mostrar actividades críticas">
                 <div class="municipio-kpi-label">Actividades críticas</div>
                 <div id="municipioKpiCriticas" class="municipio-kpi-value">–</div>
               </div>
@@ -1174,7 +1367,7 @@ BLOQUE DE ACCESO UESVALLE - FIN
         </div>
       </section>
 
-      <section class="section-block section-block--beige mb-4" id="seccionAnaliticaPriorizacion">
+      <section class="section-block section-block--blue mb-4" id="seccionAnaliticaPriorizacion">
         <button class="table-toggle-header section-header" type="button" data-bs-toggle="collapse" data-bs-target="#analiticaPriorizacionCollapse" aria-expanded="true" aria-controls="analiticaPriorizacionCollapse">
           <div class="d-flex align-items-start gap-3 table-toggle-copy">
             <div class="section-header__icon">🔎</div>
@@ -1217,13 +1410,13 @@ BLOQUE DE ACCESO UESVALLE - FIN
           <div class="row g-3">
             <div class="col-12 col-xl-4">
               <div class="chart-card p-3 h-100">
-                <h6 class="mb-2">Responsables por pendiente</h6>
+                <h6 class="mb-2">Responsable Actividades pendientes</h6>
                 <div class="chart-container-sm"><canvas id="chartResponsable"></canvas></div>
               </div>
             </div>
             <div class="col-12 col-xl-4">
               <div class="chart-card p-3 h-100">
-                <h6 class="mb-2">Municipios por pendiente</h6>
+                <h6 class="mb-2">Municipios actividades pendientes</h6>
                 <div class="chart-container-sm"><canvas id="chartMunicipio"></canvas></div>
               </div>
             </div>
@@ -1238,18 +1431,22 @@ BLOQUE DE ACCESO UESVALLE - FIN
         </div>
       </section>
 
-      <section class="soft-card p-3 mb-4">
-        <button class="table-toggle-header" type="button" data-bs-toggle="collapse" data-bs-target="#tablasConsultaCollapse" aria-expanded="false" aria-controls="tablasConsultaCollapse">
-          <div class="table-toggle-copy">
-            <h5 class="mb-1">Tablas de consulta</h5>
-            <div class="section-note mb-0">Las tablas quedan ocultas para reducir el ruido visual del tablero. Ábrelas cuando necesites consultar, filtrar o exportar registros.</div>
+      <section class="section-block section-block--blue mb-4" id="seccionTablasConsulta">
+        <button class="table-toggle-header section-header" type="button" data-bs-toggle="collapse" data-bs-target="#tablasConsultaCollapse" aria-expanded="false" aria-controls="tablasConsultaCollapse">
+          <div class="d-flex align-items-start gap-3 table-toggle-copy">
+            <div class="section-header__icon">📋</div>
+            <div>
+              <h5>Tablas de consulta</h5>
+              <div class="small text-muted">Las tablas quedan ocultas para reducir el ruido visual del tablero. Ábrelas cuando necesites consultar, filtrar o exportar registros.</div>
+            </div>
           </div>
-          <span class="table-toggle-arrow">
+          <span class="table-toggle-arrow" aria-hidden="true">
             <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
         </button>
 
-        <div class="collapse mt-3" id="tablasConsultaCollapse">
+        <div class="collapse" id="tablasConsultaCollapse">
+          <div class="section-body">
           <ul class="nav nav-tabs" id="tablasTabs" role="tablist">
             <li class="nav-item" role="presentation">
               <button class="nav-link active fw-semibold" id="tab-detalle-tab" data-bs-toggle="tab" data-bs-target="#tab-detalle" type="button" role="tab">Detalle depurado</button>
@@ -1278,6 +1475,8 @@ BLOQUE DE ACCESO UESVALLE - FIN
             <div class="tab-pane fade" id="tab-actividad" role="tabpanel">
               <div class="table-responsive"><table id="tblActividad" class="table table-striped table-hover w-100"></table></div>
             </div>
+          </div>
+        
           </div>
         </div>
       </section>
@@ -1351,6 +1550,7 @@ BLOQUE DE ACCESO UESVALLE - FIN
     let charts = {};
     let DT_DETALLE, DT_MUNICIPAL, DT_RESPONSABLE, DT_ACTIVIDAD, DT_PERSONA_ACTIVIDAD, DT_MUNICIPIO_ACTIVIDAD;
     let MAP, municipalLayer, municipiosValleLayer, municipiosLabelsLayer, valleContornoLayer;
+    let MUNICIPIO_KPI_FILTER = "";
     let MUNICIPAL_METRICS = new Map();
     let PANEL_LAYERS = {}, BASEMAPS = {}, currentBasemap = null;
 
@@ -1380,20 +1580,44 @@ BLOQUE DE ACCESO UESVALLE - FIN
         .toUpperCase();
     }
 
-    function nombreCorto(nombre){
-      let n = String(nombre ?? "").trim();
-      if(!n) return "Sin dato";
+    const RESPONSABLE_DISPLAY = {
+      "ANA MILENA MENDEZ ARANA": "Ana Méndez",
+      "DIANA GIMENA MARTINEZ": "Diana Martínez",
+      "DIEGO ANDRES SANCHEZ MUÑOZ": "Diego Sánchez",
+      "DIEGO FERNANDO HOYOS TABORDA": "Diego Hoyos",
+      "DIEGO FERNANDO MARMOLEJO CAMACHO": "Diego Marmolejo",
+      "EDWARD RAUL JAIMES VERA": "Edward Jaimes",
+      "LAURA SOFIA LOPEZ CUNDUMI": "Laura López",
+      "LEIDY STELLA CAICEDO SOLIS": "Leidy Caicedo",
+      "MARCO ARTURO GONZALEZ CANSINO": "Marco González",
+      "MAURICIO ALZATE DIAZ": "Mauricio Alzate",
+      "SAIR HAIRTON IBARGUEN RENTERIA": "Sair Ibargüen",
+      "VALERIA PATIÑO": "Valeria Patiño",
+      "WILLIAM CARLOSAMA JIMENEZ": "William Carlosama"
+    };
 
-      // Quitar etiquetas operativas que alargan la visualización.
-      n = n
-        .replace(/\bING\.?\s*AGUAS\s*\d*\b/gi, "")
-        .replace(/\bAGUAS\s*\d*\b/gi, "")
-        .replace(/\bINGENIER[OA]\b/gi, "")
-        .replace(/\bCONTRATISTA\b/gi, "")
+    function limpiarResponsableBase(nombre){
+      return String(nombre ?? "")
+        .replace(/ING\.?\s*AGUAS\s*\d*/gi, "")
+        .replace(/AGUAS\s*\d*/gi, "")
+        .replace(/INGENIER[OA]/gi, "")
+        .replace(/CONTRATISTA/gi, "")
+        .replace(/[-–—]+/g, " ")
         .replace(/\s+/g, " ")
         .trim();
+    }
+
+    function nombreCorto(nombre){
+      let n = limpiarResponsableBase(nombre);
+      if(!n) return "Sin dato";
+
+      const key = norm(n);
+      if(RESPONSABLE_DISPLAY[key]) return RESPONSABLE_DISPLAY[key];
 
       const parts = n.split(" ").filter(Boolean);
+      if(parts.length >= 4){
+        return `${capitalizar(parts[0])} ${capitalizar(parts[2])}`;
+      }
       if(parts.length >= 2){
         return `${capitalizar(parts[0])} ${capitalizar(parts[1])}`;
       }
@@ -1434,11 +1658,21 @@ BLOQUE DE ACCESO UESVALLE - FIN
 
     function estadoDesdeCumplimiento(c){
       const v = num(c);
+      if(v < 0) return "Sin dato";
       if(v <= .30) return "Crítico";
       if(v <= .60) return "Bajo";
       if(v <= .80) return "Medio";
-      if(v <= 1.00) return "Cumplido";
+      if(v < 1.00) return "Alto";
+      if(Math.abs(v - 1.00) < 0.000001) return "Cumplido";
       return "Supera meta";
+    }
+
+    function cumplimientoResumenRow(r){
+      return num(getVal(r,["CUMPLIMIENTO","CUMPLIMIENTO_CALCULADO","CUMPLIMIENTO_VISUAL"]));
+    }
+
+    function estadoResumenRow(r){
+      return estadoDesdeCumplimiento(cumplimientoResumenRow(r));
     }
 
     function estadoClass(estado){
@@ -1446,6 +1680,7 @@ BLOQUE DE ACCESO UESVALLE - FIN
       if(e.includes("CRITICO")) return "bg-critical";
       if(e.includes("BAJO")) return "bg-low";
       if(e.includes("MEDIO")) return "bg-medium";
+      if(e.includes("ALTO")) return "bg-high";
       if(e.includes("SUPERA")) return "bg-over";
       if(e.includes("CUMPLIDO")) return "bg-ok";
       return "bg-nodata";
@@ -1456,6 +1691,7 @@ BLOQUE DE ACCESO UESVALLE - FIN
       if(e.includes("CRITICO")) return "#dc2626";
       if(e.includes("BAJO")) return "#f97316";
       if(e.includes("MEDIO")) return "#f2c14e";
+      if(e.includes("ALTO")) return "#84cc16";
       if(e.includes("SUPERA")) return "#2563eb";
       if(e.includes("CUMPLIDO")) return "#16a34a";
       return "#6c757d";
@@ -1466,6 +1702,7 @@ BLOQUE DE ACCESO UESVALLE - FIN
       if(e.includes("CRITICO")) return "row-estado-critico";
       if(e.includes("BAJO")) return "row-estado-bajo";
       if(e.includes("MEDIO")) return "row-estado-medio";
+      if(e.includes("ALTO")) return "row-estado-alto";
       if(e.includes("SUPERA")) return "row-estado-supera";
       if(e.includes("CUMPLIDO")) return "row-estado-cumplido";
       return "";
@@ -1489,7 +1726,7 @@ BLOQUE DE ACCESO UESVALLE - FIN
       const pendiente = Math.max(0, num(getVal(r,["PENDIENTE_CALCULADO","PENDIENTE"])));
       let cumplimiento = getVal(r,["CUMPLIMIENTO_CALCULADO","CUMPLIMIENTO"]);
       cumplimiento = cumplimiento === "" ? (programado > 0 ? ejecutado / programado : 0) : num(cumplimiento);
-      const estado = getVal(r,["ESTADO_CUMPLIMIENTO"], estadoDesdeCumplimiento(cumplimiento));
+      const estado = estadoDesdeCumplimiento(cumplimiento);
       const codigo = getVal(r,["CODIGO","CODIGO_ACTIVIDAD_NORMALIZADO","CODIGO_ACTIVIDAD"]);
       const actividadesGrupo = getVal(r,["ACTIVIDADES","ACTIVIDAD_GRUPO","CLASIFICACION_ACTIVIDAD"], clasificarActividadJS(codigo));
       return {
@@ -1571,6 +1808,159 @@ BLOQUE DE ACCESO UESVALLE - FIN
       });
     }
 
+
+    function escapeHtml(value){
+      return String(value ?? "")
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#39;");
+    }
+
+    function fmtDateTimeCO(value){
+      const d = value instanceof Date ? value : new Date(value || Date.now());
+      return d.toLocaleString("es-CO", {
+        year:"numeric", month:"2-digit", day:"2-digit",
+        hour:"numeric", minute:"2-digit", second:"2-digit"
+      });
+    }
+
+    function achPeriodSortValue(periodName, orderValue){
+      const order = Number(orderValue);
+      if(Number.isFinite(order) && order > 0) return order;
+      const txt = norm(periodName);
+      const meses = ["ENERO","FEBRERO","MARZO","ABRIL","MAYO","JUNIO","JULIO","AGOSTO","SEPTIEMBRE","OCTUBRE","NOVIEMBRE","DICIEMBRE"];
+      let maxMes = 0;
+      meses.forEach((m, idx)=>{ if(txt.includes(m)) maxMes = Math.max(maxMes, idx + 1); });
+      return maxMes;
+    }
+
+    function summarizeAchRows(rows){
+      const arr = rows || [];
+      const programado = arr.reduce((s,r)=>s+num(getVal(r,["PROGRAMADO"])),0);
+      const ejecutado = arr.reduce((s,r)=>s+num(getVal(r,["EJECUTADO","EJECUTADO_RASEM"])),0);
+      const pendiente = arr.reduce((s,r)=>s+Math.max(0,num(getVal(r,["PENDIENTE_VISUAL","PENDIENTE","PENDIENTE_CALCULADO"]))),0);
+      const excedente = arr.reduce((s,r)=>s+Math.max(0,num(getVal(r,["EJECUTADO","EJECUTADO_RASEM"]))-num(getVal(r,["PROGRAMADO"]))),0);
+      return {
+        registros: arr.length,
+        programado,
+        ejecutado,
+        pendiente,
+        excedente,
+        cumplimiento: programado > 0 ? ejecutado / programado : 0,
+        responsables: uniq(arr.map(r=>getVal(r,["RESPONSABLE","NOMBRE"]))).length,
+        municipios: uniq(arr.filter(r=>["SI","SÍ"].includes(norm(getVal(r,["ES_MUNICIPIO"]))) || norm(getVal(r,["TIPO_TERRITORIO"])) === "MUNICIPIO").map(r=>getVal(r,["MUNICIPIO_NORMALIZADO","MUNICIPIO"]))).length,
+        codigos: uniq(arr.map(r=>getVal(r,["CODIGO","CODIGO_ACTIVIDAD_NORMALIZADO","CODIGO_ACTIVIDAD"]))).length,
+        aros: uniq(arr.map(r=>getVal(r,["ARO"]))).length,
+        conProgramacion: arr.filter(r=>num(getVal(r,["PROGRAMADO"])) > 0).length,
+        conEjecucion: arr.filter(r=>num(getVal(r,["EJECUTADO","EJECUTADO_RASEM"])) > 0).length,
+        conPendiente: arr.filter(r=>Math.max(0,num(getVal(r,["PENDIENTE_VISUAL","PENDIENTE","PENDIENTE_CALCULADO"]))) > 0).length,
+        noMunicipales: arr.filter(r=>!( ["SI","SÍ"].includes(norm(getVal(r,["ES_MUNICIPIO"]))) || norm(getVal(r,["TIPO_TERRITORIO"])) === "MUNICIPIO" )).length
+      };
+    }
+
+    function buildAchPeriodComparison(rows){
+      const periodMap = new Map();
+      (rows || []).forEach(r=>{
+        const periodo = getVal(r,["PERIODO_NORMALIZADO","PERIODO"],"Sin periodo");
+        const order = achPeriodSortValue(periodo, getVal(r,["PERIODO_ORDEN"]));
+        if(!periodMap.has(periodo)) periodMap.set(periodo,{periodo,order,rows:[]});
+        periodMap.get(periodo).rows.push(r);
+      });
+
+      const periods = [...periodMap.values()].sort((a,b)=>a.order-b.order || String(a.periodo).localeCompare(String(b.periodo),"es"));
+      if(!periods.length) return "Sin periodos identificados en la fuente.";
+
+      const latest = periods[periods.length-1];
+      const latestSum = summarizeAchRows(latest.rows);
+      if(periods.length === 1){
+        return `Corte ${escapeHtml(latest.periodo)}: programación y ejecución consolidada en ${fmtInt(latestSum.registros)} registros. Cumplimiento global: ${fmtPct(latestSum.cumplimiento)}.`;
+      }
+
+      const prev = periods[periods.length-2];
+      const prevSum = summarizeAchRows(prev.rows);
+      const deltaEjecutado = latestSum.ejecutado - prevSum.ejecutado;
+      const deltaProgramado = latestSum.programado - prevSum.programado;
+      const deltaPendiente = latestSum.pendiente - prevSum.pendiente;
+      const deltaCumplimiento = latestSum.cumplimiento - prevSum.cumplimiento;
+      const signed = v => `${v >= 0 ? "+" : ""}${fmtInt(v)}`;
+      const signedPct = v => `${v >= 0 ? "+" : ""}${(v*100).toLocaleString("es-CO",{minimumFractionDigits:1,maximumFractionDigits:1})} p.p.`;
+
+      return `Comparación ${escapeHtml(latest.periodo)} frente a ${escapeHtml(prev.periodo)}: programado ${signed(deltaProgramado)}; ejecutado ${signed(deltaEjecutado)}; pendiente ${signed(deltaPendiente)}; cumplimiento ${signedPct(deltaCumplimiento)}.`;
+    }
+
+    function buildAchPendingSample(rows){
+      const grouped = new Map();
+      (rows || []).forEach(r=>{
+        const pendiente = Math.max(0,num(getVal(r,["PENDIENTE_VISUAL","PENDIENTE","PENDIENTE_CALCULADO"])));
+        if(pendiente <= 0) return;
+        const codigo = getVal(r,["CODIGO","CODIGO_ACTIVIDAD_NORMALIZADO","CODIGO_ACTIVIDAD"],"Sin código");
+        const municipio = getVal(r,["MUNICIPIO_NORMALIZADO","MUNICIPIO"],"Sin municipio");
+        const key = `${codigo}||${municipio}`;
+        if(!grouped.has(key)) grouped.set(key,{codigo,municipio,pendiente:0});
+        grouped.get(key).pendiente += pendiente;
+      });
+
+      const top = [...grouped.values()].sort((a,b)=>b.pendiente-a.pendiente).slice(0,8);
+      if(!top.length) return "Sin actividades pendientes en el corte cargado.";
+      return top.map(x=>`${escapeHtml(x.codigo)} (${escapeHtml(x.municipio)}; pendiente: ${fmtInt(x.pendiente)})`).join("; ") + ".";
+    }
+
+    function renderAchLoadStatus(rows, options={}){
+      const loadAlert = document.getElementById("loadAlert");
+      if(!loadAlert) return;
+
+      const data = rows || [];
+      const s = summarizeAchRows(data);
+      const source = options.source || "UESVALLE";
+      const updatedAt = options.updatedAt || new Date();
+      const periods = uniq(data.map(r=>getVal(r,["PERIODO_NORMALIZADO","PERIODO"]))).filter(Boolean).join(", ") || "Sin periodo";
+      const comparison = buildAchPeriodComparison(data);
+      const pendingSample = buildAchPendingSample(data);
+      const updatedText = "Actualizado: " + fmtDateTimeCO(updatedAt);
+
+      const lastUpdate = document.getElementById("lastUpdate");
+      if(lastUpdate){
+        lastUpdate.textContent = updatedText;
+        lastUpdate.className = "badge text-bg-success last-update-badge";
+      }
+
+      loadAlert.classList.add("d-none");
+      loadAlert.innerHTML = `
+        <div class="alert alert-success mb-0">
+          <b>Datos de seguimiento ACH cargados correctamente.</b><br>
+          Fuente: <b>${escapeHtml(source)}</b>. Periodo(s): <b>${escapeHtml(periods)}</b>.
+          Registros cargados: <b>${fmtInt(s.registros)}</b>. Registros con programación: <b>${fmtInt(s.conProgramacion)}</b>.
+          Registros con ejecución: <b>${fmtInt(s.conEjecucion)}</b>. Registros con pendiente: <b>${fmtInt(s.conPendiente)}</b>.
+          Registros administrativos/general/no municipales: <b>${fmtInt(s.noMunicipales)}</b>.<br>
+          <b>Consolidado ACH:</b> Programado: <b>${fmtInt(s.programado)}</b>; ejecutado: <b>${fmtInt(s.ejecutado)}</b>;
+          pendiente: <b>${fmtInt(s.pendiente)}</b>; excedente: <b>${fmtInt(s.excedente)}</b>;
+          cumplimiento global: <b>${fmtPct(s.cumplimiento)}</b>. Responsables: <b>${fmtInt(s.responsables)}</b>;
+          municipios reales: <b>${fmtInt(s.municipios)}</b>; códigos de actividad: <b>${fmtInt(s.codigos)}</b>; ARO: <b>${fmtInt(s.aros)}</b>.<br>
+          <b>${comparison}</b><br>
+          <b>Actividades con mayor pendiente, muestra:</b> ${pendingSample}
+        </div>
+      `;
+
+      const btn = document.getElementById("btnToggleStatus");
+      const hint = document.getElementById("statusHint");
+      if(btn) btn.textContent = "Ver detalle";
+      if(hint) hint.textContent = "Oculto";
+    }
+
+    function toggleAchLoadDetail(){
+      const box = document.getElementById("loadAlert");
+      const btn = document.getElementById("btnToggleStatus");
+      const hint = document.getElementById("statusHint");
+      if(!box) return;
+      const oculto = box.classList.toggle("d-none");
+      if(btn) btn.textContent = oculto ? "Ver detalle" : "Ocultar detalle";
+      if(hint) hint.textContent = oculto ? "Oculto" : "Visible";
+    }
+
+    document.getElementById("btnToggleStatus")?.addEventListener("click", toggleAchLoadDetail);
+
     async function init(){
       try{
         [DETALLE, MUNICIPAL, RESPONSABLE, ACTIVIDAD, ARO, TIPO] = await Promise.all([
@@ -1584,10 +1974,11 @@ BLOQUE DE ACCESO UESVALLE - FIN
 
         DETALLE = DETALLE.map(normalizeDetalleRow);
 
-        const loadAlert = document.getElementById("loadAlert");
-        loadAlert.innerHTML = `<div class="alert alert-success mb-0">Datos cargados correctamente.</div>`;
-        setTimeout(()=>loadAlert.style.display="none",1800);
-        document.getElementById("lastUpdate").textContent = "Última carga: " + new Date().toLocaleString("es-CO");
+        const cargaFecha = new Date();
+        renderAchLoadStatus(DETALLE, {
+          source: "UESVALLE",
+          updatedAt: cargaFecha
+        });
 
         fillFilters();
         initMap();
@@ -1598,9 +1989,14 @@ BLOQUE DE ACCESO UESVALLE - FIN
         console.error(e);
         document.getElementById("lastUpdate").textContent = "Error al cargar datos";
         document.getElementById("lastUpdate").className = "badge text-bg-danger last-update-badge";
+        document.getElementById("loadAlert")?.classList.remove("d-none");
+        const btnStatusError = document.getElementById("btnToggleStatus");
+        const hintStatusError = document.getElementById("statusHint");
+        if(btnStatusError) btnStatusError.textContent = "Ocultar detalle";
+        if(hintStatusError) hintStatusError.textContent = "Visible";
         document.getElementById("loadAlert").innerHTML = `<div class="alert alert-danger mb-0">
           <strong>No fue posible cargar los CSV.</strong><br>
-          Verifica que los archivos estén en la raíz del repositorio junto a <code>seguimiento_ach.html</code> y que estés abriendo el tablero desde GitHub Pages, no como archivo local.<br>
+          Verifica que los CSV estén publicados en <code>data/seguimiento_ach/current/</code> y que estés abriendo el tablero desde GitHub Pages o desde un servidor local, no como archivo local.<br>
           <hr class="my-2">
           <div class="small"><b>Detalle técnico:</b><br><pre style="white-space:pre-wrap;margin:0">${String(e.message || e)}</pre></div>
         </div>`;
@@ -1805,12 +2201,24 @@ BLOQUE DE ACCESO UESVALLE - FIN
 
       document.getElementById("btnFiltrar").addEventListener("click", applyFilters);
       document.getElementById("btnLimpiar").addEventListener("click", ()=>{
+        MUNICIPIO_KPI_FILTER = "";
         ["fPeriodo","fAro","fTipo","fMunicipio","fResponsable","fEstado","fGrupoActividad","fActividad","fTexto","fPersonaDetalle","fMunicipioDetalle"].forEach(id=>clearSelect(id));
         applyFilters();
       });
 
       document.getElementById("fPersonaDetalle").addEventListener("change", renderPersonaActividadSection);
-      document.getElementById("fMunicipioDetalle").addEventListener("change", renderMunicipioActividadSection);
+      document.getElementById("fMunicipioDetalle").addEventListener("change", () => {
+        MUNICIPIO_KPI_FILTER = "";
+        renderMunicipioActividadSection();
+      });
+      document.getElementById("municipioKpiCriticasCard")?.addEventListener("click", () => {
+        MUNICIPIO_KPI_FILTER = MUNICIPIO_KPI_FILTER === "criticas" ? "" : "criticas";
+        renderMunicipioActividadSection();
+      });
+      document.getElementById("municipioKpiPendienteCard")?.addEventListener("click", () => {
+        MUNICIPIO_KPI_FILTER = MUNICIPIO_KPI_FILTER === "pendientes" ? "" : "pendientes";
+        renderMunicipioActividadSection();
+      });
 
       setupMultiActions();
     }
@@ -2032,7 +2440,7 @@ BLOQUE DE ACCESO UESVALLE - FIN
         rowCallback:function(row, data){
           const textEstado = $("<div>").html(data[8]).text();
           $(row)
-            .removeClass("row-estado-critico row-estado-bajo row-estado-medio row-estado-cumplido row-estado-supera")
+            .removeClass("row-estado-critico row-estado-bajo row-estado-medio row-estado-alto row-estado-cumplido row-estado-supera")
             .addClass(estadoRowClass(textEstado));
         },
         language:{url:"https://cdn.datatables.net/plug-ins/1.13.8/i18n/es-ES.json"},
@@ -2113,8 +2521,18 @@ BLOQUE DE ACCESO UESVALLE - FIN
       document.getElementById("municipioKpiResponsables").textContent = fmtInt(responsables);
       document.getElementById("municipioKpiCriticas").textContent = fmtInt(criticas);
 
-      const resumen = summarizeMunicipioActividad(rows)
+      const resumenBase = summarizeMunicipioActividad(rows)
         .sort((a,b)=>b.PENDIENTE-a.PENDIENTE || String(a.MUNICIPIO).localeCompare(String(b.MUNICIPIO),"es"));
+
+      let resumen = resumenBase;
+      if(MUNICIPIO_KPI_FILTER === "criticas"){
+        resumen = resumenBase.filter(r=>r.CUMPLIMIENTO <= 0.60 && r.PENDIENTE > 0);
+      }else if(MUNICIPIO_KPI_FILTER === "pendientes"){
+        resumen = resumenBase.filter(r=>r.PENDIENTE > 0);
+      }
+
+      document.getElementById("municipioKpiCriticasCard")?.classList.toggle("kpi-active", MUNICIPIO_KPI_FILTER === "criticas");
+      document.getElementById("municipioKpiPendienteCard")?.classList.toggle("kpi-active", MUNICIPIO_KPI_FILTER === "pendientes");
 
       renderMunicipioActividadChart(rows, municipio);
       renderMunicipioActividadTable(resumen);
@@ -2225,7 +2643,7 @@ BLOQUE DE ACCESO UESVALLE - FIN
         rowCallback:function(row, data){
           const textEstado = $("<div>").html(data[8]).text();
           $(row)
-            .removeClass("row-estado-critico row-estado-bajo row-estado-medio row-estado-cumplido row-estado-supera")
+            .removeClass("row-estado-critico row-estado-bajo row-estado-medio row-estado-alto row-estado-cumplido row-estado-supera")
             .addClass(estadoRowClass(textEstado));
         },
         language:{url:"https://cdn.datatables.net/plug-ins/1.13.8/i18n/es-ES.json"},
@@ -2303,7 +2721,24 @@ BLOQUE DE ACCESO UESVALLE - FIN
         type:"doughnut",
         data:{labels:byEstado.map(d=>d.key),datasets:[{data:byEstado.map(d=>d.registros),backgroundColor:byEstado.map(d=>estadoColor(d.key)),borderColor:"#fff",borderWidth:2}]},
         plugins:[ChartDataLabels],
-        options:{responsive:true,maintainAspectRatio:false,cutout:"48%",plugins:{legend:{position:"bottom"},datalabels:{color:"#111827",font:{weight:700},formatter:(v,ctx)=>{const t=ctx.chart.data.datasets[0].data.reduce((a,b)=>a+b,0); const p=t?Math.round(v/t*1000)/10:0; return p>=4?`${p}%`:"";}}}}
+        options:{
+          responsive:true,
+          maintainAspectRatio:false,
+          cutout:"48%",
+          plugins:{
+            legend:{position:"bottom"},
+            datalabels:{color:"#111827",font:{weight:700},formatter:(v,ctx)=>{const t=ctx.chart.data.datasets[0].data.reduce((a,b)=>a+b,0); const p=t?Math.round(v/t*1000)/10:0; return p>=4?`${p}%`:"";}}
+          },
+          onClick:(evt,elements)=>{
+            if(!elements?.length) return;
+            const selected = byEstado[elements[0].index]?.key;
+            if(selected){
+              const el = document.getElementById("fEstado");
+              el.value = el.value === selected ? "" : selected;
+              applyFilters();
+            }
+          }
+        }
       });
 
       const byResp = groupSummary(rows, r=>r.RESPONSABLE).sort((a,b)=>b.pendiente-a.pendiente).slice(0,10);
@@ -2433,7 +2868,8 @@ BLOQUE DE ACCESO UESVALLE - FIN
         <div class="mb-1"><span class="status-badge bg-critical">Crítico</span> ≤ 30%</div>
         <div class="mb-1"><span class="status-badge bg-low">Bajo</span> 30,1% - 60%</div>
         <div class="mb-1"><span class="status-badge bg-medium">Medio</span> 60,1% - 80%</div>
-        <div class="mb-1"><span class="status-badge bg-ok">Cumplido</span> 80,1% - 100%</div>
+        <div class="mb-1"><span class="status-badge bg-high">Alto</span> 80,1% - 99,9%</div>
+        <div class="mb-1"><span class="status-badge bg-ok">Cumplido</span> 100%</div>
         <div class="mb-1"><span class="status-badge bg-over">Supera meta</span> > 100%</div>
       `;
 
@@ -2653,8 +3089,8 @@ BLOQUE DE ACCESO UESVALLE - FIN
       });
       buildGenericTable("#tblMunicipal","DT_MUNICIPAL", municipalFiltered.map(r=>[
         getVal(r,["MUNICIPIO_NORMALIZADO"]),getVal(r,["ARO"]),getVal(r,["PERIODO_NORMALIZADO"]),
-        fmtInt(getVal(r,["PROGRAMADO"])),fmtInt(getVal(r,["EJECUTADO"])),fmtInt(Math.max(0,num(getVal(r,["PENDIENTE"])))),
-        fmtPct(getVal(r,["CUMPLIMIENTO"])),`<span class="status-badge ${estadoClass(getVal(r,["ESTADO_CUMPLIMIENTO"]))}">${getVal(r,["ESTADO_CUMPLIMIENTO"])}</span>`
+        fmtInt(getVal(r,["PROGRAMADO"])),fmtInt(getVal(r,["EJECUTADO","EJECUTADO_RASEM"])),fmtInt(Math.max(0,num(getVal(r,["PENDIENTE","PENDIENTE_VISUAL","PENDIENTE_CALCULADO"])))),
+        fmtPct(getVal(r,["CUMPLIMIENTO","CUMPLIMIENTO_CALCULADO","CUMPLIMIENTO_VISUAL"])),`<span class="status-badge ${estadoClass(estadoResumenRow(r))}">${estadoResumenRow(r)}</span>`
       ]), [
         {title:"Municipio"},{title:"ARO"},{title:"Periodo"},{title:"Programado"},{title:"Ejecutado"},{title:"Pendiente"},{title:"Cumplimiento"},{title:"Estado"}
       ], 5);
@@ -2670,8 +3106,8 @@ BLOQUE DE ACCESO UESVALLE - FIN
       });
       buildGenericTable("#tblResponsable","DT_RESPONSABLE", respFiltered.map(r=>[
         getVal(r,["RESPONSABLE"]),getVal(r,["TIPO"]),getVal(r,["ARO"]),
-        fmtInt(getVal(r,["PROGRAMADO"])),fmtInt(getVal(r,["EJECUTADO"])),fmtInt(Math.max(0,num(getVal(r,["PENDIENTE"])))),
-        fmtPct(getVal(r,["CUMPLIMIENTO"])),`<span class="status-badge ${estadoClass(getVal(r,["ESTADO_CUMPLIMIENTO"]))}">${getVal(r,["ESTADO_CUMPLIMIENTO"])}</span>`
+        fmtInt(getVal(r,["PROGRAMADO"])),fmtInt(getVal(r,["EJECUTADO","EJECUTADO_RASEM"])),fmtInt(Math.max(0,num(getVal(r,["PENDIENTE","PENDIENTE_VISUAL","PENDIENTE_CALCULADO"])))),
+        fmtPct(getVal(r,["CUMPLIMIENTO","CUMPLIMIENTO_CALCULADO","CUMPLIMIENTO_VISUAL"])),`<span class="status-badge ${estadoClass(estadoResumenRow(r))}">${estadoResumenRow(r)}</span>`
       ]), [
         {title:"Responsable"},{title:"Tipo"},{title:"ARO"},{title:"Programado"},{title:"Ejecutado"},{title:"Pendiente"},{title:"Cumplimiento"},{title:"Estado"}
       ], 5);
@@ -2690,8 +3126,8 @@ BLOQUE DE ACCESO UESVALLE - FIN
       buildGenericTable("#tblActividad","DT_ACTIVIDAD", actFiltered.map(r=>[
         getVal(r,["ACTIVIDADES"], clasificarActividadJS(getVal(r,["CODIGO","CODIGO_ACTIVIDAD_NORMALIZADO","CODIGO_ACTIVIDAD"]))),
         getVal(r,["CODIGO","CODIGO_ACTIVIDAD_NORMALIZADO","CODIGO_ACTIVIDAD"]),getVal(r,["ARO"]),
-        fmtInt(getVal(r,["PROGRAMADO"])),fmtInt(getVal(r,["EJECUTADO"])),fmtInt(Math.max(0,num(getVal(r,["PENDIENTE"])))),
-        fmtPct(getVal(r,["CUMPLIMIENTO"])),`<span class="status-badge ${estadoClass(getVal(r,["ESTADO_CUMPLIMIENTO"]))}">${getVal(r,["ESTADO_CUMPLIMIENTO"])}</span>`
+        fmtInt(getVal(r,["PROGRAMADO"])),fmtInt(getVal(r,["EJECUTADO","EJECUTADO_RASEM"])),fmtInt(Math.max(0,num(getVal(r,["PENDIENTE","PENDIENTE_VISUAL","PENDIENTE_CALCULADO"])))),
+        fmtPct(getVal(r,["CUMPLIMIENTO","CUMPLIMIENTO_CALCULADO","CUMPLIMIENTO_VISUAL"])),`<span class="status-badge ${estadoClass(estadoResumenRow(r))}">${estadoResumenRow(r)}</span>`
       ]), [
         {title:"Actividades"},{title:"Código"},{title:"ARO"},{title:"Programado"},{title:"Ejecutado"},{title:"Pendiente"},{title:"Cumplimiento"},{title:"Estado"}
       ], 4);
