@@ -984,7 +984,7 @@ BLOQUE DE ACCESO UESVALLE - FIN
         <div class="d-flex flex-column flex-lg-row align-items-lg-center gap-2">
           <div class="me-auto">
             <h1 class="board-title mb-1">Seguimiento Actividades Agua para Consumo Humano</h1>
-            <div class="board-subtitle mt-1">Proceso Agua para Consumo Humano | Actividades programadas, ejecutadas y pendientes | Fuente: GitHub CSV</div>
+            <div class="board-subtitle mt-1">Fuente : UESVALLE | Estadística</div>
           </div>
           <div class="header-status">
             <span id="lastUpdate" class="badge text-bg-success last-update-badge">Cargando…</span>
@@ -1482,8 +1482,7 @@ BLOQUE DE ACCESO UESVALLE - FIN
       </section>
 
       <footer class="text-center">
-        <strong>UESVALLE | Agua para Consumo Humano</strong><br>
-        Tablero construido a partir de archivos CSV normalizados mediante script Python.
+        <strong>UESVALLE</strong>
       </footer>
 
     </div>
@@ -1547,6 +1546,7 @@ BLOQUE DE ACCESO UESVALLE - FIN
     ];
 
     let DETALLE = [], MUNICIPAL = [], RESPONSABLE = [], ACTIVIDAD = [], ARO = [], TIPO = [], LIST = [];
+    let ACH_DATA_LAST_MODIFIED = null;
     let charts = {};
     let DT_DETALLE, DT_MUNICIPAL, DT_RESPONSABLE, DT_ACTIVIDAD, DT_PERSONA_ACTIVIDAD, DT_MUNICIPIO_ACTIVIDAD;
     let MAP, municipalLayer, municipiosValleLayer, municipiosLabelsLayer, valleContornoLayer;
@@ -1769,6 +1769,11 @@ BLOQUE DE ACCESO UESVALLE - FIN
       if(!response.ok){
         throw new Error(`No se encontró o no se pudo leer el archivo: ${url} | HTTP ${response.status}`);
       }
+      const lastModifiedHeader = response.headers.get("Last-Modified");
+      if(lastModifiedHeader && url.includes("seguimiento_actividades_ACH_detalle.csv")){
+        const d = new Date(lastModifiedHeader);
+        if(!Number.isNaN(d.getTime())) ACH_DATA_LAST_MODIFIED = d;
+      }
       const text = await response.text();
       const rows = await parseCSVText(text);
       if(!rows.length){
@@ -1914,11 +1919,11 @@ BLOQUE DE ACCESO UESVALLE - FIN
       const data = rows || [];
       const s = summarizeAchRows(data);
       const source = options.source || "UESVALLE";
-      const updatedAt = options.updatedAt || new Date();
+      const updatedAt = options.updatedAt || null;
       const periods = uniq(data.map(r=>getVal(r,["PERIODO_NORMALIZADO","PERIODO"]))).filter(Boolean).join(", ") || "Sin periodo";
       const comparison = buildAchPeriodComparison(data);
       const pendingSample = buildAchPendingSample(data);
-      const updatedText = "Actualizado: " + fmtDateTimeCO(updatedAt);
+      const updatedText = updatedAt ? ("Actualizado: " + fmtDateTimeCO(updatedAt)) : "Actualizado: sin fecha de archivo";
 
       const lastUpdate = document.getElementById("lastUpdate");
       if(lastUpdate){
@@ -1974,10 +1979,9 @@ BLOQUE DE ACCESO UESVALLE - FIN
 
         DETALLE = DETALLE.map(normalizeDetalleRow);
 
-        const cargaFecha = new Date();
         renderAchLoadStatus(DETALLE, {
           source: "UESVALLE",
-          updatedAt: cargaFecha
+          updatedAt: ACH_DATA_LAST_MODIFIED
         });
 
         fillFilters();
