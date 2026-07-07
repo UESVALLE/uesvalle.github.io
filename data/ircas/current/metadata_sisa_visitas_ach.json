@@ -1,0 +1,32 @@
+{
+  "fecha_generacion": "2026-07-06T23:41:34",
+  "archivo_entrada": "G:\\Mi unidad\\8.UES\\PAGINA INDICADORES\\UESVALLE\\data\\ircas\\raw\\Censo visitas realizadas aguas para consumo humano.xlsx",
+  "archivo_salida": "G:\\Mi unidad\\8.UES\\PAGINA INDICADORES\\UESVALLE\\data\\ircas\\current\\sisa_visitas_ach.csv",
+  "registros_excel": 3360,
+  "actividades_detectadas": {
+    "1.2": 400,
+    "1.7": 727,
+    "1.13": 418,
+    "1.9": 1126,
+    "1.3": 69,
+    "1.4": 30,
+    "1.1": 34,
+    "1.6": 556
+  },
+  "registros_salida_por_codigo_anterior": 524,
+  "codigos_con_visita_1_2": 393,
+  "codigos_con_muestreo_1_7": 477,
+  "categorias_intervencion": {
+    "Desinfección / cloración": 223,
+    "Tratamiento / filtración": 78,
+    "Protección sanitaria / fuente": 34,
+    "Operación y mantenimiento": 7,
+    "Sin observación técnica": 131,
+    "Tanque / almacenamiento": 10,
+    "Captación / bocatoma": 9,
+    "Red / conducción": 6,
+    "Gestión administrativa": 21,
+    "Seguimiento / verificación técnica": 5
+  },
+  "nota": "Clasificación preliminar basada en palabras clave de OBSERVACION para actividad 1.2; muestreo 1.7 se usa como soporte analítico."
+}

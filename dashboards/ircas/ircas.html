@@ -1257,7 +1257,1470 @@ select.checkbox-native-hidden{
   font-weight:650;
 }
 
-</style>
+
+
+/* ============================================================
+   IRCAS V8 limpio: ajustes visuales sin tocar filtros ni históricos
+   Base: ircas original funcional. No modifica JavaScript.
+   ============================================================ */
+:root{
+  --ues-blue-clean:#1558d6;
+  --ues-blue-soft:#edf4ff;
+  --ues-blue-border:#bfd2ff;
+  --ues-card-border:#e6eefc;
+  --ues-text-strong:#050b18;
+  --ues-text:#1f2937;
+  --ues-muted:#667085;
+}
+
+/* Módulos desplegables: acento institucional limpio */
+.collapsible-block:not(.active-filters-card){
+  border:1px solid var(--ues-card-border)!important;
+  border-radius:13px!important;
+  background:linear-gradient(180deg,#ffffff,#fbfcff)!important;
+  box-shadow:0 6px 16px rgba(15,23,42,.035)!important;
+}
+.collapsible-block:not(.active-filters-card) > .table-toggle-header .table-toggle-copy{
+  display:grid!important;
+  grid-template-columns:42px minmax(0,1fr)!important;
+  column-gap:.80rem!important;
+  align-items:center!important;
+}
+.collapsible-block:not(.active-filters-card) > .table-toggle-header .table-toggle-copy::before{
+  content:"";
+  width:42px;
+  height:42px;
+  grid-row:1 / span 2;
+  border-radius:11px;
+  background-color:var(--ues-blue-soft);
+  border:1px solid var(--ues-blue-border);
+  background-position:center;
+  background-size:20px 20px;
+  background-repeat:no-repeat;
+  box-shadow:0 5px 12px rgba(21,88,214,.07);
+}
+.collapsible-block:not(.active-filters-card) > .table-toggle-header h5{
+  color:var(--ues-blue-clean)!important;
+  font-weight:900!important;
+  letter-spacing:-.015em;
+}
+.collapsible-block:not(.active-filters-card) > .table-toggle-header .section-note{
+  color:#344054!important;
+}
+.table-toggle-arrow{
+  border-color:#d7e2fb!important;
+  background:#ffffff!important;
+  color:var(--ues-blue-clean)!important;
+}
+.table-toggle-header:hover .table-toggle-arrow{
+  background:var(--ues-blue-soft)!important;
+  border-color:#9fb9ff!important;
+}
+
+/* Iconos de módulos */
+button[data-bs-target="#filtersCollapse"] .table-toggle-copy::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231558d6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 5h16l-6 7v5l-4 2v-7z'/%3E%3C/svg%3E");}
+button[data-bs-target="#ircaSummaryCollapse"] .table-toggle-copy::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231558d6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 19h16'/%3E%3Cpath d='M5 15l4-4 3 3 6-7'/%3E%3Cpath d='M15 7h3v3'/%3E%3C/svg%3E");}
+button[data-bs-target="#riskAnalysisCollapse"] .table-toggle-copy::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231558d6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6l-8-3z'/%3E%3Cpath d='M12 8v4'/%3E%3Cpath d='M12 16h.01'/%3E%3C/svg%3E");}
+button[data-bs-target="#mainMapCollapse"] .table-toggle-copy::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231558d6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 18 3 21V6l6-3 6 3 6-3v15l-6 3-6-3z'/%3E%3Cpath d='M9 3v15'/%3E%3Cpath d='M15 6v15'/%3E%3C/svg%3E");}
+button[data-bs-target="#compareMapsCollapse"] .table-toggle-copy::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231558d6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 7h13'/%3E%3Cpath d='M17 4l3 3-3 3'/%3E%3Cpath d='M17 17H4'/%3E%3Cpath d='M7 14l-3 3 3 3'/%3E%3C/svg%3E");}
+button[data-bs-target="#analysisChartsCollapse"] .table-toggle-copy::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231558d6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 19h16'/%3E%3Crect x='6' y='11' width='3' height='6' rx='1'/%3E%3Crect x='11' y='7' width='3' height='10' rx='1'/%3E%3Crect x='16' y='4' width='3' height='13' rx='1'/%3E%3C/svg%3E");}
+button[data-bs-target="#ircasConsultaCollapse"] .table-toggle-copy::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231558d6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='16' rx='2'/%3E%3Cpath d='M3 10h18'/%3E%3Cpath d='M9 4v16'/%3E%3Cpath d='M15 4v16'/%3E%3Cpath d='M3 15h18'/%3E%3C/svg%3E");}
+
+/* KPIs principales: iconos limpios, valores en negro */
+.main-kpi-row .kpi-card{
+  position:relative!important;
+  min-height:128px!important;
+  border-radius:12px!important;
+  background:#fff!important;
+  border:1px solid var(--ues-card-border)!important;
+  box-shadow:0 7px 18px rgba(15,23,42,.055)!important;
+  padding:.82rem .55rem!important;
+  justify-content:center!important;
+}
+.main-kpi-row .kpi-card::before{
+  content:"";
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  border:1px solid var(--ues-blue-border);
+  background-color:var(--ues-blue-soft);
+  background-position:center;
+  background-size:21px 21px;
+  background-repeat:no-repeat;
+  margin:0 auto .52rem;
+  box-shadow:0 5px 12px rgba(21,88,214,.07);
+}
+.main-kpi-row .kpi-label{
+  color:#111827!important;
+  font-size:.70rem!important;
+  font-weight:800!important;
+  line-height:1.12!important;
+  min-height:25px!important;
+}
+.main-kpi-row .kpi-value{
+  color:var(--ues-text-strong)!important;
+  font-size:clamp(1.50rem,1.75vw,2.05rem)!important;
+  font-weight:950!important;
+  letter-spacing:-.03em!important;
+  line-height:1!important;
+}
+.main-kpi-row .kpi-mini{
+  color:var(--ues-muted)!important;
+  font-size:.63rem!important;
+  line-height:1.15!important;
+}
+.main-kpi-row > div:nth-child(1) .kpi-card::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231558d6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 20h16'/%3E%3Cpath d='M6 20V9'/%3E%3Cpath d='M18 20V9'/%3E%3Cpath d='M6 9c2-4 10-4 12 0'/%3E%3Cpath d='M9 20v-6a3 3 0 0 1 6 0v6'/%3E%3Cpath d='M8 11h8'/%3E%3Cpath d='M5 6h14'/%3E%3C/svg%3E");}
+.main-kpi-row > div:nth-child(2) .kpi-card::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231558d6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6l-8-3z'/%3E%3Cpath d='M12 8v5'/%3E%3Cpath d='M12 17h.01'/%3E%3C/svg%3E");}
+.main-kpi-row > div:nth-child(3) .kpi-card::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231558d6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 3h7l4 4v14H7z'/%3E%3Cpath d='M14 3v5h5'/%3E%3Cpath d='M9.5 13.5l5 5'/%3E%3Cpath d='M14.5 13.5l-5 5'/%3E%3C/svg%3E");}
+.main-kpi-row > div:nth-child(4) .kpi-card::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231558d6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 14a8 8 0 0 1 16 0'/%3E%3Cpath d='M12 14l4-4'/%3E%3Cpath d='M7 14h.01'/%3E%3Cpath d='M17 14h.01'/%3E%3Cpath d='M5 19h14'/%3E%3C/svg%3E");}
+.main-kpi-row > div:nth-child(5) .kpi-card::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231558d6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2'/%3E%3Ccircle cx='9' cy='7' r='4'/%3E%3Cpath d='M22 21v-2a4 4 0 0 0-3-3.87'/%3E%3Cpath d='M16 3.13a4 4 0 0 1 0 7.75'/%3E%3C/svg%3E");}
+.main-kpi-row > div:nth-child(6) .kpi-card::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231558d6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='16' rx='2'/%3E%3Ccircle cx='9' cy='10' r='2.2'/%3E%3Cpath d='M5.8 16c.8-2 2-3 3.2-3s2.4 1 3.2 3'/%3E%3Cpath d='M14.5 9h4'/%3E%3Cpath d='M14.5 13h4'/%3E%3Cpath d='M14.5 17h3'/%3E%3C/svg%3E");}
+.main-kpi-row > div:nth-child(7) .kpi-card::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231558d6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 21s7-5.2 7-11a7 7 0 1 0-14 0c0 5.8 7 11 7 11z'/%3E%3Ccircle cx='12' cy='10' r='2.5'/%3E%3Cpath d='M4 21h16'/%3E%3C/svg%3E");}
+
+/* No se toca .irca-historic-card: queda con el comportamiento original por riesgo desde renderKPIs(). */
+
+.consulta-analitica-block{
+  border:1px solid var(--ues-card-border)!important;
+  border-radius:13px!important;
+  background:linear-gradient(180deg,#ffffff,#fbfcff)!important;
+  box-shadow:0 6px 16px rgba(15,23,42,.035)!important;
+}
+
+@media (max-width:768px){
+  .collapsible-block:not(.active-filters-card) > .table-toggle-header .table-toggle-copy,
+  .consulta-analitica-block > .table-toggle-header .table-toggle-copy{
+    grid-template-columns:36px minmax(0,1fr)!important;
+  }
+  .collapsible-block:not(.active-filters-card) > .table-toggle-header .table-toggle-copy::before{
+    width:36px;height:36px;background-size:18px 18px;
+  }
+}
+
+
+
+    /* === Módulo mapa estilo panel lateral === */
+    .map-module-shell{
+      display:grid;
+      grid-template-columns: 270px minmax(0,1fr);
+      gap:14px;
+      align-items:stretch;
+    }
+    .map-side-column,
+    .map-canvas-column{ min-width:0; }
+    .map-side-panel.custom-layer-panel{
+      position:static;
+      width:100%;
+      max-height:none;
+      height:100%;
+      overflow:auto;
+      background:#f8fbff;
+      border:1px solid #dbe4f2;
+      border-radius:14px;
+      box-shadow:none;
+      padding:14px 16px;
+      opacity:1;
+      pointer-events:auto;
+      transform:none;
+    }
+    .map-side-panel.custom-layer-panel.collapsed{
+      opacity:1;
+      pointer-events:auto;
+      transform:none;
+    }
+    .map-side-panel .layer-panel-header{
+      font-size:1.05rem;
+      font-weight:800;
+      color:#1d4ed8;
+      margin-bottom:10px;
+      padding-bottom:10px;
+      border-bottom:1px solid #e5e7eb;
+    }
+    .map-side-panel .layer-close-btn{ display:none; }
+    .map-side-panel details{
+      border-top:1px solid #e5e7eb;
+      padding-top:10px;
+      margin-top:10px;
+    }
+    .map-side-panel summary{
+      font-size:1rem;
+      font-weight:800;
+      color:#22314d;
+      margin-bottom:8px;
+    }
+    .map-side-panel label{
+      display:flex;
+      align-items:flex-start;
+      gap:8px;
+      font-size:.92rem;
+      color:#334155;
+      margin:7px 0;
+      line-height:1.25;
+    }
+    .map-side-panel input[type="checkbox"],
+    .map-side-panel input[type="radio"]{
+      margin-top:3px;
+      accent-color:#1d4ed8;
+      flex:0 0 auto;
+    }
+    .map-canvas-column{ position:relative; }
+    .map-canvas-column #map{
+      height:510px;
+      min-height:510px;
+      border-radius:14px;
+      border:1px solid #dbe4f2;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.25);
+      background:#eef3f8;
+    }
+    .map-toolbar-pills{
+      position:absolute;
+      top:14px;
+      left:14px;
+      z-index:450;
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+    .map-tool-pill{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:7px 12px;
+      border-radius:10px;
+      background:#ffffff;
+      border:1px solid #dfe7f3;
+      box-shadow:0 4px 12px rgba(16,24,40,.08);
+      color:#1d4ed8;
+      font-weight:700;
+      font-size:.86rem;
+      line-height:1;
+      user-select:none;
+    }
+    .map-canvas-column .layer-toggle-btn,
+    .map-canvas-column .legend-toggle-btn{ display:none; }
+    .map-canvas-column .custom-legend-panel{
+      position:absolute;
+      right:12px;
+      bottom:12px;
+      left:auto;
+      width:210px;
+      background:#fff;
+      border:1px solid rgba(0,0,0,.08);
+      border-radius:14px;
+      box-shadow:0 8px 24px rgba(0,0,0,.18);
+      padding:10px 12px;
+      opacity:1;
+      pointer-events:auto;
+      transform:none;
+      z-index:470;
+    }
+    .map-canvas-column .custom-legend-panel.collapsed{
+      opacity:1;
+      pointer-events:auto;
+      transform:none;
+    }
+    .map-canvas-column .custom-legend-panel .layer-close-btn{ display:none; }
+    .map-canvas-column .custom-legend-panel .layer-panel-header{
+      font-size:.9rem;
+      font-weight:800;
+      color:#1f2937;
+      margin-bottom:8px;
+    }
+    .map-canvas-column #legend .legend-title{
+      font-size:.84rem;
+      margin-bottom:.45rem;
+    }
+    .map-canvas-column #legend div{
+      font-size:.82rem;
+      margin:4px 0;
+    }
+    #mainMapCollapse > #mapResumenIRCA{
+      margin-top:12px !important;
+      border:1px solid #e5e7eb !important;
+      box-shadow:none !important;
+      background:#fff;
+    }
+    @media (max-width: 1100px){
+      .map-module-shell{ grid-template-columns:1fr; }
+      .map-canvas-column #map{ height:480px; min-height:480px; }
+      .map-side-panel.custom-layer-panel{ max-height:360px; }
+    }
+    @media (max-width: 768px){
+      .map-canvas-column #map{ height:420px; min-height:420px; }
+      .map-tool-pill{ font-size:.8rem; padding:6px 10px; }
+      .map-canvas-column .custom-legend-panel{ width:185px; }
+    }
+
+  
+
+    /* === V10 ajuste fino módulo mapa según revisión === */
+    #mainMapCollapse{
+      margin-top:.65rem!important;
+    }
+
+    .map-module-shell{
+      grid-template-columns: 210px minmax(0,1fr) !important;
+      gap:10px !important;
+      align-items:stretch!important;
+    }
+
+    .map-side-panel.custom-layer-panel{
+      border-radius:10px!important;
+      padding:10px 12px!important;
+      background:#f8fbff!important;
+      border:1px solid #d7e3f8!important;
+      height:520px!important;
+      max-height:520px!important;
+      overflow:auto!important;
+      font-size:.76rem!important;
+    }
+
+    .map-side-panel .layer-panel-header{
+      font-size:.85rem!important;
+      line-height:1.15!important;
+      color:#1d4ed8!important;
+      padding-bottom:8px!important;
+      margin-bottom:8px!important;
+    }
+
+    .map-side-panel details{
+      padding-top:8px!important;
+      margin-top:8px!important;
+      border-top:1px solid #e6edf7!important;
+    }
+
+    .map-side-panel summary{
+      font-size:.82rem!important;
+      line-height:1.15!important;
+      font-weight:850!important;
+      color:#1f2937!important;
+      margin-bottom:6px!important;
+    }
+
+    .map-side-panel label{
+      font-size:.73rem!important;
+      line-height:1.15!important;
+      margin:5px 0!important;
+      gap:6px!important;
+      color:#344054!important;
+      font-weight:650!important;
+    }
+
+    .map-side-panel input[type="checkbox"],
+    .map-side-panel input[type="radio"]{
+      width:12px!important;
+      height:12px!important;
+      margin-top:0!important;
+    }
+
+    .map-canvas-column #map{
+      height:520px!important;
+      min-height:520px!important;
+      border-radius:10px!important;
+      border:1px solid #d7e3f8!important;
+    }
+
+    .map-toolbar-pills{
+      top:12px!important;
+      left:46px!important;
+      gap:7px!important;
+      z-index:650!important;
+    }
+
+    .map-tool-pill{
+      padding:6px 10px!important;
+      border-radius:7px!important;
+      color:#1d4ed8!important;
+      background:#fff!important;
+      border:1px solid #e4ecfb!important;
+      box-shadow:0 4px 10px rgba(31,41,55,.10)!important;
+      font-size:.72rem!important;
+      font-weight:850!important;
+    }
+
+    .map-canvas-column .custom-legend-panel{
+      right:14px!important;
+      bottom:14px!important;
+      width:205px!important;
+      border-radius:10px!important;
+      padding:9px 11px!important;
+      box-shadow:0 8px 22px rgba(15,23,42,.16)!important;
+    }
+
+    .map-canvas-column .custom-legend-panel .layer-panel-header{
+      font-size:.78rem!important;
+      line-height:1.15!important;
+      margin-bottom:6px!important;
+    }
+
+    .map-canvas-column #legend .legend-title{
+      font-size:.72rem!important;
+      margin-bottom:.35rem!important;
+    }
+
+    .map-canvas-column #legend div{
+      font-size:.70rem!important;
+      line-height:1.1!important;
+      margin:3px 0!important;
+    }
+
+    .map-canvas-column #legend i{
+      width:10px!important;
+      height:10px!important;
+      margin-right:5px!important;
+    }
+
+    #mainMapCollapse > #mapResumenIRCA{
+      margin-top:10px!important;
+      padding:10px 12px!important;
+      border-radius:10px!important;
+      border:1px solid #e2e8f0!important;
+      background:#ffffff!important;
+      box-shadow:0 2px 8px rgba(15,23,42,.04)!important;
+      font-size:.78rem!important;
+    }
+
+    #mainMapCollapse #mapResumenIRCA .map-summary-line{
+      font-size:.78rem!important;
+      justify-content:center!important;
+      gap:5px!important;
+      line-height:1.25!important;
+    }
+
+    #mainMapCollapse #mapResumenIRCA .map-summary-label{
+      font-size:.72rem!important;
+      margin-top:8px!important;
+      margin-bottom:5px!important;
+      color:#334155!important;
+    }
+
+    #mainMapCollapse #mapResumenIRCA .risk-badge,
+    #mainMapCollapse #mapResumenIRCA .treatment-badge{
+      font-size:.62rem!important;
+      padding:4px 8px!important;
+      margin:2px 3px!important;
+      line-height:1.1!important;
+      font-weight:800!important;
+    }
+
+    #mainMapCollapse #mapResumenIRCA .map-summary-subnote{
+      font-size:.66rem!important;
+      margin-top:6px!important;
+    }
+
+    @media (max-width: 1100px){
+      .map-module-shell{
+        grid-template-columns:1fr!important;
+      }
+      .map-side-panel.custom-layer-panel{
+        height:auto!important;
+        max-height:310px!important;
+      }
+      .map-canvas-column #map{
+        height:480px!important;
+        min-height:480px!important;
+      }
+    }
+
+    @media (max-width: 768px){
+      .map-canvas-column #map{
+        height:420px!important;
+        min-height:420px!important;
+      }
+      .map-toolbar-pills{
+        left:44px!important;
+        right:10px!important;
+      }
+      .map-tool-pill{
+        font-size:.68rem!important;
+        padding:5px 8px!important;
+      }
+      .map-canvas-column .custom-legend-panel{
+        width:175px!important;
+      }
+    }
+
+  
+
+    /* === V11 mapa ampliado y sin textos superpuestos === */
+    .map-module-shell{
+      grid-template-columns: 205px minmax(0,1fr) !important;
+      gap:10px !important;
+    }
+
+    .map-side-panel.custom-layer-panel{
+      height:680px!important;
+      max-height:680px!important;
+    }
+
+    .map-canvas-column #map{
+      height:680px!important;
+      min-height:680px!important;
+    }
+
+    /* Los chips eran rótulos visuales de maqueta, no controles funcionales. Se ocultan. */
+    .map-toolbar-pills{
+      display:none!important;
+    }
+
+    .map-canvas-column .custom-legend-panel{
+      right:12px!important;
+      bottom:12px!important;
+    }
+
+    @media (max-width: 1100px){
+      .map-side-panel.custom-layer-panel{
+        height:auto!important;
+        max-height:340px!important;
+      }
+      .map-canvas-column #map{
+        height:560px!important;
+        min-height:560px!important;
+      }
+    }
+
+    @media (max-width: 768px){
+      .map-canvas-column #map{
+        height:480px!important;
+        min-height:480px!important;
+      }
+    }
+
+  
+
+    /* === V12: restaurar formato del módulo Tablas de consulta y analítica === */
+    .consulta-analitica-block.collapsible-block{
+      border:1px solid var(--ues-card-border)!important;
+      border-radius:13px!important;
+      background:linear-gradient(180deg,#ffffff,#fbfcff)!important;
+      box-shadow:0 6px 16px rgba(15,23,42,.035)!important;
+    }
+    .consulta-analitica-block.collapsible-block > .table-toggle-header .table-toggle-copy{
+      display:grid!important;
+      grid-template-columns:42px minmax(0,1fr)!important;
+      column-gap:.80rem!important;
+      align-items:center!important;
+    }
+    .consulta-analitica-block.collapsible-block > .table-toggle-header .table-toggle-copy::before{
+      content:"";
+      width:42px;
+      height:42px;
+      grid-row:1 / span 2;
+      border-radius:11px;
+      background-color:var(--ues-blue-soft);
+      border:1px solid var(--ues-blue-border);
+      background-position:center;
+      background-size:20px 20px;
+      background-repeat:no-repeat;
+      box-shadow:0 5px 12px rgba(21,88,214,.07);
+    }
+    .consulta-analitica-block.collapsible-block > .table-toggle-header h5{
+      color:var(--ues-blue-clean)!important;
+      font-weight:900!important;
+      letter-spacing:-.015em;
+    }
+    .consulta-analitica-block.collapsible-block > .table-toggle-header .section-note{
+      color:#344054!important;
+    }
+    .consulta-analitica-block .query-tabs{
+      border-bottom:1px solid #dbe4f2;
+    }
+    .consulta-analitica-block .query-tabs .nav-link{
+      border-radius:.70rem .70rem 0 0;
+      font-size:.88rem;
+    }
+    .consulta-analitica-block .tab-pane-card{
+      border-color:#dbe4f2;
+      box-shadow:none;
+    }
+
+  
+
+    /* === V13: mapa más amplio y leyenda visible === */
+    .map-module-shell{
+      grid-template-columns: 190px minmax(0,1fr) !important;
+      gap:10px !important;
+    }
+
+    .map-side-panel.custom-layer-panel{
+      height:760px!important;
+      max-height:760px!important;
+      padding:9px 11px!important;
+    }
+
+    .map-canvas-column #map{
+      height:760px!important;
+      min-height:760px!important;
+    }
+
+    .map-canvas-column .custom-legend-panel{
+      right:14px!important;
+      bottom:14px!important;
+      width:220px!important;
+      max-height:calc(100% - 28px)!important;
+      overflow:auto!important;
+      z-index:720!important;
+    }
+
+    .map-canvas-column .custom-legend-panel.collapsed{
+      opacity:1!important;
+      pointer-events:auto!important;
+      transform:none!important;
+    }
+
+    #mainMapCollapse > #mapResumenIRCA{
+      margin-top:10px!important;
+      padding:9px 12px!important;
+    }
+
+    #mainMapCollapse #mapResumenIRCA .map-summary-line{
+      font-size:.76rem!important;
+      line-height:1.2!important;
+    }
+
+    #mainMapCollapse #mapResumenIRCA .map-summary-label{
+      font-size:.70rem!important;
+      margin-top:7px!important;
+      margin-bottom:4px!important;
+    }
+
+    #mainMapCollapse #mapResumenIRCA .risk-badge,
+    #mainMapCollapse #mapResumenIRCA .treatment-badge{
+      font-size:.60rem!important;
+      padding:3px 7px!important;
+      margin:2px 2px!important;
+    }
+
+    @media (max-width: 1280px){
+      .map-module-shell{
+        grid-template-columns: 180px minmax(0,1fr) !important;
+      }
+      .map-side-panel.custom-layer-panel{
+        height:700px!important;
+        max-height:700px!important;
+      }
+      .map-canvas-column #map{
+        height:700px!important;
+        min-height:700px!important;
+      }
+    }
+
+    @media (max-width: 1100px){
+      .map-module-shell{
+        grid-template-columns:1fr!important;
+      }
+      .map-side-panel.custom-layer-panel{
+        height:auto!important;
+        max-height:330px!important;
+      }
+      .map-canvas-column #map{
+        height:600px!important;
+        min-height:600px!important;
+      }
+    }
+
+    @media (max-width: 768px){
+      .map-canvas-column #map{
+        height:520px!important;
+        min-height:520px!important;
+      }
+      .map-canvas-column .custom-legend-panel{
+        width:190px!important;
+      }
+    }
+
+  
+
+    /* === V14 controles operativos del mapa === */
+    .map-action-toolbar{
+      top:12px;
+      left:58px;
+      z-index:470;
+    }
+    .map-tool-button{
+      appearance:none;
+      cursor:pointer;
+      transition:all .18s ease;
+    }
+    .map-tool-button:hover{
+      background:#eef4ff;
+      border-color:#98b9ff;
+      transform:translateY(-1px);
+    }
+    .map-tool-button.active{
+      background:#1d4ed8;
+      border-color:#1d4ed8;
+      color:#fff;
+      box-shadow:0 6px 16px rgba(29,78,216,.25);
+    }
+    .map-side-panel .layer-panel-header span::before{
+      content:"";
+      display:inline-block;
+      width:9px;
+      height:9px;
+      border-radius:999px;
+      background:#1d4ed8;
+      margin-right:8px;
+      vertical-align:middle;
+    }
+    .map-side-panel details[open] summary{
+      color:#1d4ed8;
+    }
+    .legend-help{
+      font-size:.72rem;
+      color:#667085;
+      line-height:1.25;
+      margin:-2px 0 6px 0;
+    }
+    .map-canvas-column .custom-legend-panel{
+      max-height:82%;
+      overflow:auto;
+    }
+    #mapCount{
+      white-space:nowrap;
+    }
+    .map-count-panel{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:8px;
+      margin:0 0 12px 0;
+      padding:9px 10px;
+      border:1px solid #dbe4f2;
+      background:#ffffff;
+      border-radius:12px;
+      box-shadow:0 3px 10px rgba(16,24,40,.04);
+    }
+    .map-count-label{
+      font-size:.78rem;
+      line-height:1.15;
+      color:#475467;
+      font-weight:800;
+    }
+    .map-count-panel #mapCount{
+      font-size:.78rem;
+      padding:.36rem .65rem;
+      margin:0!important;
+      box-shadow:0 4px 10px rgba(29,78,216,.18);
+    }
+    @media (max-width: 768px){
+      .map-action-toolbar{
+        left:52px;
+        right:10px;
+      }
+    }
+
+  
+
+    /* === V15: separar Analítica por fases y Tablas de consulta === */
+    button[data-bs-target="#analiticaIntervencionCollapse"] .table-toggle-copy::before{
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231558d6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 19h16'/%3E%3Cpath d='M7 16v-5'/%3E%3Cpath d='M12 16V7'/%3E%3Cpath d='M17 16v-3'/%3E%3Cpath d='M5 8l4-3 4 3 5-5'/%3E%3Cpath d='M15 3h3v3'/%3E%3C/svg%3E");
+    }
+    .analitica-intervencion-block .tab-pane-card,
+    .consulta-tablas-block .tab-pane-card{
+      border-color:#dbe4f2!important;
+      box-shadow:none!important;
+    }
+    .intervention-phase-tabs .nav-link{
+      font-weight:800;
+      color:#475467;
+    }
+    .intervention-phase-tabs .nav-link.active{
+      color:#1558d6;
+      background:#eef4ff;
+      border-color:#b8d0ff #b8d0ff #fff;
+    }
+    .phase-intro-card{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:1rem;
+      background:linear-gradient(180deg,#f8fbff,#ffffff);
+      border:1px solid #dbe4f2;
+      border-radius:.9rem;
+      padding:.9rem 1rem;
+    }
+    .phase-question-pill{
+      flex:0 0 auto;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:999px;
+      padding:.38rem .70rem;
+      font-size:.76rem;
+      font-weight:900;
+      color:#1558d6;
+      background:#edf4ff;
+      border:1px solid #bfd2ff;
+      white-space:nowrap;
+    }
+    .phase-question-pill.muted{
+      color:#475467;
+      background:#f8fafc;
+      border-color:#d0d5dd;
+    }
+    .analytics-kpi-grid-six{
+      grid-template-columns:repeat(6,minmax(0,1fr));
+      gap:.75rem;
+    }
+    .analytics-kpi-grid-six .kpi-card{
+      min-height:105px;
+      text-align:center;
+      border:1px solid #e5e7eb;
+      box-shadow:0 5px 14px rgba(15,23,42,.035);
+    }
+    .analytics-kpi-grid-six .kpi-label{
+      min-height:auto;
+      font-size:.74rem;
+      font-weight:800;
+      color:#344054;
+    }
+    .analytics-kpi-grid-six .kpi-value{
+      font-size:clamp(1.25rem,1.55vw,1.85rem);
+      color:#050b18;
+    }
+    .executive-reading{
+      border-left:4px solid #1558d6;
+      background:#f6f9ff;
+      border-radius:.75rem;
+      padding:.85rem 1rem;
+      color:#344054;
+      font-size:.90rem;
+      line-height:1.45;
+    }
+    .executive-reading b{
+      color:#0f172a;
+    }
+    .intervention-roadmap-grid,
+    .executive-report-layout{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:1rem;
+    }
+    .executive-report-layout{
+      grid-template-columns:1.1fr .9fr;
+    }
+    .phase-placeholder-table td{
+      padding:1rem!important;
+      text-align:center;
+    }
+    .consulta-table-card{
+      padding:1rem;
+      background:#fff;
+    }
+    @media(max-width:1200px){
+      .analytics-kpi-grid-six{
+        grid-template-columns:repeat(3,minmax(0,1fr));
+      }
+      .intervention-roadmap-grid{
+        grid-template-columns:1fr;
+      }
+    }
+    @media(max-width:768px){
+      .phase-intro-card{
+        flex-direction:column;
+      }
+      .analytics-kpi-grid-six{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+      }
+      .executive-report-layout{
+        grid-template-columns:1fr;
+      }
+    }
+    @media(max-width:576px){
+      .analytics-kpi-grid-six{
+        grid-template-columns:1fr;
+      }
+    }
+
+  
+
+    /* === V16: Fase 1 más ejecutiva e intuitiva === */
+    .phase1-executive-intro{
+      background:linear-gradient(135deg,#f4f8ff 0%,#ffffff 62%,#f8fbff 100%);
+      border:1px solid #cfe0ff;
+      box-shadow:0 8px 20px rgba(21,88,214,.055);
+    }
+    .phase-intro-main{min-width:0;}
+    .phase-eyebrow{
+      display:inline-flex;
+      align-items:center;
+      border-radius:999px;
+      padding:.18rem .55rem;
+      background:#1558d6;
+      color:#fff;
+      font-size:.70rem;
+      font-weight:900;
+      letter-spacing:.02em;
+      margin-bottom:.45rem;
+    }
+    .phase-intro-text,
+    .phase-intro-note{
+      color:#344054;
+      font-size:.90rem;
+      line-height:1.48;
+    }
+    .phase-question-grid{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:.45rem;
+    }
+    .phase-question-grid span{
+      display:flex;
+      align-items:center;
+      min-height:42px;
+      background:#ffffff;
+      border:1px solid #dbe7ff;
+      border-radius:.75rem;
+      padding:.52rem .62rem;
+      color:#1558d6;
+      font-size:.78rem;
+      font-weight:850;
+      line-height:1.18;
+    }
+    .phase-question-grid span::before{
+      content:"";
+      width:7px;
+      height:7px;
+      border-radius:999px;
+      background:#1558d6;
+      flex:0 0 auto;
+      margin-right:7px;
+    }
+    .alerts-priority-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:1rem;
+    }
+    .alert-priority-group{
+      border:1px solid #e5e7eb;
+      border-radius:1rem;
+      padding:1rem;
+      background:#fff;
+      min-height:100%;
+    }
+    .alert-group-title{
+      font-weight:900;
+      color:#0f172a;
+      margin-bottom:.15rem;
+    }
+    .alert-sanitary{background:linear-gradient(180deg,#fff7f7,#ffffff);}
+    .alert-operational{background:linear-gradient(180deg,#fffaf0,#ffffff);}
+    .alert-info{background:linear-gradient(180deg,#f8fbff,#ffffff);}
+    .alert-priority-group .analytic-alert{
+      margin-bottom:.5rem;
+      font-size:.82rem;
+      line-height:1.35;
+    }
+    .alert-priority-group .analytic-alert:last-child{margin-bottom:0;}
+    .analytic-alert.ok-alert{
+      border-left-color:#16a34a!important;
+      background:#f6fff8!important;
+    }
+    .phase1-priority-table th,
+    .phase1-priority-table td{
+      vertical-align:middle!important;
+    }
+    .phase1-priority-table .col-prioridad{width:14%;}
+    .phase1-priority-table .col-municipio{width:11%;}
+    .phase1-priority-table .col-prestador{width:27%;}
+    .phase1-priority-table .col-irca{width:8%;}
+    .priority-score{
+      margin-top:.18rem;
+      color:#667085;
+      font-size:.74rem;
+      font-weight:800;
+    }
+    @media(max-width:1200px){
+      .phase-question-grid,
+      .alerts-priority-grid{grid-template-columns:1fr 1fr;}
+    }
+    @media(max-width:768px){
+      .phase-question-grid,
+      .alerts-priority-grid{grid-template-columns:1fr;}
+    }
+
+  
+
+    /* === V17: claridad de scores y factores de priorización === */
+    .phase-method-box{
+      background:#f8fafc;
+      border:1px solid #d7e0eb;
+      border-radius:.9rem;
+      padding:.85rem .95rem;
+    }
+    .factor-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:.32rem;
+      color:#475467;
+      font-size:.82rem;
+      line-height:1.35;
+    }
+    .phase1-priority-table th,
+    .phase1-priority-table td,
+    .phase1-municipio-table th,
+    .phase1-municipio-table td{
+      vertical-align:middle!important;
+    }
+    .phase1-priority-table .col-nivel{width:9%;}
+    .phase1-priority-table .col-score{width:7%;}
+    .phase1-priority-table .col-municipio{width:10%;}
+    .phase1-priority-table .col-prestador{width:27%;}
+    .phase1-priority-table .col-irca{width:7%;}
+    .phase1-priority-table .col-riesgo{width:11%;}
+    .phase1-priority-table .col-poblacion{width:8%;}
+    .phase1-priority-table .col-tratamiento{width:8%;}
+    .score-number{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:54px;
+      padding:.22rem .5rem;
+      border-radius:999px;
+      background:#eef4ff;
+      color:#1558d6;
+      font-weight:900;
+      font-size:.78rem;
+      border:1px solid #c7d7fe;
+      font-variant-numeric:tabular-nums;
+    }
+    .risk-pill-compact{
+      max-width:116px;
+      white-space:normal;
+      line-height:1.08;
+      padding:.34rem .58rem;
+      text-align:center;
+    }
+    .phase1-priority-table .priority-pill{
+      margin:0 auto;
+      white-space:nowrap;
+    }
+    .phase1-priority-table .col-irca,
+    .phase1-priority-table .col-riesgo,
+    .phase1-priority-table .col-poblacion,
+    .phase1-priority-table .col-tratamiento{
+      text-align:center!important;
+    }
+    .phase1-municipio-table th,
+    .phase1-municipio-table td{
+      font-variant-numeric:tabular-nums;
+    }
+
+  
+
+    /* === V18: Fase 1 desplegable e interactiva === */
+    .phase-collapse-card{
+      border:1px solid #e5eaf3;
+      border-radius:1rem;
+      background:#fff;
+      overflow:hidden;
+      box-shadow:0 6px 16px rgba(15,23,42,.045);
+    }
+    .phase-block-toggle{
+      width:100%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:1rem;
+      border:0;
+      background:#fff;
+      padding:1rem 1.1rem;
+      text-align:left;
+      cursor:pointer;
+    }
+    .phase-block-toggle:hover{
+      background:#f8fbff;
+    }
+    .phase-block-arrow{
+      flex:0 0 auto;
+      width:34px;
+      height:34px;
+      border-radius:999px;
+      border:1px solid #cfe0ff;
+      background:#f8fbff;
+      color:#1d4ed8;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .phase-block-arrow svg{
+      width:18px;
+      height:18px;
+      transition:transform .18s ease;
+    }
+    .phase-block-toggle[aria-expanded="true"] .phase-block-arrow svg{
+      transform:rotate(90deg);
+    }
+    .phase-collapse-body{
+      padding:0 1.1rem 1.1rem;
+    }
+    .phase-collapse-body > .table-responsive:last-child{
+      margin-bottom:0;
+    }
+    .phase1-priority-table .col-score{width:7.5%;}
+    .phase1-priority-table .col-irca{width:7%;}
+    .phase1-priority-table .col-riesgo{width:10%;}
+    .phase1-priority-table .col-poblacion{width:8%;}
+    .phase1-priority-table .col-tratamiento{width:8%;}
+    .phase1-priority-table td,
+    .phase1-municipio-table td{
+      vertical-align:middle;
+    }
+    .phase-action-btn{
+      border-radius:999px;
+      padding:.22rem .55rem;
+      font-size:.68rem;
+      font-weight:800;
+      white-space:nowrap;
+    }
+    .phase-action-btn + .phase-action-btn{
+      margin-left:.25rem;
+    }
+
+  
+
+/* V19: enlaces discretos en tablas analíticas */
+.analytic-row-link{
+  border:0;
+  background:transparent;
+  padding:0;
+  margin:0;
+  color:#0f4ed8;
+  font:inherit;
+  font-weight:850;
+  text-align:left;
+  line-height:1.25;
+  cursor:pointer;
+  text-decoration:none;
+}
+.analytic-row-link:hover,
+.analytic-row-link:focus{
+  color:#0b3aa3;
+  text-decoration:underline;
+  outline:none;
+}
+.phase1-priority-table .col-prestador .analytic-row-link{
+  max-width:100%;
+  white-space:normal;
+}
+
+
+
+    /* Fase 2 SISA */
+    .phase2-kpi-grid{
+      display:grid;
+      grid-template-columns: repeat(5, minmax(140px,1fr));
+      gap:.75rem;
+    }
+    @media(max-width:1200px){.phase2-kpi-grid{grid-template-columns:repeat(3,1fr)}}
+    @media(max-width:768px){.phase2-kpi-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:520px){.phase2-kpi-grid{grid-template-columns:1fr}}
+    .phase2-support-badge{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:.25rem .5rem;
+      border-radius:999px;
+      background:#eef2ff;
+      color:#3730a3;
+      font-weight:800;
+      font-size:.72rem;
+      line-height:1.1;
+      white-space:normal;
+      text-align:center;
+    }
+    .phase2-support-badge.warning{background:#fff7ed;color:#9a3412}
+    .phase2-support-badge.muted{background:#f3f4f6;color:#6b7280}
+    .phase2-intervention-chip{
+      display:inline-flex;
+      align-items:center;
+      padding:.28rem .55rem;
+      border-radius:10px;
+      background:#ecfeff;
+      color:#155e75;
+      font-weight:900;
+      font-size:.74rem;
+      line-height:1.15;
+    }
+    .phase2-observation-cell{
+      max-width:360px;
+      white-space:normal;
+      color:#475467;
+      font-size:.8rem;
+      line-height:1.25;
+    }
+    .phase2-empty-state{
+      padding:1rem;
+      border:1px dashed rgba(100,116,139,.35);
+      border-radius:14px;
+      background:#f8fafc;
+      color:#64748b;
+      text-align:center;
+      font-weight:700;
+    }
+
+  .fase2-kpi-intervencion{
+  font-size:clamp(1rem,1.25vw,1.55rem) !important;
+  line-height:1.08;
+  letter-spacing:-0.01em;
+  word-break:break-word;
+  overflow-wrap:anywhere;
+}
+.fase3-hero-card{
+  display:flex;
+  justify-content:space-between;
+  gap:1rem;
+  align-items:stretch;
+  padding:1rem;
+  border:1px solid #dbe7ff;
+  border-radius:1rem;
+  background:linear-gradient(135deg,#f7fbff,#ffffff);
+}
+.fase3-label{font-size:.76rem;font-weight:900;color:#1558d6;text-transform:uppercase;letter-spacing:.04em;}
+.fase3-muted{font-size:.86rem;color:#667085;}
+.fase3-risk-box{text-align:right;min-width:220px;}
+.fase3-risk{font-weight:900;font-size:1.05rem;color:#b42318;line-height:1.1;}
+.fase3-kpi-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.75rem;}
+.fase3-kpi-value{font-size:clamp(1rem,1.35vw,1.45rem);font-weight:900;line-height:1.1;color:#050b18;}
+.fase3-support-list{display:grid;gap:.45rem;}
+.fase3-support-link{display:flex;align-items:center;justify-content:space-between;gap:.65rem;border:1px solid #dbe7ff;background:#fff;border-radius:.75rem;padding:.55rem .7rem;text-decoration:none;color:#0b4fd0;font-weight:800;font-size:.86rem;}
+.fase3-support-link:hover{background:#f4f8ff;color:#063a9c;}
+.fase3-photo-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.75rem;}
+.fase3-photo-card{border:1px solid #dbe7ff;border-radius:1rem;overflow:hidden;background:#fff;box-shadow:0 12px 28px rgba(15,23,42,.06);}
+.fase3-photo-card img{width:100%;height:230px;object-fit:cover;display:block;}
+.fase3-photo-caption{padding:.55rem .7rem;font-size:.78rem;font-weight:800;color:#344054;}
+@media(max-width:992px){.fase3-kpi-grid{grid-template-columns:repeat(2,minmax(0,1fr));}.fase3-photo-grid{grid-template-columns:1fr;}.fase3-hero-card{flex-direction:column}.fase3-risk-box{text-align:left;}.fase3-muted.text-end{text-align:left!important;}}
+
+  
+    .phase-actions{
+      display:flex;
+      flex-direction:column;
+      align-items:flex-end;
+      gap:.45rem;
+    }
+    .btn-export-pdf{
+      border-radius:999px;
+      font-weight:800;
+      font-size:.78rem;
+      padding:.35rem .75rem;
+      box-shadow:0 6px 14px rgba(21,88,214,.16);
+    }
+    .fase3-support-placeholder{
+      border:1px dashed #bfd3ff;
+      background:#f8fbff;
+      border-radius:.70rem;
+      padding:.65rem .75rem;
+      color:#344054;
+      font-size:.86rem;
+      line-height:1.35;
+    }
+    #printFase3Report{display:none;}
+    @media print{
+      @page{
+        size:letter;
+        margin:10mm;
+      }
+      html,
+      body.print-fase3-mode{
+        width:auto !important;
+        height:auto !important;
+        min-height:0 !important;
+        overflow:visible !important;
+        background:#fff !important;
+      }
+      body.print-fase3-mode > *:not(#printFase3Report){
+        display:none !important;
+      }
+      body.print-fase3-mode #printFase3Report{
+        display:block !important;
+        position:static !important;
+        width:auto !important;
+        max-width:none !important;
+        margin:0 !important;
+        padding:0 !important;
+        color:#111827 !important;
+        background:#fff !important;
+        font-size:9.6pt !important;
+        line-height:1.28 !important;
+      }
+      body.print-fase3-mode #printFase3Report *,
+      body.print-fase3-mode #printFase3Report *::before,
+      body.print-fase3-mode #printFase3Report *::after{
+        box-shadow:none !important;
+        text-shadow:none !important;
+      }
+      body.print-fase3-mode #printFase3Report .tab-pane,
+      body.print-fase3-mode #printFase3Report .fade,
+      body.print-fase3-mode #printFase3Report .collapse{
+        display:block !important;
+        opacity:1 !important;
+        height:auto !important;
+        visibility:visible !important;
+      }
+      body.print-fase3-mode #printFase3Report .btn-export-pdf,
+      body.print-fase3-mode #printFase3Report .phase-actions,
+      body.print-fase3-mode #printFase3Report .phase-question-pill,
+      body.print-fase3-mode #printFase3Report .phase-block-arrow,
+      body.print-fase3-mode #printFase3Report .phase-block-toggle{
+        display:none !important;
+      }
+      body.print-fase3-mode #printFase3Report .phase-intro-card,
+      body.print-fase3-mode #printFase3Report .analytic-card,
+      body.print-fase3-mode #printFase3Report .fase3-hero-card,
+      body.print-fase3-mode #printFase3Report .analytic-method-box,
+      body.print-fase3-mode #printFase3Report .kpi-card,
+      body.print-fase3-mode #printFase3Report .fase3-photo-card{
+        border:1px solid #d9e3f0 !important;
+        border-radius:8px !important;
+        background:#fff !important;
+      }
+      body.print-fase3-mode #printFase3Report .phase-intro-card{
+        display:block !important;
+        padding:10px 12px !important;
+        margin:0 0 8px 0 !important;
+        break-inside:avoid;
+        page-break-inside:avoid;
+      }
+      body.print-fase3-mode #printFase3Report .phase-eyebrow{
+        font-size:8pt !important;
+        font-weight:800 !important;
+        color:#1558d6 !important;
+        text-transform:uppercase !important;
+        letter-spacing:.05em !important;
+      }
+      body.print-fase3-mode #printFase3Report .analytics-section-title{
+        font-size:15pt !important;
+        margin:2px 0 3px 0 !important;
+        color:#0f172a !important;
+      }
+      body.print-fase3-mode #printFase3Report .analytics-section-subtitle,
+      body.print-fase3-mode #printFase3Report .phase-intro-text,
+      body.print-fase3-mode #printFase3Report .analytic-mini,
+      body.print-fase3-mode #printFase3Report .fase3-muted{
+        font-size:8.8pt !important;
+        color:#475467 !important;
+      }
+      body.print-fase3-mode #printFase3Report .analytic-card{
+        margin:0 0 8px 0 !important;
+        padding:0 !important;
+        break-inside:auto !important;
+        page-break-inside:auto !important;
+      }
+      body.print-fase3-mode #printFase3Report .phase-collapse-body{
+        padding:8px !important;
+      }
+      body.print-fase3-mode #printFase3Report .fase3-hero-card{
+        display:flex !important;
+        align-items:flex-start !important;
+        justify-content:space-between !important;
+        gap:12px !important;
+        padding:9px 10px !important;
+        margin-bottom:8px !important;
+        break-inside:avoid;
+        page-break-inside:avoid;
+      }
+      body.print-fase3-mode #printFase3Report .fase3-label,
+      body.print-fase3-mode #printFase3Report .analytic-method-title,
+      body.print-fase3-mode #printFase3Report .kpi-label{
+        font-size:7.8pt !important;
+        font-weight:900 !important;
+        text-transform:uppercase !important;
+        letter-spacing:.035em !important;
+        color:#1558d6 !important;
+        min-height:0 !important;
+        margin-bottom:2px !important;
+      }
+      body.print-fase3-mode #printFase3Report h5{
+        font-size:14pt !important;
+        margin:0 0 2px 0 !important;
+      }
+      body.print-fase3-mode #printFase3Report .fase3-risk{
+        font-size:11pt !important;
+        font-weight:900 !important;
+        color:#b42318 !important;
+      }
+      body.print-fase3-mode #printFase3Report .fase3-kpi-grid{
+        display:grid !important;
+        grid-template-columns:repeat(5, minmax(0,1fr)) !important;
+        gap:6px !important;
+        margin-bottom:8px !important;
+        break-inside:avoid;
+        page-break-inside:avoid;
+      }
+      body.print-fase3-mode #printFase3Report .kpi-card{
+        padding:7px !important;
+        min-height:0 !important;
+        height:auto !important;
+      }
+      body.print-fase3-mode #printFase3Report .fase3-kpi-value{
+        font-size:9.2pt !important;
+        line-height:1.12 !important;
+        font-weight:900 !important;
+        color:#111827 !important;
+      }
+      body.print-fase3-mode #printFase3Report .row{
+        display:flex !important;
+        flex-wrap:nowrap !important;
+        gap:8px !important;
+        margin:0 !important;
+      }
+      body.print-fase3-mode #printFase3Report .col-lg-7,
+      body.print-fase3-mode #printFase3Report .col-lg-5{
+        padding:0 !important;
+        flex:1 1 0 !important;
+        max-width:none !important;
+      }
+      body.print-fase3-mode #printFase3Report .col-lg-7{ flex-basis:58% !important; }
+      body.print-fase3-mode #printFase3Report .col-lg-5{ flex-basis:42% !important; }
+      body.print-fase3-mode #printFase3Report .analytic-method-box{
+        padding:8px !important;
+        margin:0 !important;
+        break-inside:avoid;
+        page-break-inside:avoid;
+      }
+      body.print-fase3-mode #printFase3Report .analytic-method-text,
+      body.print-fase3-mode #printFase3Report .fase3-support-placeholder,
+      body.print-fase3-mode #printFase3Report .fase3-photo-caption{
+        font-size:8.6pt !important;
+        line-height:1.25 !important;
+        color:#344054 !important;
+      }
+      body.print-fase3-mode #printFase3Report .fase3-photo-grid{
+        display:grid !important;
+        grid-template-columns:repeat(3, minmax(0,1fr)) !important;
+        gap:7px !important;
+        margin-bottom:8px !important;
+        break-inside:avoid;
+        page-break-inside:avoid;
+      }
+      body.print-fase3-mode #printFase3Report .fase3-photo-card{
+        overflow:hidden !important;
+        break-inside:avoid;
+        page-break-inside:avoid;
+      }
+      body.print-fase3-mode #printFase3Report .fase3-photo-card img{
+        width:100% !important;
+        height:95px !important;
+        max-height:95px !important;
+        object-fit:cover !important;
+        display:block !important;
+      }
+      body.print-fase3-mode #printFase3Report .fase3-photo-caption{
+        padding:5px 6px !important;
+        font-weight:800 !important;
+      }
+      body.print-fase3-mode #printFase3Report .mb-3{
+        margin-bottom:8px !important;
+      }
+      body.print-fase3-mode #printFase3Report .mt-2{
+        margin-top:4px !important;
+      }
+      body.print-fase3-mode #printFase3Report .mt-3{
+        margin-top:7px !important;
+      }
+    }
+
+  </style>
 </head>
 <body>
 
@@ -1665,7 +3128,7 @@ BLOQUE DE ACCESO UESVALLE - FIN
       </section>
 
       <section class="soft-card p-3 mb-4 collapsible-block">
-        <button class="table-toggle-header" type="button" data-bs-toggle="collapse" data-bs-target="#riskAnalysisCollapse" aria-expanded="true" aria-controls="riskAnalysisCollapse">
+        <button class="table-toggle-header" type="button" data-bs-toggle="collapse" data-bs-target="#riskAnalysisCollapse" aria-expanded="false" aria-controls="riskAnalysisCollapse">
           <div class="table-toggle-copy">
             <h5 class="mb-1">Análisis de riesgo</h5>
             <div id="riskAnalysisMetricHelp" class="section-note mb-0">Distribución histórica de la población abastecida por nivel de riesgo y resumen del bloque activo.</div>
@@ -1674,7 +3137,7 @@ BLOQUE DE ACCESO UESVALLE - FIN
             <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
         </button>
-        <div class="collapse show mt-3" id="riskAnalysisCollapse">
+        <div class="collapse mt-3" id="riskAnalysisCollapse">
         <div class="row g-3">
           <div class="col-12 col-xl-8">
             <div class="chart-card p-3 h-100">
@@ -1743,37 +3206,28 @@ BLOQUE DE ACCESO UESVALLE - FIN
       </section>
 
       <section class="soft-card p-3 mb-4 collapsible-block">
-        <button class="table-toggle-header" type="button" data-bs-toggle="collapse" data-bs-target="#mainMapCollapse" aria-expanded="true" aria-controls="mainMapCollapse">
+        <button class="table-toggle-header" type="button" data-bs-toggle="collapse" data-bs-target="#mainMapCollapse" aria-expanded="false" aria-controls="mainMapCollapse">
           <div class="table-toggle-copy">
             <h5 class="mb-1">Mapa de IRCAS</h5>
             <div class="section-note mb-0">Activa capas anuales, cambia mapa base y consulta detalle por sistema.</div>
           </div>
-          <span id="mapCount" class="badge text-bg-primary badge-map me-2">0 sistemas</span>
           <span class="table-toggle-arrow" aria-hidden="true">
             <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
         </button>
-        <div class="collapse show mt-3" id="mainMapCollapse">
-        <div class="map-year-help mb-3">
-          El mapa principal incluye:
-          <b>IRCAS 2020, 2021, 2022, 2023, 2024, 2025 y 2026</b>, una capa analítica de
-          <b>Heatmap de riesgo poblacional</b> y un grupo de capas <b>Territorial</b>.
-        </div>
+        <div class="collapse mt-3" id="mainMapCollapse">
 
-        <div class="position-relative">
-          <div id="map"></div>
-
-          <div id="layerToggle" class="layer-toggle-btn" title="Capas del mapa">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M12 3 2 8l10 5 10-5-10-5Zm0 7.2L4.4 8 12 4.8 19.6 8 12 10.2Zm-10 3.3 10 5 10-5M2 18l10 5 10-5"
-                    fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-
-          <div id="layerPanel" class="custom-layer-panel collapsed">
+<div class="map-module-shell">
+  <aside class="map-side-column" aria-label="Panel de capas del visor">
+    <div id="layerPanel" class="custom-layer-panel collapsed map-side-panel">
             <div class="layer-panel-header d-flex justify-content-between align-items-center">
-              <span>Capas del mapa</span>
+              <span>Capas del visor</span>
               <button id="layerClose" class="layer-close-btn" type="button" aria-label="Cerrar panel">×</button>
+            </div>
+
+            <div class="map-count-panel">
+              <div class="map-count-label">Sistemas visibles en mapa</div>
+              <span id="mapCount" class="badge text-bg-primary badge-map">0 sistemas</span>
             </div>
 
             <details open>
@@ -1820,9 +3274,20 @@ BLOQUE DE ACCESO UESVALLE - FIN
               <label><input type="checkbox" data-layer="sedesEdu2"> Sedes Educativas 456</label>
             </details>
           </div>
-
-          
-          <div id="legendToggle" class="legend-toggle-btn" title="Leyenda del mapa">
+  </aside>
+  <div class="map-canvas-column">
+    <div class="map-toolbar-pills map-action-toolbar" aria-label="Accesos rápidos del mapa">
+      <button id="btnMapResetValle" class="map-tool-pill map-tool-button" type="button" title="Restablecer la vista general del Valle del Cauca">Vista Valle</button>
+      <button id="btnMapOnlyCritical" class="map-tool-pill map-tool-button" type="button" title="Mostrar únicamente sistemas en riesgo Alto o Inviable sanitariamente">Solo críticos</button>
+    </div>
+    <div id="map"></div>
+    <div id="layerToggle" class="layer-toggle-btn" title="Capas del visor">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 3 2 8l10 5 10-5-10-5Zm0 7.2L4.4 8 12 4.8 19.6 8 12 10.2Zm-10 3.3 10 5 10-5M2 18l10 5 10-5"
+                    fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+    <div id="legendToggle" class="legend-toggle-btn" title="Leyenda del mapa">
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M5 6h14M5 12h14M5 18h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
               <circle cx="8" cy="6" r="1.8" fill="currentColor"/>
@@ -1830,24 +3295,23 @@ BLOQUE DE ACCESO UESVALLE - FIN
               <circle cx="16" cy="18" r="1.8" fill="currentColor"/>
             </svg>
           </div>
-
-          <div id="legendPanel" class="custom-legend-panel collapsed">
+    <div id="legendPanel" class="custom-legend-panel collapsed">
             <div class="layer-panel-header d-flex justify-content-between align-items-center">
               <span>Leyenda</span>
               <button id="legendClose" class="layer-close-btn" type="button" aria-label="Cerrar leyenda">×</button>
             </div>
             <div id="legend"></div>
           </div>
-
-        </div>
-
-        <div id="mapResumenIRCA" class="mt-3 p-2 text-center bg-white rounded shadow-sm"
+  </div>
+</div>
+<div id="mapResumenIRCA" class="mt-3 p-2 text-center bg-white rounded shadow-sm"
              style="border:1px solid #eee; font-size:0.9rem;"></div>
-        </div>
+
+</div>
       </section>
 
       <section class="soft-card p-3 mb-4 collapsible-block">
-        <button class="table-toggle-header" type="button" data-bs-toggle="collapse" data-bs-target="#compareMapsCollapse" aria-expanded="true" aria-controls="compareMapsCollapse">
+        <button class="table-toggle-header" type="button" data-bs-toggle="collapse" data-bs-target="#compareMapsCollapse" aria-expanded="false" aria-controls="compareMapsCollapse">
           <div class="table-toggle-copy">
             <h5 id="compareTitle" class="mb-1">Comparación sincronizada 2020 vs 2026</h5>
             <div class="section-note mb-0">El mapa derecho queda fijo en IRCA 2026. Selecciona el año del mapa izquierdo para comparar la evolución.</div>
@@ -1856,7 +3320,7 @@ BLOQUE DE ACCESO UESVALLE - FIN
             <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
         </button>
-        <div class="collapse show mt-3" id="compareMapsCollapse">
+        <div class="collapse mt-3" id="compareMapsCollapse">
           <div class="d-flex align-items-end justify-content-between flex-wrap gap-2 mb-3">
             <div>
               <div class="section-note mb-1">Año comparativo contra IRCA 2026</div>
@@ -1885,7 +3349,7 @@ BLOQUE DE ACCESO UESVALLE - FIN
       </section>
 
       <section class="soft-card p-3 mb-4 collapsible-block">
-        <button class="table-toggle-header" type="button" data-bs-toggle="collapse" data-bs-target="#analysisChartsCollapse" aria-expanded="true" aria-controls="analysisChartsCollapse">
+        <button class="table-toggle-header" type="button" data-bs-toggle="collapse" data-bs-target="#analysisChartsCollapse" aria-expanded="false" aria-controls="analysisChartsCollapse">
           <div class="table-toggle-copy">
             <h5 class="mb-1">Gráficos de análisis</h5>
             <div class="section-note mb-0">Agrupa la tendencia histórica, el promedio municipal y la distribución por nivel de riesgo. Los clics sobre los gráficos siguen funcionando como filtros.</div>
@@ -1894,7 +3358,7 @@ BLOQUE DE ACCESO UESVALLE - FIN
             <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
         </button>
-        <div class="collapse show mt-3" id="analysisChartsCollapse">
+        <div class="collapse mt-3" id="analysisChartsCollapse">
           <div class="row g-4 graphs-analysis-block">
         <div class="col-12">
           <div class="chart-card p-3">
@@ -1940,11 +3404,400 @@ BLOQUE DE ACCESO UESVALLE - FIN
 
 
 
-      <section class="soft-card p-3 mb-4">
+
+      <section class="soft-card p-3 mb-4 collapsible-block analitica-intervencion-block">
+        <button class="table-toggle-header" type="button" data-bs-toggle="collapse" data-bs-target="#analiticaIntervencionCollapse" aria-expanded="false" aria-controls="analiticaIntervencionCollapse">
+          <div class="table-toggle-copy">
+            <h5 class="mb-1">Analítica para priorización de intervención</h5>
+            <div class="section-note mb-0">Identifica acueductos críticos, población expuesta, municipios prioritarios y rutas de intervención para apoyar la toma de decisiones.</div>
+          </div>
+          <span class="table-toggle-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </button>
+
+        <div class="collapse mt-3" id="analiticaIntervencionCollapse">
+          <ul class="nav nav-tabs query-tabs intervention-phase-tabs" id="analiticaFasesTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="tab-fase1-tab" data-bs-toggle="tab" data-bs-target="#tab-fase1-diagnostico" type="button" role="tab" aria-controls="tab-fase1-diagnostico" aria-selected="true">
+                Fase 1 · Diagnóstico y priorización inicial
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="tab-fase2-tab" data-bs-toggle="tab" data-bs-target="#tab-fase2-intervenciones" type="button" role="tab" aria-controls="tab-fase2-intervenciones" aria-selected="false">
+                Fase 2 · Intervenciones sugeridas
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="tab-fase3-tab" data-bs-toggle="tab" data-bs-target="#tab-fase3-informe" type="button" role="tab" aria-controls="tab-fase3-informe" aria-selected="false">
+                Fase 3 · Informe ejecutivo
+              </button>
+            </li>
+          </ul>
+
+          <div class="tab-content" id="analiticaFasesContent">
+            <div class="tab-pane fade show active tab-pane-card" id="tab-fase1-diagnostico" role="tabpanel" aria-labelledby="tab-fase1-tab" tabindex="0">
+              <div class="phase-intro-card phase1-executive-intro mb-3">
+                <div class="phase-intro-main">
+                  <div class="phase-eyebrow">Fase 1</div>
+                  <h6 class="analytics-section-title mb-2">Diagnóstico y priorización inicial</h6>
+                  <p class="phase-intro-text mb-2">
+                    Esta fase permite identificar el estado sanitario y operativo de los acueductos según el filtro aplicado. Resume los principales indicadores de riesgo, población expuesta, sistemas sin tratamiento y acueductos sin información IRCA, con el fin de orientar la toma de decisiones.
+                  </p>
+                  <div class="phase-question-grid mb-2">
+                    <span>¿Dónde está el problema?</span>
+                    <span>¿Qué población puede estar expuesta?</span>
+                    <span>¿Qué acueductos deben revisarse primero?</span>
+                    <span>¿Qué municipios concentran mayor riesgo sanitario?</span>
+                  </div>
+                  <p class="phase-intro-note mb-0">
+                    <b>Salida principal:</b> el ranking de <b>Top 10 de Acueductos Críticos priorizados para revisión o intervención</b> ordena los sistemas que requieren mayor atención técnica. Esta priorización es preliminar y deberá complementarse en la Fase 2 con visitas, observaciones, recomendaciones y evidencias de infraestructura.
+                  </p>
+                </div>
+                <div class="phase-question-pill">Bloque IRCA activo</div>
+              </div>
+
+              <section class="analytic-card phase-collapse-card mb-3">
+                <button class="phase-block-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#fase1ResumenCollapse" aria-expanded="true" aria-controls="fase1ResumenCollapse">
+                  <div>
+                    <div class="analytic-phase-title mb-1">Resumen ejecutivo del filtro aplicado</div>
+                    <div class="analytic-mini">Indicadores principales del universo analizado según los filtros activos.</div>
+                  </div>
+                  <span class="phase-block-arrow" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+                </button>
+                <div class="collapse show" id="fase1ResumenCollapse">
+                  <div class="phase-collapse-body">
+                    <div class="analytics-kpi-grid analytics-kpi-grid-six">
+                      <div class="kpi-card p-3"><div class="kpi-label">Acueductos evaluados</div><div id="anaKpiEvaluados" class="kpi-value">–</div></div>
+                      <div class="kpi-card p-3"><div class="kpi-label">Acueductos en riesgo alto/inviable</div><div id="anaKpiCriticos" class="kpi-value">–</div></div>
+                      <div class="kpi-card p-3"><div class="kpi-label">Población en riesgo medio o superior</div><div id="anaKpiPobRiesgo" class="kpi-value">–</div></div>
+                      <div class="kpi-card p-3"><div class="kpi-label">Población en riesgo crítico</div><div id="anaKpiPobAlta" class="kpi-value">–</div></div>
+                      <div class="kpi-card p-3"><div class="kpi-label">Acueductos sin tratamiento reportado</div><div id="anaKpiSinTrat" class="kpi-value">–</div></div>
+                      <div class="kpi-card p-3"><div class="kpi-label">Acueductos sin dato IRCA</div><div id="anaKpiSinIRCA" class="kpi-value">–</div></div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="analytic-card phase-collapse-card mb-3">
+                <button class="phase-block-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#fase1LecturaCollapse" aria-expanded="false" aria-controls="fase1LecturaCollapse">
+                  <div>
+                    <div class="analytic-phase-title mb-1">Lectura ejecutiva</div>
+                    <div class="analytic-mini">Interpretación automática del filtro aplicado para facilitar la lectura directiva del tablero.</div>
+                  </div>
+                  <span class="phase-block-arrow" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+                </button>
+                <div class="collapse" id="fase1LecturaCollapse">
+                  <div class="phase-collapse-body">
+                    <div class="executive-reading" id="anaLecturaEjecutiva">
+                      Aplicar filtros para generar lectura ejecutiva del universo seleccionado.
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="analytic-card phase-collapse-card mb-3">
+                <button class="phase-block-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#fase1AlertasCollapse" aria-expanded="false" aria-controls="fase1AlertasCollapse">
+                  <div>
+                    <div class="analytic-phase-title mb-1">Alertas prioritarias</div>
+                    <div class="analytic-mini">Condiciones sanitarias, operativas o de información que requieren revisión por el equipo técnico.</div>
+                  </div>
+                  <span class="phase-block-arrow" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+                </button>
+                <div class="collapse" id="fase1AlertasCollapse">
+                  <div class="phase-collapse-body">
+                    <div class="alerts-priority-grid">
+                      <div class="alert-priority-group alert-sanitary">
+                        <div class="alert-group-title">Alertas sanitarias</div>
+                        <div class="analytic-mini mb-2">Riesgo IRCA alto, inviable o población expuesta.</div>
+                        <div id="anaAlertasSanitarias"></div>
+                      </div>
+                      <div class="alert-priority-group alert-operational">
+                        <div class="alert-group-title">Alertas operativas</div>
+                        <div class="analytic-mini mb-2">Condición de tratamiento u operación sensible.</div>
+                        <div id="anaAlertasOperativas"></div>
+                      </div>
+                      <div class="alert-priority-group alert-info">
+                        <div class="alert-group-title">Alertas de información</div>
+                        <div class="analytic-mini mb-2">Brechas de datos para completar diagnóstico.</div>
+                        <div id="anaAlertasInformacion"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="analytic-card phase-collapse-card mb-3">
+                <button class="phase-block-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#fase1TopAcueductosCollapse" aria-expanded="true" aria-controls="fase1TopAcueductosCollapse">
+                  <div>
+                    <div class="analytic-phase-title mb-1">Top 10 de Acueductos Críticos priorizados para revisión o intervención</div>
+                    <div class="analytic-mini">Ranking de acueductos con mayor prioridad sanitaria. Haz clic sobre el nombre del acueducto para ubicarlo en el mapa y revisar su detalle en la tabla.</div>
+                  </div>
+                  <span class="phase-block-arrow" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+                </button>
+                <div class="collapse show" id="fase1TopAcueductosCollapse">
+                  <div class="phase-collapse-body">
+                    <div class="analytic-method-box phase-method-box mb-3">
+                      <div class="analytic-method-title">¿Cómo se calcula la prioridad del acueducto?</div>
+                      <div class="analytic-method-text">
+                        La <b>prioridad</b> es un puntaje preliminar de ordenamiento. Combina el nivel de riesgo IRCA, el tamaño de la población abastecida y el estado del tratamiento. A mayor prioridad, mayor atención sanitaria para revisión técnica.
+                      </div>
+                      <div class="analytic-formula mt-2">Prioridad = factor de riesgo IRCA × log10(población + 1) × factor de tratamiento</div>
+                      <div class="factor-grid mt-2">
+                        <div><b>Factor de riesgo IRCA:</b> Sin riesgo = 0 · Bajo = 1 · Medio = 2 · Alto = 3 · Inviable = 4 · Sin dato IRCA = 0.5.</div>
+                        <div><b>Factor de tratamiento:</b> Tiene tratamiento = 1.00 · Tratamiento sin dato = 1.15 · No tiene tratamiento = 1.25 · No tiene tratamiento + riesgo alto/inviable = 1.40.</div>
+                        <div><b>Rangos de interpretación:</b> Muy alta ≥ 8 · Alta = 6–7.99 · Media = 4–5.99 · Baja &lt; 4. El rango se usa para interpretar el puntaje, pero la tabla se ordena por el valor de prioridad.</div>
+                      </div>
+                    </div>
+                    <div class="table-responsive">
+                      <table class="table table-sm analytic-table phase1-priority-table">
+                        <thead><tr><th class="col-score text-center">Prioridad</th><th class="col-municipio">Municipio</th><th class="col-prestador">Acueducto / prestador</th><th class="col-irca text-center">IRCA</th><th class="col-riesgo text-center">Riesgo</th><th class="col-poblacion text-center">Población</th><th class="col-tratamiento text-center">Tratamiento</th><th>Motivo de prioridad</th></tr></thead>
+                        <tbody id="anaTopSistemas"></tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="analytic-card phase-collapse-card mb-3">
+                <button class="phase-block-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#fase1TopMunicipiosCollapse" aria-expanded="false" aria-controls="fase1TopMunicipiosCollapse">
+                  <div>
+                    <div class="analytic-phase-title mb-1">Top 10 municipios críticos</div>
+                    <div class="analytic-mini">Ranking territorial para orientar la gestión institucional. Haz clic sobre el municipio para filtrar el tablero completo.</div>
+                  </div>
+                  <span class="phase-block-arrow" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+                </button>
+                <div class="collapse" id="fase1TopMunicipiosCollapse">
+                  <div class="phase-collapse-body">
+                    <div class="analytic-method-box phase-method-box mb-3">
+                      <div class="analytic-method-title">¿Cómo se calcula el score municipal?</div>
+                      <div class="analytic-method-text">
+                        El <b>score municipal</b> ordena los municipios combinando la prioridad acumulada de sus acueductos y un ajuste por población abastecida en riesgo medio, alto o inviable sanitariamente.
+                      </div>
+                      <div class="analytic-formula mt-2">Score municipal = suma de prioridades de acueductos + 10 × log10(población en riesgo medio o superior + 1)</div>
+                      <div class="factor-grid mt-2">
+                        <div><b>Suma de prioridades de acueductos:</b> suma de los puntajes individuales de prioridad de los sistemas del municipio.</div>
+                        <div><b>Población en riesgo:</b> población abastecida por sistemas clasificados en riesgo medio, alto o inviable sanitariamente.</div>
+                        <div><b>Interpretación:</b> a mayor score municipal, mayor prioridad sanitaria territorial. Este valor ordena municipios; no define por sí solo una obra o inversión.</div>
+                      </div>
+                    </div>
+                    <div class="table-responsive">
+                      <table class="table table-sm analytic-table phase1-municipio-table">
+                        <thead><tr><th>Municipio</th><th class="text-center">Acueductos alto/inviable</th><th class="text-center">Población en riesgo</th><th class="text-center">IRCA promedio</th><th class="text-center">Sin tratamiento</th><th class="text-center">Score municipal</th></tr></thead>
+                        <tbody id="anaTopMunicipios"></tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+
+            <div class="tab-pane fade tab-pane-card" id="tab-fase2-intervenciones" role="tabpanel" aria-labelledby="tab-fase2-tab" tabindex="0">
+              <div class="phase-intro-card mb-3">
+                <div>
+                  <div class="phase-eyebrow">Fase 2</div>
+                  <h6 class="analytics-section-title mb-1">Clasificación de intervenciones sugeridas según visitas SISA</h6>
+                  <div class="analytics-section-subtitle">Responde: <b>¿qué hallazgo técnico soporta la intervención sugerida para cada acueducto?</b></div>
+                  <p class="phase-intro-text mb-0 mt-2">
+                    Esta fase cruza los acueductos filtrados con el archivo SISA de visitas ACH. Usa <b>ACTIVIDAD 1.2</b> como soporte de observación técnica y <b>ACTIVIDAD 1.7</b> como soporte de muestreo.
+                  </p>
+                </div>
+                <div class="phase-question-pill">SISA 1.2 + 1.7</div>
+              </div>
+
+              <section class="analytic-card phase-collapse-card mb-3">
+                <button class="phase-block-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#fase2ResumenCollapse" aria-expanded="true" aria-controls="fase2ResumenCollapse">
+                  <div>
+                    <div class="analytic-phase-title mb-1">Resumen de soporte técnico SISA</div>
+                    <div class="analytic-mini">Mide cuántos acueductos del filtro activo tienen visita, muestreo y clasificación preliminar de intervención.</div>
+                  </div>
+                  <span class="phase-block-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                </button>
+                <div class="collapse show" id="fase2ResumenCollapse">
+                  <div class="phase-collapse-body">
+                    <div class="phase2-kpi-grid">
+                      <div class="kpi-card p-3"><div class="kpi-label">Con visita 1.2</div><div id="fase2KpiConVisita" class="kpi-value">–</div></div>
+                      <div class="kpi-card p-3"><div class="kpi-label">Con muestreo 1.7</div><div id="fase2KpiConMuestreo" class="kpi-value">–</div></div>
+                      <div class="kpi-card p-3"><div class="kpi-label">Visita + muestreo</div><div id="fase2KpiAmbos" class="kpi-value">–</div></div>
+                      <div class="kpi-card p-3"><div class="kpi-label">Sin soporte SISA</div><div id="fase2KpiSinSoporte" class="kpi-value">–</div></div>
+                      <div class="kpi-card p-3"><div class="kpi-label">Intervención más frecuente</div><div id="fase2KpiIntervencion" class="kpi-value fase2-kpi-intervencion">–</div></div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="analytic-card phase-collapse-card mb-3">
+                <button class="phase-block-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#fase2IntervencionesCollapse" aria-expanded="true" aria-controls="fase2IntervencionesCollapse">
+                  <div>
+                    <div class="analytic-phase-title mb-1">Acueductos priorizados con intervención sugerida</div>
+                    <div class="analytic-mini">Ranking del filtro activo. Haz clic sobre el acueducto para ubicarlo en el mapa y revisar el detalle.</div>
+                  </div>
+                  <span class="phase-block-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                </button>
+                <div class="collapse show" id="fase2IntervencionesCollapse">
+                  <div class="phase-collapse-body">
+                    <div class="analytic-method-box phase-method-box mb-3">
+                      <div class="analytic-method-title">Criterio de lectura</div>
+                      <div class="analytic-method-text">
+                        La intervención sugerida es <b>preliminar</b>. Se infiere automáticamente a partir de palabras clave encontradas en la <b>OBSERVACION</b> de la actividad 1.2. Debe validarse con el profesional responsable antes de definir obra, inversión o requerimiento formal.
+                      </div>
+                    </div>
+                    <div class="table-responsive">
+                      <table class="table table-sm analytic-table phase2-intervention-table">
+                        <thead>
+                          <tr>
+                            <th class="text-center">Prioridad</th>
+                            <th>Municipio</th>
+                            <th>Acueducto / prestador</th>
+                            <th class="text-center">Riesgo</th>
+                            <th class="text-center">Visita 1.2</th>
+                            <th class="text-center">Concepto</th>
+                            <th>Intervención sugerida</th>
+                            <th>Hallazgo clave</th>
+                            <th class="text-center">Muestreo 1.7</th>
+                            <th class="text-center">Soporte</th>
+                          </tr>
+                        </thead>
+                        <tbody id="fase2TablaIntervenciones"></tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="analytic-card phase-collapse-card mb-0">
+                <button class="phase-block-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#fase2ResumenIntervencionesCollapse" aria-expanded="false" aria-controls="fase2ResumenIntervencionesCollapse">
+                  <div>
+                    <div class="analytic-phase-title mb-1">Resumen por tipo de intervención sugerida</div>
+                    <div class="analytic-mini">Consolida cantidad de acueductos, población y prioridad acumulada por línea de intervención.</div>
+                  </div>
+                  <span class="phase-block-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                </button>
+                <div class="collapse" id="fase2ResumenIntervencionesCollapse">
+                  <div class="phase-collapse-body">
+                    <div class="table-responsive">
+                      <table class="table table-sm analytic-table phase2-summary-table">
+                        <thead><tr><th>Intervención sugerida</th><th class="text-center">Acueductos</th><th class="text-center">Población asociada</th><th class="text-center">Prioridad acumulada</th><th class="text-center">Con visita 1.2</th><th class="text-center">Con muestreo 1.7</th></tr></thead>
+                        <tbody id="fase2ResumenIntervenciones"></tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+
+<div class="tab-pane fade tab-pane-card" id="tab-fase3-informe" role="tabpanel" aria-labelledby="tab-fase3-tab" tabindex="0">
+  <div class="phase-intro-card mb-3">
+    <div>
+      <div class="phase-eyebrow">Fase 3</div>
+      <h6 class="analytics-section-title mb-1">Informe ejecutivo por acueducto crítico</h6>
+      <div class="analytics-section-subtitle">Responde: <b>¿qué evidencia soporta la priorización y qué decisión facilita?</b></div>
+      <p class="phase-intro-text mb-0 mt-2">
+        Esta fase integra el resultado IRCA, la clasificación de intervención y los soportes documentales disponibles —ficha de inspección, laboratorios y fotografías— para construir una ficha ejecutiva por sistema crítico.
+      </p>
+    </div>
+    <div class="phase-actions">
+      <button type="button" id="btnExportarFase3PDF" class="btn btn-primary btn-sm btn-export-pdf">Exportar PDF</button>
+      <div class="phase-question-pill">Piloto evidencias</div>
+    </div>
+  </div>
+
+  <section class="analytic-card phase-collapse-card mb-3">
+    <button class="phase-block-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#fase3ResumenCollapse" aria-expanded="true" aria-controls="fase3ResumenCollapse">
+      <div>
+        <div class="analytic-phase-title mb-1">Ficha ejecutiva del sistema</div>
+        <div class="analytic-mini">Presenta una lectura gerencial del acueducto crítico con evidencia disponible.</div>
+      </div>
+      <span class="phase-block-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    </button>
+    <div class="collapse show" id="fase3ResumenCollapse">
+      <div class="phase-collapse-body">
+        <div id="fase3Empty" class="analytic-method-box d-none">
+          <div class="analytic-method-title">Sin evidencias asociadas al filtro activo</div>
+          <div class="analytic-method-text">No se encontró un sistema con evidencias asociadas al filtro activo. Filtre un acueducto con soporte cargado en el maestro de evidencias.</div>
+        </div>
+
+        <div id="fase3Content">
+          <div class="fase3-hero-card mb-3">
+            <div>
+              <div class="fase3-label">Sistema priorizado</div>
+              <h5 id="fase3Sistema" class="mb-1">–</h5>
+              <div id="fase3Prestador" class="fase3-muted">–</div>
+            </div>
+            <div class="fase3-risk-box">
+              <div class="fase3-label">Riesgo / IRCA soporte</div>
+              <div id="fase3Riesgo" class="fase3-risk">–</div>
+              <div id="fase3Irca" class="fase3-muted text-end">–</div>
+            </div>
+          </div>
+
+          <div class="fase3-kpi-grid mb-3">
+            <div class="kpi-card p-3"><div class="kpi-label">Municipio</div><div id="fase3Municipio" class="fase3-kpi-value">–</div></div>
+            <div class="kpi-card p-3"><div class="kpi-label">Población</div><div id="fase3Poblacion" class="fase3-kpi-value">–</div></div>
+            <div class="kpi-card p-3"><div class="kpi-label">Usuarios</div><div id="fase3Usuarios" class="fase3-kpi-value">–</div></div>
+            <div class="kpi-card p-3"><div class="kpi-label">Intervención principal</div><div id="fase3Intervencion" class="fase3-kpi-value text-wrap">–</div></div>
+            <div class="kpi-card p-3"><div class="kpi-label">Estado del soporte</div><div id="fase3SoporteEstado" class="fase3-kpi-value text-wrap">–</div></div>
+          </div>
+
+          <div class="row g-3">
+            <div class="col-lg-7">
+              <div class="analytic-method-box h-100">
+                <div class="analytic-method-title">Diagnóstico ejecutivo</div>
+                <div id="fase3Diagnostico" class="analytic-method-text mt-2">–</div>
+                <div class="analytic-method-title mt-3">Recomendación gerencial</div>
+                <div id="fase3Recomendacion" class="analytic-method-text mt-2">–</div>
+              </div>
+            </div>
+            <div class="col-lg-5">
+              <div class="analytic-method-box h-100">
+                <div class="analytic-method-title">Soportes disponibles</div>
+                <div id="fase3Soportes" class="fase3-support-list mt-2"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="analytic-card phase-collapse-card mb-0">
+    <button class="phase-block-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#fase3EvidenciaCollapse" aria-expanded="true" aria-controls="fase3EvidenciaCollapse">
+      <div>
+        <div class="analytic-phase-title mb-1">Evidencia fotográfica y hallazgos</div>
+        <div class="analytic-mini">Galería de soporte visual y lectura rápida de componentes críticos.</div>
+      </div>
+      <span class="phase-block-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    </button>
+    <div class="collapse show" id="fase3EvidenciaCollapse">
+      <div class="phase-collapse-body">
+        <div id="fase3Galeria" class="fase3-photo-grid mb-3"></div>
+        <div class="analytic-method-box mb-0">
+          <div class="analytic-method-title">Hallazgos clave</div>
+          <div id="fase3Hallazgos" class="analytic-method-text mt-2">–</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="soft-card p-3 mb-4 collapsible-block consulta-tablas-block consulta-analitica-block">
         <button class="table-toggle-header" type="button" data-bs-toggle="collapse" data-bs-target="#ircasConsultaCollapse" aria-expanded="false" aria-controls="ircasConsultaCollapse">
           <div class="table-toggle-copy">
-            <h5 class="mb-1">Tablas de consulta y analítica</h5>
-            <div class="section-note mb-0">La tabla de detalle y el bloque de analítica quedan ocultos en pestañas para reducir el ruido visual del tablero. Ábrelos solo cuando necesites consultar, filtrar, exportar o revisar priorización.</div>
+            <h5 class="mb-1">Tablas de consulta</h5>
+            <div class="section-note mb-0">Consulta, filtra y exporta el detalle de registros IRCAS del tablero. Este módulo queda separado de la analítica para mantener clara la lectura ejecutiva.</div>
           </div>
           <span class="table-toggle-arrow" aria-hidden="true">
             <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -1952,108 +3805,20 @@ BLOQUE DE ACCESO UESVALLE - FIN
         </button>
 
         <div class="collapse mt-3" id="ircasConsultaCollapse">
-          <ul class="nav nav-tabs query-tabs" id="ircasConsultaTabs" role="tablist">
-            <li class="nav-item" role="presentation">
-              <button class="nav-link active" id="tab-ircas-detalle-tab" data-bs-toggle="tab" data-bs-target="#tab-ircas-detalle" type="button" role="tab" aria-controls="tab-ircas-detalle" aria-selected="true">
-                Tabla de detalle IRCAS
-              </button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button class="nav-link" id="tab-ircas-analitica-tab" data-bs-toggle="tab" data-bs-target="#tab-ircas-analitica" type="button" role="tab" aria-controls="tab-ircas-analitica" aria-selected="false">
-                Analítica de priorización y seguimiento
-              </button>
-            </li>
-          </ul>
-
-          <div class="tab-content" id="ircasConsultaTabsContent">
-            <div class="tab-pane fade show active tab-pane-card" id="tab-ircas-detalle" role="tabpanel" aria-labelledby="tab-ircas-detalle-tab" tabindex="0">
-              <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-2">
-                <h5 class="mb-0">Tabla de detalle IRCAS</h5>
-                <div class="section-note">La tabla respeta los filtros activos y permite exportar.</div>
-              </div>
-              <div class="table-responsive">
-                <table id="tbl" class="table table-striped table-hover w-100"></table>
-              </div>
-            </div>
-
-            <div class="tab-pane fade tab-pane-card" id="tab-ircas-analitica" role="tabpanel" aria-labelledby="tab-ircas-analitica-tab" tabindex="0">
-
-        <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-3">
-          <div>
-            <h5 class="mb-1">Analítica de priorización y seguimiento</h5>
-            <div class="section-note">Bloque analítico posterior al componente espacial. Fase 1 implementada; Fases 2 y 3 listas para crecer.</div>
-          </div>
-        </div>
-
-        <div class="analytics-section-stack">
-          <section class="analytic-card p-3">
-            <div class="mb-3">
-              <h6 class="analytics-section-title">Fase 1 · Ejecutiva</h6>
-              <div class="analytics-section-subtitle">Priorización ejecutiva, población expuesta y alertas automáticas del bloque IRCA activo.</div>
-            </div>
-            <div class="analytics-executive-layout">
+          <div class="tab-pane-card consulta-table-card">
+            <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-2">
               <div>
-                <div class="analytics-kpi-grid">
-                  <div class="kpi-card p-3"><div class="kpi-label">Sistemas críticos</div><div id="anaKpiCriticos" class="kpi-value">–</div></div>
-                  <div class="kpi-card p-3"><div class="kpi-label">Población riesgo ≥ medio</div><div id="anaKpiPobRiesgo" class="kpi-value">–</div></div>
-                  <div class="kpi-card p-3"><div class="kpi-label">Población alto/inviable</div><div id="anaKpiPobAlta" class="kpi-value">–</div></div>
-                  <div class="kpi-card p-3"><div class="kpi-label">Sistemas sin tratamiento</div><div id="anaKpiSinTrat" class="kpi-value">–</div></div>
-                </div>
-                <div class="analytic-executive-note">
-                  <b>Prioridad del sistema</b> = factor de riesgo × log10(población + 1) × factor de tratamiento.<br>
-                  <b>Factor de riesgo:</b> Sin riesgo = 0, Bajo = 1, Medio = 2, Alto = 3, Inviable = 4.
-                </div>
-              </div>
-              <div class="analytic-alert-card p-3 rounded-4">
-                <div class="analytic-phase-title mb-2">Alertas automáticas</div>
-                <div class="analytic-mini mb-3">Detección automática de sistemas con mayor criticidad operativa y sanitaria.</div>
-                <div id="anaAlertas"></div>
+                <h5 class="mb-1">Tabla de detalle IRCAS</h5>
+                <div class="section-note">La tabla respeta los filtros activos y permite exportar a Excel, CSV o imprimir.</div>
               </div>
             </div>
-          </section>
-
-          <section class="analytic-card p-3">
-            <div class="mb-3">
-              <h6 class="analytics-section-title">Top 10 sistemas críticos</h6>
-              <div class="analytics-section-subtitle">Ranking de sistemas priorizados con base en riesgo sanitario, población y condición de tratamiento.</div>
-            </div>
-            <div class="analytic-method-box mb-3">
-              <div class="analytic-method-title">¿Cómo se calcula?</div>
-              <div class="analytic-method-text">El indicador combina <b>nivel de riesgo IRCA del bloque activo</b>, <b>población abastecida</b> y <b>condición de tratamiento</b>.</div>
-              <div class="analytic-formula mt-2">Prioridad = factor de riesgo × log10(población + 1) × factor de tratamiento</div>
-              <div class="analytic-method-list mt-2"><div><b>Rangos operativos:</b> Muy alta ≥ 8, Alta = 6–7.99, Media = 4–5.99, Baja &lt; 4.</div></div>
-            </div>
             <div class="table-responsive">
-              <table class="table table-sm analytic-table">
-                <thead><tr><th class="col-prestador">Prestador</th><th class="col-municipio">Municipio</th><th class="col-irca">IRCA</th><th class="col-poblacion">Población</th><th class="col-prioridad">Prioridad</th></tr></thead>
-                <tbody id="anaTopSistemas"></tbody>
-              </table>
-            </div>
-          </section>
-
-          <section class="analytic-card p-3">
-            <div class="mb-3">
-              <h6 class="analytics-section-title">Top 10 municipios críticos</h6>
-              <div class="analytics-section-subtitle">Ranking municipal a partir de la criticidad agregada de sus sistemas y la población expuesta.</div>
-            </div>
-            <div class="analytic-method-box mb-3">
-              <div class="analytic-method-title">¿Cómo se calcula?</div>
-              <div class="analytic-method-text">El indicador municipal consolida <b>promedio IRCA</b>, <b>población expuesta en riesgo medio o superior</b> y <b>suma de prioridades de los sistemas filtrados</b>.</div>
-              <div class="analytic-formula mt-2">Score municipal = suma de prioridades de sistemas + presión poblacional en riesgo</div>
-              <div class="analytic-method-list mt-2"><div><b>Interpretación:</b> a mayor score, mayor criticidad municipal.</div></div>
-            </div>
-            <div class="table-responsive">
-              <table class="table table-sm analytic-table">
-                <thead><tr><th>Municipio</th><th>IRCA prom.</th><th>Pob. riesgo</th><th>Score</th></tr></thead>
-                <tbody id="anaTopMunicipios"></tbody>
-              </table>
-            </div>
-          </section>
-        </div>
+              <table id="tbl" class="table table-striped table-hover w-100"></table>
             </div>
           </div>
         </div>
       </section>
+
 
     </div>
   </main>
@@ -2336,6 +4101,8 @@ BLOQUE DE ACCESO UESVALLE - FIN
 
     const CSV_URL = "../../data/ircas/current/IRCAS.csv";
     const METADATA_URL = "../../data/ircas/current/metadata_ircas.json";
+    const SISA_VISITAS_URL = "../../data/ircas/current/sisa_visitas_ach.csv";
+    const EVIDENCIAS_URL = "../../data/ircas/current/evidencias_sistemas.csv";
     const DEFAULT_ANALYSIS_BLOCK = "ULTIMO";
     const ANALYSIS_BLOCKS = [
       { value:"ULTIMO", label:"Último IRCA reportado" },
@@ -2374,6 +4141,12 @@ BLOQUE DE ACCESO UESVALLE - FIN
     let RAW = [];
     let LIST = [];
     let METADATA_IRCAS = null;
+    let SISA_VISITAS = [];
+    let SISA_BY_CODE = new Map();
+    let SISA_LOAD_STATUS = { loaded:false, count:0, error:"" };
+    let EVIDENCIAS = [];
+    let EVIDENCIAS_BY_CODE = new Map();
+    let EVIDENCIAS_LOAD_STATUS = { loaded:false, count:0, error:"" };
     let DT = null;
     let charts = {};
     let selectInstances = {};
@@ -2394,6 +4167,7 @@ BLOQUE DE ACCESO UESVALLE - FIN
     let chartYearFilter = "";
     let mapRiskBadgeFilter = "";
     let mapTreatmentBadgeFilter = "";
+    let mapOnlyCritical = false;
     let riskMetricMode = "poblacion";
     let compareYear = "2020";
 
@@ -2681,6 +4455,147 @@ BLOQUE DE ACCESO UESVALLE - FIN
         });
       });
     }
+
+    async function fetchSisaVisitasCSV(){
+      return new Promise((resolve) => {
+        Papa.parse(SISA_VISITAS_URL + "?_=" + Date.now(), {
+          download: true,
+          header: true,
+          skipEmptyLines: true,
+          complete: (res) => {
+            SISA_LOAD_STATUS = { loaded:true, count:(res.data || []).length, error:"" };
+            resolve(res);
+          },
+          error: (err) => {
+            console.warn("No se pudo cargar sisa_visitas_ach.csv", err);
+            SISA_LOAD_STATUS = { loaded:false, count:0, error:(err && err.message) ? err.message : String(err || "Error") };
+            resolve({ data: [] });
+          }
+        });
+      });
+    }
+
+    function normalizeJoinCode(v){
+      return String(v == null ? "" : v).replace(/\ufeff/g, "").replace(/\.0$/, "").replace(/[^0-9A-Za-z]/g, "").trim();
+    }
+
+    function parseSisaRows(rows){
+      return (rows || []).map(r => ({
+        CODIGO_ANTERIOR: normalizeJoinCode(r["CODIGO_ANTERIOR"] ?? r["CODIGO ANTERIOR"] ?? ""),
+        MUNICIPIO: r["MUNICIPIO"] ?? "",
+        PERSONA_PRESTADORA: r["PERSONA_PRESTADORA"] ?? "",
+        NOMBRE_SISTEMA: r["NOMBRE_SISTEMA"] ?? "",
+        ARO: r["ARO"] ?? "",
+        FECHA_VISITA_1_2: r["FECHA_VISITA_1_2"] ?? "",
+        CONCEPTO_1_2: r["CONCEPTO_1_2"] ?? "",
+        FUNCIONARIO_1_2: r["FUNCIONARIO_1_2"] ?? "",
+        IRCA_1_2: toNumber(r["IRCA_1_2"]),
+        OBSERVACION_1_2: r["OBSERVACION_1_2"] ?? "",
+        COMPONENTE_AFECTADO: r["COMPONENTE_AFECTADO"] ?? "",
+        INTERVENCION_SUGERIDA: r["INTERVENCION_SUGERIDA"] ?? "",
+        HALLAZGO_CLAVE: r["HALLAZGO_CLAVE"] ?? "",
+        FECHA_MUESTREO_1_7: r["FECHA_MUESTREO_1_7"] ?? "",
+        IRCA_1_7: toNumber(r["IRCA_1_7"]),
+        CODIGO_LABORATORIO_1_7: r["CODIGO_LABORATORIO_1_7"] ?? "",
+        RESULTADO_1_7: r["RESULTADO_1_7"] ?? "",
+        ESTADO_MUESTRA_1_7: r["ESTADO_MUESTRA_1_7"] ?? "",
+        PUNTO_MUESTREO_1_7: r["PUNTO_MUESTREO_1_7"] ?? "",
+        TIPO_ANALISIS_1_7: r["TIPO_ANALISIS_1_7"] ?? "",
+        SOPORTE_SISA: r["SOPORTE_SISA"] ?? "",
+        TOTAL_VISITAS_1_2: toNumber(r["TOTAL_VISITAS_1_2"]),
+        TOTAL_MUESTREOS_1_7: toNumber(r["TOTAL_MUESTREOS_1_7"])
+      })).filter(r => r.CODIGO_ANTERIOR);
+    }
+
+    function buildSisaIndex(){
+      SISA_BY_CODE = new Map();
+      SISA_VISITAS.forEach(r => {
+        if(r.CODIGO_ANTERIOR) SISA_BY_CODE.set(r.CODIGO_ANTERIOR, r);
+      });
+    }
+
+    function getSisaForSystem(d){
+      const candidates = [d.CODIGO_IVC, d.CODIGO_SISTEMA, d.CODIGO_ANTERIOR]
+        .map(normalizeJoinCode)
+        .filter(Boolean);
+      for(const c of candidates){
+        if(SISA_BY_CODE.has(c)) return SISA_BY_CODE.get(c);
+      }
+      return null;
+    }
+
+async function fetchEvidenciasCSV(){
+  return new Promise((resolve) => {
+    Papa.parse(EVIDENCIAS_URL + "?_=" + Date.now(), {
+      download: true,
+      header: true,
+      skipEmptyLines: true,
+      complete: (res) => {
+        EVIDENCIAS_LOAD_STATUS = { loaded:true, count:(res.data || []).length, error:"" };
+        resolve(res);
+      },
+      error: (err) => {
+        console.warn("No se pudo cargar evidencias_sistemas.csv", err);
+        EVIDENCIAS_LOAD_STATUS = { loaded:false, count:0, error:(err && err.message) ? err.message : String(err || "Error") };
+        resolve({ data: [] });
+      }
+    });
+  });
+}
+
+function parseEvidenciaRows(rows){
+  return (rows || []).map(r => ({
+    CODIGO_ANTERIOR: normalizeJoinCode(r["CODIGO_ANTERIOR"] ?? r["CODIGO ANTERIOR"] ?? ""),
+    CODIGO_SISTEMA: normalizeJoinCode(r["CODIGO_SISTEMA"] ?? ""),
+    MUNICIPIO: r["MUNICIPIO"] ?? "",
+    SISTEMA: r["SISTEMA"] ?? "",
+    PERSONA_PRESTADORA: r["PERSONA_PRESTADORA"] ?? "",
+    VEREDA: r["VEREDA"] ?? "",
+    FECHA_INSPECCION: r["FECHA_INSPECCION"] ?? "",
+    ANIO_SOPORTE: r["ANIO_SOPORTE"] ?? "",
+    POBLACION: toNumber(r["POBLACION"]),
+    USUARIOS: toNumber(r["USUARIOS"]),
+    IRCA_REFERENCIA: toNumber(r["IRCA_REFERENCIA"]),
+    NIVEL_RIESGO: r["NIVEL_RIESGO"] ?? "",
+    FUENTES: r["FUENTES"] ?? "",
+    TIPO_FUENTE: r["TIPO_FUENTE"] ?? "",
+    TRATAMIENTO: r["TRATAMIENTO"] ?? "",
+    DESINFECCION: r["DESINFECCION"] ?? "",
+    PTAP: r["PTAP"] ?? "",
+    PUNTOS_MUESTREO: r["PUNTOS_MUESTREO"] ?? "",
+    INTERVENCION_PRINCIPAL: r["INTERVENCION_PRINCIPAL"] ?? "",
+    INTERVENCIONES_COMPLEMENTARIAS: r["INTERVENCIONES_COMPLEMENTARIAS"] ?? "",
+    HALLAZGOS_CLAVE: r["HALLAZGOS_CLAVE"] ?? "",
+    DIAGNOSTICO_EJECUTIVO: r["DIAGNOSTICO_EJECUTIVO"] ?? "",
+    RECOMENDACION_GERENCIAL: r["RECOMENDACION_GERENCIAL"] ?? "",
+    ESTADO_SOPORTE: r["ESTADO_SOPORTE"] ?? "",
+    RUTA_FICHA: r["RUTA_FICHA"] ?? "",
+    RUTA_LAB_1: r["RUTA_LAB_1"] ?? "",
+    RUTA_LAB_2: r["RUTA_LAB_2"] ?? "",
+    FOTO_1: r["FOTO_1"] ?? "",
+    FOTO_2: r["FOTO_2"] ?? "",
+    FOTO_3: r["FOTO_3"] ?? "",
+    OBSERVACION: r["OBSERVACION"] ?? ""
+  })).filter(r => r.CODIGO_ANTERIOR || r.CODIGO_SISTEMA);
+}
+
+function buildEvidenciasIndex(){
+  EVIDENCIAS_BY_CODE = new Map();
+  EVIDENCIAS.forEach(r => {
+    if(r.CODIGO_ANTERIOR) EVIDENCIAS_BY_CODE.set(r.CODIGO_ANTERIOR, r);
+    if(r.CODIGO_SISTEMA) EVIDENCIAS_BY_CODE.set(r.CODIGO_SISTEMA, r);
+  });
+}
+
+function getEvidenceForSystem(d){
+  const candidates = [d?.CODIGO_IVC, d?.CODIGO_SISTEMA, d?.CODIGO_ANTERIOR]
+    .map(normalizeJoinCode)
+    .filter(Boolean);
+  for(const c of candidates){
+    if(EVIDENCIAS_BY_CODE.has(c)) return EVIDENCIAS_BY_CODE.get(c);
+  }
+  return null;
+}
 
     async function fetchMetadataIRCA(){
       try{
@@ -3343,7 +5258,8 @@ BLOQUE DE ACCESO UESVALLE - FIN
       };
 
       document.getElementById("legend").innerHTML = `
-        <div class="legend-title">Clasificación del IRCA</div>
+        <div class="legend-title">Clasificación sanitaria IRCA</div>
+        <div class="legend-help">Color del punto según nivel de riesgo del año activo.</div>
         ${Object.entries(RISK_COLORS).map(([k,c]) => `<div><i style="background:${c}"></i>${k}</div>`).join("")}
       `;
 
@@ -3700,25 +5616,47 @@ BLOQUE DE ACCESO UESVALLE - FIN
       MAP.setView(VALLE_CENTER, VALLE_DEFAULT_ZOOM);
     }
 
+    function getMapDisplayData(data){
+      if(!mapOnlyCritical) return data;
+      const riskField = getRiskField(getSelectedBlock());
+      return data.filter(d => {
+        const r = norm(d[riskField] || "SIN DATO");
+        return r === "ALTO" || r === "INVIABLE SANITARIAMENTE";
+      });
+    }
+
+    function updateMapQuickControls(){
+      const btn = document.getElementById("btnMapOnlyCritical");
+      if(!btn) return;
+      btn.classList.toggle("active", !!mapOnlyCritical);
+      btn.textContent = mapOnlyCritical ? "Mostrar todos" : "Solo críticos";
+      btn.title = mapOnlyCritical
+        ? "Volver a mostrar todos los sistemas del filtro activo"
+        : "Mostrar únicamente sistemas en riesgo Alto o Inviable sanitariamente";
+    }
+
     function renderMainMap(data){
       clearMainLayers();
 
+      const mapData = getMapDisplayData(data);
       const years = ["2020","2021","2022","2023","2024","2025","2026"];
-      const ptsActual = data.filter(d => isValidValleCoord(d.LATITUD, d.LONGITUD));
-      document.getElementById("mapCount").textContent = `${ptsActual.length} sistemas`;
-      renderMapResumenIRCA(data);
+      const ptsActual = mapData.filter(d => isValidValleCoord(d.LATITUD, d.LONGITUD));
+      const suffix = mapOnlyCritical ? " críticos" : " sistemas";
+      document.getElementById("mapCount").textContent = `${ptsActual.length}${suffix}`;
+      renderMapResumenIRCA(mapData);
 
       years.forEach(year => {
         const layer = YEAR_LAYERS[`IRCAS · ${year}`];
-        data.forEach(d => {
+        mapData.forEach(d => {
           if(!isValidValleCoord(d.LATITUD, d.LONGITUD)) return;
           layer.addLayer(createCircleMarker(d, year));
         });
       });
 
       const selectedYear = getSelectedBlock();
-      buildHeatLayer(data, selectedYear);
+      buildHeatLayer(mapData, selectedYear);
       syncPanelLayersWithMap();
+      updateMapQuickControls();
     }
 
     function initCompareMaps(){
@@ -4102,13 +6040,35 @@ BLOQUE DE ACCESO UESVALLE - FIN
       document.getElementById("riskKpiPctPobRiesgo").textContent = pctPobRiesgo.toFixed(1) + "%";
     }
 
+    function treatmentStatus(d){
+      const t = norm(d.ALGUN_TIPO_TRATAMIENTO || "");
+      if(t === "SI" || t === "SÍ" || t === "TRUE" || t === "1" || t === "CON TRATAMIENTO") return "TIENE_TRATAMIENTO";
+      if(t === "NO" || t === "0" || t === "FALSE" || t === "SIN TRATAMIENTO") return "NO_TIENE_TRATAMIENTO";
+      return "SIN_DATO";
+    }
+
+    function treatmentFactor(d){
+      const risk = norm(d.RIESGO_ACTUAL || "SIN DATO");
+      const status = treatmentStatus(d);
+      if(status === "NO_TIENE_TRATAMIENTO" && (risk === "ALTO" || risk === "INVIABLE SANITARIAMENTE")) return 1.40;
+      if(status === "NO_TIENE_TRATAMIENTO") return 1.25;
+      if(status === "SIN_DATO") return 1.15;
+      return 1.00;
+    }
+
+    function treatmentStatusLabel(d){
+      const status = treatmentStatus(d);
+      if(status === "TIENE_TRATAMIENTO") return "Sí";
+      if(status === "NO_TIENE_TRATAMIENTO") return "No";
+      return "Sin dato";
+    }
+
     function computePriority(d){
       const risk = norm(d.RIESGO_ACTUAL || "SIN DATO");
       const factorRisk = riskFactor(risk);
       const pop = d.POBLACION || 0;
-      const hasTreatment = norm(d.ALGUN_TIPO_TRATAMIENTO || "");
-      const noTreatmentFactor = (hasTreatment === "NO" || hasTreatment === "0" || hasTreatment === "FALSE" || hasTreatment === "") ? 1.25 : 1.0;
-      const score = factorRisk * Math.log10(pop + 1) * noTreatmentFactor;
+      const factorTreatment = treatmentFactor(d);
+      const score = factorRisk * Math.log10(pop + 1) * factorTreatment;
       return Number.isFinite(score) ? score : 0;
     }
 
@@ -4125,6 +6085,94 @@ BLOQUE DE ACCESO UESVALLE - FIN
         .replace(/�/g, "")
         .replace(/\s+/g, " ")
         .trim() || "-";
+    }
+
+    function renderInterventions(data){
+      const setText = (id, value) => {
+        const el = document.getElementById(id);
+        if(el) el.textContent = value;
+      };
+      const rows = (data || []).map(d => {
+        const sisa = getSisaForSystem(d);
+        const prioridad = computePriority(d);
+        return { d, sisa, prioridad };
+      }).sort((a,b) => b.prioridad - a.prioridad);
+
+      const conVisita = rows.filter(x => x.sisa && (x.sisa.TOTAL_VISITAS_1_2 || x.sisa.FECHA_VISITA_1_2)).length;
+      const conMuestreo = rows.filter(x => x.sisa && (x.sisa.TOTAL_MUESTREOS_1_7 || x.sisa.FECHA_MUESTREO_1_7)).length;
+      const ambos = rows.filter(x => x.sisa && (x.sisa.TOTAL_VISITAS_1_2 || x.sisa.FECHA_VISITA_1_2) && (x.sisa.TOTAL_MUESTREOS_1_7 || x.sisa.FECHA_MUESTREO_1_7)).length;
+      const sinSoporte = rows.length - rows.filter(x => x.sisa).length;
+
+      const counter = {};
+      rows.forEach(x => {
+        const k = x.sisa ? (x.sisa.INTERVENCION_SUGERIDA || "Sin clasificación") : "Sin soporte SISA";
+        counter[k] = (counter[k] || 0) + 1;
+      });
+      const topInterv = Object.entries(counter).sort((a,b)=>b[1]-a[1])[0];
+
+      setText("fase2KpiConVisita", conVisita.toLocaleString("es-CO"));
+      setText("fase2KpiConMuestreo", conMuestreo.toLocaleString("es-CO"));
+      setText("fase2KpiAmbos", ambos.toLocaleString("es-CO"));
+      setText("fase2KpiSinSoporte", Math.max(0, sinSoporte).toLocaleString("es-CO"));
+      setText("fase2KpiIntervencion", topInterv ? `${topInterv[0]} (${topInterv[1]})` : "–");
+
+      const tbody = document.getElementById("fase2TablaIntervenciones");
+      if(tbody){
+        const top = rows.slice(0, 25);
+        tbody.innerHTML = top.length ? top.map(x => {
+          const d = x.d;
+          const s = x.sisa;
+          const riesgo = norm(d.RIESGO_ACTUAL || "SIN DATO");
+          const color = riskColor(riesgo);
+          const riesgoColor = (riesgo === "SIN RIESGO" || riesgo === "ALTO" || riesgo === "INVIABLE SANITARIAMENTE") ? "#fff" : "#111827";
+          const soporte = s ? (s.SOPORTE_SISA || "SISA") : "Sin soporte SISA";
+          const soporteClass = !s ? "muted" : (soporte.includes("Muestreo") && !soporte.includes("Visita") ? "warning" : "");
+          const concepto = s && s.CONCEPTO_1_2 ? cleanDisplayText(s.CONCEPTO_1_2) : "-";
+          const intervencion = s && s.INTERVENCION_SUGERIDA ? cleanDisplayText(s.INTERVENCION_SUGERIDA) : "Sin clasificación";
+          const hallazgo = s && s.HALLAZGO_CLAVE ? cleanDisplayText(s.HALLAZGO_CLAVE) : "Sin observación técnica cruzada";
+          const visita = s && s.FECHA_VISITA_1_2 ? s.FECHA_VISITA_1_2 : "-";
+          const muestreo = s && s.FECHA_MUESTREO_1_7 ? s.FECHA_MUESTREO_1_7 : "-";
+          return `<tr>
+            <td class="text-center"><span class="score-number">${x.prioridad.toFixed(2)}</span></td>
+            <td>${cleanDisplayText(d.MUNICIPIO || "-")}</td>
+            <td><button type="button" class="analytic-row-link btn-map-focus-fase2" data-codigo="${escapeHTML(d.CODIGO_SISTEMA || '')}" title="Ver este acueducto en el mapa y en la tabla">${cleanDisplayText(d.PERSONA_PRESTADORA || s?.PERSONA_PRESTADORA || "-")}</button></td>
+            <td class="text-center"><span class="risk-pill risk-pill-compact" style="background:${color}; color:${riesgoColor};">${riesgo}</span></td>
+            <td class="text-center">${escapeHTML(visita)}</td>
+            <td class="text-center">${escapeHTML(concepto)}</td>
+            <td><span class="phase2-intervention-chip">${escapeHTML(intervencion)}</span></td>
+            <td class="phase2-observation-cell">${escapeHTML(hallazgo)}</td>
+            <td class="text-center">${escapeHTML(muestreo)}</td>
+            <td class="text-center"><span class="phase2-support-badge ${soporteClass}">${escapeHTML(soporte)}</span></td>
+          </tr>`;
+        }).join("") : `<tr><td colspan="10"><div class="phase2-empty-state">No hay registros para el filtro aplicado.</div></td></tr>`;
+        tbody.querySelectorAll(".btn-map-focus-fase2").forEach(btn => {
+          btn.addEventListener("click", function(){ seleccionarSistemaAnalitica(this.dataset.codigo || ""); });
+        });
+      }
+
+      const summary = {};
+      rows.forEach(x => {
+        const key = x.sisa ? (x.sisa.INTERVENCION_SUGERIDA || "Sin clasificación") : "Sin soporte SISA";
+        if(!summary[key]) summary[key] = { name:key, count:0, pop:0, priority:0, visita:0, muestreo:0 };
+        summary[key].count += 1;
+        summary[key].pop += x.d.POBLACION || 0;
+        summary[key].priority += x.prioridad || 0;
+        if(x.sisa && (x.sisa.TOTAL_VISITAS_1_2 || x.sisa.FECHA_VISITA_1_2)) summary[key].visita += 1;
+        if(x.sisa && (x.sisa.TOTAL_MUESTREOS_1_7 || x.sisa.FECHA_MUESTREO_1_7)) summary[key].muestreo += 1;
+      });
+
+      const summaryEl = document.getElementById("fase2ResumenIntervenciones");
+      if(summaryEl){
+        const arr = Object.values(summary).sort((a,b)=>b.priority-a.priority).slice(0,12);
+        summaryEl.innerHTML = arr.length ? arr.map(r => `<tr>
+          <td>${escapeHTML(r.name)}</td>
+          <td class="text-center">${r.count.toLocaleString("es-CO")}</td>
+          <td class="text-center">${r.pop.toLocaleString("es-CO")}</td>
+          <td class="text-center"><span class="score-number">${r.priority.toFixed(2)}</span></td>
+          <td class="text-center">${r.visita.toLocaleString("es-CO")}</td>
+          <td class="text-center">${r.muestreo.toLocaleString("es-CO")}</td>
+        </tr>`).join("") : `<tr><td colspan="6" class="text-center text-muted">No hay datos para consolidar.</td></tr>`;
+      }
     }
 
     function renderAnalytics(data){
@@ -4145,92 +6193,371 @@ BLOQUE DE ACCESO UESVALLE - FIN
 
       const noTreatment = data.filter(d => {
         const t = norm(d.ALGUN_TIPO_TRATAMIENTO || "");
-        return t === "NO" || t === "0" || t === "FALSE" || t === "";
+        return t === "NO" || t === "0" || t === "FALSE" || t === "" || t === "SIN DATO";
       });
 
-      document.getElementById("anaKpiCriticos").textContent = criticalSystems.length.toLocaleString("es-CO");
-      document.getElementById("anaKpiPobRiesgo").textContent = popRisk.toLocaleString("es-CO");
-      document.getElementById("anaKpiPobAlta").textContent = popAlta.toLocaleString("es-CO");
-      document.getElementById("anaKpiSinTrat").textContent = noTreatment.length.toLocaleString("es-CO");
+      const sinDatoIRCA = data.filter(d => !Number.isFinite(d.IRCA_ACTUAL)).length;
+      const sinCoordenadas = data.filter(d => !isValidValleCoord(d.LATITUD, d.LONGITUD)).length;
+      const setAnalyticText = (id, value) => {
+        const el = document.getElementById(id);
+        if(el) el.textContent = value;
+      };
 
-      const alerts = [];
+      setAnalyticText("anaKpiEvaluados", data.length.toLocaleString("es-CO"));
+      setAnalyticText("anaKpiCriticos", criticalSystems.length.toLocaleString("es-CO"));
+      setAnalyticText("anaKpiPobRiesgo", popRisk.toLocaleString("es-CO"));
+      setAnalyticText("anaKpiPobAlta", popAlta.toLocaleString("es-CO"));
+      setAnalyticText("anaKpiSinTrat", noTreatment.length.toLocaleString("es-CO"));
+      setAnalyticText("anaKpiSinIRCA", sinDatoIRCA.toLocaleString("es-CO"));
+
       const highPopThreshold = 5000;
+      const sanitaryAlerts = [];
+      const operationalAlerts = [];
+      const infoAlerts = [];
 
       criticalSystems.sort((a,b)=>(b.POBLACION||0)-(a.POBLACION||0)).slice(0,3).forEach(d => {
-        alerts.push(`Sistema crítico en <b>${d.MUNICIPIO || "-"}</b> con prestador <b>${(d.PERSONA_PRESTADORA || "-").toUpperCase()}</b> y población ${(d.POBLACION||0).toLocaleString("es-CO")}.`);
+        sanitaryAlerts.push(`Acueducto crítico en <b>${d.MUNICIPIO || "-"}</b> con prestador <b>${cleanDisplayText(d.PERSONA_PRESTADORA || "-")}</b> y población ${(d.POBLACION||0).toLocaleString("es-CO")}.`);
       });
+
+      data.filter(d => (d.POBLACION || 0) >= highPopThreshold && norm(d.RIESGO_ACTUAL || "SIN DATO") !== "SIN RIESGO")
+        .slice(0,2).forEach(d => {
+          sanitaryAlerts.push(`Sistema con población significativa y riesgo activo en <b>${d.MUNICIPIO || "-"}</b> (${(d.POBLACION||0).toLocaleString("es-CO")} habitantes).`);
+        });
 
       data.filter(d => {
         const r = norm(d.RIESGO_ACTUAL || "SIN DATO");
         const t = norm(d.ALGUN_TIPO_TRATAMIENTO || "");
         return (r === "MEDIO" || r === "ALTO" || r === "INVIABLE SANITARIAMENTE") &&
-               (t === "NO" || t === "0" || t === "FALSE" || t === "");
-      }).slice(0,2).forEach(d => {
-        alerts.push(`Sistema sin tratamiento reportado y riesgo ${d.RIESGO_ACTUAL || "-"} en <b>${d.MUNICIPIO || "-"}</b>.`);
+               (t === "NO" || t === "0" || t === "FALSE" || t === "" || t === "SIN DATO");
+      }).slice(0,4).forEach(d => {
+        operationalAlerts.push(`Acueducto con tratamiento no reportado o sin tratamiento y riesgo <b>${d.RIESGO_ACTUAL || "-"}</b> en <b>${d.MUNICIPIO || "-"}</b>.`);
       });
 
-      data.filter(d => (d.POBLACION || 0) >= highPopThreshold && norm(d.RIESGO_ACTUAL || "SIN DATO") !== "SIN RIESGO")
-        .slice(0,2).forEach(d => {
-          alerts.push(`Sistema con alta población abastecida y riesgo activo en <b>${d.MUNICIPIO || "-"}</b>.`);
-        });
+      if(noTreatment.length){
+        operationalAlerts.unshift(`Se identifican <b>${noTreatment.length.toLocaleString("es-CO")}</b> acueductos sin tratamiento reportado o sin dato de tratamiento en el filtro activo.`);
+      }
 
-      const alertBox = document.getElementById("anaAlertas");
-      alertBox.innerHTML = alerts.length
-        ? alerts.map(a => `<div class="analytic-alert">${a}</div>`).join("")
-        : `<div class="analytic-alert" style="border-left-color:#16a34a;background:#f6fff8;">No se detectaron alertas prioritarias con los filtros actuales.</div>`;
+      if(sinDatoIRCA){
+        infoAlerts.push(`<b>${sinDatoIRCA.toLocaleString("es-CO")}</b> acueductos no tienen dato IRCA para el bloque activo.`);
+      }
+      if(sinCoordenadas){
+        infoAlerts.push(`<b>${sinCoordenadas.toLocaleString("es-CO")}</b> registros presentan coordenadas ausentes o no válidas para visualización en mapa.`);
+      }
+      if(!data.length){
+        infoAlerts.push(`No hay registros para el filtro aplicado.`);
+      }
+
+      const renderAlertList = (id, arr, okText) => {
+        const el = document.getElementById(id);
+        if(!el) return;
+        el.innerHTML = arr.length
+          ? arr.map(a => `<div class="analytic-alert">${a}</div>`).join("")
+          : `<div class="analytic-alert ok-alert">${okText}</div>`;
+      };
+
+      renderAlertList("anaAlertasSanitarias", sanitaryAlerts, "No se detectan alertas sanitarias prioritarias con los filtros actuales.");
+      renderAlertList("anaAlertasOperativas", operationalAlerts, "No se detectan alertas operativas prioritarias con los filtros actuales.");
+      renderAlertList("anaAlertasInformacion", infoAlerts, "No se detectan brechas críticas de información en el filtro activo.");
+
+      const isNoTreatment = (d) => {
+        const status = treatmentStatus(d);
+        return status === "NO_TIENE_TRATAMIENTO" || status === "SIN_DATO";
+      };
+      const isConfirmedNoTreatment = (d) => treatmentStatus(d) === "NO_TIENE_TRATAMIENTO";
+      const isUnknownTreatment = (d) => treatmentStatus(d) === "SIN_DATO";
+
+      const priorityReason = (d) => {
+        const r = norm(d.RIESGO_ACTUAL || "SIN DATO");
+        const noTrat = isConfirmedNoTreatment(d);
+        const sinDatoTrat = isUnknownTreatment(d);
+        const pop = d.POBLACION || 0;
+        if(r === "INVIABLE SANITARIAMENTE" && noTrat) return "Riesgo inviable + sin tratamiento";
+        if(r === "INVIABLE SANITARIAMENTE" && sinDatoTrat) return "Riesgo inviable + tratamiento sin dato";
+        if(r === "INVIABLE SANITARIAMENTE") return "Riesgo inviable sanitariamente";
+        if(r === "ALTO" && noTrat) return "Riesgo alto + sin tratamiento";
+        if(r === "ALTO" && sinDatoTrat) return "Riesgo alto + tratamiento sin dato";
+        if(r === "ALTO") return "Riesgo alto";
+        if(r === "MEDIO" && noTrat) return "Riesgo medio + sin tratamiento";
+        if(r === "MEDIO" && sinDatoTrat) return "Riesgo medio + tratamiento sin dato";
+        if(!Number.isFinite(d.IRCA_ACTUAL) && noTrat) return "Sin IRCA + sin tratamiento reportado";
+        if(!Number.isFinite(d.IRCA_ACTUAL) && sinDatoTrat) return "Sin IRCA + tratamiento sin dato";
+        if(!Number.isFinite(d.IRCA_ACTUAL)) return "Sin dato IRCA";
+        if(pop >= highPopThreshold && r !== "SIN RIESGO") return "Población significativa + riesgo activo";
+        return "Prioridad relativa por riesgo, población y tratamiento";
+      };
 
       const topSystems = [...data]
-        .map(d => ({...d, PRIORIDAD: computePriority(d)}))
+        .map(d => ({...d, PRIORIDAD: computePriority(d), MOTIVO_PRIORIDAD: priorityReason(d)}))
         .sort((a,b)=>b.PRIORIDAD-a.PRIORIDAD)
         .slice(0,10);
 
-      document.getElementById("anaTopSistemas").innerHTML = topSystems.map(d => {
-        const band = priorityBand(d.PRIORIDAD);
-        return `
-        <tr>
-          <td class="col-prestador">${cleanDisplayText(d.PERSONA_PRESTADORA || "-")}</td>
-          <td class="col-municipio">${cleanDisplayText(d.MUNICIPIO || "-")}</td>
-          <td class="col-irca">${Number(d.IRCA_ACTUAL || 0).toFixed(2)}</td>
-          <td class="col-poblacion">${Number(d.POBLACION || 0).toLocaleString("es-CO")}</td>
-          <td class="col-prioridad">
-            ${d.PRIORIDAD.toFixed(2)}
-            <span class="priority-pill" style="color:${band.color}; background:${band.bg}; border-color:${band.color}33;">${band.label}</span>
-          </td>
-        </tr>
-      `;
-      }).join("");
+      const topSystemsEl = document.getElementById("anaTopSistemas");
+      if(topSystemsEl){
+        topSystemsEl.innerHTML = topSystems.length ? topSystems.map(d => {
+          const band = priorityBand(d.PRIORIDAD);
+          const riesgo = norm(d.RIESGO_ACTUAL || "SIN DATO");
+          const color = riskColor(riesgo);
+          const riesgoColor = (riesgo === "SIN RIESGO" || riesgo === "ALTO" || riesgo === "INVIABLE SANITARIAMENTE") ? "#fff" : "#111827";
+          const tratamiento = treatmentStatusLabel(d);
+          const ircaTxt = Number.isFinite(d.IRCA_ACTUAL) ? Number(d.IRCA_ACTUAL).toFixed(2) : "Sin dato";
+          return `
+          <tr>
+            <td class="col-score text-center"><span class="score-number" title="Nivel: ${band.label}">${d.PRIORIDAD.toFixed(2)}</span></td>
+            <td class="col-municipio">${cleanDisplayText(d.MUNICIPIO || "-")}</td>
+            <td class="col-prestador"><button type="button" class="analytic-row-link btn-map-focus" data-codigo="${escapeHTML(d.CODIGO_SISTEMA || '')}" title="Ver este acueducto en el mapa y en la tabla">${cleanDisplayText(d.PERSONA_PRESTADORA || "-")}</button></td>
+            <td class="col-irca text-center">${ircaTxt}</td>
+            <td class="col-riesgo text-center"><span class="risk-pill risk-pill-compact" style="background:${color}; color:${riesgoColor};">${riesgo}</span></td>
+            <td class="col-poblacion text-center">${Number(d.POBLACION || 0).toLocaleString("es-CO")}</td>
+            <td class="col-tratamiento text-center">${tratamiento}</td>
+            <td>${d.MOTIVO_PRIORIDAD}</td>
+          </tr>`;
+        }).join("") : `<tr><td colspan="8" class="text-center text-muted">No hay registros para priorizar con el filtro aplicado.</td></tr>`;
+      }
+
+
+      if(topSystemsEl){
+        topSystemsEl.querySelectorAll(".btn-map-focus").forEach(btn => {
+          btn.addEventListener("click", function(){
+            seleccionarSistemaAnalitica(this.dataset.codigo || "");
+          });
+        });
+      }
 
       const muniMap = {};
       data.forEach(d => {
         const k = d.MUNICIPIO || "Sin municipio";
-        if(!muniMap[k]) muniMap[k] = { municipio:k, ircas:[], pobRisk:0, priority:0 };
+        if(!muniMap[k]) muniMap[k] = { municipio:k, ircas:[], pobRisk:0, priority:0, criticos:0, sinTratamiento:0, total:0 };
+        muniMap[k].total += 1;
         if(Number.isFinite(d.IRCA_ACTUAL)) muniMap[k].ircas.push(d.IRCA_ACTUAL);
 
         const r = norm(d.RIESGO_ACTUAL || "SIN DATO");
         if(r === "MEDIO" || r === "ALTO" || r === "INVIABLE SANITARIAMENTE"){
           muniMap[k].pobRisk += (d.POBLACION || 0);
         }
+        if(r === "ALTO" || r === "INVIABLE SANITARIAMENTE") muniMap[k].criticos += 1;
+        if(isNoTreatment(d)) muniMap[k].sinTratamiento += 1;
         muniMap[k].priority += computePriority(d);
       });
 
       const topMunicipios = Object.values(muniMap)
-        .map(m => ({ ...m, ircaProm: avg(m.ircas), scoreMunicipal: m.priority + Math.log10((m.pobRisk || 0) + 1) * 10 }))
+        .map(m => {
+          const ajustePoblacionRiesgo = Math.log10((m.pobRisk || 0) + 1) * 10;
+          return { ...m, ircaProm: avg(m.ircas), ajustePoblacionRiesgo, scoreMunicipal: m.priority + ajustePoblacionRiesgo };
+        })
         .sort((a,b)=>b.scoreMunicipal-a.scoreMunicipal)
         .slice(0,10);
 
-      document.getElementById("anaTopMunicipios").innerHTML = topMunicipios.map(m => `
-        <tr>
-          <td>${m.municipio}</td>
-          <td>${Number(m.ircaProm || 0).toFixed(2)}</td>
-          <td>${(m.pobRisk || 0).toLocaleString("es-CO")}</td>
-          <td>${m.scoreMunicipal.toFixed(2)}</td>
-        </tr>
-      `).join("");
+      const lecturaEl = document.getElementById("anaLecturaEjecutiva");
+      if(lecturaEl){
+        const topMuniTxt = topMunicipios.slice(0,3).map(m => m.municipio).join(", ") || "sin municipios críticos destacados";
+        const totalEvalTxt = data.length.toLocaleString("es-CO");
+        const totalCriticos = criticalSystems.length.toLocaleString("es-CO");
+        const pobRiesgoTxt = popRisk.toLocaleString("es-CO");
+        const pobCriticaTxt = popAlta.toLocaleString("es-CO");
+        const sinTratTxt = noTreatment.length.toLocaleString("es-CO");
+        const sinIrcaTxt = sinDatoIRCA.toLocaleString("es-CO");
+        lecturaEl.innerHTML = `Para el filtro aplicado se analizan <b>${totalEvalTxt} acueductos</b>. De estos, <b>${totalCriticos}</b> se clasifican en riesgo alto o inviable sanitariamente. La población en riesgo medio o superior asciende a <b>${pobRiesgoTxt} habitantes</b>, y la población en riesgo crítico a <b>${pobCriticaTxt} habitantes</b>. Además, se identifican <b>${sinTratTxt}</b> acueductos sin tratamiento reportado o sin dato de tratamiento y <b>${sinIrcaTxt}</b> sin dato IRCA. Los municipios con mayor prioridad sanitaria territorial son <b>${topMuniTxt}</b>.`;
+      }
+
+      const topMunicipiosEl = document.getElementById("anaTopMunicipios");
+      if(topMunicipiosEl){
+        topMunicipiosEl.innerHTML = topMunicipios.length ? topMunicipios.map(m => `
+          <tr>
+            <td><button type="button" class="analytic-row-link btn-municipio-filter" data-municipio="${escapeHTML(m.municipio)}" title="Filtrar tablero por este municipio">${m.municipio}</button></td>
+            <td class="text-center">${Number(m.criticos || 0).toLocaleString("es-CO")}</td>
+            <td class="text-center">${(m.pobRisk || 0).toLocaleString("es-CO")}</td>
+            <td class="text-center">${Number(m.ircaProm || 0).toFixed(2)}</td>
+            <td class="text-center">${Number(m.sinTratamiento || 0).toLocaleString("es-CO")}</td>
+            <td class="text-center"><span class="score-number">${m.scoreMunicipal.toFixed(2)}</span></td>
+          </tr>
+        `).join("") : `<tr><td colspan="6" class="text-center text-muted">No hay municipios para priorizar con el filtro aplicado.</td></tr>`;
+      }
+      if(topMunicipiosEl){
+        topMunicipiosEl.querySelectorAll(".btn-municipio-filter").forEach(btn => {
+          btn.addEventListener("click", function(){
+            filtrarMunicipioAnalitica(this.dataset.municipio || "");
+          });
+        });
+      }
+    }
+
+
+    function showBootstrapCollapse(id){
+      const el = document.getElementById(id);
+      if(!el) return;
+      if(!el.classList.contains("show")){
+        try{
+          const inst = bootstrap.Collapse.getOrCreateInstance(el, { toggle:false });
+          inst.show();
+        }catch(e){
+          el.classList.add("show");
+        }
+      }
+    }
+
+    function seleccionarSistemaAnalitica(codigoSistema){
+      const codigo = String(codigoSistema || "").trim();
+      if(!codigo) return;
+      const year = getSelectedBlock();
+      const d = (LIST || []).find(x => String(x.CODIGO_SISTEMA || "") === codigo) ||
+                (RAW || []).find(x => String(x.CODIGO_SISTEMA || "") === codigo);
+      if(!d) return;
+
+      showBootstrapCollapse("mainMapCollapse");
+      showBootstrapCollapse("ircasConsultaCollapse");
+
+      if(DT){
+        try{ DT.search(codigo).draw(); }catch(e){ console.warn(e); }
+      }
+
+      setTimeout(() => {
+        if(MAP){
+          MAP.invalidateSize();
+          if(isValidValleCoord(d.LATITUD, d.LONGITUD)){
+            MAP.setView([d.LATITUD, d.LONGITUD], 14);
+            const risk = d[getRiskField(year)] || d.RIESGO_ACTUAL || "SIN DATO";
+            const color = riskColor(risk);
+            const irca = Number.isFinite(d[getIRCAField(year)]) ? d[getIRCAField(year)] : d.IRCA_ACTUAL;
+            const fecha = d[getFechaField(year)] || d.FECHA_ACTUAL || "";
+            MAP.openPopup(buildPopupHTML(d, year, risk, color, irca, fecha), [d.LATITUD, d.LONGITUD]);
+          }
+        }
+        const mapBlock = document.getElementById("mainMapCollapse");
+        if(mapBlock) mapBlock.scrollIntoView({ behavior:"smooth", block:"start" });
+      }, 350);
+    }
+
+    function filtrarMunicipioAnalitica(municipio){
+      const value = String(municipio || "").trim();
+      if(!value) return;
+      const el = document.getElementById("fmunicipio");
+      if(el){
+        if(el.tomselect) el.tomselect.setValue(value, true);
+        else el.value = value;
+      }
+      chartMunicipioFilter = "";
+      mapRiskBadgeFilter = "";
+      mapTreatmentBadgeFilter = "";
+      cascadeFilterOptions();
+      applyFilters();
+      showBootstrapCollapse("mainMapCollapse");
+      setTimeout(() => {
+        const mapBlock = document.getElementById("mainMapCollapse");
+        if(mapBlock) mapBlock.scrollIntoView({ behavior:"smooth", block:"start" });
+      }, 250);
     }
 
     function destroyChart(id){
       if(charts[id]) charts[id].destroy();
     }
+
+
+    function resolveEvidenceUrl(url){
+      const raw = (url || "").trim();
+      if(!raw) return "";
+      if(/^https?:\/\//i.test(raw) || raw.startsWith("/") || raw.startsWith("../")) return raw;
+      if(raw.startsWith("assets/") || raw.startsWith("docs/") || raw.startsWith("data/")) return `../../${raw}`;
+      return raw;
+    }
+
+    function exportFase3PDF(){
+      const tabBtn = document.getElementById("tab-fase3-tab");
+      if(tabBtn && window.bootstrap){
+        try{ bootstrap.Tab.getOrCreateInstance(tabBtn).show(); }catch(e){}
+      }
+      const source = document.getElementById("tab-fase3-informe");
+      if(!source){ return; }
+      const oldPrint = document.getElementById("printFase3Report");
+      if(oldPrint) oldPrint.remove();
+
+      const clone = source.cloneNode(true);
+      clone.id = "printFase3Report";
+      clone.classList.add("print-fase3-report");
+      clone.querySelectorAll("button, .btn-export-pdf, .phase-actions, .phase-question-pill").forEach(el => el.remove());
+      clone.querySelectorAll(".collapse").forEach(el => {
+        el.classList.add("show");
+        el.style.display = "block";
+        el.style.height = "auto";
+      });
+      document.body.appendChild(clone);
+      document.body.classList.add("print-fase3-mode");
+
+      const cleanup = () => {
+        document.body.classList.remove("print-fase3-mode");
+        document.getElementById("printFase3Report")?.remove();
+      };
+      window.addEventListener("afterprint", cleanup, { once:true });
+      setTimeout(() => {
+        window.print();
+        setTimeout(cleanup, 1500);
+      }, 300);
+    }
+
+function renderExecutiveReport(data){
+  const empty = document.getElementById("fase3Empty");
+  const content = document.getElementById("fase3Content");
+  const gallery = document.getElementById("fase3Galeria");
+  const setText = (id, value) => {
+    const el = document.getElementById(id);
+    if(el) el.textContent = value || "–";
+  };
+  let selectedData = (data || []).find(d => getEvidenceForSystem(d));
+  let ev = selectedData ? getEvidenceForSystem(selectedData) : null;
+  if(!ev && EVIDENCIAS.length){
+    ev = EVIDENCIAS[0];
+  }
+  if(!ev){
+    empty?.classList.remove("d-none");
+    if(content) content.classList.add("d-none");
+    if(gallery) gallery.innerHTML = "";
+    return;
+  }
+  empty?.classList.add("d-none");
+  if(content) content.classList.remove("d-none");
+
+  const sistema = ev.SISTEMA || selectedData?.PERSONA_PRESTADORA || "Sistema con evidencia";
+  const prestador = ev.PERSONA_PRESTADORA || selectedData?.PERSONA_PRESTADORA || "";
+  const municipio = ev.MUNICIPIO || selectedData?.MUNICIPIO || "";
+  const poblacion = Number.isFinite(ev.POBLACION) ? ev.POBLACION : selectedData?.POBLACION;
+  const usuarios = Number.isFinite(ev.USUARIOS) ? ev.USUARIOS : selectedData?.SUSCRIPTORES;
+  const irca = Number.isFinite(ev.IRCA_REFERENCIA) ? ev.IRCA_REFERENCIA : selectedData?.IRCA_ACTUAL;
+  const riesgo = ev.NIVEL_RIESGO || selectedData?.RIESGO_ACTUAL || "";
+
+  setText("fase3Sistema", sistema);
+  setText("fase3Prestador", prestador);
+  setText("fase3Municipio", municipio);
+  setText("fase3Poblacion", Number.isFinite(poblacion) ? poblacion.toLocaleString("es-CO") : "–");
+  setText("fase3Usuarios", Number.isFinite(usuarios) ? usuarios.toLocaleString("es-CO") : "–");
+  setText("fase3Riesgo", riesgo);
+  setText("fase3Irca", Number.isFinite(irca) ? `IRCA ${irca.toFixed(2)}%` : "IRCA sin dato");
+  setText("fase3Intervencion", ev.INTERVENCION_PRINCIPAL || "–");
+  setText("fase3SoporteEstado", ev.ESTADO_SOPORTE || "–");
+  setText("fase3Diagnostico", ev.DIAGNOSTICO_EJECUTIVO || "–");
+  setText("fase3Recomendacion", ev.RECOMENDACION_GERENCIAL || "–");
+  setText("fase3Hallazgos", [ev.HALLAZGOS_CLAVE, ev.INTERVENCIONES_COMPLEMENTARIAS ? `Intervenciones complementarias: ${ev.INTERVENCIONES_COMPLEMENTARIAS}` : ""].filter(Boolean).join(" "));
+
+  const supports = [
+    ["Ficha de inspección", ev.RUTA_FICHA],
+    ["Laboratorio La Miquera", ev.RUTA_LAB_1],
+    ["Laboratorio Guayangas", ev.RUTA_LAB_2]
+  ].map(([label, url]) => [label, resolveEvidenceUrl(url)]).filter(x => x[1]);
+  const supportEl = document.getElementById("fase3Soportes");
+  if(supportEl){
+    supportEl.innerHTML = supports.length
+      ? supports.map(([label, url]) => `<a class="fase3-support-link" href="${escapeHTML(url)}" target="_blank" rel="noopener"><span>${escapeHTML(label)}</span><span>abrir</span></a>`).join("")
+      : '<div class="fase3-support-placeholder">Soportes documentales completos pendientes de enlace externo. Para el piloto se publican solo miniaturas livianas en GitHub.</div>';
+  }
+  const photos = [
+    ["Caja hidráulica / estructura expuesta", ev.FOTO_1],
+    ["Caseta e infraestructura de desinfección", ev.FOTO_2],
+    ["Detalle de caseta y condición física", ev.FOTO_3]
+  ].map(([caption, url]) => [caption, resolveEvidenceUrl(url)]).filter(x => x[1]);
+  if(gallery){
+    gallery.innerHTML = photos.length
+      ? photos.map(([caption, url]) => `<div class="fase3-photo-card"><img src="${escapeHTML(url)}" alt="${escapeHTML(caption)}" loading="lazy"><div class="fase3-photo-caption">${escapeHTML(caption)}</div></div>`).join("")
+      : '<div class="analytic-method-text">Sin fotografías registradas para este sistema.</div>';
+  }
+}
 
     function renderCharts(data){
       const year = getSelectedBlock();
@@ -4518,6 +6845,8 @@ BLOQUE DE ACCESO UESVALLE - FIN
       focusMainMap(LIST);
       renderCompareMaps(LIST);
       renderAnalytics(LIST);
+      renderInterventions(LIST);
+      renderExecutiveReport(LIST);
       renderCharts(LIST);
       renderTable(LIST);
       renderActiveFilters();
@@ -4529,8 +6858,12 @@ BLOQUE DE ACCESO UESVALLE - FIN
       btn.textContent = "Cargando…";
 
       try{
-        const [res, meta] = await Promise.all([fetchCSV(), fetchMetadataIRCA()]);
+        const [res, meta, sisa, evidencias] = await Promise.all([fetchCSV(), fetchMetadataIRCA(), fetchSisaVisitasCSV(), fetchEvidenciasCSV()]);
         METADATA_IRCAS = meta;
+        SISA_VISITAS = parseSisaRows(sisa.data || []);
+        buildSisaIndex();
+        EVIDENCIAS = parseEvidenciaRows(evidencias.data || []);
+        buildEvidenciasIndex();
         RAW = parseRows(res.data);
         fillFilters(RAW);
         cascadeFilterOptions();
@@ -4621,6 +6954,9 @@ BLOQUE DE ACCESO UESVALLE - FIN
       applyFilters();
     });
 
+
+    document.getElementById("btnExportarFase3PDF")?.addEventListener("click", exportFase3PDF);
+
     document.getElementById("btnCargar").addEventListener("click", loadData);
     document.getElementById("riskMetricMode")?.addEventListener("change", () => {
       riskMetricMode = document.getElementById("riskMetricMode").value || "poblacion";
@@ -4658,6 +6994,19 @@ BLOQUE DE ACCESO UESVALLE - FIN
           if (DT && DT.columns) DT.columns.adjust();
         }, 180);
       });
+    });
+
+    document.getElementById("btnMapResetValle")?.addEventListener("click", () => {
+      if(!MAP) return;
+      MAP.setView(VALLE_CENTER, VALLE_DEFAULT_ZOOM);
+      setTimeout(() => MAP.invalidateSize(), 100);
+    });
+
+    document.getElementById("btnMapOnlyCritical")?.addEventListener("click", () => {
+      mapOnlyCritical = !mapOnlyCritical;
+      renderMainMap(LIST);
+      focusMainMap(getMapDisplayData(LIST));
+      renderActiveFilters();
     });
 
     initMainMap();
