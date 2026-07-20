@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Informe técnico consolidado IRCAS | UESVALLE</title>
+  <style>
+    :root{--blue:#1558d6;--blue2:#0b3aa3;--soft:#eef4ff;--line:#dbe7ff;--text:#172033;--muted:#667085;--warn:#fff8e8;--danger:#b42318;--ok:#087a55;}
+    *{box-sizing:border-box}
+    body{margin:0;background:#eef2f7;color:var(--text);font-family:Arial,Helvetica,sans-serif;font-size:13px;line-height:1.42}
+    .toolbar{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid #d9e2ef;padding:10px 16px;display:flex;justify-content:center;gap:10px;align-items:center;flex-wrap:wrap;box-shadow:0 4px 14px rgba(15,23,42,.06)}
+    button,.button{border:1px solid #bdd0fb;background:#fff;color:var(--blue);border-radius:9px;padding:8px 12px;font-weight:800;cursor:pointer;text-decoration:none;font-size:12px}
+    button.primary{background:var(--blue);color:#fff;border-color:var(--blue)}
+    .toggle{display:flex;gap:7px;align-items:center;border:1px solid #d9e2ef;border-radius:9px;padding:7px 10px;background:#f8fafc;font-weight:700;color:#475467}
+    .page{width:216mm;min-height:279mm;margin:18px auto;background:#fff;box-shadow:0 12px 34px rgba(15,23,42,.12);padding:14mm 15mm}
+    .header{border-bottom:3px solid var(--blue);padding-bottom:12px;margin-bottom:14px;display:flex;justify-content:space-between;gap:20px;align-items:flex-start}
+    .tag{display:inline-flex;background:var(--blue);color:#fff;border-radius:999px;padding:4px 10px;font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.04em}
+    h1{font-size:23px;line-height:1.08;margin:8px 0 4px;color:#0f172a;letter-spacing:-.025em}
+    .subtitle{font-size:12px;color:#475467}
+    .docmeta{min-width:205px;border:1px solid var(--line);background:#f8fbff;border-radius:12px;padding:9px 11px;font-size:10.5px}
+    .docmeta div{margin:2px 0}.docmeta b{color:var(--blue2)}
+    .statusbar{border:1px solid #bfd2ff;background:linear-gradient(135deg,#f4f8ff,#fff);border-radius:13px;padding:12px 14px;margin-bottom:14px}
+    .system-name{font-size:17px;font-weight:900;line-height:1.15;color:#0f172a;margin:3px 0 9px}
+    .metrics{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}
+    .metric{border:1px solid #e2e8f0;border-radius:10px;padding:8px;background:#fff;text-align:center}
+    .metric b{display:block;font-size:9px;color:var(--blue);text-transform:uppercase;margin-bottom:3px}.metric span{font-size:12px;font-weight:900}
+    section{margin:0 0 14px;break-inside:auto}
+    h2{font-size:14px;color:var(--blue2);margin:0 0 7px;padding-bottom:5px;border-bottom:1px solid var(--line)}
+    h3{font-size:11.5px;color:#172033;margin:8px 0 4px}
+    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:9px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+    .box{border:1px solid #e2e8f0;border-radius:10px;padding:9px 10px;background:#fff;break-inside:avoid}
+    .box.soft{background:#f8fafc}.box.blue{background:#f7faff;border-color:#cfe0ff}.box.warning{background:var(--warn);border-color:#fde3a7}
+    .label{font-size:9px;color:var(--blue);font-weight:900;text-transform:uppercase;letter-spacing:.025em;margin-bottom:2px}.value{font-weight:800;color:#111827}
+    table{border-collapse:collapse;width:100%;font-size:10.5px;break-inside:auto}th{background:#edf4ff;color:#173b7a;text-align:left;font-size:9px;text-transform:uppercase}th,td{border:1px solid #dce5f2;padding:6px;vertical-align:top}tr{break-inside:avoid}
+    .pill{display:inline-flex;border-radius:999px;padding:3px 7px;font-size:9px;font-weight:900;background:#eef4ff;color:var(--blue)}
+    .pill.danger{background:#feeceb;color:#b42318}.pill.ok{background:#e9fbf4;color:#087a55}.pill.warn{background:#fff4df;color:#9a5b00}
+    .diagnosis{white-space:pre-line}.modules{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.module{border:1px solid #cfe0ff;border-radius:10px;padding:9px;break-inside:avoid}.module h3{color:#0f172a;margin-top:0}.range{font-size:15px;font-weight:900;color:#0f766e}.module ul{padding-left:16px;margin:6px 0 0}.module li{margin:2px 0;font-size:9.5px}
+    .estimate-total{display:flex;justify-content:space-between;gap:15px;align-items:center;border:1px solid #bcd0ff;background:#f7faff;border-radius:12px;padding:11px 13px}.estimate-total .total{font-size:23px;font-weight:950;letter-spacing:-.03em;color:#0f172a}
+    .photos{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.photo{border:1px solid #dbe7ff;border-radius:10px;overflow:hidden;break-inside:avoid}.photo img{display:block;width:100%;height:120px;object-fit:cover}.photo .caption{padding:5px 7px;font-size:9px;font-weight:800}.photo-placeholder{height:120px;display:flex;align-items:center;justify-content:center;background:#f1f5f9;color:#64748b;text-align:center;padding:10px}
+    .signature{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:28px}.signline{border-top:1px solid #475467;padding-top:5px;color:#475467;font-size:10px}
+    .footer{margin-top:16px;padding-top:8px;border-top:1px solid #dce5f2;color:#667085;font-size:9px;display:flex;justify-content:space-between;gap:10px}
+    .hidden{display:none!important}.error{max-width:800px;margin:60px auto;background:#fff;border:1px solid #fecaca;border-radius:14px;padding:25px;color:#991b1b}
+    .page-break{break-before:page}
+    @media(max-width:900px){.page{width:auto;min-height:0;margin:0;padding:18px}.metrics,.grid3,.modules,.photos{grid-template-columns:1fr 1fr}.header{flex-direction:column}.docmeta{width:100%}}
+    @media(max-width:560px){.metrics,.grid2,.grid3,.modules,.photos,.signature{grid-template-columns:1fr}}
+    @media print{
+      @page{size:Letter;margin:9mm}
+      body{background:#fff;font-size:10.5px}.toolbar{display:none!important}.page{width:auto;min-height:auto;margin:0;box-shadow:none;padding:0}.header{margin-bottom:9px}.statusbar,section{margin-bottom:9px}.photos .photo img,.photo-placeholder{height:95px}.footer{position:relative}.no-print{display:none!important}
+    }
+  </style>
+</head>
+<body>
+  <div class="toolbar no-print">
+    <label class="toggle"><input id="includeEstimate" type="checkbox" checked> Incluir estimación preliminar</label>
+    <button type="button" class="primary" onclick="window.print()">Imprimir / guardar PDF</button>
+  </div>
+  <div id="errorBox" class="error hidden"></div>
+  <main id="report" class="page hidden">
+    <header class="header">
+      <div>
+        <span class="tag">UESVALLE · IRCAS</span>
+        <h1>Informe técnico consolidado por sistema de abastecimiento</h1>
+        <div class="subtitle">Priorización sanitaria, soporte SISA, evidencia técnica y estimación de prefactibilidad.</div>
+      </div>
+      <div class="docmeta">
+        <div><b>Código informe:</b> <span id="reportCode">–</span></div>
+        <div><b>Generado:</b> <span id="generatedAt">–</span></div>
+        <div><b>Bloque analizado:</b> <span id="analysisBlock">–</span></div>
+        <div><b>Versión:</b> IRCAS V35.7</div>
+      </div>
+    </header>
+
+    <div class="statusbar">
+      <div class="label">Sistema analizado</div>
+      <div id="systemName" class="system-name">–</div>
+      <div class="metrics">
+        <div class="metric"><b>Municipio</b><span id="municipio">–</span></div>
+        <div class="metric"><b>IRCA actual</b><span id="ircaActual">–</span></div>
+        <div class="metric"><b>Riesgo actual</b><span id="riesgoActual">–</span></div>
+        <div class="metric"><b>Población actual</b><span id="poblacionActual">–</span></div>
+        <div class="metric"><b>Prioridad</b><span id="prioridad">–</span></div>
+      </div>
+    </div>
+
+    <section>
+      <h2>1. Identificación y trazabilidad</h2>
+      <div class="grid3" id="identificationGrid"></div>
+      <div class="box soft" style="margin-top:8px"><div class="label">Trazabilidad de datos</div><div id="traceability">–</div></div>
+    </section>
+
+    <section>
+      <h2>2. Situación sanitaria actual y soporte de referencia</h2>
+      <div class="grid2">
+        <div class="box blue"><h3>Situación actual del tablero</h3><div id="currentStatus"></div></div>
+        <div class="box"><h3>Soporte técnico del maestro de evidencias</h3><div id="evidenceReference"></div></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>3. Estado de visita y muestreo SISA</h2>
+      <div class="grid3" id="sisaGrid"></div>
+      <div class="box warning" style="margin-top:8px"><div class="label">Acción requerida</div><div id="sisaAction" class="value">–</div></div>
+    </section>
+
+    <section>
+      <h2>4. Caracterización técnica del sistema</h2>
+      <table><thead><tr><th>Componente</th><th>Condición registrada</th><th>Lectura técnica</th></tr></thead><tbody id="characterizationBody"></tbody></table>
+    </section>
+
+    <section>
+      <h2>5. Evidencia, diagnóstico y recomendación</h2>
+      <div class="grid2">
+        <div class="box"><div class="label">Intervención principal</div><div id="mainIntervention" class="value">–</div><div class="label" style="margin-top:8px">Intervenciones complementarias</div><div id="complementaryInterventions">–</div></div>
+        <div class="box"><div class="label">Estado del soporte</div><div id="supportStatus" class="value">–</div><div class="label" style="margin-top:8px">Hallazgos clave</div><div id="keyFindings">–</div></div>
+      </div>
+      <div class="box blue" style="margin-top:8px"><div class="label">Diagnóstico ejecutivo</div><div id="executiveDiagnosis" class="diagnosis">–</div></div>
+      <div class="box" style="margin-top:8px"><div class="label">Recomendación técnica</div><div id="managementRecommendation" class="diagnosis">–</div></div>
+    </section>
+
+    <section>
+      <h2>6. Diagnóstico por componentes</h2>
+      <table><thead><tr><th>Componente</th><th>Condición</th><th>Prioridad técnica</th><th>Acción preliminar</th></tr></thead><tbody id="componentDiagnosisBody"></tbody></table>
+    </section>
+
+    <section>
+      <h2>7. Plan preliminar de acciones</h2>
+      <table><thead><tr><th>Horizonte</th><th>Acciones propuestas</th><th>Producto esperado</th></tr></thead><tbody id="actionPlanBody"></tbody></table>
+    </section>
+
+    <section id="estimateSection">
+      <h2>8. Estimación preliminar de prefactibilidad</h2>
+      <div id="estimateEmpty" class="box warning hidden"></div>
+      <div id="estimateContent">
+        <div class="estimate-total">
+          <div><div class="label">Rango preliminar total</div><div id="totalCost" class="total">$ –</div><div id="flowBand" class="subtitle">–</div></div>
+          <div><div class="label">Confiabilidad</div><div id="confidence" class="value">–</div><div id="confidenceBase" class="subtitle">–</div></div>
+        </div>
+        <div id="modulesGrid" class="modules" style="margin-top:9px"></div>
+        <div class="box warning" style="margin-top:8px">La estimación es referencial para priorización gerencial. No reemplaza visita técnica, diseño definitivo, cantidades de obra, APU, AIU, interventoría ni proceso contractual.</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>9. Conclusión técnica y decisión requerida</h2>
+      <div class="box blue"><div id="technicalConclusion">–</div></div>
+      <div class="box warning" style="margin-top:8px"><div class="label">Limitaciones</div><div id="limitations">–</div></div>
+    </section>
+
+    <section class="page-break">
+      <h2>10. Registro fotográfico y soportes</h2>
+      <div id="photoGrid" class="photos"></div>
+      <div class="box soft" style="margin-top:8px"><div class="label">Observación documental</div><div id="documentObservation">–</div></div>
+    </section>
+
+    <section>
+      <h2>11. Revisión y validación institucional</h2>
+      <p>Documento generado automáticamente a partir de las fuentes del tablero IRCAS. Su contenido debe ser revisado y validado por el equipo técnico antes de utilizarse como soporte de decisiones administrativas, presupuestales o contractuales.</p>
+      <div class="signature"><div class="signline">Revisó: nombre, cargo y firma</div><div class="signline">Fecha de validación</div></div>
+    </section>
+
+    <footer class="footer"><span>UESVALLE · Tablero IRCAS · Informe técnico consolidado</span><span id="footerCode">–</span></footer>
+  </main>
+
+<script>
+const URLS={
+ ircas:'../../data/ircas/current/IRCAS.csv',
+ sisa:'../../data/ircas/current/sisa_visitas_ach.csv',
+ evidence:'../../data/ircas/current/evidencias_sistemas.csv',
+ param:'../../data/ircas/current/parametrizacion_intervenciones_irca.csv',
+ costs:'../../data/ircas/current/costos_modulos_intervencion_irca.csv',
+ metadataIrcas:'../../data/ircas/current/metadata_ircas.json',
+ metadataSisa:'../../data/ircas/current/metadata_sisa_visitas_ach.json'
+};
+function norm(v){return String(v??'').trim().normalize('NFD').replace(/[\u0300-\u036f]/g,'').toUpperCase()}
+function code(v){return String(v??'').replace(/\ufeff/g,'').replace(/\.0$/,'').replace(/[^0-9A-Za-z]/g,'').trim()}
+function num(v){if(v===null||v===undefined||v==='')return null;const n=Number(String(v).replace(',','.'));return Number.isFinite(n)?n:null}
+function clean(v){return String(v??'').trim()||'–'}
+function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]))}
+function formatNumber(v,d=0){return Number.isFinite(Number(v))?Number(v).toLocaleString('es-CO',{minimumFractionDigits:d,maximumFractionDigits:d}):'–'}
+function parseCSV(text){
+ const first=(text.split(/\r?\n/).find(x=>x.trim())||'');const delimiter=(first.split(';').length>first.split(',').length)?';':',';
+ const rows=[];let row=[],field='',quote=false;
+ for(let i=0;i<text.length;i++){const c=text[i];if(quote){if(c==='"'&&text[i+1]==='"'){field+='"';i++}else if(c==='"'){quote=false}else field+=c}else{if(c==='"')quote=true;else if(c===delimiter){row.push(field);field=''}else if(c==='\n'){row.push(field.replace(/\r$/,''));rows.push(row);row=[];field=''}else field+=c}}
+ if(field.length||row.length){row.push(field.replace(/\r$/,''));rows.push(row)}
+ const headers=(rows.shift()||[]).map(h=>h.replace(/^\ufeff/,'').trim());
+ return rows.filter(r=>r.some(x=>String(x).trim())).map(r=>Object.fromEntries(headers.map((h,i)=>[h,r[i]??''])));
+}
+async function fetchCSV(url){const r=await fetch(url+'?_='+Date.now(),{cache:'no-store'});if(!r.ok)throw new Error(url+' ('+r.status+')');return parseCSV(await r.text())}
+async function fetchJSON(url){try{const r=await fetch(url+'?_='+Date.now(),{cache:'no-store'});return r.ok?await r.json():null}catch{return null}}
+function validIntervention(v){const n=norm(v);return !!n&&!['SIN OBSERVACION TECNICA','SIN CLASIFICACION','SIN INFORMACION SUFICIENTE','SIN INFORMACION','SIN DATO','NO APLICA'].includes(n)}
+function splitInterventions(v){return String(v??'').split(/[;|]/).map(x=>x.trim()).filter(Boolean)}
+function treatmentStatus(s){const t=norm(s['ALGUN_TIPO_TRATAMIENTO']);if(['SI','SÍ','TRUE','1','CON TRATAMIENTO'].includes(t))return 'TIENE_TRATAMIENTO';if(['NO','0','FALSE','SIN TRATAMIENTO'].includes(t))return 'NO_TIENE_TRATAMIENTO';return 'SIN_DATO'}
+function riskFactor(r){return ({'SIN RIESGO':0,'BAJO':1,'MEDIO':2,'ALTO':3,'INVIABLE SANITARIAMENTE':4,'SIN DATO':.5})[norm(r)]??.5}
+function treatmentFactor(risk,s){const st=treatmentStatus(s);if(st==='NO_TIENE_TRATAMIENTO'&&['ALTO','INVIABLE SANITARIAMENTE'].includes(norm(risk)))return 1.4;if(st==='NO_TIENE_TRATAMIENTO')return 1.25;if(st==='SIN_DATO')return 1.15;return 1}
+function priority(risk,pop,s){return riskFactor(risk)*Math.log10((pop||0)+1)*treatmentFactor(risk,s)}
+function activeFields(s,block){
+ if(block==='ULTIMO')return{irca:num(s['Ultimo_IRCA_reportado']),risk:s['Nivel_Riesgo_ultimo_IRCA'],date:s['Fecha_Ultimo_IRCA_reportado'],point:s['Punto_Toma_Ultimo_IRCA'],label:'Último IRCA reportado'};
+ return{irca:num(s['IRCA_'+block]),risk:s['Nivel_de_Riesgo_'+block]||s['Nivel de Riesgo_'+block]||s['Nivel_Riesgo_'+block],date:s['Fecha_Ultimo_IRCA_'+block]||s['Fecha ultimo IRCA_'+block]||s['FECHA_IRCA_'+block]||s['Fecha_IRCA_'+block],point:block==='2026'?s['Punto_Toma_2026']:(s['Punto_Muestreo_'+block]||s['Punto_Toma_'+block]),label:'IRCA '+block};
+}
+function evidencePath(p){if(!p)return'';if(/^https?:|^data:|^\.\.\//.test(p))return p;if(p.startsWith('assets/'))return '../../'+p;return p}
+function findCostRow(costs,module,q){return costs.filter(x=>norm(x.modulo_costo)===norm(module)).find(x=>{const mn=num(x.q_min_lps)??0,mx=num(x.q_max_lps);return q>=mn&&(mx===null||q<=mx)})}
+function buildModel(all,queryCode,block){
+ const s=all.ircas.find(r=>[r['CODIGO_ANTERIOR'],r['CODIGO_SISTEMA'],r['CODIGO IVC2']].map(code).includes(queryCode));if(!s)throw new Error('No se encontró el sistema solicitado en IRCAS.csv. Código: '+queryCode);
+ const candidates=[s['CODIGO_ANTERIOR'],s['CODIGO IVC2'],s['CODIGO_SISTEMA']].map(code).filter(Boolean);
+ const sisa=all.sisa.find(r=>candidates.includes(code(r['CODIGO_ANTERIOR'])))||null;
+ const ev=all.evidence.find(r=>candidates.includes(code(r['CODIGO_ANTERIOR']))||candidates.includes(code(r['CODIGO_SISTEMA'])))||null;
+ const current=activeFields(s,block);const pop=num(s['POBLACION'])||0;const pri=priority(current.risk,pop,s);
+ const sources=[];if(sisa&&validIntervention(sisa['INTERVENCION_SUGERIDA']))sources.push({type:'SISA',label:'Visita SISA 1.2',intervention:sisa['INTERVENCION_SUGERIDA'],finding:sisa['HALLAZGO_CLAVE']||sisa['OBSERVACION_1_2']});
+ else if(ev){if(validIntervention(ev['INTERVENCION_PRINCIPAL']))sources.push({type:'EVIDENCIA',label:'Maestro actualizado de evidencias técnicas',intervention:ev['INTERVENCION_PRINCIPAL'],finding:ev['HALLAZGOS_CLAVE']});splitInterventions(ev['INTERVENCIONES_COMPLEMENTARIAS']).forEach(i=>sources.push({type:'EVIDENCIA_COMPLEMENTARIA',label:'Maestro actualizado de evidencias técnicas · complementaria',intervention:i,finding:ev['HALLAZGOS_CLAVE']}))}
+ const pmap=new Map(all.param.map(r=>[norm(r['intervencion_sugerida']),r]));const q=pop*130/86400;const modules=[];const seen=new Set();
+ for(const src of sources){const p=pmap.get(norm(src.intervention));if(!p||norm(p['calcula_costo'])==='NO'||norm(p['modulo_costo']).startsWith('SIN_'))continue;const mk=norm(p['modulo_costo']);if(seen.has(mk))continue;seen.add(mk);const cr=findCostRow(all.costs,p['modulo_costo'],q);modules.push({source:src,param:p,cost:cr})}
+ const validModules=modules.filter(m=>m.cost);const totalMin=validModules.reduce((a,m)=>a+(num(m.cost.costo_min_millones)||0),0);const totalMax=validModules.reduce((a,m)=>a+(num(m.cost.costo_max_millones)||0),0);
+ const hasVisit=!!(sisa&&(num(sisa['TOTAL_VISITAS_1_2'])||sisa['FECHA_VISITA_1_2']));const hasSample=!!(sisa&&(num(sisa['TOTAL_MUESTREOS_1_7'])||sisa['FECHA_MUESTREO_1_7']));let confidence='Baja',confidenceBase='Sin intervención técnica suficiente';if(sources.some(x=>x.type==='SISA')&&hasVisit&&hasSample&&ev){confidence='Alta';confidenceBase='Intervención SISA 1.2 + muestreo 1.7 + maestro de evidencias'}else if(sources.some(x=>x.type==='SISA')&&hasVisit&&hasSample){confidence='Media-alta';confidenceBase='Intervención SISA 1.2 + muestreo 1.7'}else if(sources.some(x=>x.type==='SISA')&&hasVisit){confidence='Media';confidenceBase='Intervención sugerida desde visita SISA 1.2'}else if(sources.some(x=>x.type.startsWith('EVIDENCIA'))){confidence='Media-baja';confidenceBase='Maestro actualizado de evidencias técnicas; validar en campo'}
+ return{s,sisa,ev,current,block,pop,priority:pri,sources,q,modules,validModules,totalMin,totalMax,confidence,confidenceBase,metadataIrcas:all.metadataIrcas,metadataSisa:all.metadataSisa};
+}
+function item(label,value){return `<div class="box"><div class="label">${esc(label)}</div><div class="value">${esc(clean(value))}</div></div>`}
+function lines(arr){return arr.filter(Boolean).map(x=>`<div style="margin:3px 0">${x}</div>`).join('')||'–'}
+function conditionReading(v){const n=norm(v);if(!v||v==='–')return 'Sin información suficiente';if(n.includes('NO CUENTA')||n.includes('AUSENCIA')||n==='NO')return 'Condición crítica o ausente; requiere intervención';if(n.includes('REQUIERE')||n.includes('MANTENIMIENTO'))return 'Requiere revisión y mejoramiento';return 'Condición registrada en el maestro técnico'}
+function componentRows(m){const e=m.ev||{};const rows=[['Fuentes',e['FUENTES']||m.s['LOCALIDADES ABASTECIDAS'],conditionReading(e['FUENTES'])],['Tipo de fuente',e['TIPO_FUENTE'],conditionReading(e['TIPO_FUENTE'])],['Tratamiento',e['TRATAMIENTO']||m.s['TIPO_SISTEMA_TRATAMIENTO'],conditionReading(e['TRATAMIENTO']||m.s['TIPO_SISTEMA_TRATAMIENTO'])],['Desinfección',e['DESINFECCION'],conditionReading(e['DESINFECCION'])],['PTAP',e['PTAP'],conditionReading(e['PTAP'])],['Almacenamiento',splitInterventions(e['INTERVENCIONES_COMPLEMENTARIAS']).find(x=>norm(x).includes('TANQUE'))||'', 'Validar capacidad, integridad y condiciones sanitarias'],['Captación / bocatoma',splitInterventions(e['INTERVENCIONES_COMPLEMENTARIAS']).find(x=>norm(x).includes('CAPTACION'))||'', 'Revisar condiciones hidráulicas y sanitarias'],['Puntos de muestreo',e['PUNTOS_MUESTREO'],conditionReading(e['PUNTOS_MUESTREO'])]];return rows}
+function diagnosisRows(m){const r=[];const ev=m.ev||{};const add=(c,cond,priority,action)=>r.push([c,cond||'Sin información',priority,action]);add('Desinfección',ev['DESINFECCION']||m.sources.find(x=>norm(x.intervention).includes('DESINFECCION'))?.intervention, norm(ev['DESINFECCION']).includes('NO CUENTA')?'Alta':'Media','Verificar e implementar o rehabilitar el sistema de desinfección.');add('Tratamiento / PTAP',ev['PTAP']||ev['TRATAMIENTO'],norm((ev['PTAP']||'')+(ev['TRATAMIENTO']||'')).includes('NO CUENTA')?'Alta':'Media','Definir alternativa de tratamiento acorde con la calidad de la fuente y el caudal requerido.');add('Captación y fuente',ev['FUENTES']||ev['TIPO_FUENTE'],'Media','Inspeccionar captación, protección sanitaria y posibles necesidades de pretratamiento.');add('Almacenamiento y conducción',splitInterventions(ev['INTERVENCIONES_COMPLEMENTARIAS']).filter(x=>/tanque|almacenamiento|red|conducci/i.test(x)).join('; '),'Media','Verificar almacenamiento, reboses, tapas, impermeabilización, fugas y accesorios.');add('Control sanitario',ev['PUNTOS_MUESTREO']||m.sisa?.['PUNTO_MUESTREO_1_7'],'Media','Materializar y verificar puntos de muestreo y mantener seguimiento analítico.');add('Operación y mantenimiento',splitInterventions(ev['INTERVENCIONES_COMPLEMENTARIAS']).find(x=>norm(x).includes('OPERACION'))||'Requiere validación','Media','Definir rutinas, responsables, registros y capacitación del operador.');return r}
+function actionPlan(m){const immediate=['Realizar visita técnica de actualización y validar condiciones de infraestructura y operación.'];if(norm(m.current.risk).includes('INVIABLE')||norm(m.current.risk)==='ALTO')immediate.push('Revisar medidas sanitarias inmediatas y confirmar la condición mediante seguimiento de calidad del agua.');if(m.ev&&norm(m.ev['DESINFECCION']).includes('NO CUENTA'))immediate.push('Definir e implementar una medida urgente de desinfección bajo control técnico.');const short=['Consolidar diagnóstico por componentes, registro fotográfico y plan de mejoramiento.'];if(m.sources.some(x=>norm(x.intervention).includes('DESINFECCION')))short.push('Implementar o rehabilitar el módulo de desinfección y verificar cloro residual.');if(m.ev&&norm(m.ev['PUNTOS_MUESTREO']).includes('NO EXISTEN'))short.push('Materializar puntos de muestreo representativos.');const medium=['Formular diseños, cantidades de obra y presupuesto de las intervenciones validadas.'];if(m.sources.some(x=>/tratamiento|ptap|filtr/i.test(norm(x.intervention))))medium.push('Definir alternativa de tratamiento de acuerdo con la fuente, resultados analíticos y caudal de diseño.');if(m.sources.some(x=>/captacion|tanque|almacenamiento|red|conduccion/i.test(norm(x.intervention))))medium.push('Evaluar y diseñar adecuaciones de captación, almacenamiento y conducción.');return[['Inmediato',immediate.join(' '),'Visita actualizada, medidas de control y registro técnico.'],['Corto plazo',short.join(' '),'Intervenciones sanitarias básicas y plan de mejoramiento.'],['Mediano plazo',medium.join(' '),'Proyecto técnico, presupuesto y ruta de ejecución.']]}
+function conclusion(m){const sys=m.ev?.['SISTEMA']||m.s['Persona Prestadora'];const source=m.sources.some(x=>x.type==='SISA')?'visita SISA 1.2':'maestro actualizado de evidencias técnicas';if(!m.sources.length)return `El sistema ${clean(sys)} presenta una condición sanitaria que requiere revisión; sin embargo, no existe una intervención técnica suficientemente clasificada para estimar una inversión. Se recomienda completar o actualizar la visita técnica y consolidar el diagnóstico antes de definir acciones.`;return `El sistema ${clean(sys)} requiere atención prioritaria por su clasificación ${clean(m.current.risk)} y por las condiciones técnicas registradas. La intervención base se sustenta en el ${source} y comprende ${m.sources.map(x=>x.intervention).join(', ')}. La información permite orientar la priorización, pero debe validarse en campo antes de definir diseños, cantidades de obra, presupuesto y contratación.`}
+function render(m){
+ const s=m.s,si=m.sisa||{},e=m.ev||{},current=m.current;const system=e['SISTEMA']||si['NOMBRE_SISTEMA']||s['Persona Prestadora'];const reportCode=`IRCAS-${code(s['CODIGO IVC2']||s['CODIGO_ANTERIOR']||s['CODIGO_SISTEMA'])}-${new Date().toISOString().slice(0,10).replaceAll('-','')}`;
+ document.title=`Informe técnico - ${system}`;document.getElementById('reportCode').textContent=reportCode;document.getElementById('footerCode').textContent=reportCode;document.getElementById('generatedAt').textContent=new Date().toLocaleString('es-CO');document.getElementById('analysisBlock').textContent=current.label;document.getElementById('systemName').textContent=`${clean(system)} · ${clean(s['MUNICIPIO'])}`;document.getElementById('municipio').textContent=clean(s['MUNICIPIO']);document.getElementById('ircaActual').textContent=current.irca!==null?formatNumber(current.irca,2)+' %':'Sin dato';document.getElementById('riesgoActual').textContent=clean(current.risk);document.getElementById('poblacionActual').textContent=formatNumber(m.pop);document.getElementById('prioridad').textContent=formatNumber(m.priority,2);
+ const idItems=[['Código anterior',s['CODIGO_ANTERIOR']],['Código sistema',s['CODIGO_SISTEMA']],['Código IVC',s['CODIGO IVC2']],['Persona prestadora',s['Persona Prestadora']],['ARO',s['ARO']],['Forma organizativa',s['Forma_organizativa']],['Localidad abastecida',s['LOCALIDADES ABASTECIDAS']],['Suscriptores actuales',formatNumber(num(s['SUSCRIPTORES']))],['Coordenadas',`${clean(s['Latitud_X'])}, ${clean(s['Longitud_Y'])}`]];document.getElementById('identificationGrid').innerHTML=idItems.map(x=>item(...x)).join('');
+ const mi=m.metadataIrcas,ms=m.metadataSisa;document.getElementById('traceability').innerHTML=lines([`IRCAS: ${mi?.fecha_generacion?esc(mi.fecha_generacion):'metadata no disponible'} · ${mi?.registros_generados??'–'} registros.`,`SISA: ${ms?.fecha_generacion?esc(ms.fecha_generacion):'metadata no disponible'} · ${ms?.registros_salida_por_codigo_anterior??'–'} sistemas consolidados.`,`Evidencia técnica: ${e['ANIO_SOPORTE']?`soporte ${esc(e['ANIO_SOPORTE'])}`:'sin año informado'}; estado: ${esc(clean(e['ESTADO_SOPORTE']))}.`]);
+ document.getElementById('currentStatus').innerHTML=lines([`<b>IRCA:</b> ${current.irca!==null?formatNumber(current.irca,2)+' %':'Sin dato'}`,`<b>Nivel de riesgo:</b> ${esc(clean(current.risk))}`,`<b>Fecha:</b> ${esc(clean(current.date))}`,`<b>Punto de toma:</b> ${esc(clean(current.point))}`,`<b>Tratamiento reportado:</b> ${esc(clean(s['TIPO_SISTEMA_TRATAMIENTO']))}`,`<b>Algún tipo de tratamiento:</b> ${esc(clean(s['ALGUN_TIPO_TRATAMIENTO']))}`]);
+ document.getElementById('evidenceReference').innerHTML=lines([`<b>Fecha de inspección:</b> ${esc(clean(e['FECHA_INSPECCION']))}`,`<b>IRCA del soporte:</b> ${num(e['IRCA_REFERENCIA'])!==null?formatNumber(num(e['IRCA_REFERENCIA']),2)+' %':'Sin dato'}`,`<b>Riesgo del soporte:</b> ${esc(clean(e['NIVEL_RIESGO']))}`,`<b>Población del maestro:</b> ${formatNumber(num(e['POBLACION']))}`,`<b>Usuarios del maestro:</b> ${formatNumber(num(e['USUARIOS']))}`,`<b>Estado:</b> ${esc(clean(e['ESTADO_SOPORTE']))}`]);
+ const hasVisit=!!(num(si['TOTAL_VISITAS_1_2'])||si['FECHA_VISITA_1_2']),hasSample=!!(num(si['TOTAL_MUESTREOS_1_7'])||si['FECHA_MUESTREO_1_7']),validSisa=validIntervention(si['INTERVENCION_SUGERIDA']);document.getElementById('sisaGrid').innerHTML=[['Visita SISA 1.2',hasVisit?`Disponible · ${clean(si['FECHA_VISITA_1_2'])}`:'No disponible'],['Muestreo SISA 1.7',hasSample?`Disponible · ${clean(si['FECHA_MUESTREO_1_7'])}`:'No disponible'],['Intervención desde SISA',validSisa?si['INTERVENCION_SUGERIDA']:'No clasificada']].map(x=>item(...x)).join('');document.getElementById('sisaAction').textContent=!hasVisit?'Programar o actualizar visita técnica.':(!validSisa?'Revisar la observación y completar la clasificación técnica.':'Validar técnicamente la intervención sugerida antes de definir inversión.');
+ document.getElementById('characterizationBody').innerHTML=componentRows(m).map(r=>`<tr><td><b>${esc(r[0])}</b></td><td>${esc(clean(r[1]))}</td><td>${esc(r[2])}</td></tr>`).join('');
+ document.getElementById('mainIntervention').textContent=clean(e['INTERVENCION_PRINCIPAL']||m.sources[0]?.intervention);document.getElementById('complementaryInterventions').textContent=clean(e['INTERVENCIONES_COMPLEMENTARIAS']);document.getElementById('supportStatus').textContent=clean(e['ESTADO_SOPORTE']);document.getElementById('keyFindings').textContent=clean(e['HALLAZGOS_CLAVE']||si['HALLAZGO_CLAVE']);document.getElementById('executiveDiagnosis').textContent=clean(e['DIAGNOSTICO_EJECUTIVO']||si['OBSERVACION_1_2']);document.getElementById('managementRecommendation').textContent=clean(e['RECOMENDACION_GERENCIAL']);
+ document.getElementById('componentDiagnosisBody').innerHTML=diagnosisRows(m).map(r=>`<tr><td><b>${esc(r[0])}</b></td><td>${esc(clean(r[1]))}</td><td><span class="pill ${r[2]==='Alta'?'danger':'warn'}">${esc(r[2])}</span></td><td>${esc(r[3])}</td></tr>`).join('');document.getElementById('actionPlanBody').innerHTML=actionPlan(m).map(r=>`<tr><td><b>${esc(r[0])}</b></td><td>${esc(r[1])}</td><td>${esc(r[2])}</td></tr>`).join('');
+ const estimateAvailable=m.validModules.length>0;if(!estimateAvailable){document.getElementById('estimateEmpty').classList.remove('hidden');document.getElementById('estimateEmpty').textContent=m.sources.length?'La intervención técnica fue identificada, pero no fue posible completar los módulos o rangos económicos con la parametrización disponible.':'No existe una intervención técnica suficiente para calcular un rango económico.';document.getElementById('estimateContent').classList.add('hidden')}else{document.getElementById('totalCost').textContent=`$${formatNumber(m.totalMin)} M - $${formatNumber(m.totalMax)} M`;const band=m.validModules[0]?.cost?.rango_caudal||'–';document.getElementById('flowBand').textContent=`Q estimado: ${formatNumber(m.q,2)} L/s · Rango: ${band}`;document.getElementById('confidence').textContent=m.confidence;document.getElementById('confidenceBase').textContent=m.confidenceBase;document.getElementById('modulesGrid').innerHTML=m.validModules.map(x=>`<div class="module"><span class="pill ok">Calculado</span><h3>${esc(x.param.modulo_nombre)}</h3><div class="range">$${formatNumber(num(x.cost.costo_min_millones))} M - $${formatNumber(num(x.cost.costo_max_millones))} M</div><div class="label">Fuente</div><div>${esc(x.source.label)}</div><div class="label" style="margin-top:6px">Actividades base</div><ul>${String(x.cost.actividades_base||'').split('|').filter(Boolean).map(a=>`<li>${esc(a)}</li>`).join('')}</ul></div>`).join('')}
+ document.getElementById('technicalConclusion').textContent=conclusion(m);document.getElementById('limitations').textContent='La estimación y las recomendaciones son preliminares. Se requiere validación de campo, actualización de evidencias cuando corresponda, análisis de calidad del agua, definición de alcance, diseños, cantidades de obra, presupuesto e instrumentos administrativos aplicables.';
+ const photos=[e['FOTO_1'],e['FOTO_2'],e['FOTO_3']].filter(Boolean);const captions=['Evidencia fotográfica 1','Evidencia fotográfica 2','Evidencia fotográfica 3'];document.getElementById('photoGrid').innerHTML=photos.length?photos.map((p,i)=>`<div class="photo"><img src="${esc(evidencePath(p))}" alt="${captions[i]}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="photo-placeholder" style="display:none">Imagen no disponible en esta copia de prueba</div><div class="caption">${captions[i]}</div></div>`).join(''):'<div class="box soft">No se registran fotografías para este sistema.</div>';document.getElementById('documentObservation').textContent=clean(e['OBSERVACION']||'Los soportes documentales deben conservarse en el repositorio institucional definido.');
+ document.getElementById('report').classList.remove('hidden')
+}
+document.getElementById('includeEstimate').addEventListener('change',e=>document.getElementById('estimateSection').classList.toggle('hidden',!e.target.checked));
+(async()=>{try{const params=new URLSearchParams(location.search),queryCode=code(params.get('codigo')),block=params.get('bloque')||'ULTIMO';if(!queryCode)throw new Error('Falta el parámetro codigo en la dirección del informe.');const [ircas,sisa,evidence,param,costs,metadataIrcas,metadataSisa]=await Promise.all([fetchCSV(URLS.ircas),fetchCSV(URLS.sisa),fetchCSV(URLS.evidence),fetchCSV(URLS.param),fetchCSV(URLS.costs),fetchJSON(URLS.metadataIrcas),fetchJSON(URLS.metadataSisa)]);render(buildModel({ircas,sisa,evidence,param,costs,metadataIrcas,metadataSisa},queryCode,block))}catch(err){console.error(err);const box=document.getElementById('errorBox');box.textContent='No fue posible generar el informe técnico: '+err.message;box.classList.remove('hidden')}})();
+</script>
+</body>
+</html>

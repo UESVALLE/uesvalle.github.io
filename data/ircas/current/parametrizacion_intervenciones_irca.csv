@@ -1,0 +1,14 @@
+﻿intervencion_sugerida,modulo_costo,modulo_nombre,calcula_costo,criterio_fase4
+Desinfección / cloración,M1_DESINFECCION,Desinfección / cloración,SI,Costear cuando la observación o evidencia indique ausencia falla necesidad de puesta en marcha o mejoramiento de desinfección
+Tratamiento / filtración,M2_FILTRACION,Filtración / tratamiento,SI,Costear cuando se evidencie ausencia de tratamiento PTAP filtro turbiedad arrastre o necesidad de barrera física
+PTAP o tratamiento,M2_FILTRACION,Filtración / tratamiento,SI,Costear cuando se requiera PTAP tratamiento básico filtración rural o barrera de tratamiento
+Captación / bocatoma,M3_ADECUACIONES,Adecuaciones del sistema,SI,Costear como adecuación hidráulica o sanitaria de captación bocatoma o desarenador
+Tanque / almacenamiento,M3_ADECUACIONES,Adecuaciones del sistema,SI,Costear como adecuación de almacenamiento tanque tapa lavado rebose o impermeabilización menor
+Red / conducción,M3_ADECUACIONES,Adecuaciones del sistema,SI,Costear como adecuación menor de red conducción válvulas fugas o accesorios
+Protección sanitaria / fuente,M3_ADECUACIONES,Adecuaciones del sistema,SI,Costear como protección cerramiento control de fuente o adecuación sanitaria menor
+Operación y mantenimiento,M3_ADECUACIONES,Adecuaciones del sistema,PARCIAL,Usar como componente complementario operativo no como obra principal
+Materialización de puntos de muestreo,M3_ADECUACIONES,Adecuaciones del sistema,PARCIAL,Usar como componente complementario para control y seguimiento sanitario
+Puntos de muestreo,M3_ADECUACIONES,Adecuaciones del sistema,PARCIAL,Usar como componente complementario para control y seguimiento sanitario
+Gestión administrativa,SIN_COSTO_OBRA,Gestión administrativa,NO,No calcular costo físico mostrar recomendación de gestión plan documentación o trámite
+Seguimiento / verificación técnica,SIN_COSTO_OBRA,Seguimiento técnico,NO,No calcular costo físico requiere visita o validación técnica
+Sin observación técnica,SIN_INFORMACION,Sin información suficiente,NO,No calcular costo requiere observación técnica de visita o evidencia complementaria
