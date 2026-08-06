@@ -1,0 +1,91 @@
+{
+  "generado_en": "2026-07-30T04:51:44+00:00",
+  "archivo_vacunacion": "Informe Vacunación junio.xlsx",
+  "archivo_censo": "Censo Zoonosis.xlsx",
+  "periodo_vacunacion": {
+    "desde": "2026-06-04",
+    "hasta": "2026-06-30"
+  },
+  "periodo_agresiones": {
+    "desde": "2025-01-25",
+    "hasta": "2026-07-23"
+  },
+  "vacunaciones_registros": 1034,
+  "vacunaciones_validas": 1033,
+  "vacunaciones_caninos": 592,
+  "vacunaciones_felinos": 421,
+  "vacunaciones_sin_especie": 20,
+  "vacunaciones_con_coordenada": 1029,
+  "agresiones": 2740,
+  "agresiones_canino": 2289,
+  "agresiones_felino": 411,
+  "agresiones_otro_sin_dato": 40,
+  "agresiones_vacunacion_desconocida": 1953,
+  "eventos_con_1_visita": 2128,
+  "eventos_con_2_visitas": 406,
+  "eventos_con_3_o_mas_visitas": 206,
+  "eventos_cumple_3_visitas_10_dias": 110,
+  "otras_actividades": {
+    "6.7": 183,
+    "6.3": 2753,
+    "6.4": 22
+  },
+  "fuentes": [
+    {
+      "nombre": "Población y coberturas antirrábicas municipales 2025",
+      "entidad": "Ministerio de Salud y Protección Social",
+      "url": "https://www.minsalud.gov.co/sites/rid/Lists/BibliotecaDigital/RIDE/VS/PP/PAI/antirrabica-perros-gatos-depto-mun-2025.pdf"
+    },
+    {
+      "nombre": "Cartografía base municipal del Valle del Cauca",
+      "entidad": "Capa utilizada por UESVALLE / ArcGIS Feature Service",
+      "url": "https://services5.arcgis.com/l23kE3b7uPnZIuaB/arcgis/rest/services/CARTOGRAFIA_BASE/FeatureServer/2"
+    }
+  ],
+  "version_tablero": "1.6.0",
+  "estructura_repositorio": "UESVALLE GitHub Pages",
+  "anios_disponibles": [
+    "2026"
+  ],
+  "vigencia_operativa": 2026,
+  "nota_anio_operativo": "El filtro principal usa la vigencia operativa 2026. Las fechas originales se conservan en las salidas privadas y en los controles de calidad.",
+  "modo_demostracion": {
+    "disponible": true,
+    "archivo": "../demo/vacunacion_municipios_demo_2026.csv",
+    "archivo_puntos": "../demo/vacunacion_puntos_demo_2026.csv",
+    "alcance": "Modifica los polígonos de vacunación y agrega puntos demostrativos diferenciados. Dagua conserva el dato real; los demás municipios son simulados.",
+    "publicacion_oficial": false
+  },
+  "archivos_publicos": {
+    "vacunacion": "vacunacion_resumen.csv",
+    "vacunacion_diaria": "vacunacion_diaria.csv",
+    "vacunacion_puntos": "vacunacion_puntos.csv",
+    "agresiones": "agresiones_resumen.csv",
+    "agresiones_diarias": "agresiones_diarias.csv",
+    "observacion": "observacion_resumen.csv",
+    "observacion_diaria": "observacion_diaria.csv",
+    "visitas": "visitas_resumen.csv",
+    "visitas_diarias": "visitas_diarias.csv",
+    "municipios": "resumen_municipios.csv",
+    "calidad": "calidad_datos_publica.csv",
+    "poblacion_referencia": "../reference/poblacion_canina_felina_minsalud_2025.csv",
+    "vacunacion_demo": "../demo/vacunacion_municipios_demo_2026.csv",
+    "vacunacion_puntos_demo": "../demo/vacunacion_puntos_demo_2026.csv"
+  },
+  "privacidad": {
+    "nivel_publicacion": "Agregado y anonimizado",
+    "incluye_nombres": false,
+    "incluye_documentos": false,
+    "incluye_telefonos": false,
+    "incluye_direcciones": false,
+    "incluye_funcionarios": false,
+    "incluye_numeros_acta": false,
+    "incluye_coordenadas_vacunacion": true,
+    "modalidad_coordenadas": "Puntos de vacunación sin datos del propietario; el popup muestra fecha, vacuna y lote, y consolida los registros coincidentes"
+  },
+  "reglas_operativas": {
+    "visitas_esperadas": 3,
+    "ventana_observacion_dias": 10,
+    "nota": "Criterio operativo configurable de UESVALLE; no se presenta como obligación nacional de frecuencia fija."
+  }
+}
