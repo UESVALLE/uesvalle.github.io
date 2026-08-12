@@ -1,0 +1,51 @@
+﻿codigo_dane_fuente,municipio,municipio_normalizado,aro_uesvalle,evento_secundario,descripcion_riesgo_asociado,habitantes,heridos,heridos_menores,heridos_mayores,fallecidos,fallecidos_menores,fallecidos_mayores,desaparecidos,familias_afectadas,personas_afectadas,estado_informacion_poblacion,calidad_registro,fila_fuente
+76001,Santiago de Cali,CALI,ARO Sur - Cali,,,2285099,,,,,,,,,,SIN DATO,,5
+76020,Alcalá,ALCALA,ARO Norte - Cartago,Sin informacion,Sin informacion,14929,5,,,1,,,,,,PARCIAL / EN VERIFICACIÓN,,6
+76036,Andalucía,ANDALUCIA,ARO Centro - Tuluá,N/A,N/A,23054,200,,0,0,0,0,0,,,REPORTADO,,7
+76041,Ansermanuevo,ANSERMANUEVO,ARO Norte - Cartago,Sin informacion,Sin informacion,18399,,,,,,,,,,SIN DATO,,8
+76054,Argelia,ARGELIA,ARO Norte - Cartago,Sin informacion,Sin informacion,5558,,,,,,,,,,SIN DATO,,9
+76100,Bolívar,BOLIVAR,ARO Centro - Tuluá,,,16496,,,,,,,,,,SIN DATO,,10
+76109,Buenaventura,BUENAVENTURA,ARO Sur - Cali,"1) Deslizamiento
+2) Incendio en Centro de Detención Transitoria ‘Marte’","La vía Cali – Loboguerrero – Buenaventura se encuentra totalmente inaccesible tras múltiples derrumbes y caída de rocas gigantescas. Este cierre no solo impide el paso de ambulancias y equipos de rescate, sino que frena el ingreso de camiones con víveres, agua potable y combustibles. 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                Una confrontación entre los grupos delincuenciales, Shottas y Espartanos, registrada hacia las 9:30 de la noche del pasado 10 de agosto, terminó en un incendio en el Centro de Detención Transitorio ‘Marte’, en Buenaventura, dejando seis personas fallecidas y tres más heridas.",335217,258,1,,16,1,,3,5005,7150,REPORTADO,,11
+76111,Guadalajara de Buga,GUADALAJARA DE BUGA,ARO Centro - Tuluá,N/A,N/A,127545,48,6,3,3,1,1,,,,PARCIAL / EN VERIFICACIÓN,,12
+76113,Bugalagrande,BUGALAGRANDE,ARO Centro - Tuluá,,,25527,18,10,8,,,,,1100,,PARCIAL / EN VERIFICACIÓN,,13
+76122,Caicedonia,CAICEDONIA,ARO Centro - Tuluá,"2 incendios en zona rural. 
+
+Derrumbes en 4 veredas","Propagación de incendios: Se presentaron situaciones asociadas a la propagación de incendios que generaron afectaciones y riesgos en diferentes sectores.
+
+Afectaciones en las vías de acceso terrestre: Se presentaron afectaciones en las vías de acceso terrestre, dificultando la movilidad y el desplazamiento hacia las zonas comprometidas.",29900,7,0,7,0,0,0,0,1100,5000,REPORTADO,,14
+76126,Calima (El Darién),CALIMA (EL DARIEN),ARO Centro - Tuluá,,,19461,41,2,39,4,4,,,800,,REPORTADO,,15
+76130,Candelaria,CANDELARIA,ARO Sur - Cali,INCENDIO ESTRUCTURAL,SECTOR INDUSTRIAL LA NUBIA CUENTA CON EMPRESAS QUE TIENEN MAQUINARIA QUE ANTE EL SISMO PUEDEN CAUSAR INCENDIOS ESTRUCTURALES ,113000,11,,,,,,,96,300,REPORTADO,,16
+76147,Cartago,CARTAGO,ARO Norte - Cartago,,,144206,,,26,,,,,,,REPORTADO,,17
+76233,Dagua,DAGUA,ARO Sur - Cali,Derrumbes en la vía a Buenaventura,"Derrumbes asociados al Sismo: Vía Sentella, Puerto Cozón, Piñas del 44 (más grande), Loboguerrero - Cisneros, Tunel, Entre tocotá",49864,,,,4,,,,,,REPORTADO,,18
+76243,El Águila,EL AGUILA,ARO Norte - Cartago,,,9185,28,,,1,,,,,,REPORTADO,,19
+76246,El Cairo,EL CAIRO,ARO Norte - Cartago,Derrumbes en la vía de acceso y vías rurales,Se reportan aproximadamente 30 derrumbes en la vía de acceso y en 10 vías rurales del municipio,7059,5,,,2,,,,,,PARCIAL / EN VERIFICACIÓN,,20
+76248,El Cerrito,EL CERRITO,ARO Sur - Cali,SI,AFECTACION POR CAIDA EN INMUEBLES DE LOS MUROS PERIMETRALES Y COLINDANTES EN PRIMER Y SEGUNDO PISO,59760,7,,,0,0,0,0,,150,REPORTADO,M: valor no numérico (50 AL MOMENTO SE CONTINUA EVALUACIONES A VIVIENDA),21
+76250,El Dovio,EL DOVIO,ARO Norte - Cartago,,,9246,,,,,,,,,,SIN DATO,,22
+76275,Florida,FLORIDA,ARO Sur - Cali,,,58566,,,,,,1,,,,REPORTADO,,23
+76306,Ginebra,GINEBRA,ARO Sur - Cali,,,25186,,,,,,,,,,SIN DATO,,24
+76318,Guacarí,GUACARI,ARO Sur - Cali,,,35614,,,,,,,,,,SIN DATO,,25
+76364,Jamundí,JAMUNDI,ARO Sur - Cali,SISMOS,Inestabilidad estructural y colapsos,196875,47,9,38,0,0,0,0,1171,4684,REPORTADO,,26
+76377,La Cumbre,LA CUMBRE,ARO Sur - Cali,DESLIZAMIENTOS Y LINEAS ELECTRICAS CAIDAS,INCOMUNICACION DE VEREDAS Y CORREGIMIENTOS      EXPOPSICION DE PERSONAS A LINEAS ELECTRICAS DE ALTA TENSION,18546,7,0,7,0,0,0,0,356,1780,REPORTADO,,27
+76400,La Unión,LA UNION,ARO Norte - Cartago,"Edificios con alto deterioro, afectaciones estructurales grandes","Intestabilidad infraestructura, riesgo de colapso",34778,27,,,1,,,,,3675,REPORTADO,,28
+76403,La Victoria,LA VICTORIA,ARO Norte - Cartago,estruccion viviendas institucion educativa palacio mpal,"50 casas graves de 670 afectadas, palacion mpal afectada y casa de la cultura caida, institucioneseducativas afectadas de techos, ",12180,6,0,3,0,0,0,0,670,,REPORTADO,,29
+76497,Obando,OBANDO,ARO Norte - Cartago,"El Municipio se encuentra actualmente sin agua, con el 50% sin fluido electrico, datos celulares restringidos, viviendas colapsadas, iglesia sin prestar servicios",No se ha podido retomar las actividades basicas en los hogares ,13000,29,0,29,0,0,0,0,230,920,REPORTADO,,30
+76520,Palmira,PALMIRA,ARO Sur - Cali,,,359888,,,,,,,,,,SIN DATO,,31
+76563,Pradera,PRADERA,ARO Sur - Cali,Réplicas sísmicas y posible desprendimiento de elementos no estructurales.,"Posible incremento de fisuras, agrietamientos o desprendimientos en edificaciones previamente afectadas.",48000,0,0,0,0,0,0,0,60,300,REPORTADO,,32
+76606,Restrepo,RESTREPO,ARO Centro - Tuluá,falta de comunicacion-no hay señal de telfonia ni de internet,no se pueden reportar las emergencias,18000,50,0,50,0,0,0,0,500,2000,REPORTADO,,33
+76616,Riofrío,RIOFRIO,ARO Centro - Tuluá,No aplica,No aplica,16014,3,,,1,,1,,,2400,REPORTADO,,34
+76622,Roldanillo,ROLDANILLO,ARO Norte - Cartago,"Incendio estructural;  deslizamiento de tierra en zona rural;  colapso puente Guayabal que comunica con Zarzal; Ruptura tubo madre de acueducto; destrucción centro histórico (calle 8); Hospital averiado en un 60%; servicios eléctrico y de agua potable restringido, por zonas; sin servicio de internet.",,38639,350,,,2,,2,1,1252,5008,REPORTADO,,35
+76670,San Pedro,SAN PEDRO,ARO Centro - Tuluá,"suspension del servicio de fluido electrico, daños en la infraestructura de los templos y parroquidas del municipio, cableado de lineas de internet caidas.","debido al sismo presentado el dia de ayer 10 de Agosto del año en curso se presento suspension del servicio de fluido electrico en el casco urbano del municipio y en algunos sectores y corregimiento de nuestra jurisdiccion de los cuales a la fecha y hora tenemos sitios que no se ha podido restablecer dicho servicio, igualmente tenemos en riesgo principalmente dos torres de iglesias catolicas a punto de colapsar y poco a poco se esta haciendo el retiro del cableado de las lineas de internet y tv cable que se encuentran caidas. ",17.275,16,3,13,0,0,0,0,,1,REPORTADO,M: valor no numérico (hasta la fecha y hora van 250 familias censadas),36
+76736,Sevilla,SEVILLA,ARO Centro - Tuluá,"Mayoria de la urbana sin energia, zona rural sin energia.Vias de ingreso y municipales con escombro al municipio",,44100,56,,,3,0,3,,,,REPORTADO,M: valor no numérico (viviendas colapsadas 200),37
+76823,Toro,TORO,ARO Norte - Cartago,,,15013,13,,,1,,,,,,REPORTADO,,38
+76828,Trujillo,TRUJILLO,ARO Centro - Tuluá,N/A,N/A,19700,32,1,31,1,0,1,1,536,1707,REPORTADO,,39
+76834,Tuluá,TULUA,ARO Centro - Tuluá,"MUNICIPIO SIN AGUA - DESPLAZAMIENTO 15 CM DEL PUENTE SOBRE EL RIO CAUCA  EN LA VIA TULUA  RIOFRIO. LAS AUTORIDADES DAN UN PARTE DE TRANQUILIDAD, HAY PASO NORMAL PARA VEHICULOS DE TODO TIPO.",,233385,33,,,,,,,,,REPORTADO,,40
+76845,Ulloa,ULLOA,ARO Norte - Cartago,DERRUMBES (SIN ESPECIFICAR VíAS),,5847,2,,,,,,,,,REPORTADO,,41
+76863,Versalles,VERSALLES,ARO Norte - Cartago,DERUMBES VIA  VERSALLES - LA UNION ,10 derumbes entre ellos 1 - grande solo tiene habilitado un carril  pero hay paso restringido,7475,18,,,,,,,,171,REPORTADO,,42
+76869,Vijes,VIJES,ARO Sur - Cali,"DESLIZAMIENTO EN VIAS TERCIARIAS 
+DESPRENDIMIENTOS EN CARRETERAS  
+AFECTACION EN CASAS ZONA RURAL Y URBANA",,13324,0,0,0,0,0,0,0,0,0,REPORTADO,,43
+76890,Yotoco,YOTOCO,ARO Centro - Tuluá,2 vías tapadas por la montañ, Vías afectadas o con restricciones de movilidad: Vía Las Delicias - La Playa y Vía La Carrasposa,16466,,,,,,,,,457,REPORTADO,,44
+76892,Yumbo,YUMBO,ARO Sur - Cali,Incendio Estructural,"Incendio Estructural Parque Logisitco Palma Seca, Autopista Cali-Yumbo",120000,28,21,7,6,2,4,0,100,500,REPORTADO,,45
+76895,Zarzal,ZARZAL,ARO Centro - Tuluá,caida electrica vallejuelo y la paila,cabecera hay enrgia agua no la pila sin energia,51500,75,5,,2,0,2,2,1000,4000,REPORTADO,,46

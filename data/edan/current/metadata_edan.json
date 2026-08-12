@@ -1,0 +1,81 @@
+{
+  "proyecto": "EDAN Valle del Cauca – Análisis sanitario y territorial UESVALLE",
+  "fase": "Fase 1 – modelo de datos corregido",
+  "fuente": "Matriz EDAN consolidada Valle del Cauca · corte 2026-08-11",
+  "procesado_en": "2026-08-11",
+  "municipios": 42,
+  "servicios_registros": 252,
+  "cambios_sustantivos_vs_original": 32,
+  "calidad": {
+    "hallazgos_vigentes": 31,
+    "alto": 2,
+    "medio": 19,
+    "informativo": 10,
+    "normalizados_seguro": 9,
+    "pendientes_sin_dato": 15
+  },
+  "totales_validados": {
+    "heridos": 1420,
+    "fallecidos": 48,
+    "desaparecidos": 7,
+    "familias_afectadas": 13976,
+    "personas_afectadas": 40203,
+    "viviendas_averiadas": 20668,
+    "viviendas_destruidas": 5321,
+    "familias_sin_acueducto": 9162,
+    "personas_sin_acueducto": 37018,
+    "familias_sin_energia": 7300,
+    "personas_sin_energia": 38850,
+    "acueductos_averiados": 9,
+    "energia_uso_restringido": 3
+  },
+  "reglas": [
+    "Se excluye la fila 4 EJEMPLO.",
+    "Sin información/Por evaluar se conserva como dato no disponible y no se convierte a cero.",
+    "NO TIENE puede normalizarse a 0 en la capa analítica, conservando el valor raw.",
+    "Los estados de servicios usan X como marca válida.",
+    "Los encabezados reales de MATRIZ_MUNICIPIOS son la referencia estructural."
+  ],
+  "version_tablero": "3.0.0",
+  "modulo": "EDAN",
+  "fecha_evento": "2026-08-11",
+  "nivel_publicacion": "Datos agregados municipales. Fotografías no publicadas en esta versión.",
+  "motor_cartografico": "Leaflet + capa municipal ArcGIS reutilizada del ecosistema UESVALLE",
+  "modulos_v2": [
+    "Resumen",
+    "Servicios públicos esenciales",
+    "Contexto sanitario",
+    "Albergues y refugios",
+    "Afectación territorial",
+    "Necesidades",
+    "Bienestar animal",
+    "Calidad"
+  ],
+  "estado_informacion_servicios": {
+    "con_informacion_reportada": 34,
+    "pendiente_de_informacion": 8,
+    "regla": "Con información si al menos uno de los seis servicios tiene estado REPORTADO; pendiente si ninguno tiene información reportada."
+  },
+  "albergues_refugios": {
+    "municipios_reportados": 12,
+    "familias_cuantificadas_explicitamente": 18,
+    "personas_cuantificadas_explicitamente": 20,
+    "nota": "Las cantidades solo se extraen cuando familia/persona está explícitamente asociada a albergue/refugio en el texto."
+  },
+  "cambios_v3": [
+    "Estado de carga compacto con detalle desplegable tipo IRCAS.",
+    "Se retira la barra Gestión del Riesgo · EDAN y el botón Cerrar sesión.",
+    "Se eliminan aclaraciones técnicas de coordenadas X/Y y relleno municipal.",
+    "Gráficos de módulos conectados a filtros globales o tablas relacionadas.",
+    "Filtros locales desde gráficos con opción visible para limpiar."
+  ],
+  "version_interfaz": "5.0.0",
+  "hospitales_integrados": 42,
+  "generador_pdf": true,
+  "cambios_v5": [
+    "Se retira la aclaración visible del paquete hospitalario en el visor.",
+    "Se eliminan enlaces externos de fotografías/evidencias hospitalarias de la interfaz.",
+    "Se restaura la selección municipal y apertura de ficha territorial desde mapa, selector y gráficos.",
+    "Los hospitales se dibujan en markerPane para no interferir con los polígonos municipales."
+  ]
+}

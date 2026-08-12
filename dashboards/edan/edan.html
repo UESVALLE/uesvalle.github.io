@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="EDAN Valle del Cauca · análisis sanitario y territorial UESVALLE.">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>EDAN · Análisis sanitario y territorial | UESVALLE</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet">
+  <link href="https://cdn.datatables.net/1.13.8/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+  <link href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.bootstrap5.min.css" rel="stylesheet">
+  <link href="edan.css?v=5.0.0" rel="stylesheet">
+</head>
+<body>
+  <section id="accessGate" class="access-gate">
+    <div class="access-card">
+      <div class="access-logo">U</div>
+      <h1>Acceso UESVALLE</h1>
+      <p>Este módulo utiliza el acceso central del Portal de Tableros.</p>
+      <a class="btn btn-primary w-100" href="../../index.html">Ir al Portal de Tableros</a>
+      <small>En servidor local se habilita automáticamente la vista de revisión.</small>
+    </div>
+  </section>
+
+  <div id="dashboardContent" class="d-none">
+    <div class="gov-banner"><div class="container d-flex align-items-center h-100"><img src="https://www.gov.co/assets/images/logo.png" alt="GOV.CO"></div></div>
+    <main class="bg-shell">
+      <div class="board">
+        <header class="header-ues py-2 mb-3"><div class="container-fluid px-3"><div class="brand-strip"><img src="https://www.uesvalle.gov.co/info/uesvalle/media/bloque1656.png" alt="UESVALLE" loading="lazy"></div></div></header>
+
+        <section class="soft-card p-3 mb-3">
+          <div class="dashboard-return mb-2"><a href="../../index.html" class="btn btn-outline-primary btn-sm rounded-pill px-3 fw-bold">← Portal de Tableros</a></div>
+          <div class="d-flex flex-column flex-xl-row align-items-xl-center gap-3">
+            <div class="me-auto">
+              <div class="module-eyebrow">Análisis territorial de emergencia</div>
+              <h1 class="board-title mb-1">EDAN · Análisis sanitario y territorial UESVALLE</h1>
+              <div class="board-subtitle">Lectura municipal de afectaciones, agua y saneamiento, contexto sanitario, necesidades y calidad del dato. Evento reportado: 11 de agosto de 2026.</div>
+            </div>
+            <div class="header-actions">
+              <button id="btnGeneratePdf" class="btn btn-primary btn-sm rounded-pill px-3" type="button" title="Genera un balance departamental o municipal según los filtros activos">📄 Generar balance PDF</button>
+              <div class="header-status">
+              <span id="lastUpdate" class="badge text-bg-secondary last-update-badge">Cargando…</span>
+              <div class="mini-status">
+                <span>Estado de carga de datos</span>
+                <button type="button" id="btnToggleStatus">Ver detalle</button>
+                <span id="statusHint">Oculto</span>
+              </div>
+            </div>
+            </div>
+          </div>
+          <div id="loadAlert" class="status-body d-none mt-3"></div>
+        </section>
+
+        <section class="soft-card p-3 mb-3 collapsible-block">
+          <button class="table-toggle-header" type="button" data-bs-toggle="collapse" data-bs-target="#filtersCollapse" aria-expanded="true">
+            <div><h5 class="mb-1">Filtros del tablero</h5><div class="section-note">Los filtros actualizan KPIs, gráficos, tablas y mapa.</div></div>
+            <span class="table-toggle-arrow">›</span>
+          </button>
+          <div class="collapse show mt-3" id="filtersCollapse">
+            <div class="row g-2 align-items-end">
+              <div class="col-12 col-md-4"><label class="filter-label" for="fMunicipality">Municipio</label><select id="fMunicipality" class="form-select form-select-sm"><option value="">Todos</option></select></div>
+              <div class="col-12 col-md-4"><label class="filter-label" for="fAro">Área Regional Operativa</label><select id="fAro" class="form-select form-select-sm"><option value="">Todas</option></select></div>
+              <div class="col-12 col-md-4"><label class="filter-label" for="fInfo">Estado de información de servicios</label><select id="fInfo" class="form-select form-select-sm"><option value="">Todos</option></select></div>
+            </div>
+            <div class="filters-actions mt-3"><button id="btnApply" class="btn btn-primary btn-sm px-4">Actualizar filtros</button><button id="btnClear" class="btn btn-outline-secondary btn-sm px-4">Limpiar</button><button id="btnReload" class="btn btn-outline-primary btn-sm px-4">Refrescar datos</button></div>
+          </div>
+        </section>
+
+        <section class="soft-card p-2 mb-3 active-filters-card"><div class="d-flex justify-content-between align-items-center gap-2 flex-wrap"><div class="d-flex align-items-center gap-2 flex-wrap"><strong>Filtros activos</strong><div id="activeFilters" class="active-filters-wrap"><span class="text-muted small">Sin filtros adicionales</span></div></div><button id="btnClearActiveFilters" class="btn btn-outline-danger btn-sm">Limpiar filtros</button></div></section>
+
+        <section class="main-kpi-row mb-3">
+          <div class="kpi-card"><div class="kpi-icon">🗺️</div><div class="kpi-label">Municipios evaluados</div><div id="kpiMunicipios" class="kpi-value">–</div><div class="kpi-mini">Universo EDAN filtrado</div></div>
+          <div class="kpi-card"><div class="kpi-icon">👥</div><div class="kpi-label">Personas afectadas</div><div id="kpiPersonas" class="kpi-value">–</div><div class="kpi-mini">Solo valores numéricos reportados</div></div>
+          <div class="kpi-card"><div class="kpi-icon">🩹</div><div class="kpi-label">Heridos</div><div id="kpiHeridos" class="kpi-value">–</div><div class="kpi-mini">Consolidado municipal</div></div>
+          <div class="kpi-card"><div class="kpi-icon">💧</div><div class="kpi-label">Personas sin servicio de acueducto</div><div id="kpiSinAgua" class="kpi-value">–</div><div class="kpi-mini">Servicios esenciales</div></div>
+          <div class="kpi-card"><div class="kpi-icon">⚡</div><div class="kpi-label">Personas sin energía</div><div id="kpiSinEnergia" class="kpi-value">–</div><div class="kpi-mini">Servicios esenciales</div></div>
+          <div class="kpi-card"><div class="kpi-icon">🏠</div><div class="kpi-label">Viviendas averiadas</div><div id="kpiViviendas" class="kpi-value">–</div><div class="kpi-mini">Urbanas + rurales</div></div>
+          <div class="kpi-card"><div class="kpi-icon">🚨</div><div class="kpi-label">Municipios con alertas</div><div id="kpiAlertas" class="kpi-value">–</div><div class="kpi-mini">Cruces sanitarios UESVALLE</div></div>
+        </section>
+
+        <section class="module-tabs-card">
+          <div class="module-tabs-head"><h2 class="module-tabs-title">Módulos de análisis EDAN</h2><div class="module-tabs-subtitle">Explora la afectación territorial, sanitaria y las necesidades reportadas durante la emergencia.</div></div>
+          <ul class="nav nav-pills" id="dashboardTabs" role="tablist">
+            <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#summary-pane" type="button">Resumen</button></li>
+            <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#water-pane" type="button">Servicios públicos esenciales</button></li>
+            <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#context-pane" type="button">Contexto sanitario</button></li>
+            <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#shelters-pane" type="button">Albergues y refugios</button></li>
+            <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#territory-pane" type="button">Afectación territorial</button></li>
+            <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#needs-pane" type="button">Necesidades</button></li>
+            <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#animals-pane" type="button">Bienestar animal</button></li>
+            <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#quality-pane" type="button">Calidad</button></li>
+          </ul>
+
+          <div class="tab-content dashboard-tabs-content">
+            <div class="tab-pane fade show active" id="summary-pane">
+              <section class="section-block section-block--blue mb-3">
+                <div class="section-header"><div class="section-header__icon">🗺️</div><div><h3>Contraste territorial EDAN</h3><p>Seleccione el indicador que desea representar por municipio y consulte la ficha territorial haciendo clic sobre el mapa.</p></div></div>
+                <div class="section-body">
+                  <div class="map-module-shell">
+                    <aside class="map-side-column">
+                      <div class="map-side-panel">
+                        <div class="layer-panel-header">Capas del visor</div>
+                        <details open><summary>Mapas base</summary>
+                          <label><input type="radio" name="edanBasemap" value="cartoLight" checked> Claro CARTO</label>
+                          <label><input type="radio" name="edanBasemap" value="esriTopo"> Topográfico Esri</label>
+                          <label><input type="radio" name="edanBasemap" value="esriImagery"> Satélite Esri</label>
+                          <label><input type="radio" name="edanBasemap" value="osm"> OpenStreetMap</label>
+                        </details>
+                        <details open><summary>Indicador territorial</summary>
+                          <label><input type="radio" name="mapMetric" value="personas_afectadas" checked> Personas afectadas</label>
+                          <label><input type="radio" name="mapMetric" value="familias_afectadas"> Familias afectadas</label>
+                          <label><input type="radio" name="mapMetric" value="heridos"> Heridos</label>
+                          <label><input type="radio" name="mapMetric" value="viviendas_averiadas"> Viviendas averiadas</label>
+                          <label><input type="radio" name="mapMetric" value="personas_sin_agua"> Personas sin servicio de acueducto</label>
+                          <label><input type="radio" name="mapMetric" value="personas_sin_energia"> Personas sin energía</label>
+                          <label><input type="radio" name="mapMetric" value="salud_afectada"> Salud afectada</label>
+                          <label><input type="radio" name="mapMetric" value="albergue"> Albergue / refugio</label>
+                          <label><input type="radio" name="mapMetric" value="alertas"> Alertas sanitarias cruzadas</label>
+                        </details>
+                        <details open><summary>Salud y respuesta</summary>
+                          <label><input id="showHospitals" type="checkbox" checked> Hospitales principales</label>
+                          
+                        </details>
+                        <details open><summary>Territorial</summary>
+                          <label><input id="showMunicipalPolygons" type="checkbox" checked> Municipios Valle</label>
+                          <label><input id="showMunicipalityLabels" type="checkbox" checked> Etiquetas municipios</label>
+                          <label><input id="showVeredasValle" type="checkbox" checked> Veredas Valle</label>
+                          <label><input id="showCentrosPoblados" type="checkbox" checked> Centros poblados</label>
+                          <label><input id="showViasPrincipales" type="checkbox"> Vías principales</label>
+                          <label><input id="showRios" type="checkbox"> Ríos</label>
+                          <label><input id="showValleContorno" type="checkbox" checked> Valle contorno</label>
+                          <label><input id="showMunicipiosUES" type="checkbox"> Municipios UES</label>
+                        </details>
+                      </div>
+                    </aside>
+                    <div class="map-canvas-column">
+                      <div class="map-action-toolbar"><button id="btnMapReset" class="map-tool-button" type="button">Vista Valle</button><button id="btnOpenSelected" class="map-tool-button" type="button">Ficha seleccionada</button></div>
+                      <div id="map" class="map"></div>
+                      <div class="custom-legend-panel"><div class="legend-panel-title">Leyenda</div><div id="mapLegend"></div></div>
+                    </div>
+                  </div>
+                  <div id="mapSummary" class="map-summary-panel">Cargando información territorial…</div>
+                </div>
+              </section>
+              <div class="row g-3">
+                <div class="col-12 col-xl-6"><section class="chart-card h-100"><div class="chart-title">Personas afectadas por municipio</div><div class="chart-subtitle">Top territorial dentro del universo filtrado.</div><div class="chart-container chart-container-tall"><canvas id="chartPeople"></canvas></div></section></div>
+                <div class="col-12 col-xl-6"><section class="chart-card h-100"><div class="chart-title">Personas sin servicio de acueducto</div><div class="chart-subtitle">Municipios con población cuantificada sin servicio.</div><div class="chart-container chart-container-tall"><canvas id="chartWaterPeople"></canvas></div></section></div>
+                <div class="col-12"><section class="chart-card"><div class="chart-title">Estado de información en servicios públicos esenciales</div><div class="chart-subtitle">Agrupa los municipios que presentan información en al menos uno de los seis servicios y los que continúan pendientes. Haz clic para filtrar el tablero.</div><div class="chart-container info-status-chart"><canvas id="chartInfoStatus"></canvas></div></section></div>
+                <div class="col-12"><section class="section-block section-block--blue"><div class="section-header"><div class="section-header__icon">📋</div><div><h3>Municipios por estado de información</h3><p id="infoStatusSummary">Consulta el estado de consolidación de los seis servicios públicos esenciales.</p></div></div><div class="section-body"><div class="table-responsive"><table id="tblInfoStatus" class="table table-hover align-middle w-100"></table></div></div></section></div>
+              </div>
+            </div>
+
+            <div class="tab-pane fade" id="water-pane">
+              <div class="tab-intro">Lectura integral de la sección 8 del EDAN. El componente sanitario prioriza acueducto, alcantarillado, saneamiento básico y recolección de basuras; energía eléctrica y gas se conservan como servicios esenciales relacionados.</div>
+              <div class="service-subtabs" id="serviceSubtabs">
+                <button class="service-subtab active" type="button" data-service-view="RESUMEN">Resumen</button>
+                <button class="service-subtab" type="button" data-service-view="Acueducto">Acueducto</button>
+                <button class="service-subtab" type="button" data-service-view="Alcantarillado">Alcantarillado</button>
+                <button class="service-subtab" type="button" data-service-view="Saneamiento básico">Saneamiento básico</button>
+                <button class="service-subtab" type="button" data-service-view="Recolección de basuras">Recolección de basuras</button>
+                <button class="service-subtab" type="button" data-service-view="Energía eléctrica">Energía eléctrica</button>
+                <button class="service-subtab" type="button" data-service-view="Gas">Gas</button>
+              </div>
+
+              <div id="servicesSummaryView">
+                <div class="detail-kpi-grid detail-kpi-grid--five">
+                  <div class="detail-kpi"><small>Personas sin servicio de acueducto</small><b id="waterPeople">–</b></div>
+                  <div class="detail-kpi"><small>Familias sin servicio de acueducto</small><b id="waterFamilies">–</b></div>
+                  <div class="detail-kpi"><small>Municipios con algún servicio afectado</small><b id="servicesMunicipalities">–</b></div>
+                  <div class="detail-kpi"><small>Dependencia agua–energía</small><b id="waterEnergy">–</b></div>
+                  <div class="detail-kpi"><small>Alternativa / carrotanque</small><b id="waterTankers">–</b></div>
+                </div>
+                <div class="row g-3 mb-3">
+                  <div class="col-12 col-xl-6"><section class="chart-card h-100"><div class="chart-title">Municipios con afectación por servicio</div><div class="chart-subtitle">Haz clic en una barra para abrir el servicio y conocer los municipios afectados.</div><div class="chart-container"><canvas id="chartServices"></canvas></div></section></div>
+                  <div class="col-12 col-xl-6"><section class="chart-card h-100"><div class="chart-title">Estado de recuperación del acueducto</div><div class="chart-click-hint">Haz clic en una categoría para consultar los municipios.</div><div class="chart-container"><canvas id="chartRecovery"></canvas></div></section></div>
+                </div>
+                <section class="section-block section-block--blue" id="servicesTableSection"><div class="section-header"><div class="section-header__icon">💧</div><div><h3>Servicios públicos esenciales</h3><p id="servicesTableSummary">Consulta integrada de los seis servicios. La gráfica superior permite navegar al detalle.</p></div></div><div class="section-body"><div class="table-responsive"><table id="tblServices" class="table table-hover align-middle w-100"></table></div></div></section>
+              </div>
+
+              <div id="serviceDetailView" class="d-none">
+                <div class="service-detail-head mb-3"><div><div class="module-eyebrow">Detalle por servicio</div><h3 id="serviceDetailTitle">Acueducto</h3><p id="serviceDetailIntro" class="section-note mb-0"></p></div><button id="btnServiceBack" type="button" class="btn btn-outline-primary btn-sm rounded-pill">← Volver al resumen</button></div>
+                <div class="detail-kpi-grid detail-kpi-grid--five">
+                  <div class="detail-kpi"><small>Municipios con afectación</small><b id="svcAffected">–</b></div>
+                  <div class="detail-kpi"><small>Familias sin servicio</small><b id="svcFamilies">–</b></div>
+                  <div class="detail-kpi"><small>Personas sin servicio</small><b id="svcPeople">–</b></div>
+                  <div class="detail-kpi"><small>Pendientes / sin información</small><b id="svcPending">–</b></div>
+                  <div class="detail-kpi"><small>Fuera de servicio</small><b id="svcOut">–</b></div>
+                </div>
+                <div class="row g-3 mb-3"><div class="col-12 col-xl-6"><section class="chart-card h-100"><div class="chart-title">Estado municipal del servicio</div><div class="chart-click-hint">Haz clic en un segmento para filtrar el detalle municipal.</div><div class="chart-container"><canvas id="chartServiceStatus"></canvas></div></section></div><div class="col-12 col-xl-6"><section class="chart-card h-100"><div class="chart-title">Recuperación reportada</div><div class="chart-click-hint">Haz clic en un segmento para filtrar el detalle municipal.</div><div class="chart-container"><canvas id="chartServiceRecovery"></canvas></div></section></div></div>
+                <section class="section-block section-block--blue" id="serviceDetailSection"><div class="section-header"><div class="section-header__icon" id="serviceDetailIcon">🔎</div><div><h3 id="serviceTableTitle">Detalle municipal</h3><p id="serviceTableSubtitle">Se conserva la descripción y perspectiva de recuperación reportadas.</p></div></div><div class="section-body"><div class="table-responsive"><table id="tblServiceDetail" class="table table-hover align-middle w-100"></table></div></div></section>
+              </div>
+            </div>
+
+            <div class="tab-pane fade" id="context-pane">
+              <div class="tab-intro"><strong>Pregunta de análisis:</strong> ¿qué condiciones pueden agravar la respuesta sanitaria durante la emergencia? El módulo integra las condiciones reportadas en EDAN con la red hospitalaria principal y mantiene separadas las alertas analíticas UESVALLE de los datos originales.</div>
+              <div class="detail-kpi-grid">
+                <div class="detail-kpi"><small>Salud afectada</small><b id="ctxHealth">–</b></div><div class="detail-kpi"><small>Energía afectada</small><b id="ctxEnergy">–</b></div><div class="detail-kpi"><small>Accesibilidad afectada</small><b id="ctxAccess">–</b></div><div class="detail-kpi"><small>Municipios con alertas cruzadas</small><b id="ctxAlerts">–</b></div>
+              </div>
+              <div class="row g-3 mb-3">
+                <div class="col-12 col-xl-6"><section class="chart-card h-100"><div class="chart-title">Condiciones territoriales reportadas</div><div class="chart-subtitle">Agua, salud, energía, accesibilidad y albergues. Haz clic para consultar municipios.</div><div class="chart-container"><canvas id="chartContextConditions"></canvas></div></section></div>
+                <div class="col-12 col-xl-6"><section class="chart-card h-100"><div class="chart-title">Alertas analíticas UESVALLE</div><div class="chart-subtitle">Coincidencias territoriales; no constituyen una clasificación oficial de riesgo.</div><div class="chart-container"><canvas id="chartAlerts"></canvas></div></section></div>
+              </div>
+              <div id="healthEdanSummary" class="context-source-strip mb-3">Cargando afectación EDAN en instalaciones de salud…</div>
+              <section class="section-block section-block--beige mb-3"><div class="section-header"><div class="section-header__icon">🚨</div><div><h3>Contexto sanitario municipal</h3><p>Condiciones territoriales y alertas cruzadas utilizadas para apoyar la lectura sanitaria.</p></div></div><div class="section-body"><div class="table-responsive"><table id="tblContext" class="table table-hover align-middle w-100"></table></div></div></section>
+
+              <section class="section-block section-block--blue mb-3"><div class="section-header"><div class="section-header__icon">🏥</div><div><h3>Red hospitalaria principal</h3><p>Hospitales principales incorporados como capa de consulta territorial para complementar la lectura de salud y capacidad de respuesta.</p></div></div><div class="section-body">
+                <div class="detail-kpi-grid mb-3"><div class="detail-kpi"><small>Hospitales principales</small><b id="hospTotal">–</b></div><div class="detail-kpi"><small>Con afectación &gt; 0 %</small><b id="hospAffected">–</b></div><div class="detail-kpi"><small>Afectación ≥ 50 %</small><b id="hospHigh">–</b></div><div class="detail-kpi"><small>Crítica / colapso ≥ 70 %</small><b id="hospCritical">–</b></div></div>
+                <div class="row g-3 mb-3"><div class="col-12 col-xl-6"><section class="chart-card h-100"><div class="chart-title">Hospitales por nivel de afectación</div><div class="chart-click-hint">Haz clic en un nivel para filtrar el detalle hospitalario.</div><div class="chart-container"><canvas id="chartHospitalLevels"></canvas></div></section></div><div class="col-12 col-xl-6"><section class="chart-card h-100"><div class="chart-title">Hospitales con mayor afectación porcentual</div><div class="chart-click-hint">Haz clic en un hospital para seleccionar su municipio.</div><div class="chart-container"><canvas id="chartHospitalTop"></canvas></div></section></div></div>
+                <div class="table-responsive"><table id="tblHospitals" class="table table-hover align-middle w-100"></table></div>
+              </div></section>
+            </div>
+
+            <div class="tab-pane fade" id="shelters-pane">
+              <div class="tab-intro">Seguimiento sanitario de municipios con albergues o refugios reportados. Las cantidades se muestran únicamente cuando están explícitamente asociadas al albergue/refugio en la fuente.</div>
+              <div class="detail-kpi-grid detail-kpi-grid--six">
+                <div class="detail-kpi"><small>Municipios con albergue / refugio</small><b id="shelterMunicipalities">–</b></div><div class="detail-kpi"><small>Familias cuantificadas</small><b id="shelterFamilies">–</b></div><div class="detail-kpi"><small>Personas cuantificadas</small><b id="shelterPeople">–</b></div><div class="detail-kpi"><small>Agua afectada / alternativa</small><b id="shelterWater">–</b></div><div class="detail-kpi"><small>Saneamiento afectado / pendiente</small><b id="shelterSanitation">–</b></div><div class="detail-kpi"><small>Energía afectada</small><b id="shelterEnergy">–</b></div>
+              </div>
+              <div class="row g-3 mb-3"><div class="col-12 col-xl-4"><section class="chart-card h-100"><div class="chart-title">Condición de agua</div><div class="chart-click-hint">Haz clic para filtrar la tabla.</div><div class="chart-container"><canvas id="chartShelterWater"></canvas></div></section></div><div class="col-12 col-xl-4"><section class="chart-card h-100"><div class="chart-title">Condición de saneamiento</div><div class="chart-click-hint">Haz clic para filtrar la tabla.</div><div class="chart-container"><canvas id="chartShelterSanitation"></canvas></div></section></div><div class="col-12 col-xl-4"><section class="chart-card h-100"><div class="chart-title">Condición de energía</div><div class="chart-click-hint">Haz clic para filtrar la tabla.</div><div class="chart-container"><canvas id="chartShelterEnergy"></canvas></div></section></div></div>
+              <section class="section-block section-block--green"><div class="section-header"><div class="section-header__icon">⛺</div><div><h3>Albergues y refugios</h3><p>Agua, saneamiento, energía, cuantificación explícita y necesidades asociadas. Todos los gráficos filtran esta tabla.</p></div></div><div class="section-body"><div class="d-flex justify-content-end mb-2"><button id="btnSheltersMap" class="btn btn-outline-primary btn-sm rounded-pill" type="button">Ver albergues en mapa</button></div><div class="table-responsive"><table id="tblShelters" class="table table-hover align-middle w-100"></table></div></div></section>
+            </div>
+
+            <div class="tab-pane fade" id="territory-pane">
+              <div class="tab-intro">Lectura complementaria de vivienda, edificaciones, telecomunicaciones, transporte, sector agropecuario y actividad económica.</div>
+              <div class="row g-3 mb-3"><div class="col-12 col-xl-6"><section class="chart-card h-100"><div class="chart-title">Viviendas averiadas por municipio</div><div class="chart-click-hint">Haz clic en un municipio para aplicarlo como filtro global.</div><div class="chart-container chart-container-tall"><canvas id="chartHousing"></canvas></div></section></div><div class="col-12 col-xl-6"><section class="chart-card h-100"><div class="chart-title">Registros territoriales con información por sección</div><div class="chart-click-hint">Haz clic en una sección para filtrar la tabla.</div><div class="chart-container chart-container-tall"><canvas id="chartTerritorySections"></canvas></div></section></div></div>
+              <section class="section-block section-block--blue"><div class="section-header"><div class="section-header__icon">🏘️</div><div><h3>Afectación territorial</h3><p>Consulta estructurada de los componentes adicionales del EDAN.</p></div></div><div class="section-body"><div class="table-responsive"><table id="tblTerritory" class="table table-hover align-middle w-100"></table></div></div></section>
+            </div>
+
+            <div class="tab-pane fade" id="needs-pane">
+              <div class="tab-intro">Necesidades registradas por sector. El tablero clasifica y ordena la información sin modificar la narrativa de la fuente.</div>
+              <div class="row g-3 mb-3"><div class="col-12 col-xl-6"><section class="chart-card h-100"><div class="chart-title">Necesidades reportadas por sector</div><div class="chart-click-hint">Haz clic en un sector para filtrar las necesidades.</div><div class="chart-container"><canvas id="chartNeeds"></canvas></div></section></div><div class="col-12 col-xl-6"><section class="source-card h-100"><div class="source-icon">🧭</div><h3>Uso operativo</h3><p>Este módulo permite localizar municipios con requerimientos de agua, salud, albergue, energía, maquinaria, vías, residuos y otros apoyos reportados.</p><p class="mb-0">Los costos se presentan únicamente cuando existe un valor explícito en la fuente.</p></section></div></div>
+              <section class="section-block section-block--green"><div class="section-header"><div class="section-header__icon">📦</div><div><h3>Necesidades y respuesta</h3><p>Relación municipal de necesidades, equipos/elementos y costos estimados reportados.</p></div></div><div class="section-body"><div class="table-responsive"><table id="tblNeeds" class="table table-hover align-middle w-100"></table></div></div></section>
+            </div>
+
+            <div class="tab-pane fade" id="animals-pane">
+              <div class="tab-intro">Información específica registrada en la columna de animales. No representa un censo departamental de animales afectados.</div>
+              <div class="detail-kpi-grid"><div class="detail-kpi"><small>Municipios con reporte</small><b id="animalMunicipalities">–</b></div><div class="detail-kpi"><small>Animales cuantificados</small><b id="animalTotal">–</b></div><div class="detail-kpi"><small>Perros</small><b id="animalDogs">–</b></div><div class="detail-kpi"><small>Gatos</small><b id="animalCats">–</b></div></div>
+              <div class="row g-3 mb-3"><div class="col-12 col-xl-5"><section class="chart-card h-100"><div class="chart-title">Animales cuantificados por especie</div><div class="chart-click-hint">Haz clic en una especie para identificar municipios con registros.</div><div class="chart-container"><canvas id="chartAnimals"></canvas></div></section></div><div class="col-12 col-xl-7"><section class="source-card h-100"><div class="source-icon">🐾</div><h3>Articulación con Zoonosis</h3><p>El componente permite identificar necesidades de alimento o medicamentos y mantener una conexión conceptual con el proceso institucional de Zoonosis y ETV.</p><a class="btn btn-outline-primary btn-sm" href="../zoonosis/zoonosis.html">Abrir tablero de Zoonosis</a></section></div></div>
+              <section class="section-block section-block--beige"><div class="section-header"><div class="section-header__icon">🐕</div><div><h3>Reportes de bienestar animal</h3><p>Se conserva el texto reportado para cada municipio.</p></div></div><div class="section-body"><div class="table-responsive"><table id="tblAnimals" class="table table-hover align-middle w-100"></table></div></div></section>
+            </div>
+
+            <div class="tab-pane fade" id="quality-pane">
+              <div class="tab-intro">Los hallazgos se clasifican por acción recomendada. “Sin información” no se interpreta como ausencia de afectación.</div>
+              <div class="detail-kpi-grid"><div class="detail-kpi"><small>Hallazgos vigentes</small><b id="qualityTotal">–</b></div><div class="detail-kpi"><small>Nivel alto</small><b id="qualityHigh">–</b></div><div class="detail-kpi"><small>Requieren validación</small><b id="qualityValidation">–</b></div><div class="detail-kpi"><small>Impactan indicador</small><b id="qualityImpact">–</b></div></div>
+              <div class="row g-3 mb-3"><div class="col-12 col-xl-6"><section class="chart-card h-100"><div class="chart-title">Hallazgos por acción recomendada</div><div class="chart-click-hint">Haz clic en una categoría para filtrar los hallazgos.</div><div class="chart-container"><canvas id="chartQualityActions"></canvas></div></section></div><div class="col-12 col-xl-6"><section class="chart-card h-100"><div class="chart-title">Hallazgos por nivel</div><div class="chart-click-hint">Haz clic en un nivel para filtrar los hallazgos.</div><div class="chart-container"><canvas id="chartQualityLevel"></canvas></div></section></div></div>
+              <section class="section-block section-block--beige"><div class="section-header"><div class="section-header__icon">✅</div><div><h3>Control de calidad</h3><p>Valor encontrado, problema, nivel, acción recomendada y estado de validación.</p></div></div><div class="section-body"><div class="table-responsive"><table id="tblQuality" class="table table-hover align-middle w-100"></table></div></div></section>
+            </div>
+          </div>
+        </section>
+
+        <footer class="footer mt-4"><div>UESVALLE · Portal de tableros institucionales</div><div>EDAN · Información municipal procesada con trazabilidad de calidad · <span class="interface-version">Interfaz V5.0.0</span></div></footer>
+      </div>
+    </main>
+  </div>
+
+  <div class="offcanvas offcanvas-end detail-drawer" tabindex="-1" id="municipalityDrawer" aria-labelledby="municipalityDrawerLabel">
+    <div class="offcanvas-header"><div><div class="module-eyebrow">Ficha territorial</div><h5 class="offcanvas-title" id="municipalityDrawerLabel">Municipio</h5><div id="drawerAro" class="text-muted small"></div></div><button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button></div>
+    <div class="offcanvas-body" id="municipalityDrawerBody"><div class="text-muted">Seleccione un municipio.</div></div>
+  </div>
+
+  <div class="modal fade" id="evidenceModal" tabindex="-1"><div class="modal-dialog modal-xl modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="evidenceModalTitle">Evidencia EDAN</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body text-center"><img id="evidenceModalImage" class="img-fluid rounded evidence-modal-image" alt="Evidencia EDAN"></div></div></div></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/esri-leaflet@3.0.15/dist/esri-leaflet.js"></script>
+  <script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.8/js/dataTables.bootstrap5.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.bootstrap5.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.2/dist/jspdf.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jspdf-autotable@3.8.4/dist/jspdf.plugin.autotable.min.js"></script>
+  <script src="edan.js?v=5.0.0"></script>
+</body>
+</html>

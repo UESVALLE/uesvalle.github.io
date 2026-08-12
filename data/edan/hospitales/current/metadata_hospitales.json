@@ -1,0 +1,10 @@
+{
+  "version": "V1 integrada a EDAN V5 · publicación",
+  "fuente_paquete": "Paquete_Hospitales_Terremoto_Valle_2026_V1",
+  "hospitales_principales": 42,
+  "afectacion_mayor_cero": 30,
+  "sin_porcentaje": 6,
+  "afectacion_ge_50": 6,
+  "critica_colapso_ge_70": 3,
+  "nota": "Versión pública sin enlaces ni campos de evidencia fotográfica externa."
+}

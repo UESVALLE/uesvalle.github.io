@@ -1,0 +1,1513 @@
+﻿codigo_dane_fuente,municipio,aro_uesvalle,seccion_fuente,componente,indicador,valor_raw,valor_num,tipo_valor,columna_fuente,fila_fuente
+76001,Santiago de Cali,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Iglesias,Averiado (No),37,37,NUMÉRICO,AZ,5
+76001,Santiago de Cali,ARO Sur - Cali,6. TELECOMUNICACIONES,Telefonía fija,Uso restringido,X,,TEXTO / MARCA,BU,5
+76001,Santiago de Cali,ARO Sur - Cali,6. TELECOMUNICACIONES,Telefonía celular,Uso restringido,X,,TEXTO / MARCA,BY,5
+76001,Santiago de Cali,ARO Sur - Cali,6. TELECOMUNICACIONES,Internet,Uso restringido,X,,TEXTO / MARCA,CK,5
+76001,Santiago de Cali,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Total (No),0,0,NUMÉRICO,IS,5
+76001,Santiago de Cali,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Total (No),0,0,NUMÉRICO,IZ,5
+76001,Santiago de Cali,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Total (No),0,0,NUMÉRICO,JG,5
+76001,Santiago de Cali,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,5
+76020,Alcalá,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Uso restringido (Número),45,45,NUMÉRICO,AL,6
+76020,Alcalá,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Destruido (No),1,1,NUMÉRICO,AO,6
+76020,Alcalá,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Uso restringido (No),1,1,NUMÉRICO,AT,6
+76020,Alcalá,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Iglesias,Uso restringido (No),2,2,NUMÉRICO,AX,6
+76020,Alcalá,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Plaza de mercado,Uso restringido (No),1,1,NUMÉRICO,BB,6
+76020,Alcalá,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Escenarios deportivos,Uso restringido (No),11,11,NUMÉRICO,BF,6
+76020,Alcalá,ARO Norte - Cartago,6. TELECOMUNICACIONES,Telefonía fija,Fuera de servicio,X,,TEXTO / MARCA,BV,6
+76020,Alcalá,ARO Norte - Cartago,6. TELECOMUNICACIONES,Telefonía celular,Fuera de servicio,X,,TEXTO / MARCA,BZ,6
+76020,Alcalá,ARO Norte - Cartago,6. TELECOMUNICACIONES,Emisoras,Uso restringido,X,,TEXTO / MARCA,CC,6
+76020,Alcalá,ARO Norte - Cartago,6. TELECOMUNICACIONES,Canales de televisión,Uso restringido,X,,TEXTO / MARCA,CG,6
+76020,Alcalá,ARO Norte - Cartago,6. TELECOMUNICACIONES,Internet,Fuera de servicio,X,,TEXTO / MARCA,CL,6
+76020,Alcalá,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Red primaria,Cerrada(o) – ubicación/abscisa,Sin informacion,,TEXTO / MARCA,DU,6
+76020,Alcalá,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Red primaria,Con paso restringido – ubicación/abscisa,Sin informacion,,TEXTO / MARCA,DV,6
+76020,Alcalá,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Red primaria,Comentario,Sin informacion,,TEXTO / MARCA,DW,6
+76020,Alcalá,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Red secundaria,Cerrada(o) – ubicación/abscisa,Sin informacion,,TEXTO / MARCA,DX,6
+76020,Alcalá,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Red secundaria,Con paso restringido – ubicación/abscisa,Sin informacion,,TEXTO / MARCA,DY,6
+76020,Alcalá,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Red secundaria,Comentario,Sin informacion,,TEXTO / MARCA,DZ,6
+76020,Alcalá,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Red terciaria,Cerrada(o) – ubicación/abscisa,Sin informacion,,TEXTO / MARCA,EA,6
+76020,Alcalá,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Red terciaria,Con paso restringido – ubicación/abscisa,Sin informacion,,TEXTO / MARCA,EB,6
+76020,Alcalá,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Red terciaria,Comentario,Sin informacion,,TEXTO / MARCA,EC,6
+76020,Alcalá,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Puentes vehiculares y/o pontones,Cerrada(o) – ubicación/abscisa,Sin informacion,,TEXTO / MARCA,ED,6
+76020,Alcalá,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Puentes vehiculares y/o pontones,Con paso restringido – ubicación/abscisa,Sin informacion,,TEXTO / MARCA,EE,6
+76020,Alcalá,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Puentes vehiculares y/o pontones,Comentario,Sin informacion,,TEXTO / MARCA,EF,6
+76020,Alcalá,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Puentes peatonales,Cerrada(o) – ubicación/abscisa,Sin informacion,,TEXTO / MARCA,EG,6
+76020,Alcalá,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Puentes peatonales,Con paso restringido – ubicación/abscisa,Sin informacion,,TEXTO / MARCA,EH,6
+76020,Alcalá,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Puentes peatonales,Comentario,Sin informacion,,TEXTO / MARCA,EI,6
+76020,Alcalá,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Túnel,Cerrada(o) – ubicación/abscisa,Sin informacion,,TEXTO / MARCA,EJ,6
+76020,Alcalá,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Túnel,Con paso restringido – ubicación/abscisa,Sin informacion,,TEXTO / MARCA,EK,6
+76020,Alcalá,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Túnel,Comentario,Sin informacion,,TEXTO / MARCA,EL,6
+76020,Alcalá,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Modo férreo,Descripción de la afectación,"VIA ALCALA- CARTAGO , DESPRENDIMIENTO DE ROCAS ---ALCALA PEREIRA CERRADA , ALCALA QUINBAYA CERRADA  HAY PASOS ALTERNOS - union versusalli puente mariano ospian. VIA ALCALA - ARMENIA PASO RESTRINGIDO . 4 vías afectadas: Cartago. Quimbaya. Pereira, Ulloa. VIA CARTAGO - ALCALA CIERRE CON PARE Y SIGA.",,TEXTO / MARCA,EM,6
+76020,Alcalá,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Modo marítimo,Descripción de la afectación,Sin informacion,,TEXTO / MARCA,EP,6
+76020,Alcalá,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Modo fluvial,Descripción de la afectación,Sin informacion,,TEXTO / MARCA,ES,6
+76020,Alcalá,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Modo aéreo,Descripción de la afectación,Sin informacion,,TEXTO / MARCA,EV,6
+76020,Alcalá,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Modo terminal terrestre,Descripción de la afectación,Sin informacion,,TEXTO / MARCA,EY,6
+76020,Alcalá,ARO Norte - Cartago,9. SECTOR AGROPECUARIO,Agricultura,Hectáreas afectadas,Sin informacion,,TEXTO / MARCA,HP,6
+76020,Alcalá,ARO Norte - Cartago,9. SECTOR AGROPECUARIO,Agricultura,No productores afectados,Sin informacion,,TEXTO / MARCA,HQ,6
+76020,Alcalá,ARO Norte - Cartago,9. SECTOR AGROPECUARIO,Agricultura,Pérdida de productos,Sin informacion,,TEXTO / MARCA,HR,6
+76020,Alcalá,ARO Norte - Cartago,9. SECTOR AGROPECUARIO,Agricultura,Pérdida de infraestructura,Sin informacion,,TEXTO / MARCA,HS,6
+76020,Alcalá,ARO Norte - Cartago,9. SECTOR AGROPECUARIO,Ganadería,Hectáreas afectadas,Sin informacion,,TEXTO / MARCA,HT,6
+76020,Alcalá,ARO Norte - Cartago,9. SECTOR AGROPECUARIO,Ganadería,No productores afectados,Sin informacion,,TEXTO / MARCA,HU,6
+76020,Alcalá,ARO Norte - Cartago,9. SECTOR AGROPECUARIO,Ganadería,Pérdida de productos,Sin informacion,,TEXTO / MARCA,HV,6
+76020,Alcalá,ARO Norte - Cartago,9. SECTOR AGROPECUARIO,Ganadería,Pérdida de infraestructura,Sin informacion,,TEXTO / MARCA,HW,6
+76020,Alcalá,ARO Norte - Cartago,9. SECTOR AGROPECUARIO,Piscícola,Hectáreas afectadas,Sin informacion,,TEXTO / MARCA,HX,6
+76020,Alcalá,ARO Norte - Cartago,9. SECTOR AGROPECUARIO,Piscícola,No productores afectados,Sin informacion,,TEXTO / MARCA,HY,6
+76020,Alcalá,ARO Norte - Cartago,9. SECTOR AGROPECUARIO,Piscícola,Pérdida de productos,Sin informacion,,TEXTO / MARCA,HZ,6
+76020,Alcalá,ARO Norte - Cartago,9. SECTOR AGROPECUARIO,Piscícola,Pérdida de infraestructura,Sin informacion,,TEXTO / MARCA,IA,6
+76020,Alcalá,ARO Norte - Cartago,9. SECTOR AGROPECUARIO,Porcícola,Hectáreas afectadas,Sin informacion,,TEXTO / MARCA,IB,6
+76020,Alcalá,ARO Norte - Cartago,9. SECTOR AGROPECUARIO,Porcícola,No productores afectados,Sin informacion,,TEXTO / MARCA,IC,6
+76020,Alcalá,ARO Norte - Cartago,9. SECTOR AGROPECUARIO,Porcícola,Pérdida de productos,Sin informacion,,TEXTO / MARCA,ID,6
+76020,Alcalá,ARO Norte - Cartago,9. SECTOR AGROPECUARIO,Porcícola,Pérdida de infraestructura,Sin informacion,,TEXTO / MARCA,IE,6
+76020,Alcalá,ARO Norte - Cartago,9. SECTOR AGROPECUARIO,Avícola,Hectáreas afectadas,Sin informacion,,TEXTO / MARCA,IF,6
+76020,Alcalá,ARO Norte - Cartago,9. SECTOR AGROPECUARIO,Avícola,No productores afectados,Sin informacion,,TEXTO / MARCA,IG,6
+76020,Alcalá,ARO Norte - Cartago,9. SECTOR AGROPECUARIO,Avícola,Pérdida de productos,Sin informacion,,TEXTO / MARCA,IH,6
+76020,Alcalá,ARO Norte - Cartago,9. SECTOR AGROPECUARIO,Avícola,Pérdida de infraestructura,Sin informacion,,TEXTO / MARCA,II,6
+76020,Alcalá,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Total (No),0,0,NUMÉRICO,IS,6
+76020,Alcalá,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Total (No),0,0,NUMÉRICO,IZ,6
+76020,Alcalá,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Total (No),0,0,NUMÉRICO,JG,6
+76020,Alcalá,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,6
+76036,Andalucía,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Alcaldía,Averiado (Número),1,1,NUMÉRICO,AJ,7
+76036,Andalucía,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),6,6,NUMÉRICO,AN,7
+76036,Andalucía,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Escenarios deportivos,Averiado (No),1,1,NUMÉRICO,BH,7
+76036,Andalucía,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Telefonía fija,Uso restringido,X,,TEXTO / MARCA,BU,7
+76036,Andalucía,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Telefonía celular,Uso restringido,X,,TEXTO / MARCA,BY,7
+76036,Andalucía,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Emisoras,Uso restringido,X,,TEXTO / MARCA,CC,7
+76036,Andalucía,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Canales de televisión,Uso restringido,X,,TEXTO / MARCA,CG,7
+76036,Andalucía,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Internet,Fuera de servicio,X,,TEXTO / MARCA,CL,7
+76036,Andalucía,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Red primaria,Cerrada(o) – ubicación/abscisa,Sin información,,TEXTO / MARCA,DU,7
+76036,Andalucía,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Red primaria,Con paso restringido – ubicación/abscisa,Sin información,,TEXTO / MARCA,DV,7
+76036,Andalucía,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Red secundaria,Cerrada(o) – ubicación/abscisa,Sin información,,TEXTO / MARCA,DX,7
+76036,Andalucía,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Red secundaria,Con paso restringido – ubicación/abscisa,Sin información,,TEXTO / MARCA,DY,7
+76036,Andalucía,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Red terciaria,Cerrada(o) – ubicación/abscisa,Sin información,,TEXTO / MARCA,EA,7
+76036,Andalucía,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Red terciaria,Con paso restringido – ubicación/abscisa,Sin información,,TEXTO / MARCA,EB,7
+76036,Andalucía,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Puentes vehiculares y/o pontones,Cerrada(o) – ubicación/abscisa,Sin información,,TEXTO / MARCA,ED,7
+76036,Andalucía,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Puentes vehiculares y/o pontones,Con paso restringido – ubicación/abscisa,Sin información,,TEXTO / MARCA,EE,7
+76036,Andalucía,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Puentes peatonales,Cerrada(o) – ubicación/abscisa,Sin información,,TEXTO / MARCA,EG,7
+76036,Andalucía,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Puentes peatonales,Con paso restringido – ubicación/abscisa,Sin información,,TEXTO / MARCA,EH,7
+76036,Andalucía,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Túnel,Cerrada(o) – ubicación/abscisa,Sin información,,TEXTO / MARCA,EJ,7
+76036,Andalucía,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Túnel,Con paso restringido – ubicación/abscisa,Sin información,,TEXTO / MARCA,EK,7
+76036,Andalucía,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Modo férreo,Descripción de la afectación,Sin información,,TEXTO / MARCA,EM,7
+76036,Andalucía,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Modo marítimo,Descripción de la afectación,Sin información,,TEXTO / MARCA,EP,7
+76036,Andalucía,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Modo fluvial,Descripción de la afectación,Sin información,,TEXTO / MARCA,ES,7
+76036,Andalucía,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Modo aéreo,Descripción de la afectación,Sin información,,TEXTO / MARCA,EV,7
+76036,Andalucía,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Modo terminal terrestre,Descripción de la afectación,Sin información,,TEXTO / MARCA,EY,7
+76036,Andalucía,ARO Centro - Tuluá,9. SECTOR AGROPECUARIO,Agricultura,Pérdida de productos,Sin información,,TEXTO / MARCA,HR,7
+76036,Andalucía,ARO Centro - Tuluá,9. SECTOR AGROPECUARIO,Agricultura,Pérdida de infraestructura,Sin información,,TEXTO / MARCA,HS,7
+76036,Andalucía,ARO Centro - Tuluá,9. SECTOR AGROPECUARIO,Ganadería,Pérdida de productos,Sin información,,TEXTO / MARCA,HV,7
+76036,Andalucía,ARO Centro - Tuluá,9. SECTOR AGROPECUARIO,Ganadería,Pérdida de infraestructura,Sin información,,TEXTO / MARCA,HW,7
+76036,Andalucía,ARO Centro - Tuluá,9. SECTOR AGROPECUARIO,Piscícola,Pérdida de productos,Sin información,,TEXTO / MARCA,HZ,7
+76036,Andalucía,ARO Centro - Tuluá,9. SECTOR AGROPECUARIO,Piscícola,Pérdida de infraestructura,Sin información,,TEXTO / MARCA,IA,7
+76036,Andalucía,ARO Centro - Tuluá,9. SECTOR AGROPECUARIO,Porcícola,Pérdida de productos,Sin información,,TEXTO / MARCA,ID,7
+76036,Andalucía,ARO Centro - Tuluá,9. SECTOR AGROPECUARIO,Porcícola,Pérdida de infraestructura,Sin información,,TEXTO / MARCA,IE,7
+76036,Andalucía,ARO Centro - Tuluá,9. SECTOR AGROPECUARIO,Avícola,Pérdida de productos,Sin información,,TEXTO / MARCA,IH,7
+76036,Andalucía,ARO Centro - Tuluá,9. SECTOR AGROPECUARIO,Avícola,Pérdida de infraestructura,Sin información,,TEXTO / MARCA,II,7
+76036,Andalucía,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Comercial (No),8,8,NUMÉRICO,IO,7
+76036,Andalucía,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Total (No),8,8,NUMÉRICO,IS,7
+76036,Andalucía,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Total (No),0,0,NUMÉRICO,IZ,7
+76036,Andalucía,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Total (No),0,0,NUMÉRICO,JG,7
+76036,Andalucía,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,7
+76041,Ansermanuevo,ARO Norte - Cartago,6. TELECOMUNICACIONES,Telefonía fija,Uso restringido,X,,TEXTO / MARCA,BU,8
+76041,Ansermanuevo,ARO Norte - Cartago,6. TELECOMUNICACIONES,Telefonía celular,Uso restringido,X,,TEXTO / MARCA,BY,8
+76041,Ansermanuevo,ARO Norte - Cartago,6. TELECOMUNICACIONES,Emisoras,Uso restringido,X,,TEXTO / MARCA,CC,8
+76041,Ansermanuevo,ARO Norte - Cartago,6. TELECOMUNICACIONES,Canales de televisión,Uso restringido,X,,TEXTO / MARCA,CG,8
+76041,Ansermanuevo,ARO Norte - Cartago,6. TELECOMUNICACIONES,Internet,Fuera de servicio,X,,TEXTO / MARCA,CL,8
+76041,Ansermanuevo,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Red primaria,Cerrada(o) – ubicación/abscisa,Sin informacion,,TEXTO / MARCA,DU,8
+76041,Ansermanuevo,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Red primaria,Con paso restringido – ubicación/abscisa,Sin informacion,,TEXTO / MARCA,DV,8
+76041,Ansermanuevo,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Red primaria,Comentario,Sin informacion,,TEXTO / MARCA,DW,8
+76041,Ansermanuevo,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Red secundaria,Cerrada(o) – ubicación/abscisa,Sin informacion,,TEXTO / MARCA,DX,8
+76041,Ansermanuevo,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Red secundaria,Con paso restringido – ubicación/abscisa,Sin informacion,,TEXTO / MARCA,DY,8
+76041,Ansermanuevo,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Red secundaria,Comentario,Sin informacion,,TEXTO / MARCA,DZ,8
+76041,Ansermanuevo,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Red terciaria,Cerrada(o) – ubicación/abscisa, Vía a vereda la paloma cierre total.Vías vereda La Mesenia cierre total,,TEXTO / MARCA,EA,8
+76041,Ansermanuevo,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Red terciaria,Con paso restringido – ubicación/abscisa,Sin informacion,,TEXTO / MARCA,EB,8
+76041,Ansermanuevo,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Red terciaria,Comentario,Sin informacion,,TEXTO / MARCA,EC,8
+76041,Ansermanuevo,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Puentes vehiculares y/o pontones,Cerrada(o) – ubicación/abscisa,Sin informacion,,TEXTO / MARCA,ED,8
+76041,Ansermanuevo,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Puentes vehiculares y/o pontones,Con paso restringido – ubicación/abscisa,Sin informacion,,TEXTO / MARCA,EE,8
+76041,Ansermanuevo,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Puentes vehiculares y/o pontones,Comentario,Sin informacion,,TEXTO / MARCA,EF,8
+76041,Ansermanuevo,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Puentes peatonales,Cerrada(o) – ubicación/abscisa,Sin informacion,,TEXTO / MARCA,EG,8
+76041,Ansermanuevo,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Puentes peatonales,Con paso restringido – ubicación/abscisa,Sin informacion,,TEXTO / MARCA,EH,8
+76041,Ansermanuevo,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Puentes peatonales,Comentario,Sin informacion,,TEXTO / MARCA,EI,8
+76041,Ansermanuevo,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Túnel,Cerrada(o) – ubicación/abscisa,Sin informacion,,TEXTO / MARCA,EJ,8
+76041,Ansermanuevo,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Túnel,Con paso restringido – ubicación/abscisa,Sin informacion,,TEXTO / MARCA,EK,8
+76041,Ansermanuevo,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Túnel,Comentario,Sin informacion,,TEXTO / MARCA,EL,8
+76041,Ansermanuevo,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Modo férreo,Descripción de la afectación,Sin informacion,,TEXTO / MARCA,EM,8
+76041,Ansermanuevo,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Modo marítimo,Descripción de la afectación,Sin informacion,,TEXTO / MARCA,EP,8
+76041,Ansermanuevo,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Modo fluvial,Descripción de la afectación,Sin informacion,,TEXTO / MARCA,ES,8
+76041,Ansermanuevo,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Modo aéreo,Descripción de la afectación,Sin informacion,,TEXTO / MARCA,EV,8
+76041,Ansermanuevo,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Modo terminal terrestre,Descripción de la afectación,Sin informacion,,TEXTO / MARCA,EY,8
+76041,Ansermanuevo,ARO Norte - Cartago,9. SECTOR AGROPECUARIO,Agricultura,Pérdida de productos,Sin informacion,,TEXTO / MARCA,HR,8
+76041,Ansermanuevo,ARO Norte - Cartago,9. SECTOR AGROPECUARIO,Agricultura,Pérdida de infraestructura,Sin informacion,,TEXTO / MARCA,HS,8
+76041,Ansermanuevo,ARO Norte - Cartago,9. SECTOR AGROPECUARIO,Ganadería,Pérdida de productos,Sin informacion,,TEXTO / MARCA,HV,8
+76041,Ansermanuevo,ARO Norte - Cartago,9. SECTOR AGROPECUARIO,Ganadería,Pérdida de infraestructura,Sin informacion,,TEXTO / MARCA,HW,8
+76041,Ansermanuevo,ARO Norte - Cartago,9. SECTOR AGROPECUARIO,Piscícola,Pérdida de productos,Sin informacion,,TEXTO / MARCA,HZ,8
+76041,Ansermanuevo,ARO Norte - Cartago,9. SECTOR AGROPECUARIO,Piscícola,Pérdida de infraestructura,Sin informacion,,TEXTO / MARCA,IA,8
+76041,Ansermanuevo,ARO Norte - Cartago,9. SECTOR AGROPECUARIO,Porcícola,Pérdida de productos,Sin informacion,,TEXTO / MARCA,ID,8
+76041,Ansermanuevo,ARO Norte - Cartago,9. SECTOR AGROPECUARIO,Porcícola,Pérdida de infraestructura,Sin informacion,,TEXTO / MARCA,IE,8
+76041,Ansermanuevo,ARO Norte - Cartago,9. SECTOR AGROPECUARIO,Avícola,Pérdida de productos,Sin informacion,,TEXTO / MARCA,IH,8
+76041,Ansermanuevo,ARO Norte - Cartago,9. SECTOR AGROPECUARIO,Avícola,Pérdida de infraestructura,Sin informacion,,TEXTO / MARCA,II,8
+76041,Ansermanuevo,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Total (No),0,0,NUMÉRICO,IS,8
+76041,Ansermanuevo,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Total (No),0,0,NUMÉRICO,IZ,8
+76041,Ansermanuevo,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Total (No),0,0,NUMÉRICO,JG,8
+76041,Ansermanuevo,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,8
+76054,Argelia,ARO Norte - Cartago,6. TELECOMUNICACIONES,Telefonía fija,Uso restringido,X,,TEXTO / MARCA,BU,9
+76054,Argelia,ARO Norte - Cartago,6. TELECOMUNICACIONES,Telefonía celular,Fuera de servicio,X,,TEXTO / MARCA,BZ,9
+76054,Argelia,ARO Norte - Cartago,6. TELECOMUNICACIONES,Emisoras,Uso restringido,X,,TEXTO / MARCA,CC,9
+76054,Argelia,ARO Norte - Cartago,6. TELECOMUNICACIONES,Canales de televisión,Uso restringido,X,,TEXTO / MARCA,CG,9
+76054,Argelia,ARO Norte - Cartago,6. TELECOMUNICACIONES,Internet,Destruido,X,,TEXTO / MARCA,CN,9
+76054,Argelia,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Total (No),0,0,NUMÉRICO,IS,9
+76054,Argelia,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Total (No),0,0,NUMÉRICO,IZ,9
+76054,Argelia,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Total (No),0,0,NUMÉRICO,JG,9
+76054,Argelia,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,9
+76100,Bolívar,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Telefonía fija,Uso restringido,X,,TEXTO / MARCA,BU,10
+76100,Bolívar,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Telefonía celular,Uso restringido,X,,TEXTO / MARCA,BY,10
+76100,Bolívar,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Emisoras,Uso restringido,X,,TEXTO / MARCA,CC,10
+76100,Bolívar,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Canales de televisión,Uso restringido,X,,TEXTO / MARCA,CG,10
+76100,Bolívar,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Internet,Fuera de servicio,X,,TEXTO / MARCA,CL,10
+76100,Bolívar,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Red primaria,Con paso restringido – ubicación/abscisa,Via Bolivar- Primavera afectada ,,TEXTO / MARCA,DV,10
+76100,Bolívar,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Total (No),0,0,NUMÉRICO,IS,10
+76100,Bolívar,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Total (No),0,0,NUMÉRICO,IZ,10
+76100,Bolívar,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Total (No),0,0,NUMÉRICO,JG,10
+76100,Bolívar,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,10
+76109,Buenaventura,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Uso restringido (Número),29,29,NUMÉRICO,AL,11
+76109,Buenaventura,ARO Sur - Cali,6. TELECOMUNICACIONES,Telefonía fija,Uso restringido,X,,TEXTO / MARCA,BU,11
+76109,Buenaventura,ARO Sur - Cali,6. TELECOMUNICACIONES,Telefonía celular,Uso restringido,X,,TEXTO / MARCA,BY,11
+76109,Buenaventura,ARO Sur - Cali,6. TELECOMUNICACIONES,Emisoras,Uso restringido,X,,TEXTO / MARCA,CC,11
+76109,Buenaventura,ARO Sur - Cali,6. TELECOMUNICACIONES,Canales de televisión,Uso restringido,X,,TEXTO / MARCA,CG,11
+76109,Buenaventura,ARO Sur - Cali,6. TELECOMUNICACIONES,Internet,Uso restringido,X,,TEXTO / MARCA,CK,11
+76109,Buenaventura,ARO Sur - Cali,6. TELECOMUNICACIONES,Comunicaciones marítimas y fluviales,Uso restringido,X,,TEXTO / MARCA,DE,11
+76109,Buenaventura,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Red primaria,Cerrada(o) – ubicación/abscisa,"La conexión vial entre Buenaventura y Buga está totalmente cortada a razón de los derrumbes. Intentando llegar desde Dagua al municipio de Calima Darién hay 4 derrumbes entre Cabecera municipal de Dagua y lobo guerrero, solo hay paso a riesgo para motos ya que los mismos están activos.",,TEXTO / MARCA,DU,11
+76109,Buenaventura,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Red secundaria,Cerrada(o) – ubicación/abscisa,Sin información,,TEXTO / MARCA,DX,11
+76109,Buenaventura,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Puentes vehiculares y/o pontones,Con paso restringido – ubicación/abscisa,Viaducto agríetado en la vía alterna interna (sector el oriente),,TEXTO / MARCA,EE,11
+76109,Buenaventura,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Total (No),0,0,NUMÉRICO,IS,11
+76109,Buenaventura,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Total (No),0,0,NUMÉRICO,IZ,11
+76109,Buenaventura,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Total (No),0,0,NUMÉRICO,JG,11
+76109,Buenaventura,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,11
+76111,Guadalajara de Buga,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Alcaldía,Averiado (Número),1,1,NUMÉRICO,AJ,12
+76111,Guadalajara de Buga,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),10,10,NUMÉRICO,AN,12
+76111,Guadalajara de Buga,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Uso restringido (No),Sin información,,TEXTO / MARCA,AP,12
+76111,Guadalajara de Buga,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Fuera de servicio (No),Sin información,,TEXTO / MARCA,AQ,12
+76111,Guadalajara de Buga,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Averiado (No),Sin información,,TEXTO / MARCA,AR,12
+76111,Guadalajara de Buga,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Destruido (No),Sin información,,TEXTO / MARCA,AS,12
+76111,Guadalajara de Buga,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Uso restringido (No),Sin información,,TEXTO / MARCA,AT,12
+76111,Guadalajara de Buga,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Fuera de servicio (No),Sin información,,TEXTO / MARCA,AU,12
+76111,Guadalajara de Buga,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Averiado (No),Sin información,,TEXTO / MARCA,AV,12
+76111,Guadalajara de Buga,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Destruido (No),Sin información,,TEXTO / MARCA,AW,12
+76111,Guadalajara de Buga,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Iglesias,Averiado (No),11,11,NUMÉRICO,AZ,12
+76111,Guadalajara de Buga,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Plaza de mercado,Uso restringido (No),1,1,NUMÉRICO,BB,12
+76111,Guadalajara de Buga,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Escenarios deportivos,Averiado (No),1,1,NUMÉRICO,BH,12
+76111,Guadalajara de Buga,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Otros,Uso restringido (No),Sin información,,TEXTO / MARCA,BJ,12
+76111,Guadalajara de Buga,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Otros,Fuera de servicio (No),Sin información,,TEXTO / MARCA,BK,12
+76111,Guadalajara de Buga,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Otros,Averiado (No),Sin información,,TEXTO / MARCA,BL,12
+76111,Guadalajara de Buga,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Otros,Destruido (No),Sin información,,TEXTO / MARCA,BM,12
+76111,Guadalajara de Buga,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Albergues,Uso restringido (No),Sin información,,TEXTO / MARCA,BN,12
+76111,Guadalajara de Buga,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Albergues,Fuera de servicio (No),Sin información,,TEXTO / MARCA,BO,12
+76111,Guadalajara de Buga,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Albergues,Averiado (No),Sin información,,TEXTO / MARCA,BP,12
+76111,Guadalajara de Buga,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Albergues,Destruido (No),Sin información,,TEXTO / MARCA,BQ,12
+76111,Guadalajara de Buga,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Telefonía fija,Uso restringido,X,,TEXTO / MARCA,BU,12
+76111,Guadalajara de Buga,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Telefonía celular,Uso restringido,X,,TEXTO / MARCA,BY,12
+76111,Guadalajara de Buga,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Emisoras,Uso restringido,X,,TEXTO / MARCA,CC,12
+76111,Guadalajara de Buga,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Canales de televisión,Uso restringido,X,,TEXTO / MARCA,CG,12
+76111,Guadalajara de Buga,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Internet,Uso restringido,X,,TEXTO / MARCA,CK,12
+76111,Guadalajara de Buga,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Puentes vehiculares y/o pontones,Comentario,"PUENTE LA LIBERTAD 
+(HIERROS EXPUESTOS 
+BARANDAS) OFICINA 
+PATRIMONIO",,TEXTO / MARCA,EF,12
+76111,Guadalajara de Buga,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Puentes peatonales,Comentario,"PUENTE PEATONAL 
+CÁRCEL (SE REPORTO A 
+PISA, SE HIZO 
+INSPECCIÓN, 
+MAMPOSTERIA, SIN 
+AFECTACIÓN 
+ESTRUCTURAL) SEC. 
+MOVILIDAD Y PISA",,TEXTO / MARCA,EI,12
+76111,Guadalajara de Buga,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Aeropuertos,En servicio,X,,TEXTO / MARCA,FH,12
+76111,Guadalajara de Buga,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Total (No),0,0,NUMÉRICO,IS,12
+76111,Guadalajara de Buga,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Total (No),0,0,NUMÉRICO,IZ,12
+76111,Guadalajara de Buga,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Total (No),0,0,NUMÉRICO,JG,12
+76111,Guadalajara de Buga,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,12
+76113,Bugalagrande,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Alcaldía,Destruido (Número),1,1,NUMÉRICO,AK,13
+76113,Bugalagrande,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),5,5,NUMÉRICO,AN,13
+76113,Bugalagrande,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Iglesias,Averiado (No),1,1,NUMÉRICO,AZ,13
+76113,Bugalagrande,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Iglesias,Destruido (No),2,2,NUMÉRICO,BA,13
+76113,Bugalagrande,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Escenarios deportivos,Averiado (No),1,1,NUMÉRICO,BH,13
+76113,Bugalagrande,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Otros,Uso restringido (No),1,1,NUMÉRICO,BJ,13
+76113,Bugalagrande,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Telefonía fija,Uso restringido,X,,TEXTO / MARCA,BU,13
+76113,Bugalagrande,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Telefonía celular,Uso restringido,X,,TEXTO / MARCA,BY,13
+76113,Bugalagrande,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Emisoras,Uso restringido,X,,TEXTO / MARCA,CC,13
+76113,Bugalagrande,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Canales de televisión,Uso restringido,X,,TEXTO / MARCA,CG,13
+76113,Bugalagrande,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Internet,Fuera de servicio,X,,TEXTO / MARCA,CL,13
+76113,Bugalagrande,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Red primaria,Cerrada(o) – ubicación/abscisa,Sin Información,,TEXTO / MARCA,DU,13
+76113,Bugalagrande,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Red primaria,Con paso restringido – ubicación/abscisa,Sin Información,,TEXTO / MARCA,DV,13
+76113,Bugalagrande,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Red secundaria,Cerrada(o) – ubicación/abscisa,Sin Información,,TEXTO / MARCA,DX,13
+76113,Bugalagrande,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Red secundaria,Con paso restringido – ubicación/abscisa,Sin Información,,TEXTO / MARCA,DY,13
+76113,Bugalagrande,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Red terciaria,Cerrada(o) – ubicación/abscisa,Sin Información,,TEXTO / MARCA,EA,13
+76113,Bugalagrande,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Red terciaria,Con paso restringido – ubicación/abscisa,Sin Información,,TEXTO / MARCA,EB,13
+76113,Bugalagrande,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Puentes vehiculares y/o pontones,Cerrada(o) – ubicación/abscisa,Sin Información,,TEXTO / MARCA,ED,13
+76113,Bugalagrande,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Puentes vehiculares y/o pontones,Con paso restringido – ubicación/abscisa,Sin Información,,TEXTO / MARCA,EE,13
+76113,Bugalagrande,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Puentes peatonales,Cerrada(o) – ubicación/abscisa,Sin Información,,TEXTO / MARCA,EG,13
+76113,Bugalagrande,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Puentes peatonales,Con paso restringido – ubicación/abscisa,Sin Información,,TEXTO / MARCA,EH,13
+76113,Bugalagrande,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Túnel,Cerrada(o) – ubicación/abscisa,N/A,,TEXTO / MARCA,EJ,13
+76113,Bugalagrande,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Túnel,Con paso restringido – ubicación/abscisa,N/A,,TEXTO / MARCA,EK,13
+76113,Bugalagrande,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Modo férreo,Descripción de la afectación,N/A,,TEXTO / MARCA,EM,13
+76113,Bugalagrande,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Modo marítimo,Descripción de la afectación,N/A,,TEXTO / MARCA,EP,13
+76113,Bugalagrande,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Total (No),0,0,NUMÉRICO,IS,13
+76113,Bugalagrande,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Comercial (No),4,4,NUMÉRICO,IV,13
+76113,Bugalagrande,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Total (No),4,4,NUMÉRICO,IZ,13
+76113,Bugalagrande,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Total (No),0,0,NUMÉRICO,JG,13
+76113,Bugalagrande,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,13
+76122,Caicedonia,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Alcaldía,Fuera de servicio (Número),1,1,NUMÉRICO,AI,14
+76122,Caicedonia,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Alcaldía,Averiado (Número),1,1,NUMÉRICO,AJ,14
+76122,Caicedonia,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Uso restringido (Número),5,5,NUMÉRICO,AL,14
+76122,Caicedonia,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Fuera de servicio (Número),2,2,NUMÉRICO,AM,14
+76122,Caicedonia,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),34,34,NUMÉRICO,AN,14
+76122,Caicedonia,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Destruido (No),0,0,NUMÉRICO,AO,14
+76122,Caicedonia,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Uso restringido (No),0,0,NUMÉRICO,AP,14
+76122,Caicedonia,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Fuera de servicio (No),17,17,NUMÉRICO,AQ,14
+76122,Caicedonia,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Averiado (No),17,17,NUMÉRICO,AR,14
+76122,Caicedonia,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Destruido (No),0,0,NUMÉRICO,AS,14
+76122,Caicedonia,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Uso restringido (No),1,1,NUMÉRICO,AT,14
+76122,Caicedonia,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Fuera de servicio (No),0,0,NUMÉRICO,AU,14
+76122,Caicedonia,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Averiado (No),1,1,NUMÉRICO,AV,14
+76122,Caicedonia,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Destruido (No),0,0,NUMÉRICO,AW,14
+76122,Caicedonia,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Iglesias,Uso restringido (No),0,0,NUMÉRICO,AX,14
+76122,Caicedonia,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Iglesias,Fuera de servicio (No),3,3,NUMÉRICO,AY,14
+76122,Caicedonia,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Iglesias,Averiado (No),8,8,NUMÉRICO,AZ,14
+76122,Caicedonia,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Iglesias,Destruido (No),3,3,NUMÉRICO,BA,14
+76122,Caicedonia,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Plaza de mercado,Uso restringido (No),1,1,NUMÉRICO,BB,14
+76122,Caicedonia,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Plaza de mercado,Fuera de servicio (No),0,0,NUMÉRICO,BC,14
+76122,Caicedonia,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Plaza de mercado,Averiado (No),1,1,NUMÉRICO,BD,14
+76122,Caicedonia,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Plaza de mercado,Destruido (No),0,0,NUMÉRICO,BE,14
+76122,Caicedonia,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Escenarios deportivos,Uso restringido (No),2,2,NUMÉRICO,BF,14
+76122,Caicedonia,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Escenarios deportivos,Fuera de servicio (No),2,2,NUMÉRICO,BG,14
+76122,Caicedonia,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Escenarios deportivos,Averiado (No),4,4,NUMÉRICO,BH,14
+76122,Caicedonia,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Escenarios deportivos,Destruido (No),0,0,NUMÉRICO,BI,14
+76122,Caicedonia,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Telefonía fija,Uso restringido,X,,TEXTO / MARCA,BU,14
+76122,Caicedonia,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Telefonía fija,Fuera de servicio,X,,TEXTO / MARCA,BV,14
+76122,Caicedonia,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Telefonía fija,Averiado,X,,TEXTO / MARCA,BW,14
+76122,Caicedonia,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Telefonía celular,Uso restringido,X,,TEXTO / MARCA,BY,14
+76122,Caicedonia,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Telefonía celular,Fuera de servicio,X,,TEXTO / MARCA,BZ,14
+76122,Caicedonia,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Emisoras,Uso restringido,X,,TEXTO / MARCA,CC,14
+76122,Caicedonia,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Canales de televisión,Uso restringido,X,,TEXTO / MARCA,CG,14
+76122,Caicedonia,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Internet,Uso restringido,X,,TEXTO / MARCA,CK,14
+76122,Caicedonia,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Internet,Fuera de servicio,X,,TEXTO / MARCA,CL,14
+76122,Caicedonia,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Internet,Averiado,X,,TEXTO / MARCA,CM,14
+76122,Caicedonia,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Total (No),0,0,NUMÉRICO,IS,14
+76122,Caicedonia,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Total (No),0,0,NUMÉRICO,IZ,14
+76122,Caicedonia,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Total (No),0,0,NUMÉRICO,JG,14
+76122,Caicedonia,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,14
+76126,Calima (El Darién),ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Alcaldía,Fuera de servicio (Número),por fuera,,TEXTO / MARCA,AI,15
+76126,Calima (El Darién),ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Uso restringido (Número),16,16,NUMÉRICO,AL,15
+76126,Calima (El Darién),ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),16,16,NUMÉRICO,AN,15
+76126,Calima (El Darién),ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Destruido (No),en valoración,,TEXTO / MARCA,AO,15
+76126,Calima (El Darién),ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Fuera de servicio (No),por fuera,,TEXTO / MARCA,AU,15
+76126,Calima (El Darién),ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Iglesias,Destruido (No),2,2,NUMÉRICO,BA,15
+76126,Calima (El Darién),ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Plaza de mercado,Fuera de servicio (No),1,1,NUMÉRICO,BC,15
+76126,Calima (El Darién),ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Escenarios deportivos,Fuera de servicio (No),1,1,NUMÉRICO,BG,15
+76126,Calima (El Darién),ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Albergues,Uso restringido (No),1,1,NUMÉRICO,BN,15
+76126,Calima (El Darién),ARO Centro - Tuluá,6. TELECOMUNICACIONES,Telefonía fija,Fuera de servicio,X,,TEXTO / MARCA,BV,15
+76126,Calima (El Darién),ARO Centro - Tuluá,6. TELECOMUNICACIONES,Telefonía fija,Averiado,X,,TEXTO / MARCA,BW,15
+76126,Calima (El Darién),ARO Centro - Tuluá,6. TELECOMUNICACIONES,Telefonía celular,Averiado,X,,TEXTO / MARCA,CA,15
+76126,Calima (El Darién),ARO Centro - Tuluá,6. TELECOMUNICACIONES,Emisoras,Uso restringido,X,,TEXTO / MARCA,CC,15
+76126,Calima (El Darién),ARO Centro - Tuluá,6. TELECOMUNICACIONES,Canales de televisión,Uso restringido,X,,TEXTO / MARCA,CG,15
+76126,Calima (El Darién),ARO Centro - Tuluá,6. TELECOMUNICACIONES,Internet,Uso restringido,X,,TEXTO / MARCA,CK,15
+76126,Calima (El Darién),ARO Centro - Tuluá,6. TELECOMUNICACIONES,Internet,Fuera de servicio,X,,TEXTO / MARCA,CL,15
+76126,Calima (El Darién),ARO Centro - Tuluá,6. TELECOMUNICACIONES,Radiocomunicaciones,Uso restringido,X,,TEXTO / MARCA,CO,15
+76126,Calima (El Darién),ARO Centro - Tuluá,6. TELECOMUNICACIONES,Radiocomunicaciones,Fuera de servicio,X,,TEXTO / MARCA,CP,15
+76126,Calima (El Darién),ARO Centro - Tuluá,6. TELECOMUNICACIONES,Enlace satelital,Fuera de servicio,X,,TEXTO / MARCA,CT,15
+76126,Calima (El Darién),ARO Centro - Tuluá,6. TELECOMUNICACIONES,Radiocomunicaciones móviles,Uso restringido,X,,TEXTO / MARCA,CW,15
+76126,Calima (El Darién),ARO Centro - Tuluá,6. TELECOMUNICACIONES,Comunicaciones aeronáuticas,Uso restringido,X,,TEXTO / MARCA,DA,15
+76126,Calima (El Darién),ARO Centro - Tuluá,6. TELECOMUNICACIONES,Computadores para educar,Fuera de servicio,X,,TEXTO / MARCA,DJ,15
+76126,Calima (El Darién),ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Red primaria,Cerrada(o) – ubicación/abscisa,x,,TEXTO / MARCA,DU,15
+76126,Calima (El Darién),ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Red secundaria,Cerrada(o) – ubicación/abscisa,x,,TEXTO / MARCA,DX,15
+76126,Calima (El Darién),ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Red terciaria,Cerrada(o) – ubicación/abscisa,x,,TEXTO / MARCA,EA,15
+76126,Calima (El Darién),ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Puentes vehiculares y/o pontones,Con paso restringido – ubicación/abscisa,2,2,NUMÉRICO,EE,15
+76126,Calima (El Darién),ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Puentes vehiculares y/o pontones,Comentario,con afectaciones,,TEXTO / MARCA,EF,15
+76126,Calima (El Darién),ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Modo terminal terrestre,Fuera de servicio,X,,TEXTO / MARCA,FA,15
+76126,Calima (El Darién),ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Total (No),0,0,NUMÉRICO,IS,15
+76126,Calima (El Darién),ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Total (No),0,0,NUMÉRICO,IZ,15
+76126,Calima (El Darién),ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Total (No),0,0,NUMÉRICO,JG,15
+76126,Calima (El Darién),ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,15
+76130,Candelaria,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Alcaldía,Uso restringido (Número),1,1,NUMÉRICO,AH,16
+76130,Candelaria,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Alcaldía,Fuera de servicio (Número),0,0,NUMÉRICO,AI,16
+76130,Candelaria,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Alcaldía,Averiado (Número),0,0,NUMÉRICO,AJ,16
+76130,Candelaria,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Alcaldía,Destruido (Número),0,0,NUMÉRICO,AK,16
+76130,Candelaria,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Uso restringido (Número),4,4,NUMÉRICO,AL,16
+76130,Candelaria,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Fuera de servicio (Número),0,0,NUMÉRICO,AM,16
+76130,Candelaria,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),0,0,NUMÉRICO,AN,16
+76130,Candelaria,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Destruido (No),0,0,NUMÉRICO,AO,16
+76130,Candelaria,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Uso restringido (No),0,0,NUMÉRICO,AP,16
+76130,Candelaria,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Fuera de servicio (No),0,0,NUMÉRICO,AQ,16
+76130,Candelaria,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Averiado (No),0,0,NUMÉRICO,AR,16
+76130,Candelaria,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Destruido (No),0,0,NUMÉRICO,AS,16
+76130,Candelaria,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Uso restringido (No),0,0,NUMÉRICO,AT,16
+76130,Candelaria,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Fuera de servicio (No),0,0,NUMÉRICO,AU,16
+76130,Candelaria,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Averiado (No),0,0,NUMÉRICO,AV,16
+76130,Candelaria,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Destruido (No),0,0,NUMÉRICO,AW,16
+76130,Candelaria,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Iglesias,Uso restringido (No),4,4,NUMÉRICO,AX,16
+76130,Candelaria,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Iglesias,Fuera de servicio (No),0,0,NUMÉRICO,AY,16
+76130,Candelaria,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Iglesias,Averiado (No),0,0,NUMÉRICO,AZ,16
+76130,Candelaria,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Iglesias,Destruido (No),0,0,NUMÉRICO,BA,16
+76130,Candelaria,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Plaza de mercado,Uso restringido (No),0,0,NUMÉRICO,BB,16
+76130,Candelaria,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Plaza de mercado,Fuera de servicio (No),0,0,NUMÉRICO,BC,16
+76130,Candelaria,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Plaza de mercado,Averiado (No),0,0,NUMÉRICO,BD,16
+76130,Candelaria,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Plaza de mercado,Destruido (No),0,0,NUMÉRICO,BE,16
+76130,Candelaria,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Escenarios deportivos,Uso restringido (No),0,0,NUMÉRICO,BF,16
+76130,Candelaria,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Escenarios deportivos,Fuera de servicio (No),0,0,NUMÉRICO,BG,16
+76130,Candelaria,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Escenarios deportivos,Averiado (No),1,1,NUMÉRICO,BH,16
+76130,Candelaria,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Escenarios deportivos,Destruido (No),0,0,NUMÉRICO,BI,16
+76130,Candelaria,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Otros,Uso restringido (No),0,0,NUMÉRICO,BJ,16
+76130,Candelaria,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Otros,Fuera de servicio (No),0,0,NUMÉRICO,BK,16
+76130,Candelaria,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Otros,Averiado (No),0,0,NUMÉRICO,BL,16
+76130,Candelaria,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Otros,Destruido (No),0,0,NUMÉRICO,BM,16
+76130,Candelaria,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Albergues,Uso restringido (No),0,0,NUMÉRICO,BN,16
+76130,Candelaria,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Albergues,Fuera de servicio (No),0,0,NUMÉRICO,BO,16
+76130,Candelaria,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Albergues,Averiado (No),0,0,NUMÉRICO,BP,16
+76130,Candelaria,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Albergues,Destruido (No),0,0,NUMÉRICO,BQ,16
+76130,Candelaria,ARO Sur - Cali,6. TELECOMUNICACIONES,Telefonía fija,Uso restringido,X,,TEXTO / MARCA,BU,16
+76130,Candelaria,ARO Sur - Cali,6. TELECOMUNICACIONES,Telefonía fija,Averiado,X,,TEXTO / MARCA,BW,16
+76130,Candelaria,ARO Sur - Cali,6. TELECOMUNICACIONES,Telefonía celular,Uso restringido,X,,TEXTO / MARCA,BY,16
+76130,Candelaria,ARO Sur - Cali,6. TELECOMUNICACIONES,Emisoras,Uso restringido,X,,TEXTO / MARCA,CC,16
+76130,Candelaria,ARO Sur - Cali,6. TELECOMUNICACIONES,Canales de televisión,Uso restringido,X,,TEXTO / MARCA,CG,16
+76130,Candelaria,ARO Sur - Cali,6. TELECOMUNICACIONES,Internet,Uso restringido,X,,TEXTO / MARCA,CK,16
+76130,Candelaria,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Red primaria,Comentario,"NO SE CUENTA CON RED PRIMARIA, SOLO TERCIARIA",,TEXTO / MARCA,DW,16
+76130,Candelaria,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Red secundaria,Comentario,"NO SE CUENTA CON RED SECUNDARIA, SOLO TERCIARIA",,TEXTO / MARCA,DZ,16
+76130,Candelaria,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Red terciaria,Comentario,NO SE REPORTAN DAÑOS,,TEXTO / MARCA,EC,16
+76130,Candelaria,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Puentes vehiculares y/o pontones,Comentario,"NO SE REPORTAN DAÑOS, EL DIA DE AYER 10 DE AGOSTO SE HACE EVALUACIÓN TÉCNICA AL PUENTE DE JAUNCHITO PERO SE DESCARTA AVERÍA Y/O AFECTACIÓN",,TEXTO / MARCA,EF,16
+76130,Candelaria,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Puentes peatonales,Comentario,NO SE REPORTAN DAÑOS Y/O AFECTACIONES,,TEXTO / MARCA,EI,16
+76130,Candelaria,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Túnel,Comentario,NO SE CUENTA CON TÚNELES EN EL MUNICIPIO,,TEXTO / MARCA,EL,16
+76130,Candelaria,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Modo férreo,Descripción de la afectación,NO SE CUENTA CON ESTE MODO EN EL MUNICIPIO,,TEXTO / MARCA,EM,16
+76130,Candelaria,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Modo marítimo,Descripción de la afectación,NO SE CUENTA CON ESTE MODO EN EL MUNICIPIO,,TEXTO / MARCA,EP,16
+76130,Candelaria,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Modo fluvial,Descripción de la afectación,NO SE CUENTA CON ESTE MODO EN EL MUNICIPIO,,TEXTO / MARCA,ES,16
+76130,Candelaria,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Modo aéreo,Descripción de la afectación,NO SE CUENTA CON ESTE MODO EN EL MUNICIPIO,,TEXTO / MARCA,EV,16
+76130,Candelaria,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Modo terminal terrestre,Descripción de la afectación,NO SE REPORTAN DAÑOS Y/O AFECTACIONES- NO EXISTE COMO TAL UN TERMINAL SINO UN LUGAR DE CONCENTRACIÓN DE TRANSPORTE PÚBLICO,,TEXTO / MARCA,EY,16
+76130,Candelaria,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Terminales terrestres,En servicio,X,,TEXTO / MARCA,FK,16
+76130,Candelaria,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Agricultura,Hectáreas afectadas,0,0,NUMÉRICO,HP,16
+76130,Candelaria,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Agricultura,No productores afectados,0,0,NUMÉRICO,HQ,16
+76130,Candelaria,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Agricultura,Pérdida de productos,0,0,NUMÉRICO,HR,16
+76130,Candelaria,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Agricultura,Pérdida de infraestructura,0,0,NUMÉRICO,HS,16
+76130,Candelaria,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Ganadería,Hectáreas afectadas,0,0,NUMÉRICO,HT,16
+76130,Candelaria,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Ganadería,No productores afectados,0,0,NUMÉRICO,HU,16
+76130,Candelaria,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Ganadería,Pérdida de productos,0,0,NUMÉRICO,HV,16
+76130,Candelaria,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Ganadería,Pérdida de infraestructura,0,0,NUMÉRICO,HW,16
+76130,Candelaria,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Piscícola,Hectáreas afectadas,0,0,NUMÉRICO,HX,16
+76130,Candelaria,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Piscícola,No productores afectados,0,0,NUMÉRICO,HY,16
+76130,Candelaria,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Piscícola,Pérdida de productos,0,0,NUMÉRICO,HZ,16
+76130,Candelaria,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Piscícola,Pérdida de infraestructura,0,0,NUMÉRICO,IA,16
+76130,Candelaria,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Porcícola,Hectáreas afectadas,0,0,NUMÉRICO,IB,16
+76130,Candelaria,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Porcícola,No productores afectados,0,0,NUMÉRICO,IC,16
+76130,Candelaria,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Porcícola,Pérdida de productos,0,0,NUMÉRICO,ID,16
+76130,Candelaria,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Porcícola,Pérdida de infraestructura,0,0,NUMÉRICO,IE,16
+76130,Candelaria,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Avícola,Hectáreas afectadas,0,0,NUMÉRICO,IF,16
+76130,Candelaria,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Avícola,No productores afectados,0,0,NUMÉRICO,IG,16
+76130,Candelaria,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Avícola,Pérdida de productos,0,0,NUMÉRICO,IH,16
+76130,Candelaria,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Avícola,Pérdida de infraestructura,0,0,NUMÉRICO,II,16
+76130,Candelaria,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Financiero (No),0,0,NUMÉRICO,IM,16
+76130,Candelaria,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Turístico (No),0,0,NUMÉRICO,IN,16
+76130,Candelaria,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Comercial (No),0,0,NUMÉRICO,IO,16
+76130,Candelaria,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Industrial (No),0,0,NUMÉRICO,IP,16
+76130,Candelaria,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Minería (No),0,0,NUMÉRICO,IQ,16
+76130,Candelaria,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Servicios (No),0,0,NUMÉRICO,IR,16
+76130,Candelaria,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Total (No),0,0,NUMÉRICO,IS,16
+76130,Candelaria,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Financiero (No),0,0,NUMÉRICO,IT,16
+76130,Candelaria,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Turístico (No),0,0,NUMÉRICO,IU,16
+76130,Candelaria,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Comercial (No),0,0,NUMÉRICO,IV,16
+76130,Candelaria,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Industrial (No),1,1,NUMÉRICO,IW,16
+76130,Candelaria,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Minería (No),0,0,NUMÉRICO,IX,16
+76130,Candelaria,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Servicios (No),0,0,NUMÉRICO,IY,16
+76130,Candelaria,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Total (No),1,1,NUMÉRICO,IZ,16
+76130,Candelaria,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Financiero (No),0,0,NUMÉRICO,JA,16
+76130,Candelaria,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Turístico (No),0,0,NUMÉRICO,JB,16
+76130,Candelaria,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Comercial (No),0,0,NUMÉRICO,JC,16
+76130,Candelaria,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Industrial (No),0,0,NUMÉRICO,JD,16
+76130,Candelaria,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Minería (No),0,0,NUMÉRICO,JE,16
+76130,Candelaria,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Servicios (No),0,0,NUMÉRICO,JF,16
+76130,Candelaria,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Total (No),0,0,NUMÉRICO,JG,16
+76130,Candelaria,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Financiero (No),0,0,NUMÉRICO,JH,16
+76130,Candelaria,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Turístico (No),0,0,NUMÉRICO,JI,16
+76130,Candelaria,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Comercial (No),0,0,NUMÉRICO,JJ,16
+76130,Candelaria,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Industrial (No),0,0,NUMÉRICO,JK,16
+76130,Candelaria,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Minería (No),0,0,NUMÉRICO,JL,16
+76130,Candelaria,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Servicios (No),0,0,NUMÉRICO,JM,16
+76130,Candelaria,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,16
+76147,Cartago,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Alcaldía,Uso restringido (Número),1,1,NUMÉRICO,AH,17
+76147,Cartago,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Alcaldía,Fuera de servicio (Número),1,1,NUMÉRICO,AI,17
+76147,Cartago,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Alcaldía,Destruido (Número),1,1,NUMÉRICO,AK,17
+76147,Cartago,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Uso restringido (Número),21,21,NUMÉRICO,AL,17
+76147,Cartago,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Fuera de servicio (Número),21,21,NUMÉRICO,AM,17
+76147,Cartago,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),21,21,NUMÉRICO,AN,17
+76147,Cartago,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Destruido (No),4,4,NUMÉRICO,AO,17
+76147,Cartago,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Uso restringido (No),1,1,NUMÉRICO,AP,17
+76147,Cartago,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Fuera de servicio (No),1,1,NUMÉRICO,AQ,17
+76147,Cartago,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Averiado (No),1,1,NUMÉRICO,AR,17
+76147,Cartago,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Destruido (No),0,0,NUMÉRICO,AS,17
+76147,Cartago,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Uso restringido (No),3,3,NUMÉRICO,AT,17
+76147,Cartago,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Fuera de servicio (No),3,3,NUMÉRICO,AU,17
+76147,Cartago,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Averiado (No),3,3,NUMÉRICO,AV,17
+76147,Cartago,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Destruido (No),0,0,NUMÉRICO,AW,17
+76147,Cartago,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Iglesias,Uso restringido (No),4,4,NUMÉRICO,AX,17
+76147,Cartago,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Iglesias,Fuera de servicio (No),4,4,NUMÉRICO,AY,17
+76147,Cartago,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Iglesias,Averiado (No),3,3,NUMÉRICO,AZ,17
+76147,Cartago,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Iglesias,Destruido (No),2,2,NUMÉRICO,BA,17
+76147,Cartago,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Plaza de mercado,Uso restringido (No),0,0,NUMÉRICO,BB,17
+76147,Cartago,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Plaza de mercado,Fuera de servicio (No),0,0,NUMÉRICO,BC,17
+76147,Cartago,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Plaza de mercado,Averiado (No),0,0,NUMÉRICO,BD,17
+76147,Cartago,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Plaza de mercado,Destruido (No),0,0,NUMÉRICO,BE,17
+76147,Cartago,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Escenarios deportivos,Uso restringido (No),6,6,NUMÉRICO,BF,17
+76147,Cartago,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Escenarios deportivos,Fuera de servicio (No),1,1,NUMÉRICO,BG,17
+76147,Cartago,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Escenarios deportivos,Averiado (No),6,6,NUMÉRICO,BH,17
+76147,Cartago,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Escenarios deportivos,Destruido (No),0,0,NUMÉRICO,BI,17
+76147,Cartago,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Otros,Uso restringido (No),2,2,NUMÉRICO,BJ,17
+76147,Cartago,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Otros,Averiado (No),2,2,NUMÉRICO,BL,17
+76147,Cartago,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Otros,Destruido (No),0,0,NUMÉRICO,BM,17
+76147,Cartago,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Albergues,Uso restringido (No),0,0,NUMÉRICO,BN,17
+76147,Cartago,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Albergues,Fuera de servicio (No),0,0,NUMÉRICO,BO,17
+76147,Cartago,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Albergues,Averiado (No),0,0,NUMÉRICO,BP,17
+76147,Cartago,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Albergues,Destruido (No),0,0,NUMÉRICO,BQ,17
+76147,Cartago,ARO Norte - Cartago,6. TELECOMUNICACIONES,Telefonía fija,Uso restringido,X,,TEXTO / MARCA,BU,17
+76147,Cartago,ARO Norte - Cartago,6. TELECOMUNICACIONES,Telefonía celular,Uso restringido,X,,TEXTO / MARCA,BY,17
+76147,Cartago,ARO Norte - Cartago,6. TELECOMUNICACIONES,Emisoras,Uso restringido,X,,TEXTO / MARCA,CC,17
+76147,Cartago,ARO Norte - Cartago,6. TELECOMUNICACIONES,Canales de televisión,Uso restringido,X,,TEXTO / MARCA,CG,17
+76147,Cartago,ARO Norte - Cartago,6. TELECOMUNICACIONES,Internet,Uso restringido,X,,TEXTO / MARCA,CK,17
+76147,Cartago,ARO Norte - Cartago,6. TELECOMUNICACIONES,Comunicaciones aeronáuticas,Uso restringido,X,,TEXTO / MARCA,DA,17
+76147,Cartago,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Red terciaria,Comentario,La situación de emergencia presentada en  el acceso a la zona rural de Cauca se encuentra atendiendo en este momento mediante la movilización de maquinaria amarilla,,TEXTO / MARCA,EC,17
+76147,Cartago,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Aeropuertos,En servicio,X,,TEXTO / MARCA,FH,17
+76147,Cartago,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Total (No),0,0,NUMÉRICO,IS,17
+76147,Cartago,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Total (No),0,0,NUMÉRICO,IZ,17
+76147,Cartago,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Total (No),0,0,NUMÉRICO,JG,17
+76147,Cartago,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,17
+76233,Dagua,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Alcaldía,Uso restringido (Número),1,1,NUMÉRICO,AH,18
+76233,Dagua,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Alcaldía,Fuera de servicio (Número),1,1,NUMÉRICO,AI,18
+76233,Dagua,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),8,8,NUMÉRICO,AN,18
+76233,Dagua,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Destruido (No),2,2,NUMÉRICO,AO,18
+76233,Dagua,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Averiado (No),1,1,NUMÉRICO,AR,18
+76233,Dagua,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Iglesias,Averiado (No),2,2,NUMÉRICO,AZ,18
+76233,Dagua,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Iglesias,Destruido (No),3,3,NUMÉRICO,BA,18
+76233,Dagua,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Otros,Averiado (No),1,1,NUMÉRICO,BL,18
+76233,Dagua,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Albergues,Uso restringido (No),1,1,NUMÉRICO,BN,18
+76233,Dagua,ARO Sur - Cali,6. TELECOMUNICACIONES,Telefonía fija,Fuera de servicio,X,,TEXTO / MARCA,BV,18
+76233,Dagua,ARO Sur - Cali,6. TELECOMUNICACIONES,Telefonía celular,Uso restringido,X,,TEXTO / MARCA,BY,18
+76233,Dagua,ARO Sur - Cali,6. TELECOMUNICACIONES,Emisoras,Fuera de servicio,X,,TEXTO / MARCA,CD,18
+76233,Dagua,ARO Sur - Cali,6. TELECOMUNICACIONES,Canales de televisión,Uso restringido,X,,TEXTO / MARCA,CG,18
+76233,Dagua,ARO Sur - Cali,6. TELECOMUNICACIONES,Internet,Fuera de servicio,X,,TEXTO / MARCA,CL,18
+76233,Dagua,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Red primaria,Cerrada(o) – ubicación/abscisa,28 derrumbes en vías Cali - Dagua / Buga - Buenaventura y zona Rural.  Graves sobre la vía cali - Dagua.,,TEXTO / MARCA,DU,18
+76233,Dagua,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Red primaria,Comentario,Paso a un carril. Al parecer hay vehículos debajo de uno de los derrumbes pero por la magnitud no se ha logrado remover.,,TEXTO / MARCA,DW,18
+76233,Dagua,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Red secundaria,Cerrada(o) – ubicación/abscisa,Sin Información,,TEXTO / MARCA,DX,18
+76233,Dagua,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Red secundaria,Con paso restringido – ubicación/abscisa,Sin Información,,TEXTO / MARCA,DY,18
+76233,Dagua,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Red secundaria,Comentario,Sin Información,,TEXTO / MARCA,DZ,18
+76233,Dagua,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Red terciaria,Cerrada(o) – ubicación/abscisa,Sin Información,,TEXTO / MARCA,EA,18
+76233,Dagua,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Red terciaria,Con paso restringido – ubicación/abscisa,Sin Información,,TEXTO / MARCA,EB,18
+76233,Dagua,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Red terciaria,Comentario,Sin Información,,TEXTO / MARCA,EC,18
+76233,Dagua,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Puentes vehiculares y/o pontones,Cerrada(o) – ubicación/abscisa,Sin información,,TEXTO / MARCA,ED,18
+76233,Dagua,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Puentes vehiculares y/o pontones,Con paso restringido – ubicación/abscisa,Sin información,,TEXTO / MARCA,EE,18
+76233,Dagua,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Puentes vehiculares y/o pontones,Comentario,Sin Información,,TEXTO / MARCA,EF,18
+76233,Dagua,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Puentes peatonales,Con paso restringido – ubicación/abscisa,1 (cabecera municipal),,TEXTO / MARCA,EH,18
+76233,Dagua,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Túnel,Cerrada(o) – ubicación/abscisa,Sin Información,,TEXTO / MARCA,EJ,18
+76233,Dagua,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Túnel,Con paso restringido – ubicación/abscisa,Sin Información,,TEXTO / MARCA,EK,18
+76233,Dagua,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Túnel,Comentario,Sin Información,,TEXTO / MARCA,EL,18
+76233,Dagua,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Modo férreo,Descripción de la afectación,Sin Información,,TEXTO / MARCA,EM,18
+76233,Dagua,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Modo marítimo,Descripción de la afectación,Sin Información,,TEXTO / MARCA,EP,18
+76233,Dagua,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Modo fluvial,Descripción de la afectación,Sin Información,,TEXTO / MARCA,ES,18
+76233,Dagua,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Agricultura,Pérdida de productos,Sin información,,TEXTO / MARCA,HR,18
+76233,Dagua,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Agricultura,Pérdida de infraestructura,Sin información,,TEXTO / MARCA,HS,18
+76233,Dagua,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Ganadería,Pérdida de productos,Sin información,,TEXTO / MARCA,HV,18
+76233,Dagua,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Ganadería,Pérdida de infraestructura,Sin información,,TEXTO / MARCA,HW,18
+76233,Dagua,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Piscícola,Pérdida de productos,Sin información,,TEXTO / MARCA,HZ,18
+76233,Dagua,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Piscícola,Pérdida de infraestructura,Sin información,,TEXTO / MARCA,IA,18
+76233,Dagua,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Porcícola,Pérdida de productos,Sin información,,TEXTO / MARCA,ID,18
+76233,Dagua,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Porcícola,Pérdida de infraestructura,Sin información,,TEXTO / MARCA,IE,18
+76233,Dagua,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Avícola,Pérdida de productos,Sin información,,TEXTO / MARCA,IH,18
+76233,Dagua,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Avícola,Pérdida de infraestructura,Sin información,,TEXTO / MARCA,II,18
+76233,Dagua,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Total (No),0,0,NUMÉRICO,IS,18
+76233,Dagua,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Total (No),0,0,NUMÉRICO,IZ,18
+76233,Dagua,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Total (No),0,0,NUMÉRICO,JG,18
+76233,Dagua,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,18
+76243,El Águila,ARO Norte - Cartago,6. TELECOMUNICACIONES,Telefonía fija,Fuera de servicio,X,,TEXTO / MARCA,BV,19
+76243,El Águila,ARO Norte - Cartago,6. TELECOMUNICACIONES,Telefonía fija,Averiado,X,,TEXTO / MARCA,BW,19
+76243,El Águila,ARO Norte - Cartago,6. TELECOMUNICACIONES,Telefonía celular,Destruido,X,,TEXTO / MARCA,CB,19
+76243,El Águila,ARO Norte - Cartago,6. TELECOMUNICACIONES,Emisoras,Averiado,X,,TEXTO / MARCA,CE,19
+76243,El Águila,ARO Norte - Cartago,6. TELECOMUNICACIONES,Canales de televisión,Averiado,X,,TEXTO / MARCA,CI,19
+76243,El Águila,ARO Norte - Cartago,6. TELECOMUNICACIONES,Internet,Destruido,X,,TEXTO / MARCA,CN,19
+76243,El Águila,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Red primaria,Cerrada(o) – ubicación/abscisa,La vía del municipio de Ansermanuevo que conduce al municipio del águila se encuentra con 03 derrumbes solo tiene paso en un solo carril la vía principal del municipio se encuentra cerrada por derrumbe. En el casco urbano del municipio se encuentra cerradas la vía carrera 2 entre 9 y 8 y todas las calles aledañas al hospital por daños en las estructuras . ,,TEXTO / MARCA,DU,19
+76243,El Águila,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Total (No),0,0,NUMÉRICO,IS,19
+76243,El Águila,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Total (No),0,0,NUMÉRICO,IZ,19
+76243,El Águila,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Total (No),0,0,NUMÉRICO,JG,19
+76243,El Águila,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,19
+76246,El Cairo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Alcaldía,Uso restringido (Número),Sin información,,TEXTO / MARCA,AH,20
+76246,El Cairo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Alcaldía,Fuera de servicio (Número),Sin información,,TEXTO / MARCA,AI,20
+76246,El Cairo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Alcaldía,Averiado (Número),Sin información,,TEXTO / MARCA,AJ,20
+76246,El Cairo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Alcaldía,Destruido (Número),Sin información,,TEXTO / MARCA,AK,20
+76246,El Cairo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),7,7,NUMÉRICO,AN,20
+76246,El Cairo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Destruido (No),1,1,NUMÉRICO,AO,20
+76246,El Cairo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Uso restringido (No),Sin información,,TEXTO / MARCA,AP,20
+76246,El Cairo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Fuera de servicio (No),Sin información,,TEXTO / MARCA,AQ,20
+76246,El Cairo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Averiado (No),Sin información,,TEXTO / MARCA,AR,20
+76246,El Cairo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Destruido (No),Sin información,,TEXTO / MARCA,AS,20
+76246,El Cairo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Uso restringido (No),Sin información,,TEXTO / MARCA,AT,20
+76246,El Cairo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Fuera de servicio (No),Sin información,,TEXTO / MARCA,AU,20
+76246,El Cairo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Averiado (No),Sin información,,TEXTO / MARCA,AV,20
+76246,El Cairo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Destruido (No),Sin información,,TEXTO / MARCA,AW,20
+76246,El Cairo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Iglesias,Uso restringido (No),Sin información,,TEXTO / MARCA,AX,20
+76246,El Cairo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Iglesias,Fuera de servicio (No),Sin información,,TEXTO / MARCA,AY,20
+76246,El Cairo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Iglesias,Averiado (No),Sin información,,TEXTO / MARCA,AZ,20
+76246,El Cairo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Iglesias,Destruido (No),Sin información,,TEXTO / MARCA,BA,20
+76246,El Cairo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Plaza de mercado,Uso restringido (No),Sin información,,TEXTO / MARCA,BB,20
+76246,El Cairo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Plaza de mercado,Fuera de servicio (No),Sin información,,TEXTO / MARCA,BC,20
+76246,El Cairo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Plaza de mercado,Averiado (No),Sin información,,TEXTO / MARCA,BD,20
+76246,El Cairo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Plaza de mercado,Destruido (No),Sin información,,TEXTO / MARCA,BE,20
+76246,El Cairo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Escenarios deportivos,Uso restringido (No),Sin información,,TEXTO / MARCA,BF,20
+76246,El Cairo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Escenarios deportivos,Fuera de servicio (No),Sin información,,TEXTO / MARCA,BG,20
+76246,El Cairo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Escenarios deportivos,Averiado (No),Sin información,,TEXTO / MARCA,BH,20
+76246,El Cairo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Escenarios deportivos,Destruido (No),Sin información,,TEXTO / MARCA,BI,20
+76246,El Cairo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Otros,Uso restringido (No),Sin información,,TEXTO / MARCA,BJ,20
+76246,El Cairo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Otros,Fuera de servicio (No),Sin información,,TEXTO / MARCA,BK,20
+76246,El Cairo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Otros,Averiado (No),Sin información,,TEXTO / MARCA,BL,20
+76246,El Cairo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Otros,Destruido (No),Sin información,,TEXTO / MARCA,BM,20
+76246,El Cairo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Albergues,Uso restringido (No),Sin información,,TEXTO / MARCA,BN,20
+76246,El Cairo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Albergues,Fuera de servicio (No),Sin información,,TEXTO / MARCA,BO,20
+76246,El Cairo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Albergues,Averiado (No),Sin información,,TEXTO / MARCA,BP,20
+76246,El Cairo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Albergues,Destruido (No),Sin información,,TEXTO / MARCA,BQ,20
+76246,El Cairo,ARO Norte - Cartago,6. TELECOMUNICACIONES,Telefonía fija,Fuera de servicio,X,,TEXTO / MARCA,BV,20
+76246,El Cairo,ARO Norte - Cartago,6. TELECOMUNICACIONES,Telefonía fija,Destruido,X,,TEXTO / MARCA,BX,20
+76246,El Cairo,ARO Norte - Cartago,6. TELECOMUNICACIONES,Telefonía celular,Destruido,X,,TEXTO / MARCA,CB,20
+76246,El Cairo,ARO Norte - Cartago,6. TELECOMUNICACIONES,Emisoras,Destruido,X,,TEXTO / MARCA,CF,20
+76246,El Cairo,ARO Norte - Cartago,6. TELECOMUNICACIONES,Canales de televisión,Averiado,X,,TEXTO / MARCA,CI,20
+76246,El Cairo,ARO Norte - Cartago,6. TELECOMUNICACIONES,Internet,Destruido,X,,TEXTO / MARCA,CN,20
+76246,El Cairo,ARO Norte - Cartago,6. TELECOMUNICACIONES,,Observaciones Telecomunicaciones,"Secretaría TICs del Departamento reporta que El Cairo tiene 61 usuarios del proyecto 'La Red del Norte' y se reporta por parte de la ERT que sí tienen conectividad. Pero puede estar asociado a la falta de energia.
+
+Movistar reportó 11 de agosto que tienen 33% de los servicios estables.",,TEXTO / MARCA,DQ,20
+76246,El Cairo,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Red primaria,Cerrada(o) – ubicación/abscisa,Sin información,,TEXTO / MARCA,DU,20
+76246,El Cairo,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Red primaria,Con paso restringido – ubicación/abscisa,Sin información,,TEXTO / MARCA,DV,20
+76246,El Cairo,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Red primaria,Comentario,Sin información,,TEXTO / MARCA,DW,20
+76246,El Cairo,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Red secundaria,Cerrada(o) – ubicación/abscisa,"Vía Cartago - El Cairo
+Se reportan aproximadamente 30 derrumbes",,TEXTO / MARCA,DX,20
+76246,El Cairo,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Red secundaria,Con paso restringido – ubicación/abscisa,Sin información,,TEXTO / MARCA,DY,20
+76246,El Cairo,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Red terciaria,Cerrada(o) – ubicación/abscisa,"Vías rurales cerradas.
+Se presentan 10 derrumbes en la red vial terciaria",,TEXTO / MARCA,EA,20
+76246,El Cairo,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Puentes vehiculares y/o pontones,Cerrada(o) – ubicación/abscisa,Sin información,,TEXTO / MARCA,ED,20
+76246,El Cairo,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Puentes vehiculares y/o pontones,Con paso restringido – ubicación/abscisa,Sin información,,TEXTO / MARCA,EE,20
+76246,El Cairo,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Puentes vehiculares y/o pontones,Comentario,Sin información,,TEXTO / MARCA,EF,20
+76246,El Cairo,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Puentes peatonales,Cerrada(o) – ubicación/abscisa,Sin información,,TEXTO / MARCA,EG,20
+76246,El Cairo,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Puentes peatonales,Con paso restringido – ubicación/abscisa,Sin información,,TEXTO / MARCA,EH,20
+76246,El Cairo,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Puentes peatonales,Comentario,Sin información,,TEXTO / MARCA,EI,20
+76246,El Cairo,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Túnel,Cerrada(o) – ubicación/abscisa,Sin información,,TEXTO / MARCA,EJ,20
+76246,El Cairo,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Túnel,Con paso restringido – ubicación/abscisa,Sin información,,TEXTO / MARCA,EK,20
+76246,El Cairo,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Túnel,Comentario,Sin información,,TEXTO / MARCA,EL,20
+76246,El Cairo,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Modo marítimo,Descripción de la afectación,N/A,,TEXTO / MARCA,EP,20
+76246,El Cairo,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Modo fluvial,Descripción de la afectación,N/A,,TEXTO / MARCA,ES,20
+76246,El Cairo,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Modo aéreo,Descripción de la afectación,N/A,,TEXTO / MARCA,EV,20
+76246,El Cairo,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Modo terminal terrestre,Descripción de la afectación,N/A,,TEXTO / MARCA,EY,20
+76246,El Cairo,ARO Norte - Cartago,9. SECTOR AGROPECUARIO,Agricultura,Pérdida de productos,Sin información,,TEXTO / MARCA,HR,20
+76246,El Cairo,ARO Norte - Cartago,9. SECTOR AGROPECUARIO,Agricultura,Pérdida de infraestructura,Sin información,,TEXTO / MARCA,HS,20
+76246,El Cairo,ARO Norte - Cartago,9. SECTOR AGROPECUARIO,Ganadería,Pérdida de productos,Sin información,,TEXTO / MARCA,HV,20
+76246,El Cairo,ARO Norte - Cartago,9. SECTOR AGROPECUARIO,Ganadería,Pérdida de infraestructura,Sin información,,TEXTO / MARCA,HW,20
+76246,El Cairo,ARO Norte - Cartago,9. SECTOR AGROPECUARIO,Piscícola,Pérdida de productos,Sin información,,TEXTO / MARCA,HZ,20
+76246,El Cairo,ARO Norte - Cartago,9. SECTOR AGROPECUARIO,Piscícola,Pérdida de infraestructura,Sin información,,TEXTO / MARCA,IA,20
+76246,El Cairo,ARO Norte - Cartago,9. SECTOR AGROPECUARIO,Porcícola,Pérdida de productos,Sin información,,TEXTO / MARCA,ID,20
+76246,El Cairo,ARO Norte - Cartago,9. SECTOR AGROPECUARIO,Porcícola,Pérdida de infraestructura,Sin información,,TEXTO / MARCA,IE,20
+76246,El Cairo,ARO Norte - Cartago,9. SECTOR AGROPECUARIO,Avícola,Pérdida de productos,Sin información,,TEXTO / MARCA,IH,20
+76246,El Cairo,ARO Norte - Cartago,9. SECTOR AGROPECUARIO,Avícola,Pérdida de infraestructura,Sin información,,TEXTO / MARCA,II,20
+76246,El Cairo,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Total (No),0,0,NUMÉRICO,IS,20
+76246,El Cairo,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Total (No),0,0,NUMÉRICO,IZ,20
+76246,El Cairo,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Total (No),0,0,NUMÉRICO,JG,20
+76246,El Cairo,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,20
+76248,El Cerrito,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Alcaldía,Uso restringido (Número),1,1,NUMÉRICO,AH,21
+76248,El Cerrito,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Alcaldía,Fuera de servicio (Número),1,1,NUMÉRICO,AI,21
+76248,El Cerrito,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Alcaldía,Averiado (Número),3,3,NUMÉRICO,AJ,21
+76248,El Cerrito,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Alcaldía,Destruido (Número),0,0,NUMÉRICO,AK,21
+76248,El Cerrito,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Uso restringido (Número),34,34,NUMÉRICO,AL,21
+76248,El Cerrito,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Fuera de servicio (Número),34,34,NUMÉRICO,AM,21
+76248,El Cerrito,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),En evaluacion,,TEXTO / MARCA,AN,21
+76248,El Cerrito,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Destruido (No),0,0,NUMÉRICO,AO,21
+76248,El Cerrito,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Uso restringido (No),2,2,NUMÉRICO,AP,21
+76248,El Cerrito,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Fuera de servicio (No),2,2,NUMÉRICO,AQ,21
+76248,El Cerrito,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Averiado (No),2,2,NUMÉRICO,AR,21
+76248,El Cerrito,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Destruido (No),0,0,NUMÉRICO,AS,21
+76248,El Cerrito,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Uso restringido (No),2,2,NUMÉRICO,AT,21
+76248,El Cerrito,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Fuera de servicio (No),1,1,NUMÉRICO,AU,21
+76248,El Cerrito,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Averiado (No),En evaluacion,,TEXTO / MARCA,AV,21
+76248,El Cerrito,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Destruido (No),0,0,NUMÉRICO,AW,21
+76248,El Cerrito,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Iglesias,Uso restringido (No),3,3,NUMÉRICO,AX,21
+76248,El Cerrito,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Iglesias,Fuera de servicio (No),3,3,NUMÉRICO,AY,21
+76248,El Cerrito,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Iglesias,Averiado (No),3,3,NUMÉRICO,AZ,21
+76248,El Cerrito,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Iglesias,Destruido (No),0,0,NUMÉRICO,BA,21
+76248,El Cerrito,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Plaza de mercado,Uso restringido (No),0,0,NUMÉRICO,BB,21
+76248,El Cerrito,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Plaza de mercado,Fuera de servicio (No),0,0,NUMÉRICO,BC,21
+76248,El Cerrito,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Plaza de mercado,Averiado (No),1,1,NUMÉRICO,BD,21
+76248,El Cerrito,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Plaza de mercado,Destruido (No),0,0,NUMÉRICO,BE,21
+76248,El Cerrito,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Escenarios deportivos,Uso restringido (No),0,0,NUMÉRICO,BF,21
+76248,El Cerrito,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Escenarios deportivos,Fuera de servicio (No),0,0,NUMÉRICO,BG,21
+76248,El Cerrito,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Escenarios deportivos,Averiado (No),1,1,NUMÉRICO,BH,21
+76248,El Cerrito,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Escenarios deportivos,Destruido (No),0,0,NUMÉRICO,BI,21
+76248,El Cerrito,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Otros,Uso restringido (No),5,5,NUMÉRICO,BJ,21
+76248,El Cerrito,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Otros,Fuera de servicio (No),5,5,NUMÉRICO,BK,21
+76248,El Cerrito,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Otros,Averiado (No),5,5,NUMÉRICO,BL,21
+76248,El Cerrito,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Otros,Destruido (No),0,0,NUMÉRICO,BM,21
+76248,El Cerrito,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Albergues,Uso restringido (No),0,0,NUMÉRICO,BN,21
+76248,El Cerrito,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Albergues,Fuera de servicio (No),0,0,NUMÉRICO,BO,21
+76248,El Cerrito,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Albergues,Averiado (No),0,0,NUMÉRICO,BP,21
+76248,El Cerrito,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Albergues,Destruido (No),0,0,NUMÉRICO,BQ,21
+76248,El Cerrito,ARO Sur - Cali,6. TELECOMUNICACIONES,Telefonía fija,Uso restringido,X,,TEXTO / MARCA,BU,21
+76248,El Cerrito,ARO Sur - Cali,6. TELECOMUNICACIONES,Telefonía celular,Uso restringido,X,,TEXTO / MARCA,BY,21
+76248,El Cerrito,ARO Sur - Cali,6. TELECOMUNICACIONES,Emisoras,Uso restringido,X,,TEXTO / MARCA,CC,21
+76248,El Cerrito,ARO Sur - Cali,6. TELECOMUNICACIONES,Canales de televisión,Uso restringido,X,,TEXTO / MARCA,CG,21
+76248,El Cerrito,ARO Sur - Cali,6. TELECOMUNICACIONES,Internet,Uso restringido,X,,TEXTO / MARCA,CK,21
+76248,El Cerrito,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Red primaria,Cerrada(o) – ubicación/abscisa,NO SE CUENTA CON NINGUN TIPO DE EVENTO QUE CAUSE CIERRE VIAL,,TEXTO / MARCA,DU,21
+76248,El Cerrito,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Red primaria,Con paso restringido – ubicación/abscisa,NINGUNO,,TEXTO / MARCA,DV,21
+76248,El Cerrito,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Red secundaria,Cerrada(o) – ubicación/abscisa,NO SE CUENTA CON NINGUN TIPO DE EVENTO QUE CAUSE CIERRE VIAL,,TEXTO / MARCA,DX,21
+76248,El Cerrito,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Red secundaria,Con paso restringido – ubicación/abscisa,NINGUNO,,TEXTO / MARCA,DY,21
+76248,El Cerrito,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Red terciaria,Cerrada(o) – ubicación/abscisa,"SE PRESENTAN DOS DESLIZAMIENTOS EN LA VIA DENOMINADA ""RUTA DE LA FRESA"" EL CUAL CONDUCE EL MUNICIPIO DE PALMIRA AL CORREGIMIENTO DE TENERIFE",,TEXTO / MARCA,EA,21
+76248,El Cerrito,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Red terciaria,Con paso restringido – ubicación/abscisa,SI,,TEXTO / MARCA,EB,21
+76248,El Cerrito,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Puentes vehiculares y/o pontones,Cerrada(o) – ubicación/abscisa,0,0,NUMÉRICO,ED,21
+76248,El Cerrito,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Puentes peatonales,Cerrada(o) – ubicación/abscisa,0,0,NUMÉRICO,EG,21
+76248,El Cerrito,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Túnel,Cerrada(o) – ubicación/abscisa,0,0,NUMÉRICO,EJ,21
+76248,El Cerrito,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Modo férreo,Descripción de la afectación,0,0,NUMÉRICO,EM,21
+76248,El Cerrito,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Modo marítimo,Descripción de la afectación,0,0,NUMÉRICO,EP,21
+76248,El Cerrito,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Modo fluvial,Descripción de la afectación,0,0,NUMÉRICO,ES,21
+76248,El Cerrito,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Modo aéreo,Descripción de la afectación,0,0,NUMÉRICO,EV,21
+76248,El Cerrito,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Modo terminal terrestre,Descripción de la afectación,0,0,NUMÉRICO,EY,21
+76248,El Cerrito,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Agricultura,Pérdida de productos,0,0,NUMÉRICO,HR,21
+76248,El Cerrito,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Agricultura,Pérdida de infraestructura,0,0,NUMÉRICO,HS,21
+76248,El Cerrito,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Ganadería,Hectáreas afectadas,0,0,NUMÉRICO,HT,21
+76248,El Cerrito,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Ganadería,No productores afectados,0,0,NUMÉRICO,HU,21
+76248,El Cerrito,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Ganadería,Pérdida de productos,0,0,NUMÉRICO,HV,21
+76248,El Cerrito,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Ganadería,Pérdida de infraestructura,0,0,NUMÉRICO,HW,21
+76248,El Cerrito,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Piscícola,Hectáreas afectadas,0,0,NUMÉRICO,HX,21
+76248,El Cerrito,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Piscícola,No productores afectados,0,0,NUMÉRICO,HY,21
+76248,El Cerrito,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Piscícola,Pérdida de productos,0,0,NUMÉRICO,HZ,21
+76248,El Cerrito,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Piscícola,Pérdida de infraestructura,0,0,NUMÉRICO,IA,21
+76248,El Cerrito,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Porcícola,Hectáreas afectadas,0,0,NUMÉRICO,IB,21
+76248,El Cerrito,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Porcícola,No productores afectados,0,0,NUMÉRICO,IC,21
+76248,El Cerrito,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Porcícola,Pérdida de productos,0,0,NUMÉRICO,ID,21
+76248,El Cerrito,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Porcícola,Pérdida de infraestructura,0,0,NUMÉRICO,IE,21
+76248,El Cerrito,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Avícola,Hectáreas afectadas,0,0,NUMÉRICO,IF,21
+76248,El Cerrito,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Avícola,No productores afectados,0,0,NUMÉRICO,IG,21
+76248,El Cerrito,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Avícola,Pérdida de productos,0,0,NUMÉRICO,IH,21
+76248,El Cerrito,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Avícola,Pérdida de infraestructura,0,0,NUMÉRICO,II,21
+76248,El Cerrito,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Comercial (No),2,2,NUMÉRICO,IO,21
+76248,El Cerrito,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Total (No),2,2,NUMÉRICO,IS,21
+76248,El Cerrito,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Total (No),0,0,NUMÉRICO,IZ,21
+76248,El Cerrito,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Total (No),0,0,NUMÉRICO,JG,21
+76248,El Cerrito,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,21
+76250,El Dovio,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Alcaldía,Averiado (Número),x,,TEXTO / MARCA,AJ,22
+76250,El Dovio,ARO Norte - Cartago,6. TELECOMUNICACIONES,Telefonía fija,Uso restringido,X,,TEXTO / MARCA,BU,22
+76250,El Dovio,ARO Norte - Cartago,6. TELECOMUNICACIONES,Telefonía celular,Uso restringido,X,,TEXTO / MARCA,BY,22
+76250,El Dovio,ARO Norte - Cartago,6. TELECOMUNICACIONES,Emisoras,Uso restringido,X,,TEXTO / MARCA,CC,22
+76250,El Dovio,ARO Norte - Cartago,6. TELECOMUNICACIONES,Canales de televisión,Uso restringido,X,,TEXTO / MARCA,CG,22
+76250,El Dovio,ARO Norte - Cartago,6. TELECOMUNICACIONES,Internet,Fuera de servicio,X,,TEXTO / MARCA,CL,22
+76250,El Dovio,ARO Norte - Cartago,6. TELECOMUNICACIONES,Comunicaciones marítimas y fluviales,Uso restringido,X,,TEXTO / MARCA,DE,22
+76250,El Dovio,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Total (No),0,0,NUMÉRICO,IS,22
+76250,El Dovio,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Total (No),0,0,NUMÉRICO,IZ,22
+76250,El Dovio,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Total (No),0,0,NUMÉRICO,JG,22
+76250,El Dovio,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,22
+76275,Florida,ARO Sur - Cali,6. TELECOMUNICACIONES,Telefonía fija,Uso restringido,X,,TEXTO / MARCA,BU,23
+76275,Florida,ARO Sur - Cali,6. TELECOMUNICACIONES,Telefonía celular,Uso restringido,X,,TEXTO / MARCA,BY,23
+76275,Florida,ARO Sur - Cali,6. TELECOMUNICACIONES,Emisoras,Uso restringido,X,,TEXTO / MARCA,CC,23
+76275,Florida,ARO Sur - Cali,6. TELECOMUNICACIONES,Canales de televisión,Uso restringido,X,,TEXTO / MARCA,CG,23
+76275,Florida,ARO Sur - Cali,6. TELECOMUNICACIONES,Internet,Uso restringido,X,,TEXTO / MARCA,CK,23
+76275,Florida,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Total (No),0,0,NUMÉRICO,IS,23
+76275,Florida,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Total (No),0,0,NUMÉRICO,IZ,23
+76275,Florida,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Total (No),0,0,NUMÉRICO,JG,23
+76275,Florida,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,23
+76306,Ginebra,ARO Sur - Cali,6. TELECOMUNICACIONES,Telefonía fija,Uso restringido,X,,TEXTO / MARCA,BU,24
+76306,Ginebra,ARO Sur - Cali,6. TELECOMUNICACIONES,Telefonía celular,Uso restringido,X,,TEXTO / MARCA,BY,24
+76306,Ginebra,ARO Sur - Cali,6. TELECOMUNICACIONES,Emisoras,Uso restringido,X,,TEXTO / MARCA,CC,24
+76306,Ginebra,ARO Sur - Cali,6. TELECOMUNICACIONES,Canales de televisión,Uso restringido,X,,TEXTO / MARCA,CG,24
+76306,Ginebra,ARO Sur - Cali,6. TELECOMUNICACIONES,Internet,Uso restringido,X,,TEXTO / MARCA,CK,24
+76306,Ginebra,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Total (No),0,0,NUMÉRICO,IS,24
+76306,Ginebra,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Total (No),0,0,NUMÉRICO,IZ,24
+76306,Ginebra,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Total (No),0,0,NUMÉRICO,JG,24
+76306,Ginebra,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,24
+76318,Guacarí,ARO Sur - Cali,6. TELECOMUNICACIONES,Telefonía fija,Uso restringido,X,,TEXTO / MARCA,BU,25
+76318,Guacarí,ARO Sur - Cali,6. TELECOMUNICACIONES,Telefonía celular,Uso restringido,X,,TEXTO / MARCA,BY,25
+76318,Guacarí,ARO Sur - Cali,6. TELECOMUNICACIONES,Emisoras,Uso restringido,X,,TEXTO / MARCA,CC,25
+76318,Guacarí,ARO Sur - Cali,6. TELECOMUNICACIONES,Canales de televisión,Uso restringido,X,,TEXTO / MARCA,CG,25
+76318,Guacarí,ARO Sur - Cali,6. TELECOMUNICACIONES,Internet,Fuera de servicio,X,,TEXTO / MARCA,CL,25
+76318,Guacarí,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Total (No),0,0,NUMÉRICO,IS,25
+76318,Guacarí,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Total (No),0,0,NUMÉRICO,IZ,25
+76318,Guacarí,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Total (No),0,0,NUMÉRICO,JG,25
+76318,Guacarí,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,25
+76364,Jamundí,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Alcaldía,Uso restringido (Número),1,1,NUMÉRICO,AH,26
+76364,Jamundí,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Alcaldía,Fuera de servicio (Número),0,0,NUMÉRICO,AI,26
+76364,Jamundí,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Alcaldía,Averiado (Número),1,1,NUMÉRICO,AJ,26
+76364,Jamundí,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Alcaldía,Destruido (Número),0,0,NUMÉRICO,AK,26
+76364,Jamundí,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Uso restringido (Número),0,0,NUMÉRICO,AL,26
+76364,Jamundí,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Fuera de servicio (Número),118,118,NUMÉRICO,AM,26
+76364,Jamundí,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),118,118,NUMÉRICO,AN,26
+76364,Jamundí,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Destruido (No),2,2,NUMÉRICO,AO,26
+76364,Jamundí,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Uso restringido (No),0,0,NUMÉRICO,AP,26
+76364,Jamundí,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Fuera de servicio (No),6,6,NUMÉRICO,AQ,26
+76364,Jamundí,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Averiado (No),6,6,NUMÉRICO,AR,26
+76364,Jamundí,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Destruido (No),0,0,NUMÉRICO,AS,26
+76364,Jamundí,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Uso restringido (No),0,0,NUMÉRICO,AT,26
+76364,Jamundí,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Fuera de servicio (No),3,3,NUMÉRICO,AU,26
+76364,Jamundí,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Averiado (No),3,3,NUMÉRICO,AV,26
+76364,Jamundí,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Destruido (No),0,0,NUMÉRICO,AW,26
+76364,Jamundí,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Iglesias,Uso restringido (No),0,0,NUMÉRICO,AX,26
+76364,Jamundí,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Iglesias,Fuera de servicio (No),2,2,NUMÉRICO,AY,26
+76364,Jamundí,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Iglesias,Averiado (No),2,2,NUMÉRICO,AZ,26
+76364,Jamundí,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Iglesias,Destruido (No),0,0,NUMÉRICO,BA,26
+76364,Jamundí,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Plaza de mercado,Uso restringido (No),1,1,NUMÉRICO,BB,26
+76364,Jamundí,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Plaza de mercado,Fuera de servicio (No),0,0,NUMÉRICO,BC,26
+76364,Jamundí,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Plaza de mercado,Averiado (No),1,1,NUMÉRICO,BD,26
+76364,Jamundí,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Plaza de mercado,Destruido (No),0,0,NUMÉRICO,BE,26
+76364,Jamundí,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Escenarios deportivos,Uso restringido (No),0,0,NUMÉRICO,BF,26
+76364,Jamundí,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Escenarios deportivos,Fuera de servicio (No),1,1,NUMÉRICO,BG,26
+76364,Jamundí,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Escenarios deportivos,Averiado (No),1,1,NUMÉRICO,BH,26
+76364,Jamundí,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Escenarios deportivos,Destruido (No),0,0,NUMÉRICO,BI,26
+76364,Jamundí,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Otros,Uso restringido (No),5,5,NUMÉRICO,BJ,26
+76364,Jamundí,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Otros,Fuera de servicio (No),0,0,NUMÉRICO,BK,26
+76364,Jamundí,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Otros,Averiado (No),5,5,NUMÉRICO,BL,26
+76364,Jamundí,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Otros,Destruido (No),0,0,NUMÉRICO,BM,26
+76364,Jamundí,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Albergues,Uso restringido (No),0,0,NUMÉRICO,BN,26
+76364,Jamundí,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Albergues,Fuera de servicio (No),0,0,NUMÉRICO,BO,26
+76364,Jamundí,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Albergues,Averiado (No),0,0,NUMÉRICO,BP,26
+76364,Jamundí,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Albergues,Destruido (No),0,0,NUMÉRICO,BQ,26
+76364,Jamundí,ARO Sur - Cali,6. TELECOMUNICACIONES,Telefonía fija,Fuera de servicio,X,,TEXTO / MARCA,BV,26
+76364,Jamundí,ARO Sur - Cali,6. TELECOMUNICACIONES,Telefonía celular,Uso restringido,X,,TEXTO / MARCA,BY,26
+76364,Jamundí,ARO Sur - Cali,6. TELECOMUNICACIONES,Emisoras,Uso restringido,X,,TEXTO / MARCA,CC,26
+76364,Jamundí,ARO Sur - Cali,6. TELECOMUNICACIONES,Canales de televisión,Uso restringido,X,,TEXTO / MARCA,CG,26
+76364,Jamundí,ARO Sur - Cali,6. TELECOMUNICACIONES,Internet,Fuera de servicio,X,,TEXTO / MARCA,CL,26
+76364,Jamundí,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Red primaria,Con paso restringido – ubicación/abscisa,RESTRINCION DE MOVILIDAD EN LA CARRERA 11 CON CALLE 7 DEBIDO AL RIESGO DE COLAPSO DE UNA EDIFICACION,,TEXTO / MARCA,DV,26
+76364,Jamundí,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Red primaria,Comentario,"LA ADMINISTRACION MUNICIPAL, GESTION DE RIESGO, BOMBEROS Y ENTIDADES COMPETENTES ADELANTAN LAS EVALUACIONES TEECNICAS PARA DEFINIR LA INTERVENSION MAS SEGURA DE LA ESTRUCTURA",,TEXTO / MARCA,DW,26
+76364,Jamundí,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Red secundaria,Cerrada(o) – ubicación/abscisa,0,0,NUMÉRICO,DX,26
+76364,Jamundí,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Red secundaria,Con paso restringido – ubicación/abscisa,0,0,NUMÉRICO,DY,26
+76364,Jamundí,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Red secundaria,Comentario,0,0,NUMÉRICO,DZ,26
+76364,Jamundí,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Red terciaria,Cerrada(o) – ubicación/abscisa,0,0,NUMÉRICO,EA,26
+76364,Jamundí,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Red terciaria,Con paso restringido – ubicación/abscisa,0,0,NUMÉRICO,EB,26
+76364,Jamundí,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Red terciaria,Comentario,via san antonio,,TEXTO / MARCA,EC,26
+76364,Jamundí,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Puentes vehiculares y/o pontones,Cerrada(o) – ubicación/abscisa,0,0,NUMÉRICO,ED,26
+76364,Jamundí,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Puentes vehiculares y/o pontones,Con paso restringido – ubicación/abscisa,0,0,NUMÉRICO,EE,26
+76364,Jamundí,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Puentes vehiculares y/o pontones,Comentario,0,0,NUMÉRICO,EF,26
+76364,Jamundí,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Puentes peatonales,Cerrada(o) – ubicación/abscisa,0,0,NUMÉRICO,EG,26
+76364,Jamundí,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Puentes peatonales,Comentario,0,0,NUMÉRICO,EI,26
+76364,Jamundí,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Túnel,Cerrada(o) – ubicación/abscisa,0,0,NUMÉRICO,EJ,26
+76364,Jamundí,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Túnel,Con paso restringido – ubicación/abscisa,0,0,NUMÉRICO,EK,26
+76364,Jamundí,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Túnel,Comentario,0,0,NUMÉRICO,EL,26
+76364,Jamundí,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Modo férreo,Descripción de la afectación,0,0,NUMÉRICO,EM,26
+76364,Jamundí,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Modo férreo,Uso restringido,0,0,NUMÉRICO,EN,26
+76364,Jamundí,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Agricultura,Hectáreas afectadas,POR CONFIRMAR,,TEXTO / MARCA,HP,26
+76364,Jamundí,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Agricultura,No productores afectados,POR CONFIRMAR,,TEXTO / MARCA,HQ,26
+76364,Jamundí,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Agricultura,Pérdida de productos,POR CONFIRMAR,,TEXTO / MARCA,HR,26
+76364,Jamundí,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Agricultura,Pérdida de infraestructura,POR CONFIRMAR,,TEXTO / MARCA,HS,26
+76364,Jamundí,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Ganadería,Hectáreas afectadas,POR CONFIRMAR,,TEXTO / MARCA,HT,26
+76364,Jamundí,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Ganadería,No productores afectados,POR CONFIRMAR,,TEXTO / MARCA,HU,26
+76364,Jamundí,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Ganadería,Pérdida de productos,POR CONFIRMAR,,TEXTO / MARCA,HV,26
+76364,Jamundí,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Ganadería,Pérdida de infraestructura,POR CONFIRMAR,,TEXTO / MARCA,HW,26
+76364,Jamundí,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Piscícola,Hectáreas afectadas,POR CONFIRMAR,,TEXTO / MARCA,HX,26
+76364,Jamundí,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Piscícola,No productores afectados,POR CONFIRMAR,,TEXTO / MARCA,HY,26
+76364,Jamundí,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Piscícola,Pérdida de productos,POR CONFIRMAR,,TEXTO / MARCA,HZ,26
+76364,Jamundí,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Piscícola,Pérdida de infraestructura,POR CONFIRMAR,,TEXTO / MARCA,IA,26
+76364,Jamundí,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Porcícola,Hectáreas afectadas,POR CONFIRMAR,,TEXTO / MARCA,IB,26
+76364,Jamundí,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Porcícola,No productores afectados,POR CONFIRMAR,,TEXTO / MARCA,IC,26
+76364,Jamundí,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Porcícola,Pérdida de productos,POR CONFIRMAR,,TEXTO / MARCA,ID,26
+76364,Jamundí,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Porcícola,Pérdida de infraestructura,POR CONFIRMAR,,TEXTO / MARCA,IE,26
+76364,Jamundí,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Avícola,Hectáreas afectadas,POR CONFIRMAR,,TEXTO / MARCA,IF,26
+76364,Jamundí,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Avícola,No productores afectados,POR CONFIRMAR,,TEXTO / MARCA,IG,26
+76364,Jamundí,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Avícola,Pérdida de productos,POR CONFIRMAR,,TEXTO / MARCA,IH,26
+76364,Jamundí,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Avícola,Pérdida de infraestructura,POR CONFIRMAR,,TEXTO / MARCA,II,26
+76364,Jamundí,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Financiero (No),POR CONFIRMAR,,TEXTO / MARCA,IM,26
+76364,Jamundí,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Turístico (No),POR CONFIRMAR,,TEXTO / MARCA,IN,26
+76364,Jamundí,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Comercial (No),POR CONFIRMAR,,TEXTO / MARCA,IO,26
+76364,Jamundí,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Industrial (No),POR CONFIRMAR,,TEXTO / MARCA,IP,26
+76364,Jamundí,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Minería (No),POR CONFIRMAR,,TEXTO / MARCA,IQ,26
+76364,Jamundí,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Servicios (No),POR CONFIRMAR,,TEXTO / MARCA,IR,26
+76364,Jamundí,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Total (No),0,0,NUMÉRICO,IS,26
+76364,Jamundí,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Financiero (No),POR CONFIRMAR,,TEXTO / MARCA,IT,26
+76364,Jamundí,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Turístico (No),POR CONFIRMAR,,TEXTO / MARCA,IU,26
+76364,Jamundí,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Comercial (No),POR CONFIRMAR,,TEXTO / MARCA,IV,26
+76364,Jamundí,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Industrial (No),POR CONFIRMAR,,TEXTO / MARCA,IW,26
+76364,Jamundí,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Minería (No),POR CONFIRMAR,,TEXTO / MARCA,IX,26
+76364,Jamundí,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Servicios (No),POR CONFIRMAR,,TEXTO / MARCA,IY,26
+76364,Jamundí,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Total (No),0,0,NUMÉRICO,IZ,26
+76364,Jamundí,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Financiero (No),POR CONFIRMAR,,TEXTO / MARCA,JA,26
+76364,Jamundí,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Turístico (No),POR CONFIRMAR,,TEXTO / MARCA,JB,26
+76364,Jamundí,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Comercial (No),POR CONFIRMAR,,TEXTO / MARCA,JC,26
+76364,Jamundí,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Industrial (No),POR CONFIRMAR,,TEXTO / MARCA,JD,26
+76364,Jamundí,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Minería (No),POR CONFIRMAR,,TEXTO / MARCA,JE,26
+76364,Jamundí,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Servicios (No),POR CONFIRMAR,,TEXTO / MARCA,JF,26
+76364,Jamundí,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Total (No),0,0,NUMÉRICO,JG,26
+76364,Jamundí,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Financiero (No),POR CONFIRMAR,,TEXTO / MARCA,JH,26
+76364,Jamundí,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Turístico (No),POR CONFIRMAR,,TEXTO / MARCA,JI,26
+76364,Jamundí,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Comercial (No),POR CONFIRMAR,,TEXTO / MARCA,JJ,26
+76364,Jamundí,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Industrial (No),POR CONFIRMAR,,TEXTO / MARCA,JK,26
+76364,Jamundí,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Minería (No),POR CONFIRMAR,,TEXTO / MARCA,JL,26
+76364,Jamundí,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Servicios (No),POR CONFIRMAR,,TEXTO / MARCA,JM,26
+76364,Jamundí,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,26
+76377,La Cumbre,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Alcaldía,Uso restringido (Número),0,0,NUMÉRICO,AH,27
+76377,La Cumbre,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Alcaldía,Fuera de servicio (Número),1,1,NUMÉRICO,AI,27
+76377,La Cumbre,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Alcaldía,Averiado (Número),0,0,NUMÉRICO,AJ,27
+76377,La Cumbre,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Alcaldía,Destruido (Número),0,0,NUMÉRICO,AK,27
+76377,La Cumbre,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Uso restringido (Número),0,0,NUMÉRICO,AL,27
+76377,La Cumbre,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Fuera de servicio (Número),7,7,NUMÉRICO,AM,27
+76377,La Cumbre,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),0,0,NUMÉRICO,AN,27
+76377,La Cumbre,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Destruido (No),0,0,NUMÉRICO,AO,27
+76377,La Cumbre,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Uso restringido (No),0,0,NUMÉRICO,AP,27
+76377,La Cumbre,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Fuera de servicio (No),0,0,NUMÉRICO,AQ,27
+76377,La Cumbre,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Averiado (No),0,0,NUMÉRICO,AR,27
+76377,La Cumbre,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Destruido (No),0,0,NUMÉRICO,AS,27
+76377,La Cumbre,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Uso restringido (No),0,0,NUMÉRICO,AT,27
+76377,La Cumbre,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Fuera de servicio (No),1,1,NUMÉRICO,AU,27
+76377,La Cumbre,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Averiado (No),0,0,NUMÉRICO,AV,27
+76377,La Cumbre,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Destruido (No),0,0,NUMÉRICO,AW,27
+76377,La Cumbre,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Iglesias,Uso restringido (No),0,0,NUMÉRICO,AX,27
+76377,La Cumbre,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Iglesias,Fuera de servicio (No),3,3,NUMÉRICO,AY,27
+76377,La Cumbre,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Iglesias,Averiado (No),0,0,NUMÉRICO,AZ,27
+76377,La Cumbre,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Iglesias,Destruido (No),3,3,NUMÉRICO,BA,27
+76377,La Cumbre,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Plaza de mercado,Uso restringido (No),0,0,NUMÉRICO,BB,27
+76377,La Cumbre,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Plaza de mercado,Fuera de servicio (No),0,0,NUMÉRICO,BC,27
+76377,La Cumbre,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Plaza de mercado,Averiado (No),0,0,NUMÉRICO,BD,27
+76377,La Cumbre,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Plaza de mercado,Destruido (No),0,0,NUMÉRICO,BE,27
+76377,La Cumbre,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Escenarios deportivos,Uso restringido (No),0,0,NUMÉRICO,BF,27
+76377,La Cumbre,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Escenarios deportivos,Fuera de servicio (No),0,0,NUMÉRICO,BG,27
+76377,La Cumbre,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Escenarios deportivos,Averiado (No),0,0,NUMÉRICO,BH,27
+76377,La Cumbre,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Escenarios deportivos,Destruido (No),0,0,NUMÉRICO,BI,27
+76377,La Cumbre,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Otros,Uso restringido (No),0,0,NUMÉRICO,BJ,27
+76377,La Cumbre,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Otros,Fuera de servicio (No),0,0,NUMÉRICO,BK,27
+76377,La Cumbre,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Otros,Averiado (No),0,0,NUMÉRICO,BL,27
+76377,La Cumbre,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Otros,Destruido (No),0,0,NUMÉRICO,BM,27
+76377,La Cumbre,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Albergues,Uso restringido (No),0,0,NUMÉRICO,BN,27
+76377,La Cumbre,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Albergues,Fuera de servicio (No),0,0,NUMÉRICO,BO,27
+76377,La Cumbre,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Albergues,Averiado (No),0,0,NUMÉRICO,BP,27
+76377,La Cumbre,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Albergues,Destruido (No),0,0,NUMÉRICO,BQ,27
+76377,La Cumbre,ARO Sur - Cali,6. TELECOMUNICACIONES,Telefonía fija,Fuera de servicio,X,,TEXTO / MARCA,BV,27
+76377,La Cumbre,ARO Sur - Cali,6. TELECOMUNICACIONES,Telefonía celular,Uso restringido,X,,TEXTO / MARCA,BY,27
+76377,La Cumbre,ARO Sur - Cali,6. TELECOMUNICACIONES,Telefonía celular,Averiado,X,,TEXTO / MARCA,CA,27
+76377,La Cumbre,ARO Sur - Cali,6. TELECOMUNICACIONES,Emisoras,Uso restringido,X,,TEXTO / MARCA,CC,27
+76377,La Cumbre,ARO Sur - Cali,6. TELECOMUNICACIONES,Canales de televisión,Uso restringido,X,,TEXTO / MARCA,CG,27
+76377,La Cumbre,ARO Sur - Cali,6. TELECOMUNICACIONES,Internet,Uso restringido,X,,TEXTO / MARCA,CK,27
+76377,La Cumbre,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Red terciaria,Con paso restringido – ubicación/abscisa,X,,TEXTO / MARCA,EB,27
+76377,La Cumbre,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Red terciaria,Comentario,PRESENCIA DE DESLIZAMIENTOS EN VIA JIGUALES - LA MARIA,,TEXTO / MARCA,EC,27
+76377,La Cumbre,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Total (No),0,0,NUMÉRICO,IS,27
+76377,La Cumbre,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Total (No),0,0,NUMÉRICO,IZ,27
+76377,La Cumbre,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Total (No),0,0,NUMÉRICO,JG,27
+76377,La Cumbre,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,27
+76400,La Unión,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Alcaldía,Uso restringido (Número),0,0,NUMÉRICO,AH,28
+76400,La Unión,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Alcaldía,Fuera de servicio (Número),0,0,NUMÉRICO,AI,28
+76400,La Unión,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Alcaldía,Averiado (Número),1,1,NUMÉRICO,AJ,28
+76400,La Unión,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Alcaldía,Destruido (Número),0,0,NUMÉRICO,AK,28
+76400,La Unión,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Uso restringido (Número),0,0,NUMÉRICO,AL,28
+76400,La Unión,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Fuera de servicio (Número),19,19,NUMÉRICO,AM,28
+76400,La Unión,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),19,19,NUMÉRICO,AN,28
+76400,La Unión,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Destruido (No),0,0,NUMÉRICO,AO,28
+76400,La Unión,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Uso restringido (No),0,0,NUMÉRICO,AT,28
+76400,La Unión,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Fuera de servicio (No),0,0,NUMÉRICO,AU,28
+76400,La Unión,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Averiado (No),0,0,NUMÉRICO,AV,28
+76400,La Unión,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Destruido (No),1,1,NUMÉRICO,AW,28
+76400,La Unión,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Iglesias,Uso restringido (No),0,0,NUMÉRICO,AX,28
+76400,La Unión,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Iglesias,Fuera de servicio (No),0,0,NUMÉRICO,AY,28
+76400,La Unión,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Iglesias,Averiado (No),2,2,NUMÉRICO,AZ,28
+76400,La Unión,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Iglesias,Destruido (No),2,2,NUMÉRICO,BA,28
+76400,La Unión,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Plaza de mercado,Uso restringido (No),0,0,NUMÉRICO,BB,28
+76400,La Unión,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Plaza de mercado,Fuera de servicio (No),0,0,NUMÉRICO,BC,28
+76400,La Unión,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Plaza de mercado,Averiado (No),0,0,NUMÉRICO,BD,28
+76400,La Unión,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Plaza de mercado,Destruido (No),1,1,NUMÉRICO,BE,28
+76400,La Unión,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Escenarios deportivos,Uso restringido (No),0,0,NUMÉRICO,BF,28
+76400,La Unión,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Escenarios deportivos,Fuera de servicio (No),0,0,NUMÉRICO,BG,28
+76400,La Unión,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Escenarios deportivos,Averiado (No),2,2,NUMÉRICO,BH,28
+76400,La Unión,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Escenarios deportivos,Destruido (No),0,0,NUMÉRICO,BI,28
+76400,La Unión,ARO Norte - Cartago,6. TELECOMUNICACIONES,Telefonía fija,Uso restringido,X,,TEXTO / MARCA,BU,28
+76400,La Unión,ARO Norte - Cartago,6. TELECOMUNICACIONES,Telefonía celular,Uso restringido,X,,TEXTO / MARCA,BY,28
+76400,La Unión,ARO Norte - Cartago,6. TELECOMUNICACIONES,Emisoras,Uso restringido,X,,TEXTO / MARCA,CC,28
+76400,La Unión,ARO Norte - Cartago,6. TELECOMUNICACIONES,Canales de televisión,Uso restringido,X,,TEXTO / MARCA,CG,28
+76400,La Unión,ARO Norte - Cartago,6. TELECOMUNICACIONES,Internet,Uso restringido,X,,TEXTO / MARCA,CK,28
+76400,La Unión,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Puentes vehiculares y/o pontones,Cerrada(o) – ubicación/abscisa,Colapso del puente - verificar la informacion,,TEXTO / MARCA,ED,28
+76400,La Unión,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Puentes vehiculares y/o pontones,Comentario,PUENTE DE LA UNION- LA VICTORIA COLPASADO AFECTANDO LA COMUNICACION VIAL ENTRE AMBOS MUNICIPIOS - verificar la informacio,,TEXTO / MARCA,EF,28
+76400,La Unión,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Total (No),0,0,NUMÉRICO,IS,28
+76400,La Unión,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Total (No),0,0,NUMÉRICO,IZ,28
+76400,La Unión,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Total (No),0,0,NUMÉRICO,JG,28
+76400,La Unión,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,28
+76403,La Victoria,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Alcaldía,Uso restringido (Número),no,,TEXTO / MARCA,AH,29
+76403,La Victoria,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Alcaldía,Fuera de servicio (Número),si,,TEXTO / MARCA,AI,29
+76403,La Victoria,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Alcaldía,Averiado (Número),no,,TEXTO / MARCA,AJ,29
+76403,La Victoria,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Alcaldía,Destruido (Número),si,,TEXTO / MARCA,AK,29
+76403,La Victoria,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Uso restringido (Número),si,,TEXTO / MARCA,AL,29
+76403,La Victoria,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Fuera de servicio (Número),si,,TEXTO / MARCA,AM,29
+76403,La Victoria,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),no aplica,,TEXTO / MARCA,AN,29
+76403,La Victoria,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Destruido (No),si,,TEXTO / MARCA,AO,29
+76403,La Victoria,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Uso restringido (No),esperando reporte,,TEXTO / MARCA,AP,29
+76403,La Victoria,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Uso restringido (No),no,,TEXTO / MARCA,AT,29
+76403,La Victoria,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Fuera de servicio (No),si,,TEXTO / MARCA,AU,29
+76403,La Victoria,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Averiado (No),no,,TEXTO / MARCA,AV,29
+76403,La Victoria,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Destruido (No),si,,TEXTO / MARCA,AW,29
+76403,La Victoria,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Iglesias,Uso restringido (No),no,,TEXTO / MARCA,AX,29
+76403,La Victoria,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Iglesias,Fuera de servicio (No),si,,TEXTO / MARCA,AY,29
+76403,La Victoria,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Iglesias,Averiado (No),no,,TEXTO / MARCA,AZ,29
+76403,La Victoria,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Iglesias,Destruido (No),si,,TEXTO / MARCA,BA,29
+76403,La Victoria,ARO Norte - Cartago,6. TELECOMUNICACIONES,Telefonía fija,Uso restringido,X,,TEXTO / MARCA,BU,29
+76403,La Victoria,ARO Norte - Cartago,6. TELECOMUNICACIONES,Telefonía celular,Uso restringido,X,,TEXTO / MARCA,BY,29
+76403,La Victoria,ARO Norte - Cartago,6. TELECOMUNICACIONES,Emisoras,Uso restringido,X,,TEXTO / MARCA,CC,29
+76403,La Victoria,ARO Norte - Cartago,6. TELECOMUNICACIONES,Canales de televisión,Uso restringido,X,,TEXTO / MARCA,CG,29
+76403,La Victoria,ARO Norte - Cartago,6. TELECOMUNICACIONES,Internet,Uso restringido,X,,TEXTO / MARCA,CK,29
+76403,La Victoria,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Puentes vehiculares y/o pontones,Cerrada(o) – ubicación/abscisa,colapso puemte sobre rio cauca,,TEXTO / MARCA,ED,29
+76403,La Victoria,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Puentes vehiculares y/o pontones,Comentario,punte sobre rio cauca mariano ospina colapso,,TEXTO / MARCA,EF,29
+76403,La Victoria,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Total (No),0,0,NUMÉRICO,IS,29
+76403,La Victoria,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Total (No),0,0,NUMÉRICO,IZ,29
+76403,La Victoria,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Total (No),0,0,NUMÉRICO,JG,29
+76403,La Victoria,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,29
+76497,Obando,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Alcaldía,Averiado (Número),1,1,NUMÉRICO,AJ,30
+76497,Obando,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Uso restringido (Número),5,5,NUMÉRICO,AL,30
+76497,Obando,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),5,5,NUMÉRICO,AN,30
+76497,Obando,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Uso restringido (No),1,1,NUMÉRICO,AT,30
+76497,Obando,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Averiado (No),1,1,NUMÉRICO,AV,30
+76497,Obando,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Destruido (No),1,1,NUMÉRICO,AW,30
+76497,Obando,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Iglesias,Uso restringido (No),1,1,NUMÉRICO,AX,30
+76497,Obando,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Iglesias,Fuera de servicio (No),1,1,NUMÉRICO,AY,30
+76497,Obando,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Iglesias,Averiado (No),1,1,NUMÉRICO,AZ,30
+76497,Obando,ARO Norte - Cartago,6. TELECOMUNICACIONES,Telefonía fija,Uso restringido,X,,TEXTO / MARCA,BU,30
+76497,Obando,ARO Norte - Cartago,6. TELECOMUNICACIONES,Telefonía celular,Uso restringido,X,,TEXTO / MARCA,BY,30
+76497,Obando,ARO Norte - Cartago,6. TELECOMUNICACIONES,Telefonía celular,Fuera de servicio,X,,TEXTO / MARCA,BZ,30
+76497,Obando,ARO Norte - Cartago,6. TELECOMUNICACIONES,Telefonía celular,Averiado,X,,TEXTO / MARCA,CA,30
+76497,Obando,ARO Norte - Cartago,6. TELECOMUNICACIONES,Emisoras,Uso restringido,X,,TEXTO / MARCA,CC,30
+76497,Obando,ARO Norte - Cartago,6. TELECOMUNICACIONES,Canales de televisión,Uso restringido,X,,TEXTO / MARCA,CG,30
+76497,Obando,ARO Norte - Cartago,6. TELECOMUNICACIONES,Internet,Uso restringido,X,,TEXTO / MARCA,CK,30
+76497,Obando,ARO Norte - Cartago,6. TELECOMUNICACIONES,Internet,Fuera de servicio,X,,TEXTO / MARCA,CL,30
+76497,Obando,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Red primaria,Cerrada(o) – ubicación/abscisa,2 vías tapadas por la montaña. ALTO DE LA VOLGA Y PUERTO SAMARIA,,TEXTO / MARCA,DU,30
+76497,Obando,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Red terciaria,Con paso restringido – ubicación/abscisa,no,,TEXTO / MARCA,EB,30
+76497,Obando,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Red terciaria,Comentario,no,,TEXTO / MARCA,EC,30
+76497,Obando,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Puentes vehiculares y/o pontones,Con paso restringido – ubicación/abscisa,no,,TEXTO / MARCA,EE,30
+76497,Obando,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Puentes vehiculares y/o pontones,Comentario,no,,TEXTO / MARCA,EF,30
+76520,Palmira,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Uso restringido (Número),no ,,TEXTO / MARCA,AL,31
+76520,Palmira,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Fuera de servicio (Número),no,,TEXTO / MARCA,AM,31
+76520,Palmira,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),no aplica,,TEXTO / MARCA,AN,31
+76520,Palmira,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Destruido (No),no aplica,,TEXTO / MARCA,AO,31
+76520,Palmira,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Iglesias,Uso restringido (No),si,,TEXTO / MARCA,AX,31
+76520,Palmira,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Iglesias,Fuera de servicio (No),si,,TEXTO / MARCA,AY,31
+76520,Palmira,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Iglesias,Averiado (No),si,,TEXTO / MARCA,AZ,31
+76520,Palmira,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Iglesias,Destruido (No),no,,TEXTO / MARCA,BA,31
+76520,Palmira,ARO Sur - Cali,6. TELECOMUNICACIONES,Telefonía fija,Uso restringido,X,,TEXTO / MARCA,BU,31
+76520,Palmira,ARO Sur - Cali,6. TELECOMUNICACIONES,Emisoras,Uso restringido,X,,TEXTO / MARCA,CC,31
+76520,Palmira,ARO Sur - Cali,6. TELECOMUNICACIONES,Canales de televisión,Uso restringido,X,,TEXTO / MARCA,CG,31
+76520,Palmira,ARO Sur - Cali,6. TELECOMUNICACIONES,Internet,Uso restringido,X,,TEXTO / MARCA,CK,31
+76520,Palmira,ARO Sur - Cali,6. TELECOMUNICACIONES,Comunicaciones aeronáuticas,Uso restringido,X,,TEXTO / MARCA,DA,31
+76520,Palmira,ARO Sur - Cali,7. ACCESIBILIDAD Y TRANSPORTE,Red primaria,Cerrada(o) – ubicación/abscisa,Alto de Olga: vía afectada,,TEXTO / MARCA,DU,31
+76520,Palmira,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Total (No),0,0,NUMÉRICO,IS,31
+76520,Palmira,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Total (No),0,0,NUMÉRICO,IZ,31
+76520,Palmira,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Total (No),0,0,NUMÉRICO,JG,31
+76520,Palmira,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,31
+76563,Pradera,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),3,3,NUMÉRICO,AN,32
+76563,Pradera,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Averiado (No),1,1,NUMÉRICO,AV,32
+76563,Pradera,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Iglesias,Averiado (No),1,1,NUMÉRICO,AZ,32
+76563,Pradera,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Plaza de mercado,Uso restringido (No),1,1,NUMÉRICO,BB,32
+76563,Pradera,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Escenarios deportivos,Averiado (No),2,2,NUMÉRICO,BH,32
+76563,Pradera,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Otros,Averiado (No),1,1,NUMÉRICO,BL,32
+76563,Pradera,ARO Sur - Cali,6. TELECOMUNICACIONES,Telefonía fija,Uso restringido,X,,TEXTO / MARCA,BU,32
+76563,Pradera,ARO Sur - Cali,6. TELECOMUNICACIONES,Emisoras,Uso restringido,X,,TEXTO / MARCA,CC,32
+76563,Pradera,ARO Sur - Cali,6. TELECOMUNICACIONES,Canales de televisión,Uso restringido,X,,TEXTO / MARCA,CG,32
+76563,Pradera,ARO Sur - Cali,6. TELECOMUNICACIONES,Internet,Uso restringido,X,,TEXTO / MARCA,CK,32
+76563,Pradera,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Total (No),0,0,NUMÉRICO,IS,32
+76563,Pradera,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Total (No),0,0,NUMÉRICO,IZ,32
+76563,Pradera,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Total (No),0,0,NUMÉRICO,JG,32
+76563,Pradera,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,32
+76606,Restrepo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Alcaldía,Uso restringido (Número),no,,TEXTO / MARCA,AH,33
+76606,Restrepo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Alcaldía,Fuera de servicio (Número),no,,TEXTO / MARCA,AI,33
+76606,Restrepo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Alcaldía,Averiado (Número),si,,TEXTO / MARCA,AJ,33
+76606,Restrepo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Alcaldía,Destruido (Número),no,,TEXTO / MARCA,AK,33
+76606,Restrepo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Uso restringido (Número),si,,TEXTO / MARCA,AL,33
+76606,Restrepo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Fuera de servicio (Número),si,,TEXTO / MARCA,AM,33
+76606,Restrepo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),si,,TEXTO / MARCA,AN,33
+76606,Restrepo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Destruido (No),no,,TEXTO / MARCA,AO,33
+76606,Restrepo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Uso restringido (No),si,,TEXTO / MARCA,AP,33
+76606,Restrepo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Fuera de servicio (No),no,,TEXTO / MARCA,AQ,33
+76606,Restrepo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Averiado (No),si,,TEXTO / MARCA,AR,33
+76606,Restrepo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Destruido (No),si,,TEXTO / MARCA,AS,33
+76606,Restrepo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Uso restringido (No),si,,TEXTO / MARCA,AT,33
+76606,Restrepo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Fuera de servicio (No),si,,TEXTO / MARCA,AU,33
+76606,Restrepo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Averiado (No),si,,TEXTO / MARCA,AV,33
+76606,Restrepo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Destruido (No),no,,TEXTO / MARCA,AW,33
+76606,Restrepo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Iglesias,Uso restringido (No),si,,TEXTO / MARCA,AX,33
+76606,Restrepo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Iglesias,Fuera de servicio (No),si,,TEXTO / MARCA,AY,33
+76606,Restrepo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Iglesias,Averiado (No),si,,TEXTO / MARCA,AZ,33
+76606,Restrepo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Iglesias,Destruido (No),no,,TEXTO / MARCA,BA,33
+76606,Restrepo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Plaza de mercado,Uso restringido (No),si,,TEXTO / MARCA,BB,33
+76606,Restrepo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Plaza de mercado,Fuera de servicio (No),no,,TEXTO / MARCA,BC,33
+76606,Restrepo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Plaza de mercado,Averiado (No),si,,TEXTO / MARCA,BD,33
+76606,Restrepo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Plaza de mercado,Destruido (No),no,,TEXTO / MARCA,BE,33
+76606,Restrepo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Escenarios deportivos,Uso restringido (No),si,,TEXTO / MARCA,BF,33
+76606,Restrepo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Escenarios deportivos,Fuera de servicio (No),si,,TEXTO / MARCA,BG,33
+76606,Restrepo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Escenarios deportivos,Averiado (No),si,,TEXTO / MARCA,BH,33
+76606,Restrepo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Escenarios deportivos,Destruido (No),no,,TEXTO / MARCA,BI,33
+76606,Restrepo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Otros,Uso restringido (No),no,,TEXTO / MARCA,BJ,33
+76606,Restrepo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Otros,Fuera de servicio (No),no,,TEXTO / MARCA,BK,33
+76606,Restrepo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Otros,Averiado (No),no,,TEXTO / MARCA,BL,33
+76606,Restrepo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Otros,Destruido (No),no,,TEXTO / MARCA,BM,33
+76606,Restrepo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Albergues,Uso restringido (No),no,,TEXTO / MARCA,BN,33
+76606,Restrepo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Albergues,Fuera de servicio (No),no,,TEXTO / MARCA,BO,33
+76606,Restrepo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Albergues,Averiado (No),no,,TEXTO / MARCA,BP,33
+76606,Restrepo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Albergues,Destruido (No),no,,TEXTO / MARCA,BQ,33
+76606,Restrepo,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Telefonía fija,Uso restringido,X,,TEXTO / MARCA,BU,33
+76606,Restrepo,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Telefonía fija,Fuera de servicio,X,,TEXTO / MARCA,BV,33
+76606,Restrepo,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Emisoras,Uso restringido,X,,TEXTO / MARCA,CC,33
+76606,Restrepo,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Canales de televisión,Uso restringido,X,,TEXTO / MARCA,CG,33
+76606,Restrepo,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Internet,Uso restringido,X,,TEXTO / MARCA,CK,33
+76606,Restrepo,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Total (No),0,0,NUMÉRICO,IS,33
+76606,Restrepo,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Total (No),0,0,NUMÉRICO,IZ,33
+76606,Restrepo,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Total (No),0,0,NUMÉRICO,JG,33
+76606,Restrepo,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,33
+76616,Riofrío,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Uso restringido (Número),"INSTITUCIONES EDUCATIVAS 
+Prmitivo Crespo: Daño total en los techos sede Melida Cruz corregimiento (destruido el techo)
+Sagrado corazon muro caido
+
+Alfredo Garrido:
+Carmelita las más afectadas fisuras de paredes de lado a lado ( utorizo reparaciones)
+Santa fe corozal: virusas leves estructuras
+El segundo bloque de la sede central destruida donde esta la sala de sistemas y baterias.
+Policarpa fisuras de lado a lado.
+
+HERNANDO LLORENTE jose maria cordoba
+Daños en cielo  falso y agretados pisoso.
+Sede Mercedes Abrego cielo falsos
+
+Nemesio Rodriguez 
+Afectación de la infraestructura en las sedes Juan del corral :  deteriorada de techos, salon cielo falso se derumbo
+Sede de la Gran Colombia: plataforma del agua se daño, laboratorio de quimica ( reparacio)
+María inmaculada destruida techos y todo
+Marco Fidel Suárez: destruida no se puede dar clases, techos dañados
+Laureano Caicedo Trujillo: fracturacion de cañerias y agua se puede reparar alcantarillado
+La Antonia Santos: Fisuraa por multiples parwdws ( se puede repara)
+
+ Nemesio Rodríguez : Sala de sistemas pared fracturada ( reparacion) 
+Las Americas: daños salon preescolar, fieusa entre la pared y viga (reparacion )
+
+
+Camilo Torres
+ Santo domingo las brisas:  colapson de vigas se fracturo, esta en alto riesgo.
+Jose acevedo cesitalina: grietas en paredes y fisuras en las paredes ( para reparacion)
+San jose los alpes: destruida techos, paredes sueltas ladeadas, alto riesgo ( destruida).
+Maria auxiliadora morroplancho deatruida techos caidos ( destruidos)
+Gabriela Mistral los chivos: se puede reparar, techo coreiso y fisuras en la pared.
+San antonio portugal carmen:  Levantamiento de pisos, fisura en el techo, paredes,  viga fisurada.
+Camilo torres: se corrieeon los baños, se corrieron los techos de toda la sede se puede reparar",,TEXTO / MARCA,AL,34
+76616,Riofrío,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Fuera de servicio (Número),37,37,NUMÉRICO,AM,34
+76616,Riofrío,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),10,10,NUMÉRICO,AN,34
+76616,Riofrío,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Destruido (No),9,9,NUMÉRICO,AO,34
+76616,Riofrío,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Averiado (No),2,2,NUMÉRICO,AR,34
+76616,Riofrío,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Destruido (No),1,1,NUMÉRICO,AS,34
+76616,Riofrío,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Averiado (No),1,1,NUMÉRICO,AV,34
+76616,Riofrío,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Iglesias,Averiado (No),4,4,NUMÉRICO,AZ,34
+76616,Riofrío,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Plaza de mercado,Destruido (No),1,1,NUMÉRICO,BE,34
+76616,Riofrío,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Escenarios deportivos,Averiado (No),3,3,NUMÉRICO,BH,34
+76616,Riofrío,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Otros,Averiado (No),"4 casetas comunales, 2 estaciones policia",,TEXTO / MARCA,BL,34
+76616,Riofrío,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Telefonía fija,Fuera de servicio,X,,TEXTO / MARCA,BV,34
+76616,Riofrío,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Telefonía celular,Uso restringido,X,,TEXTO / MARCA,BY,34
+76616,Riofrío,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Emisoras,Uso restringido,X,,TEXTO / MARCA,CC,34
+76616,Riofrío,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Canales de televisión,Uso restringido,X,,TEXTO / MARCA,CG,34
+76616,Riofrío,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Internet,Uso restringido,X,,TEXTO / MARCA,CK,34
+76616,Riofrío,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Computadores para educar,Uso restringido,X,,TEXTO / MARCA,DI,34
+76616,Riofrío,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Puentes peatonales,Con paso restringido – ubicación/abscisa,"3 puente afectado, pendiente diagnostico",,TEXTO / MARCA,EH,34
+76616,Riofrío,ARO Centro - Tuluá,9. SECTOR AGROPECUARIO,Agricultura,Pérdida de productos,x,,TEXTO / MARCA,HR,34
+76616,Riofrío,ARO Centro - Tuluá,9. SECTOR AGROPECUARIO,Piscícola,No productores afectados,x,,TEXTO / MARCA,HY,34
+76616,Riofrío,ARO Centro - Tuluá,9. SECTOR AGROPECUARIO,Porcícola,No productores afectados,x,,TEXTO / MARCA,IC,34
+76616,Riofrío,ARO Centro - Tuluá,9. SECTOR AGROPECUARIO,Avícola,No productores afectados,x,,TEXTO / MARCA,IG,34
+76616,Riofrío,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Comercial (No),6,6,NUMÉRICO,IO,34
+76616,Riofrío,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Total (No),6,6,NUMÉRICO,IS,34
+76616,Riofrío,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Total (No),0,0,NUMÉRICO,IZ,34
+76616,Riofrío,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Total (No),0,0,NUMÉRICO,JG,34
+76616,Riofrío,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,34
+76622,Roldanillo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Alcaldía,Fuera de servicio (Número),SI,,TEXTO / MARCA,AI,35
+76622,Roldanillo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Alcaldía,Destruido (Número),SI,,TEXTO / MARCA,AK,35
+76622,Roldanillo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Uso restringido (Número),Prmitivo Crespo: Daño total en los techos sede Melida Cruz corregimiento (destruido el techo),,TEXTO / MARCA,AL,35
+76622,Roldanillo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),20,20,NUMÉRICO,AN,35
+76622,Roldanillo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Averiado (No),1,1,NUMÉRICO,AV,35
+76622,Roldanillo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Iglesias,Averiado (No),4,4,NUMÉRICO,AZ,35
+76622,Roldanillo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Otros,Averiado (No),SI,,TEXTO / MARCA,BL,35
+76622,Roldanillo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Otros,Destruido (No),SI,,TEXTO / MARCA,BM,35
+76622,Roldanillo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Albergues,Uso restringido (No),SI,,TEXTO / MARCA,BN,35
+76622,Roldanillo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Albergues,Destruido (No),"DAÑO TUBO MADRE DEL MUNICIPIO, SIN SERVICIO DE AGUA.
+SIN SERVICIO ELÉCTRICO
+FUGA DE GAS EN ZONA URBANA
+AFECTACIÓN EN 20 INSTITUCIONES EDUCATIVAS: 12 ZONA RURAL
+8 ZONA URBANA.
+DESLIZAMIENTO DE TIERRA ZONA RURAL ALTA MONTAÑOSA VÍA DOVIO Y EL SEGUNDO ENTRE CRUCES Y LA TULIA
+DESTRUCCIÓN DE PUENTE GUAYABAL QUE COMUNICA CON ZARZAL
+Edificios del Centro histórico - Pérdida total. Entre ellos 2 patrimonios afectados.",,TEXTO / MARCA,BQ,35
+76622,Roldanillo,ARO Norte - Cartago,6. TELECOMUNICACIONES,Telefonía fija,Averiado,X,,TEXTO / MARCA,BW,35
+76622,Roldanillo,ARO Norte - Cartago,6. TELECOMUNICACIONES,Telefonía celular,Uso restringido,X,,TEXTO / MARCA,BY,35
+76622,Roldanillo,ARO Norte - Cartago,6. TELECOMUNICACIONES,Emisoras,Uso restringido,X,,TEXTO / MARCA,CC,35
+76622,Roldanillo,ARO Norte - Cartago,6. TELECOMUNICACIONES,Canales de televisión,Uso restringido,X,,TEXTO / MARCA,CG,35
+76622,Roldanillo,ARO Norte - Cartago,6. TELECOMUNICACIONES,Internet,Fuera de servicio,X,,TEXTO / MARCA,CL,35
+76622,Roldanillo,ARO Norte - Cartago,6. TELECOMUNICACIONES,Internet,Destruido,X,,TEXTO / MARCA,CN,35
+76622,Roldanillo,ARO Norte - Cartago,6. TELECOMUNICACIONES,Radiocomunicaciones,Uso restringido,X,,TEXTO / MARCA,CO,35
+76622,Roldanillo,ARO Norte - Cartago,6. TELECOMUNICACIONES,Enlace satelital,Uso restringido,X,,TEXTO / MARCA,CS,35
+76622,Roldanillo,ARO Norte - Cartago,6. TELECOMUNICACIONES,Radiocomunicaciones móviles,Uso restringido,X,,TEXTO / MARCA,CW,35
+76622,Roldanillo,ARO Norte - Cartago,6. TELECOMUNICACIONES,Computadores para educar,Destruido,X,,TEXTO / MARCA,DL,35
+76622,Roldanillo,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Puentes vehiculares y/o pontones,Cerrada(o) – ubicación/abscisa,"Puente Guayabal colapsado. El puente comunica el municipio con Zarzal Valle
+Se reporta afectación en el puente rural El Guachal. Se presenta afectación estructural en el puente sobre el río Cauca. ",,TEXTO / MARCA,ED,35
+76622,Roldanillo,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Túnel,Comentario,no,,TEXTO / MARCA,EL,35
+76622,Roldanillo,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Modo marítimo,Descripción de la afectación,no,,TEXTO / MARCA,EP,35
+76622,Roldanillo,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Modo fluvial,Descripción de la afectación,no,,TEXTO / MARCA,ES,35
+76622,Roldanillo,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Modo aéreo,Descripción de la afectación,no,,TEXTO / MARCA,EV,35
+76622,Roldanillo,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Modo terminal terrestre,Descripción de la afectación,no,,TEXTO / MARCA,EY,35
+76622,Roldanillo,ARO Norte - Cartago,9. SECTOR AGROPECUARIO,Agricultura,Pérdida de productos,sin información ,,TEXTO / MARCA,HR,35
+76622,Roldanillo,ARO Norte - Cartago,9. SECTOR AGROPECUARIO,Agricultura,Pérdida de infraestructura,sin información ,,TEXTO / MARCA,HS,35
+76622,Roldanillo,ARO Norte - Cartago,9. SECTOR AGROPECUARIO,Ganadería,Pérdida de productos,sin información ,,TEXTO / MARCA,HV,35
+76622,Roldanillo,ARO Norte - Cartago,9. SECTOR AGROPECUARIO,Ganadería,Pérdida de infraestructura,sin información ,,TEXTO / MARCA,HW,35
+76622,Roldanillo,ARO Norte - Cartago,9. SECTOR AGROPECUARIO,Piscícola,Pérdida de productos,sin información ,,TEXTO / MARCA,HZ,35
+76622,Roldanillo,ARO Norte - Cartago,9. SECTOR AGROPECUARIO,Piscícola,Pérdida de infraestructura,sin información ,,TEXTO / MARCA,IA,35
+76622,Roldanillo,ARO Norte - Cartago,9. SECTOR AGROPECUARIO,Porcícola,Pérdida de productos,sin información ,,TEXTO / MARCA,ID,35
+76622,Roldanillo,ARO Norte - Cartago,9. SECTOR AGROPECUARIO,Porcícola,Pérdida de infraestructura,sin información ,,TEXTO / MARCA,IE,35
+76622,Roldanillo,ARO Norte - Cartago,9. SECTOR AGROPECUARIO,Avícola,Pérdida de productos,sin información ,,TEXTO / MARCA,IH,35
+76622,Roldanillo,ARO Norte - Cartago,9. SECTOR AGROPECUARIO,Avícola,Pérdida de infraestructura,sin información ,,TEXTO / MARCA,II,35
+76622,Roldanillo,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Total (No),0,0,NUMÉRICO,IS,35
+76622,Roldanillo,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Total (No),0,0,NUMÉRICO,IZ,35
+76622,Roldanillo,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Total (No),0,0,NUMÉRICO,JG,35
+76622,Roldanillo,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,35
+76670,San Pedro,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Alcaldía,Uso restringido (Número),si,,TEXTO / MARCA,AH,36
+76670,San Pedro,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Alcaldía,Averiado (Número),si,,TEXTO / MARCA,AJ,36
+76670,San Pedro,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Uso restringido (Número),Sagrado corazon muro caido,,TEXTO / MARCA,AL,36
+76670,San Pedro,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),3,3,NUMÉRICO,AN,36
+76670,San Pedro,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Uso restringido (No),N/A,,TEXTO / MARCA,AP,36
+76670,San Pedro,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Fuera de servicio (No),N/A,,TEXTO / MARCA,AQ,36
+76670,San Pedro,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Averiado (No),N/A,,TEXTO / MARCA,AR,36
+76670,San Pedro,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Destruido (No),N/A,,TEXTO / MARCA,AS,36
+76670,San Pedro,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Uso restringido (No),NO,,TEXTO / MARCA,AT,36
+76670,San Pedro,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Fuera de servicio (No),NO,,TEXTO / MARCA,AU,36
+76670,San Pedro,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Averiado (No),NO,,TEXTO / MARCA,AV,36
+76670,San Pedro,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Destruido (No),NO,,TEXTO / MARCA,AW,36
+76670,San Pedro,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Iglesias,Uso restringido (No),SI,,TEXTO / MARCA,AX,36
+76670,San Pedro,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Iglesias,Fuera de servicio (No),SI,,TEXTO / MARCA,AY,36
+76670,San Pedro,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Iglesias,Averiado (No),SI,,TEXTO / MARCA,AZ,36
+76670,San Pedro,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Iglesias,Destruido (No),NO,,TEXTO / MARCA,BA,36
+76670,San Pedro,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Plaza de mercado,Uso restringido (No),N/A,,TEXTO / MARCA,BB,36
+76670,San Pedro,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Plaza de mercado,Fuera de servicio (No),N/A,,TEXTO / MARCA,BC,36
+76670,San Pedro,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Plaza de mercado,Averiado (No),N/A,,TEXTO / MARCA,BD,36
+76670,San Pedro,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Plaza de mercado,Destruido (No),N/A,,TEXTO / MARCA,BE,36
+76670,San Pedro,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Escenarios deportivos,Uso restringido (No),NO,,TEXTO / MARCA,BF,36
+76670,San Pedro,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Escenarios deportivos,Fuera de servicio (No),NO,,TEXTO / MARCA,BG,36
+76670,San Pedro,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Escenarios deportivos,Averiado (No),NO,,TEXTO / MARCA,BH,36
+76670,San Pedro,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Escenarios deportivos,Destruido (No),NO,,TEXTO / MARCA,BI,36
+76670,San Pedro,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Otros,Uso restringido (No),N/A,,TEXTO / MARCA,BJ,36
+76670,San Pedro,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Otros,Fuera de servicio (No),N/A,,TEXTO / MARCA,BK,36
+76670,San Pedro,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Otros,Averiado (No),N/A,,TEXTO / MARCA,BL,36
+76670,San Pedro,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Otros,Destruido (No),N/A,,TEXTO / MARCA,BM,36
+76670,San Pedro,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Albergues,Uso restringido (No),NO TENEMOS,,TEXTO / MARCA,BN,36
+76670,San Pedro,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Albergues,Fuera de servicio (No),N/A,,TEXTO / MARCA,BO,36
+76670,San Pedro,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Albergues,Averiado (No),N/A,,TEXTO / MARCA,BP,36
+76670,San Pedro,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Albergues,Destruido (No),N/A,,TEXTO / MARCA,BQ,36
+76670,San Pedro,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Telefonía fija,Uso restringido,N/A,,TEXTO / MARCA,BU,36
+76670,San Pedro,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Telefonía fija,Fuera de servicio,N/A,,TEXTO / MARCA,BV,36
+76670,San Pedro,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Telefonía fija,Averiado,N/A,,TEXTO / MARCA,BW,36
+76670,San Pedro,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Telefonía fija,Destruido,N/A,,TEXTO / MARCA,BX,36
+76670,San Pedro,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Telefonía celular,Uso restringido,NO,,TEXTO / MARCA,BY,36
+76670,San Pedro,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Telefonía celular,Fuera de servicio,NO,,TEXTO / MARCA,BZ,36
+76670,San Pedro,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Telefonía celular,Averiado,NO,,TEXTO / MARCA,CA,36
+76670,San Pedro,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Telefonía celular,Destruido,NO,,TEXTO / MARCA,CB,36
+76670,San Pedro,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Emisoras,Uso restringido,NO,,TEXTO / MARCA,CC,36
+76670,San Pedro,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Emisoras,Fuera de servicio,NO,,TEXTO / MARCA,CD,36
+76670,San Pedro,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Emisoras,Averiado,NO,,TEXTO / MARCA,CE,36
+76670,San Pedro,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Emisoras,Destruido,NO,,TEXTO / MARCA,CF,36
+76670,San Pedro,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Canales de televisión,Uso restringido,NO,,TEXTO / MARCA,CG,36
+76670,San Pedro,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Canales de televisión,Averiado,NO,,TEXTO / MARCA,CI,36
+76670,San Pedro,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Canales de televisión,Destruido,NO,,TEXTO / MARCA,CJ,36
+76670,San Pedro,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Internet,Uso restringido,NO,,TEXTO / MARCA,CK,36
+76670,San Pedro,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Internet,Fuera de servicio,NO,,TEXTO / MARCA,CL,36
+76670,San Pedro,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Internet,Averiado,NO,,TEXTO / MARCA,CM,36
+76670,San Pedro,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Internet,Destruido,NO,,TEXTO / MARCA,CN,36
+76670,San Pedro,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Radiocomunicaciones,Uso restringido,NO,,TEXTO / MARCA,CO,36
+76670,San Pedro,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Radiocomunicaciones,Fuera de servicio,NO,,TEXTO / MARCA,CP,36
+76670,San Pedro,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Radiocomunicaciones,Averiado,NO,,TEXTO / MARCA,CQ,36
+76670,San Pedro,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Radiocomunicaciones,Destruido,NO,,TEXTO / MARCA,CR,36
+76670,San Pedro,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Enlace satelital,Uso restringido,N/A,,TEXTO / MARCA,CS,36
+76670,San Pedro,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Enlace satelital,Fuera de servicio,N/A,,TEXTO / MARCA,CT,36
+76670,San Pedro,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Enlace satelital,Averiado,N/A,,TEXTO / MARCA,CU,36
+76670,San Pedro,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Enlace satelital,Destruido,N/A,,TEXTO / MARCA,CV,36
+76670,San Pedro,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Radiocomunicaciones móviles,Uso restringido,N/A,,TEXTO / MARCA,CW,36
+76670,San Pedro,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Radiocomunicaciones móviles,Fuera de servicio,N/A,,TEXTO / MARCA,CX,36
+76670,San Pedro,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Radiocomunicaciones móviles,Averiado,N/A,,TEXTO / MARCA,CY,36
+76670,San Pedro,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Radiocomunicaciones móviles,Destruido,N/A,,TEXTO / MARCA,CZ,36
+76670,San Pedro,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Comunicaciones aeronáuticas,Uso restringido,N/A,,TEXTO / MARCA,DA,36
+76670,San Pedro,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Comunicaciones aeronáuticas,Fuera de servicio,N/A,,TEXTO / MARCA,DB,36
+76670,San Pedro,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Comunicaciones aeronáuticas,Averiado,N/A,,TEXTO / MARCA,DC,36
+76670,San Pedro,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Comunicaciones aeronáuticas,Destruido,N/A,,TEXTO / MARCA,DD,36
+76670,San Pedro,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Comunicaciones marítimas y fluviales,Uso restringido,N/A,,TEXTO / MARCA,DE,36
+76670,San Pedro,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Comunicaciones marítimas y fluviales,Fuera de servicio,N/A,,TEXTO / MARCA,DF,36
+76670,San Pedro,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Comunicaciones marítimas y fluviales,Averiado,N/A,,TEXTO / MARCA,DG,36
+76670,San Pedro,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Comunicaciones marítimas y fluviales,Destruido,N/A,,TEXTO / MARCA,DH,36
+76670,San Pedro,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Computadores para educar,Uso restringido,NO,,TEXTO / MARCA,DI,36
+76670,San Pedro,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Computadores para educar,Fuera de servicio,NO,,TEXTO / MARCA,DJ,36
+76670,San Pedro,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Computadores para educar,Averiado,NO,,TEXTO / MARCA,DK,36
+76670,San Pedro,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Computadores para educar,Destruido,NO,,TEXTO / MARCA,DL,36
+76670,San Pedro,ARO Centro - Tuluá,6. TELECOMUNICACIONES,"Redes institucionales HF, VHF o UHF",Uso restringido,N/A,,TEXTO / MARCA,DM,36
+76670,San Pedro,ARO Centro - Tuluá,6. TELECOMUNICACIONES,"Redes institucionales HF, VHF o UHF",Fuera de servicio,N/A,,TEXTO / MARCA,DN,36
+76670,San Pedro,ARO Centro - Tuluá,6. TELECOMUNICACIONES,"Redes institucionales HF, VHF o UHF",Averiado,N/A,,TEXTO / MARCA,DO,36
+76670,San Pedro,ARO Centro - Tuluá,6. TELECOMUNICACIONES,"Redes institucionales HF, VHF o UHF",Destruido,N/A,,TEXTO / MARCA,DP,36
+76670,San Pedro,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Red primaria,Cerrada(o) – ubicación/abscisa,NO,,TEXTO / MARCA,DU,36
+76670,San Pedro,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Red primaria,Con paso restringido – ubicación/abscisa,NO,,TEXTO / MARCA,DV,36
+76670,San Pedro,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Red primaria,Comentario,NO,,TEXTO / MARCA,DW,36
+76670,San Pedro,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Red secundaria,Cerrada(o) – ubicación/abscisa,NO,,TEXTO / MARCA,DX,36
+76670,San Pedro,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Red secundaria,Con paso restringido – ubicación/abscisa,NO,,TEXTO / MARCA,DY,36
+76670,San Pedro,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Red secundaria,Comentario,NO,,TEXTO / MARCA,DZ,36
+76670,San Pedro,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Red terciaria,Comentario,ESPERANDO REPORTE,,TEXTO / MARCA,EC,36
+76670,San Pedro,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Puentes vehiculares y/o pontones,Cerrada(o) – ubicación/abscisa,N/A,,TEXTO / MARCA,ED,36
+76670,San Pedro,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Puentes vehiculares y/o pontones,Con paso restringido – ubicación/abscisa,N/A,,TEXTO / MARCA,EE,36
+76670,San Pedro,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Puentes vehiculares y/o pontones,Comentario,N/A,,TEXTO / MARCA,EF,36
+76670,San Pedro,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Puentes peatonales,Cerrada(o) – ubicación/abscisa,NO,,TEXTO / MARCA,EG,36
+76670,San Pedro,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Puentes peatonales,Con paso restringido – ubicación/abscisa,NO,,TEXTO / MARCA,EH,36
+76670,San Pedro,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Puentes peatonales,Comentario,NO,,TEXTO / MARCA,EI,36
+76670,San Pedro,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Túnel,Cerrada(o) – ubicación/abscisa,NO,,TEXTO / MARCA,EJ,36
+76670,San Pedro,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Túnel,Con paso restringido – ubicación/abscisa,NO,,TEXTO / MARCA,EK,36
+76670,San Pedro,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Túnel,Comentario,NO,,TEXTO / MARCA,EL,36
+76670,San Pedro,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Modo férreo,Descripción de la afectación,NO,,TEXTO / MARCA,EM,36
+76670,San Pedro,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Modo férreo,Uso restringido,NO,,TEXTO / MARCA,EN,36
+76670,San Pedro,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Modo férreo,Fuera de servicio,NO,,TEXTO / MARCA,EO,36
+76670,San Pedro,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Modo marítimo,Descripción de la afectación,NO,,TEXTO / MARCA,EP,36
+76670,San Pedro,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Modo marítimo,Uso restringido,NO,,TEXTO / MARCA,EQ,36
+76670,San Pedro,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Modo marítimo,Fuera de servicio,NO,,TEXTO / MARCA,ER,36
+76670,San Pedro,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Modo fluvial,Descripción de la afectación,NO,,TEXTO / MARCA,ES,36
+76670,San Pedro,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Modo fluvial,Uso restringido,NO,,TEXTO / MARCA,ET,36
+76670,San Pedro,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Modo fluvial,Fuera de servicio,NO,,TEXTO / MARCA,EU,36
+76670,San Pedro,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Modo aéreo,Descripción de la afectación,NO,,TEXTO / MARCA,EV,36
+76670,San Pedro,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Modo aéreo,Uso restringido,NO,,TEXTO / MARCA,EW,36
+76670,San Pedro,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Modo aéreo,Fuera de servicio,NO,,TEXTO / MARCA,EX,36
+76670,San Pedro,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Modo terminal terrestre,Descripción de la afectación,NO,,TEXTO / MARCA,EY,36
+76670,San Pedro,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Modo terminal terrestre,Uso restringido,NO,,TEXTO / MARCA,EZ,36
+76670,San Pedro,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Modo terminal terrestre,Fuera de servicio,NO,,TEXTO / MARCA,FA,36
+76670,San Pedro,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Puertos fluviales,En servicio,NO,,TEXTO / MARCA,FB,36
+76670,San Pedro,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Puertos fluviales,Uso restringido,NO,,TEXTO / MARCA,FC,36
+76670,San Pedro,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Puertos fluviales,Fuera de servicio,NO,,TEXTO / MARCA,FD,36
+76670,San Pedro,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Puerto marítimo,En servicio,NO,,TEXTO / MARCA,FE,36
+76670,San Pedro,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Puerto marítimo,Uso restringido,NO,,TEXTO / MARCA,FF,36
+76670,San Pedro,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Puerto marítimo,Fuera de servicio,NO,,TEXTO / MARCA,FG,36
+76670,San Pedro,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Aeropuertos,En servicio,NO,,TEXTO / MARCA,FH,36
+76670,San Pedro,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Aeropuertos,Uso restringido,NO,,TEXTO / MARCA,FI,36
+76670,San Pedro,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Aeropuertos,Fuera de servicio,NO,,TEXTO / MARCA,FJ,36
+76670,San Pedro,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Terminales terrestres,En servicio,NO,,TEXTO / MARCA,FK,36
+76670,San Pedro,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Terminales terrestres,Uso restringido,NO,,TEXTO / MARCA,FL,36
+76670,San Pedro,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Terminales terrestres,Fuera de servicio,NO,,TEXTO / MARCA,FM,36
+76670,San Pedro,ARO Centro - Tuluá,9. SECTOR AGROPECUARIO,Agricultura,Hectáreas afectadas,aun no se tiene el registro,,TEXTO / MARCA,HP,36
+76670,San Pedro,ARO Centro - Tuluá,9. SECTOR AGROPECUARIO,Ganadería,Pérdida de productos,aun no se tiene el registro,,TEXTO / MARCA,HV,36
+76670,San Pedro,ARO Centro - Tuluá,9. SECTOR AGROPECUARIO,Piscícola,Pérdida de productos,aun no se tiene el registro,,TEXTO / MARCA,HZ,36
+76670,San Pedro,ARO Centro - Tuluá,9. SECTOR AGROPECUARIO,Porcícola,Pérdida de productos,aun no se tiene el registro,,TEXTO / MARCA,ID,36
+76670,San Pedro,ARO Centro - Tuluá,9. SECTOR AGROPECUARIO,Avícola,Pérdida de productos,aun no se tiene el registro,,TEXTO / MARCA,IH,36
+76670,San Pedro,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Financiero (No),aun no se tiene el registro,,TEXTO / MARCA,IM,36
+76670,San Pedro,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Total (No),0,0,NUMÉRICO,IS,36
+76670,San Pedro,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Financiero (No),aun no se tiene el registro,,TEXTO / MARCA,IT,36
+76670,San Pedro,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Total (No),0,0,NUMÉRICO,IZ,36
+76670,San Pedro,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Financiero (No),aun no se tiene el registro,,TEXTO / MARCA,JA,36
+76670,San Pedro,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Total (No),0,0,NUMÉRICO,JG,36
+76670,San Pedro,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Financiero (No),aun no se tiene el registro,,TEXTO / MARCA,JH,36
+76670,San Pedro,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,36
+76736,Sevilla,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Alcaldía,Uso restringido (Número),si,,TEXTO / MARCA,AH,37
+76736,Sevilla,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Alcaldía,Fuera de servicio (Número),si,,TEXTO / MARCA,AI,37
+76736,Sevilla,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Alcaldía,Averiado (Número),si,,TEXTO / MARCA,AJ,37
+76736,Sevilla,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Alcaldía,Destruido (Número),si,,TEXTO / MARCA,AK,37
+76736,Sevilla,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Fuera de servicio (Número),0,0,NUMÉRICO,AM,37
+76736,Sevilla,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),6,6,NUMÉRICO,AN,37
+76736,Sevilla,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Destruido (No),0,0,NUMÉRICO,AO,37
+76736,Sevilla,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Uso restringido (No),0,0,NUMÉRICO,AP,37
+76736,Sevilla,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Fuera de servicio (No),0,0,NUMÉRICO,AQ,37
+76736,Sevilla,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Averiado (No),0,0,NUMÉRICO,AR,37
+76736,Sevilla,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Destruido (No),0,0,NUMÉRICO,AS,37
+76736,Sevilla,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Uso restringido (No),3,3,NUMÉRICO,AT,37
+76736,Sevilla,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Fuera de servicio (No),1,1,NUMÉRICO,AU,37
+76736,Sevilla,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Averiado (No),3,3,NUMÉRICO,AV,37
+76736,Sevilla,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Destruido (No),0,0,NUMÉRICO,AW,37
+76736,Sevilla,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Iglesias,Uso restringido (No),1,1,NUMÉRICO,AX,37
+76736,Sevilla,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Iglesias,Fuera de servicio (No),1,1,NUMÉRICO,AY,37
+76736,Sevilla,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Iglesias,Averiado (No),1,1,NUMÉRICO,AZ,37
+76736,Sevilla,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Iglesias,Destruido (No),0,0,NUMÉRICO,BA,37
+76736,Sevilla,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Plaza de mercado,Uso restringido (No),1,1,NUMÉRICO,BB,37
+76736,Sevilla,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Plaza de mercado,Fuera de servicio (No),1,1,NUMÉRICO,BC,37
+76736,Sevilla,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Plaza de mercado,Averiado (No),1,1,NUMÉRICO,BD,37
+76736,Sevilla,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Plaza de mercado,Destruido (No),0,0,NUMÉRICO,BE,37
+76736,Sevilla,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Escenarios deportivos,Uso restringido (No),1,1,NUMÉRICO,BF,37
+76736,Sevilla,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Escenarios deportivos,Fuera de servicio (No),1,1,NUMÉRICO,BG,37
+76736,Sevilla,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Escenarios deportivos,Averiado (No),1 Casa del Deporte,,TEXTO / MARCA,BH,37
+76736,Sevilla,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Escenarios deportivos,Destruido (No),1,1,NUMÉRICO,BI,37
+76736,Sevilla,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Albergues,Uso restringido (No),0,0,NUMÉRICO,BN,37
+76736,Sevilla,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Albergues,Fuera de servicio (No),0,0,NUMÉRICO,BO,37
+76736,Sevilla,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Albergues,Averiado (No),0,0,NUMÉRICO,BP,37
+76736,Sevilla,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Telefonía fija,Uso restringido,X,,TEXTO / MARCA,BU,37
+76736,Sevilla,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Telefonía celular,Uso restringido,X,,TEXTO / MARCA,BY,37
+76736,Sevilla,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Telefonía celular,Fuera de servicio,X,,TEXTO / MARCA,BZ,37
+76736,Sevilla,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Telefonía celular,Averiado,X,,TEXTO / MARCA,CA,37
+76736,Sevilla,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Emisoras,Uso restringido,X,,TEXTO / MARCA,CC,37
+76736,Sevilla,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Canales de televisión,Uso restringido,X,,TEXTO / MARCA,CG,37
+76736,Sevilla,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Internet,Uso restringido,X,,TEXTO / MARCA,CK,37
+76736,Sevilla,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Internet,Fuera de servicio,X,,TEXTO / MARCA,CL,37
+76736,Sevilla,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Radiocomunicaciones,Uso restringido,X,,TEXTO / MARCA,CO,37
+76736,Sevilla,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Radiocomunicaciones,Averiado,X,,TEXTO / MARCA,CQ,37
+76736,Sevilla,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Radiocomunicaciones móviles,Fuera de servicio,X,,TEXTO / MARCA,CX,37
+76736,Sevilla,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Total (No),0,0,NUMÉRICO,IS,37
+76736,Sevilla,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Total (No),0,0,NUMÉRICO,IZ,37
+76736,Sevilla,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Total (No),0,0,NUMÉRICO,JG,37
+76736,Sevilla,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,37
+76823,Toro,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Uso restringido (Número),Alfredo Garrido:,,TEXTO / MARCA,AL,38
+76823,Toro,ARO Norte - Cartago,6. TELECOMUNICACIONES,Telefonía fija,Uso restringido,X,,TEXTO / MARCA,BU,38
+76823,Toro,ARO Norte - Cartago,6. TELECOMUNICACIONES,Emisoras,Uso restringido,X,,TEXTO / MARCA,CC,38
+76823,Toro,ARO Norte - Cartago,6. TELECOMUNICACIONES,Canales de televisión,Uso restringido,X,,TEXTO / MARCA,CG,38
+76823,Toro,ARO Norte - Cartago,6. TELECOMUNICACIONES,Internet,Fuera de servicio,X,,TEXTO / MARCA,CL,38
+76823,Toro,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Total (No),0,0,NUMÉRICO,IS,38
+76823,Toro,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Total (No),0,0,NUMÉRICO,IZ,38
+76823,Toro,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Total (No),0,0,NUMÉRICO,JG,38
+76823,Toro,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,38
+76828,Trujillo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Alcaldía,Averiado (Número),1,1,NUMÉRICO,AJ,39
+76828,Trujillo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Uso restringido (Número),1,1,NUMÉRICO,AL,39
+76828,Trujillo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),10,10,NUMÉRICO,AN,39
+76828,Trujillo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Uso restringido (No),Sin información,,TEXTO / MARCA,AP,39
+76828,Trujillo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Fuera de servicio (No),Sin información,,TEXTO / MARCA,AQ,39
+76828,Trujillo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Averiado (No),Sin información,,TEXTO / MARCA,AR,39
+76828,Trujillo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Destruido (No),Sin información,,TEXTO / MARCA,AS,39
+76828,Trujillo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Uso restringido (No),1,1,NUMÉRICO,AT,39
+76828,Trujillo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Fuera de servicio (No),1,1,NUMÉRICO,AU,39
+76828,Trujillo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Averiado (No),2,2,NUMÉRICO,AV,39
+76828,Trujillo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Iglesias,Uso restringido (No),8,8,NUMÉRICO,AX,39
+76828,Trujillo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Iglesias,Fuera de servicio (No),6,6,NUMÉRICO,AY,39
+76828,Trujillo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Iglesias,Averiado (No),8,8,NUMÉRICO,AZ,39
+76828,Trujillo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Iglesias,Destruido (No),3,3,NUMÉRICO,BA,39
+76828,Trujillo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Plaza de mercado,Uso restringido (No),1,1,NUMÉRICO,BB,39
+76828,Trujillo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Plaza de mercado,Fuera de servicio (No),1,1,NUMÉRICO,BC,39
+76828,Trujillo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Plaza de mercado,Averiado (No),1,1,NUMÉRICO,BD,39
+76828,Trujillo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Plaza de mercado,Destruido (No),No,,TEXTO / MARCA,BE,39
+76828,Trujillo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Escenarios deportivos,Uso restringido (No),1,1,NUMÉRICO,BF,39
+76828,Trujillo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Escenarios deportivos,Averiado (No),1,1,NUMÉRICO,BH,39
+76828,Trujillo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Otros,Uso restringido (No),1,1,NUMÉRICO,BJ,39
+76828,Trujillo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Otros,Averiado (No),1,1,NUMÉRICO,BL,39
+76828,Trujillo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Albergues,Fuera de servicio (No),No,,TEXTO / MARCA,BO,39
+76828,Trujillo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Albergues,Averiado (No),No,,TEXTO / MARCA,BP,39
+76828,Trujillo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Albergues,Destruido (No),No,,TEXTO / MARCA,BQ,39
+76828,Trujillo,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Telefonía fija,Uso restringido,X,,TEXTO / MARCA,BU,39
+76828,Trujillo,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Telefonía celular,Uso restringido,X,,TEXTO / MARCA,BY,39
+76828,Trujillo,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Emisoras,Uso restringido,X,,TEXTO / MARCA,CC,39
+76828,Trujillo,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Canales de televisión,Uso restringido,X,,TEXTO / MARCA,CG,39
+76828,Trujillo,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Internet,Fuera de servicio,X,,TEXTO / MARCA,CL,39
+76828,Trujillo,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Radiocomunicaciones,Destruido,X,,TEXTO / MARCA,CR,39
+76828,Trujillo,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Red terciaria,Cerrada(o) – ubicación/abscisa,No,,TEXTO / MARCA,EA,39
+76828,Trujillo,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Red terciaria,Con paso restringido – ubicación/abscisa,3,3,NUMÉRICO,EB,39
+76828,Trujillo,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Red terciaria,Comentario,"Vereda la Soledad, Tres Heldas y Las marinas",,TEXTO / MARCA,EC,39
+76828,Trujillo,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Puertos fluviales,En servicio,X,,TEXTO / MARCA,FB,39
+76828,Trujillo,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Puertos fluviales,Fuera de servicio,X,,TEXTO / MARCA,FD,39
+76828,Trujillo,ARO Centro - Tuluá,9. SECTOR AGROPECUARIO,Agricultura,No productores afectados,340,340,NUMÉRICO,HQ,39
+76828,Trujillo,ARO Centro - Tuluá,9. SECTOR AGROPECUARIO,Agricultura,Pérdida de infraestructura,"Beneficiaderos, despulpaderos, invernadores, centro de acopio",,TEXTO / MARCA,HS,39
+76828,Trujillo,ARO Centro - Tuluá,9. SECTOR AGROPECUARIO,Ganadería,No productores afectados,10,10,NUMÉRICO,HU,39
+76828,Trujillo,ARO Centro - Tuluá,9. SECTOR AGROPECUARIO,Ganadería,Pérdida de infraestructura,establos,,TEXTO / MARCA,HW,39
+76828,Trujillo,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Financiero (No),No,,TEXTO / MARCA,IM,39
+76828,Trujillo,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Turístico (No),6,6,NUMÉRICO,IN,39
+76828,Trujillo,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Comercial (No),10,10,NUMÉRICO,IO,39
+76828,Trujillo,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Industrial (No),1,1,NUMÉRICO,IP,39
+76828,Trujillo,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Minería (No),No,,TEXTO / MARCA,IQ,39
+76828,Trujillo,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Servicios (No),1,1,NUMÉRICO,IR,39
+76828,Trujillo,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Total (No),18,18,NUMÉRICO,IS,39
+76828,Trujillo,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Financiero (No),No,,TEXTO / MARCA,IT,39
+76828,Trujillo,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Turístico (No),No,,TEXTO / MARCA,IU,39
+76828,Trujillo,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Comercial (No),No,,TEXTO / MARCA,IV,39
+76828,Trujillo,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Industrial (No),No,,TEXTO / MARCA,IW,39
+76828,Trujillo,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Minería (No),No,,TEXTO / MARCA,IX,39
+76828,Trujillo,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Servicios (No),No,,TEXTO / MARCA,IY,39
+76828,Trujillo,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Total (No),0,0,NUMÉRICO,IZ,39
+76828,Trujillo,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Financiero (No),No,,TEXTO / MARCA,JA,39
+76828,Trujillo,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Turístico (No),No,,TEXTO / MARCA,JB,39
+76828,Trujillo,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Comercial (No),No,,TEXTO / MARCA,JC,39
+76828,Trujillo,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Industrial (No),No,,TEXTO / MARCA,JD,39
+76828,Trujillo,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Minería (No),No,,TEXTO / MARCA,JE,39
+76828,Trujillo,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Servicios (No),No,,TEXTO / MARCA,JF,39
+76828,Trujillo,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Total (No),0,0,NUMÉRICO,JG,39
+76828,Trujillo,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Financiero (No),No,,TEXTO / MARCA,JH,39
+76828,Trujillo,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Turístico (No),No,,TEXTO / MARCA,JI,39
+76828,Trujillo,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Comercial (No),30,30,NUMÉRICO,JJ,39
+76828,Trujillo,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Industrial (No),No,,TEXTO / MARCA,JK,39
+76828,Trujillo,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Minería (No),No,,TEXTO / MARCA,JL,39
+76828,Trujillo,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Servicios (No),No,,TEXTO / MARCA,JM,39
+76828,Trujillo,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),30,30,NUMÉRICO,JN,39
+76834,Tuluá,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Uso restringido (Número),Santa fe corozal: virusas leves estructuras,,TEXTO / MARCA,AL,40
+76834,Tuluá,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Telefonía fija,Uso restringido,X,,TEXTO / MARCA,BU,40
+76834,Tuluá,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Emisoras,Uso restringido,X,,TEXTO / MARCA,CC,40
+76834,Tuluá,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Canales de televisión,Uso restringido,X,,TEXTO / MARCA,CG,40
+76834,Tuluá,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Internet,Uso restringido,X,,TEXTO / MARCA,CK,40
+76834,Tuluá,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Red primaria,Comentario,"MUNICIPIO SIN AGUA - DESPLAZAMIENTO 15 CM DEL PUENTE SOBRE EL RIO CAUCA  EN LA VIA TULUA  RIOFRIO. LAS AUTORIDADES DAN UN PARTE DE TRANQUILIDAD, HAY PASO NORMAL PARA VEHICULOS DE TODO TIPo",,TEXTO / MARCA,DW,40
+76834,Tuluá,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Total (No),0,0,NUMÉRICO,IS,40
+76834,Tuluá,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Total (No),0,0,NUMÉRICO,IZ,40
+76834,Tuluá,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Total (No),0,0,NUMÉRICO,JG,40
+76834,Tuluá,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,40
+76845,Ulloa,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Uso restringido (Número),El segundo bloque de la sede central destruida donde esta la sala de sistemas y baterias.,,TEXTO / MARCA,AL,41
+76845,Ulloa,ARO Norte - Cartago,6. TELECOMUNICACIONES,Telefonía fija,Uso restringido,X,,TEXTO / MARCA,BU,41
+76845,Ulloa,ARO Norte - Cartago,6. TELECOMUNICACIONES,Emisoras,Uso restringido,X,,TEXTO / MARCA,CC,41
+76845,Ulloa,ARO Norte - Cartago,6. TELECOMUNICACIONES,Canales de televisión,Uso restringido,X,,TEXTO / MARCA,CG,41
+76845,Ulloa,ARO Norte - Cartago,6. TELECOMUNICACIONES,Internet,Fuera de servicio,X,,TEXTO / MARCA,CL,41
+76845,Ulloa,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Total (No),0,0,NUMÉRICO,IS,41
+76845,Ulloa,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Total (No),0,0,NUMÉRICO,IZ,41
+76845,Ulloa,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Total (No),0,0,NUMÉRICO,JG,41
+76845,Ulloa,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,41
+76863,Versalles,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Uso restringido (Número),Policarpa fisuras de lado a lado.,,TEXTO / MARCA,AL,42
+76863,Versalles,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),4,4,NUMÉRICO,AN,42
+76863,Versalles,ARO Norte - Cartago,6. TELECOMUNICACIONES,Telefonía fija,Uso restringido,X,,TEXTO / MARCA,BU,42
+76863,Versalles,ARO Norte - Cartago,6. TELECOMUNICACIONES,Emisoras,Uso restringido,X,,TEXTO / MARCA,CC,42
+76863,Versalles,ARO Norte - Cartago,6. TELECOMUNICACIONES,Canales de televisión,Uso restringido,X,,TEXTO / MARCA,CG,42
+76863,Versalles,ARO Norte - Cartago,6. TELECOMUNICACIONES,Internet,Fuera de servicio,X,,TEXTO / MARCA,CL,42
+76863,Versalles,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Total (No),0,0,NUMÉRICO,IS,42
+76863,Versalles,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Total (No),0,0,NUMÉRICO,IZ,42
+76863,Versalles,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Total (No),0,0,NUMÉRICO,JG,42
+76863,Versalles,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,42
+76869,Vijes,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Alcaldía,Uso restringido (Número),"DOS AFECTACIONES SEGUNDO PISO EDIFICIO PRINCIPAL
+PRIMER PISO AUXILIAR EDIFICIO AUXILIAR 
+
+PERO ESTAN FUNCIONANDO",,TEXTO / MARCA,AH,43
+76869,Vijes,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Alcaldía,Averiado (Número),1,1,NUMÉRICO,AJ,43
+76869,Vijes,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),3 AFECTADAS ZONA URBANA NO SE DARAN CLASES,,TEXTO / MARCA,AN,43
+76869,Vijes,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Uso restringido (No),NA,,TEXTO / MARCA,AP,43
+76869,Vijes,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Uso restringido (No),AFECTACION ESTRUCUTRAL ,,TEXTO / MARCA,AT,43
+76869,Vijes,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Iglesias,Uso restringido (No),"CON GRAVEDAD INFRAESTRUCTURA DE LAPARROQUIA PRINCIPAL DESPERENDIMIENTO EN TORRES, RIESGO DE CAIDA",,TEXTO / MARCA,AX,43
+76869,Vijes,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Iglesias,Averiado (No),1,1,NUMÉRICO,AZ,43
+76869,Vijes,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Escenarios deportivos,Uso restringido (No),CASA DEL DEPORTE AFECTACION ESTRUCTUTAL,,TEXTO / MARCA,BF,43
+76869,Vijes,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Escenarios deportivos,Averiado (No),1,1,NUMÉRICO,BH,43
+76869,Vijes,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Otros,Averiado (No),1,1,NUMÉRICO,BL,43
+76869,Vijes,ARO Sur - Cali,6. TELECOMUNICACIONES,Telefonía fija,Uso restringido,X,,TEXTO / MARCA,BU,43
+76869,Vijes,ARO Sur - Cali,6. TELECOMUNICACIONES,Emisoras,Uso restringido,X,,TEXTO / MARCA,CC,43
+76869,Vijes,ARO Sur - Cali,6. TELECOMUNICACIONES,Canales de televisión,Uso restringido,X,,TEXTO / MARCA,CG,43
+76869,Vijes,ARO Sur - Cali,6. TELECOMUNICACIONES,Internet,Uso restringido,X,,TEXTO / MARCA,CK,43
+76869,Vijes,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Total (No),0,0,NUMÉRICO,IS,43
+76869,Vijes,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Total (No),0,0,NUMÉRICO,IZ,43
+76869,Vijes,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Total (No),0,0,NUMÉRICO,JG,43
+76869,Vijes,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,43
+76890,Yotoco,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Uso restringido (Número),HERNANDO LLORENTE jose maria cordoba,,TEXTO / MARCA,AL,44
+76890,Yotoco,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Telefonía fija,Uso restringido,X,,TEXTO / MARCA,BU,44
+76890,Yotoco,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Emisoras,Uso restringido,X,,TEXTO / MARCA,CC,44
+76890,Yotoco,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Canales de televisión,Uso restringido,X,,TEXTO / MARCA,CG,44
+76890,Yotoco,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Internet,Uso restringido,X,,TEXTO / MARCA,CK,44
+76890,Yotoco,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Red primaria,Cerrada(o) – ubicación/abscisa,"VIA ALCALA- CARTAGO , DESPRENDIMIENTO DE ROCAS ---ALCALA PEREIRA CERRADA , ALCALA QUINBAYA CERRADA  HAY PASOS ALTERNOS - union versusalli puente mariano ospian. VIA ALCALA - QUINBAYA PASO RESTRINGIDO  POR DERRUMBES EN LA VIA A 800M - KM 1 + 500 - KM 2 + 500 - KM 3 + 800 SOLO HAY PASO PARA MOTOCICLETAS.",,TEXTO / MARCA,DU,44
+76890,Yotoco,ARO Centro - Tuluá,7. ACCESIBILIDAD Y TRANSPORTE,Red primaria,Comentario,Sin especificar si es una vía primaria,,TEXTO / MARCA,DW,44
+76890,Yotoco,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Total (No),0,0,NUMÉRICO,IS,44
+76890,Yotoco,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Total (No),0,0,NUMÉRICO,IZ,44
+76890,Yotoco,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Total (No),0,0,NUMÉRICO,JG,44
+76890,Yotoco,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,44
+76892,Yumbo,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Alcaldía,Uso restringido (Número),5,5,NUMÉRICO,AH,45
+76892,Yumbo,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Uso restringido (Número),Daños en cielo  falso y agretados pisoso.,,TEXTO / MARCA,AL,45
+76892,Yumbo,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Uso restringido (No),1,1,NUMÉRICO,AP,45
+76892,Yumbo,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Uso restringido (No),2,2,NUMÉRICO,AT,45
+76892,Yumbo,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Iglesias,Uso restringido (No),2,2,NUMÉRICO,AX,45
+76892,Yumbo,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Plaza de mercado,Uso restringido (No),1,1,NUMÉRICO,BB,45
+76892,Yumbo,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Escenarios deportivos,Uso restringido (No),12,12,NUMÉRICO,BF,45
+76892,Yumbo,ARO Sur - Cali,6. TELECOMUNICACIONES,Telefonía fija,Uso restringido,X,,TEXTO / MARCA,BU,45
+76892,Yumbo,ARO Sur - Cali,6. TELECOMUNICACIONES,Telefonía celular,Uso restringido,X,,TEXTO / MARCA,BY,45
+76892,Yumbo,ARO Sur - Cali,6. TELECOMUNICACIONES,Emisoras,Uso restringido,X,,TEXTO / MARCA,CC,45
+76892,Yumbo,ARO Sur - Cali,6. TELECOMUNICACIONES,Canales de televisión,Uso restringido,X,,TEXTO / MARCA,CG,45
+76892,Yumbo,ARO Sur - Cali,6. TELECOMUNICACIONES,Internet,Uso restringido,X,,TEXTO / MARCA,CK,45
+76892,Yumbo,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Agricultura,Pérdida de productos,En evaluación,,TEXTO / MARCA,HR,45
+76892,Yumbo,ARO Sur - Cali,9. SECTOR AGROPECUARIO,Agricultura,Pérdida de infraestructura,En evaluación,,TEXTO / MARCA,HS,45
+76892,Yumbo,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Total (No),0,0,NUMÉRICO,IS,45
+76892,Yumbo,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Total (No),0,0,NUMÉRICO,IZ,45
+76892,Yumbo,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Total (No),0,0,NUMÉRICO,JG,45
+76892,Yumbo,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,45
+76895,Zarzal,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Alcaldía,Uso restringido (Número),no,,TEXTO / MARCA,AH,46
+76895,Zarzal,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Alcaldía,Fuera de servicio (Número),si,,TEXTO / MARCA,AI,46
+76895,Zarzal,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Alcaldía,Averiado (Número),no,,TEXTO / MARCA,AJ,46
+76895,Zarzal,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Uso restringido (Número),Sede Mercedes Abrego cielo falsos,,TEXTO / MARCA,AL,46
+76895,Zarzal,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Fuera de servicio (Número),si,,TEXTO / MARCA,AM,46
+76895,Zarzal,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),si,,TEXTO / MARCA,AN,46
+76895,Zarzal,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Uso restringido (No),no,,TEXTO / MARCA,AT,46
+76895,Zarzal,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Fuera de servicio (No),no,,TEXTO / MARCA,AU,46
+76895,Zarzal,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Iglesias,Uso restringido (No),si,,TEXTO / MARCA,AX,46
+76895,Zarzal,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Iglesias,Fuera de servicio (No),si,,TEXTO / MARCA,AY,46
+76895,Zarzal,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Plaza de mercado,Uso restringido (No),si,,TEXTO / MARCA,BB,46
+76895,Zarzal,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Plaza de mercado,Fuera de servicio (No),si,,TEXTO / MARCA,BC,46
+76895,Zarzal,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Escenarios deportivos,Uso restringido (No),no,,TEXTO / MARCA,BF,46
+76895,Zarzal,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Escenarios deportivos,Fuera de servicio (No),no,,TEXTO / MARCA,BG,46
+76895,Zarzal,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Albergues,Uso restringido (No),si,,TEXTO / MARCA,BN,46
+76895,Zarzal,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Albergues,Fuera de servicio (No),si,,TEXTO / MARCA,BO,46
+76895,Zarzal,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Albergues,Destruido (No),si colcchonetas carpas,,TEXTO / MARCA,BQ,46
+76895,Zarzal,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Telefonía fija,Uso restringido,NO,,TEXTO / MARCA,BU,46
+76895,Zarzal,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Telefonía celular,Uso restringido,NO,,TEXTO / MARCA,BY,46
+76895,Zarzal,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Emisoras,Uso restringido,X,,TEXTO / MARCA,CC,46
+76895,Zarzal,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Canales de televisión,Uso restringido,X,,TEXTO / MARCA,CG,46
+76895,Zarzal,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Internet,Uso restringido,NO,,TEXTO / MARCA,CK,46
+76895,Zarzal,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Microempresas,Total (No),0,0,NUMÉRICO,IS,46
+76895,Zarzal,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Total (No),0,0,NUMÉRICO,IZ,46
+76895,Zarzal,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Total (No),0,0,NUMÉRICO,JG,46
+76895,Zarzal,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,46
