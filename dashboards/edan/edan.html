@@ -12,7 +12,7 @@
   <link href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet">
   <link href="https://cdn.datatables.net/1.13.8/css/dataTables.bootstrap5.min.css" rel="stylesheet">
   <link href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.bootstrap5.min.css" rel="stylesheet">
-  <link href="edan.css?v=5.0.0" rel="stylesheet">
+  <link href="edan.css?v=6.6.0" rel="stylesheet">
 </head>
 <body>
   <section id="accessGate" class="access-gate">
@@ -103,28 +103,30 @@
                     <aside class="map-side-column">
                       <div class="map-side-panel">
                         <div class="layer-panel-header">Capas del visor</div>
-                        <details open><summary>Mapas base</summary>
+                        <details><summary>Mapas base</summary>
                           <label><input type="radio" name="edanBasemap" value="cartoLight" checked> Claro CARTO</label>
                           <label><input type="radio" name="edanBasemap" value="esriTopo"> Topográfico Esri</label>
                           <label><input type="radio" name="edanBasemap" value="esriImagery"> Satélite Esri</label>
                           <label><input type="radio" name="edanBasemap" value="osm"> OpenStreetMap</label>
                         </details>
                         <details open><summary>Indicador territorial</summary>
+                          <div class="map-metric-group-title">Impacto</div>
                           <label><input type="radio" name="mapMetric" value="personas_afectadas" checked> Personas afectadas</label>
                           <label><input type="radio" name="mapMetric" value="familias_afectadas"> Familias afectadas</label>
                           <label><input type="radio" name="mapMetric" value="heridos"> Heridos</label>
                           <label><input type="radio" name="mapMetric" value="viviendas_averiadas"> Viviendas averiadas</label>
+                          <div class="map-metric-group-title">Servicios</div>
                           <label><input type="radio" name="mapMetric" value="personas_sin_agua"> Personas sin servicio de acueducto</label>
                           <label><input type="radio" name="mapMetric" value="personas_sin_energia"> Personas sin energía</label>
+                          <div class="map-metric-group-title">Contexto sanitario</div>
                           <label><input type="radio" name="mapMetric" value="salud_afectada"> Salud afectada</label>
                           <label><input type="radio" name="mapMetric" value="albergue"> Albergue / refugio</label>
                           <label><input type="radio" name="mapMetric" value="alertas"> Alertas sanitarias cruzadas</label>
                         </details>
-                        <details open><summary>Salud y respuesta</summary>
+                        <details><summary>Salud y respuesta</summary>
                           <label><input id="showHospitals" type="checkbox" checked> Hospitales principales</label>
-                          
                         </details>
-                        <details open><summary>Territorial</summary>
+                        <details><summary>Territorial</summary>
                           <label><input id="showMunicipalPolygons" type="checkbox" checked> Municipios Valle</label>
                           <label><input id="showMunicipalityLabels" type="checkbox" checked> Etiquetas municipios</label>
                           <label><input id="showVeredasValle" type="checkbox" checked> Veredas Valle</label>
@@ -137,18 +139,17 @@
                       </div>
                     </aside>
                     <div class="map-canvas-column">
-                      <div class="map-action-toolbar"><button id="btnMapReset" class="map-tool-button" type="button">Vista Valle</button><button id="btnOpenSelected" class="map-tool-button" type="button">Ficha seleccionada</button></div>
+                      <div class="map-action-toolbar"><button id="btnMapReset" class="map-tool-button" type="button">Vista Valle</button><button id="btnOpenSelected" class="map-tool-button" type="button" disabled>Ficha seleccionada</button><button id="btnMapClearFilters" class="map-tool-button" type="button">Limpiar filtros</button></div>
                       <div id="map" class="map"></div>
                       <div class="custom-legend-panel"><div class="legend-panel-title">Leyenda</div><div id="mapLegend"></div></div>
                     </div>
                   </div>
-                  <div id="mapSummary" class="map-summary-panel">Cargando información territorial…</div>
                 </div>
               </section>
               <div class="row g-3">
                 <div class="col-12 col-xl-6"><section class="chart-card h-100"><div class="chart-title">Personas afectadas por municipio</div><div class="chart-subtitle">Top territorial dentro del universo filtrado.</div><div class="chart-container chart-container-tall"><canvas id="chartPeople"></canvas></div></section></div>
                 <div class="col-12 col-xl-6"><section class="chart-card h-100"><div class="chart-title">Personas sin servicio de acueducto</div><div class="chart-subtitle">Municipios con población cuantificada sin servicio.</div><div class="chart-container chart-container-tall"><canvas id="chartWaterPeople"></canvas></div></section></div>
-                <div class="col-12"><section class="chart-card"><div class="chart-title">Estado de información en servicios públicos esenciales</div><div class="chart-subtitle">Agrupa los municipios que presentan información en al menos uno de los seis servicios y los que continúan pendientes. Haz clic para filtrar el tablero.</div><div class="chart-container info-status-chart"><canvas id="chartInfoStatus"></canvas></div></section></div>
+                <div class="col-12"><section class="chart-card"><div class="chart-title">Estado de información en servicios públicos esenciales</div><div class="chart-subtitle">Agrupa los municipios en tres estados: información reportada, información parcial / en revisión y pendiente / sin información. Haz clic para filtrar el tablero.</div><div class="chart-container info-status-chart"><canvas id="chartInfoStatus"></canvas></div></section></div>
                 <div class="col-12"><section class="section-block section-block--blue"><div class="section-header"><div class="section-header__icon">📋</div><div><h3>Municipios por estado de información</h3><p id="infoStatusSummary">Consulta el estado de consolidación de los seis servicios públicos esenciales.</p></div></div><div class="section-body"><div class="table-responsive"><table id="tblInfoStatus" class="table table-hover align-middle w-100"></table></div></div></section></div>
               </div>
             </div>
@@ -197,11 +198,11 @@
             <div class="tab-pane fade" id="context-pane">
               <div class="tab-intro"><strong>Pregunta de análisis:</strong> ¿qué condiciones pueden agravar la respuesta sanitaria durante la emergencia? El módulo integra las condiciones reportadas en EDAN con la red hospitalaria principal y mantiene separadas las alertas analíticas UESVALLE de los datos originales.</div>
               <div class="detail-kpi-grid">
-                <div class="detail-kpi"><small>Salud afectada</small><b id="ctxHealth">–</b></div><div class="detail-kpi"><small>Energía afectada</small><b id="ctxEnergy">–</b></div><div class="detail-kpi"><small>Accesibilidad afectada</small><b id="ctxAccess">–</b></div><div class="detail-kpi"><small>Municipios con alertas cruzadas</small><b id="ctxAlerts">–</b></div>
+                <div class="detail-kpi"><small>Municipios con salud afectada</small><b id="ctxHealth">–</b></div><div class="detail-kpi"><small>Municipios con energía afectada</small><b id="ctxEnergy">–</b></div><div class="detail-kpi"><small>Municipios con accesibilidad afectada</small><b id="ctxAccess">–</b></div><div class="detail-kpi"><small>Municipios con alertas cruzadas</small><b id="ctxAlerts">–</b></div>
               </div>
               <div class="row g-3 mb-3">
-                <div class="col-12 col-xl-6"><section class="chart-card h-100"><div class="chart-title">Condiciones territoriales reportadas</div><div class="chart-subtitle">Agua, salud, energía, accesibilidad y albergues. Haz clic para consultar municipios.</div><div class="chart-container"><canvas id="chartContextConditions"></canvas></div></section></div>
-                <div class="col-12 col-xl-6"><section class="chart-card h-100"><div class="chart-title">Alertas analíticas UESVALLE</div><div class="chart-subtitle">Coincidencias territoriales; no constituyen una clasificación oficial de riesgo.</div><div class="chart-container"><canvas id="chartAlerts"></canvas></div></section></div>
+                <div class="col-12 col-xl-6"><section class="chart-card h-100"><div class="chart-title">Municipios con condiciones territoriales reportadas</div><div class="chart-subtitle">Cada barra representa el número de municipios con la condición indicada. Un municipio puede presentar más de una condición. Haz clic para consultar el detalle.</div><div class="chart-container"><canvas id="chartContextConditions"></canvas></div></section></div>
+                <div class="col-12 col-xl-6"><section class="chart-card h-100"><div class="chart-title">Municipios con coincidencias sanitarias</div><div class="chart-subtitle">Cada barra indica cuántos municipios presentan simultáneamente las dos condiciones señaladas. No corresponde a una clasificación oficial de riesgo y un municipio puede aparecer en varias coincidencias.</div><div class="chart-container"><canvas id="chartAlerts"></canvas></div></section></div>
               </div>
               <div id="healthEdanSummary" class="context-source-strip mb-3">Cargando afectación EDAN en instalaciones de salud…</div>
               <section class="section-block section-block--beige mb-3"><div class="section-header"><div class="section-header__icon">🚨</div><div><h3>Contexto sanitario municipal</h3><p>Condiciones territoriales y alertas cruzadas utilizadas para apoyar la lectura sanitaria.</p></div></div><div class="section-body"><div class="table-responsive"><table id="tblContext" class="table table-hover align-middle w-100"></table></div></div></section>
@@ -250,7 +251,7 @@
           </div>
         </section>
 
-        <footer class="footer mt-4"><div>UESVALLE · Portal de tableros institucionales</div><div>EDAN · Información municipal procesada con trazabilidad de calidad · <span class="interface-version">Interfaz V5.0.0</span></div></footer>
+        <footer class="footer mt-4"><div>UESVALLE · Portal de tableros institucionales</div><div>EDAN · Información municipal procesada con trazabilidad de calidad · <span class="interface-version">Interfaz V6.6.1</span></div></footer>
       </div>
     </main>
   </div>
@@ -277,6 +278,47 @@
   <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.2/dist/jspdf.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/jspdf-autotable@3.8.4/dist/jspdf.plugin.autotable.min.js"></script>
-  <script src="edan.js?v=5.0.0"></script>
+  <script src="edan.js?v=6.6.0"></script>
+  <script>
+    // Formato institucional de fecha/hora de actualización, equivalente al usado en IRCAS.
+    // V6 guarda metadata_edan.json -> procesado_en como ISO: YYYY-MM-DDTHH:MM:SS.
+    (function () {
+      const badge = document.getElementById("lastUpdate");
+      if (!badge) return;
+
+      function formatLastUpdate() {
+        const current = (badge.textContent || "").trim();
+        if (!/^Actualizado:/i.test(current)) return;
+
+        const raw = current.replace(/^Actualizado:\s*/i, "").trim();
+        if (!raw || /^(sin fecha|cargando|error)/i.test(raw)) return;
+
+        let formatted = "";
+        if (/^\d{4}-\d{2}-\d{2}$/.test(raw)) {
+          const [y, m, d] = raw.split("-").map(Number);
+          formatted = `${d}/${m}/${y}`;
+        } else {
+          const dt = new Date(raw);
+          if (Number.isNaN(dt.getTime())) return;
+          formatted = new Intl.DateTimeFormat("es-CO", {
+            day: "numeric",
+            month: "numeric",
+            year: "numeric",
+            hour: "numeric",
+            minute: "2-digit",
+            second: "2-digit",
+            hour12: true
+          }).format(dt);
+        }
+
+        const next = `Actualizado: ${formatted}`;
+        if (badge.textContent !== next) badge.textContent = next;
+      }
+
+      const observer = new MutationObserver(formatLastUpdate);
+      observer.observe(badge, { childList: true, characterData: true, subtree: true });
+      formatLastUpdate();
+    })();
+  </script>
 </body>
 </html>

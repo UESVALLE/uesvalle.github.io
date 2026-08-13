@@ -1,0 +1,542 @@
+﻿codigo_dane_fuente,municipio,aro_uesvalle,tipo_fuente,componente,clasificacion,texto_publico,estado_publicacion,contiene_datos_personales,fila_fuente,columna_fuente
+76020,Alcalá,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Acueducto,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,6,FQ-FX
+76020,Alcalá,ARO Norte - Cartago,PERSPECTIVA DE RECUPERACIÓN,Acueducto,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,6,FQ-FX
+76020,Alcalá,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,6,FY-GF
+76020,Alcalá,ARO Norte - Cartago,PERSPECTIVA DE RECUPERACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,6,FY-GF
+76020,Alcalá,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Saneamiento básico,INFORMACIÓN PARCIAL / REVISAR,"Pmirs No funcional, los escombros son llevados a lotes Baldíos o usados como relleno de vías",PUBLICABLE,NO,6,GG-GN
+76020,Alcalá,ARO Norte - Cartago,PERSPECTIVA DE RECUPERACIÓN,Saneamiento básico,PERSPECTIVA / SEGUIMIENTO,"Se evidencia una situación que requiere atención frente al manejo y disposición de residuos de construcción y demolición, debido a la falta de funcionalidad del PMIRS. Se recomienda fortalecer las acciones de recolección, transporte y disposición adecuada de los escombros, evitando su disposición en lotes baldíos o el uso no controlado como relleno de vías, con el fin de prevenir impactos ambientales y sanitarios.
+",PUBLICABLE,NO,6,GG-GN
+76020,Alcalá,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Recolección de basuras,MANEJO EXTRAORDINARIO DE RCD / RESIDUOS,"
+
+PMIRS de Alcala no esta operativa, escombros llevados a lotes valdios",PUBLICABLE,NO,6,GO-GV
+76020,Alcalá,ARO Norte - Cartago,PERSPECTIVA DE RECUPERACIÓN,Recolección de basuras,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,6,GO-GV
+76020,Alcalá,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Energía eléctrica,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,6,GW-HD
+76020,Alcalá,ARO Norte - Cartago,PERSPECTIVA DE RECUPERACIÓN,Energía eléctrica,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,6,GW-HD
+76020,Alcalá,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Gas,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,6,HE-HL
+76020,Alcalá,ARO Norte - Cartago,PERSPECTIVA DE RECUPERACIÓN,Gas,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,6,HE-HL
+76036,Andalucía,ARO Centro - Tuluá,DESCRIPCIÓN DE LA AFECTACIÓN,Acueducto,AFECTACIÓN REPORTADA,"Se presentaron daños menores en algunas estructuras y se registró la interrupción del servicio de abastecimiento de agua en la zona urbana, debido a la falta de suministro de energía eléctrica.",PUBLICABLE,NO,7,FQ-FX
+76036,Andalucía,ARO Centro - Tuluá,PERSPECTIVA DE RECUPERACIÓN,Acueducto,PERSPECTIVA / SEGUIMIENTO,"Hoy 11/08/2026 el sistema se encuentra operando con normalidad, sin afectaciones en la infraestructura. ",PUBLICABLE,NO,7,FQ-FX
+76036,Andalucía,ARO Centro - Tuluá,DESCRIPCIÓN DE LA AFECTACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,7,FY-GF
+76036,Andalucía,ARO Centro - Tuluá,PERSPECTIVA DE RECUPERACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,7,FY-GF
+76036,Andalucía,ARO Centro - Tuluá,DESCRIPCIÓN DE LA AFECTACIÓN,Saneamiento básico,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,7,GG-GN
+76036,Andalucía,ARO Centro - Tuluá,PERSPECTIVA DE RECUPERACIÓN,Saneamiento básico,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,7,GG-GN
+76036,Andalucía,ARO Centro - Tuluá,DESCRIPCIÓN DE LA AFECTACIÓN,Recolección de basuras,MANEJO EXTRAORDINARIO DE RCD / RESIDUOS,"La recolección de los residuos de construcción y demolición (RCD) se está realizando con apoyo de la Administración Municipal. Los residuos recolectados están siendo trasladados temporalmente a lotes baldíos o predios municipales, debido a las afectaciones o limitaciones en la disposición habitual.
+",PUBLICABLE,NO,7,GO-GV
+76036,Andalucía,ARO Centro - Tuluá,DESCRIPCIÓN DE LA AFECTACIÓN,Energía eléctrica,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,7,GW-HD
+76036,Andalucía,ARO Centro - Tuluá,PERSPECTIVA DE RECUPERACIÓN,Energía eléctrica,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,7,GW-HD
+76036,Andalucía,ARO Centro - Tuluá,DESCRIPCIÓN DE LA AFECTACIÓN,Gas,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,7,HE-HL
+76036,Andalucía,ARO Centro - Tuluá,PERSPECTIVA DE RECUPERACIÓN,Gas,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,7,HE-HL
+76041,Ansermanuevo,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Acueducto,AFECTACIÓN REPORTADA,"PTAP urbana, con daños significativos en edificacion que alberga a operarios, pero sin afectaciones al personal y al suministro del servicio de acueducto",PUBLICABLE,NO,8,FQ-FX
+76041,Ansermanuevo,ARO Norte - Cartago,PERSPECTIVA DE RECUPERACIÓN,Acueducto,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,8,FQ-FX
+76041,Ansermanuevo,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,8,FY-GF
+76041,Ansermanuevo,ARO Norte - Cartago,PERSPECTIVA DE RECUPERACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,8,FY-GF
+76041,Ansermanuevo,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Saneamiento básico,AFECTACIÓN REPORTADA,"La PTAP de Acuavalle continúa prestando el servicio de acueducto sin afectaciones reportadas en el suministro. Se recomienda realizar seguimiento a los daños presentados en la infraestructura de la planta, especialmente en la edificación destinada a los operarios, con el fin de garantizar condiciones adecuadas de seguridad y operación.
+",PUBLICABLE,NO,8,GG-GN
+76041,Ansermanuevo,ARO Norte - Cartago,PERSPECTIVA DE RECUPERACIÓN,Saneamiento básico,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,8,GG-GN
+76041,Ansermanuevo,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Recolección de basuras,MANEJO EXTRAORDINARIO DE RCD / RESIDUOS,"La recolección de los residuos de construcción y demolición (RCD) se está realizando con apoyo de la Administración Municipal. Los residuos recolectados están siendo trasladados temporalmente a lotes baldíos o predios municipales, debido a las afectaciones o limitaciones en la disposición habitual.
+",PUBLICABLE,NO,8,GO-GV
+76041,Ansermanuevo,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Energía eléctrica,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,8,GW-HD
+76041,Ansermanuevo,ARO Norte - Cartago,PERSPECTIVA DE RECUPERACIÓN,Energía eléctrica,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,8,GW-HD
+76041,Ansermanuevo,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Gas,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,8,HE-HL
+76041,Ansermanuevo,ARO Norte - Cartago,PERSPECTIVA DE RECUPERACIÓN,Gas,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,8,HE-HL
+76054,Argelia,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Acueducto,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento.
+
+Los daños reportados fueron resueltos de inmediato
+""Actualizacion de información al 13/08""
+-Prestacion del servicio normalizado.",PUBLICABLE,NO,9,FQ-FX
+76054,Argelia,ARO Norte - Cartago,PERSPECTIVA DE RECUPERACIÓN,Acueducto,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,9,FQ-FX
+76054,Argelia,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,9,FY-GF
+76054,Argelia,ARO Norte - Cartago,PERSPECTIVA DE RECUPERACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,9,FY-GF
+76054,Argelia,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Recolección de basuras,MANEJO EXTRAORDINARIO DE RCD / RESIDUOS,"La recolección de los residuos de construcción y demolición (RCD) se está realizando con apoyo de la Administración Municipal. Los residuos recolectados están siendo trasladados temporalmente a lotes baldíos o predios municipales, debido a las afectaciones o limitaciones en la disposición habitual.
+",PUBLICABLE,NO,9,GO-GV
+76054,Argelia,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Energía eléctrica,RECUPERADO / OPERATIVO,"No hay energía electrica en ningún punto del munipio. Estado crítico la evaluación del daño.
+
+Al no haber energía no hay funcionamiento de las máquinas de gasolina
+
+""Actualizaciòn 13/08""
+Se restableció el suministro eléctrico",PUBLICABLE,NO,9,GW-HD
+76054,Argelia,ARO Norte - Cartago,PERSPECTIVA DE RECUPERACIÓN,Energía eléctrica,PERSPECTIVA / SEGUIMIENTO,Evaluación e identificación del daño,PUBLICABLE,NO,9,GW-HD
+76054,Argelia,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Gas,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,9,HE-HL
+76054,Argelia,ARO Norte - Cartago,PERSPECTIVA DE RECUPERACIÓN,Gas,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,9,HE-HL
+76100,Bolívar,ARO Centro - Tuluá,DESCRIPCIÓN DE LA AFECTACIÓN,Acueducto,AFECTACIÓN REPORTADA,"Por daños en Sara BRUT a la planta solo ingresan 19 L/s dificultando el acceso al servicio, el cual de momento es intermiitente ",PUBLICABLE,NO,10,FQ-FX
+76100,Bolívar,ARO Centro - Tuluá,PERSPECTIVA DE RECUPERACIÓN,Acueducto,PERSPECTIVA / SEGUIMIENTO,Se estima que mañana en la noche entre en normal funcionamiento,PUBLICABLE,NO,10,FQ-FX
+76100,Bolívar,ARO Centro - Tuluá,DESCRIPCIÓN DE LA AFECTACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,10,FY-GF
+76100,Bolívar,ARO Centro - Tuluá,PERSPECTIVA DE RECUPERACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,10,FY-GF
+76100,Bolívar,ARO Centro - Tuluá,DESCRIPCIÓN DE LA AFECTACIÓN,Saneamiento básico,AFECTACIÓN REPORTADA,Afectaciones en infraestructura habitacional. diicultades en prestación de servicios públicos. Ausencia o intermitencia del suministro de agua potable,PUBLICABLE,NO,10,GG-GN
+76100,Bolívar,ARO Centro - Tuluá,DESCRIPCIÓN DE LA AFECTACIÓN,Recolección de basuras,MANEJO EXTRAORDINARIO DE RCD / RESIDUOS,"La recolección de los residuos de construcción y demolición (RCD) se está realizando con apoyo de la Administración Municipal. Los residuos recolectados están siendo trasladados temporalmente a lotes baldíos o predios municipales, debido a las afectaciones o limitaciones en la disposición habitual.
+",PUBLICABLE,NO,10,GO-GV
+76109,Buenaventura,ARO Sur - Cali,DESCRIPCIÓN DE LA AFECTACIÓN,Acueducto,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,11,FQ-FX
+76109,Buenaventura,ARO Sur - Cali,PERSPECTIVA DE RECUPERACIÓN,Acueducto,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,11,FQ-FX
+76109,Buenaventura,ARO Sur - Cali,DESCRIPCIÓN DE LA AFECTACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,11,FY-GF
+76109,Buenaventura,ARO Sur - Cali,PERSPECTIVA DE RECUPERACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,11,FY-GF
+76109,Buenaventura,ARO Sur - Cali,DESCRIPCIÓN DE LA AFECTACIÓN,Recolección de basuras,MANEJO EXTRAORDINARIO DE RCD / RESIDUOS,"La recolección de los residuos de construcción y demolición (RCD) se está realizando con apoyo de la Administración Municipal. Los residuos recolectados están siendo trasladados temporalmente a lotes baldíos o predios municipales, debido a las afectaciones o limitaciones en la disposición habitual.
+",PUBLICABLE,NO,11,GO-GV
+76109,Buenaventura,ARO Sur - Cali,PERSPECTIVA DE RECUPERACIÓN,Energía eléctrica,RECUPERACIÓN / RESTABLECIMIENTO,"Se reestableció 11 de agosto.
+Algunos barrios persiste",PUBLICABLE,NO,11,GW-HD
+76109,Buenaventura,ARO Sur - Cali,PERSPECTIVA DE RECUPERACIÓN,Gas,PERSPECTIVA / SEGUIMIENTO,Vehículo que envíe gas,PUBLICABLE,NO,11,HE-HL
+76111,Guadalajara de Buga,ARO Centro - Tuluá,DESCRIPCIÓN DE LA AFECTACIÓN,Acueducto,RECUPERADO / OPERATIVO,"""Actualizaciòn 13/08""
+-  Prestación del servicio normalizado",PUBLICABLE,NO,12,FQ-FX
+76111,Guadalajara de Buga,ARO Centro - Tuluá,PERSPECTIVA DE RECUPERACIÓN,Acueducto,RECUPERACIÓN / RESTABLECIMIENTO,"""Actualizaciòn 13/08""
+- Reparaciones en canal de aducción. Prestación del servicio normalizado",PUBLICABLE,NO,12,FQ-FX
+76111,Guadalajara de Buga,ARO Centro - Tuluá,DESCRIPCIÓN DE LA AFECTACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"EN ZONAS URBANAS:
+* CANAL DE ADUCCIÓN GRIETAS EN DOS PUNTOS
+* INESTABILIDAD TALUD VIADUCTO SUR
+* DAÑO TECHO ALMACÉN SEDE TANQUES ANTIGUOS 
+*  INESTABILIDAD TALUD VIADUCTO AGUA CRUDA 
+(BRISAS)
+* FISURAS EN TANQUES DE ALMACENAMIENTO DE AGUA 
+POTABLE
+
+ZONAS RURALES:
+*TANQUE ALMACENAMIENTO CHAMBIMBAL (SAN 
+ANTONIO) PENDIENTE VISITA SEC OBRAS
+*  FISURA MURO DE CONTENCIÓN CANAL DE 
+ADUCCIÓN (CERCA A VILLA DEL RÍO)
+""Actualizaciòn 13/08""
+Sistemas conducción de de residuos líquidos 
+EN ZONAS URBANAS:
+-Aguas servidas por sistemas de alcantarillado operando normal
+ZONAS RURALES:
+-No hay informacion de vertimiento a cielo abierto.
+PTAR
+-Prestaciòn del servicio normalizado.",PUBLICABLE,NO,12,FY-GF
+76111,Guadalajara de Buga,ARO Centro - Tuluá,DESCRIPCIÓN DE LA AFECTACIÓN,Saneamiento básico,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,12,GG-GN
+76111,Guadalajara de Buga,ARO Centro - Tuluá,PERSPECTIVA DE RECUPERACIÓN,Saneamiento básico,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,12,GG-GN
+76111,Guadalajara de Buga,ARO Centro - Tuluá,DESCRIPCIÓN DE LA AFECTACIÓN,Recolección de basuras,MANEJO EXTRAORDINARIO DE RCD / RESIDUOS,"La recolección de los residuos de construcción y demolición (RCD) se está realizando con apoyo de la Administración Municipal. Los residuos recolectados están siendo trasladados temporalmente a lotes baldíos o predios municipales, debido a las afectaciones o limitaciones en la disposición habitual.
+""Actualizaciòn 13/08""
+El relleno sanitario se ubica en el Municipio de San Pedro:
+- No se tienen novedades informadas
+- Operaciòn con Normalidad en el relleno.
+Recolecciòn de residuos solidos (zona urbano):
+- Rutas de recoleccion operando normalmente urbanas y rurales.",PUBLICABLE,NO,12,GO-GV
+76113,Bugalagrande,ARO Centro - Tuluá,DESCRIPCIÓN DE LA AFECTACIÓN,Acueducto,RECUPERADO / OPERATIVO,"URBANO: Se presentaron daños menores en algunas estructuras y se registró la interrupción del servicio de abastecimiento de agua en la zona urbana, debido a la falta de suministro de energía eléctrica. 
+
+RURAL: 
+Acueducto Ceilan, reporta operación normal. Sin afectación en infraestructura.
+Acueductos El Guayabo y San Antonio, no reportan daños en infraestructura. Suspensión temporal por fluido eléctrico. 
+Acueducto Mestizal. Se presentó afectación de la infraestructura de soporte del tanque. Por lo cual no hay servicio continuo. Al parecer las afectaciones comprometen la estabilidad de la estructura. ",PUBLICABLE,NO,13,FQ-FX
+76113,Bugalagrande,ARO Centro - Tuluá,PERSPECTIVA DE RECUPERACIÓN,Acueducto,RECUPERACIÓN / RESTABLECIMIENTO,"URBANO: Hoy 11/08/2026 el sistema se encuentra operando con normalidad, sin afectaciones en la infraestructura.
+
+RURAL: Hoy 11/08/2025 los acueductos de El Guayabo y San Antonio, se restableció el servicio.
+En el acueducto Mestizal, se está prestando servicio durante 1 hora al día. Sin generar peso al tanque.",PUBLICABLE,NO,13,FQ-FX
+76113,Bugalagrande,ARO Centro - Tuluá,DESCRIPCIÓN DE LA AFECTACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,13,FY-GF
+76113,Bugalagrande,ARO Centro - Tuluá,PERSPECTIVA DE RECUPERACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,13,FY-GF
+76113,Bugalagrande,ARO Centro - Tuluá,DESCRIPCIÓN DE LA AFECTACIÓN,Recolección de basuras,MANEJO EXTRAORDINARIO DE RCD / RESIDUOS,"La recolección de los residuos de construcción y demolición (RCD) se está realizando con apoyo de la Administración Municipal. Los residuos recolectados están siendo trasladados temporalmente a lotes baldíos o predios municipales, debido a las afectaciones o limitaciones en la disposición habitual.
+",PUBLICABLE,NO,13,GO-GV
+76113,Bugalagrande,ARO Centro - Tuluá,DESCRIPCIÓN DE LA AFECTACIÓN,Energía eléctrica,INFORMACIÓN PARCIAL / REVISAR,sin fluido electrico desde ayer en el barrio pablo sexto,PUBLICABLE,NO,13,GW-HD
+76122,Caicedonia,ARO Centro - Tuluá,DESCRIPCIÓN DE LA AFECTACIÓN,Acueducto,INFORMACIÓN PARCIAL / REVISAR,FUNCIONAN INTERMITENTES POR QUE NO HAY FLUIDO ELECTRICO ,PUBLICABLE,NO,14,FQ-FX
+76122,Caicedonia,ARO Centro - Tuluá,DESCRIPCIÓN DE LA AFECTACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,14,FY-GF
+76122,Caicedonia,ARO Centro - Tuluá,PERSPECTIVA DE RECUPERACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,14,FY-GF
+76122,Caicedonia,ARO Centro - Tuluá,DESCRIPCIÓN DE LA AFECTACIÓN,Recolección de basuras,AFECTACIÓN REPORTADA,"se está realizando la recolección de basuras pero la vía para la deposición  final ubicada en el departamento del Quindio está cerrada por daños en puente
+",PUBLICABLE,NO,14,GO-GV
+76122,Caicedonia,ARO Centro - Tuluá,DESCRIPCIÓN DE LA AFECTACIÓN,Energía eléctrica,AFECTACIÓN REPORTADA,Afectaciones en postes y cableado eléctrico.,PUBLICABLE,NO,14,GW-HD
+76126,Calima (El Darién),ARO Centro - Tuluá,DESCRIPCIÓN DE LA AFECTACIÓN,Acueducto,INFORMACIÓN PARCIAL / REVISAR,funcionando,PUBLICABLE,NO,15,FQ-FX
+76126,Calima (El Darién),ARO Centro - Tuluá,PERSPECTIVA DE RECUPERACIÓN,Alcantarillado,PERSPECTIVA / SEGUIMIENTO,funcionando,PUBLICABLE,NO,15,FY-GF
+76126,Calima (El Darién),ARO Centro - Tuluá,DESCRIPCIÓN DE LA AFECTACIÓN,Saneamiento básico,AFECTACIÓN REPORTADA,"El albergue cuenta con acceso a agua para consumo humano. Se reportan afectaciones en la PTAR del municipio, por lo que se requiere realizar seguimiento a su estado y funcionamiento, así como verificar las condiciones de manejo y disposición de aguas residuales. Se recomienda mantener vigilancia sobre las condiciones sanitarias del albergue y garantizar la continuidad del suministro de agua para las personas alojadas.
+
+",PUBLICABLE,NO,15,GG-GN
+76126,Calima (El Darién),ARO Centro - Tuluá,DESCRIPCIÓN DE LA AFECTACIÓN,Recolección de basuras,INFORMACIÓN PARCIAL / REVISAR,funcionando,PUBLICABLE,NO,15,GO-GV
+76130,Candelaria,ARO Sur - Cali,DESCRIPCIÓN DE LA AFECTACIÓN,Acueducto,AFECTACIÓN REPORTADA,"Tienen 4 tanques del acueducto municipal en riesgo, son acueductos comunitarios que se pueden caer 2. Los otros 2 están averiados (Corregimientos de Lauro y Arenal)",PUBLICABLE,NO,16,FQ-FX
+76130,Candelaria,ARO Sur - Cali,PERSPECTIVA DE RECUPERACIÓN,Acueducto,PERSPECTIVA / SEGUIMIENTO,Valoración inicial del riesgo y daño,PUBLICABLE,NO,16,FQ-FX
+76130,Candelaria,ARO Sur - Cali,DESCRIPCIÓN DE LA AFECTACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,16,FY-GF
+76130,Candelaria,ARO Sur - Cali,PERSPECTIVA DE RECUPERACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,16,FY-GF
+76130,Candelaria,ARO Sur - Cali,DESCRIPCIÓN DE LA AFECTACIÓN,Saneamiento básico,AFECTACIÓN REPORTADA,No se reportan daños y/o afectaciones,PUBLICABLE,NO,16,GG-GN
+76130,Candelaria,ARO Sur - Cali,PERSPECTIVA DE RECUPERACIÓN,Saneamiento básico,PERSPECTIVA / SEGUIMIENTO,N/A,PUBLICABLE,NO,16,GG-GN
+76130,Candelaria,ARO Sur - Cali,DESCRIPCIÓN DE LA AFECTACIÓN,Recolección de basuras,MANEJO EXTRAORDINARIO DE RCD / RESIDUOS,"La recolección de los residuos de construcción y demolición (RCD) se está realizando con apoyo de la Administración Municipal. Los residuos recolectados están siendo trasladados temporalmente a lotes baldíos o predios municipales, debido a las afectaciones o limitaciones en la disposición habitual.
+",PUBLICABLE,NO,16,GO-GV
+76130,Candelaria,ARO Sur - Cali,DESCRIPCIÓN DE LA AFECTACIÓN,Energía eléctrica,AFECTACIÓN REPORTADA,"5 sectores sin energia desde el 10 de agosto. Corregimiento El Cabuyal, Villagorgona, El Arenal, Cabecera Municipal, El Tiple",PUBLICABLE,NO,16,GW-HD
+76130,Candelaria,ARO Sur - Cali,PERSPECTIVA DE RECUPERACIÓN,Energía eléctrica,PERSPECTIVA / SEGUIMIENTO,EL DIA DE HOY 11 DE AGOSTO EL CONSEJO MPAL DE GESTION DEL RIESGO CONVOCA A CELSIA (EMPRESA RESPONSABLE DE LA PRESTACIÓN DE SERVICIO DE ENERGIA) Y HACE EL REQUERIMIENTO PARA LA RECONEXIÓN DEL SERVICIO Y LA EMPRESA CONFIRMA QUE SE ESPERA QUE EN HORAS DE LA TARDE SE REESTABLESCA EL SERVICIO,PUBLICABLE,NO,16,GW-HD
+76130,Candelaria,ARO Sur - Cali,DESCRIPCIÓN DE LA AFECTACIÓN,Gas,AFECTACIÓN REPORTADA,No se reportan daños y/o afectaciones,PUBLICABLE,NO,16,HE-HL
+76130,Candelaria,ARO Sur - Cali,PERSPECTIVA DE RECUPERACIÓN,Gas,PERSPECTIVA / SEGUIMIENTO,N/A,PUBLICABLE,NO,16,HE-HL
+76147,Cartago,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Acueducto,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,17,FQ-FX
+76147,Cartago,ARO Norte - Cartago,PERSPECTIVA DE RECUPERACIÓN,Acueducto,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,17,FQ-FX
+76147,Cartago,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,17,FY-GF
+76147,Cartago,ARO Norte - Cartago,PERSPECTIVA DE RECUPERACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,17,FY-GF
+76147,Cartago,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Saneamiento básico,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,17,GG-GN
+76147,Cartago,ARO Norte - Cartago,PERSPECTIVA DE RECUPERACIÓN,Saneamiento básico,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,17,GG-GN
+76147,Cartago,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Recolección de basuras,MANEJO EXTRAORDINARIO DE RCD / RESIDUOS,"La recolección de los residuos de construcción y demolición (RCD) se está realizando con apoyo de la Administración Municipal. Los residuos recolectados están siendo trasladados temporalmente a lotes baldíos o predios municipales, debido a las afectaciones o limitaciones en la disposición habitual.
+",PUBLICABLE,NO,17,GO-GV
+76147,Cartago,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Energía eléctrica,AFECTACIÓN REPORTADA,Durante la emergencia se presentaron afectaciones que fueron superadas con éxito dentro de las primeras horas.,PUBLICABLE,NO,17,GW-HD
+76147,Cartago,ARO Norte - Cartago,PERSPECTIVA DE RECUPERACIÓN,Energía eléctrica,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,17,GW-HD
+76233,Dagua,ARO Sur - Cali,DESCRIPCIÓN DE LA AFECTACIÓN,Acueducto,AFECTACIÓN REPORTADA,"Porvernir parte baja, hospital, bellavista parte baja tienen agua.
+
+Sin agua: toda la parte alta ( Barrio Remedios, Bellavista, Ricaurte) se reparte en carrotanque.
+
+12/08/2026: Acueducto Urbano fuera de servicio por daño en red principal de 8 pulgadas. Tambien veredas de San Vicente y San Joaquin.
+
+km 30 tambien afectado en un 50% y Loboguerrero sin servicio.
+
+El Piñal y La Maria (90%) Colapsado",PUBLICABLE,NO,18,FQ-FX
+76233,Dagua,ARO Sur - Cali,PERSPECTIVA DE RECUPERACIÓN,Acueducto,PERSPECTIVA / SEGUIMIENTO,"Motobomba: 
+Laumayer / Siemens 40 caballos de fuerza con 2 arrancadores, trifasica/tres fases, 5 hilos. Tensión operacional: 220, tension nominal: 600, IQ 40, IP 54, Frecuencia 60.",PUBLICABLE,NO,18,FQ-FX
+76233,Dagua,ARO Sur - Cali,DESCRIPCIÓN DE LA AFECTACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,18,FY-GF
+76233,Dagua,ARO Sur - Cali,PERSPECTIVA DE RECUPERACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,18,FY-GF
+76233,Dagua,ARO Sur - Cali,DESCRIPCIÓN DE LA AFECTACIÓN,Saneamiento básico,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,18,GG-GN
+76233,Dagua,ARO Sur - Cali,PERSPECTIVA DE RECUPERACIÓN,Saneamiento básico,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,18,GG-GN
+76233,Dagua,ARO Sur - Cali,DESCRIPCIÓN DE LA AFECTACIÓN,Recolección de basuras,MANEJO EXTRAORDINARIO DE RCD / RESIDUOS,"La recolección de los residuos de construcción y demolición (RCD) se está realizando con apoyo de la Administración Municipal. Los residuos recolectados están siendo trasladados temporalmente a lotes baldíos o predios municipales, debido a las afectaciones o limitaciones en la disposición habitual.
+",PUBLICABLE,NO,18,GO-GV
+76233,Dagua,ARO Sur - Cali,PERSPECTIVA DE RECUPERACIÓN,Gas,PERSPECTIVA / SEGUIMIENTO,Recarga de gas con vehículo para suministro,PUBLICABLE,NO,18,HE-HL
+76243,El Águila,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Acueducto,RECUPERADO / OPERATIVO,"se realiza contacto, no se indican afectaciones hasta el momento.
+
+Mas de 100 viviendas urbanas afectadas y 300 viviendas rurales sin agua",PUBLICABLE,NO,19,FQ-FX
+76243,El Águila,ARO Norte - Cartago,PERSPECTIVA DE RECUPERACIÓN,Acueducto,RECUPERACIÓN / RESTABLECIMIENTO,Restablecimiento del servicio el dia 11/08/2026 con parametros de cloro dentro de la norma ,PUBLICABLE,NO,19,FQ-FX
+76243,El Águila,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,19,FY-GF
+76243,El Águila,ARO Norte - Cartago,PERSPECTIVA DE RECUPERACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,19,FY-GF
+76243,El Águila,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Recolección de basuras,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento. Se requiere maquinaria amarilla para recoleccion de escombros. Al momento son recogidos y ubicados en valdios",PUBLICABLE,NO,19,GO-GV
+76243,El Águila,ARO Norte - Cartago,PERSPECTIVA DE RECUPERACIÓN,Recolección de basuras,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,19,GO-GV
+76243,El Águila,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Energía eléctrica,INFORMACIÓN PARCIAL / REVISAR,No hay servicio de energía desde el 10 de agosto de 2026,PUBLICABLE,NO,19,GW-HD
+76246,El Cairo,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Acueducto,AFECTACIÓN REPORTADA,"se cuenta con suministro a aproximadamente el 80% de la zona urbana 
+
+Se cuenta con un equipo de emergencia para apoyar la reparación de los daños causados en la red",PUBLICABLE,NO,20,FQ-FX
+76246,El Cairo,ARO Norte - Cartago,PERSPECTIVA DE RECUPERACIÓN,Acueducto,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,20,FQ-FX
+76246,El Cairo,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"se realiza contacto, no se indican afectaciones hasta el momento ",PUBLICABLE,NO,20,FY-GF
+76246,El Cairo,ARO Norte - Cartago,PERSPECTIVA DE RECUPERACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"se realiza contacto, no se indican afectaciones hasta el momento ",PUBLICABLE,NO,20,FY-GF
+76246,El Cairo,ARO Norte - Cartago,PERSPECTIVA DE RECUPERACIÓN,Saneamiento básico,PERSPECTIVA / SEGUIMIENTO,"Mantener disponibles los equipos y recursos necesarios para atender oportunamente las afectaciones que puedan presentarse en las redes de acueducto y saneamiento. Asimismo, se debe realizar seguimiento a las condiciones de prestación del servicio y a las zonas que aún no cuentan con cobertura de acueducto, con el fin de identificar necesidades y gestionar acciones de mejora.",PUBLICABLE,NO,20,GG-GN
+76246,El Cairo,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Recolección de basuras,MANEJO EXTRAORDINARIO DE RCD / RESIDUOS,"La recolección de los residuos de construcción y demolición (RCD) se está realizando con apoyo de la Administración Municipal. Los residuos recolectados están siendo trasladados temporalmente a lotes baldíos o predios municipales, debido a las afectaciones o limitaciones en la disposición habitual.",PUBLICABLE,NO,20,GO-GV
+76246,El Cairo,ARO Norte - Cartago,PERSPECTIVA DE RECUPERACIÓN,Recolección de basuras,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,20,GO-GV
+76246,El Cairo,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Energía eléctrica,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,20,GW-HD
+76246,El Cairo,ARO Norte - Cartago,PERSPECTIVA DE RECUPERACIÓN,Energía eléctrica,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,20,GW-HD
+76246,El Cairo,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Gas,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,20,HE-HL
+76246,El Cairo,ARO Norte - Cartago,PERSPECTIVA DE RECUPERACIÓN,Gas,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,20,HE-HL
+76248,El Cerrito,ARO Sur - Cali,PERSPECTIVA DE RECUPERACIÓN,Acueducto,RECUPERACIÓN / RESTABLECIMIENTO, El 11/08/2026 se reestableció el servicio de acueducto en la zona urbana del municipio,PUBLICABLE,NO,21,FQ-FX
+76248,El Cerrito,ARO Sur - Cali,DESCRIPCIÓN DE LA AFECTACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,21,FY-GF
+76248,El Cerrito,ARO Sur - Cali,PERSPECTIVA DE RECUPERACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,21,FY-GF
+76248,El Cerrito,ARO Sur - Cali,DESCRIPCIÓN DE LA AFECTACIÓN,Recolección de basuras,MANEJO EXTRAORDINARIO DE RCD / RESIDUOS,"La recolección de los residuos de construcción y demolición (RCD) se está realizando con apoyo de la Administración Municipal. Los residuos recolectados están siendo trasladados temporalmente a lotes baldíos o predios municipales, debido a las afectaciones o limitaciones en la disposición habitual.
+",PUBLICABLE,NO,21,GO-GV
+76250,El Dovio,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Acueducto,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,22,FQ-FX
+76250,El Dovio,ARO Norte - Cartago,PERSPECTIVA DE RECUPERACIÓN,Acueducto,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,22,FQ-FX
+76250,El Dovio,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,22,FY-GF
+76250,El Dovio,ARO Norte - Cartago,PERSPECTIVA DE RECUPERACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,22,FY-GF
+76250,El Dovio,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Saneamiento básico,INFORMACIÓN PARCIAL / REVISAR,"Se requiere realizar seguimiento al manejo y disposición final de los residuos de construcción y demolición, teniendo en cuenta que el PMIRS no se encuentra funcional. La Administración Municipal adelanta la recolección de los escombros como medida de atención.",PUBLICABLE,NO,22,GG-GN
+76250,El Dovio,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Recolección de basuras,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento.
+
+PMIRS  no esta operativa, escombros llevados a lotes valdios",PUBLICABLE,NO,22,GO-GV
+76250,El Dovio,ARO Norte - Cartago,PERSPECTIVA DE RECUPERACIÓN,Recolección de basuras,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,22,GO-GV
+76250,El Dovio,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Energía eléctrica,INFORMACIÓN PARCIAL / REVISAR,NO HAY SUMINSTRO ELECTRICO NI ENTERNET. - Verificar la informacion,PUBLICABLE,NO,22,GW-HD
+76275,Florida,ARO Sur - Cali,DESCRIPCIÓN DE LA AFECTACIÓN,Acueducto,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,23,FQ-FX
+76275,Florida,ARO Sur - Cali,PERSPECTIVA DE RECUPERACIÓN,Acueducto,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,23,FQ-FX
+76275,Florida,ARO Sur - Cali,DESCRIPCIÓN DE LA AFECTACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,23,FY-GF
+76275,Florida,ARO Sur - Cali,PERSPECTIVA DE RECUPERACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,23,FY-GF
+76275,Florida,ARO Sur - Cali,DESCRIPCIÓN DE LA AFECTACIÓN,Recolección de basuras,MANEJO EXTRAORDINARIO DE RCD / RESIDUOS,"La recolección de los residuos de construcción y demolición (RCD) se está realizando con apoyo de la Administración Municipal. Los residuos recolectados están siendo trasladados temporalmente a lotes baldíos o predios municipales, debido a las afectaciones o limitaciones en la disposición habitual.
+ ",PUBLICABLE,NO,23,GO-GV
+76306,Ginebra,ARO Sur - Cali,PERSPECTIVA DE RECUPERACIÓN,Acueducto,PERSPECTIVA / SEGUIMIENTO,"No se presentan afectaciones en el acueducto urbano, el cual opera con normalidad. La planta de tratamiento presentó algunas grietas en una de sus paredes, sin que esto haya generado mayores afectaciones en su funcionamiento.
+
+El acueducto de Costa Rica también opera con normalidad.",PUBLICABLE,NO,24,FQ-FX
+76306,Ginebra,ARO Sur - Cali,DESCRIPCIÓN DE LA AFECTACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,24,FY-GF
+76306,Ginebra,ARO Sur - Cali,PERSPECTIVA DE RECUPERACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,24,FY-GF
+76306,Ginebra,ARO Sur - Cali,DESCRIPCIÓN DE LA AFECTACIÓN,Recolección de basuras,MANEJO EXTRAORDINARIO DE RCD / RESIDUOS,"La recolección de los residuos de construcción y demolición (RCD) se está realizando con apoyo de la Administración Municipal. Los residuos recolectados están siendo trasladados temporalmente a lotes baldíos o predios municipales, debido a las afectaciones o limitaciones en la disposición habitual.
+ ",PUBLICABLE,NO,24,GO-GV
+76318,Guacarí,ARO Sur - Cali,DESCRIPCIÓN DE LA AFECTACIÓN,Acueducto,AFECTACIÓN REPORTADA,"""Actualización de información 13/08""",PUBLICABLE,NO,25,FQ-FX
+76318,Guacarí,ARO Sur - Cali,PERSPECTIVA DE RECUPERACIÓN,Acueducto,PERSPECTIVA / SEGUIMIENTO,sin afectacion en la prestacion del servicio y con disponibilidad de carrotanques para cubrir emergencias ,PUBLICABLE,NO,25,FQ-FX
+76318,Guacarí,ARO Sur - Cali,DESCRIPCIÓN DE LA AFECTACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,25,FY-GF
+76318,Guacarí,ARO Sur - Cali,PERSPECTIVA DE RECUPERACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,25,FY-GF
+76318,Guacarí,ARO Sur - Cali,DESCRIPCIÓN DE LA AFECTACIÓN,Recolección de basuras,MANEJO EXTRAORDINARIO DE RCD / RESIDUOS,"La recolección de los residuos de construcción y demolición (RCD) se está realizando con apoyo de la Administración Municipal. Los residuos recolectados están siendo trasladados temporalmente a lotes baldíos o predios municipales, debido a las afectaciones o limitaciones en la disposición habitual.
+ ",PUBLICABLE,NO,25,GO-GV
+76364,Jamundí,ARO Sur - Cali,DESCRIPCIÓN DE LA AFECTACIÓN,Acueducto,PENDIENTE / SIN INFORMACIÓN,"se realiza contacto, no se indican afectaciones hasta el momento",PUBLICABLE,NO,26,FQ-FX
+76364,Jamundí,ARO Sur - Cali,PERSPECTIVA DE RECUPERACIÓN,Acueducto,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,26,FQ-FX
+76364,Jamundí,ARO Sur - Cali,DESCRIPCIÓN DE LA AFECTACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,26,FY-GF
+76364,Jamundí,ARO Sur - Cali,PERSPECTIVA DE RECUPERACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,26,FY-GF
+76364,Jamundí,ARO Sur - Cali,DESCRIPCIÓN DE LA AFECTACIÓN,Saneamiento básico,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,26,GG-GN
+76364,Jamundí,ARO Sur - Cali,PERSPECTIVA DE RECUPERACIÓN,Saneamiento básico,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,26,GG-GN
+76364,Jamundí,ARO Sur - Cali,DESCRIPCIÓN DE LA AFECTACIÓN,Recolección de basuras,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,26,GO-GV
+76364,Jamundí,ARO Sur - Cali,PERSPECTIVA DE RECUPERACIÓN,Recolección de basuras,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,26,GO-GV
+76364,Jamundí,ARO Sur - Cali,DESCRIPCIÓN DE LA AFECTACIÓN,Energía eléctrica,INFORMACIÓN PARCIAL / REVISAR,Servicio intermitente,PUBLICABLE,NO,26,GW-HD
+76364,Jamundí,ARO Sur - Cali,PERSPECTIVA DE RECUPERACIÓN,Energía eléctrica,PERSPECTIVA / SEGUIMIENTO,0.0,PUBLICABLE,NO,26,GW-HD
+76377,La Cumbre,ARO Sur - Cali,DESCRIPCIÓN DE LA AFECTACIÓN,Acueducto,RECUPERADO / OPERATIVO,DISMINUCION EN LA OPERACION DEBIDO A LA FALTA DE FLUIDO ELECTRICO,PUBLICABLE,NO,27,FQ-FX
+76377,La Cumbre,ARO Sur - Cali,PERSPECTIVA DE RECUPERACIÓN,Acueducto,RECUPERACIÓN / RESTABLECIMIENTO,RESTABLECIMIENTO DEL SERVICIO EN EL MENOR TIEMPO POSIBLE,PUBLICABLE,NO,27,FQ-FX
+76377,La Cumbre,ARO Sur - Cali,DESCRIPCIÓN DE LA AFECTACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,27,FY-GF
+76377,La Cumbre,ARO Sur - Cali,PERSPECTIVA DE RECUPERACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,27,FY-GF
+76377,La Cumbre,ARO Sur - Cali,DESCRIPCIÓN DE LA AFECTACIÓN,Recolección de basuras,MANEJO EXTRAORDINARIO DE RCD / RESIDUOS,"La recolección de los residuos de construcción y demolición (RCD) se está realizando con apoyo de la Administración Municipal. Los residuos recolectados están siendo trasladados temporalmente a lotes baldíos o predios municipales, debido a las afectaciones o limitaciones en la disposición habitual.",PUBLICABLE,NO,27,GO-GV
+76377,La Cumbre,ARO Sur - Cali,DESCRIPCIÓN DE LA AFECTACIÓN,Energía eléctrica,INFORMACIÓN PARCIAL / REVISAR,CERCA DEL 60% DEL MUNICIPIO SE ENCUENTRA SIN FLUIDO ELECTRICO,PUBLICABLE,NO,27,GW-HD
+76377,La Cumbre,ARO Sur - Cali,PERSPECTIVA DE RECUPERACIÓN,Energía eléctrica,PERSPECTIVA / SEGUIMIENTO,ATENCION INMEDIATA DE LA EMPRESA CELSIA,PUBLICABLE,NO,27,GW-HD
+76400,La Unión,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Acueducto,RECUPERADO / OPERATIVO,Se encuentran con suministro por carrotanques debido a las afectaciones en SARA BRUT,PUBLICABLE,NO,28,FQ-FX
+76400,La Unión,ARO Norte - Cartago,PERSPECTIVA DE RECUPERACIÓN,Acueducto,RECUPERACIÓN / RESTABLECIMIENTO,"Hoy 11/08/2026 se abastecio con un Carrotanque algunos barrios de la zona urbana. A las 8:00 p.m. entra en operación la planta que se abastece del pozo profundo para abastecer el hospital del municipio y el 70% de la zona urbana. El 30% se abastecera el dia de mañana 12/08/2026 con un carrotanque. Se proyecta mañana 12/08/2026 en la noche, reestablecer la operación del  SARA- BRUT.  ",PUBLICABLE,NO,28,FQ-FX
+76400,La Unión,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,28,FY-GF
+76400,La Unión,ARO Norte - Cartago,PERSPECTIVA DE RECUPERACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,28,FY-GF
+76400,La Unión,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Recolección de basuras,MANEJO EXTRAORDINARIO DE RCD / RESIDUOS,"La recolección de los residuos de construcción y demolición (RCD) se está realizando con apoyo de la Administración Municipal. Los residuos recolectados están siendo trasladados temporalmente a lotes baldíos o predios municipales, debido a las afectaciones o limitaciones en la disposición habitual.",PUBLICABLE,NO,28,GO-GV
+76403,La Victoria,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Acueducto,RECUPERADO / OPERATIVO,"Suspensión temporal del acueducto por daños en tubería del SARA BRUT, una vez se reestablezca el fluido eléctrico se iniciará operaciones del acuedu cto con el pozo de La Dominga",PUBLICABLE,NO,29,FQ-FX
+76403,La Victoria,ARO Norte - Cartago,PERSPECTIVA DE RECUPERACIÓN,Acueducto,RECUPERACIÓN / RESTABLECIMIENTO,"Se proyecta mañana 12/08/2026 en la noche, reestablecer la operación del  SARA- BRUT.  acueductos rurales de mira valle, rivera alta afectacion por caida de tierra ",PUBLICABLE,NO,29,FQ-FX
+76403,La Victoria,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,29,FY-GF
+76403,La Victoria,ARO Norte - Cartago,PERSPECTIVA DE RECUPERACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,29,FY-GF
+76403,La Victoria,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Recolección de basuras,MANEJO EXTRAORDINARIO DE RCD / RESIDUOS,"La recolección de los residuos de construcción y demolición (RCD) se está realizando con apoyo de la Administración Municipal. Los residuos recolectados están siendo trasladados temporalmente a lotes baldíos o predios municipales, debido a las afectaciones o limitaciones en la disposición habitual.
+",PUBLICABLE,NO,29,GO-GV
+76497,Obando,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Acueducto,RECUPERADO / OPERATIVO,"Redes de distribucion afectadas, Suspensión temporal del acueducto por daños en el Sara Brut, fuente alterna de la quebrada El Naranjo esta en reparación, por problemas meses atrás con muros",PUBLICABLE,NO,30,FQ-FX
+76497,Obando,ARO Norte - Cartago,PERSPECTIVA DE RECUPERACIÓN,Acueducto,RECUPERACIÓN / RESTABLECIMIENTO,"tuberia y materiales
+
+Abastecimiento temporal de agua potable mediante carrotanque en la zona urbana del municipio.
+
+Se proyecta mañana 12/08/2026 en la noche, reestablecer la operación del  SARA- BRUT.  ",PUBLICABLE,NO,30,FQ-FX
+76497,Obando,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,30,FY-GF
+76497,Obando,ARO Norte - Cartago,PERSPECTIVA DE RECUPERACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,30,FY-GF
+76497,Obando,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Recolección de basuras,MANEJO EXTRAORDINARIO DE RCD / RESIDUOS,"La recolección de los residuos de construcción y demolición (RCD) se está realizando con apoyo de la Administración Municipal. Los residuos recolectados están siendo trasladados temporalmente a lotes baldíos o predios municipales, debido a las afectaciones o limitaciones en la disposición habitual.
+",PUBLICABLE,NO,30,GO-GV
+76520,Palmira,ARO Sur - Cali,DESCRIPCIÓN DE LA AFECTACIÓN,Acueducto,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,31,FQ-FX
+76520,Palmira,ARO Sur - Cali,PERSPECTIVA DE RECUPERACIÓN,Acueducto,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,31,FQ-FX
+76520,Palmira,ARO Sur - Cali,DESCRIPCIÓN DE LA AFECTACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,31,FY-GF
+76520,Palmira,ARO Sur - Cali,PERSPECTIVA DE RECUPERACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,31,FY-GF
+76520,Palmira,ARO Sur - Cali,DESCRIPCIÓN DE LA AFECTACIÓN,Recolección de basuras,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,31,GO-GV
+76520,Palmira,ARO Sur - Cali,PERSPECTIVA DE RECUPERACIÓN,Recolección de basuras,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,31,GO-GV
+76563,Pradera,ARO Sur - Cali,DESCRIPCIÓN DE LA AFECTACIÓN,Acueducto,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,32,FQ-FX
+76563,Pradera,ARO Sur - Cali,PERSPECTIVA DE RECUPERACIÓN,Acueducto,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,32,FQ-FX
+76563,Pradera,ARO Sur - Cali,DESCRIPCIÓN DE LA AFECTACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,32,FY-GF
+76563,Pradera,ARO Sur - Cali,PERSPECTIVA DE RECUPERACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,32,FY-GF
+76563,Pradera,ARO Sur - Cali,DESCRIPCIÓN DE LA AFECTACIÓN,Recolección de basuras,MANEJO EXTRAORDINARIO DE RCD / RESIDUOS,"La recolección de los residuos de construcción y demolición (RCD) se está realizando con apoyo de la Administración Municipal. Los residuos recolectados están siendo trasladados temporalmente a lotes baldíos o predios municipales, debido a las afectaciones o limitaciones en la disposición habitual.
+",PUBLICABLE,NO,32,GO-GV
+76606,Restrepo,ARO Centro - Tuluá,DESCRIPCIÓN DE LA AFECTACIÓN,Acueducto,RECUPERADO / OPERATIVO,"Suspensión temporal del acueducto.
+
+afectacion en infraestructura de PTAP Tableros y Urbanas. Reparaciones temporales para puesta en servicio.
+
+Se reestablece servicio ayer en la noche",PUBLICABLE,NO,33,FQ-FX
+76606,Restrepo,ARO Centro - Tuluá,PERSPECTIVA DE RECUPERACIÓN,Acueducto,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,33,FQ-FX
+76606,Restrepo,ARO Centro - Tuluá,DESCRIPCIÓN DE LA AFECTACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,33,FY-GF
+76606,Restrepo,ARO Centro - Tuluá,PERSPECTIVA DE RECUPERACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,33,FY-GF
+76606,Restrepo,ARO Centro - Tuluá,DESCRIPCIÓN DE LA AFECTACIÓN,Saneamiento básico,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,33,GG-GN
+76606,Restrepo,ARO Centro - Tuluá,PERSPECTIVA DE RECUPERACIÓN,Saneamiento básico,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,33,GG-GN
+76606,Restrepo,ARO Centro - Tuluá,DESCRIPCIÓN DE LA AFECTACIÓN,Recolección de basuras,MANEJO EXTRAORDINARIO DE RCD / RESIDUOS,"La recolección de los residuos de construcción y demolición (RCD) se está realizando con apoyo de la Administración Municipal. Los residuos recolectados están siendo trasladados temporalmente a lotes baldíos o predios municipales, debido a las afectaciones o limitaciones en la disposición habitual.
+",PUBLICABLE,NO,33,GO-GV
+76606,Restrepo,ARO Centro - Tuluá,DESCRIPCIÓN DE LA AFECTACIÓN,Energía eléctrica,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,33,GW-HD
+76606,Restrepo,ARO Centro - Tuluá,PERSPECTIVA DE RECUPERACIÓN,Energía eléctrica,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,33,GW-HD
+76606,Restrepo,ARO Centro - Tuluá,DESCRIPCIÓN DE LA AFECTACIÓN,Gas,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,33,HE-HL
+76606,Restrepo,ARO Centro - Tuluá,PERSPECTIVA DE RECUPERACIÓN,Gas,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,33,HE-HL
+76616,Riofrío,ARO Centro - Tuluá,DESCRIPCIÓN DE LA AFECTACIÓN,Acueducto,AFECTACIÓN REPORTADA,Acueducto veredal de Corozal-,PUBLICABLE,NO,34,FQ-FX
+76616,Riofrío,ARO Centro - Tuluá,PERSPECTIVA DE RECUPERACIÓN,Acueducto,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, se tiene información hasta el momento de grave afectacion en el acueducto veredal",PUBLICABLE,NO,34,FQ-FX
+76616,Riofrío,ARO Centro - Tuluá,DESCRIPCIÓN DE LA AFECTACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,34,FY-GF
+76616,Riofrío,ARO Centro - Tuluá,PERSPECTIVA DE RECUPERACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,34,FY-GF
+76616,Riofrío,ARO Centro - Tuluá,DESCRIPCIÓN DE LA AFECTACIÓN,Saneamiento básico,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,34,GG-GN
+76616,Riofrío,ARO Centro - Tuluá,PERSPECTIVA DE RECUPERACIÓN,Saneamiento básico,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,34,GG-GN
+76616,Riofrío,ARO Centro - Tuluá,DESCRIPCIÓN DE LA AFECTACIÓN,Recolección de basuras,MANEJO EXTRAORDINARIO DE RCD / RESIDUOS,"La recolección de los residuos de construcción y demolición (RCD) se está realizando con apoyo de la Administración Municipal. Los residuos recolectados están siendo trasladados temporalmente a lotes baldíos o predios municipales, debido a las afectaciones o limitaciones en la disposición habitual.
+",PUBLICABLE,NO,34,GO-GV
+76616,Riofrío,ARO Centro - Tuluá,DESCRIPCIÓN DE LA AFECTACIÓN,Energía eléctrica,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,34,GW-HD
+76616,Riofrío,ARO Centro - Tuluá,PERSPECTIVA DE RECUPERACIÓN,Energía eléctrica,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,34,GW-HD
+76616,Riofrío,ARO Centro - Tuluá,DESCRIPCIÓN DE LA AFECTACIÓN,Gas,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,34,HE-HL
+76616,Riofrío,ARO Centro - Tuluá,PERSPECTIVA DE RECUPERACIÓN,Gas,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,34,HE-HL
+76622,Roldanillo,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Acueducto,RECUPERADO / OPERATIVO,"Tubo madre averiado, afectando el suministro de agua potable en zona urbana.
+
+65% con abastecimiento de fuente alterna, de manera intermitente",PUBLICABLE,NO,35,FQ-FX
+76622,Roldanillo,ARO Norte - Cartago,PERSPECTIVA DE RECUPERACIÓN,Acueducto,RECUPERACIÓN / RESTABLECIMIENTO,"Se proyecta mañana 12/08/2026 en la noche, reestablecer la operación del  SARA- BRUT.  ",PUBLICABLE,NO,35,FQ-FX
+76622,Roldanillo,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,35,FY-GF
+76622,Roldanillo,ARO Norte - Cartago,PERSPECTIVA DE RECUPERACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,35,FY-GF
+76622,Roldanillo,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Saneamiento básico,AFECTACIÓN REPORTADA,El municipio se encuentra sin servicio de agua potable,PUBLICABLE,NO,35,GG-GN
+76622,Roldanillo,ARO Norte - Cartago,PERSPECTIVA DE RECUPERACIÓN,Saneamiento básico,RECUPERACIÓN / RESTABLECIMIENTO,Recuperable,PUBLICABLE,NO,35,GG-GN
+76622,Roldanillo,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Recolección de basuras,MANEJO EXTRAORDINARIO DE RCD / RESIDUOS,"La recolección de los residuos de construcción y demolición (RCD) se está realizando con apoyo de la Administración Municipal. Los residuos recolectados están siendo trasladados temporalmente a lotes baldíos o predios municipales, debido a las afectaciones o limitaciones en la disposición habitual.
+",PUBLICABLE,NO,35,GO-GV
+76622,Roldanillo,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Energía eléctrica,AFECTACIÓN REPORTADA,Municipio sin energía eléctrica desde el día del sismo,PUBLICABLE,NO,35,GW-HD
+76622,Roldanillo,ARO Norte - Cartago,PERSPECTIVA DE RECUPERACIÓN,Energía eléctrica,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,35,GW-HD
+76622,Roldanillo,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Gas,AFECTACIÓN REPORTADA,Fuga de gas en zona urbana,PUBLICABLE,NO,35,HE-HL
+76622,Roldanillo,ARO Norte - Cartago,PERSPECTIVA DE RECUPERACIÓN,Gas,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,35,HE-HL
+76670,San Pedro,ARO Centro - Tuluá,DESCRIPCIÓN DE LA AFECTACIÓN,Acueducto,RECUPERADO / OPERATIVO,Acueducto San José de San Pedro. No sé reporta afectación en la infraestructura del tanque. Suspensión del servicio por 24 horas por corte en el fluido eléctrico. ,PUBLICABLE,NO,36,FQ-FX
+76670,San Pedro,ARO Centro - Tuluá,PERSPECTIVA DE RECUPERACIÓN,Acueducto,RECUPERACIÓN / RESTABLECIMIENTO,Hoy 11/08/2026 se restableció el servicio.,PUBLICABLE,NO,36,FQ-FX
+76670,San Pedro,ARO Centro - Tuluá,DESCRIPCIÓN DE LA AFECTACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,36,FY-GF
+76670,San Pedro,ARO Centro - Tuluá,PERSPECTIVA DE RECUPERACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,36,FY-GF
+76670,San Pedro,ARO Centro - Tuluá,PERSPECTIVA DE RECUPERACIÓN,Saneamiento básico,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, a la espera de confirmacion de plan de contingencia y capacidad para recepcionar RCD",PUBLICABLE,NO,36,GG-GN
+76670,San Pedro,ARO Centro - Tuluá,DESCRIPCIÓN DE LA AFECTACIÓN,Recolección de basuras,MANEJO EXTRAORDINARIO DE RCD / RESIDUOS,"La recolección de los residuos de construcción y demolición (RCD) se está realizando con apoyo de la Administración Municipal. Los residuos recolectados están siendo trasladados temporalmente a lotes baldíos o predios municipales, debido a las afectaciones o limitaciones en la disposición habitual.
+",PUBLICABLE,NO,36,GO-GV
+76736,Sevilla,ARO Centro - Tuluá,DESCRIPCIÓN DE LA AFECTACIÓN,Acueducto,RECUPERADO / OPERATIVO,"La tuberia de aduccion de la plata de la zona urbana sufrio daños.
+
+Suspension parcial `por operaciones de control",PUBLICABLE,NO,37,FQ-FX
+76736,Sevilla,ARO Centro - Tuluá,PERSPECTIVA DE RECUPERACIÓN,Acueducto,RECUPERACIÓN / RESTABLECIMIENTO,El 11/08/2026 se solucionó el daño de la tuberia de aducción de la planta y el servicio de abastecimiento de la zona urbana esta completamente reestablecido. ,PUBLICABLE,NO,37,FQ-FX
+76736,Sevilla,ARO Centro - Tuluá,DESCRIPCIÓN DE LA AFECTACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,37,FY-GF
+76736,Sevilla,ARO Centro - Tuluá,PERSPECTIVA DE RECUPERACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,37,FY-GF
+76736,Sevilla,ARO Centro - Tuluá,DESCRIPCIÓN DE LA AFECTACIÓN,Recolección de basuras,MANEJO EXTRAORDINARIO DE RCD / RESIDUOS,"La recolección de los residuos de construcción y demolición (RCD) se está realizando con apoyo de la Administración Municipal. Los residuos recolectados están siendo trasladados temporalmente a lotes baldíos o predios municipales, debido a las afectaciones o limitaciones en la disposición habitual.
+",PUBLICABLE,NO,37,GO-GV
+76823,Toro,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Acueducto,RECUPERADO / OPERATIVO,Se Opera el acueducto a través de las 2 fuentes alternas al SARA BRUT. Por recalentamiento de las bombas del pozo proundo se suspendió la recarga de la PTAP de esta fuente.,PUBLICABLE,NO,38,FQ-FX
+76823,Toro,ARO Norte - Cartago,PERSPECTIVA DE RECUPERACIÓN,Acueducto,RECUPERACIÓN / RESTABLECIMIENTO,"Suspensión temporal de la recarga de la PTAP desde el pozo profundo, mientras se realizan adecuaciones al sistema de refrigeración.
+
+Se proyecta mañana 12/08/2026 en la noche, reestablecer la operación del  SARA- BRUT.  ",PUBLICABLE,NO,38,FQ-FX
+76823,Toro,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,38,FY-GF
+76823,Toro,ARO Norte - Cartago,PERSPECTIVA DE RECUPERACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,38,FY-GF
+76823,Toro,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Recolección de basuras,MANEJO EXTRAORDINARIO DE RCD / RESIDUOS,"La recolección de los residuos de construcción y demolición (RCD) se está realizando con apoyo de la Administración Municipal. Los residuos recolectados están siendo trasladados temporalmente a lotes baldíos o predios municipales, debido a las afectaciones o limitaciones en la disposición habitual.",PUBLICABLE,NO,38,GO-GV
+76828,Trujillo,ARO Centro - Tuluá,DESCRIPCIÓN DE LA AFECTACIÓN,Acueducto,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,39,FQ-FX
+76828,Trujillo,ARO Centro - Tuluá,PERSPECTIVA DE RECUPERACIÓN,Acueducto,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,39,FQ-FX
+76828,Trujillo,ARO Centro - Tuluá,DESCRIPCIÓN DE LA AFECTACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,39,FY-GF
+76828,Trujillo,ARO Centro - Tuluá,PERSPECTIVA DE RECUPERACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,39,FY-GF
+76828,Trujillo,ARO Centro - Tuluá,DESCRIPCIÓN DE LA AFECTACIÓN,Recolección de basuras,MANEJO EXTRAORDINARIO DE RCD / RESIDUOS,"La recolección de los residuos de construcción y demolición (RCD) se está realizando con apoyo de la Administración Municipal. Los residuos recolectados están siendo trasladados temporalmente a lotes baldíos o predios municipales, debido a las afectaciones o limitaciones en la disposición habitual.
+",PUBLICABLE,NO,39,GO-GV
+76828,Trujillo,ARO Centro - Tuluá,DESCRIPCIÓN DE LA AFECTACIÓN,Energía eléctrica,AFECTACIÓN REPORTADA,Sin servicio por caida de postes y daños en redes electricas,PUBLICABLE,NO,39,GW-HD
+76828,Trujillo,ARO Centro - Tuluá,PERSPECTIVA DE RECUPERACIÓN,Energía eléctrica,RECUPERACIÓN / RESTABLECIMIENTO,"Celsia indica que es prograsivo la recuperacion, priorizando la zona urbana",PUBLICABLE,NO,39,GW-HD
+76834,Tuluá,ARO Centro - Tuluá,DESCRIPCIÓN DE LA AFECTACIÓN,Acueducto,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,40,FQ-FX
+76834,Tuluá,ARO Centro - Tuluá,PERSPECTIVA DE RECUPERACIÓN,Acueducto,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,40,FQ-FX
+76834,Tuluá,ARO Centro - Tuluá,DESCRIPCIÓN DE LA AFECTACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,40,FY-GF
+76834,Tuluá,ARO Centro - Tuluá,PERSPECTIVA DE RECUPERACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,40,FY-GF
+76834,Tuluá,ARO Centro - Tuluá,DESCRIPCIÓN DE LA AFECTACIÓN,Recolección de basuras,MANEJO EXTRAORDINARIO DE RCD / RESIDUOS,"La recolección de los residuos de construcción y demolición (RCD) se está realizando con apoyo de la Administración Municipal. Los residuos recolectados están siendo trasladados temporalmente a lotes baldíos o predios municipales, debido a las afectaciones o limitaciones en la disposición habitual.",PUBLICABLE,NO,40,GO-GV
+76845,Ulloa,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Acueducto,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,41,FQ-FX
+76845,Ulloa,ARO Norte - Cartago,PERSPECTIVA DE RECUPERACIÓN,Acueducto,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,41,FQ-FX
+76845,Ulloa,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,41,FY-GF
+76845,Ulloa,ARO Norte - Cartago,PERSPECTIVA DE RECUPERACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,41,FY-GF
+76845,Ulloa,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Saneamiento básico,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,41,GG-GN
+76845,Ulloa,ARO Norte - Cartago,PERSPECTIVA DE RECUPERACIÓN,Saneamiento básico,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,41,GG-GN
+76845,Ulloa,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Recolección de basuras,MANEJO EXTRAORDINARIO DE RCD / RESIDUOS,"La recolección de los residuos de construcción y demolición (RCD) se está realizando con apoyo de la Administración Municipal. Los residuos recolectados están siendo trasladados temporalmente a lotes baldíos o predios municipales, debido a las afectaciones o limitaciones en la disposición habitual.
+",PUBLICABLE,NO,41,GO-GV
+76845,Ulloa,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Energía eléctrica,INFORMACIÓN PARCIAL / REVISAR,Zona urbana con reconexión parcial,PUBLICABLE,NO,41,GW-HD
+76863,Versalles,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Acueducto,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,42,FQ-FX
+76863,Versalles,ARO Norte - Cartago,PERSPECTIVA DE RECUPERACIÓN,Acueducto,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,42,FQ-FX
+76863,Versalles,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,42,FY-GF
+76863,Versalles,ARO Norte - Cartago,PERSPECTIVA DE RECUPERACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,42,FY-GF
+76863,Versalles,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Saneamiento básico,INFORMACIÓN PARCIAL / REVISAR,"Se recomienda fortalecer el control y seguimiento a la disposición de los residuos de construcción y demolición, garantizando que estos sean trasladados y dispuestos en sitios autorizados, de acuerdo con la normativa ambiental vigente.",PUBLICABLE,NO,42,GG-GN
+76863,Versalles,ARO Norte - Cartago,DESCRIPCIÓN DE LA AFECTACIÓN,Recolección de basuras,MANEJO EXTRAORDINARIO DE RCD / RESIDUOS,"Se reporta que los residuos de construcción y demolición no están siendo llevados al PMIRS para su disposición. Se requiere verificar el manejo, recolección y destino final de estos residuos para prevenir su disposición inadecuada.
+",PUBLICABLE,NO,42,GO-GV
+76863,Versalles,ARO Norte - Cartago,PERSPECTIVA DE RECUPERACIÓN,Recolección de basuras,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,42,GO-GV
+76869,Vijes,ARO Sur - Cali,DESCRIPCIÓN DE LA AFECTACIÓN,Acueducto,PENDIENTE / SIN INFORMACIÓN,"""Actualización de informacion 13/08""
+Santa Ana: Posterior al sismo del lunes 10 de agosto de 2026, no se reportaron afectaciones en la infraestructura del sistema de acueducto. La prestación del servicio de agua se mantiene con normalidad y no se presentan novedades que comprometan su continuidad.
+
+Carbonero: Posterior al sismo se realizó visita de verificación al sistema, sin evidenciar daños en la infraestructura. Se presentaron afectaciones puntuales en la red de distribución, las cuales fueron reparadas el 11 de agosto de 2026. Actualmente el servicio se encuentra normalizado.
+
+La Fresneda: Se realizó visita de revisión al sistema el 11 de agosto de 2026, evidenciando condiciones normales de operación. No se reportan daños ni afectaciones en la prestación del servicio de agua asociados al sismo.
+
+La Fresneda – Monterrey Alto: No se han identificado novedades en la prestación del servicio de agua posteriores al sismo. Se tiene programada visita de verificación para confirmar las condiciones de operación y el estado de la infraestructura del sistema.
+
+La Fresneda: Se realizó visita de revisión al sistema, sin registrarse novedades en la prestación del servicio. El sistema continúa funcionando con normalidad y no se reportan afectaciones asociadas al sismo del 10 de agosto de 2026.
+
+Tres Quebradas: Posterior al evento sísmico no se reportan afectaciones en la prestación del servicio de agua. El sistema, que opera mediante motobomba, se mantiene activo y sin novedades que comprometan la continuidad del servicio.
+
+Cieneguitas: Durante la visita de verificación realizada el 11 de agosto de 2026 no se evidenciaron afectaciones derivadas del sismo. La infraestructura se encuentra operativa y la prestación del servicio de agua se mantiene con normalidad.
+
+El Tambor: No se identificaron daños ni afectaciones en el sistema de acueducto posteriores al sismo del 10 de agosto de 2026. La prestación del servicio de agua se mantiene con normalidad.
+
+El Tambor: Se realizó visita de verificación al sistema el 11 de agosto de 2026, encontrándose la infraestructura en condiciones normales de funcionamiento. No se reportan daños ocasionados por el sismo y el servicio continúa prestándose normalmente.
+
+Pueblo Nuevo: Se realizó verificación del sistema el 11 de agosto de 2026, sin evidenciar daños ni afectaciones relacionadas con el sismo. La prestación del servicio de agua continúa con normalidad.
+
+Cachimbal: No se han reportado afectaciones en la prestación del servicio de agua posteriores al sismo. Se encuentra programada visita de revisión del sistema para verificar técnicamente el estado de la infraestructura.
+
+Cachimbal: Durante la visita de verificación realizada el 12 de agosto de 2026 no se reportaron afectaciones ocasionadas por el sismo. La prestación del servicio de agua se encuentra normalizada.
+
+El Porvenir: Se recomienda realizar visita de inspección a la infraestructura del sistema de acueducto para verificar las condiciones de captación, conducción, almacenamiento y distribución, y descartar posibles afectaciones ocasionadas por el sismo.
+
+El Porvenir: La prestación del servicio de agua se mantiene sin novedades. Se encuentra programada visita de revisión para el 14 de agosto de 2026, con el propósito de verificar las condiciones de operación y descartar posibles afectaciones ocasionadas por el sismo.
+
+La Rivera: La prestación del servicio de agua continúa con normalidad. No se reportan daños ni afectaciones visibles en el sistema de acueducto como consecuencia del sismo ocurrido el 10 de agosto de 2026.
+
+Caimital: Durante la visita de revisión realizada el 11 de agosto de 2026 no se evidenciaron novedades en la prestación del servicio. El sistema se encuentra operando con normalidad y no se reportan afectaciones asociadas al evento sísmico.
+
+Romerito: Se presentaron daños en la red de distribución, los cuales fueron reparados y permitieron normalizar la prestación del servicio. Se encuentra programada visita de verificación para realizar seguimiento al sistema y confirmar su estabilidad posterior al sismo.
+
+Mozambique: No se registran novedades en la prestación del servicio de agua posteriores al sismo del 10 de agosto de 2026. El sistema continúa funcionando con normalidad y no se reportan afectaciones en su infraestructura.
+
+Ocache Parte Alta: El sistema opera mediante motobomba y se encuentra pendiente de verificación debido a la situación del suministro de energía eléctrica. Se recomienda realizar inspección una vez se restablezca el servicio eléctrico para descartar afectaciones relacionadas con el sismo.
+
+Ocache: Se recomienda realizar visita de inspección al sistema de acueducto para verificar el estado de la infraestructura y confirmar la continuidad de la prestación del servicio de agua posterior al sismo del 10 de agosto de 2026.
+
+Ocache Parte Baja: Se presentaron daños en la red de distribución, los cuales fueron reparados. La revisión realizada al sistema evidenció condiciones normales de funcionamiento; queda pendiente completar la verificación de los demás componentes del sistema para confirmar su estado posterior al sismo.
+
+Villamaría: No se presentan novedades en la prestación del servicio de agua después del sismo del 10 de agosto de 2026. El sistema continúa funcionando con normalidad y no se reportan daños en la infraestructura.
+
+Villamaría: Se recomienda realizar inspección técnica del sistema para confirmar el estado de las estructuras y redes y verificar que la prestación del servicio de agua se mantenga en condiciones normales después del evento sísmico.
+
+Villamaría: La prestación del servicio de agua se mantiene sin novedades. No se reportan afectaciones asociadas al sismo del 10 de agosto de 2026 y el sistema continúa operando con normalidad.
+
+Vidal: La prestación del servicio de agua se mantiene con normalidad y no se reportan afectaciones posteriores al sismo del 10 de agosto de 2026.
+
+Miravalle: Se presentaron daños en la tubería de los filtros, los cuales fueron reparados. Posteriormente se identificaron nuevas afectaciones en la red, requiriéndose reparaciones adicionales. Al 12 de agosto de 2026 el sistema permanecía sin servicio de agua, con previsión de restablecimiento durante el 13 de agosto de 2026.
+
+Vijes – Acuavalle: La prestación del servicio de agua se encuentra sin novedades. No se registran afectaciones relacionadas con el sismo del 10 de agosto de 2026.",PUBLICABLE,NO,43,FQ-FX
+76869,Vijes,ARO Sur - Cali,PERSPECTIVA DE RECUPERACIÓN,Acueducto,PENDIENTE / SIN INFORMACIÓN,"""Actualización de informacion 13/08""
+Santa Ana: Se prevé continuidad normal del servicio, sin requerirse acciones de recuperación asociadas al sismo.
+
+Carbonero: La afectación presentada en la red de distribución fue reparada, por lo que se prevé la recuperación total y continuidad normal del servicio.
+
+La Fresneda: Se prevé continuidad normal del servicio, teniendo en cuenta que no se evidenciaron afectaciones en el sistema.
+
+La Fresneda – Monterrey Alto: Se prevé recuperación y continuidad normal del servicio, sujeta a la verificación técnica programada del sistema.
+
+La Fresneda: Se prevé continuidad normal del servicio, sin requerirse intervenciones de recuperación por afectaciones del sismo.
+
+Tres Quebradas: Se prevé continuidad del servicio, sin afectaciones reportadas que requieran acciones de recuperación.
+
+Cieneguitas: Se prevé continuidad normal del servicio, dado que la infraestructura se encuentra operativa y no presenta afectaciones asociadas al sismo.
+
+El Tambor: Se prevé continuidad normal del servicio, sin requerirse acciones de recuperación.
+
+El Tambor: Se prevé continuidad normal del servicio, una vez verificado que la infraestructura opera adecuadamente.
+
+Pueblo Nuevo: Se prevé continuidad normal del servicio, sin requerirse acciones de recuperación asociadas al evento sísmico.
+
+Cachimbal: Se prevé continuidad del servicio; queda pendiente la visita de verificación para confirmar las condiciones de recuperación y operación del sistema.
+
+Cachimbal: Se prevé continuidad normal del servicio, debido a que las condiciones del sistema fueron verificadas y no se evidenciaron afectaciones.
+
+El Porvenir: La recuperación dependerá de la realización de la inspección técnica, con el fin de identificar y atender oportunamente cualquier afectación que pueda haberse presentado.
+
+El Porvenir: Se prevé recuperación y continuidad normal del servicio, una vez realizada la visita de verificación programada.
+
+La Rivera: Se prevé continuidad normal del servicio, sin requerirse acciones de recuperación por afectaciones del sismo.
+
+Caimital: Se prevé continuidad normal del servicio, considerando que la infraestructura fue revisada y se encuentra operativa.
+
+Romerito: Se prevé recuperación del servicio y continuidad de la operación, teniendo en cuenta que los daños reportados en la red de distribución ya fueron reparados. Se realizará seguimiento para verificar la estabilidad del sistema.
+
+Mozambique: Se prevé continuidad normal del servicio, sin requerirse acciones adicionales de recuperación.
+
+Ocache Parte Alta: La recuperación del servicio está sujeta al restablecimiento del suministro eléctrico y a la posterior verificación técnica del sistema para descartar posibles afectaciones.
+
+Ocache: Se prevé recuperación y continuidad normal del servicio una vez realizada la inspección técnica y confirmadas las condiciones de funcionamiento del sistema.
+
+Ocache Parte Baja: Se prevé recuperación y continuidad normal del servicio, teniendo en cuenta que los daños reportados en la red fueron reparados. Se requiere completar la verificación de los componentes pendientes.
+
+Villamaría: Se prevé continuidad normal del servicio, sin requerirse acciones de recuperación asociadas al sismo.
+
+Villamaría: Se prevé recuperación y continuidad normal del servicio, sujeta a la realización de la inspección técnica y verificación del estado de la infraestructura.
+
+Villamaría: Se prevé continuidad normal del servicio, sin afectaciones reportadas que requieran acciones de recuperación.
+
+Vidal: Se prevé continuidad normal del servicio, sin requerirse acciones de recuperación asociadas al sismo del 10 de agosto de 2026.
+
+Miravalle: La recuperación del servicio requiere culminar las reparaciones de la red afectada y realizar la correspondiente verificación técnica. Se prevé el restablecimiento del servicio durante el 13 de agosto de 2026, sujeto a la finalización satisfactoria de las reparaciones.
+
+Vijes – Acuavalle: Se prevé continuidad normal del servicio, sin requerirse acciones de recuperación asociadas al sismo.",PUBLICABLE,NO,43,FQ-FX
+76869,Vijes,ARO Sur - Cali,DESCRIPCIÓN DE LA AFECTACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,43,FY-GF
+76869,Vijes,ARO Sur - Cali,PERSPECTIVA DE RECUPERACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,43,FY-GF
+76869,Vijes,ARO Sur - Cali,DESCRIPCIÓN DE LA AFECTACIÓN,Saneamiento básico,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,43,GG-GN
+76869,Vijes,ARO Sur - Cali,PERSPECTIVA DE RECUPERACIÓN,Saneamiento básico,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,43,GG-GN
+76869,Vijes,ARO Sur - Cali,DESCRIPCIÓN DE LA AFECTACIÓN,Recolección de basuras,MANEJO EXTRAORDINARIO DE RCD / RESIDUOS,"La recolección de los residuos de construcción y demolición (RCD) se está realizando con apoyo de la Administración Municipal. Los residuos recolectados están siendo trasladados temporalmente a lotes baldíos o predios municipales, debido a las afectaciones o limitaciones en la disposición habitual.
+",PUBLICABLE,NO,43,GO-GV
+76869,Vijes,ARO Sur - Cali,DESCRIPCIÓN DE LA AFECTACIÓN,Energía eléctrica,INFORMACIÓN PARCIAL / REVISAR,En la zona rural y 5 barrios del casco urbano no hay servicio de energía eléctrica,PUBLICABLE,NO,43,GW-HD
+76869,Vijes,ARO Sur - Cali,PERSPECTIVA DE RECUPERACIÓN,Energía eléctrica,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,43,GW-HD
+76869,Vijes,ARO Sur - Cali,DESCRIPCIÓN DE LA AFECTACIÓN,Gas,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,43,HE-HL
+76869,Vijes,ARO Sur - Cali,PERSPECTIVA DE RECUPERACIÓN,Gas,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,43,HE-HL
+76890,Yotoco,ARO Centro - Tuluá,DESCRIPCIÓN DE LA AFECTACIÓN,Acueducto,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,44,FQ-FX
+76890,Yotoco,ARO Centro - Tuluá,PERSPECTIVA DE RECUPERACIÓN,Acueducto,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,44,FQ-FX
+76890,Yotoco,ARO Centro - Tuluá,DESCRIPCIÓN DE LA AFECTACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,44,FY-GF
+76890,Yotoco,ARO Centro - Tuluá,PERSPECTIVA DE RECUPERACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,44,FY-GF
+76890,Yotoco,ARO Centro - Tuluá,PERSPECTIVA DE RECUPERACIÓN,Saneamiento básico,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, a la espera de confirmacion de plan de contingencia y capacidad para recepcionar RCD",PUBLICABLE,NO,44,GG-GN
+76890,Yotoco,ARO Centro - Tuluá,DESCRIPCIÓN DE LA AFECTACIÓN,Recolección de basuras,MANEJO EXTRAORDINARIO DE RCD / RESIDUOS,"La recolección de los residuos de construcción y demolición (RCD) se está realizando con apoyo de la Administración Municipal. Los residuos recolectados están siendo trasladados temporalmente a lotes baldíos o predios municipales, debido a las afectaciones o limitaciones en la disposición habitual.
+",PUBLICABLE,NO,44,GO-GV
+76892,Yumbo,ARO Sur - Cali,DESCRIPCIÓN DE LA AFECTACIÓN,Acueducto,INFORMACIÓN PARCIAL / REVISAR,varios sectores sin suministro de agua potable,PUBLICABLE,NO,45,FQ-FX
+76892,Yumbo,ARO Sur - Cali,DESCRIPCIÓN DE LA AFECTACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,45,FY-GF
+76892,Yumbo,ARO Sur - Cali,PERSPECTIVA DE RECUPERACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,45,FY-GF
+76892,Yumbo,ARO Sur - Cali,DESCRIPCIÓN DE LA AFECTACIÓN,Recolección de basuras,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,45,GO-GV
+76892,Yumbo,ARO Sur - Cali,PERSPECTIVA DE RECUPERACIÓN,Recolección de basuras,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,45,GO-GV
+76892,Yumbo,ARO Sur - Cali,DESCRIPCIÓN DE LA AFECTACIÓN,Energía eléctrica,INFORMACIÓN PARCIAL / REVISAR,Sectores de zona rural y urbana sin fluido electrico,PUBLICABLE,NO,45,GW-HD
+76892,Yumbo,ARO Sur - Cali,DESCRIPCIÓN DE LA AFECTACIÓN,Gas,INFORMACIÓN PARCIAL / REVISAR,sectores sin suministro de gas,PUBLICABLE,NO,45,HE-HL
+76895,Zarzal,ARO Centro - Tuluá,DESCRIPCIÓN DE LA AFECTACIÓN,Acueducto,RECUPERADO / OPERATIVO,Suspensión temporal del acueducto por daños en tubería del Sara Brut. ,PUBLICABLE,NO,46,FQ-FX
+76895,Zarzal,ARO Centro - Tuluá,PERSPECTIVA DE RECUPERACIÓN,Acueducto,RECUPERACIÓN / RESTABLECIMIENTO,"Apoyo con carrotanques de Bomberos para distribución de agua para consumo.
+
+6 Carrotanques.
+
+Se proyecta mañana 12/08/2026 en la noche, reestablecer la operación del  SARA- BRUT.  ",PUBLICABLE,NO,46,FQ-FX
+76895,Zarzal,ARO Centro - Tuluá,DESCRIPCIÓN DE LA AFECTACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,46,FY-GF
+76895,Zarzal,ARO Centro - Tuluá,PERSPECTIVA DE RECUPERACIÓN,Alcantarillado,PENDIENTE / SIN INFORMACIÓN,"Se realiza contacto, no se tiene información hasta el momento",PUBLICABLE,NO,46,FY-GF
+76895,Zarzal,ARO Centro - Tuluá,DESCRIPCIÓN DE LA AFECTACIÓN,Recolección de basuras,MANEJO EXTRAORDINARIO DE RCD / RESIDUOS,"La recolección de los residuos de construcción y demolición (RCD) se está realizando con apoyo de la Administración Municipal. Los residuos recolectados están siendo trasladados temporalmente a lotes baldíos o predios municipales, debido a las afectaciones o limitaciones en la disposición habitual.
+ta el momento",PUBLICABLE,NO,46,GO-GV
+76895,Zarzal,ARO Centro - Tuluá,DESCRIPCIÓN DE LA AFECTACIÓN,Energía eléctrica,AFECTACIÓN REPORTADA,la paila sin energia y vallejuelo,PUBLICABLE,NO,46,GW-HD
+76020,Alcalá,ARO Norte - Cartago,OBSERVACIÓN OPERATIVA,RESIDUOS,CONTEXTO OPERATIVO,En el municipio de Alcalá se reporta que el PMIRS no se encuentra funcional. Los residuos de construcción y demolición (escombros) están siendo dispuestos en lotes baldíos o utilizados como material de relleno para vías.,PUBLICABLE DEPURADO,NO,6,JV
+76036,Andalucía,ARO Centro - Tuluá,OBSERVACIÓN OPERATIVA,SIN RELACIÓN DIRECTA,CONTEXTO OPERATIVO,Daños leves donde funciona el centro vida.,PUBLICABLE DEPURADO,NO,7,JV
+76036,Andalucía,ARO Centro - Tuluá,OBSERVACIÓN OPERATIVA,SIN RELACIÓN DIRECTA,CONTEXTO OPERATIVO,Ocho (8) establecimientos de comercio con afectaciones moderadas y otras leves,PUBLICABLE DEPURADO,NO,7,JV
+76041,Ansermanuevo,ARO Norte - Cartago,OBSERVACIÓN OPERATIVA,ALBERGUE,CONTEXTO OPERATIVO,Se adecuará el parque recreacional como albergue temporal.,PUBLICABLE DEPURADO,NO,8,JV
+76054,Argelia,ARO Norte - Cartago,OBSERVACIÓN OPERATIVA,ALBERGUE,CONTEXTO OPERATIVO,Albergue temporal en finca Altos del Carmen (entrada del pueblo).,PUBLICABLE DEPURADO,NO,9,JV
+76126,Calima (El Darién),ARO Centro - Tuluá,OBSERVACIÓN OPERATIVA,AGUA; ALBERGUE; SERVICIO ESENCIAL,CONTEXTO OPERATIVO,"Habilitado albergue en el CIC con 6 familias, con acceso al agua para consumo, pero sin energía.",PUBLICABLE DEPURADO,NO,15,JV
+76130,Candelaria,ARO Sur - Cali,OBSERVACIÓN OPERATIVA,SIN RELACIÓN DIRECTA,CONTEXTO OPERATIVO,"LA INFORMACIÓN ES RECOLECTADA CON CORTE A 10 DE AGOSTO 7:00PM, PARA EL MUNICIPIO DE CANDELARIA, ACTUALMENTE SE ENCUENTRAN HACIENDO ESTUDIOS PREELIMINARES Y EVALUACIÓN DE DAÑOS Y NECESIDADES QUE SE CONSOLIDARÁN EN EL PUESTO DE MANDO UNIFICADO EL DÍA DE HOY 11 DE AGOSTO DE 2026 A PARTIR DE LAS 4:00PM // ESCENARIO DEPORTIVO LA POLVOROSA DEL CORREGIMIENTO EL CARMELO SE ENCUENTRA CON UNA PARED CAIDA // NO SE CUENTA CON NINGUN TIPO DE SERVICIO SATELITAL // SIN REPORTE SOBRE COMPUTADORES PARA EDUCAR",PUBLICABLE DEPURADO,NO,16,JV
+76233,Dagua,ARO Sur - Cali,OBSERVACIÓN OPERATIVA,SIN RELACIÓN DIRECTA,CONTEXTO OPERATIVO,-Reubicación de la estación de policía.,PUBLICABLE DEPURADO,NO,18,JV
+76233,Dagua,ARO Sur - Cali,OBSERVACIÓN OPERATIVA,SIN RELACIÓN DIRECTA,CONTEXTO OPERATIVO,"–Afectaciones en cementerio. Daño en fosa común, daño en los osario. Cementerio católico de la cabecera municipal",PUBLICABLE DEPURADO,NO,18,JV
+76243,El Águila,ARO Norte - Cartago,OBSERVACIÓN OPERATIVA,RESIDUOS; SERVICIO ESENCIAL,CONTEXTO OPERATIVO,Se están recolectando escombros y depositando sobre las vías. No hay servicio de Gas,PUBLICABLE DEPURADO,NO,19,JV
+76248,El Cerrito,ARO Sur - Cali,OBSERVACIÓN OPERATIVA,SIN RELACIÓN DIRECTA,CONTEXTO OPERATIVO,"Dos establecimientos comerciales ubicados en la carrera 12 entre calles 6 y 7 en el parque principal, denominados asadero de pollo el Brasero y Materiales El Parque, sufrieron daños en su infraestructura con grandes grietas. El personal técnico de la Secretaría realiza visitas y llamadas a diferentes asociaciones del Municipio (Agricultores, ganaderos, avicultoros. etc) los cuales argumentan no presentar afectaciones debido al terremoto",PUBLICABLE DEPURADO,NO,21,JV
+76250,El Dovio,ARO Norte - Cartago,OBSERVACIÓN OPERATIVA,RESIDUOS,CONTEXTO OPERATIVO,En el municipio de El Dovio se reporta que el PMIRS no se encuentra funcional. Los escombros generados están siendo recolectados directamente por la Administración Municipal.,PUBLICABLE DEPURADO,NO,22,JV
+76403,La Victoria,ARO Norte - Cartago,OBSERVACIÓN OPERATIVA,SIN RELACIÓN DIRECTA,CONTEXTO OPERATIVO,se solicita con urgencia apoyo con colchonetas carpas y productos no percderos,PUBLICABLE DEPURADO,NO,29,JV
+76497,Obando,ARO Norte - Cartago,OBSERVACIÓN OPERATIVA,AGUA; ALBERGUE,CONTEXTO OPERATIVO,en Puerto molina sirve e albergue la caseta comunal. Llegará desde Acuavalle Carrotanque grande para abastecer la comunida desde el parque principal.,PUBLICABLE DEPURADO,NO,30,JV
+76563,Pradera,ARO Sur - Cali,OBSERVACIÓN OPERATIVA,SERVICIO ESENCIAL,CONTEXTO OPERATIVO,"Al corte, las afectaciones asociadas al sismo en el municipio de Pradera se concentran principalmente en viviendas y edificaciones institucionales, con presencia de fisuras y agrietamientos. Se reportan 60 viviendas averiadas y 300 personas afectadas, sin viviendas destruidas, personas fallecidas, heridas o desaparecidas. Los servicios esenciales permanecen operativos; durante el evento se presentó intermitencia temporal del suministro de energía eléctrica, posteriormente normalizada. Continúa la inspección técnica de las edificaciones reportadas para establecer condiciones de seguridad, habitabilidad y eventuales restricciones de uso.",PUBLICABLE DEPURADO,NO,32,JV
+76863,Versalles,ARO Norte - Cartago,OBSERVACIÓN OPERATIVA,RESIDUOS,CONTEXTO OPERATIVO,En el municipio de Versalles se reporta que los residuos de construcción y demolición no están siendo dispuestos en el PMIRS.,PUBLICABLE DEPURADO,NO,42,JV
+76892,Yumbo,ARO Sur - Cali,OBSERVACIÓN OPERATIVA,ALBERGUE,CONTEXTO OPERATIVO,Albergue Actual Coliseo Carlos Alberto Bejarano Castillo 20 personas,PUBLICABLE DEPURADO,NO,45,JV
+76895,Zarzal,ARO Centro - Tuluá,OBSERVACIÓN OPERATIVA,SIN RELACIÓN DIRECTA,CONTEXTO OPERATIVO,se solicita con urgencia apoyo con colchonetas carpas. maquinaria amarilla y productos no percderos,PUBLICABLE DEPURADO,NO,46,JV
+76130,Candelaria,ARO Sur - Cali,ATENCIONES / GESTIONES REALIZADAS,Respuesta institucional,GESTIÓN / RESPUESTA,Iglesia principal Nuestra Señora de la Candelaria como medida preventiva se sugiere por parte del Consejo Municipal de Gestion del Riesgo al Párroco suspende el servicio por agrietamiento de cúpula de la Iglesia. | Consejo Mpal de Gestion del Riesgo convoca a Celsia y hace el requerimiento para reconexión del servicio de energia. Empresa confirma que se espera que en horas de la tarde se reestablesca el servicio.,PUBLICABLE DEPURADO,NO,16,JX
+76400,La Unión,ARO Norte - Cartago,ATENCIONES / GESTIONES REALIZADAS,Respuesta institucional,GESTIÓN / RESPUESTA,"Hoy 11/08/2026 se abastecio con un Carrotanque algunos barrios de la zona urbana. A las 8:00 p.m. entra en operación la planta que se abastece del pozo profundo para abastecer el hospital del municipio y el 70% de la zona urbana. El 30% se abastecera el dia de mañana 12/08/2026 con un carrotanque. Se proyecta mañana 12/08/2026 en la noche, reestablecer la operación del SARA- BRUT. | Entrega de ayudas humanitarias (alimentación y aseo) para familias. Algunas colchonetas.",PUBLICABLE DEPURADO,NO,28,JX
+76622,Roldanillo,ARO Norte - Cartago,ATENCIONES / GESTIONES REALIZADAS,Respuesta institucional,GESTIÓN / RESPUESTA,Análisis de municipios abastecidos por Sara BRUT se espera reestablecimiento del servicio el 12 de agosto,PUBLICABLE DEPURADO,NO,35,JX

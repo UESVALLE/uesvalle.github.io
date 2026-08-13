@@ -1,0 +1,4 @@
+﻿fecha_corte,hora_corte,fuente_archivo,source_sha256,heridos,fallecidos,desaparecidos,familias_afectadas,personas_afectadas,viviendas_averiadas,viviendas_destruidas,familias_sin_acueducto,personas_sin_acueducto,familias_sin_energia,personas_sin_energia,municipios,servicios_registros,hallazgos_altos,procesado_en
+2026-08-11,,EDAN_Consolidado_Matriz_ValleDelCauca11ago.xlsx,14734403d5bf1bce342dca571a1c64cf2e056dddbd696603e5c7f1a900814dcf,1420,48,7,14026,40202,20668,5321,9162,37018,7300,38850,42,252,6,
+2026-08-12,,EDAN_Consolidado_Matriz_ValleDelCauca11ago(2).xlsx,c3a8ecdec774c3dbb89900e38c906bc05177cf708fea86a83e5d33352b3e92c1,2379,111,7,16089,44932,19545,5494,49890,199191,7300,38850,42,252,4,
+2026-08-13,16:00,EDAN_Consolidado_Actual.xlsx,e4f67b5d14552f0efdc8034a80fcc566ec3e352f2b3f1138be7d55cfea9cbf3c,2336,113,7,16111,51332,21120,6016,49890,199191,7300,38850,42,252,4,2026-08-13T17:20:25

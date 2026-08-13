@@ -3,16 +3,24 @@
 76020,Alcalá,ARO Norte - Cartago,1,4,0,0,0,1,0,0,1,Hospital San Vicente de Paul,"Afectado en un 10%.
 EVALUACION ESTRUCTURAL PARA CALIFICAR RIESGOS EN LA PRESTACION Y EVALUACION DE DAÑOS PARA DEFINIR PLAN DE OBRA Y VALOR",1,,6
 76036,Andalucía,ARO Centro - Tuluá,1,3,1,,0,1,0,0,1,Hospital San Vicente Ferrer,"Con afectación en un 50% mamposteria.
-EVALUACION ESTRUCTURAL PARA CALIFICAR RIESGOS EN LA PRESTACION Y EVALUACION DE DAÑOS PARA DEFINIR PLAN DE OBRA Y VALOR",1,,7
+EVALUACION ESTRUCTURAL PARA CALIFICAR RIESGOS EN LA PRESTACION Y EVALUACION DE DAÑOS PARA DEFINIR PLAN DE OBRA Y VALOR
+",1,REVISAR,7
 76041,Ansermanuevo,ARO Norte - Cartago,1,3,1,,0,1,0,0,1,Hospital Santa Ana de los Caballeros,"Con afectación en un 50% mamposteria en consulta externa
 EVALUACION ESTRUCTURAL PARA CALIFICAR RIESGOS EN LA PRESTACION Y EVALUACION DE DAÑOS PARA DEFINIR PLAN DE OBRA Y VALOR",1,,8
 76054,Argelia,ARO Norte - Cartago,1,3,1,,0,1,0,0,1,Hospital Pio XII,"TECHO COLAPSO DE CONSULTA EXTERNA, HAY GRIETAS EN LA INFRAESTRUCTURA . Se desplomo el tejado y cielo razo el segundo piso (Afectacion del 60%)
 EVALUACION ESTRUCTURAL PARA CALIFICAR RIESGOS EN LA PRESTACION Y EVALUACION DE DAÑOS PARA DEFINIR PLAN DE OBRA Y VALOR
 30 mts PLASTICO POR METROS PARA CUBRIR 
 Necesidad de 1 Planta Eléctrica",1,,9
-76100,Bolívar,ARO Centro - Tuluá,1,3,1,,0,1,0,0,1,Hospital Santa Ana,"Agrietamiento (20% de afectación)
-EVALUACION ESTRUCTURAL PARA CALIFICAR RIESGOS EN LA PRESTACION Y EVALUACION DE DAÑOS PARA DEFINIR PLAN DE OBRA Y VALOR
-TANQUE DE RESERVA DE AGUA",1,,10
+76100,Bolívar,ARO Centro - Tuluá,4,3,0,1,1,3,0,0,1,"1.        E.S.E Hospital Santa Ana 
+2.        Puesto de Salud Cgto. Primavera
+3.        Puesto de Salud Cgto. Naranjal
+4.        Puesto de Salud Cgto. La Tulia
+","1.        Verificación de daños estructurales para calificación de riesgos
+2.        Apoyo para garantizar suministro de agua potable 
+3.        Planta eléctrica o fuente alternativa de energía, si se presenta cortes del servicio
+4.        Canales de articulación para traslado de pacientes, en caso de ser necesarios 
+5.        Tanques para el almacenamiento de agua
+",1,,10
 76109,Buenaventura,ARO Sur - Cali,2,1,1,0,0,2,0,0,2,"Hosp. Luis Ablaque de la plata 
 Clinica Santa Sofia del Pacifico","La red hospitalaria de buenaventura se encuentra en alerta naranja con la red al 100% de capacidad. Hosp. Luis Ablaque de la plata Afectación de dos bloques en estructura de un 20% y los demas bloques daños en mamposteria. Se hizo ampliacion hacia consulta externa - Clinica Santa Sofia del Pacifico  EVACUARON PACIENTES AFECTACION AGRIETAMIENTO DE PISO 2 Y 1 REUBICACION DE PACIENTES (Afectacion del 50%)
 EVALUACION ESTRUCTURAL PARA CALIFICAR RIESGOS EN LA PRESTACION Y EVALUACION DE DAÑOS PARA DEFINIR PLAN DE OBRA Y VALORl",1,,11
@@ -22,30 +30,33 @@ EVALUACION ESTRUCTURAL PARA CALIFICAR RIESGOS EN LA PRESTACION Y EVALUACION DE D
 *DISPENSARIO BATALLON PALACÉ
 *CLINICA COMFANDI -  (AFECTACIÓN MURO, PAREDES 
 AGRIETADAS)
-* HOSTAL EL REGIDOR (GRIETA)",EVALUACION ESTRUCTURAL PARA CALIFICAR RIESGOS EN LA PRESTACION Y EVALUACION DE DAÑOS PARA DEFINIR PLAN DE OBRA Y VALOR,1,,12
+* HOSTAL EL REGIDOR (GRIETA)
+
+",EVALUACION ESTRUCTURAL PARA CALIFICAR RIESGOS EN LA PRESTACION Y EVALUACION DE DAÑOS PARA DEFINIR PLAN DE OBRA Y VALOR,1,,12
 76113,Bugalagrande,ARO Centro - Tuluá,1,4,0,0,0,1,0,0,0,Hospital San Bernabe,No tuvo afectación estructural o agrietamientos,1,,13
 76122,Caicedonia,ARO Centro - Tuluá,1,4,0,0,0,1,0,0,0,Hospital Santander  - Daño en infraestructura Zona Administrativa,"Grietas en consulta externa (Afectacion del 10%)
-EVALUACION ESTRUCTURAL PARA CALIFICAR RIESGOS EN LA PRESTACION Y EVALUACION DE DAÑOS PARA DEFINIR PLAN DE OBRA Y VALOR",1,,14
-76126,Calima (El Darién),ARO Centro - Tuluá,1,4,0,0,0,1,0,0,0,Hospital San Jorge,Sin necesidades prioritarias,1,,15
-76130,Candelaria,ARO Sur - Cali,3,3,0,0,0,2,0,0,0,"Hospital Local 
+EVALUACION ESTRUCTURAL PARA CALIFICAR RIESGOS EN LA PRESTACION Y EVALUACION DE DAÑOS PARA DEFINIR PLAN DE OBRA Y VALOR",1,REVISAR,14
+76126,Calima (El Darién),ARO Centro - Tuluá,1,4,0,0,0,1,0,0,0,Hospital San Jorge ,Sin necesidades prioritarias,1,,15
+76130,Candelaria,ARO Sur - Cali,3,3,0,0,0,2,0,0,0,"
+Hospital Local 
 PUESTO DE SALUD CORREGIMIENTO EL CARMELO,
-PUESTO DE SALUD DEL CORREGIMIENTO DE VILLAGORGONA","Hospital Local de Candelaria E.S.E. se necesitaría contar con un stock de labetalol, oxitocina y methergin y catgut cromado 2/0 - LA DISPOCISIÓN EN LA PRESTACIÓN DE SALUD ES PRIORITARIA EN CASOS URGENTES O VITALES A PERSONAS AFECTADAS POR EL SISMO, MEDICINA INTERNA OYCASOS MODERADOS SE ESTÁ ATENDIENDO, COMO APOYO TRANSVERSAL A LA EMERGENCIA SE REALIZA ACTIVIDADES EN CAMPO POR PARTE DEL EQUIPO DE SALUD COMO DONACIÓN DE SANGRE Y ATENCIÓN PSICOLÓGICA",1,,16
+PUESTO DE SALUD DEL CORREGIMIENTO DE VILLAGORGONA ","Hospital Local de Candelaria E.S.E. se necesitaría contar con un stock de labetalol, oxitocina y methergin y catgut cromado 2/0 - LA DISPOCISIÓN EN LA PRESTACIÓN DE SALUD ES PRIORITARIA EN CASOS URGENTES O VITALES A PERSONAS AFECTADAS POR EL SISMO, MEDICINA INTERNA OYCASOS MODERADOS SE ESTÁ ATENDIENDO, COMO APOYO TRANSVERSAL A LA EMERGENCIA SE REALIZA ACTIVIDADES EN CAMPO POR PARTE DEL EQUIPO DE SALUD COMO DONACIÓN DE SANGRE Y ATENCIÓN PSICOLÓGICA",1,,16
 76147,Cartago,ARO Norte - Cartago,3,2,1,0,0,1,0,0,0,"HUV CARTAGO
 IPS MUNICIPAL
-CLINICA CONFANDI","Se requiere
+CLINICA CONFANDI ","Se requiere
 EVALUACION ESTRUCTURAL PARA CALIFICAR RIESGOS EN LA PRESTACION Y EVALUACION DE DAÑOS PARA DEFINIR PLAN DE OBRA Y VALOR",1,,17
 76233,Dagua,ARO Sur - Cali,1,1,0,3,0,1,0,0,1,Hospital Jose Rufino Vivas,"Afectacion del 30%), hay reubicacion de la atencion de urgencias al parque. Se requiere
 EVALUACION ESTRUCTURAL PARA CALIFICAR RIESGOS EN LA PRESTACION Y EVALUACION DE DAÑOS PARA DEFINIR PLAN DE OBRA Y VALOR",1,,18
 76243,El Águila,ARO Norte - Cartago,1,0,0,1,1,0,1,0,1,Hospital San Rafael del Aguila,"Totalmente colapsado (Afetacion del 100%) / El hospital se trasladado provisionalmente a un hostal del municipio
 EVALUACION PARA DEFINIR PLAN DE OBRA Y VALOR",1,,19
-76246,El Cairo,ARO Norte - Cartago,1,4,0,0,0,1,1,0,0,Hospital Santa Catalina,"EVALUACION ESTRUCTURAL PARA CALIFICAR RIESGOS EN LA PRESTACION Y EVALUACION DE DAÑOS PARA DEFINIR PLAN DE OBRA Y VALOR
+76246,El Cairo,ARO Norte - Cartago,1,4,0,0,0,1,1,0,0,Hospital Santa Catalina ,"EVALUACION ESTRUCTURAL PARA CALIFICAR RIESGOS EN LA PRESTACION Y EVALUACION DE DAÑOS PARA DEFINIR PLAN DE OBRA Y VALOR
 agretiamiento y fisuras en el servicio de hospitalizacion (Afectacion del 15%)
 Insumos médicos prioritarios para emergencias",1,,20
 76248,El Cerrito,ARO Sur - Cali,1,9,0,0,0,2,0,0,0,Hospital San Rafael de El Cerrito,"Grietas (Afectación del 20%)
 EVALUACION ESTRUCTURAL PARA CALIFICAR RIESGOS EN LA PRESTACION Y EVALUACION DE DAÑOS PARA DEFINIR PLAN DE OBRA Y VALOR",1,,21
 76250,El Dovio,ARO Norte - Cartago,,4,0,0,0,1,0,0,0,Hospital Santa Lucía,"Grietas (Afectación del 10%)
 EVALUACION ESTRUCTURAL PARA CALIFICAR RIESGOS EN LA PRESTACION Y EVALUACION DE DAÑOS PARA DEFINIR PLAN DE OBRA Y VALOR",1,,22
-76275,Florida,ARO Sur - Cali,,4,0,0,0,1,0,0,0,Hospital Benjamin Barney,"Grietas (Afectación del 10%)
+76275,Florida,ARO Sur - Cali,,4,0,0,0,1,0,0,0,Hospital Benjamin Barney ,"Grietas (Afectación del 10%)
 EVALUACION ESTRUCTURAL PARA CALIFICAR RIESGOS EN LA PRESTACION Y EVALUACION DE DAÑOS PARA DEFINIR PLAN DE OBRA Y VALOR",1,,23
 76306,Ginebra,ARO Sur - Cali,,4,0,0,0,0,0,0,0,Hospital El Rosario,Sin necesidades prioritarias,0,,24
 76318,Guacarí,ARO Sur - Cali,,4,0,0,0,0,0,0,0,Hospital San Roque,Sin necesidades prioritarias,0,,25
@@ -58,7 +69,7 @@ EVALUACION ESTRUCTURAL PARA CALIFICAR RIESGOS EN LA PRESTACION Y EVALUACION DE D
 EVALUACION ESTRUCTURAL PARA CALIFICAR RIESGOS EN LA PRESTACION Y EVALUACION DE DAÑOS PARA DEFINIR PLAN DE OBRA Y VALOR",0,,28
 76403,La Victoria,ARO Norte - Cartago,1,1,0,0,0,1,0,,0,Hospital Nuestra Señora de los Santos,"Afectacion de un 5% principalmente del piso 3. 
 EVALUACION ESTRUCTURAL PARA CALIFICAR RIESGOS EN LA PRESTACION Y EVALUACION DE DAÑOS PARA DEFINIR PLAN DE OBRA Y VALOR",1,,29
-76497,Obando,ARO Norte - Cartago,1,1,1,0,0,1,0,0,0,Hospital Local de obando,"EVALUACION ESTRUCTURAL PARA CALIFICAR RIESGOS EN LA PRESTACION Y EVALUACION DE DAÑOS PARA DEFINIR PLAN DE OBRA Y VALOR
+76497,Obando,ARO Norte - Cartago,1,1,1,0,0,1,0,0,0,Hospital Local de obando ,"EVALUACION ESTRUCTURAL PARA CALIFICAR RIESGOS EN LA PRESTACION Y EVALUACION DE DAÑOS PARA DEFINIR PLAN DE OBRA Y VALOR
 TANQUE DE RESERVA DE AGUA",1,,30
 76520,Palmira,ARO Sur - Cali,2,2,1,0,0,1,0,0,0,"Hospital Raul Orejuela Bueno
 
@@ -66,39 +77,43 @@ IPS Gyo Medical","Hospital 30 % afectado Grieta afectando pediatria
 EVALUACION ESTRUCTURAL PARA CALIFICAR RIESGOS EN LA PRESTACION Y EVALUACION DE DAÑOS PARA DEFINIR PLAN DE OBRA Y VALOR
 REUBICACION INTERNA  DEL AREA DE PEDIATRIA",1,,31
 76563,Pradera,ARO Sur - Cali,5,5,1,0,0,2,0,0,0,"ESE Hospital San Roque, IPS ASI, IPS Medicips, IPS Vivir, IPS CMR. IPS VIVIR presenta daño estructural, al igual que la ESE PUBLICA San Roque en el municipio de pradera presento incremento en las fisuras anteriores al sismo, al igual que perdida en su planta electrica durante el dia del sismo 10/08/2026",Sin necesidades prioritarias,1,,32
-76606,Restrepo,ARO Centro - Tuluá,1,4,0,1,0,1,0,0,1,Hospital San Jose,"10% de afectacion, sólo servicio de urgencia en función, externa cerrado. Sólo hasta noche reactivaron el servicio de energía un poco intermitente al igual que el internet. 
+76606,Restrepo,ARO Centro - Tuluá,1,4,0,1,0,1,0,0,1,Hospital San Jose ,"10% de afectacion, sólo servicio de urgencia en función, externa cerrado. Sólo hasta noche reactivaron el servicio de energía un poco intermitente al igual que el internet. 
 EVALUACION ESTRUCTURAL PARA CALIFICAR RIESGOS EN LA PRESTACION Y EVALUACION DE DAÑOS PARA DEFINIR PLAN DE OBRA Y VALOR",1,,33
 76616,Riofrío,ARO Centro - Tuluá,2,2,0,0,0,1,0,0,1,"Hospital Kenedy
 Puesto de Salud de Salónica","40% de afectacion . Daño en techo del area de consulta extera, cuenta con evaluacion preliminar con ingreniero estructural con resultado postivo para la prestacion de todos los servicios, 
 Necesidades: sin energia en el puesto de salud en salonica donde cuenta con dos medicos diariamente.
 EVALUACION ESTRUCTURAL PARA CALIFICAR RIESGOS EN LA PRESTACION Y EVALUACION DE DAÑOS PARA DEFINIR PLAN DE OBRA Y VALOR",1,,34
-76622,Roldanillo,ARO Norte - Cartago,1,0,1,1,0,1,0,1,0,Hospital Departamental San Antonio,"Planta de energía, Hospital sin fluido eléctrico. 
+76622,Roldanillo,ARO Norte - Cartago,1,0,1,1,0,1,0,1,0,Hospital Departamental San Antonio,"Planta de energía para Hospital sin fluido eléctrico. 
 Combustible para Transporte asistencial
 Se cayo el techo y un piso se levanto (Afectacion del 80%)
 EVALUACION ESTRUCTURAL PARA CALIFICAR RIESGOS EN LA PRESTACION Y EVALUACION DE DAÑOS PARA DEFINIR PLAN DE OBRA Y VALOR
 1 HOSPITAL DE CAMPAÑA
 TANQUE DE RESERVA DE AGUA
 2 CARPAS GRANDES
-LISTADO DE INSUMOS",1,,35
-76670,San Pedro,ARO Centro - Tuluá,1,1,0,0,0,1,0,0,0,Hospital Ulpiano Tascon,Sin necesidades prioritarias,1,,36
+LISTADO DE INSUMOS
+5 PIPETAS DE OXÍGENO
+MEDIDAMENTOS ESENCIALES, SE REQUIERE CUBIR DEMANDA DE MEDICAMENTOS PARA ENFERMEDADES DE BASE, YA QUE LAS FARMACIAS DISPENSADORAS DE LAS EPS QUEDARON DESTRUIDAS.
+SE REQUIERE 2 BOLSAS DE SANGRE O+  Y 2 BOLSAS DE SANGRE O -",1,,35
+76670,San Pedro,ARO Centro - Tuluá,1,1,0,0,0,1,0,0,0,Hospital Ulpiano Tascon,Sin necesidades prioritarias,1,REVISAR,36
 76736,Sevilla,ARO Centro - Tuluá,1,1,0,0,0,1,,0,,Hospital Dptal Centenario de Sevilla,"grietas (Afectacion del 20%)
 EVALUACION ESTRUCTURAL PARA CALIFICAR RIESGOS EN LA PRESTACION Y EVALUACION DE DAÑOS PARA DEFINIR PLAN DE OBRA Y VALOR",1,,37
-76823,Toro,ARO Norte - Cartago,1,1,,,,1,,,,Hospital Sagrada Familia,"EVALUACION ESTRUCTURAL PARA CALIFICAR RIESGOS EN LA PRESTACION Y EVALUACION DE DAÑOS PARA DEFINIR PLAN DE OBRA Y VALOR
+76823,Toro,ARO Norte - Cartago,1,1,,,,1,,,,Hospital Sagrada Familia ,"EVALUACION ESTRUCTURAL PARA CALIFICAR RIESGOS EN LA PRESTACION Y EVALUACION DE DAÑOS PARA DEFINIR PLAN DE OBRA Y VALOR
 TANQUE DE RESERVA DE AGUA",1,,38
 76828,Trujillo,ARO Centro - Tuluá,1,1,2,1,0,1,0,0,0,ESE HOSPITAL LOCAL SANTA CRUZ,"afectacion del 30% Averias estructurales, area de urgencias 
 EVALUACION ESTRUCTURAL PARA CALIFICAR RIESGOS EN LA PRESTACION Y EVALUACION DE DAÑOS PARA DEFINIR PLAN DE OBRA Y VALOR",1,,39
 76834,Tuluá,ARO Centro - Tuluá,2,2,1,0,0,1,0,0,0,"Hospital Dptal Tomas Uribe Uribe
 Hospital Ruben Cruz Velez","Hosp Tomas Uribe Afectación en paredes de consulta externa (Afectacion del 20%) - Hospital Ruben Cruz Velez, grietas minimas (Afectacion del 5%) 
 EVALUACION ESTRUCTURAL PARA CALIFICAR RIESGOS EN LA PRESTACION Y EVALUACION DE DAÑOS PARA DEFINIR PLAN DE OBRA Y VALOR",1,,40
-76845,Ulloa,ARO Norte - Cartago,1,1,1,0,0,1,0,0,0,"Hospital Pedro Saenz,","estructura agrietada (Afectacion del 10%)
+76845,Ulloa,ARO Norte - Cartago,1,1,1,0,0,1,0,0,0,"Hospital Pedro Saenz, ","estructura agrietada (Afectacion del 10%)
 EVALUACION ESTRUCTURAL PARA CALIFICAR RIESGOS EN LA PRESTACION Y EVALUACION DE DAÑOS PARA DEFINIR PLAN DE OBRA Y VALOR",1,,41
-76863,Versalles,ARO Norte - Cartago,1,1,1,0,0,1,0,0,0,Hospital Henry Valencia Orozco,"afectacion en urgencias en el techo y grietas en paredes, en consultorio de citol ogia  y auditorio(Afectación del 40%)
+76863,Versalles,ARO Norte - Cartago,1,1,1,0,0,1,0,0,0,Hospital Henry Valencia Orozco ,"afectacion en urgencias en el techo y grietas en paredes, en consultorio de citol ogia  y auditorio(Afectación del 40%)
 EVALUACION ESTRUCTURAL PARA CALIFICAR RIESGOS EN LA PRESTACION Y EVALUACION DE DAÑOS PARA DEFINIR PLAN DE OBRA Y VALOR",1,,42
 76869,Vijes,ARO Sur - Cali,1,1,1,0,0,1,0,0,0,Hospital Francineth Sanchez,"Hospital Francineth Sanchez, Daños en estructura leves en la mayor parte de la institucion (afectacion del 30%) 
-EVALUACION ESTRUCTURAL PARA CALIFICAR RIESGOS EN LA PRESTACION Y EVALUACION DE DAÑOS PARA DEFINIR PLAN DE OBRA Y VALOR",1,,43
+EVALUACION ESTRUCTURAL PARA CALIFICAR RIESGOS EN LA PRESTACION Y EVALUACION DE DAÑOS PARA DEFINIR PLAN DE OBRA Y VALOR",1,REVISAR,43
 76890,Yotoco,ARO Centro - Tuluá,1,0,1,0,0,1,0,0,0,Hospital Local de Yotoco,"Hospital Local de Yotoco, AGRIETAMIENTO DE TODAS LAS COLUMNAS DEL PISO 2 (Afectacio del 70%). urgencias reubicada en el area de hospitalización con riesgo de colapso.
 EVALUACION ESTRUCTURAL PARA CALIFICAR RIESGOS EN LA PRESTACION Y EVALUACION DE DAÑOS PARA DEFINIR PLAN DE OBRA Y VALOR",1,,44
 76892,Yumbo,ARO Sur - Cali,1,1,0,0,0,0,0,0,0,Hospital La Buena Esperanza,Sin necesidades prioritarias,0,,45
 76895,Zarzal,ARO Centro - Tuluá,1,1,1,0,0,1,0,0,0,Hospital Departamental San Rafael de Zarzal,"El 10% de la insitución se encuentra afectada. TANQUE DE RESERVA DE AGUA, INSUMOS MEDICOS,  requiere con urgencias apoyo con acuavalle porque está sin agua potable.
 EVALUACION ESTRUCTURAL PARA CALIFICAR RIESGOS EN LA PRESTACION Y EVALUACION DE DAÑOS PARA DEFINIR PLAN DE OBRA Y VALOR
-TANQUE DE RESERVA DE AGUA",1,,46
+TANQUE DE RESERVA DE AGUA
+",1,,46

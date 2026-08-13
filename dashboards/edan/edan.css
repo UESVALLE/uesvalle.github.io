@@ -42,3 +42,8 @@
 @media(max-width:1300px){.detail-kpi-grid--six{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:900px){.header-actions{align-items:flex-start;justify-content:flex-start;flex-direction:column}.header-actions .header-status{min-width:0}.detail-kpi-grid--six{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:576px){.detail-kpi-grid--six{grid-template-columns:1fr}}
+
+
+.map-metric-group-title{margin:.4rem 0 .15rem;padding:.28rem .45rem;border-radius:.45rem;background:#eef4ff;color:#1d4ed8;font-size:.64rem;font-weight:950;text-transform:uppercase;letter-spacing:.04em}
+.map-tool-button[disabled]{opacity:.5;cursor:not-allowed;box-shadow:none}
+.map-side-panel details:first-of-type{margin-top:0;padding-top:0;border-top:none}
