@@ -1,0 +1,78 @@
+{
+  "version_interfaz": "3.2.1",
+  "version_datos": "3.2.1",
+  "procesado_en": "2026-08-15T17:55:05-05:00",
+  "fuente": "Google Forms · Inspección visual de afectaciones en sedes",
+  "resumen": {
+    "areas_registradas": 34,
+    "registros": 36,
+    "areas_con_hallazgos": 19,
+    "hallazgos": 21,
+    "sin_afectacion": 15,
+    "afectacion_alta": 6,
+    "riesgo_inmediato_si": 5,
+    "revision_tecnica_si": 10,
+    "fotografias": 63,
+    "evidencias_multimedia": 63,
+    "ajustes_clasificacion": 6,
+    "por_sede": {
+      "ARO Cartago": {
+        "areas_registradas": 16,
+        "registros": 16,
+        "areas_con_hallazgos": 13,
+        "hallazgos": 13,
+        "sin_afectacion": 3,
+        "nivel": {
+          "Leve": 4,
+          "Moderada": 3,
+          "Alta": 6
+        },
+        "riesgo_si": 5,
+        "revision_si": 10,
+        "fotos": 46,
+        "evidencias": 46
+      },
+      "ARO Tuluá": {
+        "areas_registradas": 18,
+        "registros": 20,
+        "areas_con_hallazgos": 6,
+        "hallazgos": 8,
+        "sin_afectacion": 12,
+        "nivel": {
+          "Leve": 7,
+          "Moderada": 1
+        },
+        "riesgo_si": 0,
+        "revision_si": 0,
+        "fotos": 17,
+        "evidencias": 17
+      }
+    },
+    "niveles": {
+      "Leve": 11,
+      "Moderada": 4,
+      "Alta": 6
+    },
+    "tipos_dano": {
+      "Fisura / grieta": 14,
+      "Rotura / quiebre": 1,
+      "Desprendimiento / caída": 4,
+      "Desplazamiento / separación": 1,
+      "Humedad / filtración": 1
+    },
+    "elementos_ajustados": {
+      "Muro": 13,
+      "Muro / encuentro por determinar": 1,
+      "Cielorraso": 4,
+      "Mampostería / revestimiento asociado a viga": 1,
+      "Encuentro muro–elemento superior": 1,
+      "Revestimiento sobre columna": 1
+    }
+  },
+  "nota_metodologica": "Inspección visual preliminar. La clasificación técnica normalizada apoya la lectura del tablero y no constituye diagnóstico de estabilidad estructural.",
+  "evidencias": {
+    "referenciadas": 63,
+    "locales": 63,
+    "pendientes": 0
+  }
+}

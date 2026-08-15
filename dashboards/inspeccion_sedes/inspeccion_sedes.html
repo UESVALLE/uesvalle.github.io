@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="UESVALLE · Inspección visual post-sismo de sedes institucionales.">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>Inspección visual post-sismo · Sedes UESVALLE</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.datatables.net/1.13.8/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+  <link href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.bootstrap5.min.css" rel="stylesheet">
+  <link href="inspeccion_sedes.css?v=3.3.0" rel="stylesheet">
+</head>
+<body>
+  <!-- Encabezado institucional homologado con EDAN -->
+  <div class="gov-banner"><div class="container d-flex align-items-center h-100"><img src="https://www.gov.co/assets/images/logo.png" alt="GOV.CO"></div></div>
+
+  <main class="bg-shell">
+    <div class="board">
+      <header class="header-ues py-2 mb-3">
+        <div class="container-fluid px-3">
+          <div class="brand-strip"><img src="https://www.uesvalle.gov.co/info/uesvalle/media/bloque1656.png" alt="UESVALLE" loading="lazy"></div>
+        </div>
+      </header>
+
+      <section class="soft-card dashboard-hero p-3 mb-3">
+        <div class="dashboard-return mb-2"><a href="../../index.html" class="btn btn-outline-primary btn-sm rounded-pill px-3 fw-bold">← Portal de Tableros</a></div>
+        <div class="d-flex flex-column flex-xl-row align-items-xl-center gap-3">
+          <div class="me-auto">
+            <div class="module-eyebrow">Infraestructura institucional · respuesta post-sismo</div>
+            <h1 class="board-title mb-1">Inspección visual post-sismo · Sedes UESVALLE</h1>
+            <div class="board-subtitle">Registro preliminar de áreas recorridas, hallazgos observables, evidencia multimedia y priorización de revisión técnica. Evento reportado: 11 de agosto de 2026.</div>
+          </div>
+          <div class="header-actions">
+            <button id="btnGeneratePdf" class="btn btn-primary btn-sm rounded-pill px-3" type="button" title="Genera el informe ejecutivo del Área Operativa seleccionada; sin ARO genera el consolidado">📄 Generar informe ejecutivo PDF</button>
+            <div class="header-status">
+              <span id="lastUpdate" class="badge text-bg-secondary last-update-badge">Cargando…</span>
+              <div class="mini-status"><span>Estado de carga de datos</span><button type="button" id="btnToggleStatus">Ver detalle</button><span id="statusHint">Oculto</span></div>
+            </div>
+          </div>
+        </div>
+        <div id="loadAlert" class="status-body d-none mt-3"></div>
+      </section>
+
+      <section class="soft-card p-3 mb-3 collapsible-block">
+        <button class="table-toggle-header" type="button" data-bs-toggle="collapse" data-bs-target="#filtersCollapse" aria-expanded="true">
+          <div><h5 class="mb-1">Filtros del tablero</h5><div class="section-note">Seleccione el ARO y el área para recorrer la información. Los filtros actualizan indicadores, ficha, análisis y tabla.</div></div>
+          <span class="table-toggle-arrow">›</span>
+        </button>
+        <div class="collapse show mt-3" id="filtersCollapse">
+          <div class="row g-2 align-items-end row-cols-1 row-cols-md-2 row-cols-xl-5">
+            <div class="col"><label class="filter-label" for="fSede">Sede / Área Operativa</label><select id="fSede" class="form-select form-select-sm"><option value="">Todas</option></select></div>
+            <div class="col"><label class="filter-label" for="fArea">Área / ubicación</label><select id="fArea" class="form-select form-select-sm"><option value="">Todas</option></select></div>
+            <div class="col"><label class="filter-label" for="fNivel">Nivel de afectación</label><select id="fNivel" class="form-select form-select-sm"><option value="">Todos</option></select></div>
+            <div class="col"><label class="filter-label" for="fTipoDano">Tipo de daño</label><select id="fTipoDano" class="form-select form-select-sm"><option value="">Todos</option></select></div>
+            <div class="col"><label class="filter-label" for="fRevision">Revisión técnica</label><select id="fRevision" class="form-select form-select-sm"><option value="">Todos</option></select></div>
+          </div>
+          <div class="filters-actions mt-3"><button id="btnApply" class="btn btn-primary btn-sm px-4">Actualizar filtros</button><button id="btnClear" class="btn btn-outline-secondary btn-sm px-4">Limpiar</button><button id="btnReload" class="btn btn-outline-primary btn-sm px-4">Refrescar datos</button></div>
+        </div>
+      </section>
+
+      <section class="soft-card p-2 mb-3 active-filters-card"><div class="d-flex justify-content-between align-items-center gap-2 flex-wrap"><div class="d-flex align-items-center gap-2 flex-wrap"><strong>Filtros activos</strong><div id="activeFilters" class="active-filters-wrap"><span class="text-muted small">Sin filtros adicionales</span></div></div><button id="btnClearActiveFilters" class="btn btn-outline-danger btn-sm">Limpiar filtros</button></div></section>
+
+      <section class="main-kpi-row mb-3">
+        <div class="kpi-card"><div class="kpi-icon">🏢</div><div class="kpi-label">Áreas inspeccionadas</div><div id="kpiAreas" class="kpi-value">–</div><div id="kpiAreasMini" class="kpi-mini">Áreas únicas del recorrido</div></div>
+        <div class="kpi-card"><div class="kpi-icon">🔎</div><div class="kpi-label">Hallazgos</div><div id="kpiFindings" class="kpi-value">–</div><div class="kpi-mini">Afectaciones observadas</div></div>
+        <div class="kpi-card"><div class="kpi-icon">✅</div><div class="kpi-label">Sin afectación observable</div><div id="kpiClear" class="kpi-value">–</div><div class="kpi-mini">Áreas recorridas sin hallazgo</div></div>
+        <div class="kpi-card"><div class="kpi-icon">🟠</div><div class="kpi-label">Afectación alta</div><div id="kpiHigh" class="kpi-value">–</div><div class="kpi-mini">Clasificación visual preliminar</div></div>
+        <div class="kpi-card"><div class="kpi-icon">⚠️</div><div class="kpi-label">Riesgo inmediato</div><div id="kpiRisk" class="kpi-value">–</div><div class="kpi-mini">Reportado como Sí</div></div>
+        <div class="kpi-card"><div class="kpi-icon">🛠️</div><div class="kpi-label">Revisión técnica</div><div id="kpiReview" class="kpi-value">–</div><div class="kpi-mini">Valoración especializada requerida</div></div>
+        <div class="kpi-card"><div class="kpi-icon">📷</div><div class="kpi-label">Evidencias multimedia</div><div id="kpiPhotos" class="kpi-value">–</div><div class="kpi-mini">Fotos y videos asociados</div></div>
+      </section>
+
+      <section class="module-tabs-card">
+        <div class="module-tabs-head"><h2 class="module-tabs-title">Módulos de inspección</h2><div class="module-tabs-subtitle">Consulta integral del área recorrida y generación del informe ejecutivo por sede / ARO.</div></div>
+        <ul class="nav nav-pills" id="dashboardTabs" role="tablist">
+          <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#findings-pane" type="button">Detalle por área</button></li>
+          <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#report-pane" type="button">Informe ejecutivo</button></li>
+        </ul>
+
+        <div class="tab-content dashboard-tabs-content">
+          <div class="tab-pane fade show active" id="findings-pane">
+            <div class="tab-intro"><strong>Consulta:</strong> seleccione el Área Operativa y el área recorrida. La ficha presenta todos los datos útiles del registro y las fotografías y videos del hallazgo seleccionado. Cuando un área contiene varios hallazgos puede navegar entre ellos sin salir de la ficha.</div>
+
+            <section class="area-selector-shell mb-3">
+              <div class="row g-2 align-items-end">
+                <div class="col-12 col-lg-4"><label class="filter-label" for="dSede">Área Operativa / sede</label><select id="dSede" class="form-select"><option value="">Seleccione</option></select></div>
+                <div class="col-12 col-lg-5"><label class="filter-label" for="dArea">Área inspeccionada</label><select id="dArea" class="form-select"><option value="">Seleccione un área</option></select></div>
+                <div class="col-12 col-lg-3"><div class="area-nav-buttons"><button id="btnPrevArea" class="btn btn-outline-primary" type="button">← Anterior</button><button id="btnNextArea" class="btn btn-outline-primary" type="button">Siguiente →</button></div></div>
+              </div>
+              <div class="section-note mt-2">Las áreas se identifican con semáforo de prioridad: 🟢 sin hallazgos, 🟡 hallazgo leve, 🟠 requiere atención o revisión, 🔴 prioridad alta / riesgo inmediato.</div>
+            </section>
+
+            <section id="areaDetail" class="area-detail-shell mb-4"><div class="area-empty-state">Seleccione un Área Operativa y un área para consultar su información.</div></section>
+
+            <section class="analysis-section mb-3">
+              <div class="analysis-title-row"><div><div class="module-eyebrow">Análisis</div><h3>Análisis de la inspección</h3><p>Los gráficos son interactivos: haga clic sobre una barra o segmento para filtrar el tablero y consultar únicamente los hallazgos de esa condición.</p></div></div>
+              <div class="row g-3 mb-3">
+                <div class="col-12 col-xl-6"><section class="chart-card h-100"><div class="chart-title">Nivel de afectación visual por sede</div><div class="chart-subtitle">Hallazgos clasificados como Leve, Moderada, Alta o Por determinar. Haga clic en un segmento para filtrar por sede y nivel.</div><div class="chart-container chart-container-tall"><canvas id="chartLevels"></canvas></div></section></div>
+                <div class="col-12 col-xl-6"><section class="chart-card h-100"><div class="chart-title">Tipo principal de daño observado</div><div class="chart-subtitle">Distribución de los hallazgos dentro del universo filtrado. Haga clic, por ejemplo, en “Fisura / grieta” para mostrar solo esa condición.</div><div class="chart-container chart-container-tall"><canvas id="chartDamage"></canvas></div></section></div>
+              </div>
+              <section class="section-block section-block--blue"><div class="section-header"><div class="section-header__icon">📋</div><div><h3>Resumen por sede</h3><p>Comparación de cobertura, hallazgos y priorización.</p></div></div><div class="section-body"><div class="table-responsive"><table class="table table-hover align-middle w-100" id="tblSummary"><thead><tr><th>Sede / ARO</th><th>Áreas</th><th>Registros</th><th>Hallazgos</th><th>Sin afectación</th><th>Alta</th><th>Riesgo inmediato</th><th>Revisión técnica</th><th>Evidencias</th></tr></thead><tbody></tbody></table></div></div></section>
+            </section>
+
+            <section class="section-block section-block--beige">
+              <button class="area-table-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#findingsTableCollapse" aria-expanded="false">
+                <div class="section-header flex-grow-1"><div class="section-header__icon">📋</div><div><h3>Base completa de hallazgos</h3><p>Consulta secundaria para búsqueda, exportación y acceso rápido al área.</p></div></div><span class="area-table-toggle-arrow">›</span>
+              </button>
+              <div class="collapse" id="findingsTableCollapse"><div class="section-body"><div class="table-responsive"><table id="tblFindings" class="table table-hover align-middle w-100"></table></div></div></div>
+            </section>
+          </div>
+
+          <div class="tab-pane fade" id="report-pane">
+            <div class="tab-intro">El informe se construye por Área Operativa. Seleccione una sede/ARO en los filtros del tablero y use el botón de PDF. Los filtros de área, nivel y revisión no recortan el informe del ARO.</div>
+            <section class="report-preview" id="reportPreview"></section>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer mt-4"><div>UESVALLE · Portal de tableros institucionales</div><div>Inspección de sedes · Registro visual preliminar post-sismo · <span class="interface-version">Interfaz V3.3.0</span></div></footer>
+    </div>
+  </main>
+
+  <div class="modal fade" id="evidenceModal" tabindex="-1"><div class="modal-dialog modal-xl modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="evidenceModalTitle">Evidencia multimedia</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body text-center"><img id="evidenceModalImage" class="img-fluid rounded evidence-modal-image" alt="Evidencia fotográfica"><video id="evidenceModalVideo" class="evidence-modal-video d-none" controls playsinline preload="metadata"></video><div class="mt-3"><a id="evidenceModalOpen" class="btn btn-outline-primary btn-sm" target="_blank" rel="noopener">Abrir archivo</a></div></div></div></div></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.8/js/dataTables.bootstrap5.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.bootstrap5.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.2/dist/jspdf.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jspdf-autotable@3.8.4/dist/jspdf.plugin.autotable.min.js"></script>
+  <script src="inspeccion_sedes.js?v=3.3.0"></script>
+</body>
+</html>
