@@ -1,0 +1,167 @@
+{
+  "sede": "ARO Tuluá",
+  "condicion_area": "Sin afectación observable",
+  "areas": [
+    {
+      "area": "Oficina AEIS",
+      "evidencias": [
+        {
+          "tipo_evidencia": "video",
+          "archivo_local": "data/inspeccion_sedes/evidencias/current/aro_tulua/oficina_aeis/TULUA_SH_001_01.mp4",
+          "nombre_archivo": "TULUA_SH_001_01.mp4"
+        }
+      ],
+      "total_evidencias": 1,
+      "imagenes": 0,
+      "videos": 1
+    },
+    {
+      "area": "Área de almacén",
+      "evidencias": [
+        {
+          "tipo_evidencia": "imagen",
+          "archivo_local": "data/inspeccion_sedes/evidencias/current/aro_tulua/area_de_almacen/TULUA_SH_002_01.jpeg",
+          "nombre_archivo": "TULUA_SH_002_01.jpeg"
+        },
+        {
+          "tipo_evidencia": "imagen",
+          "archivo_local": "data/inspeccion_sedes/evidencias/current/aro_tulua/area_de_almacen/TULUA_SH_002_02.jpeg",
+          "nombre_archivo": "TULUA_SH_002_02.jpeg"
+        }
+      ],
+      "total_evidencias": 2,
+      "imagenes": 2,
+      "videos": 0
+    },
+    {
+      "area": "Archivo",
+      "evidencias": [
+        {
+          "tipo_evidencia": "imagen",
+          "archivo_local": "data/inspeccion_sedes/evidencias/current/aro_tulua/archivo/TULUA_SH_003_01.jpeg",
+          "nombre_archivo": "TULUA_SH_003_01.jpeg"
+        },
+        {
+          "tipo_evidencia": "imagen",
+          "archivo_local": "data/inspeccion_sedes/evidencias/current/aro_tulua/archivo/TULUA_SH_003_02.jpeg",
+          "nombre_archivo": "TULUA_SH_003_02.jpeg"
+        }
+      ],
+      "total_evidencias": 2,
+      "imagenes": 2,
+      "videos": 0
+    },
+    {
+      "area": "Baño mujeres",
+      "evidencias": [
+        {
+          "tipo_evidencia": "imagen",
+          "archivo_local": "data/inspeccion_sedes/evidencias/current/aro_tulua/bano_mujeres/TULUA_SH_004_01.jpeg",
+          "nombre_archivo": "TULUA_SH_004_01.jpeg"
+        },
+        {
+          "tipo_evidencia": "video",
+          "archivo_local": "data/inspeccion_sedes/evidencias/current/aro_tulua/bano_mujeres/TULUA_SH_004_02.mp4",
+          "nombre_archivo": "TULUA_SH_004_02.mp4"
+        }
+      ],
+      "total_evidencias": 2,
+      "imagenes": 1,
+      "videos": 1
+    },
+    {
+      "area": "Oficina estadística",
+      "evidencias": [
+        {
+          "tipo_evidencia": "video",
+          "archivo_local": "data/inspeccion_sedes/evidencias/current/aro_tulua/oficina_estadistica/TULUA_SH_005_01.mp4",
+          "nombre_archivo": "TULUA_SH_005_01.mp4"
+        }
+      ],
+      "total_evidencias": 1,
+      "imagenes": 0,
+      "videos": 1
+    },
+    {
+      "area": "Parqueadero",
+      "evidencias": [
+        {
+          "tipo_evidencia": "video",
+          "archivo_local": "data/inspeccion_sedes/evidencias/current/aro_tulua/parqueadero/TULUA_SH_006_01.mp4",
+          "nombre_archivo": "TULUA_SH_006_01.mp4"
+        }
+      ],
+      "total_evidencias": 1,
+      "imagenes": 0,
+      "videos": 1
+    },
+    {
+      "area": "Área de preparación de muestras",
+      "evidencias": [
+        {
+          "tipo_evidencia": "video",
+          "archivo_local": "data/inspeccion_sedes/evidencias/current/aro_tulua/area_preparacion_muestras/TULUA_SH_007_01.mp4",
+          "nombre_archivo": "TULUA_SH_007_01.mp4"
+        }
+      ],
+      "total_evidencias": 1,
+      "imagenes": 0,
+      "videos": 1
+    },
+    {
+      "area": "Portería",
+      "evidencias": [
+        {
+          "tipo_evidencia": "imagen",
+          "archivo_local": "data/inspeccion_sedes/evidencias/current/aro_tulua/porteria/TULUA_SH_008_01.jpeg",
+          "nombre_archivo": "TULUA_SH_008_01.jpeg"
+        },
+        {
+          "tipo_evidencia": "imagen",
+          "archivo_local": "data/inspeccion_sedes/evidencias/current/aro_tulua/porteria/TULUA_SH_008_02.jpeg",
+          "nombre_archivo": "TULUA_SH_008_02.jpeg"
+        }
+      ],
+      "total_evidencias": 2,
+      "imagenes": 2,
+      "videos": 0
+    },
+    {
+      "area": "Ventanilla",
+      "evidencias": [
+        {
+          "tipo_evidencia": "imagen",
+          "archivo_local": "data/inspeccion_sedes/evidencias/current/aro_tulua/ventanilla/TULUA_SH_009_01.jpeg",
+          "nombre_archivo": "TULUA_SH_009_01.jpeg"
+        }
+      ],
+      "total_evidencias": 1,
+      "imagenes": 1,
+      "videos": 0
+    },
+    {
+      "area": "Oficina zoonosis",
+      "evidencias": [
+        {
+          "tipo_evidencia": "imagen",
+          "archivo_local": "data/inspeccion_sedes/evidencias/current/aro_tulua/oficina_zoonosis/TULUA_SH_010_01.jpeg",
+          "nombre_archivo": "TULUA_SH_010_01.jpeg"
+        },
+        {
+          "tipo_evidencia": "video",
+          "archivo_local": "data/inspeccion_sedes/evidencias/current/aro_tulua/oficina_zoonosis/TULUA_SH_010_02.mp4",
+          "nombre_archivo": "TULUA_SH_010_02.mp4"
+        }
+      ],
+      "total_evidencias": 2,
+      "imagenes": 1,
+      "videos": 1
+    }
+  ],
+  "totales": {
+    "areas": 10,
+    "evidencias": 15,
+    "imagenes": 9,
+    "videos": 6
+  }
+}

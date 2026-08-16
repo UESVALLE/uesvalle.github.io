@@ -3,12 +3,18 @@
 
   const DATA_URL = "../../data/inspeccion_sedes/current/inspecciones.json";
   const META_URL = "../../data/inspeccion_sedes/current/metadata.json";
+  const COMPLEMENT_URLS = [
+    {label:"Cartago", url:"../../data/inspeccion_sedes/current/complementarias/manifest_cartago_sin_hallazgo.json"},
+    {label:"Tuluá", url:"../../data/inspeccion_sedes/current/complementarias/manifest_tulua_sin_hallazgo.json"}
+  ];
+  const PDF_HEADER_LOGO_URL = "./encabezado_informe_uesvalle.png";
   const nf = new Intl.NumberFormat("es-CO");
   const df = new Intl.DateTimeFormat("es-CO", {day:"numeric", month:"numeric", year:"numeric", hour:"numeric", minute:"2-digit", hour12:true});
 
   let DATA = [];
   let FILTERED = [];
   let META = null;
+  let COMPLEMENTS = [];
   let charts = {};
   let dtFindings = null;
   let selectedId = null;
@@ -57,11 +63,8 @@
     const sedesBase = ["ARO Cali","ARO Tuluá","ARO Cartago","Sede Principal UESVALLE", ...DATA.map(r=>r.sede)];
     populateSelect("fSede", sedesBase, "Todas");
     populateSelect("fCondicion", DATA.map(areaCondition), "Todas");
-    populateSelect("fArea", DATA.map(r=>r.area), "Todas");
-    populateSelect("fComponente", DATA.filter(r=>r.es_hallazgo).map(r=>r.elemento_ajustado || "Por determinar"), "Todos");
     populateSelect("fTipoDano", DATA.filter(r=>r.es_hallazgo).map(r=>r.tipo_dano), "Todos");
     populateSelect("fNivel", DATA.filter(r=>r.es_hallazgo).map(r=>r.nivel), "Todos");
-    populateSelect("fRevision", DATA.filter(r=>r.es_hallazgo).map(r=>r.revision_tecnica), "Todos");
   }
 
   function renderActiveFilters() {
@@ -69,11 +72,8 @@
     const items = [
       ["Sede", $("fSede").value],
       ["Condición", $("fCondicion").value],
-      ["Área", $("fArea").value],
-      ["Componente", $("fComponente").value],
       ["Tipo de daño", $("fTipoDano").value],
-      ["Nivel", $("fNivel").value],
-      ["Revisión", $("fRevision").value]
+      ["Nivel", $("fNivel").value]
     ].filter(([,v]) => v);
     wrap.innerHTML = items.length ? items.map(([k,v])=>`<span class="active-filter-chip">${esc(k)}: ${esc(v)}</span>`).join("") : `<span class="text-muted small">Sin filtros adicionales</span>`;
   }
@@ -81,19 +81,13 @@
   function applyFilters() {
     const sede = $("fSede").value;
     const condicion = $("fCondicion").value;
-    const area = $("fArea").value;
-    const componente = $("fComponente").value;
     const tipoDano = $("fTipoDano").value;
     const nivel = $("fNivel").value;
-    const revision = $("fRevision").value;
     FILTERED = DATA.filter(r =>
       (!sede || r.sede === sede) &&
       (!condicion || areaCondition(r) === condicion) &&
-      (!area || r.area === area) &&
-      (!componente || (r.elemento_ajustado || "Por determinar") === componente) &&
       (!tipoDano || r.tipo_dano === tipoDano) &&
-      (!nivel || r.nivel === nivel) &&
-      (!revision || r.revision_tecnica === revision)
+      (!nivel || r.nivel === nivel)
     );
     renderActiveFilters();
     renderKPIs();
@@ -105,7 +99,7 @@
   }
 
   function clearFilters() {
-    ["fSede","fCondicion","fArea","fComponente","fTipoDano","fNivel","fRevision"].forEach(id => $(id).value = "");
+    ["fSede","fCondicion","fTipoDano","fNivel"].forEach(id => $(id).value = "");
     applyFilters();
   }
 
@@ -125,6 +119,7 @@
     const affectedAreas = areas.filter(g=>g.records.some(r=>r.es_hallazgo)).length;
     return {
       records: records.length,
+      aros: new Set(records.map(r=>r.sede).filter(Boolean)).size,
       areas: areas.length,
       affectedAreas,
       findings: hall.length,
@@ -132,20 +127,18 @@
       high: hall.filter(r=>norm(r.nivel)==="alta").length,
       risk: hall.filter(r=>r.riesgo_si).length,
       review: hall.filter(r=>r.revision_si).length,
-      photos: hall.reduce((a,r)=>a+(Number(r.n_fotos)||0),0)
+      photos: records.reduce((a,r)=>a+(Number(r.n_evidencias ?? r.n_fotos ?? (r.fotos||[]).length)||0),0)
     };
   }
 
   function renderKPIs() {
     const m = metrics();
-    $("kpiAreas").textContent = nf.format(m.areas);
-    if ($("kpiAreasMini")) $("kpiAreasMini").textContent = `${nf.format(m.records)} registro(s) de recorrido`;
+    $("kpiAros").textContent = nf.format(m.aros);
     $("kpiFindings").textContent = nf.format(m.findings);
     $("kpiClear").textContent = nf.format(m.clear);
     $("kpiHigh").textContent = nf.format(m.high);
     $("kpiRisk").textContent = nf.format(m.risk);
     $("kpiReview").textContent = nf.format(m.review);
-    $("kpiPhotos").textContent = nf.format(m.photos);
   }
 
   function destroyChart(name) { if (charts[name]) { charts[name].destroy(); charts[name] = null; } }
@@ -155,9 +148,10 @@
     const sedes = [...new Set(FILTERED.map(r=>r.sede).filter(Boolean))].sort((a,b)=>a.localeCompare(b,"es"));
     const levels = ["Leve","Moderada","Alta","Por determinar"];
     destroyChart("levels");
+    const levelColors={"Leve":"#f4c542","Moderada":"#f59e0b","Alta":"#dc3545","Por determinar":"#adb5bd"};
     charts.levels = new Chart($("chartLevels"), {
       type:"bar",
-      data:{labels:sedes,datasets:levels.map(level=>({label:level,data:sedes.map(s=>hall.filter(r=>r.sede===s && (r.nivel||"Por determinar")===level).length)}))},
+      data:{labels:sedes,datasets:levels.map(level=>({label:level,backgroundColor:levelColors[level],data:sedes.map(s=>hall.filter(r=>r.sede===s && (r.nivel||"Por determinar")===level).length)}))},
       options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:"bottom"}},scales:{x:{stacked:true},y:{stacked:true,beginAtZero:true,ticks:{precision:0}}},onHover:(evt,els)=>{evt.native.target.style.cursor=els.length?"pointer":"default";},onClick:(evt,els)=>{
         if(!els.length)return;
         const point=els[0];
@@ -166,9 +160,6 @@
         const same=$("fSede").value===sede && $("fNivel").value===level;
         $("fSede").value=same?"":sede;
         $("fNivel").value=same?"":level;
-        const areas=DATA.filter(r=>!$("fSede").value||r.sede===$("fSede").value).map(r=>r.area);
-        populateSelect("fArea",areas,"Todas");
-        $("fArea").value="";
         applyFilters();
       }}
     });
@@ -184,7 +175,6 @@
         if(!els.length)return;
         const damage=damageLabels[els[0].index];
         $("fTipoDano").value=$("fTipoDano").value===damage?"":damage;
-        $("fArea").value="";
         applyFilters();
       }}
     });
@@ -195,8 +185,8 @@
     const sedes = [...new Set(FILTERED.map(r=>r.sede).filter(Boolean))].sort((a,b)=>a.localeCompare(b,"es"));
     tbody.innerHTML = sedes.map(sede=>{
       const rr = FILTERED.filter(r=>r.sede===sede); const m=metrics(rr);
-      return `<tr data-sede="${esc(sede)}"><td><button class="btn btn-link btn-sm p-0 fw-bold summary-sede">${esc(sede)}</button></td><td>${m.areas}</td><td>${m.records}</td><td>${m.findings}</td><td>${m.clear}</td><td>${m.high}</td><td>${m.risk}</td><td>${m.review}</td><td>${m.photos}</td></tr>`;
-    }).join("") || `<tr><td colspan="9" class="text-muted">Sin registros para los filtros seleccionados.</td></tr>`;
+      return `<tr data-sede="${esc(sede)}"><td><button class="btn btn-link btn-sm p-0 fw-bold summary-sede">${esc(sede)}</button></td><td>${m.areas}</td><td>${m.findings}</td><td>${m.clear}</td><td>${m.high}</td><td>${m.risk}</td></tr>`;
+    }).join("") || `<tr><td colspan="6" class="text-muted">Sin registros para los filtros seleccionados.</td></tr>`;
     tbody.querySelectorAll(".summary-sede").forEach(btn=>btn.addEventListener("click",()=>{ $("fSede").value=btn.closest("tr").dataset.sede; applyFilters(); }));
   }
 
@@ -269,13 +259,13 @@
       maxLevel: max?.nivel || "Sin afectación",
       risk: hall.some(r=>r.riesgo_si),
       review: hall.some(r=>r.revision_si),
-      photos: hall.reduce((a,r)=>a+(Number(r.n_fotos)||0),0),
+      photos: records.reduce((a,r)=>a+(Number(r.n_evidencias ?? r.n_fotos ?? (r.fotos||[]).length)||0),0),
       priority: hall.some(r=>r.riesgo_si || norm(r.nivel)==="alta")
     };
   }
 
   function hasGlobalFilters() {
-    return ["fSede","fCondicion","fArea","fComponente","fTipoDano","fNivel","fRevision"].some(id => $(id)?.value);
+    return ["fSede","fCondicion","fTipoDano","fNivel"].some(id => $(id)?.value);
   }
 
   function detailSourceRecords() {
@@ -286,17 +276,29 @@
     return detailSourceRecords().filter(r=>r.sede===sede && r.area===area);
   }
 
+  function areaVisual(summary) {
+    if (!summary.findings) return {icon:"🟢", rank:0, label:"sin afectación observable"};
+    if (summary.risk || norm(summary.maxLevel)==="alta") return {icon:"🔴", rank:50, label:"alta / riesgo inmediato"};
+    if (norm(summary.maxLevel)==="moderada" || summary.review) return {icon:"🟠", rank:40, label:"moderada / revisión"};
+    if (norm(summary.maxLevel)==="leve") return {icon:"🟡", rank:30, label:"leve"};
+    return {icon:"⚪", rank:20, label:"por determinar"};
+  }
+
   function areaOptionLabel(sede, area) {
     const rr=detailRecordsForArea(sede, area);
     const s=areaSummary(rr);
-    const icon=s.priority?"🔴":s.findings?((areaLevelOrder(s.maxLevel)>=2||s.review)?"🟠":"🟡"):"🟢";
-    const suffix=s.findings?`${s.findings} hallazgo${s.findings===1?"":"s"}`:"sin hallazgos";
-    return `${icon} ${area} · ${suffix}`;
+    const visual=areaVisual(s);
+    const suffix=s.findings?`${s.findings} hallazgo${s.findings===1?"":"s"}`:"sin afectación observable";
+    return `${visual.icon} ${area} · ${suffix}`;
   }
 
   function detailAreasForSede(sede) {
     return [...new Set(detailSourceRecords().filter(r=>r.sede===sede).map(r=>r.area).filter(Boolean))]
-      .sort((a,b)=>a.localeCompare(b,"es"));
+      .sort((a,b)=>{
+        const sa=areaSummary(detailRecordsForArea(sede,a));
+        const sb=areaSummary(detailRecordsForArea(sede,b));
+        return areaVisual(sb).rank-areaVisual(sa).rank || a.localeCompare(b,"es");
+      });
   }
 
   function populateDetailSede() {
@@ -316,14 +318,7 @@
     el.innerHTML=`<option value="">Seleccione un área</option>`+areas.map(a=>`<option value="${esc(a)}">${esc(areaOptionLabel(sede,a))}</option>`).join("");
     if(target && areas.includes(target)) el.value=target;
     else if(areas.length) {
-      // Prioriza automáticamente el área con mayor nivel/riesgo cuando no existe selección.
-      const ranked=areas.slice().sort((a,b)=>{
-        const sa=areaSummary(detailRecordsForArea(sede,a));
-        const sb=areaSummary(detailRecordsForArea(sede,b));
-        const score=x=>(x.risk?100:0)+(x.review?30:0)+(areaLevelOrder(x.maxLevel)*10)+x.findings;
-        return score(sb)-score(sa) || a.localeCompare(b,"es");
-      });
-      el.value=ranked[0];
+      el.value=areas[0];
     }
     detailArea=el.value;
     updateAreaNavButtons();
@@ -331,14 +326,18 @@
 
   function syncDetailSelectorsFromGlobal() {
     if(!$("dSede")||!$("dArea"))return;
+    const previousSede=detailSede || $("dSede").value;
+    const previousArea=detailArea || $("dArea").value;
     populateDetailSede();
     const globalSede=$("fSede").value;
-    const globalArea=$("fArea").value;
-    if(globalSede && $("dSede").value!==globalSede){$("dSede").value=globalSede;detailSede=globalSede;populateDetailArea(globalArea);}
-    else if(!$("dSede").value){
-      const sedes=[...new Set(detailSourceRecords().map(r=>r.sede).filter(Boolean))].sort((a,b)=>a.localeCompare(b,"es"));
-      if(sedes.length){$("dSede").value=globalSede||sedes[0];detailSede=$("dSede").value;populateDetailArea(globalArea);}
-    } else if(globalArea && detailAreasForSede($("dSede").value).includes(globalArea)) {$("dArea").value=globalArea;detailArea=globalArea;}
+    const availableSedes=[...$("dSede").options].map(o=>o.value).filter(Boolean);
+    const targetSede=(globalSede && availableSedes.includes(globalSede)) ? globalSede : (availableSedes.includes(previousSede) ? previousSede : (availableSedes[0]||""));
+    $("dSede").value=targetSede;
+    detailSede=targetSede;
+    populateDetailArea(previousArea);
+    detailArea=$("dArea").value;
+    detailFindingIndex=0;
+    detailPhotoIndex=0;
     renderAreaDetail();
   }
 
@@ -404,9 +403,9 @@
       </div>`;
   }
 
-  function renderPhotoViewer(r) {
+  function renderPhotoViewer(r, contextLabel="Hallazgo seleccionado") {
     const media=r?.fotos||[];
-    if(!media.length) return `<div class="area-photo-title-row"><div><h4>Evidencia multimedia</h4><span>Área / hallazgo seleccionado</span></div></div><div class="photo-empty"><div class="icon">📎</div><strong>Sin evidencias asociadas</strong><span>No se registraron fotografías o videos para este registro.</span></div>`;
+    if(!media.length) return `<div class="area-photo-title-row"><div><h4>Evidencia multimedia</h4><span>${esc(contextLabel)}</span></div></div><div class="photo-empty"><div class="icon">📎</div><strong>Sin evidencias asociadas</strong><span>No se registraron fotografías o videos para este registro.</span></div>`;
     detailPhotoIndex=Math.max(0,Math.min(detailPhotoIndex,media.length-1));
     const e=media[detailPhotoIndex];
     const src=evidenceCandidates(e)[0]||"";
@@ -429,7 +428,7 @@
     const nVideos=media.filter(x=>evidenceType(x)==="video").length;
     const nImages=media.length-nVideos;
     const countLabel=[nImages?`${nImages} foto${nImages===1?"":"s"}`:"",nVideos?`${nVideos} video${nVideos===1?"":"s"}`:""].filter(Boolean).join(" · ");
-    return `<div class="area-photo-title-row"><div><h4>Evidencia multimedia</h4><span>Hallazgo seleccionado</span></div><span>${countLabel}</span></div>
+    return `<div class="area-photo-title-row"><div><h4>Evidencia multimedia</h4><span>${esc(contextLabel)}</span></div><span>${countLabel}</span></div>
       <div class="photo-stage">
         <button id="btnPrevPhoto" class="photo-nav-btn photo-nav-prev" type="button" ${detailPhotoIndex<=0?"disabled":""} aria-label="Evidencia anterior">‹</button>
         ${main}
@@ -451,7 +450,7 @@
     });
   }
 
-  function bindAreaDetailEvents(box, hall) {
+  function bindAreaDetailEvents(box, hall, viewerRecord=null) {
     box.querySelectorAll(".finding-switch-btn").forEach(btn=>btn.addEventListener("click",()=>{
       detailFindingIndex=Number(btn.dataset.findingIndex)||0; detailPhotoIndex=0; renderAreaDetail();
     }));
@@ -461,7 +460,7 @@
     box.querySelectorAll(".photo-thumb").forEach(btn=>btn.addEventListener("click",()=>{detailPhotoIndex=Number(btn.dataset.photoIndex)||0;renderAreaDetail();}));
     box.querySelectorAll(".area-photo-img").forEach(bindCandidateImage);
     const main=$("areaMediaMain");
-    if(main && hall.length && main.tagName==="IMG"){main.addEventListener("click",()=>{const r=hall[detailFindingIndex];const p=r?.fotos?.[detailPhotoIndex];if(p)openEvidence(p);});}
+    if(main && main.tagName==="IMG"){main.addEventListener("click",()=>{const r=viewerRecord || hall[detailFindingIndex];const p=r?.fotos?.[detailPhotoIndex];if(p)openEvidence(p);});}
   }
 
   function renderAreaDetail() {
@@ -473,17 +472,20 @@
     const s=areaSummary(rr), hall=rr.filter(r=>r.es_hallazgo), clear=rr.filter(r=>!r.es_hallazgo);
     detailFindingIndex=Math.max(0,Math.min(detailFindingIndex,Math.max(0,hall.length-1)));
     const active=hall[detailFindingIndex]||null;
-    if(active) detailPhotoIndex=Math.max(0,Math.min(detailPhotoIndex,Math.max(0,(active.fotos||[]).length-1))); else detailPhotoIndex=0;
+    if(active) detailPhotoIndex=Math.max(0,Math.min(detailPhotoIndex,Math.max(0,(active.fotos||[]).length-1)));
     const stateClass=s.priority?"area-status-priority":s.findings?"area-status-findings":"area-status-clear";
     const stateText=s.priority?"Atención prioritaria":s.findings?"Con hallazgos":"Sin afectación observable";
     const info=active?renderFindingInfo(active,hall):renderClearAreaInfo(clear);
-    const photos=active?renderPhotoViewer(active):`<div class="area-photo-title-row"><div><h4>Evidencia multimedia</h4><span>Área seleccionada</span></div></div><div class="photo-empty"><div class="icon">✅</div><strong>Sin evidencia asociada</strong><span>El área fue registrada sin afectaciones observables.</span></div>`;
+    const clearMedia=clear.flatMap(r=>r.fotos||[]);
+    const clearViewerRecord=clear.length?{...clear[0], fotos:clearMedia}:null;
+    if(!active) detailPhotoIndex=Math.max(0,Math.min(detailPhotoIndex,Math.max(0,clearMedia.length-1)));
+    const viewerRecord=active || clearViewerRecord;
+    const photos=active?renderPhotoViewer(active,"Hallazgo seleccionado"):(clearMedia.length?renderPhotoViewer(clearViewerRecord,"Evidencia del área revisada"):`<div class="area-photo-title-row"><div><h4>Evidencia multimedia</h4><span>Área seleccionada</span></div></div><div class="photo-empty"><div class="icon">✅</div><strong>Sin evidencia asociada</strong><span>El área fue registrada sin afectaciones observables.</span></div>`);
     const areaNotes=[...new Set(clear.map(r=>r.observacion_area).filter(Boolean))];
     const note=active&&areaNotes.length?`<div class="area-observation"><strong>Otro registro del área:</strong> ${areaNotes.map(esc).join(" · ")}</div>`:"";
     box.innerHTML=`<div class="area-detail-head"><div><div class="module-eyebrow">${esc(detailSede)}</div><h3 class="area-detail-title">${esc(detailArea)}</h3><div class="area-detail-subtitle">${s.records} registro${s.records===1?"":"s"} · ${s.findings} hallazgo${s.findings===1?"":"s"} · ${s.photos} evidencia${s.photos===1?"":"s"}</div></div><span class="area-status-badge ${stateClass}">${esc(stateText)}</span></div>
-      <div class="area-kpi-grid"><div class="area-kpi"><small>Registros del área</small><b>${s.records}</b></div><div class="area-kpi"><small>Hallazgos</small><b>${s.findings}</b></div><div class="area-kpi"><small>Nivel máximo observado</small><b>${esc(s.maxLevel)}</b></div><div class="area-kpi"><small>Riesgo inmediato</small><b>${s.risk?"Sí":"No"}</b></div><div class="area-kpi"><small>Revisión técnica</small><b>${s.review?"Sí":"No"}</b></div><div class="area-kpi"><small>Evidencias</small><b>${s.photos}</b></div></div>
       <div class="area-focus-grid"><div class="area-info-panel">${info}${note}</div><div class="area-photo-panel">${photos}</div></div>`;
-    bindAreaDetailEvents(box,hall); updateAreaNavButtons();
+    bindAreaDetailEvents(box,hall,viewerRecord); updateAreaNavButtons();
   }
 
   function updateAreaNavButtons() {
@@ -500,12 +502,11 @@
   function openAreaFromFinding(id) {
     const r=DATA.find(x=>x.id===id); if(!r)return;
     detailSede=r.sede; detailArea=r.area; detailFindingIndex=0; detailPhotoIndex=0; populateDetailSede(); $("dSede").value=r.sede; populateDetailArea(r.area); $("dArea").value=r.area; renderAreaDetail();
-    const tabBtn=document.querySelector('[data-bs-target="#findings-pane"]'); if(tabBtn)bootstrap.Tab.getOrCreateInstance(tabBtn).show();
     setTimeout(()=>$("areaDetail")?.scrollIntoView({behavior:"smooth",block:"start"}),120);
   }
 
   function reportScopeSede() {
-    return $("fSede").value || "";
+    return $("dSede")?.value || $("fSede")?.value || "";
   }
 
   function reportRecords() {
@@ -517,11 +518,32 @@
     return reportScopeSede() || "Consolidado de sedes inspeccionadas";
   }
 
+  function priorityScore(r) {
+    const level=norm(r?.nivel);
+    return (r?.riesgo_si?1000:0)
+      +(level==="alta"?500:0)
+      +(r?.revision_si?200:0)
+      +(level==="moderada"?80:0)
+      +(level==="leve"?20:0)
+      +((r?.n_fotos||0)>0?5:0);
+  }
+
   function prioritize(records) {
-    return records.filter(r=>r.es_hallazgo).sort((a,b)=>{
-      const score = r => (r.riesgo_si?100:0)+(r.revision_si?40:0)+(r.nivel_orden*10)+(r.n_fotos||0);
-      return score(b)-score(a);
-    });
+    return records.filter(r=>r.es_hallazgo).sort((a,b)=>
+      priorityScore(b)-priorityScore(a)
+      || String(a.area||"").localeCompare(String(b.area||""),"es")
+    );
+  }
+
+  function priorityAction(r) {
+    const level=norm(r?.nivel);
+    if(r?.riesgo_si && level==="alta") return "Valoración técnica prioritaria";
+    if(r?.riesgo_si) return "Control preventivo y valoración";
+    if(level==="alta" && r?.revision_si) return "Valoración técnica prioritaria";
+    if(level==="alta") return "Valoración técnica";
+    if(r?.revision_si) return "Revisión técnica";
+    if(level==="moderada") return "Seguimiento técnico";
+    return "Seguimiento";
   }
 
   function predominant(records, field) {
@@ -530,18 +552,41 @@
   }
 
   function executiveText(records) {
+    const sede=reportScopeSede() || "el área operativa seleccionada";
     const m=metrics(records); const hall=records.filter(r=>r.es_hallazgo);
-    const levelCounts = {Leve:0,Moderada:0,Alta:0,"Por determinar":0}; hall.forEach(r=>{const k=r.nivel||"Por determinar";levelCounts[k]=(levelCounts[k]||0)+1;});
-    const damage=predominant(records,"tipo_dano"); const element=predominant(records,"elemento_ajustado");
-    let result = `Se consolidaron ${m.records} registros correspondientes a ${m.areas} áreas inspeccionadas. ${m.affectedAreas} área(s) presentan uno o más hallazgos y ${m.clear} no evidencian afectaciones observables durante el recorrido. `;
-    if(m.findings) result += `En total se documentaron ${m.findings} hallazgos: ${levelCounts.Alta||0} de nivel Alto, ${levelCounts.Moderada||0} Moderado y ${levelCounts.Leve||0} Leve. `;
-    result += `${m.risk} registro(s) reportan riesgo inmediato y ${m.review} requieren revisión técnica especializada.`;
-    const predominance = m.findings ? `El tipo de daño predominante es ${damage.toLowerCase()} y el elemento observado con mayor frecuencia es ${String(element).toLowerCase()}.` : "No se registraron hallazgos en el universo filtrado.";
-    const conclusion = m.risk || m.high ? "Se recomienda priorizar la valoración técnica de los hallazgos con afectación visual Alta y/o riesgo inmediato reportado, manteniendo medidas preventivas cuando corresponda." : m.review ? "Se recomienda gestionar la valoración técnica de los registros que fueron marcados para revisión especializada." : "Con la información visual disponible no se identifican casos que requieran priorización inmediata; se recomienda conservar el registro y realizar seguimiento si aparecen cambios.";
+    const levelCounts = {Leve:0,Moderada:0,Alta:0,"Por determinar":0};
+    hall.forEach(r=>{const k=r.nivel||"Por determinar";levelCounts[k]=(levelCounts[k]||0)+1;});
+    const damage=predominant(records,"tipo_dano");
+    const element=predominant(records,"elemento_ajustado");
+
+    let result=`En el recorrido de ${sede} se inspeccionaron ${m.areas} áreas. `;
+    result+=`${m.affectedAreas} presentaron uno o más hallazgos y ${m.clear} no evidenciaron afectaciones observables durante la inspección visual. `;
+    if(m.findings){
+      result+=`Se documentaron ${m.findings} hallazgos: ${levelCounts.Alta||0} de nivel Alto, ${levelCounts.Moderada||0} Moderado y ${levelCounts.Leve||0} Leve. `;
+      result+=`${m.risk} registro(s) reportan riesgo inmediato y ${m.review} requieren revisión técnica especializada.`;
+    } else {
+      result+="No se registraron hallazgos en las áreas recorridas.";
+    }
+
+    const predominance=m.findings
+      ? `El tipo de daño observado con mayor frecuencia es ${damage.toLowerCase()} y el componente registrado con mayor frecuencia es ${String(element).toLowerCase()}.`
+      : "No se identificaron afectaciones visibles que requieran clasificación de daño.";
+
+    let conclusion;
+    if(m.risk || m.high){
+      conclusion="Se recomienda priorizar la valoración técnica de los puntos críticos identificados, especialmente aquellos con afectación visual Alta y/o riesgo inmediato reportado. Mantener medidas preventivas y restricciones temporales de uso cuando las condiciones observadas así lo ameriten, hasta contar con valoración especializada.";
+    } else if(m.review){
+      conclusion="No se identificaron afectaciones visuales de nivel Alto ni riesgo inmediato; sin embargo, se recomienda gestionar la revisión técnica de los registros señalados y mantener seguimiento de su evolución.";
+    } else if(m.findings){
+      conclusion="No se identificaron afectaciones visuales de nivel Alto ni situaciones de riesgo inmediato. Se recomienda mantener seguimiento de los hallazgos documentados y registrar cualquier cambio observado.";
+    } else {
+      conclusion="Durante el recorrido no se identificaron afectaciones observables. Se recomienda conservar la evidencia del estado inspeccionado y realizar seguimiento ante cualquier cambio posterior.";
+    }
     return {result,predominance,conclusion};
   }
 
   function renderReportPreview() {
+    if (!$("reportPreview")) return;
     const records=reportRecords(); const m=metrics(records); const text=executiveText(records); const priorities=prioritize(records).slice(0,6);
     const date = META?.procesado_en ? new Date(META.procesado_en) : new Date();
     $("reportPreview").innerHTML = `<div class="report-header"><div class="module-eyebrow">UESVALLE</div><h2>Informe ejecutivo · Inspección visual post-sismo</h2><div class="report-meta">${esc(filteredTitle())} · Corte de información: ${esc(new Intl.DateTimeFormat("es-CO",{day:"numeric",month:"long",year:"numeric"}).format(date))}</div></div>
@@ -554,6 +599,48 @@
       <div class="report-note"><strong>Alcance:</strong> los resultados corresponden a una inspección visual preliminar y no constituyen diagnóstico de estabilidad ni evaluación estructural definitiva. La clasificación técnica normalizada se utiliza para presentar de forma consistente los hallazgos observados.</div>`;
   }
 
+  async function normalizePhotoBlobForPdf(blob) {
+    // Chrome ya interpreta la orientación EXIF al mostrar las evidencias
+    // del tablero. Para el PDF se rasteriza esa misma orientación una sola vez.
+    if("createImageBitmap" in window){
+      try{
+        const bitmap=await createImageBitmap(blob,{imageOrientation:"from-image"});
+        const canvas=document.createElement("canvas");
+        canvas.width=Math.max(1,bitmap.width);
+        canvas.height=Math.max(1,bitmap.height);
+        const ctx=canvas.getContext("2d",{alpha:false});
+        ctx.fillStyle="#ffffff";
+        ctx.fillRect(0,0,canvas.width,canvas.height);
+        ctx.drawImage(bitmap,0,0,canvas.width,canvas.height);
+        bitmap.close?.();
+        return {data:canvas.toDataURL("image/jpeg",0.94),width:canvas.width,height:canvas.height};
+      }catch(_){ /* fallback compatible con Chrome */ }
+    }
+
+    const objectUrl=URL.createObjectURL(blob);
+    try{
+      const img=await new Promise((resolve,reject)=>{
+        const el=new Image();
+        el.decoding="async";
+        el.onload=()=>resolve(el);
+        el.onerror=reject;
+        el.src=objectUrl;
+      });
+      const w=Math.max(1,img.naturalWidth||img.width);
+      const h=Math.max(1,img.naturalHeight||img.height);
+      const canvas=document.createElement("canvas");
+      canvas.width=w;
+      canvas.height=h;
+      const ctx=canvas.getContext("2d",{alpha:false});
+      ctx.fillStyle="#ffffff";
+      ctx.fillRect(0,0,w,h);
+      ctx.drawImage(img,0,0,w,h);
+      return {data:canvas.toDataURL("image/jpeg",0.94),width:w,height:h};
+    } finally {
+      URL.revokeObjectURL(objectUrl);
+    }
+  }
+
   async function loadImageData(photo) {
     const candidates = evidenceCandidates(photo);
     for (const url of candidates) {
@@ -562,72 +649,540 @@
         if(!res.ok) continue;
         const blob=await res.blob();
         if(!blob.type.startsWith("image/")) continue;
-        return await new Promise((resolve,reject)=>{const fr=new FileReader();fr.onload=()=>resolve(fr.result);fr.onerror=reject;fr.readAsDataURL(blob);});
+        return await normalizePhotoBlobForPdf(blob);
       } catch (_) {}
     }
     return null;
   }
 
+  function addImageFit(doc,image,x,y,maxW,maxH) {
+    if(!image?.data) return false;
+    const iw=Math.max(1,image.width||1), ih=Math.max(1,image.height||1);
+    const scale=Math.min(maxW/iw,maxH/ih);
+    const w=iw*scale, h=ih*scale;
+    const ix=x+(maxW-w)/2, iy=y+(maxH-h)/2;
+    try{
+      const type=image.data.startsWith("data:image/png")?"PNG":"JPEG";
+      doc.addImage(image.data,type,ix,iy,w,h,undefined,"FAST");
+      return true;
+    }catch(_){ return false; }
+  }
+
+  async function loadStaticImageData(url) {
+    try {
+      const res=await fetch(url,{cache:"no-store"});
+      if(!res.ok) return null;
+      const blob=await res.blob();
+      if(!blob.type.startsWith("image/")) return null;
+      return await new Promise((resolve,reject)=>{const fr=new FileReader();fr.onload=()=>resolve(fr.result);fr.onerror=reject;fr.readAsDataURL(blob);});
+    } catch (_) { return null; }
+  }
+
+  function criticalPhotoItems(records, limit=3) {
+    const ordered=prioritize(records);
+    const seenAreas=new Set();
+    const items=[];
+    for(const r of ordered){
+      const areaKey=`${r.sede||""}::${r.area||""}`;
+      if(seenAreas.has(areaKey)) continue;
+      const photo=(r.fotos||[]).find(p=>evidenceType(p)==="imagen");
+      if(!photo) continue;
+      seenAreas.add(areaKey);
+      items.push({p:photo,r});
+      if(items.length>=limit) break;
+    }
+    return items;
+  }
+
   function wrapText(doc,text,width){ return doc.splitTextToSize(String(text||""),width); }
 
   async function generatePdf() {
-    if (!window.jspdf?.jsPDF) { alert("No fue posible cargar la librería PDF."); return; }
-    const {jsPDF}=window.jspdf; const doc=new jsPDF({unit:"mm",format:"a4"});
-    const records=reportRecords(); const m=metrics(records); const text=executiveText(records); const priority=prioritize(records).slice(0,6);
-    const title=filteredTitle();
-    let y=15;
-    doc.setFont("helvetica","bold"); doc.setFontSize(9); doc.setTextColor(11,79,138); doc.text("UESVALLE",14,y); y+=6;
-    doc.setTextColor(30,50,65); doc.setFontSize(15); doc.text("Informe ejecutivo · Inspección visual post-sismo",14,y); y+=6;
-    doc.setFont("helvetica","normal");doc.setFontSize(9);doc.setTextColor(95,110,120);doc.text(title,14,y); y+=4;
-    const date = META?.procesado_en ? new Date(META.procesado_en) : new Date();
-    doc.text(`Corte: ${new Intl.DateTimeFormat("es-CO",{day:"numeric",month:"long",year:"numeric"}).format(date)}`,14,y); y+=7;
-    doc.setDrawColor(11,79,138);doc.setLineWidth(.6);doc.line(14,y,196,y);y+=7;
-
-    doc.setFont("helvetica","bold");doc.setFontSize(10);doc.setTextColor(30,50,65);doc.text("Indicadores",14,y);y+=4;
-    doc.autoTable({startY:y,theme:"grid",styles:{fontSize:8,cellPadding:2},headStyles:{fillColor:[11,79,138]},head:[["Áreas","Hallazgos","Sin afectación","Alta","Riesgo inmediato","Revisión técnica","Evidencias"]],body:[[m.areas,m.findings,m.clear,m.high,m.risk,m.review,m.photos]],margin:{left:14,right:14}}); y=doc.lastAutoTable.finalY+6;
-
-    doc.setFont("helvetica","bold");doc.setFontSize(10);doc.text("Resultado",14,y);y+=5;
-    doc.setFont("helvetica","normal");doc.setFontSize(8.5);doc.setTextColor(55,70,80);
-    let lines=wrapText(doc,`${text.result} ${text.predominance}`,182);doc.text(lines,14,y);y+=lines.length*4.1+4;
-
-    if(priority.length){
-      doc.setFont("helvetica","bold");doc.setFontSize(10);doc.setTextColor(30,50,65);doc.text("Hallazgos prioritarios",14,y);y+=3;
-      doc.autoTable({startY:y,theme:"striped",styles:{fontSize:7.3,cellPadding:1.8},headStyles:{fillColor:[11,79,138]},head:[["Área","Hallazgo","Nivel","Riesgo","Revisión"]],body:priority.map(r=>[r.area||"",r.tipo_dano||r.elemento_ajustado||"",r.nivel||"",r.riesgo_inmediato||"",r.revision_tecnica||""]),columnStyles:{0:{cellWidth:48},1:{cellWidth:58},2:{cellWidth:22},3:{cellWidth:24},4:{cellWidth:26}},margin:{left:14,right:14}}); y=doc.lastAutoTable.finalY+6;
+    if (!window.jspdf?.jsPDF) {
+      alert("No fue posible cargar la librería PDF.");
+      return;
     }
 
-    doc.setFont("helvetica","bold");doc.setFontSize(10);doc.setTextColor(30,50,65);doc.text("Conclusión y recomendación",14,y);y+=5;
-    doc.setFont("helvetica","normal");doc.setFontSize(8.5);doc.setTextColor(55,70,80);lines=wrapText(doc,text.conclusion,182);doc.text(lines,14,y);y+=lines.length*4.1+5;
-    doc.setFontSize(7.4);doc.setTextColor(90,100,110);lines=wrapText(doc,"Alcance: los resultados corresponden a una inspección visual preliminar y no constituyen diagnóstico de estabilidad ni evaluación estructural definitiva. La clasificación técnica normalizada se utiliza para presentar de forma consistente los hallazgos observados.",182);doc.text(lines,14,y);y+=lines.length*3.6+4;
+    const sede=reportScopeSede();
+    if(!sede){
+      alert("Seleccione un Área Operativa en el bloque Detalle por área antes de generar el informe.");
+      $("dSede")?.focus();
+      return;
+    }
 
-    // Evidencia representativa: imágenes locales publicadas junto con el tablero.
-    const photos=[]; for(const r of priority){for(const p of (r.fotos||[])){if(evidenceType(p)!=="imagen") continue;photos.push({p,r});if(photos.length>=3)break;}if(photos.length>=3)break;}
-    const loaded=[]; for(const item of photos){const data=await loadImageData(item.p); if(data)loaded.push({...item,data});}
+    const {jsPDF}=window.jspdf;
+    const doc=new jsPDF({unit:"mm",format:"a4"});
+    const BLUE=[11,79,138];
+    const DARK=[39,52,61];
+    const MUTED=[76,88,97];
+    const records=reportRecords();
+    const mtr=metrics(records);
+    const text=executiveText(records);
+    const priority=prioritize(records).slice(0,6);
+    const date=META?.procesado_en ? new Date(META.procesado_en) : new Date();
+    const dateText=new Intl.DateTimeFormat("es-CO",{day:"numeric",month:"long",year:"numeric"}).format(date);
+    const headerLogo=await loadStaticImageData(PDF_HEADER_LOGO_URL);
+
+    // Tipografía única del informe: Helvetica. Cambia solo tamaño/peso por jerarquía.
+    const bodyFont=9.2;
+    const sectionFont=12;
+    const evidenceTitleFont=10.5;
+
+    const drawInstitutionalLogo=(topY=8)=>{
+      if(!headerLogo) return topY;
+      try{
+        const type=headerLogo.startsWith("data:image/png")?"PNG":"JPEG";
+        // Franja institucional compacta: identidad sin competir con el contenido.
+        const w=118, h=18.58, x=(210-w)/2;
+        doc.addImage(headerLogo,type,x,topY,w,h,undefined,"FAST");
+        return topY+h;
+      }catch(_){ return topY; }
+    };
+
+    const drawHeader=()=>{
+      let y=drawInstitutionalLogo(7);
+      y+=10; // separación armónica entre logo y título
+      doc.setFont("helvetica","bold");
+      doc.setFontSize(17);
+      doc.setTextColor(...BLUE);
+      const title=`Informe Recorrido Área Operativa ${sede}`;
+      const titleLines=wrapText(doc,title,182);
+      doc.text(titleLines,14,y);
+      y+=titleLines.length*6.4+1.5;
+
+      doc.setFont("helvetica","normal");
+      doc.setFontSize(bodyFont);
+      doc.setTextColor(...MUTED);
+      doc.text(`Fecha: ${dateText}`,14,y);
+      y+=6;
+      doc.setDrawColor(...BLUE);
+      doc.setLineWidth(.7);
+      doc.line(14,y,196,y);
+      return y+8;
+    };
+
+    const sectionTitle=(title,y)=>{
+      doc.setFont("helvetica","bold");
+      doc.setFontSize(sectionFont);
+      doc.setTextColor(...BLUE);
+      doc.text(title,14,y);
+      return y+6;
+    };
+
+    const bodyText=(value,y,width=182)=>{
+      doc.setFont("helvetica","normal");
+      doc.setFontSize(bodyFont);
+      doc.setTextColor(...DARK);
+      const lines=wrapText(doc,value,width);
+      doc.text(lines,14,y);
+      return y+lines.length*4.45;
+    };
+
+    let y=drawHeader();
+
+    // Indicadores.
+    y=sectionTitle("Indicadores del recorrido",y);
+    doc.autoTable({
+      startY:y,
+      theme:"grid",
+      styles:{font:"helvetica",fontSize:9,cellPadding:2.4,halign:"center",textColor:DARK},
+      headStyles:{fillColor:BLUE,textColor:[255,255,255],fontStyle:"bold",fontSize:9.2},
+      head:[["Áreas","Hallazgos","Sin afectación","Alta","Riesgo inmediato"]],
+      body:[[mtr.areas,mtr.findings,mtr.clear,mtr.high,mtr.risk]],
+      margin:{left:14,right:14}
+    });
+    y=doc.lastAutoTable.finalY+8;
+
+    // Resultado.
+    y=sectionTitle("Resultado del recorrido",y);
+    y=bodyText(`${text.result} ${text.predominance}`,y)+7;
+
+    // Puntos críticos.
+    y=sectionTitle("Puntos críticos priorizados",y);
+    if(priority.length){
+      doc.autoTable({
+        startY:y,
+        theme:"striped",
+        styles:{font:"helvetica",fontSize:8.5,cellPadding:2,valign:"middle",textColor:DARK},
+        headStyles:{fillColor:BLUE,textColor:[255,255,255],fontStyle:"bold",fontSize:8.7},
+        head:[["Área","Hallazgo principal","Nivel","Riesgo","Acción"]],
+        body:priority.map(r=>[
+          r.area||"",
+          r.tipo_dano||r.elemento_ajustado||"",
+          r.nivel||"",
+          r.riesgo_inmediato||"",
+          priorityAction(r)
+        ]),
+        columnStyles:{
+          0:{cellWidth:38},1:{cellWidth:48},2:{cellWidth:20,halign:"center"},
+          3:{cellWidth:20,halign:"center"},4:{cellWidth:56}
+        },
+        margin:{left:14,right:14}
+      });
+      y=doc.lastAutoTable.finalY+9;
+    }else{
+      y=bodyText("No se identificaron hallazgos que requieran priorización en el recorrido.",y)+7;
+    }
+
+    if(y>230){ doc.addPage(); y=drawHeader(); }
+
+    // Conclusión.
+    y=sectionTitle("Conclusión y recomendación",y);
+    y=bodyText(text.conclusion,y)+9;
+
+    // Alcance técnico con la misma jerarquía de títulos.
+    y=sectionTitle("Alcance técnico",y);
+    bodyText(
+      "Los resultados corresponden a una inspección visual preliminar y no constituyen diagnóstico de estabilidad ni evaluación estructural definitiva. La clasificación técnica normalizada se utiliza para presentar de forma consistente los hallazgos observados.",
+      y
+    );
+
+    // Página de evidencia crítica: una fotografía por área crítica.
+    const candidates=criticalPhotoItems(records,3);
+    const loaded=[];
+    for(const item of candidates){
+      const image=await loadImageData(item.p);
+      if(image) loaded.push({...item,image});
+    }
+
     if(loaded.length){
-      doc.addPage(); y=15; doc.setFont("helvetica","bold");doc.setFontSize(12);doc.setTextColor(30,50,65);doc.text("Evidencia multimedia representativa",14,y);y+=8;
+      doc.addPage();
+      let py=drawInstitutionalLogo(7)+8;
+
+      doc.setFont("helvetica","bold");
+      doc.setFontSize(15);
+      doc.setTextColor(...BLUE);
+      doc.text(`Evidencia de puntos críticos - ${sede}`,14,py);
+      py+=7;
+      doc.setDrawColor(...BLUE);
+      doc.setLineWidth(.7);
+      doc.line(14,py,196,py);
+      py+=8;
+
       for(const item of loaded){
-        try{
-          doc.setFont("helvetica","bold");doc.setFontSize(8);doc.text(`${item.r.sede} · ${item.r.area}`,14,y);y+=4;
-          const type=item.data.startsWith("data:image/png")?"PNG":"JPEG"; doc.addImage(item.data,type,14,y,58,42,undefined,"FAST");
-          doc.setFont("helvetica","normal");doc.setFontSize(7);doc.setTextColor(80,90,100);const d=wrapText(doc,item.r.descripcion||item.r.tipo_dano||"",118);doc.text(d,77,y+5);y+=47;
-          if(y>250) {doc.addPage();y=15;}
-        }catch(_){ }
+        if(py>226){
+          doc.addPage();
+          py=15;
+        }
+
+        const r=item.r;
+        const cardH=63;
+        doc.setFillColor(246,249,251);
+        doc.roundedRect(14,py,182,cardH,2,2,"F");
+
+        // Nombre de cada punto crítico claramente diferenciado.
+        doc.setFont("helvetica","bold");
+        doc.setFontSize(evidenceTitleFont);
+        doc.setTextColor(...BLUE);
+        doc.text(r.area||"Área priorizada",18,py+7);
+
+        doc.setFont("helvetica","bold");
+        doc.setFontSize(8.8);
+        doc.setTextColor(...DARK);
+        doc.text(`Nivel: ${r.nivel||"Por determinar"}   |   Riesgo inmediato: ${r.riesgo_inmediato||"No"}`,18,py+13);
+
+        // Imagen EXIF-normalizada, sin deformación y centrada en su caja.
+        addImageFit(doc,item.image,18,py+17,64,40);
+
+        doc.setFont("helvetica","bold");
+        doc.setFontSize(9.6);
+        doc.setTextColor(...BLUE);
+        doc.text("Hallazgo observado",88,py+20);
+
+        doc.setFont("helvetica","normal");
+        doc.setFontSize(9);
+        doc.setTextColor(...DARK);
+        const desc=wrapText(doc,r.descripcion||r.tipo_dano||r.elemento_ajustado||"Hallazgo visual documentado.",102);
+        doc.text(desc.slice(0,6),88,py+25);
+
+        doc.setFont("helvetica","bold");
+        doc.setFontSize(9.6);
+        doc.setTextColor(...BLUE);
+        doc.text("Acción sugerida",88,py+47);
+
+        doc.setFont("helvetica","normal");
+        doc.setFontSize(9);
+        doc.setTextColor(...DARK);
+        doc.text(wrapText(doc,priorityAction(r),102).slice(0,3),88,py+52);
+
+        py+=68;
       }
     }
-    const safe=title.replace(/[^a-zA-Z0-9áéíóúÁÉÍÓÚñÑ_-]+/g,"_");
-    doc.save(`Informe_Ejecutivo_Inspeccion_Sedes_${safe}.pdf`);
+
+    const safe=sede.replace(/[^a-zA-Z0-9áéíóúÁÉÍÓÚñÑ_-]+/g,"_");
+    doc.save(`Informe_Recorrido_Area_Operativa_${safe}.pdf`);
   }
 
+
+
+  function areaPdfRecords() {
+    const sede=$("dSede")?.value||"";
+    const area=$("dArea")?.value||"";
+    return sede && area ? DATA.filter(r=>r.sede===sede && r.area===area) : [];
+  }
+
+  function areaPdfPhotos(records, limit=3) {
+    const out=[];
+    const seen=new Set();
+    for(const r of records){
+      for(const p of (r.fotos||[])){
+        if(evidenceType(p)!=="imagen") continue;
+        const key=p.id_evidencia || evidenceCandidates(p)[0] || `${r.id}-${out.length}`;
+        if(seen.has(key)) continue;
+        seen.add(key);
+        out.push({p,r});
+        if(out.length>=limit) return out;
+      }
+    }
+    return out;
+  }
+
+  async function generateAreaPdf() {
+    if (!window.jspdf?.jsPDF) {
+      alert("No fue posible cargar la librería PDF.");
+      return;
+    }
+
+    const sede=$("dSede")?.value||"";
+    const area=$("dArea")?.value||"";
+    if(!sede || !area){
+      alert("Seleccione primero un Área Operativa y un área inspeccionada para generar la ficha.");
+      (!$("dSede")?.value ? $("dSede") : $("dArea"))?.focus();
+      return;
+    }
+
+    const records=areaPdfRecords();
+    if(!records.length){
+      alert("No se encontraron registros para el área seleccionada.");
+      return;
+    }
+
+    const {jsPDF}=window.jspdf;
+    const doc=new jsPDF({unit:"mm",format:"a4"});
+    const BLUE=[11,79,138];
+    const DARK=[39,52,61];
+    const MUTED=[76,88,97];
+    const headerLogo=await loadStaticImageData(PDF_HEADER_LOGO_URL);
+    const hall=records.filter(r=>r.es_hallazgo);
+    const clear=records.filter(r=>!r.es_hallazgo);
+    const summary=areaSummary(records);
+    const active=prioritize(hall)[0] || records[0];
+    const dateRaw=active?.timestamp || active?.fecha_inspeccion || META?.procesado_en || new Date().toISOString();
+    const date=new Date(dateRaw);
+    const dateText=Number.isNaN(date.getTime()) ? String(active?.fecha_inspeccion||"") :
+      new Intl.DateTimeFormat("es-CO",{day:"numeric",month:"long",year:"numeric"}).format(date);
+
+    const drawLogo=(topY=7)=>{
+      if(!headerLogo) return topY;
+      try{
+        const type=headerLogo.startsWith("data:image/png")?"PNG":"JPEG";
+        const w=118,h=18.58,x=(210-w)/2;
+        doc.addImage(headerLogo,type,x,topY,w,h,undefined,"FAST");
+        return topY+h;
+      }catch(_){ return topY; }
+    };
+
+    const section=(title,y)=>{
+      doc.setFont("helvetica","bold");
+      doc.setFontSize(11.5);
+      doc.setTextColor(...BLUE);
+      doc.text(title,14,y);
+      return y+6;
+    };
+
+    const paragraph=(text,y,width=182)=>{
+      doc.setFont("helvetica","normal");
+      doc.setFontSize(9.2);
+      doc.setTextColor(...DARK);
+      const lines=wrapText(doc,text||"",width);
+      doc.text(lines,14,y);
+      return y+lines.length*4.5;
+    };
+
+    let y=drawLogo(7)+10;
+    doc.setFont("helvetica","bold");
+    doc.setFontSize(16);
+    doc.setTextColor(...BLUE);
+    doc.text(`Ficha de inspección - ${sede}`,14,y);
+    y+=7;
+
+    doc.setFont("helvetica","bold");
+    doc.setFontSize(13);
+    doc.setTextColor(...DARK);
+    doc.text(area,14,y);
+    y+=6;
+
+    doc.setFont("helvetica","normal");
+    doc.setFontSize(9.2);
+    doc.setTextColor(...MUTED);
+    doc.text(`Fecha: ${dateText}`,14,y);
+    y+=5;
+    doc.setDrawColor(...BLUE);
+    doc.setLineWidth(.7);
+    doc.line(14,y,196,y);
+    y+=8;
+
+    const condition=hall.length ? "Con hallazgo" : "Sin afectación observable";
+    const level=hall.length ? (active.nivel||"Por determinar") : "No aplica";
+    const risk=hall.length ? (active.riesgo_inmediato||"No") : "No";
+    const review=hall.length ? (active.revision_tecnica||"No") : "No";
+
+    doc.autoTable({
+      startY:y,
+      theme:"grid",
+      styles:{font:"helvetica",fontSize:9,cellPadding:2.3,textColor:DARK},
+      headStyles:{fillColor:BLUE,textColor:[255,255,255],fontStyle:"bold"},
+      head:[["Condición","Nivel","Riesgo inmediato","Revisión técnica"]],
+      body:[[condition,level,risk,review]],
+      margin:{left:14,right:14}
+    });
+    y=doc.lastAutoTable.finalY+8;
+
+    if(hall.length){
+      y=section("Hallazgo observado",y);
+      const rows=[
+        ["Componente",active.componente_ajustado||"Por determinar"],
+        ["Elemento observado",active.elemento_ajustado||"Por determinar"],
+        ["Tipo de daño",active.tipo_dano||"Por determinar"],
+        ["Dimensiones",active.dimensiones||"No registradas"],
+        ["Extensión",active.extension||"No registrada"]
+      ];
+      doc.autoTable({
+        startY:y,
+        theme:"plain",
+        styles:{font:"helvetica",fontSize:9,cellPadding:1.3,textColor:DARK},
+        columnStyles:{0:{cellWidth:42,fontStyle:"bold",textColor:BLUE},1:{cellWidth:140}},
+        body:rows,
+        margin:{left:14,right:14}
+      });
+      y=doc.lastAutoTable.finalY+5;
+
+      if(active.descripcion){
+        y=section("Descripción",y);
+        y=paragraph(active.descripcion,y)+5;
+      }
+      if(active.observaciones){
+        y=section("Observaciones",y);
+        y=paragraph(active.observaciones,y)+5;
+      }
+      y=section("Acción sugerida",y);
+      y=paragraph(priorityAction(active),y)+6;
+    }else{
+      y=section("Resultado de la revisión",y);
+      const note=[...new Set(clear.map(r=>r.observacion_area).filter(Boolean))].join(" · ")
+        || "Área revisada sin afectaciones observables durante el recorrido.";
+      y=paragraph(note,y)+6;
+    }
+
+    const mediaCount=records.reduce((n,r)=>n+(r.fotos||[]).length,0);
+    const videoCount=records.reduce((n,r)=>n+(r.fotos||[]).filter(p=>evidenceType(p)==="video").length,0);
+    const photoItems=areaPdfPhotos(records,3);
+    const loaded=[];
+    for(const item of photoItems){
+      const image=await loadImageData(item.p);
+      if(image) loaded.push({...item,image});
+    }
+
+    if(loaded.length){
+      if(y>205){ doc.addPage(); y=20; }
+      y=section("Evidencia fotográfica",y);
+      const gap=4;
+      const boxW=(182-gap*2)/3;
+      const boxH=48;
+      loaded.forEach((item,i)=>{
+        const x=14+i*(boxW+gap);
+        doc.setFillColor(246,249,251);
+        doc.roundedRect(x,y,boxW,boxH,1.5,1.5,"F");
+        addImageFit(doc,item.image,x+2,y+2,boxW-4,boxH-4);
+      });
+      y+=boxH+6;
+    }
+
+    if(videoCount){
+      doc.setFont("helvetica","italic");
+      doc.setFontSize(8.5);
+      doc.setTextColor(...MUTED);
+      doc.text(`Evidencia adicional: ${videoCount} video${videoCount===1?"":"s"} disponible${videoCount===1?"":"s"} en el tablero.`,14,y);
+      y+=6;
+    }
+
+    y=section("Alcance técnico",y);
+    paragraph(
+      "La ficha corresponde a una inspección visual preliminar y no constituye diagnóstico de estabilidad ni evaluación estructural definitiva.",
+      y
+    );
+
+    const safeSede=sede.replace(/[^a-zA-Z0-9áéíóúÁÉÍÓÚñÑ_-]+/g,"_");
+    const safeArea=area.replace(/[^a-zA-Z0-9áéíóúÁÉÍÓÚñÑ_-]+/g,"_");
+    doc.save(`Ficha_Inspeccion_${safeSede}_${safeArea}.pdf`);
+  }
+
+
+  function publicEvidencePath(path) {
+    const p=String(path||"").replace(/\\/g,"/").replace(/^\/+/,"");
+    if(!p) return "";
+    if(p.startsWith("../../")) return p;
+    if(p.startsWith("data/")) return `../../${p}`;
+    return p;
+  }
+
+  function applyComplementaryEvidence(manifest) {
+    if(!manifest?.areas?.length) return 0;
+    let added=0;
+    for(const areaEntry of manifest.areas){
+      const record=DATA.find(r=>r.sede===manifest.sede && r.area===areaEntry.area && !r.es_hallazgo);
+      if(!record) continue;
+      const existing=new Set((record.fotos||[]).map(e=>e.id_evidencia || e.local_path));
+      for(const [idx,e] of (areaEntry.evidencias||[]).entries()){
+        const local=publicEvidencePath(e.archivo_local);
+        const id=`COMP-${norm(manifest.sede).replace(/[^a-z0-9]+/g,"-")}-${norm(areaEntry.area).replace(/[^a-z0-9]+/g,"-")}-${idx+1}`;
+        if(existing.has(id) || existing.has(local)) continue;
+        (record.fotos ||= []).push({
+          orden:(record.fotos?.length||0)+1,
+          id_evidencia:id,
+          local_path:local,
+          local_candidates:[local],
+          media_type:e.tipo_evidencia==="video"?"video":"imagen",
+          browser_compatible:true,
+          complementaria:true,
+          nombre_archivo:e.nombre_archivo||""
+        });
+        added++;
+      }
+      record.n_fotos=(record.fotos||[]).length;
+      record.n_evidencias=(record.fotos||[]).length;
+    }
+    return added;
+  }
   async function loadData() {
     try {
       showStatus("Cargando información procesada…","info");
-      const [dr,mr]=await Promise.all([fetch(DATA_URL,{cache:"no-store"}),fetch(META_URL,{cache:"no-store"})]);
+      const [dr,mr,...complementResponses]=await Promise.all([
+        fetch(DATA_URL,{cache:"no-store"}),
+        fetch(META_URL,{cache:"no-store"}),
+        ...COMPLEMENT_URLS.map(item=>fetch(item.url,{cache:"no-store"}).catch(()=>null))
+      ]);
       if(!dr.ok) throw new Error(`No se pudo cargar inspecciones.json (${dr.status})`);
       if(!mr.ok) throw new Error(`No se pudo cargar metadata.json (${mr.status})`);
       DATA=await dr.json(); META=await mr.json();
+
+      COMPLEMENTS=[];
+      const complementCounts=[];
+      for(let i=0;i<complementResponses.length;i++){
+        const response=complementResponses[i];
+        const cfg=COMPLEMENT_URLS[i];
+        if(response?.ok){
+          const manifest=await response.json();
+          COMPLEMENTS.push(manifest);
+          const count=applyComplementaryEvidence(manifest);
+          complementCounts.push(`${cfg.label}: ${count}`);
+        }
+      }
+
       populateFilters(); setUpdateBadge(); applyFilters();
       const ev=META?.evidencias||{};
-      const evText=Number(ev.pendientes||0)>0 ? ` · Evidencias locales: ${ev.locales||0}/${ev.referenciadas||0} (${ev.pendientes} pendientes) · Videos: ${ev.videos||0}` : ` · Evidencias: ${ev.locales ?? ev.referenciadas ?? 0}/${ev.referenciadas ?? ev.locales ?? 0} · Fotos: ${ev.imagenes||0} · Videos: ${ev.videos||0}`;
-      showStatus(`Carga correcta: ${DATA.length} registros. Fuente: ${META.fuente || "sin identificar"}${evText}.`, Number(ev.pendientes||0)>0 ? "warning" : "success");
+      const evText=Number(ev.pendientes||0)>0 ? ` · Evidencias base locales: ${ev.locales||0}/${ev.referenciadas||0} (${ev.pendientes} pendientes)` : ` · Evidencias base: ${ev.locales ?? ev.referenciadas ?? 0}/${ev.referenciadas ?? ev.locales ?? 0}`;
+      const compText=complementCounts.length?` · Complementarias ${complementCounts.join(" · ")}`:"";
+      showStatus(`Carga correcta: ${DATA.length} registros. Fuente: ${META.fuente || "sin identificar"}${evText}${compText}.`, Number(ev.pendientes||0)>0 ? "warning" : "success");
     } catch(e) {
       console.error(e); showStatus(`Error al cargar datos: ${e.message}. Abra el tablero mediante el BAT para evitar restricciones de file://.`,"danger");
     }
@@ -638,14 +1193,22 @@
   $("btnClearActiveFilters").addEventListener("click",clearFilters);
   $("btnReload").addEventListener("click",()=>location.reload());
   $("btnGeneratePdf").addEventListener("click",generatePdf);
+  $("btnGenerateAreaPdf").addEventListener("click",generateAreaPdf);
   $("btnToggleStatus").addEventListener("click",()=>{const box=$("loadAlert");box.classList.toggle("d-none");$("statusHint").textContent=box.classList.contains("d-none")?"Oculto":"Visible";});
-  ["fSede","fCondicion","fArea","fComponente","fTipoDano","fNivel","fRevision"].forEach(id=>$(id).addEventListener("change",()=>{if(id==="fSede" || id==="fCondicion"){const sede=$("fSede").value;const condicion=$("fCondicion").value;const areas=DATA.filter(r=>(!sede||r.sede===sede)&&(!condicion||areaCondition(r)===condicion)).map(r=>r.area);populateSelect("fArea",areas,"Todas");if(![...$("fArea").options].some(o=>o.value===$("fArea").value)) $("fArea").value="";}applyFilters();}));
+  if ($("analysisCollapse")) $("analysisCollapse").addEventListener("shown.bs.collapse",()=>{Object.values(charts).forEach(c=>{try{c.resize();}catch(_){}});});
+  ["fSede","fTipoDano","fNivel"].forEach(id=>$(id).addEventListener("change",applyFilters));
+  $("fCondicion").addEventListener("change",()=>{
+    if($("fCondicion").value==="Sin afectación observable"){
+      $("fTipoDano").value="";
+      $("fNivel").value="";
+    }
+    applyFilters();
+  });
 
   if ($("dSede")) $("dSede").addEventListener("change",()=>{detailSede=$("dSede").value;detailArea="";detailFindingIndex=0;detailPhotoIndex=0;populateDetailArea();renderAreaDetail();renderReportPreview();});
   if ($("dArea")) $("dArea").addEventListener("change",()=>{detailArea=$("dArea").value;detailFindingIndex=0;detailPhotoIndex=0;renderAreaDetail();});
   if ($("btnPrevArea")) $("btnPrevArea").addEventListener("click",()=>moveArea(-1));
   if ($("btnNextArea")) $("btnNextArea").addEventListener("click",()=>moveArea(1));
-  document.querySelectorAll('[data-bs-target="#findings-pane"]').forEach(btn=>btn.addEventListener("shown.bs.tab",()=>{syncDetailSelectorsFromGlobal();}));
 
   document.addEventListener("DOMContentLoaded", loadData);
 })();

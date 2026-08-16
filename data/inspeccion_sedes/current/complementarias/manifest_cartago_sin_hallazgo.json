@@ -1,0 +1,61 @@
+{
+  "sede": "ARO Cartago",
+  "condicion_area": "Sin afectacion observable",
+  "areas": [
+    {
+      "area": "Baño y aseo",
+      "evidencias": [
+        {
+          "tipo_evidencia": "imagen",
+          "archivo_local": "data/inspeccion_sedes/evidencias/current/aro_cartago/bano_y_aseo/CARTAGO_SH_001_01.jpeg",
+          "nombre_archivo": "CARTAGO_SH_001_01.jpeg"
+        },
+        {
+          "tipo_evidencia": "imagen",
+          "archivo_local": "data/inspeccion_sedes/evidencias/current/aro_cartago/bano_y_aseo/CARTAGO_SH_001_02.jpeg",
+          "nombre_archivo": "CARTAGO_SH_001_02.jpeg"
+        }
+      ],
+      "total_evidencias": 2,
+      "imagenes": 2,
+      "videos": 0
+    },
+    {
+      "area": "Cocineta",
+      "evidencias": [
+        {
+          "tipo_evidencia": "imagen",
+          "archivo_local": "data/inspeccion_sedes/evidencias/current/aro_cartago/cocineta/CARTAGO_SH_002_01.jpeg",
+          "nombre_archivo": "CARTAGO_SH_002_01.jpeg"
+        },
+        {
+          "tipo_evidencia": "video",
+          "archivo_local": "data/inspeccion_sedes/evidencias/current/aro_cartago/cocineta/CARTAGO_SH_002_02.mp4",
+          "nombre_archivo": "CARTAGO_SH_002_02.mp4"
+        }
+      ],
+      "total_evidencias": 2,
+      "imagenes": 1,
+      "videos": 1
+    },
+    {
+      "area": "Escaleras de ingreso al segundo piso",
+      "evidencias": [
+        {
+          "tipo_evidencia": "imagen",
+          "archivo_local": "data/inspeccion_sedes/evidencias/current/aro_cartago/escaleras_ingreso_segundo_piso/CARTAGO_SH_003_01.jpeg",
+          "nombre_archivo": "CARTAGO_SH_003_01.jpeg"
+        }
+      ],
+      "total_evidencias": 1,
+      "imagenes": 1,
+      "videos": 0
+    }
+  ],
+  "totales": {
+    "areas": 3,
+    "evidencias": 5,
+    "imagenes": 4,
+    "videos": 1
+  }
+}
