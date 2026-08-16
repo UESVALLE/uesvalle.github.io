@@ -12,7 +12,8 @@
 76001,Santiago de Cali,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Total (No),0,0,NUMÉRICO,JG,5
 76001,Santiago de Cali,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,5
 76020,Alcalá,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Uso restringido (Número),45.0,45,NUMÉRICO,AL,6
-76020,Alcalá,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Destruido (No),1.0,1,NUMÉRICO,AO,6
+76020,Alcalá,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Fuera de servicio (Número),45.0,45,NUMÉRICO,AM,6
+76020,Alcalá,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Destruido (No),45.0,45,NUMÉRICO,AO,6
 76020,Alcalá,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Uso restringido (No),1.0,1,NUMÉRICO,AT,6
 76020,Alcalá,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Iglesias,Uso restringido (No),2.0,2,NUMÉRICO,AX,6
 76020,Alcalá,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Iglesias,Averiado (No),1.0,1,NUMÉRICO,AZ,6
@@ -112,6 +113,10 @@
 76036,Andalucía,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Total (No),0,0,NUMÉRICO,IZ,7
 76036,Andalucía,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Total (No),0,0,NUMÉRICO,JG,7
 76036,Andalucía,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,7
+76041,Ansermanuevo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Uso restringido (Número),6.0,6,NUMÉRICO,AL,8
+76041,Ansermanuevo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Fuera de servicio (Número),6.0,6,NUMÉRICO,AM,8
+76041,Ansermanuevo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),17.0,17,NUMÉRICO,AN,8
+76041,Ansermanuevo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Destruido (No),6.0,6,NUMÉRICO,AO,8
 76041,Ansermanuevo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Iglesias,Averiado (No),4.0,4,NUMÉRICO,AZ,8
 76041,Ansermanuevo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Albergues,Destruido (No),El albergue esta ubicado en el Parque recreacional y cuenta con 10 personas alojadas ,,TEXTO,BQ,8
 76041,Ansermanuevo,ARO Norte - Cartago,6. TELECOMUNICACIONES,Telefonía fija,Uso restringido,X,,TEXTO / MARCA,BU,8
@@ -156,6 +161,10 @@
 76041,Ansermanuevo,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Total (No),0,0,NUMÉRICO,IZ,8
 76041,Ansermanuevo,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Total (No),0,0,NUMÉRICO,JG,8
 76041,Ansermanuevo,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,8
+76054,Argelia,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Uso restringido (Número),8.0,8,NUMÉRICO,AL,9
+76054,Argelia,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Fuera de servicio (Número),8.0,8,NUMÉRICO,AM,9
+76054,Argelia,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),20.0,20,NUMÉRICO,AN,9
+76054,Argelia,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Destruido (No),8.0,8,NUMÉRICO,AO,9
 76054,Argelia,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Iglesias,Averiado (No),1.0,1,NUMÉRICO,AZ,9
 76054,Argelia,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Albergues,Destruido (No),El albergue esta ubicado en el hospital y cuenta con 0 personas alojadas ,,TEXTO,BQ,9
 76054,Argelia,ARO Norte - Cartago,6. TELECOMUNICACIONES,Telefonía fija,Uso restringido,X,,TEXTO / MARCA,BU,9
@@ -186,8 +195,10 @@
 76054,Argelia,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,9
 76100,Bolívar,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Alcaldía,Fuera de servicio (Número),1.0,1,NUMÉRICO,AI,10
 76100,Bolívar,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Alcaldía,Averiado (Número),1.0,1,NUMÉRICO,AJ,10
-76100,Bolívar,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Uso restringido (Número),6.0,6,NUMÉRICO,AL,10
-76100,Bolívar,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),1.0,1,NUMÉRICO,AN,10
+76100,Bolívar,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Uso restringido (Número),1.0,1,NUMÉRICO,AL,10
+76100,Bolívar,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Fuera de servicio (Número),1.0,1,NUMÉRICO,AM,10
+76100,Bolívar,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),9.0,9,NUMÉRICO,AN,10
+76100,Bolívar,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Destruido (No),1.0,1,NUMÉRICO,AO,10
 76100,Bolívar,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Uso restringido (No),1.0,1,NUMÉRICO,AP,10
 76100,Bolívar,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Fuera de servicio (No),1.0,1,NUMÉRICO,AQ,10
 76100,Bolívar,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Averiado (No),1.0,1,NUMÉRICO,AR,10
@@ -224,6 +235,8 @@
 76100,Bolívar,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Total (No),0,0,NUMÉRICO,JG,10
 76100,Bolívar,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,10
 76109,Buenaventura,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Uso restringido (Número),29.0,29,NUMÉRICO,AL,11
+76109,Buenaventura,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Fuera de servicio (Número),29.0,29,NUMÉRICO,AM,11
+76109,Buenaventura,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Destruido (No),29.0,29,NUMÉRICO,AO,11
 76109,Buenaventura,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Iglesias,Averiado (No),16.0,16,NUMÉRICO,AZ,11
 76109,Buenaventura,ARO Sur - Cali,6. TELECOMUNICACIONES,Telefonía fija,Uso restringido,X,,TEXTO / MARCA,BU,11
 76109,Buenaventura,ARO Sur - Cali,6. TELECOMUNICACIONES,Telefonía celular,Uso restringido,X,,TEXTO / MARCA,BY,11
@@ -287,7 +300,9 @@ MOVILIDAD Y PISA",,TEXTO,EI,12
 76111,Guadalajara de Buga,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Total (No),0,0,NUMÉRICO,JG,12
 76111,Guadalajara de Buga,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,12
 76113,Bugalagrande,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Alcaldía,Destruido (Número),1.0,1,NUMÉRICO,AK,13
-76113,Bugalagrande,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),5.0,5,NUMÉRICO,AN,13
+76113,Bugalagrande,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Fuera de servicio (Número),8.0,8,NUMÉRICO,AM,13
+76113,Bugalagrande,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),23.0,23,NUMÉRICO,AN,13
+76113,Bugalagrande,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Destruido (No),8.0,8,NUMÉRICO,AO,13
 76113,Bugalagrande,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Iglesias,Averiado (No),1.0,1,NUMÉRICO,AZ,13
 76113,Bugalagrande,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Iglesias,Destruido (No),2.0,2,NUMÉRICO,BA,13
 76113,Bugalagrande,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Escenarios deportivos,Averiado (No),1.0,1,NUMÉRICO,BH,13
@@ -320,10 +335,9 @@ MOVILIDAD Y PISA",,TEXTO,EI,12
 76113,Bugalagrande,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,13
 76122,Caicedonia,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Alcaldía,Fuera de servicio (Número),1.0,1,NUMÉRICO,AI,14
 76122,Caicedonia,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Alcaldía,Averiado (Número),1.0,1,NUMÉRICO,AJ,14
-76122,Caicedonia,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Uso restringido (Número),5.0,5,NUMÉRICO,AL,14
 76122,Caicedonia,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Fuera de servicio (Número),2.0,2,NUMÉRICO,AM,14
-76122,Caicedonia,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),34.0,34,NUMÉRICO,AN,14
-76122,Caicedonia,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Destruido (No),0.0,0,NUMÉRICO,AO,14
+76122,Caicedonia,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),3.0,3,NUMÉRICO,AN,14
+76122,Caicedonia,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Destruido (No),2.0,2,NUMÉRICO,AO,14
 76122,Caicedonia,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Uso restringido (No),0.0,0,NUMÉRICO,AP,14
 76122,Caicedonia,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Fuera de servicio (No),17.0,17,NUMÉRICO,AQ,14
 76122,Caicedonia,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Averiado (No),17.0,17,NUMÉRICO,AR,14
@@ -363,8 +377,9 @@ MOVILIDAD Y PISA",,TEXTO,EI,12
 76122,Caicedonia,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Total (No),0,0,NUMÉRICO,JG,14
 76122,Caicedonia,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,14
 76126,Calima (El Darién),ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Alcaldía,Fuera de servicio (Número),1.0,1,NUMÉRICO,AI,15
-76126,Calima (El Darién),ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Uso restringido (Número),16.0,16,NUMÉRICO,AL,15
-76126,Calima (El Darién),ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),16.0,16,NUMÉRICO,AN,15
+76126,Calima (El Darién),ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Fuera de servicio (Número),1.0,1,NUMÉRICO,AM,15
+76126,Calima (El Darién),ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),3.0,3,NUMÉRICO,AN,15
+76126,Calima (El Darién),ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Destruido (No),1.0,1,NUMÉRICO,AO,15
 76126,Calima (El Darién),ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Uso restringido (No),"Se realiza contacto, no se tiene información hasta el momento",,TEXTO,AP,15
 76126,Calima (El Darién),ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Fuera de servicio (No),"Se realiza contacto, no se tiene información hasta el momento",,TEXTO,AQ,15
 76126,Calima (El Darién),ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Averiado (No),"Se realiza contacto, no se tiene información hasta el momento",,TEXTO,AR,15
@@ -411,10 +426,9 @@ MOVILIDAD Y PISA",,TEXTO,EI,12
 76130,Candelaria,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Alcaldía,Fuera de servicio (Número),0.0,0,NUMÉRICO,AI,16
 76130,Candelaria,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Alcaldía,Averiado (Número),0.0,0,NUMÉRICO,AJ,16
 76130,Candelaria,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Alcaldía,Destruido (Número),0.0,0,NUMÉRICO,AK,16
-76130,Candelaria,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Uso restringido (Número),4.0,4,NUMÉRICO,AL,16
-76130,Candelaria,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Fuera de servicio (Número),0.0,0,NUMÉRICO,AM,16
+76130,Candelaria,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Fuera de servicio (Número),4.0,4,NUMÉRICO,AM,16
 76130,Candelaria,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),0.0,0,NUMÉRICO,AN,16
-76130,Candelaria,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Destruido (No),0.0,0,NUMÉRICO,AO,16
+76130,Candelaria,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Destruido (No),4.0,4,NUMÉRICO,AO,16
 76130,Candelaria,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Uso restringido (No),0.0,0,NUMÉRICO,AP,16
 76130,Candelaria,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Fuera de servicio (No),0.0,0,NUMÉRICO,AQ,16
 76130,Candelaria,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Averiado (No),0.0,0,NUMÉRICO,AR,16
@@ -520,10 +534,9 @@ MOVILIDAD Y PISA",,TEXTO,EI,12
 76147,Cartago,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Alcaldía,Uso restringido (Número),1.0,1,NUMÉRICO,AH,17
 76147,Cartago,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Alcaldía,Fuera de servicio (Número),1.0,1,NUMÉRICO,AI,17
 76147,Cartago,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Alcaldía,Destruido (Número),1.0,1,NUMÉRICO,AK,17
-76147,Cartago,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Uso restringido (Número),21.0,21,NUMÉRICO,AL,17
 76147,Cartago,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Fuera de servicio (Número),21.0,21,NUMÉRICO,AM,17
 76147,Cartago,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),21.0,21,NUMÉRICO,AN,17
-76147,Cartago,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Destruido (No),4.0,4,NUMÉRICO,AO,17
+76147,Cartago,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Destruido (No),21.0,21,NUMÉRICO,AO,17
 76147,Cartago,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Uso restringido (No),1.0,1,NUMÉRICO,AP,17
 76147,Cartago,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Fuera de servicio (No),1.0,1,NUMÉRICO,AQ,17
 76147,Cartago,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Averiado (No),1.0,1,NUMÉRICO,AR,17
@@ -587,8 +600,7 @@ MOVILIDAD Y PISA",,TEXTO,EI,12
 76147,Cartago,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,17
 76233,Dagua,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Alcaldía,Uso restringido (Número),1.0,1,NUMÉRICO,AH,18
 76233,Dagua,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Alcaldía,Fuera de servicio (Número),1.0,1,NUMÉRICO,AI,18
-76233,Dagua,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),8.0,8,NUMÉRICO,AN,18
-76233,Dagua,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Destruido (No),2.0,2,NUMÉRICO,AO,18
+76233,Dagua,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),4.0,4,NUMÉRICO,AN,18
 76233,Dagua,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Averiado (No),1.0,1,NUMÉRICO,AR,18
 76233,Dagua,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Iglesias,Averiado (No),2.0,2,NUMÉRICO,AZ,18
 76233,Dagua,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Iglesias,Destruido (No),3.0,3,NUMÉRICO,BA,18
@@ -632,6 +644,9 @@ MOVILIDAD Y PISA",,TEXTO,EI,12
 76233,Dagua,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Total (No),0,0,NUMÉRICO,IZ,18
 76233,Dagua,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Total (No),0,0,NUMÉRICO,JG,18
 76233,Dagua,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,18
+76243,El Águila,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Fuera de servicio (Número),5.0,5,NUMÉRICO,AM,19
+76243,El Águila,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),20.0,20,NUMÉRICO,AN,19
+76243,El Águila,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Destruido (No),5.0,5,NUMÉRICO,AO,19
 76243,El Águila,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Iglesias,Averiado (No),0.0,0,NUMÉRICO,AZ,19
 76243,El Águila,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Albergues,Destruido (No),"El albergue esta ubicado en el Antiguo colegio parroquial, iglesia y cuenta con 6 personas alojadas ",,TEXTO,BQ,19
 76243,El Águila,ARO Norte - Cartago,6. TELECOMUNICACIONES,Telefonía fija,Fuera de servicio,X,,TEXTO / MARCA,BV,19
@@ -652,9 +667,8 @@ MOVILIDAD Y PISA",,TEXTO,EI,12
 76246,El Cairo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Alcaldía,Fuera de servicio (Número),NO,,TEXTO / MARCA,AI,20
 76246,El Cairo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Alcaldía,Averiado (Número),SI,,TEXTO / MARCA,AJ,20
 76246,El Cairo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Alcaldía,Destruido (Número),NO,,TEXTO / MARCA,AK,20
-76246,El Cairo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Uso restringido (Número),30.0,30,NUMÉRICO,AL,20
-76246,El Cairo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Fuera de servicio (Número),30.0,30,NUMÉRICO,AM,20
-76246,El Cairo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),28.0,28,NUMÉRICO,AN,20
+76246,El Cairo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Fuera de servicio (Número),2.0,2,NUMÉRICO,AM,20
+76246,El Cairo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),5.0,5,NUMÉRICO,AN,20
 76246,El Cairo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Destruido (No),2.0,2,NUMÉRICO,AO,20
 76246,El Cairo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Uso restringido (No),SI,,TEXTO / MARCA,AP,20
 76246,El Cairo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Fuera de servicio (No),"Se realiza contacto, no se tiene información hasta el momento",,TEXTO,AQ,20
@@ -731,9 +745,9 @@ Se presentan 10 derrumbes en la red vial terciaria",,TEXTO,EA,20
 76246,El Cairo,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,20
 76248,El Cerrito,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Alcaldía,Uso restringido (Número),1.0,1,NUMÉRICO,AH,21
 76248,El Cerrito,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Alcaldía,Destruido (Número),0.0,0,NUMÉRICO,AK,21
-76248,El Cerrito,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Uso restringido (Número),3.0,3,NUMÉRICO,AL,21
 76248,El Cerrito,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Fuera de servicio (Número),3.0,3,NUMÉRICO,AM,21
-76248,El Cerrito,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Destruido (No),0.0,0,NUMÉRICO,AO,21
+76248,El Cerrito,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),9.0,9,NUMÉRICO,AN,21
+76248,El Cerrito,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Destruido (No),3.0,3,NUMÉRICO,AO,21
 76248,El Cerrito,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Uso restringido (No),3.0,3,NUMÉRICO,AP,21
 76248,El Cerrito,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Destruido (No),0.0,0,NUMÉRICO,AS,21
 76248,El Cerrito,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Uso restringido (No),1.0,1,NUMÉRICO,AT,21
@@ -814,6 +828,9 @@ Se presentan 10 derrumbes en la red vial terciaria",,TEXTO,EA,20
 76250,El Dovio,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Total (No),0,0,NUMÉRICO,IZ,22
 76250,El Dovio,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Total (No),0,0,NUMÉRICO,JG,22
 76250,El Dovio,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,22
+76275,Florida,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Fuera de servicio (Número),14.0,14,NUMÉRICO,AM,23
+76275,Florida,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),20.0,20,NUMÉRICO,AN,23
+76275,Florida,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Destruido (No),14.0,14,NUMÉRICO,AO,23
 76275,Florida,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Iglesias,Averiado (No),0.0,0,NUMÉRICO,AZ,23
 76275,Florida,ARO Sur - Cali,6. TELECOMUNICACIONES,Telefonía fija,Uso restringido,X,,TEXTO / MARCA,BU,23
 76275,Florida,ARO Sur - Cali,6. TELECOMUNICACIONES,Telefonía celular,Uso restringido,X,,TEXTO / MARCA,BY,23
@@ -827,10 +844,14 @@ Se presentan 10 derrumbes en la red vial terciaria",,TEXTO,EA,20
 76275,Florida,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Total (No),0,0,NUMÉRICO,IZ,23
 76275,Florida,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Total (No),0,0,NUMÉRICO,JG,23
 76275,Florida,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,23
-76306,Ginebra,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Fuera de servicio (Número),7.0,7,NUMÉRICO,AM,24
+76306,Ginebra,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Alcaldía,Averiado (Número),1.0,1,NUMÉRICO,AJ,24
+76306,Ginebra,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),8.0,8,NUMÉRICO,AN,24
+76306,Ginebra,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Averiado (No),1.0,1,NUMÉRICO,AV,24
 76306,Ginebra,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Iglesias,Uso restringido (No),2.0,2,NUMÉRICO,AX,24
 76306,Ginebra,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Iglesias,Fuera de servicio (No),2.0,2,NUMÉRICO,AY,24
 76306,Ginebra,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Iglesias,Averiado (No),1.0,1,NUMÉRICO,AZ,24
+76306,Ginebra,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Escenarios deportivos,Averiado (No),1.0,1,NUMÉRICO,BH,24
+76306,Ginebra,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Otros,Averiado (No),5.0,5,NUMÉRICO,BL,24
 76306,Ginebra,ARO Sur - Cali,6. TELECOMUNICACIONES,Telefonía fija,Uso restringido,X,,TEXTO / MARCA,BU,24
 76306,Ginebra,ARO Sur - Cali,6. TELECOMUNICACIONES,Telefonía celular,Uso restringido,X,,TEXTO / MARCA,BY,24
 76306,Ginebra,ARO Sur - Cali,6. TELECOMUNICACIONES,Emisoras,Uso restringido,X,,TEXTO / MARCA,CC,24
@@ -843,6 +864,9 @@ Se presentan 10 derrumbes en la red vial terciaria",,TEXTO,EA,20
 76306,Ginebra,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Total (No),0,0,NUMÉRICO,IZ,24
 76306,Ginebra,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Total (No),0,0,NUMÉRICO,JG,24
 76306,Ginebra,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,24
+76318,Guacarí,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Fuera de servicio (Número),1.0,1,NUMÉRICO,AM,25
+76318,Guacarí,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),5.0,5,NUMÉRICO,AN,25
+76318,Guacarí,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Destruido (No),1.0,1,NUMÉRICO,AO,25
 76318,Guacarí,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Iglesias,Averiado (No),1.0,1,NUMÉRICO,AZ,25
 76318,Guacarí,ARO Sur - Cali,6. TELECOMUNICACIONES,Telefonía fija,Uso restringido,X,,TEXTO / MARCA,BU,25
 76318,Guacarí,ARO Sur - Cali,6. TELECOMUNICACIONES,Telefonía celular,Uso restringido,X,,TEXTO / MARCA,BY,25
@@ -861,9 +885,9 @@ Se presentan 10 derrumbes en la red vial terciaria",,TEXTO,EA,20
 76364,Jamundí,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Alcaldía,Averiado (Número),1.0,1,NUMÉRICO,AJ,26
 76364,Jamundí,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Alcaldía,Destruido (Número),0.0,0,NUMÉRICO,AK,26
 76364,Jamundí,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Uso restringido (Número),0.0,0,NUMÉRICO,AL,26
-76364,Jamundí,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Fuera de servicio (Número),118.0,118,NUMÉRICO,AM,26
+76364,Jamundí,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Fuera de servicio (Número),0.0,0,NUMÉRICO,AM,26
 76364,Jamundí,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),118.0,118,NUMÉRICO,AN,26
-76364,Jamundí,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Destruido (No),2.0,2,NUMÉRICO,AO,26
+76364,Jamundí,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Destruido (No),0.0,0,NUMÉRICO,AO,26
 76364,Jamundí,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Uso restringido (No),0.0,0,NUMÉRICO,AP,26
 76364,Jamundí,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Fuera de servicio (No),6.0,6,NUMÉRICO,AQ,26
 76364,Jamundí,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Averiado (No),6.0,6,NUMÉRICO,AR,26
@@ -920,10 +944,9 @@ Se presentan 10 derrumbes en la red vial terciaria",,TEXTO,EA,20
 76377,La Cumbre,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Alcaldía,Fuera de servicio (Número),1.0,1,NUMÉRICO,AI,27
 76377,La Cumbre,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Alcaldía,Averiado (Número),0.0,0,NUMÉRICO,AJ,27
 76377,La Cumbre,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Alcaldía,Destruido (Número),0.0,0,NUMÉRICO,AK,27
-76377,La Cumbre,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Uso restringido (Número),0.0,0,NUMÉRICO,AL,27
-76377,La Cumbre,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Fuera de servicio (Número),7.0,7,NUMÉRICO,AM,27
-76377,La Cumbre,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),0.0,0,NUMÉRICO,AN,27
-76377,La Cumbre,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Destruido (No),0.0,0,NUMÉRICO,AO,27
+76377,La Cumbre,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Fuera de servicio (Número),5.0,5,NUMÉRICO,AM,27
+76377,La Cumbre,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),15.0,15,NUMÉRICO,AN,27
+76377,La Cumbre,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Destruido (No),5.0,5,NUMÉRICO,AO,27
 76377,La Cumbre,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Uso restringido (No),0.0,0,NUMÉRICO,AP,27
 76377,La Cumbre,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Fuera de servicio (No),0.0,0,NUMÉRICO,AQ,27
 76377,La Cumbre,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Averiado (No),0.0,0,NUMÉRICO,AR,27
@@ -971,10 +994,9 @@ Se presentan 10 derrumbes en la red vial terciaria",,TEXTO,EA,20
 76400,La Unión,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Alcaldía,Fuera de servicio (Número),0.0,0,NUMÉRICO,AI,28
 76400,La Unión,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Alcaldía,Averiado (Número),1.0,1,NUMÉRICO,AJ,28
 76400,La Unión,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Alcaldía,Destruido (Número),0.0,0,NUMÉRICO,AK,28
-76400,La Unión,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Uso restringido (Número),0.0,0,NUMÉRICO,AL,28
-76400,La Unión,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Fuera de servicio (Número),19.0,19,NUMÉRICO,AM,28
-76400,La Unión,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),19.0,19,NUMÉRICO,AN,28
-76400,La Unión,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Destruido (No),0.0,0,NUMÉRICO,AO,28
+76400,La Unión,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Fuera de servicio (Número),7.0,7,NUMÉRICO,AM,28
+76400,La Unión,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),5.0,5,NUMÉRICO,AN,28
+76400,La Unión,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Destruido (No),7.0,7,NUMÉRICO,AO,28
 76400,La Unión,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Uso restringido (No),0.0,0,NUMÉRICO,AT,28
 76400,La Unión,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Fuera de servicio (No),0.0,0,NUMÉRICO,AU,28
 76400,La Unión,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Averiado (No),0.0,0,NUMÉRICO,AV,28
@@ -1025,10 +1047,9 @@ Se presentan 10 derrumbes en la red vial terciaria",,TEXTO,EA,20
 76403,La Victoria,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Alcaldía,Fuera de servicio (Número),x,,TEXTO / MARCA,AI,29
 76403,La Victoria,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Alcaldía,Averiado (Número),x,,TEXTO / MARCA,AJ,29
 76403,La Victoria,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Alcaldía,Destruido (Número),x,,TEXTO / MARCA,AK,29
-76403,La Victoria,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Uso restringido (Número),2.0,2,NUMÉRICO,AL,29
-76403,La Victoria,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Fuera de servicio (Número),8.0,8,NUMÉRICO,AM,29
-76403,La Victoria,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),x,,TEXTO / MARCA,AN,29
-76403,La Victoria,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Destruido (No),si,,TEXTO / MARCA,AO,29
+76403,La Victoria,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Fuera de servicio (Número),6.0,6,NUMÉRICO,AM,29
+76403,La Victoria,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),1.0,1,NUMÉRICO,AN,29
+76403,La Victoria,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Destruido (No),6.0,6,NUMÉRICO,AO,29
 76403,La Victoria,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Uso restringido (No),1.0,1,NUMÉRICO,AP,29
 76403,La Victoria,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Averiado (No),8.0,8,NUMÉRICO,AR,29
 76403,La Victoria,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Fuera de servicio (No),x,,TEXTO / MARCA,AU,29
@@ -1055,8 +1076,9 @@ Se presentan 10 derrumbes en la red vial terciaria",,TEXTO,EA,20
 76403,La Victoria,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Total (No),0,0,NUMÉRICO,JG,29
 76403,La Victoria,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,29
 76497,Obando,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Alcaldía,Averiado (Número),1.0,1,NUMÉRICO,AJ,30
-76497,Obando,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Uso restringido (Número),5.0,5,NUMÉRICO,AL,30
-76497,Obando,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),5.0,5,NUMÉRICO,AN,30
+76497,Obando,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Fuera de servicio (Número),2.0,2,NUMÉRICO,AM,30
+76497,Obando,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),6.0,6,NUMÉRICO,AN,30
+76497,Obando,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Destruido (No),2.0,2,NUMÉRICO,AO,30
 76497,Obando,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Uso restringido (No),1.0,1,NUMÉRICO,AT,30
 76497,Obando,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Averiado (No),1.0,1,NUMÉRICO,AV,30
 76497,Obando,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Destruido (No),1.0,1,NUMÉRICO,AW,30
@@ -1093,7 +1115,9 @@ Se presentan 10 derrumbes en la red vial terciaria",,TEXTO,EA,20
 76520,Palmira,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Total (No),0,0,NUMÉRICO,IZ,31
 76520,Palmira,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Total (No),0,0,NUMÉRICO,JG,31
 76520,Palmira,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,31
-76563,Pradera,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),3.0,3,NUMÉRICO,AN,32
+76563,Pradera,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Fuera de servicio (Número),1.0,1,NUMÉRICO,AM,32
+76563,Pradera,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),1.0,1,NUMÉRICO,AN,32
+76563,Pradera,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Destruido (No),1.0,1,NUMÉRICO,AO,32
 76563,Pradera,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Averiado (No),1.0,1,NUMÉRICO,AV,32
 76563,Pradera,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Iglesias,Averiado (No),1.0,1,NUMÉRICO,AZ,32
 76563,Pradera,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Plaza de mercado,Uso restringido (No),1.0,1,NUMÉRICO,BB,32
@@ -1113,8 +1137,9 @@ Se presentan 10 derrumbes en la red vial terciaria",,TEXTO,EA,20
 76563,Pradera,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Total (No),0,0,NUMÉRICO,JG,32
 76563,Pradera,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,32
 76606,Restrepo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Alcaldía,Averiado (Número),1.0,1,NUMÉRICO,AJ,33
-76606,Restrepo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Fuera de servicio (Número),1.0,1,NUMÉRICO,AM,33
-76606,Restrepo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),1.0,1,NUMÉRICO,AN,33
+76606,Restrepo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Fuera de servicio (Número),10.0,10,NUMÉRICO,AM,33
+76606,Restrepo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),23.0,23,NUMÉRICO,AN,33
+76606,Restrepo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Destruido (No),10.0,10,NUMÉRICO,AO,33
 76606,Restrepo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Iglesias,Averiado (No),2.0,2,NUMÉRICO,AZ,33
 76606,Restrepo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Albergues,Destruido (No),El albergue esta ubicado en el ANTIGUO CENTRO GERIATRICO y cuenta con 13 personas alojadas ,,TEXTO,BQ,33
 76606,Restrepo,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Telefonía fija,Uso restringido,X,,TEXTO / MARCA,BU,33
@@ -1158,9 +1183,9 @@ Se presentan 10 derrumbes en la red vial terciaria",,TEXTO,EA,20
 76606,Restrepo,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Total (No),0,0,NUMÉRICO,IZ,33
 76606,Restrepo,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Total (No),0,0,NUMÉRICO,JG,33
 76606,Restrepo,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,33
-76616,Riofrío,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Fuera de servicio (Número),37.0,37,NUMÉRICO,AM,34
-76616,Riofrío,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),10.0,10,NUMÉRICO,AN,34
-76616,Riofrío,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Destruido (No),9.0,9,NUMÉRICO,AO,34
+76616,Riofrío,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Fuera de servicio (Número),4.0,4,NUMÉRICO,AM,34
+76616,Riofrío,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),3.0,3,NUMÉRICO,AN,34
+76616,Riofrío,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Destruido (No),4.0,4,NUMÉRICO,AO,34
 76616,Riofrío,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Averiado (No),2.0,2,NUMÉRICO,AR,34
 76616,Riofrío,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Destruido (No),1.0,1,NUMÉRICO,AS,34
 76616,Riofrío,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Averiado (No),1.0,1,NUMÉRICO,AV,34
@@ -1211,12 +1236,13 @@ Se presentan 10 derrumbes en la red vial terciaria",,TEXTO,EA,20
 76616,Riofrío,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,34
 76622,Roldanillo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Alcaldía,Fuera de servicio (Número),1.0,1,NUMÉRICO,AI,35
 76622,Roldanillo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Alcaldía,Destruido (Número),1.0,1,NUMÉRICO,AK,35
-76622,Roldanillo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Uso restringido (Número),1.0,1,NUMÉRICO,AL,35
-76622,Roldanillo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),20.0,20,NUMÉRICO,AN,35
+76622,Roldanillo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Fuera de servicio (Número),1.0,1,NUMÉRICO,AM,35
+76622,Roldanillo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),6.0,6,NUMÉRICO,AN,35
+76622,Roldanillo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Destruido (No),1.0,1,NUMÉRICO,AO,35
 76622,Roldanillo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Averiado (No),1.0,1,NUMÉRICO,AV,35
 76622,Roldanillo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Iglesias,Averiado (No),6.0,6,NUMÉRICO,AZ,35
 76622,Roldanillo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Albergues,Uso restringido (No),SI,,TEXTO / MARCA,BN,35
-76622,Roldanillo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Albergues,Destruido (No),El albergue esta ubicado en elColiseo Ivan Muñoz villa y cuenta con 46 personas alojadas ,,TEXTO,BQ,35
+76622,Roldanillo,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Albergues,Destruido (No),"El albergue esta ubicado en elColiseo Ivan Muñoz villa y cuenta con 60 personas alojadas, de ellas 22 son niños. ",,TEXTO,BQ,35
 76622,Roldanillo,ARO Norte - Cartago,6. TELECOMUNICACIONES,Telefonía fija,Averiado,X,,TEXTO / MARCA,BW,35
 76622,Roldanillo,ARO Norte - Cartago,6. TELECOMUNICACIONES,Telefonía celular,Uso restringido,X,,TEXTO / MARCA,BY,35
 76622,Roldanillo,ARO Norte - Cartago,6. TELECOMUNICACIONES,Emisoras,Uso restringido,X,,TEXTO / MARCA,CC,35
@@ -1252,8 +1278,9 @@ Se reporta afectación en el puente rural El Guachal. Se presenta afectación es
 76622,Roldanillo,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,35
 76670,San Pedro,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Alcaldía,Uso restringido (Número),si,,TEXTO / MARCA,AH,36
 76670,San Pedro,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Alcaldía,Averiado (Número),si,,TEXTO / MARCA,AJ,36
-76670,San Pedro,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Uso restringido (Número),Sagrado corazon muro caido,,TEXTO,AL,36
-76670,San Pedro,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),3.0,3,NUMÉRICO,AN,36
+76670,San Pedro,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Fuera de servicio (Número),7.0,7,NUMÉRICO,AM,36
+76670,San Pedro,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),12.0,12,NUMÉRICO,AN,36
+76670,San Pedro,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Destruido (No),7.0,7,NUMÉRICO,AO,36
 76670,San Pedro,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Uso restringido (No),N/A,,TEXTO,AP,36
 76670,San Pedro,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Fuera de servicio (No),N/A,,TEXTO,AQ,36
 76670,San Pedro,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Averiado (No),N/A,,TEXTO,AR,36
@@ -1366,9 +1393,9 @@ Se reporta afectación en el puente rural El Guachal. Se presenta afectación es
 76736,Sevilla,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Alcaldía,Fuera de servicio (Número),si,,TEXTO / MARCA,AI,37
 76736,Sevilla,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Alcaldía,Averiado (Número),si,,TEXTO / MARCA,AJ,37
 76736,Sevilla,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Alcaldía,Destruido (Número),si,,TEXTO / MARCA,AK,37
-76736,Sevilla,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Fuera de servicio (Número),0.0,0,NUMÉRICO,AM,37
-76736,Sevilla,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),6.0,6,NUMÉRICO,AN,37
-76736,Sevilla,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Destruido (No),0.0,0,NUMÉRICO,AO,37
+76736,Sevilla,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Fuera de servicio (Número),2.0,2,NUMÉRICO,AM,37
+76736,Sevilla,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),7.0,7,NUMÉRICO,AN,37
+76736,Sevilla,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Destruido (No),2.0,2,NUMÉRICO,AO,37
 76736,Sevilla,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Uso restringido (No),0.0,0,NUMÉRICO,AP,37
 76736,Sevilla,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Fuera de servicio (No),0.0,0,NUMÉRICO,AQ,37
 76736,Sevilla,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Averiado (No),0.0,0,NUMÉRICO,AR,37
@@ -1411,12 +1438,15 @@ Se reporta afectación en el puente rural El Guachal. Se presenta afectación es
 76736,Sevilla,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Total (No),0,0,NUMÉRICO,IZ,37
 76736,Sevilla,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Total (No),0,0,NUMÉRICO,JG,37
 76736,Sevilla,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,37
-76823,Toro,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Uso restringido (Número),Alfredo Garrido:,,TEXTO,AL,38
+76823,Toro,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Fuera de servicio (Número),4.0,4,NUMÉRICO,AM,38
+76823,Toro,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),5.0,5,NUMÉRICO,AN,38
+76823,Toro,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Destruido (No),4.0,4,NUMÉRICO,AO,38
 76823,Toro,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Iglesias,Averiado (No),0.0,0,NUMÉRICO,AZ,38
 76823,Toro,ARO Norte - Cartago,6. TELECOMUNICACIONES,Telefonía fija,Uso restringido,X,,TEXTO / MARCA,BU,38
 76823,Toro,ARO Norte - Cartago,6. TELECOMUNICACIONES,Emisoras,Uso restringido,X,,TEXTO / MARCA,CC,38
 76823,Toro,ARO Norte - Cartago,6. TELECOMUNICACIONES,Canales de televisión,Uso restringido,X,,TEXTO / MARCA,CG,38
 76823,Toro,ARO Norte - Cartago,6. TELECOMUNICACIONES,Internet,Fuera de servicio,X,,TEXTO / MARCA,CL,38
+76823,Toro,ARO Norte - Cartago,6. TELECOMUNICACIONES,Radiocomunicaciones,Fuera de servicio,X,,TEXTO / MARCA,CP,38
 76823,Toro,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Modo férreo,Descripción de la afectación,N/A,,TEXTO,EM,38
 76823,Toro,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Modo marítimo,Descripción de la afectación,N/A,,TEXTO,EP,38
 76823,Toro,ARO Norte - Cartago,7. ACCESIBILIDAD Y TRANSPORTE,Modo aéreo,Descripción de la afectación,N/A,,TEXTO,EV,38
@@ -1425,8 +1455,9 @@ Se reporta afectación en el puente rural El Guachal. Se presenta afectación es
 76823,Toro,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Total (No),0,0,NUMÉRICO,JG,38
 76823,Toro,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,38
 76828,Trujillo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Alcaldía,Averiado (Número),1.0,1,NUMÉRICO,AJ,39
-76828,Trujillo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Uso restringido (Número),1.0,1,NUMÉRICO,AL,39
-76828,Trujillo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),10.0,10,NUMÉRICO,AN,39
+76828,Trujillo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Fuera de servicio (Número),1.0,1,NUMÉRICO,AM,39
+76828,Trujillo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),3.0,3,NUMÉRICO,AN,39
+76828,Trujillo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Destruido (No),1.0,1,NUMÉRICO,AO,39
 76828,Trujillo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Uso restringido (No),"Se realiza contacto, no se tiene información hasta el momento",,TEXTO,AP,39
 76828,Trujillo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Fuera de servicio (No),"Se realiza contacto, no se tiene información hasta el momento",,TEXTO,AQ,39
 76828,Trujillo,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Averiado (No),"Se realiza contacto, no se tiene información hasta el momento",,TEXTO,AR,39
@@ -1498,6 +1529,8 @@ Se reporta afectación en el puente rural El Guachal. Se presenta afectación es
 76828,Trujillo,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Servicios (No),No,,TEXTO / MARCA,JM,39
 76828,Trujillo,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),30,30,NUMÉRICO,JN,39
 76834,Tuluá,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Uso restringido (Número),Santa fe corozal: virusas leves estructuras,,TEXTO,AL,40
+76834,Tuluá,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Fuera de servicio (Número),Santa fe corozal: virusas leves estructuras,,TEXTO,AM,40
+76834,Tuluá,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Destruido (No),Santa fe corozal: virusas leves estructuras,,TEXTO,AO,40
 76834,Tuluá,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Iglesias,Averiado (No),12.0,12,NUMÉRICO,AZ,40
 76834,Tuluá,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Albergues,Destruido (No),El albergue esta ubicado en el Mercado Campesino.  Por el momento no fue posible censar personas alojadas ,,TEXTO,BQ,40
 76834,Tuluá,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Telefonía fija,Uso restringido,X,,TEXTO / MARCA,BU,40
@@ -1513,7 +1546,9 @@ Se reporta afectación en el puente rural El Guachal. Se presenta afectación es
 76834,Tuluá,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Total (No),0,0,NUMÉRICO,JG,40
 76834,Tuluá,ARO Centro - Tuluá,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,40
 76845,Ulloa,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Alcaldía,Uso restringido (Número),1.0,1,NUMÉRICO,AH,41
-76845,Ulloa,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),10.0,10,NUMÉRICO,AN,41
+76845,Ulloa,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Fuera de servicio (Número),2.0,2,NUMÉRICO,AM,41
+76845,Ulloa,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),2.0,2,NUMÉRICO,AN,41
+76845,Ulloa,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Destruido (No),2.0,2,NUMÉRICO,AO,41
 76845,Ulloa,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Uso restringido (No),"Se realiza contacto, no se tiene información hasta el momento",,TEXTO,AP,41
 76845,Ulloa,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Fuera de servicio (No),"Se realiza contacto, no se tiene información hasta el momento",,TEXTO,AQ,41
 76845,Ulloa,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Instalaciones del ICBF,Averiado (No),"Se realiza contacto, no se tiene información hasta el momento",,TEXTO,AR,41
@@ -1570,7 +1605,9 @@ Ulloa-Pereira por el sector de Sucre: Derrumbe y colapso de la vía en un sector
 76845,Ulloa,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Total (No),0,0,NUMÉRICO,JG,41
 76845,Ulloa,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,41
 76863,Versalles,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Uso restringido (Número),Policarpa fisuras de lado a lado.,,TEXTO,AL,42
+76863,Versalles,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Fuera de servicio (Número),Policarpa fisuras de lado a lado.,,TEXTO,AM,42
 76863,Versalles,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),4.0,4,NUMÉRICO,AN,42
+76863,Versalles,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Destruido (No),Policarpa fisuras de lado a lado.,,TEXTO,AO,42
 76863,Versalles,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Iglesias,Averiado (No),0.0,0,NUMÉRICO,AZ,42
 76863,Versalles,ARO Norte - Cartago,5. EDIFICACIONES PÚBLICAS,Albergues,Destruido (No),"El albergue esta ubicado en el SALÓN COMUNAL y cuenta con 1 personas alojadas y El albergue esta ubicado en el MARIA ISABEL CRUZ, COLISEO PRINCIPAL y cuenta con 7 personas alojadas ",,TEXTO,BQ,42
 76863,Versalles,ARO Norte - Cartago,6. TELECOMUNICACIONES,Telefonía fija,Uso restringido,X,,TEXTO / MARCA,BU,42
@@ -1586,7 +1623,10 @@ Ulloa-Pereira por el sector de Sucre: Derrumbe y colapso de la vía en un sector
 76863,Versalles,ARO Norte - Cartago,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,42
 76869,Vijes,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Alcaldía,Uso restringido (Número),1.0,1,NUMÉRICO,AH,43
 76869,Vijes,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Alcaldía,Averiado (Número),1.0,1,NUMÉRICO,AJ,43
-76869,Vijes,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),3.0,3,NUMÉRICO,AN,43
+76869,Vijes,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Uso restringido (Número),5.0,5,NUMÉRICO,AL,43
+76869,Vijes,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Fuera de servicio (Número),5.0,5,NUMÉRICO,AM,43
+76869,Vijes,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),22.0,22,NUMÉRICO,AN,43
+76869,Vijes,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Destruido (No),5.0,5,NUMÉRICO,AO,43
 76869,Vijes,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Instalaciones de cultura,Uso restringido (No),1.0,1,NUMÉRICO,AT,43
 76869,Vijes,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Iglesias,Uso restringido (No),1.0,1,NUMÉRICO,AX,43
 76869,Vijes,ARO Sur - Cali,5. EDIFICACIONES PÚBLICAS,Iglesias,Averiado (No),1.0,1,NUMÉRICO,AZ,43
@@ -1633,7 +1673,9 @@ Ulloa-Pereira por el sector de Sucre: Derrumbe y colapso de la vía en un sector
 76869,Vijes,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Pequeñas empresas,Total (No),0,0,NUMÉRICO,IZ,43
 76869,Vijes,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Medianas empresas,Total (No),0,0,NUMÉRICO,JG,43
 76869,Vijes,ARO Sur - Cali,"10. INDUSTRIA, COMERCIO Y TURISMO",Sector informal,Total (No),0,0,NUMÉRICO,JN,43
-76890,Yotoco,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Uso restringido (Número),HERNANDO LLORENTE jose maria cordoba,,TEXTO,AL,44
+76890,Yotoco,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Fuera de servicio (Número),5.0,5,NUMÉRICO,AM,44
+76890,Yotoco,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Averiado (No),9.0,9,NUMÉRICO,AN,44
+76890,Yotoco,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Establecimientos educativos,Destruido (No),5.0,5,NUMÉRICO,AO,44
 76890,Yotoco,ARO Centro - Tuluá,5. EDIFICACIONES PÚBLICAS,Albergues,Destruido (No),El albergue esta ubicado en la CR 4 # 4-49 CRUZADA CRISTIANA y cuenta con 25 personas alojadas,,TEXTO,BQ,44
 76890,Yotoco,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Telefonía fija,Uso restringido,X,,TEXTO / MARCA,BU,44
 76890,Yotoco,ARO Centro - Tuluá,6. TELECOMUNICACIONES,Emisoras,Uso restringido,X,,TEXTO / MARCA,CC,44

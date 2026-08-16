@@ -1,6 +1,6 @@
 ﻿codigo_dane_fuente,municipio,aro_uesvalle,sitios_identificados,familias_cuantificadas,personas_cuantificadas,agua_condicion,energia_condicion,saneamiento_condicion,detalle_reportado,necesidades_relevantes,estado_cuantificacion,fuentes_usadas
 76020,Alcalá,ARO Norte - Cartago,1,,0,SIN DATO ESPECÍFICO,SIN DATO ESPECÍFICO,SIN DATO / EN VERIFICACIÓN,el HOGAR DEL ABUELO ANAGEL MARIA YEPES )y cuenta con 0 personas alojadas,,CUANTIFICACIÓN EXPLÍCITA,BQ / necesidades / servicios esenciales
-76041,Ansermanuevo,ARO Norte - Cartago,1,,10,AFECTACIÓN MUNICIPAL REPORTADA,SIN DATO ESPECÍFICO,SIN DATO / EN VERIFICACIÓN,el Parque recreacional y cuenta con 10 personas alojadas,"Vivienda: 1. Víveres
+76041,Ansermanuevo,ARO Norte - Cartago,1,,10,AFECTACIÓN MUNICIPAL REPORTADA,SIN DATO ESPECÍFICO,SIN AFECTACIÓN REPORTADA,el Parque recreacional y cuenta con 10 personas alojadas,"Vivienda: 1. Víveres
 2. Colchonetas 
 3. Carpas",CUANTIFICACIÓN EXPLÍCITA,BQ / necesidades / servicios esenciales
 76054,Argelia,ARO Norte - Cartago,1,,0,SIN DATO ESPECÍFICO,AFECTACIÓN MUNICIPAL REPORTADA,SIN DATO / EN VERIFICACIÓN,el hospital y cuenta con 0 personas alojadas,"Vivienda: 1. Carpas 
@@ -9,7 +9,7 @@
 4. ⁠Enlatados
 5. ⁠Menaje ( Ollas, Platos, cubiertos)
 
-Apoyo técnico de profesionales que deterimen qué viviendas deben demolerse",CUANTIFICACIÓN EXPLÍCITA,BQ / necesidades / servicios esenciales
+Apoyo técnico de profesionales que determinen qué viviendas deben demolerse",CUANTIFICACIÓN EXPLÍCITA,BQ / necesidades / servicios esenciales
 76113,Bugalagrande,ARO Centro - Tuluá,1,,0,AFECTACIÓN MUNICIPAL REPORTADA,AFECTACIÓN MUNICIPAL REPORTADA,SIN DATO / EN VERIFICACIÓN,el Centro de integración combiana. Por el momento no fue posible censar personas alojadas,Prioridad general: Carpas y alimentos para los albergues temporales,SIN CUANTIFICACIÓN EXPLÍCITA,BQ / necesidades / servicios esenciales
 76122,Caicedonia,ARO Centro - Tuluá,1,,0,AFECTACIÓN MUNICIPAL REPORTADA,AFECTADA / SIN SERVICIO,SIN DATO / EN VERIFICACIÓN,el Centro de Integración Ciudadana (CIC) B/Guyanay .Por el momento no fue posible censar personas alojadas,"Servicios públicos: Restablecer de manera prioritaria la energía eléctrica para abastecer en el municipio. | Industria, comercio y turismo: Reestablecer el servicio de energía eléctrica para reactivar el comercio en el municipio  | Prioridad general: Apoyo con ayudas humanitarias, maquinaria. Múltiples afectaciones a edificaciones, derrumbes en zonas rurales
 sin servicio de energía eléctrica, algunos cortes de gas.
@@ -22,7 +22,7 @@ Por Solicitud de la Alcaldesa Necesidades:
 - ⁠guadua 
 - ⁠brazadas
 - ⁠víveres",SIN CUANTIFICACIÓN EXPLÍCITA,BQ / necesidades / servicios esenciales
-76126,Calima (El Darién),ARO Centro - Tuluá,1,6,37,DISPONIBLE REPORTADA,AFECTADA / SIN SERVICIO,SIN DATO / EN VERIFICACIÓN,el CENTRO DE INTEGRACION CIUDADANO y cuenta con 37 personas alojadas,"Prioridad general: Maquinaria , carpas , frazadas , mercados maquinaria , restablecer energía , plantas eléctricas , estufas para los albergues ",CUANTIFICACIÓN EXPLÍCITA,BQ / necesidades / servicios esenciales
+76126,Calima (El Darién),ARO Centro - Tuluá,1,,37,DISPONIBLE REPORTADA,AFECTADA / SIN SERVICIO,SIN DATO / EN VERIFICACIÓN,el CENTRO DE INTEGRACION CIUDADANO y cuenta con 37 personas alojadas,"Prioridad general: Maquinaria , carpas , frazadas , mercados maquinaria , restablecer energía , plantas eléctricas , estufas para los albergues ",CUANTIFICACIÓN EXPLÍCITA,BQ / necesidades / servicios esenciales
 76130,Candelaria,ARO Sur - Cali,1,,0,AFECTACIÓN MUNICIPAL REPORTADA,AFECTACIÓN MUNICIPAL REPORTADA,SIN DATO / EN VERIFICACIÓN,elCENTROS DE ACOPIO. Por el momento no fue posible censar personas alojadas,,SIN CUANTIFICACIÓN EXPLÍCITA,BQ / necesidades / servicios esenciales
 76147,Cartago,ARO Norte - Cartago,1,,0,SIN DATO ESPECÍFICO,SIN DATO ESPECÍFICO,SIN DATO / EN VERIFICACIÓN,el COLISEO O CLUB DEL RIO. Por el momento no fue posible censar personas alojadas,"Vivienda: 
 Mercados
@@ -45,11 +45,11 @@ Hospital y Bomberos al momento con planta eléctrica
 4) Operarios
 5) Atención humanitaria a familias damnificadas (Colchonetas, alimentos, carpas)",CUANTIFICACIÓN EXPLÍCITA,BQ / necesidades / servicios esenciales
 76403,La Victoria,ARO Norte - Cartago,1,,16,AFECTACIÓN MUNICIPAL REPORTADA,SIN DATO ESPECÍFICO,SIN DATO / EN VERIFICACIÓN,el COLISEO EL CIC y cuenta con 16 personas alojadas y,Edificaciones públicas: Un albergue en el centro de integacion ciudadana,CUANTIFICACIÓN EXPLÍCITA,BQ / necesidades / servicios esenciales
-76497,Obando,ARO Norte - Cartago,1,6,0,ALTERNATIVA / CARROTANQUE,SIN DATO ESPECÍFICO,SIN DATO / EN VERIFICACIÓN,"en Puerto molina sirve e albergue la caseta comunal. Llegará desde Acuavalle Carrotanque grande para abastecer la comunida desde el parque principal.
+76497,Obando,ARO Norte - Cartago,1,,0,ALTERNATIVA / CARROTANQUE,SIN DATO ESPECÍFICO,SIN DATO / EN VERIFICACIÓN,"en Puerto molina sirve e albergue la caseta comunal. Llegará desde Acuavalle Carrotanque grande para abastecer la comunida desde el parque principal.
 
 Iglesia cruzada cristiana fuego de Dios Cristianismo Daniel Fernando Motoa Zapata 3217324612 Calle 3- #4-23 barrio el centro 3217324612 danielmotoaf@gmail.com Obando SI","Salud: EVALUACION ESTRUCTURAL PARA CALIFICAR RIESGOS EN LA PRESTACION Y EVALUACION DE DAÑOS PARA DEFINIR PLAN DE OBRA Y VALOR
 TANQUE DE RESERVA DE AGUA | Prioridad general: Mercados, asistencia humanitaria por vivienda / 18 casas las cuales no se pueden habitar . 21 casa adveriadas corregimiento villa rodas.6 corregimiento puerto Molina.4 corregimiento playa Rica. 7 corregimiento Juan Díaz. 18 corregimiento san IsidroCruces afectación de la iglesia.MUNICIPIO SIN AGUA. 
-  6 familias refugio. ",CUANTIFICACIÓN EXPLÍCITA PARCIAL,JV / necesidades / servicios esenciales
+  6 familias refugio. ",SIN CUANTIFICACIÓN EXPLÍCITA,JV / necesidades / servicios esenciales
 76606,Restrepo,ARO Centro - Tuluá,1,,13,AFECTACIÓN MUNICIPAL REPORTADA,SIN DATO ESPECÍFICO,SIN DATO / EN VERIFICACIÓN,el ANTIGUO CENTRO GERIATRICO y cuenta con 13 personas alojadas,"Salud: 10% de afectacion, sólo servicio de urgencia en función, externa cerrado. Sólo hasta noche reactivaron el servicio de energía un poco intermitente al igual que el internet. 
 EVALUACION ESTRUCTURAL PARA CALIFICAR RIESGOS EN LA PRESTACION Y EVALUACION DE DAÑOS PARA DEFINIR PLAN DE OBRA Y VALOR | Vivienda: 1) Maquinaria amarilla (retroexcavadora con martillo)
 2) Volquetas
@@ -85,7 +85,7 @@ Laureano Caicedo Trujillo: fracturacion de cañerias y agua se puede reparar alc
 La Antonia Santos: Fisuraa por multiples parwdws ( se puede repara)
 
  Nemesio Rodríguez : Sala de sistemas pared fracturada ( reparacio",CUANTIFICACIÓN EXPLÍCITA,BQ / necesidades / servicios esenciales
-76622,Roldanillo,ARO Norte - Cartago,1,,46,AFECTACIÓN MUNICIPAL REPORTADA,AFECTADA / SIN SERVICIO,AFECTACIÓN MUNICIPAL REPORTADA,elColiseo Ivan Muñoz villa y cuenta con 46 personas alojadas,"Salud: Planta de energía para Hospital sin fluido eléctrico. 
+76622,Roldanillo,ARO Norte - Cartago,1,,60,AFECTACIÓN MUNICIPAL REPORTADA,AFECTADA / SIN SERVICIO,AFECTACIÓN MUNICIPAL REPORTADA,"elColiseo Ivan Muñoz villa y cuenta con 60 personas alojadas, de ellas 22 son niños","Salud: Planta de energía para Hospital sin fluido eléctrico. 
 Combustible para Transporte asistencial
 Se cayo el techo y un piso se levanto (Afectacion del 80%)
 EVALUACION ESTRUCTURAL PARA CALIFICAR RIESGOS EN LA PRESTACION Y EVALUACION DE DAÑOS PARA DEFINIR PLAN DE OBRA Y VALOR
@@ -99,12 +99,17 @@ SE REQUIERE 2 BOLSAS DE SANGRE O+  Y 2 BOLSAS DE SANGRE O - | Vivienda: 1) Maqui
 2) Volquetas
 3) Equipos especializados en demolición
 4) Operarios
-5) Atención humanitaria a familias damnificadas (50 Colchonetas, mantas, agua potable, carpas, ropa para todas las edades, kits de aseo, etc.) Aproximadamente 500 familias requieren apoyo.
-6) Alimentos no perecederos, Pediasure
-7) Cama base (catre) para adultos mayores
+5) Atención humanitaria a familias damnificadas (100 Colchonetas, mantas, 100 toallas, almohadas, agua potable, 50 carpas para zona rural, ropa para todas las edades, kits de aseo 300, tanto para albergue como zona rural y urbana, etc.) Aproximadamente 500 familias requieren apoyo.
+6) Alimentos no perecederos para 400 personas, Pediasure
+7) 4 Cama base (catre) para adultos mayores
 8) Juguetes para niños
 9) Materiales de construccion (cemento, arena, grava, varillas, herramientas, tejas, hojas de zinc)
-10) Tiendas de campaña
+10) 50 Tiendas de campaña
+11).Guantes de construcción resistentes
+12) Gafas de protección y cascos
+13) Cintas de señalización para demarcar zonas de peligro.
+14) Cuerdas, linternas con pila y pilas, herramientas manuales básicas como martillos y palas. 
+
  | Servicios públicos: 1) Recuperación del tubo madre para suministro de agua potable
 2) Reestablecimiento del servicio eléctrico (11/ago, se ha recuperado un 50%)
 3) Reestablecimiento servicio de internet
