@@ -23,6 +23,12 @@
   const yes = (v) => norm(v) === "si";
   const levelClass = (v) => `badge-${norm(v).replace(/\s+/g,"-") || "por-determinar"}`;
 
+  function areaCondition(r) {
+    if (r?.es_hallazgo === true || norm(r?.resultado).includes("hallazgo")) return "Con hallazgo";
+    if (r?.es_hallazgo === false || norm(r?.resultado).includes("sin afectacion")) return "Sin afectación observable";
+    return "Por determinar";
+  }
+
   function showStatus(message, kind="secondary") {
     const box = $("loadAlert");
     if (!box) return;
@@ -50,31 +56,43 @@
   function populateFilters() {
     const sedesBase = ["ARO Cali","ARO Tuluá","ARO Cartago","Sede Principal UESVALLE", ...DATA.map(r=>r.sede)];
     populateSelect("fSede", sedesBase, "Todas");
+    populateSelect("fCondicion", DATA.map(areaCondition), "Todas");
     populateSelect("fArea", DATA.map(r=>r.area), "Todas");
-    populateSelect("fNivel", DATA.filter(r=>r.es_hallazgo).map(r=>r.nivel), "Todos");
+    populateSelect("fComponente", DATA.filter(r=>r.es_hallazgo).map(r=>r.elemento_ajustado || "Por determinar"), "Todos");
     populateSelect("fTipoDano", DATA.filter(r=>r.es_hallazgo).map(r=>r.tipo_dano), "Todos");
+    populateSelect("fNivel", DATA.filter(r=>r.es_hallazgo).map(r=>r.nivel), "Todos");
     populateSelect("fRevision", DATA.filter(r=>r.es_hallazgo).map(r=>r.revision_tecnica), "Todos");
   }
 
   function renderActiveFilters() {
     const wrap = $("activeFilters");
     const items = [
-      ["Sede", $("fSede").value], ["Área", $("fArea").value], ["Nivel", $("fNivel").value], ["Tipo de daño", $("fTipoDano").value], ["Revisión", $("fRevision").value]
+      ["Sede", $("fSede").value],
+      ["Condición", $("fCondicion").value],
+      ["Área", $("fArea").value],
+      ["Componente", $("fComponente").value],
+      ["Tipo de daño", $("fTipoDano").value],
+      ["Nivel", $("fNivel").value],
+      ["Revisión", $("fRevision").value]
     ].filter(([,v]) => v);
     wrap.innerHTML = items.length ? items.map(([k,v])=>`<span class="active-filter-chip">${esc(k)}: ${esc(v)}</span>`).join("") : `<span class="text-muted small">Sin filtros adicionales</span>`;
   }
 
   function applyFilters() {
     const sede = $("fSede").value;
+    const condicion = $("fCondicion").value;
     const area = $("fArea").value;
-    const nivel = $("fNivel").value;
+    const componente = $("fComponente").value;
     const tipoDano = $("fTipoDano").value;
+    const nivel = $("fNivel").value;
     const revision = $("fRevision").value;
     FILTERED = DATA.filter(r =>
       (!sede || r.sede === sede) &&
+      (!condicion || areaCondition(r) === condicion) &&
       (!area || r.area === area) &&
-      (!nivel || r.nivel === nivel) &&
+      (!componente || (r.elemento_ajustado || "Por determinar") === componente) &&
       (!tipoDano || r.tipo_dano === tipoDano) &&
+      (!nivel || r.nivel === nivel) &&
       (!revision || r.revision_tecnica === revision)
     );
     renderActiveFilters();
@@ -87,7 +105,7 @@
   }
 
   function clearFilters() {
-    ["fSede","fArea","fNivel","fTipoDano","fRevision"].forEach(id => $(id).value = "");
+    ["fSede","fCondicion","fArea","fComponente","fTipoDano","fNivel","fRevision"].forEach(id => $(id).value = "");
     applyFilters();
   }
 
@@ -257,7 +275,7 @@
   }
 
   function hasGlobalFilters() {
-    return ["fSede","fArea","fNivel","fTipoDano","fRevision"].some(id => $(id)?.value);
+    return ["fSede","fCondicion","fArea","fComponente","fTipoDano","fNivel","fRevision"].some(id => $(id)?.value);
   }
 
   function detailSourceRecords() {
@@ -621,7 +639,7 @@
   $("btnReload").addEventListener("click",()=>location.reload());
   $("btnGeneratePdf").addEventListener("click",generatePdf);
   $("btnToggleStatus").addEventListener("click",()=>{const box=$("loadAlert");box.classList.toggle("d-none");$("statusHint").textContent=box.classList.contains("d-none")?"Oculto":"Visible";});
-  ["fSede","fArea","fNivel","fTipoDano","fRevision"].forEach(id=>$(id).addEventListener("change",()=>{if(id==="fSede"){const sede=$("fSede").value;const areas=DATA.filter(r=>!sede||r.sede===sede).map(r=>r.area);populateSelect("fArea",areas,"Todas");}applyFilters();}));
+  ["fSede","fCondicion","fArea","fComponente","fTipoDano","fNivel","fRevision"].forEach(id=>$(id).addEventListener("change",()=>{if(id==="fSede" || id==="fCondicion"){const sede=$("fSede").value;const condicion=$("fCondicion").value;const areas=DATA.filter(r=>(!sede||r.sede===sede)&&(!condicion||areaCondition(r)===condicion)).map(r=>r.area);populateSelect("fArea",areas,"Todas");if(![...$("fArea").options].some(o=>o.value===$("fArea").value)) $("fArea").value="";}applyFilters();}));
 
   if ($("dSede")) $("dSede").addEventListener("change",()=>{detailSede=$("dSede").value;detailArea="";detailFindingIndex=0;detailPhotoIndex=0;populateDetailArea();renderAreaDetail();renderReportPreview();});
   if ($("dArea")) $("dArea").addEventListener("change",()=>{detailArea=$("dArea").value;detailFindingIndex=0;detailPhotoIndex=0;renderAreaDetail();});

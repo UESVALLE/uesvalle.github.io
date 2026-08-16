@@ -50,11 +50,13 @@
           <span class="table-toggle-arrow">›</span>
         </button>
         <div class="collapse show mt-3" id="filtersCollapse">
-          <div class="row g-2 align-items-end row-cols-1 row-cols-md-2 row-cols-xl-5">
+          <div class="row g-2 align-items-end row-cols-1 row-cols-md-2 row-cols-xl-4">
             <div class="col"><label class="filter-label" for="fSede">Sede / Área Operativa</label><select id="fSede" class="form-select form-select-sm"><option value="">Todas</option></select></div>
+            <div class="col"><label class="filter-label" for="fCondicion">Condición del área</label><select id="fCondicion" class="form-select form-select-sm"><option value="">Todas</option></select></div>
             <div class="col"><label class="filter-label" for="fArea">Área / ubicación</label><select id="fArea" class="form-select form-select-sm"><option value="">Todas</option></select></div>
-            <div class="col"><label class="filter-label" for="fNivel">Nivel de afectación</label><select id="fNivel" class="form-select form-select-sm"><option value="">Todos</option></select></div>
+            <div class="col"><label class="filter-label" for="fComponente">Componente observado</label><select id="fComponente" class="form-select form-select-sm"><option value="">Todos</option></select></div>
             <div class="col"><label class="filter-label" for="fTipoDano">Tipo de daño</label><select id="fTipoDano" class="form-select form-select-sm"><option value="">Todos</option></select></div>
+            <div class="col"><label class="filter-label" for="fNivel">Nivel de afectación</label><select id="fNivel" class="form-select form-select-sm"><option value="">Todos</option></select></div>
             <div class="col"><label class="filter-label" for="fRevision">Revisión técnica</label><select id="fRevision" class="form-select form-select-sm"><option value="">Todos</option></select></div>
           </div>
           <div class="filters-actions mt-3"><button id="btnApply" class="btn btn-primary btn-sm px-4">Actualizar filtros</button><button id="btnClear" class="btn btn-outline-secondary btn-sm px-4">Limpiar</button><button id="btnReload" class="btn btn-outline-primary btn-sm px-4">Refrescar datos</button></div>
@@ -113,13 +115,13 @@
           </div>
 
           <div class="tab-pane fade" id="report-pane">
-            <div class="tab-intro">El informe se construye por Área Operativa. Seleccione una sede/ARO en los filtros del tablero y use el botón de PDF. Los filtros de área, nivel y revisión no recortan el informe del ARO.</div>
+            <div class="tab-intro">El informe se construye por Área Operativa. Seleccione una sede/ARO en los filtros del tablero y use el botón de PDF. Los filtros analíticos de condición, área, componente, tipo de daño, nivel y revisión no recortan el informe del ARO.</div>
             <section class="report-preview" id="reportPreview"></section>
           </div>
         </div>
       </section>
 
-      <footer class="footer mt-4"><div>UESVALLE · Portal de tableros institucionales</div><div>Inspección de sedes · Registro visual preliminar post-sismo · <span class="interface-version">Interfaz V3.3.0</span></div></footer>
+      <footer class="footer mt-4"><div>UESVALLE · Portal de tableros institucionales</div><div>Inspección de sedes · Registro visual preliminar post-sismo · <span class="interface-version">Interfaz V3.4.0</span></div></footer>
     </div>
   </main>
 
@@ -137,6 +139,6 @@
   <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.2/dist/jspdf.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/jspdf-autotable@3.8.4/dist/jspdf.plugin.autotable.min.js"></script>
-  <script src="inspeccion_sedes.js?v=3.3.0"></script>
+  <script src="inspeccion_sedes.js?v=3.4.0"></script>
 </body>
 </html>
