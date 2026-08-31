@@ -1,0 +1,2042 @@
+{
+  "meta": {
+    "title": "Respuesta Sanitaria ante el evento sísmico",
+    "subtitle": "UESVALLE · Valle del Cauca · Agosto 2026",
+    "event_date": "10 de agosto de 2026",
+    "presentation_cut": "Fuentes con cortes entre el 21 y el 30 de agosto de 2026, según componente. Evidencias fotográficas de acueductos incorporadas desde Google Drive.",
+    "data_cut_dashboard": "2026-08-22",
+    "dashboard_version": "8.1",
+    "rule": "Municipios, sistemas, acciones, registros EIS, cementerios, sedes educativas, seguimientos PIC y despachos son unidades distintas; no se suman entre sí como un total de intervenciones.",
+    "story_version": "2.3"
+  },
+  "phases": [
+    {
+      "id": "evento",
+      "label": "Evento",
+      "short": "10 AGO"
+    },
+    {
+      "id": "identificar",
+      "label": "Identificar y priorizar",
+      "short": "Fase 1"
+    },
+    {
+      "id": "intervenir",
+      "label": "Verificar e intervenir",
+      "short": "Fase 2"
+    },
+    {
+      "id": "recuperar",
+      "label": "Seguimiento y recuperación",
+      "short": "Fase 3"
+    },
+    {
+      "id": "explorar",
+      "label": "Explorar los datos",
+      "short": "Datos"
+    }
+  ],
+  "dashboard_meta": {
+    "version": "8.1",
+    "fecha_corte": "2026-08-22",
+    "generado": "2026-08-23 14:34:27",
+    "municipios_respuesta": 40,
+    "aro_con_accion": 3,
+    "regla_unidades": "Municipios, sistemas, acciones, registros EIS, cementerios, sedes educativas, seguimientos PIC y despachos son unidades distintas; no se suman entre sí como un total de intervenciones.",
+    "agua": {
+      "universo": 577,
+      "acciones_individualizadas": 21,
+      "municipios_verificados": 30,
+      "sistemas_documentados": 204,
+      "sistemas_afectacion_documentada": 43,
+      "sistemas_restablecidos": 7,
+      "sistemas_requieren_validacion": 3,
+      "contactos": 8,
+      "verificaciones": 4,
+      "diagnosticos": 8,
+      "afectados": 7,
+      "fuente_edan": "EDAN_Consolidado_Matriz_ValleDelCauca11ago (22-08-2026).xlsx",
+      "fuente_edan_fecha": "2026-08-22",
+      "sistemas_edan_no_mapeados_universo": 2,
+      "criterio_integracion": "Municipio verificado = resultado técnico válido en EDAN o verificación/diagnóstico operativo individualizado. Sistema con estado documentado = sistema del universo de 577 con estado técnico sustentado en EDAN o fuente operativa actual. No equivale automáticamente a visita ni a acción independiente."
+    },
+    "eis": {
+      "fecha_fuente": "2026-08-21",
+      "uesvalle": {
+        "municipios_con_actuacion": 32,
+        "registros_operativos": 69,
+        "establecimientos_con_nombre": 63,
+        "verificaciones_municipales_sin_sitio": 6,
+        "por_tipo_registro": {
+          "ADULTO_MAYOR_GERIATRICO": 17,
+          "INSTITUCION_EDUCATIVA": 31,
+          "ALBERGUE_TEMPORAL": 15,
+          "VERIFICACION_MUNICIPAL_SIN_SITIO": 6
+        },
+        "afectacion_explicita_registro": 31,
+        "cementerios_evaluados": 46,
+        "cementerios_por_nivel": {
+          "SIN_AFECTACION": 15,
+          "MODERADA": 7,
+          "LEVE": 15,
+          "GRAVE": 8,
+          "CRITICA": 1
+        },
+        "cementerios_con_afectacion": 31,
+        "cementerios_con_restriccion_explicita": 15,
+        "ie_sedes_caracterizadas": 126,
+        "ie_municipios": 28,
+        "ie_por_criticidad": {
+          "ROJO": 68,
+          "AMARILLO": 36,
+          "VERDE": 21,
+          "SIN_DETALLE": 1
+        },
+        "ie_prioritarias": 104
+      },
+      "uesvalle_fuentes": {
+        "registro_estado_sanitario": {
+          "archivo": "Registro de Estado Sanitario de Establecimientos.xlsx",
+          "sha256": "67a3d7e0327bde15480f4ae4a88e2a5aa4e2f0b17dcf8eef23e1cfab048b31bb",
+          "ultima_fecha_visita": "2026-08-20"
+        },
+        "cementerios": {
+          "archivo": "CUADRO CEMENTERIOS TOTALES-18082026.xlsx",
+          "sha256": "f4fac53449618537d5a465e3ae68641fb74379364175dae47cbfe771b7e763b8",
+          "ultima_fecha_visita": "2026-08-20"
+        },
+        "infraestructura_educativa": {
+          "archivo": "Diagnostico_Criticidad_Infraestructura_Educativa_Sismo_ValleCauca.xlsx",
+          "sha256": "a382bc605ceff0149671bac745ecac79aede014d1be081bbec84e196ed374179",
+          "fecha_snapshot": "2026-08-21"
+        }
+      },
+      "criterio_atribucion": "La actividad directa UESVALLE se calcula desde registros ARO, cementerios y diagnóstico de infraestructura educativa. Estas unidades no se suman entre sí como visitas totales.",
+      "pic": {
+        "seguimientos": 231,
+        "registros_fuente": 236,
+        "municipios": 39,
+        "sitios": 50,
+        "requiere_apoyo": 55,
+        "hallazgos_prioritarios": 53,
+        "albergues_unicos": 48,
+        "centros_acopio_unicos": 2,
+        "seguimientos_sin_albergue": 15,
+        "seguimientos_sin_sitio": 67,
+        "aliases_pendientes": 6,
+        "fecha_fuente": "2026-08-22",
+        "fuente_archivo": "Seguimiento a Albergues temporales - Valle del Cauca (Respuestas)",
+        "atribucion": "Seguimiento interinstitucional PIC/Gobernación; no se presenta como visita directa UESVALLE."
+      },
+      "seguimientos": 231,
+      "registros_fuente": 236,
+      "municipios": 39,
+      "sitios": 50,
+      "requiere_apoyo": 55,
+      "hallazgos_prioritarios": 53,
+      "albergues_unicos": 48,
+      "centros_acopio_unicos": 2,
+      "seguimientos_sin_albergue": 15,
+      "seguimientos_sin_sitio": 67,
+      "aliases_pendientes": 6,
+      "fuente_archivo": "Seguimiento a Albergues temporales - Valle del Cauca (Respuestas)",
+      "criterio_sitios": "Sitios PIC normalizados con alias de alta confianza; se mantienen separados de la actividad directa UESVALLE."
+    },
+    "alimentos": {
+      "despachos": 18,
+      "municipios": 14,
+      "familias_referenciadas": 1010,
+      "detalle": 510,
+      "peso_estimado_t": 19.7,
+      "rango_estimado_t": "16.25–23.72",
+      "integracion_detallada": true,
+      "verificacion_sanitaria_disponible": false,
+      "nota_familias": "Familias referenciadas en formatos de despacho; no representan hogares únicos consolidados."
+    }
+  },
+  "water_form_metrics": {
+    "corte_fuente": "2026-08-30 17:50:40.728000",
+    "registros_validos_formulario": 23,
+    "sistemas_unicos_formulario": 22,
+    "municipios_con_diagnostico_formulario": 10,
+    "municipios": [
+      "Ansermanuevo",
+      "Argelia",
+      "Calima",
+      "Dagua",
+      "El Águila",
+      "La Cumbre",
+      "Restrepo",
+      "Riofrío",
+      "Toro",
+      "Vijes"
+    ],
+    "sistemas_con_antecedente_afectacion": 19,
+    "sistemas_con_evidencia_fotografica": 12,
+    "sistemas_que_reportan_apoyo_inmediato": 10,
+    "sistemas_con_estado_actual_disponible": 13,
+    "estado_actual": {
+      "Opera parcialmente": 7,
+      "Opera normalmente": 5,
+      "Servicio restablecido después de afectación": 1
+    },
+    "registros_prueba_excluidos": 1,
+    "registros_superados_por_actualizacion": 1,
+    "nota": "Estos indicadores corresponden exclusivamente al Formulario de Diagnóstico. No sustituyen el universo integrado EDAN + sistemas institucionales usado en el Informe UES.",
+    "componentes_afectados_frecuencia": {
+      "Almacenamiento": 11,
+      "Tratamiento": 7,
+      "Conducción": 7,
+      "Distribución": 6,
+      "Aducción": 3,
+      "Captación": 2,
+      "Desarenador": 2,
+      "Otro": 2,
+      "Fuente de abastecimiento": 1
+    }
+  },
+  "water_cases": [
+    {
+      "municipio": "Ansermanuevo",
+      "id_sistema": "ACU-ANSERMANUEVO-2161",
+      "sistema": "ACUEDUCTO COMUNITARIO SALAZAR",
+      "estado_actual": "Opera parcialmente",
+      "afectacion_evento": "Sí",
+      "componentes": "Tratamiento, Almacenamiento, Distribución",
+      "descripcion": "sufrieron daños en las conexiones de los filtros que les instaló Vallecaucana y tienen suspendida la desinfección",
+      "afectacion_continua": "Parcialmente",
+      "requiere_apoyo": "Sí",
+      "tipo_apoyo": "Agua para consumo humano, Materiales / repuestos, Evaluación técnica",
+      "numero_evidencias": 4,
+      "evidencias": [],
+      "fecha_registro": "2026-08-30 16:45:19.791000",
+      "razon_seleccion": "Afectación de tratamiento, almacenamiento y distribución; suspensión de desinfección."
+    },
+    {
+      "municipio": "Dagua",
+      "id_sistema": null,
+      "sistema": "Acuaducto ECOABRISAS ",
+      "estado_actual": "Parcial (daños en algunas unidades pero sigue funcionando)",
+      "afectacion_evento": "Si",
+      "componentes": "Tratamiento, Conduccion",
+      "descripcion": "Un tramo de tubería de la línea de conducción se vio afectado pero afortunadamente se oído subsanar a los 2 días del evento de manera artesanal. Sin embargo la vivienda de la persona que realiza las labores de mantenimiento se resultó con afectaciones considerables en su infraestructura, lo que pone en riesgo la sostenibilidad del sistema.",
+      "afectacion_continua": null,
+      "requiere_apoyo": null,
+      "tipo_apoyo": null,
+      "numero_evidencias": 5,
+      "evidencias": [],
+      "fecha_registro": "2026-08-14 16:37:44.928000",
+      "razon_seleccion": "Caso de afectación y reparación temprana; permite narrar recuperación."
+    },
+    {
+      "municipio": "Dagua",
+      "id_sistema": null,
+      "sistema": "La Guinea parte alta",
+      "estado_actual": "Servicio restablecido después de afectación",
+      "afectacion_evento": "Sí",
+      "componentes": "Captación, Conducción",
+      "descripcion": "El día 20/08/2026 se realizó visita de asistencia humanitaria en la cual se reportó afectación, específicamente daño en captación, y conducción",
+      "afectacion_continua": "Sí, continúa",
+      "requiere_apoyo": "Sí",
+      "tipo_apoyo": "Evaluación técnica",
+      "numero_evidencias": 4,
+      "evidencias": [],
+      "fecha_registro": "2026-08-21 14:25:35.437000",
+      "razon_seleccion": "Estado reportado como restablecido, con evidencia fotográfica y necesidad de evaluación."
+    },
+    {
+      "municipio": "El Águila",
+      "id_sistema": "ACU-EL-AGUILA-2616",
+      "sistema": "JUNTA DE ACUEDUCTO LA JUDEA",
+      "estado_actual": "Opera parcialmente",
+      "afectacion_evento": "Sí",
+      "componentes": "Almacenamiento",
+      "descripcion": "El tanque grande si tiene unas grietas y el repello se averió ",
+      "afectacion_continua": "Sí, continúa",
+      "requiere_apoyo": "Sí",
+      "tipo_apoyo": "Agua para consumo humano, Materiales / repuestos",
+      "numero_evidencias": 3,
+      "evidencias": [],
+      "fecha_registro": "2026-08-30 16:56:57.424000",
+      "razon_seleccion": "Grietas en tanque, operación parcial y evidencia visual disponible."
+    },
+    {
+      "municipio": "Restrepo",
+      "id_sistema": "ACU-RESTREPO-2066",
+      "sistema": "ACUEDUCTO ALTO DEL OSO LA FLORIDA Y LA CAMELIA",
+      "estado_actual": "Opera parcialmente",
+      "afectacion_evento": "Sí",
+      "componentes": "Almacenamiento",
+      "descripcion": "Presenta fisuras en el tanque ",
+      "afectacion_continua": "Sí, continúa",
+      "requiere_apoyo": "Sí",
+      "tipo_apoyo": "Agua para consumo humano, Materiales / repuestos",
+      "numero_evidencias": 2,
+      "evidencias": [],
+      "fecha_registro": "2026-08-28 11:38:05.915000",
+      "razon_seleccion": "Fisuras en almacenamiento, operación parcial y necesidad de apoyo."
+    },
+    {
+      "municipio": "Toro",
+      "id_sistema": "ACU-TORO-2194",
+      "sistema": "ASOCIACION DE LA JUNTA ADMINISTRADORA DEL ACUEDUCTO RURAL COLECTIVO DE PATIO BONITO- LA ROBLEDA-SABANAZO",
+      "estado_actual": "Opera parcialmente",
+      "afectacion_evento": "Sí",
+      "componentes": "Tratamiento",
+      "descripcion": "se dañaron las conexiones del filtro rápido al tanque de Almacenamiento",
+      "afectacion_continua": "Parcialmente",
+      "requiere_apoyo": "Sí",
+      "tipo_apoyo": "Materiales / repuestos",
+      "numero_evidencias": 4,
+      "evidencias": [],
+      "fecha_registro": "2026-08-30 17:50:40.728000",
+      "razon_seleccion": "Daños en conexión de filtro rápido a almacenamiento; operación parcial."
+    }
+  ],
+  "eis_cases": [
+    {
+      "id": "union",
+      "municipio": "La Unión",
+      "title": "Albergue y verificación de productos donados",
+      "image": "assets/eis/la_union_alimentos.jpg",
+      "caption": "La Unión · verificación en el contexto del albergue y centro de acopio.",
+      "text": "En el Coliseo Angelino Garzón se realizaron recomendaciones sanitarias para el alojamiento y se verificaron condiciones de los productos donados. La actuación combina vigilancia del albergue y control sanitario del apoyo humanitario."
+    },
+    {
+      "id": "calima",
+      "municipio": "Calima (El Darién)",
+      "title": "Un mismo territorio, varias necesidades sanitarias",
+      "image": "assets/eis/calima_albergue.jpg",
+      "image2": "assets/eis/calima_cementerio.jpg",
+      "caption": "Calima · albergue temporal y afectación documentada en el cementerio.",
+      "text": "El seguimiento incluyó un albergue temporal con familias alojadas, inspección del Cementerio Jardín de Vida y afectaciones reportadas en una institución educativa. El enfoque fue verificar condiciones sanitarias y restringir o señalizar áreas cuando correspondía."
+    },
+    {
+      "id": "yotoco",
+      "municipio": "Yotoco",
+      "title": "Alojamiento temporal y protección de población mayor",
+      "image": "assets/eis/yotoco_albergue.jpg",
+      "image2": "assets/eis/yotoco_adulto_mayor.jpg",
+      "caption": "Yotoco · albergue temporal y establecimiento de protección al adulto mayor.",
+      "text": "Se verificaron buenas prácticas sanitarias en el albergue y, en el centro de protección al adulto mayor, se documentaron afectaciones físico-locativas que llevaron a reubicar residentes y la zona de preparación de alimentos hacia áreas más seguras."
+    },
+    {
+      "id": "vijes",
+      "municipio": "Vijes",
+      "title": "Restricción y manejo preventivo en cementerios",
+      "image": "assets/eis/vijes_cementerio.jpg",
+      "caption": "Vijes · inspección del Cementerio Cristo Resucitado.",
+      "text": "La visita documentó daños en mausoleos, suspensión del servicio y riesgo de desprendimiento en un punto específico. Se recomendó delimitar y señalizar áreas afectadas y fortalecer el manejo de residuos."
+    }
+  ],
+  "food_context": {
+    "headline": "El rol sanitario de UESVALLE dentro de la operación humanitaria",
+    "process": [
+      "Recepción y organización",
+      "Revisión física visible",
+      "Empaques y fechas de vencimiento",
+      "Clasificación de productos",
+      "Preparación para distribución"
+    ],
+    "licorera": {
+      "corte": "22/08/2026",
+      "despachos": 292,
+      "toneladas": ">504 t estimadas",
+      "note": "Contexto logístico del Centro de Acopio Licorera; el peso es estimación operacional, no pesaje certificado."
+    },
+    "cartago": {
+      "corte": "21/08/2026",
+      "despachos": 35,
+      "destinos": 14,
+      "toneladas": "65,94 t estimadas",
+      "note": "Canal logístico paralelo. No se suma al consolidado municipal de Licorera."
+    },
+    "current_layer": {
+      "despachos": 18,
+      "municipios": 14,
+      "peso_t": 19.7,
+      "note": "Subconjunto normalizado disponible en el tablero actual; no equivale al consolidado logístico completo del informe."
+    }
+  },
+  "hitos": [
+    {
+      "fecha": "2026-08-10",
+      "fase": "Evento",
+      "linea": "Todas",
+      "hito": "Evento sísmico; punto de partida de la respuesta sanitaria."
+    },
+    {
+      "fecha": "2026-08-11",
+      "fase": "Identificar y priorizar",
+      "linea": "EIS / Alimentos",
+      "hito": "Inicio de reportes territoriales y de jornadas documentadas en el Centro de Acopio Licorera."
+    },
+    {
+      "fecha": "2026-08-12/2026-08-14",
+      "fase": "Identificar y priorizar",
+      "linea": "Agua / EIS",
+      "hito": "Primeros diagnósticos de sistemas y visitas documentadas a EIS."
+    },
+    {
+      "fecha": "2026-08-15",
+      "fase": "Verificar e intervenir",
+      "linea": "Alimentos",
+      "hito": "Inicio del periodo documentado del Centro de Acopio Cartago."
+    },
+    {
+      "fecha": "2026-08-17",
+      "fase": "Seguimiento y recuperación",
+      "linea": "Articulación",
+      "hito": "Gestiones con AQUACOL, Cruz Roja y Rotary."
+    },
+    {
+      "fecha": "2026-08-19",
+      "fase": "Seguimiento y recuperación",
+      "linea": "Articulación / WASH",
+      "hito": "Interés de CAWST y articulación con Clúster/Mesa WASH."
+    },
+    {
+      "fecha": "2026-08-20",
+      "fase": "Seguimiento y recuperación",
+      "linea": "Agua / articulación",
+      "hito": "FECOSER e IMCA comunican afectaciones de sistemas comunitarios."
+    },
+    {
+      "fecha": "2026-08-21",
+      "fase": "Seguimiento y recuperación",
+      "linea": "Articulación",
+      "hito": "Seguimiento UESVALLE–CAWST y preparación de participación en Mesa WASH."
+    },
+    {
+      "fecha": "2026-08-22",
+      "fase": "Seguimiento y recuperación",
+      "linea": "Todas",
+      "hito": "Corte técnico del Informe UES utilizado como base narrativa."
+    },
+    {
+      "fecha": "2026-08-24/2026-08-27",
+      "fase": "Seguimiento y recuperación",
+      "linea": "Alimentos / territorio",
+      "hito": "Continúan registros documentales y despliegue de apoyo, incluido Buenaventura."
+    },
+    {
+      "fecha": "2026-08-28/2026-08-30",
+      "fase": "Seguimiento y recuperación",
+      "linea": "Agua",
+      "hito": "Se incorporan nuevos diagnósticos con evidencias fotográficas y necesidades de apoyo."
+    }
+  ],
+  "municipios": [
+    {
+      "municipio": "Alcalá",
+      "aro": "Norte Cartago",
+      "ultima_fecha": "2026-08-21",
+      "score_resumen": 15,
+      "agua": {
+        "universo": 10,
+        "municipio_verificado": true,
+        "sistemas_documentados": 1,
+        "sistemas_afectacion_documentada": 0,
+        "sistemas_restablecidos": 0,
+        "diagnosticos": 0,
+        "afectados": 0
+      },
+      "eis": {
+        "ues_actuacion": true,
+        "ues_registros_operativos": 0,
+        "ues_establecimientos_registro": 0,
+        "ues_albergues": 0,
+        "ues_adulto_mayor": 0,
+        "ues_afectacion_explicita": 0,
+        "ues_cementerios": 1,
+        "ues_cementerios_afectados": 1,
+        "ues_ie_sedes": 0,
+        "ues_ie_prioritarias": 0,
+        "seguimientos": 6,
+        "requiere_apoyo": 0,
+        "hallazgos_prioritarios": 0
+      },
+      "alimentos": {
+        "atendido": false,
+        "despachos": null,
+        "familias_referenciadas": null,
+        "peso_t": null,
+        "ultima_fecha": null
+      }
+    },
+    {
+      "municipio": "Andalucía",
+      "aro": "Centro Tuluá",
+      "ultima_fecha": "2026-08-20",
+      "score_resumen": 15,
+      "agua": {
+        "universo": 7,
+        "municipio_verificado": true,
+        "sistemas_documentados": 7,
+        "sistemas_afectacion_documentada": 1,
+        "sistemas_restablecidos": 1,
+        "diagnosticos": 0,
+        "afectados": 0
+      },
+      "eis": {
+        "ues_actuacion": false,
+        "ues_registros_operativos": 0,
+        "ues_establecimientos_registro": 0,
+        "ues_albergues": 0,
+        "ues_adulto_mayor": 0,
+        "ues_afectacion_explicita": 0,
+        "ues_cementerios": 0,
+        "ues_cementerios_afectados": 0,
+        "ues_ie_sedes": 0,
+        "ues_ie_prioritarias": 0,
+        "seguimientos": 2,
+        "requiere_apoyo": 0,
+        "hallazgos_prioritarios": 0
+      },
+      "alimentos": {
+        "atendido": false,
+        "despachos": null,
+        "familias_referenciadas": null,
+        "peso_t": null,
+        "ultima_fecha": null
+      }
+    },
+    {
+      "municipio": "Ansermanuevo",
+      "aro": "Norte Cartago",
+      "ultima_fecha": "2026-08-20",
+      "score_resumen": 18,
+      "agua": {
+        "universo": 17,
+        "municipio_verificado": true,
+        "sistemas_documentados": 1,
+        "sistemas_afectacion_documentada": 1,
+        "sistemas_restablecidos": 0,
+        "diagnosticos": 0,
+        "afectados": 0
+      },
+      "eis": {
+        "ues_actuacion": true,
+        "ues_registros_operativos": 1,
+        "ues_establecimientos_registro": 0,
+        "ues_albergues": 0,
+        "ues_adulto_mayor": 0,
+        "ues_afectacion_explicita": 0,
+        "ues_cementerios": 1,
+        "ues_cementerios_afectados": 1,
+        "ues_ie_sedes": 6,
+        "ues_ie_prioritarias": 5,
+        "seguimientos": 1,
+        "requiere_apoyo": 1,
+        "hallazgos_prioritarios": 1
+      },
+      "alimentos": {
+        "atendido": false,
+        "despachos": null,
+        "familias_referenciadas": null,
+        "peso_t": null,
+        "ultima_fecha": null
+      }
+    },
+    {
+      "municipio": "Argelia",
+      "aro": "Norte Cartago",
+      "ultima_fecha": "2026-08-14",
+      "score_resumen": 15,
+      "agua": {
+        "universo": 8,
+        "municipio_verificado": true,
+        "sistemas_documentados": 1,
+        "sistemas_afectacion_documentada": 0,
+        "sistemas_restablecidos": 0,
+        "diagnosticos": 0,
+        "afectados": 0
+      },
+      "eis": {
+        "ues_actuacion": true,
+        "ues_registros_operativos": 0,
+        "ues_establecimientos_registro": 0,
+        "ues_albergues": 0,
+        "ues_adulto_mayor": 0,
+        "ues_afectacion_explicita": 0,
+        "ues_cementerios": 0,
+        "ues_cementerios_afectados": 0,
+        "ues_ie_sedes": 7,
+        "ues_ie_prioritarias": 6,
+        "seguimientos": 2,
+        "requiere_apoyo": 0,
+        "hallazgos_prioritarios": 0
+      },
+      "alimentos": {
+        "atendido": true,
+        "despachos": 1,
+        "familias_referenciadas": 0,
+        "peso_t": null,
+        "ultima_fecha": "2026-08-12"
+      }
+    },
+    {
+      "municipio": "Bolívar",
+      "aro": "Centro Tuluá",
+      "ultima_fecha": "2026-08-21",
+      "score_resumen": 19,
+      "agua": {
+        "universo": 19,
+        "municipio_verificado": true,
+        "sistemas_documentados": 1,
+        "sistemas_afectacion_documentada": 1,
+        "sistemas_restablecidos": 0,
+        "diagnosticos": 0,
+        "afectados": 0
+      },
+      "eis": {
+        "ues_actuacion": true,
+        "ues_registros_operativos": 1,
+        "ues_establecimientos_registro": 1,
+        "ues_albergues": 0,
+        "ues_adulto_mayor": 1,
+        "ues_afectacion_explicita": 1,
+        "ues_cementerios": 1,
+        "ues_cementerios_afectados": 1,
+        "ues_ie_sedes": 3,
+        "ues_ie_prioritarias": 2,
+        "seguimientos": 8,
+        "requiere_apoyo": 0,
+        "hallazgos_prioritarios": 0
+      },
+      "alimentos": {
+        "atendido": true,
+        "despachos": 1,
+        "familias_referenciadas": 60,
+        "peso_t": null,
+        "ultima_fecha": "2026-08-13"
+      }
+    },
+    {
+      "municipio": "Bugalagrande",
+      "aro": "Centro Tuluá",
+      "ultima_fecha": "2026-08-17",
+      "score_resumen": 33,
+      "agua": {
+        "universo": 15,
+        "municipio_verificado": true,
+        "sistemas_documentados": 14,
+        "sistemas_afectacion_documentada": 1,
+        "sistemas_restablecidos": 0,
+        "diagnosticos": 0,
+        "afectados": 0
+      },
+      "eis": {
+        "ues_actuacion": true,
+        "ues_registros_operativos": 0,
+        "ues_establecimientos_registro": 0,
+        "ues_albergues": 0,
+        "ues_adulto_mayor": 0,
+        "ues_afectacion_explicita": 0,
+        "ues_cementerios": 0,
+        "ues_cementerios_afectados": 0,
+        "ues_ie_sedes": 11,
+        "ues_ie_prioritarias": 9,
+        "seguimientos": 1,
+        "requiere_apoyo": 0,
+        "hallazgos_prioritarios": 0
+      },
+      "alimentos": {
+        "atendido": true,
+        "despachos": 1,
+        "familias_referenciadas": 0,
+        "peso_t": null,
+        "ultima_fecha": "2026-08-17"
+      }
+    },
+    {
+      "municipio": "Caicedonia",
+      "aro": "Centro Tuluá",
+      "ultima_fecha": "2026-08-20",
+      "score_resumen": 35,
+      "agua": {
+        "universo": 19,
+        "municipio_verificado": true,
+        "sistemas_documentados": 18,
+        "sistemas_afectacion_documentada": 2,
+        "sistemas_restablecidos": 0,
+        "diagnosticos": 0,
+        "afectados": 0
+      },
+      "eis": {
+        "ues_actuacion": true,
+        "ues_registros_operativos": 2,
+        "ues_establecimientos_registro": 2,
+        "ues_albergues": 1,
+        "ues_adulto_mayor": 1,
+        "ues_afectacion_explicita": 1,
+        "ues_cementerios": 1,
+        "ues_cementerios_afectados": 1,
+        "ues_ie_sedes": 1,
+        "ues_ie_prioritarias": 1,
+        "seguimientos": 6,
+        "requiere_apoyo": 2,
+        "hallazgos_prioritarios": 3
+      },
+      "alimentos": {
+        "atendido": false,
+        "despachos": null,
+        "familias_referenciadas": null,
+        "peso_t": null,
+        "ultima_fecha": null
+      }
+    },
+    {
+      "municipio": "Calima (El Darién)",
+      "aro": "Centro Tuluá",
+      "ultima_fecha": "2026-08-22",
+      "score_resumen": 44,
+      "agua": {
+        "universo": 27,
+        "municipio_verificado": true,
+        "sistemas_documentados": 25,
+        "sistemas_afectacion_documentada": 4,
+        "sistemas_restablecidos": 0,
+        "diagnosticos": 1,
+        "afectados": 1
+      },
+      "eis": {
+        "ues_actuacion": true,
+        "ues_registros_operativos": 2,
+        "ues_establecimientos_registro": 2,
+        "ues_albergues": 2,
+        "ues_adulto_mayor": 0,
+        "ues_afectacion_explicita": 0,
+        "ues_cementerios": 1,
+        "ues_cementerios_afectados": 1,
+        "ues_ie_sedes": 1,
+        "ues_ie_prioritarias": 1,
+        "seguimientos": 10,
+        "requiere_apoyo": 4,
+        "hallazgos_prioritarios": 10
+      },
+      "alimentos": {
+        "atendido": true,
+        "despachos": 1,
+        "familias_referenciadas": 50,
+        "peso_t": null,
+        "ultima_fecha": "2026-08-15"
+      }
+    },
+    {
+      "municipio": "Candelaria",
+      "aro": "Sur Cali",
+      "ultima_fecha": "2026-08-20",
+      "score_resumen": 6,
+      "agua": {
+        "universo": 0,
+        "municipio_verificado": true,
+        "sistemas_documentados": 0,
+        "sistemas_afectacion_documentada": 0,
+        "sistemas_restablecidos": 0,
+        "diagnosticos": 0,
+        "afectados": 0
+      },
+      "eis": {
+        "ues_actuacion": false,
+        "ues_registros_operativos": 0,
+        "ues_establecimientos_registro": 0,
+        "ues_albergues": 0,
+        "ues_adulto_mayor": 0,
+        "ues_afectacion_explicita": 0,
+        "ues_cementerios": 0,
+        "ues_cementerios_afectados": 0,
+        "ues_ie_sedes": 0,
+        "ues_ie_prioritarias": 0,
+        "seguimientos": 7,
+        "requiere_apoyo": 1,
+        "hallazgos_prioritarios": 6
+      },
+      "alimentos": {
+        "atendido": false,
+        "despachos": null,
+        "familias_referenciadas": null,
+        "peso_t": null,
+        "ultima_fecha": null
+      }
+    },
+    {
+      "municipio": "Cartago",
+      "aro": "Norte Cartago",
+      "ultima_fecha": "2026-08-14",
+      "score_resumen": 3,
+      "agua": {
+        "universo": 0,
+        "municipio_verificado": false,
+        "sistemas_documentados": 0,
+        "sistemas_afectacion_documentada": 0,
+        "sistemas_restablecidos": 0,
+        "diagnosticos": 0,
+        "afectados": 0
+      },
+      "eis": {
+        "ues_actuacion": false,
+        "ues_registros_operativos": 0,
+        "ues_establecimientos_registro": 0,
+        "ues_albergues": 0,
+        "ues_adulto_mayor": 0,
+        "ues_afectacion_explicita": 0,
+        "ues_cementerios": 0,
+        "ues_cementerios_afectados": 0,
+        "ues_ie_sedes": 0,
+        "ues_ie_prioritarias": 0,
+        "seguimientos": 3,
+        "requiere_apoyo": 3,
+        "hallazgos_prioritarios": 0
+      },
+      "alimentos": {
+        "atendido": false,
+        "despachos": null,
+        "familias_referenciadas": null,
+        "peso_t": null,
+        "ultima_fecha": null
+      }
+    },
+    {
+      "municipio": "Dagua",
+      "aro": "Sur Cali",
+      "ultima_fecha": "2026-08-20",
+      "score_resumen": 40,
+      "agua": {
+        "universo": 61,
+        "municipio_verificado": true,
+        "sistemas_documentados": 5,
+        "sistemas_afectacion_documentada": 5,
+        "sistemas_restablecidos": 0,
+        "diagnosticos": 1,
+        "afectados": 1
+      },
+      "eis": {
+        "ues_actuacion": true,
+        "ues_registros_operativos": 8,
+        "ues_establecimientos_registro": 8,
+        "ues_albergues": 0,
+        "ues_adulto_mayor": 3,
+        "ues_afectacion_explicita": 5,
+        "ues_cementerios": 8,
+        "ues_cementerios_afectados": 6,
+        "ues_ie_sedes": 1,
+        "ues_ie_prioritarias": 1,
+        "seguimientos": 1,
+        "requiere_apoyo": 0,
+        "hallazgos_prioritarios": 0
+      },
+      "alimentos": {
+        "atendido": true,
+        "despachos": 1,
+        "familias_referenciadas": 0,
+        "peso_t": null,
+        "ultima_fecha": "2026-08-15"
+      }
+    },
+    {
+      "municipio": "El Cairo",
+      "aro": "Norte Cartago",
+      "ultima_fecha": "2026-08-12",
+      "score_resumen": 8,
+      "agua": {
+        "universo": 16,
+        "municipio_verificado": true,
+        "sistemas_documentados": 1,
+        "sistemas_afectacion_documentada": 1,
+        "sistemas_restablecidos": 0,
+        "diagnosticos": 0,
+        "afectados": 0
+      },
+      "eis": {
+        "ues_actuacion": true,
+        "ues_registros_operativos": 1,
+        "ues_establecimientos_registro": 0,
+        "ues_albergues": 0,
+        "ues_adulto_mayor": 0,
+        "ues_afectacion_explicita": 0,
+        "ues_cementerios": 0,
+        "ues_cementerios_afectados": 0,
+        "ues_ie_sedes": 1,
+        "ues_ie_prioritarias": 1,
+        "seguimientos": 0,
+        "requiere_apoyo": 0,
+        "hallazgos_prioritarios": 0
+      },
+      "alimentos": {
+        "atendido": false,
+        "despachos": null,
+        "familias_referenciadas": null,
+        "peso_t": null,
+        "ultima_fecha": null
+      }
+    },
+    {
+      "municipio": "El Cerrito",
+      "aro": "Sur Cali",
+      "ultima_fecha": "2026-08-18",
+      "score_resumen": 23,
+      "agua": {
+        "universo": 12,
+        "municipio_verificado": true,
+        "sistemas_documentados": 1,
+        "sistemas_afectacion_documentada": 0,
+        "sistemas_restablecidos": 0,
+        "diagnosticos": 0,
+        "afectados": 0
+      },
+      "eis": {
+        "ues_actuacion": true,
+        "ues_registros_operativos": 5,
+        "ues_establecimientos_registro": 5,
+        "ues_albergues": 0,
+        "ues_adulto_mayor": 1,
+        "ues_afectacion_explicita": 2,
+        "ues_cementerios": 4,
+        "ues_cementerios_afectados": 1,
+        "ues_ie_sedes": 7,
+        "ues_ie_prioritarias": 6,
+        "seguimientos": 3,
+        "requiere_apoyo": 0,
+        "hallazgos_prioritarios": 0
+      },
+      "alimentos": {
+        "atendido": false,
+        "despachos": null,
+        "familias_referenciadas": null,
+        "peso_t": null,
+        "ultima_fecha": null
+      }
+    },
+    {
+      "municipio": "El Dovio",
+      "aro": "Norte Cartago",
+      "ultima_fecha": "2026-08-21",
+      "score_resumen": 11,
+      "agua": {
+        "universo": 21,
+        "municipio_verificado": false,
+        "sistemas_documentados": 0,
+        "sistemas_afectacion_documentada": 0,
+        "sistemas_restablecidos": 0,
+        "diagnosticos": 0,
+        "afectados": 0
+      },
+      "eis": {
+        "ues_actuacion": true,
+        "ues_registros_operativos": 1,
+        "ues_establecimientos_registro": 0,
+        "ues_albergues": 0,
+        "ues_adulto_mayor": 0,
+        "ues_afectacion_explicita": 0,
+        "ues_cementerios": 1,
+        "ues_cementerios_afectados": 1,
+        "ues_ie_sedes": 0,
+        "ues_ie_prioritarias": 0,
+        "seguimientos": 8,
+        "requiere_apoyo": 2,
+        "hallazgos_prioritarios": 0
+      },
+      "alimentos": {
+        "atendido": false,
+        "despachos": null,
+        "familias_referenciadas": null,
+        "peso_t": null,
+        "ultima_fecha": null
+      }
+    },
+    {
+      "municipio": "El Águila",
+      "aro": "Norte Cartago",
+      "ultima_fecha": "2026-08-21",
+      "score_resumen": 22,
+      "agua": {
+        "universo": 21,
+        "municipio_verificado": true,
+        "sistemas_documentados": 1,
+        "sistemas_afectacion_documentada": 1,
+        "sistemas_restablecidos": 1,
+        "diagnosticos": 0,
+        "afectados": 0
+      },
+      "eis": {
+        "ues_actuacion": true,
+        "ues_registros_operativos": 0,
+        "ues_establecimientos_registro": 0,
+        "ues_albergues": 0,
+        "ues_adulto_mayor": 0,
+        "ues_afectacion_explicita": 0,
+        "ues_cementerios": 1,
+        "ues_cementerios_afectados": 0,
+        "ues_ie_sedes": 7,
+        "ues_ie_prioritarias": 5,
+        "seguimientos": 7,
+        "requiere_apoyo": 3,
+        "hallazgos_prioritarios": 0
+      },
+      "alimentos": {
+        "atendido": true,
+        "despachos": 1,
+        "familias_referenciadas": 100,
+        "peso_t": null,
+        "ultima_fecha": "2026-08-16"
+      }
+    },
+    {
+      "municipio": "Florida",
+      "aro": "Sur Cali",
+      "ultima_fecha": "2026-08-21",
+      "score_resumen": 33,
+      "agua": {
+        "universo": 7,
+        "municipio_verificado": false,
+        "sistemas_documentados": 0,
+        "sistemas_afectacion_documentada": 0,
+        "sistemas_restablecidos": 0,
+        "diagnosticos": 0,
+        "afectados": 0
+      },
+      "eis": {
+        "ues_actuacion": true,
+        "ues_registros_operativos": 9,
+        "ues_establecimientos_registro": 9,
+        "ues_albergues": 0,
+        "ues_adulto_mayor": 1,
+        "ues_afectacion_explicita": 6,
+        "ues_cementerios": 3,
+        "ues_cementerios_afectados": 0,
+        "ues_ie_sedes": 15,
+        "ues_ie_prioritarias": 13,
+        "seguimientos": 7,
+        "requiere_apoyo": 0,
+        "hallazgos_prioritarios": 0
+      },
+      "alimentos": {
+        "atendido": false,
+        "despachos": null,
+        "familias_referenciadas": null,
+        "peso_t": null,
+        "ultima_fecha": null
+      }
+    },
+    {
+      "municipio": "Ginebra",
+      "aro": "Sur Cali",
+      "ultima_fecha": "2026-08-21",
+      "score_resumen": 31,
+      "agua": {
+        "universo": 26,
+        "municipio_verificado": true,
+        "sistemas_documentados": 2,
+        "sistemas_afectacion_documentada": 0,
+        "sistemas_restablecidos": 0,
+        "diagnosticos": 0,
+        "afectados": 0
+      },
+      "eis": {
+        "ues_actuacion": true,
+        "ues_registros_operativos": 9,
+        "ues_establecimientos_registro": 9,
+        "ues_albergues": 0,
+        "ues_adulto_mayor": 1,
+        "ues_afectacion_explicita": 8,
+        "ues_cementerios": 3,
+        "ues_cementerios_afectados": 1,
+        "ues_ie_sedes": 8,
+        "ues_ie_prioritarias": 7,
+        "seguimientos": 7,
+        "requiere_apoyo": 0,
+        "hallazgos_prioritarios": 0
+      },
+      "alimentos": {
+        "atendido": false,
+        "despachos": null,
+        "familias_referenciadas": null,
+        "peso_t": null,
+        "ultima_fecha": null
+      }
+    },
+    {
+      "municipio": "Guacarí",
+      "aro": "Sur Cali",
+      "ultima_fecha": "2026-08-22",
+      "score_resumen": 21,
+      "agua": {
+        "universo": 6,
+        "municipio_verificado": true,
+        "sistemas_documentados": 1,
+        "sistemas_afectacion_documentada": 0,
+        "sistemas_restablecidos": 0,
+        "diagnosticos": 0,
+        "afectados": 0
+      },
+      "eis": {
+        "ues_actuacion": true,
+        "ues_registros_operativos": 8,
+        "ues_establecimientos_registro": 8,
+        "ues_albergues": 0,
+        "ues_adulto_mayor": 4,
+        "ues_afectacion_explicita": 4,
+        "ues_cementerios": 1,
+        "ues_cementerios_afectados": 1,
+        "ues_ie_sedes": 2,
+        "ues_ie_prioritarias": 1,
+        "seguimientos": 9,
+        "requiere_apoyo": 0,
+        "hallazgos_prioritarios": 0
+      },
+      "alimentos": {
+        "atendido": false,
+        "despachos": null,
+        "familias_referenciadas": null,
+        "peso_t": null,
+        "ultima_fecha": null
+      }
+    },
+    {
+      "municipio": "Guadalajara de Buga",
+      "aro": "Centro Tuluá",
+      "ultima_fecha": "2026-08-15",
+      "score_resumen": 4,
+      "agua": {
+        "universo": 0,
+        "municipio_verificado": true,
+        "sistemas_documentados": 0,
+        "sistemas_afectacion_documentada": 0,
+        "sistemas_restablecidos": 0,
+        "diagnosticos": 0,
+        "afectados": 0
+      },
+      "eis": {
+        "ues_actuacion": false,
+        "ues_registros_operativos": 0,
+        "ues_establecimientos_registro": 0,
+        "ues_albergues": 0,
+        "ues_adulto_mayor": 0,
+        "ues_afectacion_explicita": 0,
+        "ues_cementerios": 0,
+        "ues_cementerios_afectados": 0,
+        "ues_ie_sedes": 0,
+        "ues_ie_prioritarias": 0,
+        "seguimientos": 4,
+        "requiere_apoyo": 0,
+        "hallazgos_prioritarios": 0
+      },
+      "alimentos": {
+        "atendido": false,
+        "despachos": null,
+        "familias_referenciadas": null,
+        "peso_t": null,
+        "ultima_fecha": null
+      }
+    },
+    {
+      "municipio": "Jamundí",
+      "aro": "Sur Cali",
+      "ultima_fecha": "2026-08-12",
+      "score_resumen": 1,
+      "agua": {
+        "universo": 0,
+        "municipio_verificado": false,
+        "sistemas_documentados": 0,
+        "sistemas_afectacion_documentada": 0,
+        "sistemas_restablecidos": 0,
+        "diagnosticos": 0,
+        "afectados": 0
+      },
+      "eis": {
+        "ues_actuacion": false,
+        "ues_registros_operativos": 0,
+        "ues_establecimientos_registro": 0,
+        "ues_albergues": 0,
+        "ues_adulto_mayor": 0,
+        "ues_afectacion_explicita": 0,
+        "ues_cementerios": 0,
+        "ues_cementerios_afectados": 0,
+        "ues_ie_sedes": 0,
+        "ues_ie_prioritarias": 0,
+        "seguimientos": 1,
+        "requiere_apoyo": 0,
+        "hallazgos_prioritarios": 0
+      },
+      "alimentos": {
+        "atendido": false,
+        "despachos": null,
+        "familias_referenciadas": null,
+        "peso_t": null,
+        "ultima_fecha": null
+      }
+    },
+    {
+      "municipio": "La Cumbre",
+      "aro": "Sur Cali",
+      "ultima_fecha": "2026-08-21",
+      "score_resumen": 44,
+      "agua": {
+        "universo": 31,
+        "municipio_verificado": true,
+        "sistemas_documentados": 7,
+        "sistemas_afectacion_documentada": 5,
+        "sistemas_restablecidos": 0,
+        "diagnosticos": 4,
+        "afectados": 3
+      },
+      "eis": {
+        "ues_actuacion": true,
+        "ues_registros_operativos": 0,
+        "ues_establecimientos_registro": 0,
+        "ues_albergues": 0,
+        "ues_adulto_mayor": 0,
+        "ues_afectacion_explicita": 0,
+        "ues_cementerios": 5,
+        "ues_cementerios_afectados": 4,
+        "ues_ie_sedes": 7,
+        "ues_ie_prioritarias": 4,
+        "seguimientos": 7,
+        "requiere_apoyo": 1,
+        "hallazgos_prioritarios": 0
+      },
+      "alimentos": {
+        "atendido": true,
+        "despachos": 1,
+        "familias_referenciadas": 150,
+        "peso_t": null,
+        "ultima_fecha": "2026-08-15"
+      }
+    },
+    {
+      "municipio": "La Unión",
+      "aro": "Norte Cartago",
+      "ultima_fecha": "2026-08-21",
+      "score_resumen": 17,
+      "agua": {
+        "universo": 9,
+        "municipio_verificado": true,
+        "sistemas_documentados": 1,
+        "sistemas_afectacion_documentada": 1,
+        "sistemas_restablecidos": 0,
+        "diagnosticos": 0,
+        "afectados": 0
+      },
+      "eis": {
+        "ues_actuacion": true,
+        "ues_registros_operativos": 1,
+        "ues_establecimientos_registro": 1,
+        "ues_albergues": 1,
+        "ues_adulto_mayor": 0,
+        "ues_afectacion_explicita": 0,
+        "ues_cementerios": 0,
+        "ues_cementerios_afectados": 0,
+        "ues_ie_sedes": 4,
+        "ues_ie_prioritarias": 4,
+        "seguimientos": 7,
+        "requiere_apoyo": 4,
+        "hallazgos_prioritarios": 3
+      },
+      "alimentos": {
+        "atendido": false,
+        "despachos": null,
+        "familias_referenciadas": null,
+        "peso_t": null,
+        "ultima_fecha": null
+      }
+    },
+    {
+      "municipio": "La Victoria",
+      "aro": "Norte Cartago",
+      "ultima_fecha": "2026-08-21",
+      "score_resumen": 22,
+      "agua": {
+        "universo": 6,
+        "municipio_verificado": true,
+        "sistemas_documentados": 3,
+        "sistemas_afectacion_documentada": 3,
+        "sistemas_restablecidos": 0,
+        "diagnosticos": 0,
+        "afectados": 0
+      },
+      "eis": {
+        "ues_actuacion": true,
+        "ues_registros_operativos": 1,
+        "ues_establecimientos_registro": 1,
+        "ues_albergues": 1,
+        "ues_adulto_mayor": 0,
+        "ues_afectacion_explicita": 0,
+        "ues_cementerios": 1,
+        "ues_cementerios_afectados": 1,
+        "ues_ie_sedes": 2,
+        "ues_ie_prioritarias": 2,
+        "seguimientos": 7,
+        "requiere_apoyo": 7,
+        "hallazgos_prioritarios": 1
+      },
+      "alimentos": {
+        "atendido": false,
+        "despachos": null,
+        "familias_referenciadas": null,
+        "peso_t": null,
+        "ultima_fecha": null
+      }
+    },
+    {
+      "municipio": "Obando",
+      "aro": "Norte Cartago",
+      "ultima_fecha": "2026-08-13",
+      "score_resumen": 16,
+      "agua": {
+        "universo": 12,
+        "municipio_verificado": true,
+        "sistemas_documentados": 1,
+        "sistemas_afectacion_documentada": 1,
+        "sistemas_restablecidos": 0,
+        "diagnosticos": 0,
+        "afectados": 0
+      },
+      "eis": {
+        "ues_actuacion": true,
+        "ues_registros_operativos": 2,
+        "ues_establecimientos_registro": 2,
+        "ues_albergues": 2,
+        "ues_adulto_mayor": 0,
+        "ues_afectacion_explicita": 0,
+        "ues_cementerios": 1,
+        "ues_cementerios_afectados": 1,
+        "ues_ie_sedes": 4,
+        "ues_ie_prioritarias": 2,
+        "seguimientos": 3,
+        "requiere_apoyo": 0,
+        "hallazgos_prioritarios": 0
+      },
+      "alimentos": {
+        "atendido": false,
+        "despachos": null,
+        "familias_referenciadas": null,
+        "peso_t": null,
+        "ultima_fecha": null
+      }
+    },
+    {
+      "municipio": "Palmira",
+      "aro": "Sur Cali",
+      "ultima_fecha": "2026-08-21",
+      "score_resumen": 6,
+      "agua": {
+        "universo": 0,
+        "municipio_verificado": false,
+        "sistemas_documentados": 0,
+        "sistemas_afectacion_documentada": 0,
+        "sistemas_restablecidos": 0,
+        "diagnosticos": 0,
+        "afectados": 0
+      },
+      "eis": {
+        "ues_actuacion": false,
+        "ues_registros_operativos": 0,
+        "ues_establecimientos_registro": 0,
+        "ues_albergues": 0,
+        "ues_adulto_mayor": 0,
+        "ues_afectacion_explicita": 0,
+        "ues_cementerios": 0,
+        "ues_cementerios_afectados": 0,
+        "ues_ie_sedes": 0,
+        "ues_ie_prioritarias": 0,
+        "seguimientos": 7,
+        "requiere_apoyo": 0,
+        "hallazgos_prioritarios": 0
+      },
+      "alimentos": {
+        "atendido": false,
+        "despachos": null,
+        "familias_referenciadas": null,
+        "peso_t": null,
+        "ultima_fecha": null
+      }
+    },
+    {
+      "municipio": "Pradera",
+      "aro": "Sur Cali",
+      "ultima_fecha": "2026-08-21",
+      "score_resumen": 12,
+      "agua": {
+        "universo": 8,
+        "municipio_verificado": false,
+        "sistemas_documentados": 0,
+        "sistemas_afectacion_documentada": 0,
+        "sistemas_restablecidos": 0,
+        "diagnosticos": 0,
+        "afectados": 0
+      },
+      "eis": {
+        "ues_actuacion": true,
+        "ues_registros_operativos": 0,
+        "ues_establecimientos_registro": 0,
+        "ues_albergues": 0,
+        "ues_adulto_mayor": 0,
+        "ues_afectacion_explicita": 0,
+        "ues_cementerios": 1,
+        "ues_cementerios_afectados": 0,
+        "ues_ie_sedes": 2,
+        "ues_ie_prioritarias": 2,
+        "seguimientos": 7,
+        "requiere_apoyo": 0,
+        "hallazgos_prioritarios": 0
+      },
+      "alimentos": {
+        "atendido": false,
+        "despachos": null,
+        "familias_referenciadas": null,
+        "peso_t": null,
+        "ultima_fecha": null
+      }
+    },
+    {
+      "municipio": "Restrepo",
+      "aro": "Centro Tuluá",
+      "ultima_fecha": "2026-08-19",
+      "score_resumen": 41,
+      "agua": {
+        "universo": 32,
+        "municipio_verificado": true,
+        "sistemas_documentados": 31,
+        "sistemas_afectacion_documentada": 2,
+        "sistemas_restablecidos": 1,
+        "diagnosticos": 0,
+        "afectados": 0
+      },
+      "eis": {
+        "ues_actuacion": true,
+        "ues_registros_operativos": 1,
+        "ues_establecimientos_registro": 1,
+        "ues_albergues": 1,
+        "ues_adulto_mayor": 0,
+        "ues_afectacion_explicita": 0,
+        "ues_cementerios": 0,
+        "ues_cementerios_afectados": 0,
+        "ues_ie_sedes": 8,
+        "ues_ie_prioritarias": 6,
+        "seguimientos": 3,
+        "requiere_apoyo": 1,
+        "hallazgos_prioritarios": 1
+      },
+      "alimentos": {
+        "atendido": true,
+        "despachos": 1,
+        "familias_referenciadas": 50,
+        "peso_t": null,
+        "ultima_fecha": "2026-08-13"
+      }
+    },
+    {
+      "municipio": "Riofrío",
+      "aro": "Centro Tuluá",
+      "ultima_fecha": "2026-08-21",
+      "score_resumen": 45,
+      "agua": {
+        "universo": 23,
+        "municipio_verificado": true,
+        "sistemas_documentados": 23,
+        "sistemas_afectacion_documentada": 3,
+        "sistemas_restablecidos": 0,
+        "diagnosticos": 0,
+        "afectados": 0
+      },
+      "eis": {
+        "ues_actuacion": true,
+        "ues_registros_operativos": 2,
+        "ues_establecimientos_registro": 2,
+        "ues_albergues": 1,
+        "ues_adulto_mayor": 1,
+        "ues_afectacion_explicita": 0,
+        "ues_cementerios": 2,
+        "ues_cementerios_afectados": 1,
+        "ues_ie_sedes": 2,
+        "ues_ie_prioritarias": 2,
+        "seguimientos": 13,
+        "requiere_apoyo": 10,
+        "hallazgos_prioritarios": 11
+      },
+      "alimentos": {
+        "atendido": true,
+        "despachos": 2,
+        "familias_referenciadas": 0,
+        "peso_t": null,
+        "ultima_fecha": "2026-08-16"
+      }
+    },
+    {
+      "municipio": "Roldanillo",
+      "aro": "Norte Cartago",
+      "ultima_fecha": "2026-08-21",
+      "score_resumen": 18,
+      "agua": {
+        "universo": 12,
+        "municipio_verificado": true,
+        "sistemas_documentados": 1,
+        "sistemas_afectacion_documentada": 1,
+        "sistemas_restablecidos": 0,
+        "diagnosticos": 0,
+        "afectados": 0
+      },
+      "eis": {
+        "ues_actuacion": true,
+        "ues_registros_operativos": 1,
+        "ues_establecimientos_registro": 1,
+        "ues_albergues": 1,
+        "ues_adulto_mayor": 0,
+        "ues_afectacion_explicita": 0,
+        "ues_cementerios": 2,
+        "ues_cementerios_afectados": 2,
+        "ues_ie_sedes": 3,
+        "ues_ie_prioritarias": 1,
+        "seguimientos": 13,
+        "requiere_apoyo": 7,
+        "hallazgos_prioritarios": 3
+      },
+      "alimentos": {
+        "atendido": false,
+        "despachos": null,
+        "familias_referenciadas": null,
+        "peso_t": null,
+        "ultima_fecha": null
+      }
+    },
+    {
+      "municipio": "San Pedro",
+      "aro": "Centro Tuluá",
+      "ultima_fecha": "2026-08-18",
+      "score_resumen": 27,
+      "agua": {
+        "universo": 12,
+        "municipio_verificado": true,
+        "sistemas_documentados": 10,
+        "sistemas_afectacion_documentada": 0,
+        "sistemas_restablecidos": 0,
+        "diagnosticos": 0,
+        "afectados": 0
+      },
+      "eis": {
+        "ues_actuacion": true,
+        "ues_registros_operativos": 0,
+        "ues_establecimientos_registro": 0,
+        "ues_albergues": 0,
+        "ues_adulto_mayor": 0,
+        "ues_afectacion_explicita": 0,
+        "ues_cementerios": 0,
+        "ues_cementerios_afectados": 0,
+        "ues_ie_sedes": 6,
+        "ues_ie_prioritarias": 6,
+        "seguimientos": 6,
+        "requiere_apoyo": 0,
+        "hallazgos_prioritarios": 0
+      },
+      "alimentos": {
+        "atendido": true,
+        "despachos": 1,
+        "familias_referenciadas": 100,
+        "peso_t": null,
+        "ultima_fecha": "2026-08-13"
+      }
+    },
+    {
+      "municipio": "Sevilla",
+      "aro": "Centro Tuluá",
+      "ultima_fecha": "2026-08-16",
+      "score_resumen": 45,
+      "agua": {
+        "universo": 26,
+        "municipio_verificado": true,
+        "sistemas_documentados": 25,
+        "sistemas_afectacion_documentada": 3,
+        "sistemas_restablecidos": 1,
+        "diagnosticos": 0,
+        "afectados": 0
+      },
+      "eis": {
+        "ues_actuacion": true,
+        "ues_registros_operativos": 3,
+        "ues_establecimientos_registro": 3,
+        "ues_albergues": 1,
+        "ues_adulto_mayor": 2,
+        "ues_afectacion_explicita": 1,
+        "ues_cementerios": 1,
+        "ues_cementerios_afectados": 1,
+        "ues_ie_sedes": 3,
+        "ues_ie_prioritarias": 3,
+        "seguimientos": 3,
+        "requiere_apoyo": 2,
+        "hallazgos_prioritarios": 0
+      },
+      "alimentos": {
+        "atendido": true,
+        "despachos": 3,
+        "familias_referenciadas": 300,
+        "peso_t": null,
+        "ultima_fecha": "2026-08-16"
+      }
+    },
+    {
+      "municipio": "Toro",
+      "aro": "Norte Cartago",
+      "ultima_fecha": "2026-08-18",
+      "score_resumen": 13,
+      "agua": {
+        "universo": 8,
+        "municipio_verificado": true,
+        "sistemas_documentados": 1,
+        "sistemas_afectacion_documentada": 1,
+        "sistemas_restablecidos": 0,
+        "diagnosticos": 0,
+        "afectados": 0
+      },
+      "eis": {
+        "ues_actuacion": true,
+        "ues_registros_operativos": 1,
+        "ues_establecimientos_registro": 0,
+        "ues_albergues": 0,
+        "ues_adulto_mayor": 0,
+        "ues_afectacion_explicita": 0,
+        "ues_cementerios": 1,
+        "ues_cementerios_afectados": 1,
+        "ues_ie_sedes": 2,
+        "ues_ie_prioritarias": 2,
+        "seguimientos": 3,
+        "requiere_apoyo": 0,
+        "hallazgos_prioritarios": 0
+      },
+      "alimentos": {
+        "atendido": false,
+        "despachos": null,
+        "familias_referenciadas": null,
+        "peso_t": null,
+        "ultima_fecha": null
+      }
+    },
+    {
+      "municipio": "Trujillo",
+      "aro": "Centro Tuluá",
+      "ultima_fecha": "2026-08-21",
+      "score_resumen": 14,
+      "agua": {
+        "universo": 25,
+        "municipio_verificado": false,
+        "sistemas_documentados": 0,
+        "sistemas_afectacion_documentada": 0,
+        "sistemas_restablecidos": 0,
+        "diagnosticos": 0,
+        "afectados": 0
+      },
+      "eis": {
+        "ues_actuacion": true,
+        "ues_registros_operativos": 0,
+        "ues_establecimientos_registro": 0,
+        "ues_albergues": 0,
+        "ues_adulto_mayor": 0,
+        "ues_afectacion_explicita": 0,
+        "ues_cementerios": 0,
+        "ues_cementerios_afectados": 0,
+        "ues_ie_sedes": 1,
+        "ues_ie_prioritarias": 1,
+        "seguimientos": 7,
+        "requiere_apoyo": 0,
+        "hallazgos_prioritarios": 3
+      },
+      "alimentos": {
+        "atendido": true,
+        "despachos": 2,
+        "familias_referenciadas": 120,
+        "peso_t": null,
+        "ultima_fecha": "2026-08-14"
+      }
+    },
+    {
+      "municipio": "Tuluá",
+      "aro": "Centro Tuluá",
+      "ultima_fecha": "2026-08-21",
+      "score_resumen": 6,
+      "agua": {
+        "universo": 0,
+        "municipio_verificado": false,
+        "sistemas_documentados": 0,
+        "sistemas_afectacion_documentada": 0,
+        "sistemas_restablecidos": 0,
+        "diagnosticos": 0,
+        "afectados": 0
+      },
+      "eis": {
+        "ues_actuacion": false,
+        "ues_registros_operativos": 0,
+        "ues_establecimientos_registro": 0,
+        "ues_albergues": 0,
+        "ues_adulto_mayor": 0,
+        "ues_afectacion_explicita": 0,
+        "ues_cementerios": 0,
+        "ues_cementerios_afectados": 0,
+        "ues_ie_sedes": 0,
+        "ues_ie_prioritarias": 0,
+        "seguimientos": 14,
+        "requiere_apoyo": 0,
+        "hallazgos_prioritarios": 5
+      },
+      "alimentos": {
+        "atendido": false,
+        "despachos": null,
+        "familias_referenciadas": null,
+        "peso_t": null,
+        "ultima_fecha": null
+      }
+    },
+    {
+      "municipio": "Ulloa",
+      "aro": "Norte Cartago",
+      "ultima_fecha": "2026-08-21",
+      "score_resumen": 12,
+      "agua": {
+        "universo": 7,
+        "municipio_verificado": false,
+        "sistemas_documentados": 0,
+        "sistemas_afectacion_documentada": 0,
+        "sistemas_restablecidos": 0,
+        "diagnosticos": 0,
+        "afectados": 0
+      },
+      "eis": {
+        "ues_actuacion": true,
+        "ues_registros_operativos": 1,
+        "ues_establecimientos_registro": 0,
+        "ues_albergues": 0,
+        "ues_adulto_mayor": 0,
+        "ues_afectacion_explicita": 0,
+        "ues_cementerios": 1,
+        "ues_cementerios_afectados": 1,
+        "ues_ie_sedes": 1,
+        "ues_ie_prioritarias": 1,
+        "seguimientos": 9,
+        "requiere_apoyo": 1,
+        "hallazgos_prioritarios": 0
+      },
+      "alimentos": {
+        "atendido": false,
+        "despachos": null,
+        "familias_referenciadas": null,
+        "peso_t": null,
+        "ultima_fecha": null
+      }
+    },
+    {
+      "municipio": "Versalles",
+      "aro": "Norte Cartago",
+      "ultima_fecha": "2026-08-18",
+      "score_resumen": 10,
+      "agua": {
+        "universo": 11,
+        "municipio_verificado": false,
+        "sistemas_documentados": 0,
+        "sistemas_afectacion_documentada": 0,
+        "sistemas_restablecidos": 0,
+        "diagnosticos": 0,
+        "afectados": 0
+      },
+      "eis": {
+        "ues_actuacion": true,
+        "ues_registros_operativos": 2,
+        "ues_establecimientos_registro": 1,
+        "ues_albergues": 1,
+        "ues_adulto_mayor": 0,
+        "ues_afectacion_explicita": 0,
+        "ues_cementerios": 1,
+        "ues_cementerios_afectados": 1,
+        "ues_ie_sedes": 0,
+        "ues_ie_prioritarias": 0,
+        "seguimientos": 4,
+        "requiere_apoyo": 2,
+        "hallazgos_prioritarios": 2
+      },
+      "alimentos": {
+        "atendido": false,
+        "despachos": null,
+        "familias_referenciadas": null,
+        "peso_t": null,
+        "ultima_fecha": null
+      }
+    },
+    {
+      "municipio": "Vijes",
+      "aro": "Sur Cali",
+      "ultima_fecha": "2026-08-22",
+      "score_resumen": 46,
+      "agua": {
+        "universo": 27,
+        "municipio_verificado": true,
+        "sistemas_documentados": 16,
+        "sistemas_afectacion_documentada": 4,
+        "sistemas_restablecidos": 3,
+        "diagnosticos": 2,
+        "afectados": 2
+      },
+      "eis": {
+        "ues_actuacion": true,
+        "ues_registros_operativos": 2,
+        "ues_establecimientos_registro": 2,
+        "ues_albergues": 0,
+        "ues_adulto_mayor": 0,
+        "ues_afectacion_explicita": 2,
+        "ues_cementerios": 1,
+        "ues_cementerios_afectados": 1,
+        "ues_ie_sedes": 6,
+        "ues_ie_prioritarias": 6,
+        "seguimientos": 11,
+        "requiere_apoyo": 0,
+        "hallazgos_prioritarios": 0
+      },
+      "alimentos": {
+        "atendido": true,
+        "despachos": 1,
+        "familias_referenciadas": 0,
+        "peso_t": null,
+        "ultima_fecha": "2026-08-17"
+      }
+    },
+    {
+      "municipio": "Yotoco",
+      "aro": "Centro Tuluá",
+      "ultima_fecha": "2026-08-18",
+      "score_resumen": 19,
+      "agua": {
+        "universo": 31,
+        "municipio_verificado": true,
+        "sistemas_documentados": 1,
+        "sistemas_afectacion_documentada": 1,
+        "sistemas_restablecidos": 0,
+        "diagnosticos": 0,
+        "afectados": 0
+      },
+      "eis": {
+        "ues_actuacion": true,
+        "ues_registros_operativos": 2,
+        "ues_establecimientos_registro": 2,
+        "ues_albergues": 1,
+        "ues_adulto_mayor": 1,
+        "ues_afectacion_explicita": 1,
+        "ues_cementerios": 2,
+        "ues_cementerios_afectados": 1,
+        "ues_ie_sedes": 5,
+        "ues_ie_prioritarias": 4,
+        "seguimientos": 2,
+        "requiere_apoyo": 2,
+        "hallazgos_prioritarios": 1
+      },
+      "alimentos": {
+        "atendido": true,
+        "despachos": 1,
+        "familias_referenciadas": 80,
+        "peso_t": null,
+        "ultima_fecha": "2026-08-13"
+      }
+    },
+    {
+      "municipio": "Yumbo",
+      "aro": "Sur Cali",
+      "ultima_fecha": "2026-08-21",
+      "score_resumen": 5,
+      "agua": {
+        "universo": 0,
+        "municipio_verificado": true,
+        "sistemas_documentados": 0,
+        "sistemas_afectacion_documentada": 0,
+        "sistemas_restablecidos": 0,
+        "diagnosticos": 0,
+        "afectados": 0
+      },
+      "eis": {
+        "ues_actuacion": false,
+        "ues_registros_operativos": 0,
+        "ues_establecimientos_registro": 0,
+        "ues_albergues": 0,
+        "ues_adulto_mayor": 0,
+        "ues_afectacion_explicita": 0,
+        "ues_cementerios": 0,
+        "ues_cementerios_afectados": 0,
+        "ues_ie_sedes": 0,
+        "ues_ie_prioritarias": 0,
+        "seguimientos": 5,
+        "requiere_apoyo": 1,
+        "hallazgos_prioritarios": 2
+      },
+      "alimentos": {
+        "atendido": false,
+        "despachos": null,
+        "familias_referenciadas": null,
+        "peso_t": null,
+        "ultima_fecha": null
+      }
+    },
+    {
+      "municipio": "Zarzal",
+      "aro": "Centro Tuluá",
+      "ultima_fecha": "2026-08-21",
+      "score_resumen": 21,
+      "agua": {
+        "universo": 5,
+        "municipio_verificado": true,
+        "sistemas_documentados": 5,
+        "sistemas_afectacion_documentada": 1,
+        "sistemas_restablecidos": 0,
+        "diagnosticos": 0,
+        "afectados": 0
+      },
+      "eis": {
+        "ues_actuacion": true,
+        "ues_registros_operativos": 3,
+        "ues_establecimientos_registro": 3,
+        "ues_albergues": 2,
+        "ues_adulto_mayor": 1,
+        "ues_afectacion_explicita": 0,
+        "ues_cementerios": 1,
+        "ues_cementerios_afectados": 1,
+        "ues_ie_sedes": 0,
+        "ues_ie_prioritarias": 0,
+        "seguimientos": 7,
+        "requiere_apoyo": 1,
+        "hallazgos_prioritarios": 1
+      },
+      "alimentos": {
+        "atendido": false,
+        "despachos": null,
+        "familias_referenciadas": null,
+        "peso_t": null,
+        "ultima_fecha": null
+      }
+    }
+  ],
+  "links": {
+    "diagnostico": "https://script.google.com/macros/s/AKfycbwkueWZRkNjEroD47D346cMgryo9aHqkuLyG21n7RbqOyrS9INqz8n_uaVuIj5B5ajdPQ/exec",
+    "edan": "https://uesvalle.github.io/dashboards/edan/edan.html",
+    "respuesta_actual": "https://uesvalle.github.io/dashboards/respuesta_sanitaria/respuesta_sanitaria.html"
+  },
+  "water_photo_cases": [
+    {
+      "municipio": "Ansermanuevo",
+      "id_sistema": "ACU-ANSERMANUEVO-2161",
+      "sistema": "Acueducto Comunitario Salazar",
+      "estado_actual": "Opera parcialmente",
+      "componentes": "Tratamiento · Almacenamiento · Distribución",
+      "descripcion": "Se reportaron daños en las conexiones de los filtros instalados y suspensión de la desinfección, con afectación que continúa parcialmente.",
+      "apoyo": "Agua para consumo humano · materiales/repuestos · evaluación técnica",
+      "images": [
+        "assets/agua/ansermanuevo_salazar_01.jpg",
+        "assets/agua/ansermanuevo_salazar_02.jpg"
+      ],
+      "caption": "Ansermanuevo · evidencia del Acueducto Comunitario Salazar."
+    },
+    {
+      "municipio": "El Águila",
+      "id_sistema": "ACU-EL-AGUILA-2616",
+      "sistema": "Junta de Acueducto La Judea",
+      "estado_actual": "Opera parcialmente",
+      "componentes": "Almacenamiento",
+      "descripcion": "El tanque principal presenta grietas y deterioro del recubrimiento; el sistema continúa operando parcialmente.",
+      "apoyo": "Seguimiento técnico y materiales según diagnóstico",
+      "images": [
+        "assets/agua/elaguila_judea_01.jpg",
+        "assets/agua/elaguila_judea_02.jpg"
+      ],
+      "caption": "El Águila · evidencia del sistema La Judea."
+    },
+    {
+      "municipio": "Toro",
+      "id_sistema": "ACU-TORO-2194",
+      "sistema": "Patio Bonito – La Robleda – Sabanazo",
+      "estado_actual": "Opera parcialmente",
+      "componentes": "Tratamiento · Almacenamiento",
+      "descripcion": "Se reportaron daños en las conexiones del filtro rápido hacia el tanque de almacenamiento.",
+      "apoyo": "Evaluación técnica y materiales/repuestos",
+      "images": [
+        "assets/agua/toro_patios_01.jpg",
+        "assets/agua/toro_patios_02.jpg"
+      ],
+      "caption": "Toro · evidencia del acueducto Patio Bonito – La Robleda – Sabanazo."
+    },
+    {
+      "municipio": "Restrepo",
+      "id_sistema": "ACU-RESTREPO-2064",
+      "sistema": "Acueducto Alto del Oso – La Esperanza",
+      "estado_actual": "Opera parcialmente",
+      "componentes": "Almacenamiento",
+      "descripcion": "Se documentó daño en cortina y afectación del tanque de almacenamiento; la afectación continúa y requiere apoyo.",
+      "apoyo": "Agua para consumo humano · materiales/repuestos",
+      "images": [
+        "assets/agua/restrepo_esperanza_01.jpg",
+        "assets/agua/restrepo_esperanza_02.jpg"
+      ],
+      "caption": "Restrepo · evidencia del sistema Alto del Oso – La Esperanza."
+    },
+    {
+      "municipio": "Restrepo",
+      "id_sistema": "ACU-RESTREPO-2076",
+      "sistema": "Acueducto La Soledad",
+      "estado_actual": "Opera parcialmente",
+      "componentes": "Almacenamiento",
+      "descripcion": "Se reportó afectación de la tubería que alimenta el tanque de almacenamiento. El sistema requiere materiales/repuestos.",
+      "apoyo": "Materiales/repuestos",
+      "images": [
+        "assets/agua/restrepo_soledad_01.jpg",
+        "assets/agua/restrepo_soledad_02.jpg"
+      ],
+      "caption": "Restrepo · evidencia del Acueducto La Soledad."
+    }
+  ],
+  "articulacion": {
+    "intro": "La respuesta sanitaria requirió coordinación con organizaciones comunitarias, organismos humanitarios, entidades públicas, actores territoriales y sector privado. La articulación permitió complementar información, identificar necesidades y gestionar capacidades técnicas, operativas, logísticas y humanitarias.",
+    "entidades": [
+      {
+        "name": "AQUACOL",
+        "kind": "Gestión comunitaria del agua",
+        "date": "17 AGO",
+        "text": "Intercambio de información sobre afectaciones y necesidades urgentes en acueductos comunitarios, orientado a identificar posibles alternativas de cooperación."
+      },
+      {
+        "name": "FECOSER + IMCA",
+        "kind": "Gestión comunitaria del agua",
+        "date": "20 AGO",
+        "text": "Reporte de afectaciones identificadas por organizaciones comunitarias y solicitud de acompañamiento para verificación técnica e inversiones de recuperación."
+      },
+      {
+        "name": "Cruz Roja Colombiana",
+        "kind": "Respuesta humanitaria",
+        "date": "15–17 AGO",
+        "text": "Coordinación territorial e intercambio de información para focalizar acciones de atención y ayuda humanitaria."
+      },
+      {
+        "name": "Rotary Colombia",
+        "kind": "Cooperación",
+        "date": "17 AGO",
+        "text": "Identificación de oportunidades de cooperación para sistemas de abastecimiento de agua e infraestructura educativa afectada."
+      },
+      {
+        "name": "CAWST · Clúster WASH · Mesa WASH Valle",
+        "kind": "Agua, saneamiento e higiene",
+        "date": "19–25 AGO",
+        "text": "Articulación para identificar brechas, participar en la Mesa WASH y facilitar posibles apoyos o proyectos frente a necesidades priorizadas."
+      },
+      {
+        "name": "Italcol",
+        "kind": "Sector privado",
+        "date": "Emergencia",
+        "text": "Donación de concentrado para perros y gatos destinado a municipios afectados y Centros de Bienestar Animal."
+      },
+      {
+        "name": "Subsecretaría de Protección y Bienestar Animal",
+        "kind": "Gobernación del Valle",
+        "date": "Emergencia",
+        "text": "Coordinación para atención y bienestar de animales albergados, complementada con apoyos del sector privado."
+      },
+      {
+        "name": "Unidades Municipales de Gestión del Riesgo",
+        "kind": "Coordinación territorial",
+        "date": "Permanente",
+        "text": "Comunicación directa con los municipios para seguimiento de afectaciones y coordinación de acciones relacionadas con agua, saneamiento y condiciones sanitarias."
+      }
+    ],
+    "case": "En Bugalagrande se proyectó la entrega e instalación de una bomba dosificadora de cloro para un acueducto rural, en articulación con la administración municipal y acompañamiento técnico de Servicloro."
+  }
+}
