@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>UESVALLE | Vigilancia sanitaria ATI y Cementerios</title>
+  <meta name="description" content="Tablero UESVALLE de vigilancia sanitaria postevento: Alojamientos Temporales (ATI) y Cementerios.">
+  <link rel="stylesheet" href="vigilancia_sanitaria.css?v=2.2">
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand-row container">
+      <img src="assets/logos/logos_institucionales.png" alt="Gobernación del Valle del Cauca y UESVALLE" class="institutional-logos">
+      <div class="header-meta">
+        <span class="eyebrow">RESPUESTA SANITARIA POSTEVENTO</span>
+        <strong>Corte 31/08/2026</strong>
+      </div>
+    </div>
+    <div class="hero-strip">
+      <div class="container hero-inner">
+        <div>
+          <p class="eyebrow light">SECRETARÍA DEPARTAMENTAL DE SALUD · UESVALLE</p>
+          <h1>Vigilancia sanitaria de Alojamientos Temporales (ATI) y Cementerios</h1>
+          <p class="hero-sub">Consolidación territorial de visitas, hallazgos sanitarios, priorización operativa y registro fotográfico posterior al evento sísmico.</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="container kpi-grid" id="kpis" aria-label="Indicadores principales"></section>
+
+    <nav class="container tabs module-tabs" aria-label="Módulos del tablero">
+      <button class="tab primary active" data-tab="ati"><span class="tab-kicker">01 · PRINCIPAL</span><span>Alojamientos Temporales</span></button>
+      <button class="tab primary" data-tab="cem"><span class="tab-kicker">02 · PRINCIPAL</span><span>Cementerios</span></button>
+      <span class="tab-separator" aria-hidden="true"></span>
+      <button class="tab secondary" data-tab="mun">Resumen municipal</button>
+      <button class="tab secondary" data-tab="met">Metodología y fuentes</button>
+    </nav>
+
+    <section class="tab-panel active" id="panel-ati">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">MÓDULO 1</span>
+            <h2>Alojamientos Temporales / ATI</h2>
+            <p>Tres líneas sanitarias: condiciones locativas y saneamiento, preparación/suministro de alimentos, y vectores/zoonosis.</p>
+          </div>
+          <a class="btn ghost" href="../../data/vigilancia_sanitaria/current/ati_establecimientos.csv" download>Descargar CSV ATI</a>
+        </div>
+        <div class="module-console ati-console" id="ati-console">
+          <div class="console-context">
+            <div class="console-identity">
+              <span class="console-module">ALOJAMIENTOS TEMPORALES</span>
+              <span class="console-concept">Locativo/EIS · Alimentos · Vectores/Zoonosis</span>
+            </div>
+            <div class="compact-summary" id="ati-summary"></div>
+          </div>
+          <div class="filters ati-review-toolbar" id="ati-filters">
+            <label>Buscar<input id="ati-search" type="search" placeholder="Municipio o alojamiento..."></label>
+            <label>Municipio<select id="ati-mun"><option value="">Todos</option></select></label>
+            <label class="photo-filter-label">Fotos<select id="ati-photo"><option value="">Todos</option><option value="con">Con fotos</option><option value="sin">Sin fotos</option></select></label>
+            <div class="active-filter-zone" aria-live="polite">
+              <span class="active-filter-label">Filtro activo</span>
+              <div id="ati-active-filters" class="active-filter-chips"><span class="filter-empty">Sin filtro de prioridad</span></div>
+            </div>
+            <button class="btn small" id="ati-clear">Limpiar</button>
+            <div class="hidden-filter-controls" aria-hidden="true">
+              <select id="ati-pri" tabindex="-1"><option value="">Todas</option></select>
+            </div>
+          </div>
+        </div>
+        <div class="result-count" id="ati-count"></div>
+        <div class="card-grid" id="ati-cards"></div>
+        <div class="pagination" id="ati-pagination" aria-label="Paginación de alojamientos temporales"></div>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="panel-cem">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">MÓDULO 2</span>
+            <h2>Cementerios</h2>
+            <p>Condiciones locativas, bóvedas/osarios, exposición de restos, seguridad de acceso, agua, residuos y riesgo para la salud.</p>
+          </div>
+          <a class="btn ghost" href="../../data/vigilancia_sanitaria/current/cementerios.csv" download>Descargar CSV cementerios</a>
+        </div>
+        <div class="module-console cem-console" id="cem-console">
+          <div class="console-context">
+            <div class="console-identity">
+              <span class="console-module">CEMENTERIOS</span>
+              <span class="console-concept">Afectación · Prioridad sanitaria · Evidencia fotográfica</span>
+            </div>
+            <div class="compact-summary" id="cem-summary"></div>
+          </div>
+          <div class="filters cem-review-toolbar" id="cem-filters">
+            <label>Buscar<input id="cem-search" type="search" placeholder="Municipio o cementerio..."></label>
+            <label>Municipio<select id="cem-mun"><option value="">Todos</option></select></label>
+            <label class="photo-filter-label">Fotos<select id="cem-photo"><option value="">Todos</option><option value="con">Con fotos</option><option value="sin">Sin fotos</option></select></label>
+            <div class="active-filter-zone" aria-live="polite">
+              <span class="active-filter-label">Filtros activos</span>
+              <div id="cem-active-filters" class="active-filter-chips"><span class="filter-empty">Sin filtro de afectación o prioridad</span></div>
+            </div>
+            <button class="btn small" id="cem-clear">Limpiar</button>
+            <div class="hidden-filter-controls" aria-hidden="true">
+              <select id="cem-level" tabindex="-1"><option value="">Todas</option></select>
+              <select id="cem-pri" tabindex="-1"><option value="">Todas</option></select>
+            </div>
+          </div>
+        </div>
+        <div class="result-count" id="cem-count"></div>
+        <div class="card-grid" id="cem-cards"></div>
+        <div class="pagination" id="cem-pagination" aria-label="Paginación de cementerios"></div>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="panel-mun">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">LECTURA TERRITORIAL</span>
+            <h2>Resumen municipal</h2>
+            <p>Consolidación de los establecimientos individualizados en el corte. La población ATI es la última cifra documentada por sitio y no representa un censo simultáneo departamental.</p>
+          </div>
+          <a class="btn ghost" href="../../data/vigilancia_sanitaria/current/resumen_municipal.csv" download>Descargar resumen CSV</a>
+        </div>
+        <div class="municipal-tools">
+          <input id="mun-search" type="search" placeholder="Filtrar municipio...">
+        </div>
+        <div class="table-wrap">
+          <table class="data-table" id="mun-table">
+            <thead><tr><th>Municipio</th><th>Cementerios</th><th>Cem. Alta/Crítica</th><th>Restricción</th><th>ATI</th><th>ATI Alta/Crítica</th><th>No concluyente</th><th>Población ATI documentada</th><th>Fotos</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="panel-met">
+      <div class="container methodology">
+        <div class="section-head"><div><span class="eyebrow">TRAZABILIDAD</span><h2>Metodología, jerarquía de fuentes y reglas de calidad</h2></div></div>
+        <div class="method-grid">
+          <article><span class="method-number">1</span><h3>Carpetas municipales / evidencia directa</h3><p>Actas, listas de chequeo, PDFs y registro fotográfico tienen prioridad para resolver la información de cada establecimiento.</p></article>
+          <article><span class="method-number">2</span><h3>Bases de consolidación</h3><p>El cuadro de cementerios del 21/08 y el registro EIS sirven como bases de trabajo; no sustituyen evidencia directa posterior.</p></article>
+          <article><span class="method-number">3</span><h3>Informe fotográfico</h3><p>Se utiliza para contextualizar, verificar establecimientos y asociar fotografías institucionales al registro.</p></article>
+          <article><span class="method-number">4</span><h3>Vacíos y calidad</h3><p>“No documentado” no equivale a “No”. Los registros con insuficiente evidencia quedan como “No concluyente”.</p></article>
+          <article><span class="method-number">5</span><h3>Separación de conceptos</h3><p>En cementerios, “afectación fuente” y “prioridad sanitaria operativa” se muestran separadas. La prioridad no es un concepto sanitario formal.</p></article>
+          <article><span class="method-number">6</span><h3>Protección de información</h3><p>El tablero público no incluye teléfonos, contactos personales ni variables individuales de salud.</p></article>
+        </div>
+        <div class="source-panel">
+          <h3>Fuentes del corte</h3>
+          <ul>
+            <li>Carpeta EIS UESVALLE - ARO Cartago, ARO Tuluá y ARO Cali.</li>
+            <li><code>CUADRO CEMENTERIOS TOTALES-21082026.xlsx</code>.</li>
+            <li><code>Informe Areas Operativas-EIS -Registro fotografico Agosto 24-2026.docx</code>.</li>
+            <li><code>Registro de Estado Sanitario de Establecimientos.xlsx</code>.</li>
+            <li>Actas, listas de chequeo, PDFs y evidencias fotográficas municipales.</li>
+            <li>Seguimiento PIC/Gobernación se conserva como fuente complementaria, sin atribuirlo como visita UESVALLE.</li>
+          </ul>
+          <div class="doc-links">
+            <a class="btn" href="../../docs/vigilancia_sanitaria/VIGILANCIA_SANITARIA_ATI_CEMENTERIOS.xlsx" download>Excel</a>
+            <a class="btn" href="../../docs/vigilancia_sanitaria/INFORME_EJECUTIVO_VIGILANCIA_SANITARIA.pdf" download>Informe ejecutivo</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span>UESVALLE · Vigilancia sanitaria postevento</span>
+      <span>Versión integrada V2.2 · corte 31/08/2026</span>
+    </div>
+  </footer>
+
+  <div class="modal" id="detail-modal" aria-hidden="true">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal-close" data-close aria-label="Cerrar">×</button>
+      <div id="modal-content"></div>
+    </div>
+  </div>
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="modal-close lightbox-close" data-light-close aria-label="Cerrar">×</button>
+    <button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Fotografía anterior">‹</button>
+    <img id="lightbox-img" alt="Evidencia fotográfica ampliada">
+    <button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Fotografía siguiente">›</button>
+    <div id="lightbox-caption"></div>
+  </div>
+
+  <script src="vigilancia_sanitaria.js?v=2.2"></script>
+</body>
+</html>
