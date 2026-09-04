@@ -5,9 +5,32 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>UESVALLE | Estado de acueductos postevento</title>
   <meta name="description" content="Tablero interinstitucional de diagnóstico, afectaciones, priorización e inversión para recuperación de acueductos posterior al evento sísmico de 2026.">
-  <link rel="stylesheet" href="acueductos.css?v=1.3.1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="referrer" content="no-referrer">
+  <link rel="stylesheet" href="acueductos.css?v=1.3.2">
 </head>
-<body>
+<body class="access-locked">
+
+<div class="access-screen" id="access-screen" aria-labelledby="access-title">
+  <div class="access-card">
+    <div class="access-lock" aria-hidden="true">🔒</div>
+    <p class="access-kicker">UESVALLE · ACCESO RESTRINGIDO</p>
+    <h1 id="access-title">Estado de Acueductos</h1>
+    <p class="access-copy">Información operativa postevento. Ingrese la clave suministrada para consultar el tablero.</p>
+    <form id="access-form" class="access-form" autocomplete="off">
+      <label for="access-password">Clave de acceso</label>
+      <div class="access-input-row">
+        <input id="access-password" name="password" type="password" autocomplete="current-password" inputmode="text" required aria-describedby="access-error">
+        <button id="access-toggle" type="button" class="access-show" aria-label="Mostrar u ocultar clave">Mostrar</button>
+      </div>
+      <button class="access-submit" type="submit">Ingresar al tablero</button>
+      <p class="access-error" id="access-error" role="alert" hidden>La clave ingresada no es correcta.</p>
+    </form>
+    <p class="access-note">Acceso temporal. Al cerrar esta pestaña deberá autenticarse nuevamente.</p>
+  </div>
+</div>
+
+<div id="protected-app" hidden>
 <header class="site-header">
   <div class="institutional-area container">
     <span class="partner-kicker">TRABAJO INTERINSTITUCIONAL</span>
@@ -19,13 +42,14 @@
       <div class="logo-item"><img src="../../assets/estado_acueductos/logos/acuavalle.png" alt="ACUAVALLE" class="logo-partner acuavalle"></div>
     </div>
     <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Cambiar modo de visualización"><span id="theme-icon">☾</span><span id="theme-label">Modo oscuro</span></button>
+    <button class="logout-btn" id="logout-btn" type="button" aria-label="Cerrar sesión">Cerrar sesión</button>
   </div>
   <div class="hero-strip">
     <div class="container hero-inner">
       <p class="eyebrow light">RESPUESTA SANITARIA POSTEVENTO · AGUA PARA CONSUMO HUMANO</p>
       <h1>Estado y recuperación de acueductos afectados</h1>
       <p class="hero-sub">Diagnóstico interinstitucional para orientar recuperación, priorización técnica e inversión posterior al evento sísmico.</p>
-      <p class="hero-meta">Corte de información: <strong>04/09/2026</strong><span>·</span>Versión <strong>V1.3.1</strong></p>
+      <p class="hero-meta">Corte de información: <strong>04/09/2026</strong><span>·</span>Versión <strong>V1.3.2</strong></p>
     </div>
   </div>
 </header>
@@ -142,7 +166,98 @@
 
 <div class="modal" id="affected-modal" aria-hidden="true"><div class="modal-backdrop" data-close="affected"></div><div class="modal-dialog affected-dialog"><button class="modal-close" data-close="affected" aria-label="Cerrar">×</button><div class="modal-head"><span class="eyebrow">98 ACUEDUCTOS CON AFECTACIONES</span><h2>¿Cómo están operando?</h2><p>Distribución del estado operativo actual dentro de los acueductos con afectación identificada.</p></div><div class="affected-breakdown" id="affected-breakdown"></div><button class="btn large" id="go-diagnosis">Ver diagnóstico de los 98 acueductos →</button></div></div>
 
-<script src="../../data/estado_acueductos/current/acueductos_data.js?v=1.3.1"></script>
-<script src="acueductos.js?v=1.3.1"></script>
+</div>
+<script>
+(() => {
+  "use strict";
+
+  const SESSION_KEY = "uesvalle_estado_acueductos_v132";
+  const PASSWORD_HASH = "69e46275e4717e89183ba84dcdf914cbb3d8d40a295aba055429eb1bd8cd7290";
+  let dashboardLoaded = false;
+
+  const $ = (selector) => document.querySelector(selector);
+
+  async function sha256(value) {
+    const bytes = new TextEncoder().encode(value);
+    const digest = await crypto.subtle.digest("SHA-256", bytes);
+    return Array.from(new Uint8Array(digest))
+      .map(byte => byte.toString(16).padStart(2, "0"))
+      .join("");
+  }
+
+  function loadScript(src) {
+    return new Promise((resolve, reject) => {
+      const script = document.createElement("script");
+      script.src = src;
+      script.onload = resolve;
+      script.onerror = () => reject(new Error("No fue posible cargar " + src));
+      document.body.appendChild(script);
+    });
+  }
+
+  async function loadDashboard() {
+    if (dashboardLoaded) return;
+    dashboardLoaded = true;
+    try {
+      await loadScript("../../data/estado_acueductos/current/acueductos_data.js?v=1.3.2");
+      await loadScript("acueductos.js?v=1.3.2");
+    } catch (error) {
+      console.error(error);
+      dashboardLoaded = false;
+      alert("No fue posible cargar el tablero. Verifique su conexión e intente nuevamente.");
+    }
+  }
+
+  async function unlock() {
+    $("#access-screen").hidden = true;
+    $("#protected-app").hidden = false;
+    document.body.classList.remove("access-locked");
+    await loadDashboard();
+  }
+
+  function lock() {
+    sessionStorage.removeItem(SESSION_KEY);
+    location.reload();
+  }
+
+  async function validateAccess(event) {
+    event.preventDefault();
+    const input = $("#access-password");
+    const error = $("#access-error");
+    const submittedHash = await sha256(input.value);
+
+    if (submittedHash === PASSWORD_HASH) {
+      sessionStorage.setItem(SESSION_KEY, "ok");
+      input.value = "";
+      error.hidden = true;
+      await unlock();
+      return;
+    }
+
+    error.hidden = false;
+    input.value = "";
+    input.focus();
+  }
+
+  document.addEventListener("DOMContentLoaded", async () => {
+    $("#access-form").addEventListener("submit", validateAccess);
+    $("#logout-btn").addEventListener("click", lock);
+
+    $("#access-toggle").addEventListener("click", () => {
+      const input = $("#access-password");
+      const show = input.type === "password";
+      input.type = show ? "text" : "password";
+      $("#access-toggle").textContent = show ? "Ocultar" : "Mostrar";
+      input.focus();
+    });
+
+    if (sessionStorage.getItem(SESSION_KEY) === "ok") {
+      await unlock();
+    } else {
+      $("#access-password").focus();
+    }
+  });
+})();
+</script>
 </body>
 </html>
