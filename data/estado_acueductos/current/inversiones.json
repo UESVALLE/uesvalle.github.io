@@ -1,0 +1,1990 @@
+[
+  {
+    "id": "DEP-VAL-0068",
+    "municipio": "Alcalá",
+    "aro": "Por validar",
+    "sistema": "PATIVILCA TIGRILLOS CONGAL BAJO EL ARENAL",
+    "localidad": "PATIVILCA TIGRILLOS CONGAL BAJO EL ARENAL",
+    "prioridad": "MEDIA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 300000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 300000000,
+    "accion_requerida": "VALLECAUCANA [VAL-0068]: Revisar la criticidad de los danos",
+    "afectacion": "VALLECAUCANA [VAL-0068]: SE PRESENTAN GRIETAS EN LA INFRAESTRUCUTURA DE LA BOCATOMA DEL ACUEDUCTO DE MARAVELEZ",
+    "componentes": [
+      "CAPTACIÓN / FUENTE",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-VAL-0069",
+    "municipio": "Alcalá",
+    "aro": "Por validar",
+    "sistema": "PIZACUA LOS SAUCES LA UNION LA ESTRELLA EL HIGUERON EL DINDE",
+    "localidad": "PIZACUA LOS SAUCES LA UNION LA ESTRELLA EL HIGUERON EL DINDE",
+    "prioridad": "MEDIA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 840000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 840000000,
+    "accion_requerida": "VALLECAUCANA [VAL-0069]: Revisar la criticidad de los danos",
+    "afectacion": "VALLECAUCANA [VAL-0069]: EN EL DESARENADOR Y TANQUE DE ALMACENAMIENTO DEL ACUEDUCTO CHAPINERO SE PRESENTAN GRIETAS EN LA INFRAESTRUCTURA, DANO 2Km EN TUBERIA DE 6 Y 4 PULGADAS EN CADA UNA Y 14 VIADUCTOS EN TUBERIA DE 3 Y 4 PULGADAS EN APROXIMADAMENTE 2 Km CADA UNA.",
+    "componentes": [
+      "ADUCCIÓN / CONDUCCIÓN",
+      "TRATAMIENTO",
+      "ALMACENAMIENTO",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-ACU-ANDALUC-A-201",
+    "municipio": "Andalucía",
+    "aro": "Centro Tuluá",
+    "sistema": "ACUAVALLE S.A (ESP)",
+    "localidad": "",
+    "prioridad": "BAJA",
+    "estado_operativo": "NORMAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 14000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 14000000,
+    "accion_requerida": "REPORTE_URBANO [ACU-0002]: Realizar estudio de vulnerabilidad sismoresistente en el edifio de operaciones y estudio de suelos para evaluación de la capacidad del terreno, implementar los refuerzos para la reparación de las fisuras presentadas en la estructura",
+    "afectacion": "REPORTE_URBANO [ACU-0002]: Vulnerabilidad sísmica y geológica al edificio de operaciones, fisuras en el tanque de sedimentación No 2 y desarenador principal.",
+    "componentes": [
+      "TRATAMIENTO",
+      "ALMACENAMIENTO",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-ACU-ANSERMANUEVO-60",
+    "municipio": "Ansermanuevo",
+    "aro": "Norte Cartago",
+    "sistema": "ACUAVALLE S.A. E.S.P. SUCURSAL ANSERMANUEVO.",
+    "localidad": "CENTRO",
+    "prioridad": "BAJA",
+    "estado_operativo": "NORMAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 800000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 800000000,
+    "accion_requerida": "REPORTE_URBANO [ACU-0003]: Realizar estudios de vulnerabilidad sismorresistente en los tanques de almacenamiento y edificios de operación.\nImplementar los refuerzos estructurales requeridos de acuerdo con los resultados de los estudios.\nReponer las tuberías afectadas en AC.\nConstruir un muro de contención en la zona adyacente al Tanque No. 1. Reponer Equipos de SAP",
+    "afectacion": "REPORTE_URBANO [ACU-0003]: Afectación estructural en el segundo piso de la caseta de operación.derrumbe de material en zona adyacente al muro del Tanque No. 1.\nCaída y acumulación de escombros en la caja del macromedidor No. 1.\nDaños en el equipo SAP utilizado para la toma y registro de lecturas.",
+    "componentes": [
+      "ADUCCIÓN / CONDUCCIÓN",
+      "ALMACENAMIENTO",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-ACU-ANSERMANUEVO-2161",
+    "municipio": "Ansermanuevo",
+    "aro": "Norte Cartago",
+    "sistema": "ACUEDUCTO COMUNITARIO SALAZAR",
+    "localidad": "CORREGIMIENTO  SAN AGUSTIN",
+    "prioridad": "ALTA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 937500000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 937500000,
+    "accion_requerida": "VALLECAUCANA [VAL-0003]: Construcion tanque de almacenamiento de 40.000 lt, con sus respectivas instalaciones hidraulicas",
+    "afectacion": "UESVALLE [ACU-ANSERMANUEVO-2161]: VERIFICACIÓN: sufrieron daños en las conexiones de los filtros que les instaló Vallecaucana y tienen suspendida la desinfección\nVALLECAUCANA [VAL-0003]:  DESTRUCCIÓN DE TUBERÍAS, AGRIETAMIENTO DE TANQUE DE ALMACENAMIENTO. DESTRUCCIÓN DEL FILTRO",
+    "componentes": [
+      "ADUCCIÓN / CONDUCCIÓN",
+      "TRATAMIENTO",
+      "ALMACENAMIENTO",
+      "DESINFECCIÓN",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-ACU-ANSERMANUEVO-9345",
+    "municipio": "Ansermanuevo",
+    "aro": "Norte Cartago",
+    "sistema": "ASOCIACION DE USUARIOS DEL ACUEDUCTO EL VERGEL - ACUAVERGEL",
+    "localidad": "CORREGIMIENTO EL VERGEL",
+    "prioridad": "MEDIA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 325000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 325000000,
+    "accion_requerida": "VALLECAUCANA [VAL-0001]: REMPLAZAR 300 METROS DE TUBERIA / REPARACION DE BOCATOMA  COLAPSADA",
+    "afectacion": "VALLECAUCANA [VAL-0001]: AFECTACIONES EN LA BOCATOMA DE LA PALMASE LLEVO LA TUBERIA DE ADUCCION Y CONDUCION DE LA FUENTE D ELA SOLEDAD LLEGANDO A LA PLANTA DE TRATAMIENTO",
+    "componentes": [
+      "CAPTACIÓN / FUENTE",
+      "ADUCCIÓN / CONDUCCIÓN",
+      "TRATAMIENTO"
+    ]
+  },
+  {
+    "id": "DEP-VAL-0002",
+    "municipio": "Ansermanuevo",
+    "aro": "Por validar",
+    "sistema": "EL ROBLE SAN AGUSTIN LUCITANIA Y DIAMANTINA",
+    "localidad": "EL ROBLE SAN AGUSTIN LUCITANIA Y DIAMANTINA",
+    "prioridad": "MEDIA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 325000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 325000000,
+    "accion_requerida": "VALLECAUCANA [VAL-0002]: REMPLAZO DE TANQUE , REPARACION DE OTRO TANQUE DE MAS DE 5000, 600 METROS DE TUBERIA  DE 3 PULGADAS, MATERIAL  DE INDTALACION Y MANO DE OBRA",
+    "afectacion": "VALLECAUCANA [VAL-0002]: RUPTURA DE TANQUES,  FUGAS, LINEAS DE CONDUCCION REVENTADAS MATERIAL GALVANIZADO",
+    "componentes": [
+      "ADUCCIÓN / CONDUCCIÓN",
+      "ALMACENAMIENTO"
+    ]
+  },
+  {
+    "id": "DEP-ACU-ARGELIA-64",
+    "municipio": "Argelia",
+    "aro": "Norte Cartago",
+    "sistema": "ACUAVALLE S.A. E.S.P. SUCURSAL ARGELIA.",
+    "localidad": "APARICIO",
+    "prioridad": "BAJA",
+    "estado_operativo": "NORMAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 650000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 650000000,
+    "accion_requerida": "REPORTE_URBANO [ACU-0004]: Realizar estudios de vulnerabilidad sismorresistente en los tanques de almacenamiento, casetas y edificios de operación.mplementar los refuerzos estructurales requeridos de acuerdo con los resultados de los estudios.\nReponer las tuberías afectadas en AC. Reparar y asegurar estructuralmente las casetas afectadas.\nGarantizar la operatividad del sistema de cloración.\nVerificar el funcionamiento de la planta eléctrica de emergencia.Inspeccionar y reparar daños en redes matrices y tuberías de acueducto.\nRealizar pruebas de estanqueidad y presurización de las redes intervenidas.\nVerificar la calidad del agua antes de restablecer el suministro.",
+    "afectacion": "REPORTE_URBANO [ACU-0004]: Afectación estructural en la caseta destinada al alojamiento de la planta eléctrica.Afectación estructural en la caseta de ooeracion.Daños en el sistema y equipos de cloración.Afectación de la planta eléctrica de emergencia, con posible compromiso de su operatividad.\nDaños y afectaciones en las redes matrices y tuberías del sistema de acueducto, incluyendo posibles fisuras y roturas",
+    "componentes": [
+      "ADUCCIÓN / CONDUCCIÓN",
+      "ALMACENAMIENTO",
+      "DISTRIBUCIÓN",
+      "DESINFECCIÓN",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-VAL-0006",
+    "municipio": "Argelia",
+    "aro": "Por validar",
+    "sistema": "ACUEDUCTO INTERVEREDAL SAN ROQUE",
+    "localidad": "VEREDAS BRISAS DE RAIZAL Y LA AURORA Y LA PAZ",
+    "prioridad": "ALTA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 2040000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 2040000000,
+    "accion_requerida": "VALLECAUCANA [VAL-0006]:  REUBICAR, CONSTRUIR DE NUEVO EL SISTEMA",
+    "afectacion": "VALLECAUCANA [VAL-0006]: EL ACUEDUCTO INTER VEREDAL SAN ROQUE QUE SURTE TRES VEREDAS PRESENTO FISURAS EN EL TANQUE DE ALMACENAMIENTO, UNIONES REVENTADAS, GRIETAS ALREDEDOR DEL SISTEMA",
+    "componentes": [
+      "ALMACENAMIENTO",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-ACU-ARGELIA-1029",
+    "municipio": "Argelia",
+    "aro": "Norte Cartago",
+    "sistema": "ASOCIACION DE USUARIOS DEL ACUEDUCTO LA CRISTALINA",
+    "localidad": "VEREDA LA CRISTALINA",
+    "prioridad": "MEDIA",
+    "estado_operativo": "NORMAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 1620000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 1620000000,
+    "accion_requerida": "VALLECAUCANA [VAL-0004]:  REUBICAR, CONSTRUIR DE NUEVO EL SISTEMA",
+    "afectacion": "UESVALLE [ACU-ARGELIA-1029]: VERIFICACIÓN: terreno inestable, fracturas en el desarenador.\nVALLECAUCANA [VAL-0004]: SE EVIDENCIÓ, DURANTE EL RECORRIDO REALIZADO, QUE, COMO CONSECUENCIA DEL PASADO TERREMOTO, SE PRESENTARON GRIETAS EN EL TERRENO DONDE SE ENCUENTRA UBICADO EL SISTEMA DE ACUEDUCTO. EN ESTA ZONA SE LOCALIZAN EL TANQUE PRINCIPAL, CON UNA CAPACIDAD DE ALMACENAMIENTO DE 30.000 LITROS, Y EL DESARENADOR, SITUACIÓN QUE GENERA INESTABILIDAD EN EL TERRENO Y PODRÍA AFECTAR LA ESTABILIDAD DE LAS ESTRUCTURAS.   ESTA SITUACIÓN GENERA MAYOR PREOCUPACIÓN DEBIDO A QUE, APROXIMADAMENTE A 100 METROS LINEALES EN LA PARTE INFERIOR DE LOS TANQUES, SE ENCUENTRAN UBICADAS DOS VIVIENDAS, EN LAS CUALES RESIDEN SUS RESPECTIVAS FAMILIAS.",
+    "componentes": [
+      "TRATAMIENTO",
+      "ALMACENAMIENTO",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-ACU-ARGELIA-1016",
+    "municipio": "Argelia",
+    "aro": "Norte Cartago",
+    "sistema": "ASOCIACION DE USUARIOS DEL ACUEDUCTO RURAL COMUNITARIO DEL CORREGIMIENTO DE MARACAIBO",
+    "localidad": "CORREGIMIENTO DE MARACAIBO",
+    "prioridad": "MEDIA",
+    "estado_operativo": "NORMAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 875000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 875000000,
+    "accion_requerida": "VALLECAUCANA [VAL-0005]: Construcion tanque de almacenamiento de 20.000 lt, con sus respectivas instalaciones hidraulicas",
+    "afectacion": "UESVALLE [ACU-ARGELIA-1016]: VERIFICACIÓN: tanque filtracion en la parte\nVALLECAUCANA [VAL-0005]: EL TANQUE PRINCIPAL DE LA BOCATOMA DESPUÉS DEL TERREMOTO DEL 10 DE AGOSTO, SE FISURO EN LA PARTE DE ABAJO EN UNA DE LAS ESQUINAS EVIDENCIANDO UNA FUGA CONSIDERABLE DEL AGUA.",
+    "componentes": [
+      "CAPTACIÓN / FUENTE",
+      "TRATAMIENTO",
+      "ALMACENAMIENTO"
+    ]
+  },
+  {
+    "id": "DEP-ACU-BOL-VAR-166",
+    "municipio": "Bolívar",
+    "aro": "Centro Tuluá",
+    "sistema": "ACUAVALLE S.A (ESP)",
+    "localidad": "GUABINERO",
+    "prioridad": "BAJA",
+    "estado_operativo": "NORMAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 610000000,
+    "inversion_alcantarillado": 420000000,
+    "inversion_total": 1030000000,
+    "accion_requerida": "REPORTE_URBANO [ACU-0005]: I.Reparación por fisuras en  Tanque elevado y reforzamiento confinado a Caseta de Cloración y Sustancias quimicas.Ejecutar reposición de 120 m de tuberia en Ø20\" con una cámara intermedia. Ejecutar reparación con productos epoxicos con tanque vacio | cambio de los dos variadores recuperando el 100% de la floculación\nREPORTE_URBANO [ACU-ALC-001]: Reponer 400 m tuberia aplastada a PVC Ø24\". Calleón en tierra",
+    "afectacion": "REPORTE_URBANO [ACU-0005]: Vulnerabilidad por Fisuras en salida Tanque elevado y en Caseta de Cloración y Sustancias quimicas. Aplastamiento parcial de la tubería Ø20”de desagüe de la PTAP produjo reducción de capacidad hidraulica al conducto lo que está generando desbordamiento de aguas de lavado de las estructuras hacia predios contiguos al predio de la PTAP.Fisuras en muros del tanque de almacenamiento | daño en variadores de velocidad a causa de la desconexión espontáneas de redes eléctricas\nREPORTE_URBANO [ACU-ALC-001]: Tuberia del emisor aplastada",
+    "componentes": [
+      "ADUCCIÓN / CONDUCCIÓN",
+      "TRATAMIENTO",
+      "ALMACENAMIENTO",
+      "DISTRIBUCIÓN",
+      "DESINFECCIÓN",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-ACU-BOL-VAR-260",
+    "municipio": "Bolívar",
+    "aro": "Centro Tuluá",
+    "sistema": "ACUEDUCTO CORPOSANISIDRO",
+    "localidad": "SAN ISIDRO",
+    "prioridad": "MEDIA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 216000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 216000000,
+    "accion_requerida": "UESVALLE [ACU-BOL-VAR-260]: REALIZAR EVALUACIÓN ESTRUCTURAL Y DE ESTANQUEIDAD DEL TANQUE; EJECUTAR REPARACIÓN DE FISURAS, IMPERMEABILIZACIÓN Y/O REPOSICIÓN DE LOS ELEMENTOS COMPROMETIDOS SEGÚN EL DIAGNÓSTICO.",
+    "afectacion": "UESVALLE [ACU-BOL-VAR-260]: VERIFICACIÓN: Averias en tanque de almacenamiento\nREPORTE_UES_1: TANQUE DE ALMACENAMIENTO AFECTADO COMO CONSECUENCIA DEL SISMO.",
+    "componentes": [
+      "ALMACENAMIENTO",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-ACU-BOL-VAR-1125",
+    "municipio": "Bolívar",
+    "aro": "Centro Tuluá",
+    "sistema": "ACUEDUCTO LA REFORMA VEREDA LA AGUADA",
+    "localidad": "LA AGUADA",
+    "prioridad": "BAJA",
+    "estado_operativo": "NORMAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 540000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 540000000,
+    "accion_requerida": "VALLECAUCANA [VAL-0067]: Realizar inspección y evaluación técnica de los componentes afectados para determinar las obras requeridas. Posteriormente, ejecutar las reparaciones y reconstrucciones necesarias, reponer los materiales y elementos deteriorados y realizar pruebas de funcionamiento que permitan garantizar la operación segura y continua del sistema de abastecimiento de agua.",
+    "afectacion": "VALLECAUCANA [VAL-0067]: Daño de tuberia de aduccion de cortina al tanque desarenador por volcamiento y desproteccion de dicha tuberia, daño en desarenador ocasionando filtracion, volcamiento del tanque de geomenbrana que prestaba el servicio de floculacion, volcamiento filtro de arena gruesa y perdida de material, rompimiento de muro y tuberia de filtro y perdida de arena gruesa, rompimiento de tuberia que conduce a filtros de arena fina, fracturacion fachada y techo que protege el tanque de almacenamiento de distribucion de agua",
+    "componentes": [
+      "ADUCCIÓN / CONDUCCIÓN",
+      "TRATAMIENTO",
+      "ALMACENAMIENTO",
+      "DISTRIBUCIÓN",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-ACU-BOL-VAR-200",
+    "municipio": "Bolívar",
+    "aro": "Centro Tuluá",
+    "sistema": "ASOCIACION DE USUARIOS DE ABASTO CORREGIMIENTO CERRO AZUL Y LAS VEREDAS SIRIA Y LA SOLEDAD",
+    "localidad": "CERRO AZUL",
+    "prioridad": "BAJA",
+    "estado_operativo": "NORMAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 104000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 104000000,
+    "accion_requerida": "UESVALLE [ACU-BOL-VAR-200]: EVALUAR ESTRUCTURALMENTE LOS TANQUES RESERVORIOS, VERIFICAR FISURAS Y PÉRDIDAS DE ESTANQUEIDAD Y EJECUTAR REPARACIÓN, IMPERMEABILIZACIÓN O REPOSICIÓN SEGÚN EL NIVEL DE DAÑO.",
+    "afectacion": "UESVALLE [ACU-BOL-VAR-200]: VERIFICACIÓN: AFECTACION EN TANQUE DE ALMACENAMIENTO\nREPORTE_UES_1: AFECTACIÓN EN TANQUES RESERVORIOS ASOCIADA AL EVENTO SÍSMICO.",
+    "componentes": [
+      "ALMACENAMIENTO",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-VAL-0007",
+    "municipio": "Guadalajara de Buga",
+    "aro": "Por validar",
+    "sistema": "CHAMBIMBAL SAN ANTONIO",
+    "localidad": "CHAMBIMBAL SAN ANTONIO",
+    "prioridad": "ALTA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 260000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 260000000,
+    "accion_requerida": "VALLECAUCANA [VAL-0007]: REPACION DE JUNTA Y SUMINISTROS E INSTALACION DE ACCESORIOS EN PVC E HIERRO DUCTIL Y ANCLAJES",
+    "afectacion": "VALLECAUCANA [VAL-0007]: FISURA RADIAL EN TANQUE CIRCULAR DE ALMACENAMIENTO AUN TERCIO PARTE SUPERIOR, DAÑOS EN ACCESORIOS Y EMPALMES D ELA PLANTA DE TRATAMIENTO",
+    "componentes": [
+      "TRATAMIENTO",
+      "ALMACENAMIENTO",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-VAL-0008",
+    "municipio": "Guadalajara de Buga",
+    "aro": "Por validar",
+    "sistema": "SONSITO MANANTIAL LA UNIDAD E INCIVA",
+    "localidad": "SONSITO MANANTIAL LA UNIDAD E INCIVA",
+    "prioridad": "ALTA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 126000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 126000000,
+    "accion_requerida": "VALLECAUCANA [VAL-0008]: SUMINISTRO E INSTALACION DE TUBERIA DE DIAMETRO DE 4 PULGADAS , 100 METROS LINEALES , ANCLAJE ACCESORIOS Y ANCLAJE  DE LOS EQUIPOS DE CLORACION",
+    "afectacion": "VALLECAUCANA [VAL-0008]: DAÑOS EN LAS VALVULAS, ACCESORIOS EN TUBERIAS DE CONDUCION DE 4 PULGADAS DE DIAMETRO Y FALTA DE ANCLAJE EN LOS SISTEMAS DE CLORACION",
+    "componentes": [
+      "ADUCCIÓN / CONDUCCIÓN",
+      "DESINFECCIÓN"
+    ]
+  },
+  {
+    "id": "DEP-ACU-BUGALAGRANDE-2156",
+    "municipio": "Bugalagrande",
+    "aro": "Centro Tuluá",
+    "sistema": "ASOCIACION DE USUARIOS DEL SERVICIO DE AGUA POTABLE DEL ACUEDUCTO Y ALCANTARILLADO DE MESTIZAL",
+    "localidad": "MESTIZAL",
+    "prioridad": "MEDIA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 1014000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 1014000000,
+    "accion_requerida": "VALLECAUCANA [VAL-0009]:  CONSTRUIR DE NUEVO EL TANQUE QUE CUMPLA CON LA CAPACIDAD Y  LOS REQUERIMIENTOS TECNICOS NECESARIOS, Y SUS RESPECTIVAS INSTALACIONES HIDRAULICAS",
+    "afectacion": "VALLECAUCANA [VAL-0009]: FRACTURA DEL TANQUE EN CONCRETO QUE ALMACENA EL AGUA Y TIENE UNA  CAPACIDAD UTIL DE 54 M3 , EL TANQUE SE SOPORTA EN 4  COLUMNAS EN CONCRETO, CON UNA ALTURA APROXIMADA DE 18 METROS",
+    "componentes": [
+      "ALMACENAMIENTO",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-ACU-BUGALAGRANDE-234",
+    "municipio": "Bugalagrande",
+    "aro": "Centro Tuluá",
+    "sistema": "ASOCIACION DE USUARIOS DEL SERVICIO DE AGUA POTABLE Y ALCANTARILLADO DE EL GUAYABO",
+    "localidad": "EL GUAYABO",
+    "prioridad": "MEDIA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 41600000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 41600000,
+    "accion_requerida": "VALLECAUCANA [VAL-0011]: EVALUACION Y OPTIMIZACION DEL SISTEMA ELECTRICO  DEL EQUIPO DE BOMBEO",
+    "afectacion": "VALLECAUCANA [VAL-0011]:  DEBIDO A LA IRREGULARIDAD DEL SERVICIO DE ENERGIA DESPUES DEL SISMO SE QUEMO LA BOBINA 50/60 HZ INDISPENSABLE PARA EL FUNCIONAMIENTO DE LA BOMBA DEL SISTEMA QUE SURTE EL RECURSO A LOS USUARIOS.",
+    "componentes": [
+      "BOMBEO / ELÉCTRICO"
+    ]
+  },
+  {
+    "id": "DEP-ACU-BUGALAGRANDE-2152",
+    "municipio": "Bugalagrande",
+    "aro": "Centro Tuluá",
+    "sistema": "ASOCIACION DE USUARIOS DEL SERVICIO DE AGUA POTABLE Y ALCANTARILLADO DE SAN ANTONIO",
+    "localidad": "SAN ANTONIO",
+    "prioridad": "MEDIA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 806000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 806000000,
+    "accion_requerida": "VALLECAUCANA [VAL-0010]:  CONSTRUIR DE NUEVO EL TANQUE QUE CUMPLA CON LA CAPACIDAD Y  LOS REQUERIMIENTOS TECNICOS NECESARIOS, Y SUS RESPECTIVAS INSTALACIONES HIDRAULICAS",
+    "afectacion": "VALLECAUCANA [VAL-0010]:  FRACTURA DEL TANQUE EN CONCRETO QUE ALMACENA EL AGUA, EL CUAL TIENE COMO DIMENSIONES 4X4X2 METROS,  CON UNA CAPACIDAD UTIL DE 32 M3. EL TANQUE ESTA SOPORTADO POR COLUMNAS EN CONCRETO.",
+    "componentes": [
+      "ALMACENAMIENTO",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-ACU-CAICEDONIA-158",
+    "municipio": "Caicedonia",
+    "aro": "Centro Tuluá",
+    "sistema": "ACUAVALLE S.A (ESP)",
+    "localidad": "OBRERO",
+    "prioridad": "BAJA",
+    "estado_operativo": "NORMAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 1800000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 1800000000,
+    "accion_requerida": "REPORTE_URBANO [ACU-0007]: Ejecutar Reposición conducción principal L= 700 metros lineales. Salida PTAP Hasta la Cra 16 con Calle 10 tuberia diametro 14\" | Ejecutar Reposición aducción principal L= 1000 metros lineales. Vereda limones tuberia diametro 14\"",
+    "afectacion": "REPORTE_URBANO [ACU-0007]: Daños y afectaciones en las redes matrices y tuberías del sistema de acueducto, incluyendo posibles fisuras y roturas. | Daños y afectaciones en canal de aducción y tuberías de aducción, incluyendo posibles fisuras y roturas.",
+    "componentes": [
+      "ADUCCIÓN / CONDUCCIÓN",
+      "TRATAMIENTO",
+      "DISTRIBUCIÓN",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-VAL-0048",
+    "municipio": "Calima (El Darién)",
+    "aro": "Por validar",
+    "sistema": "LA FLORIDA",
+    "localidad": "LA FLORIDA",
+    "prioridad": "MEDIA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 216000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 216000000,
+    "accion_requerida": "VALLECAUCANA [VAL-0048]: REALIZAR EVALUACIÓN ESTRUCTURAL Y ESTABILIZACIÓN INMEDIATA DE LAS ÁREAS AFECTADAS, INCLUYENDO RECONSTRUCCIÓN DE PAREDES Y CUBIERTA, Y RECUPERACIÓN DE LAS BASES Y ENCAMADO DE LOS VIADUCTOS, PREVIA VERIFICACIÓN DE LAS CONDICIONES DEL TERRENO Y DRENAJE",
+    "afectacion": "VALLECAUCANA [VAL-0048]: COLAPSO PARCIAL EN LAS PAREDES Y TECHO DE LA OFICINA DE RECAUDO Y DE GUARDAR MATERIALES DEL ACUEDUCTO, SE VEN COMPROMETIDOS LOS DOS VIADUCTOS YA QUE CEDIERON LAS BASES Y EL ENCAMADO",
+    "componentes": [
+      "ADUCCIÓN / CONDUCCIÓN",
+      "DISTRIBUCIÓN",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-VAL-0014",
+    "municipio": "Candelaria",
+    "aro": "Por validar",
+    "sistema": "GUALI",
+    "localidad": "GUALI",
+    "prioridad": "MEDIA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 1610000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 1610000000,
+    "accion_requerida": "VALLECAUCANA [VAL-0014]: DEMOLICION TANQUE EXISTENTE Y CONSTRUCION DE TANQUE DE ALMACENAMIENTO CON SUS RESPECTIVAS INSTALACIONES HIDRAULICAS, EVALUACION DE POZO PROFUNDO Y CONSTRUCION DE CASETA DE CLORACION",
+    "afectacion": "VALLECAUCANA [VAL-0014]: FALLAS EN LA ESTRUCTURA  DE LAS COLUMNAS Y VIGAS  DEL TANQUE ELEVADO DE ABASTECIMIENTO DE AGUA, PRESENTA FISURAS Y FILTRACION DE AGUA, EVALUACION DEL POZO PROFUNDO PRESENTA DETERIORO EN SU TUBERIA DE REBESTIMINETO,   CASETA DE CLORACION  DESTRUIDA Y DAÑO DE BOMBA DE CLORACION",
+    "componentes": [
+      "CAPTACIÓN / FUENTE",
+      "ADUCCIÓN / CONDUCCIÓN",
+      "TRATAMIENTO",
+      "ALMACENAMIENTO",
+      "DESINFECCIÓN",
+      "BOMBEO / ELÉCTRICO",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-VAL-0012",
+    "municipio": "Candelaria",
+    "aro": "Por validar",
+    "sistema": "LAURO",
+    "localidad": "LAURO",
+    "prioridad": "ALTA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 1495000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 1495000000,
+    "accion_requerida": "VALLECAUCANA [VAL-0012]: DEMOLICION TANQUE EXISTENTE Y CONSTRUCION DE TANQUE DE ALMACENAMIENTO CON SUS RESPECTIVAS INSTALACIONES HIDRAULICAS, EVALUACION DE POZO PROFUNDO Y CONSTRUCION DE CASETA DE CLORACION",
+    "afectacion": "VALLECAUCANA [VAL-0012]: TANQUE ELEVADO DE ALMACENAMIENTO PRESENTA  DESPRENDIMIENTO DE CONCRETO OBSERVABDOSE OXIDACION DE LOS ACEROS DE REFUERZO, EL POZO PROFUNDO DE MAS 100 METROS DE PROFUNDIDA PRESENTANDO TURBIEDAD EN EL AGUA QUE SE BOMBEA., LA CASETA DE CLORACION  DESTRUIDA",
+    "componentes": [
+      "CAPTACIÓN / FUENTE",
+      "ALMACENAMIENTO",
+      "DESINFECCIÓN"
+    ]
+  },
+  {
+    "id": "DEP-VAL-0013",
+    "municipio": "Candelaria",
+    "aro": "Por validar",
+    "sistema": "SAN JOAQUIN",
+    "localidad": "SAN JOAQUIN",
+    "prioridad": "ALTA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 70000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 70000000,
+    "accion_requerida": "VALLECAUCANA [VAL-0013]: EVALUACION  Y OPTIMIZACION DEL SISTEMA ELECTRICO, SUMINISTRO E INSTALACION DE BOMBA DOSIFICADORA DE CLORO, EVALUACION POZO PROFUNDO",
+    "afectacion": "VALLECAUCANA [VAL-0013]: DAÑO EN LA BOMBA DE CLORACION , FALLA EN EL REVESTIMIENTO DEL POZO PROFUNDO",
+    "componentes": [
+      "CAPTACIÓN / FUENTE",
+      "DESINFECCIÓN",
+      "BOMBEO / ELÉCTRICO"
+    ]
+  },
+  {
+    "id": "DEP-ACU-DAGUA-49",
+    "municipio": "Dagua",
+    "aro": "Sur Cali",
+    "sistema": "ACUAVALLE S.A. E.S.P. - SECCIONAL DAGUA",
+    "localidad": "LA GRAN COLOMBIA",
+    "prioridad": "BAJA",
+    "estado_operativo": "NORMAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 60000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 60000000,
+    "accion_requerida": "REPORTE_URBANO [ACU-0010]: Reconstrucción de muro lateral y colocación de malla eslabonada",
+    "afectacion": "REPORTE_URBANO [ACU-0010]: Caida del cerramiento del tanque de Remedios , Se vieron afectadas dos tuberías de distribución, presentandose dos daños de la tubería principal del municipio de 8\" y uno en tubería de 3\". Se ejecutaron las reparaciones con apoyo de personal de otras seccionales del AGUA 2,",
+    "componentes": [
+      "ADUCCIÓN / CONDUCCIÓN",
+      "ALMACENAMIENTO",
+      "DISTRIBUCIÓN",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-ACU-DAGUA-47",
+    "municipio": "Dagua",
+    "aro": "Sur Cali",
+    "sistema": "ACUAVALLE S.A. E.S.P. - SECCIONAL EL CARMEN DAGUA",
+    "localidad": "EL CARMEN",
+    "prioridad": "BAJA",
+    "estado_operativo": "NORMAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 18000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 18000000,
+    "accion_requerida": "REPORTE_URBANO [ACU-0009]: Reemplazo de accesorios y tuberia HD a PVC de 4\", con pasamuro y resane de pared",
+    "afectacion": "REPORTE_URBANO [ACU-0009]: Desprendimiento tubería Tanque almacenamiento",
+    "componentes": [
+      "ADUCCIÓN / CONDUCCIÓN",
+      "ALMACENAMIENTO",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-ACU-DAGUA-1401",
+    "municipio": "Dagua",
+    "aro": "Sur Cali",
+    "sistema": "ASOCIACION ABASTO DE AGUA MARIA -PIÑAL- MUNICIPIO DE LA CUMBRE Y DAGUA VALLE DEL CAUCA - ASOABASE",
+    "localidad": "EL PIÑAL",
+    "prioridad": "BAJA",
+    "estado_operativo": "NORMAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 49000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 49000000,
+    "accion_requerida": "VALLECAUCANA [VAL-0017]:  OPTIMIZACION  DE LA RED DE DISTRIBUCION,  DOMICILIARIAS   Y DOTACION DE SISTEMA DE CLORACION",
+    "afectacion": "UESVALLE [ACU-DAGUA-1401]: VERIFICACIÓN: PRESENTÓ AFECTACIONES EN ALGUNOS PUNTOS DE LA RED DE DISTRIBUCION LOS CUALES SE HAN SOLUCIONADO EN SU TOTALIDAD.\nVALLECAUCANA [VAL-0017]:  SE IDENTIFICARON AFECTACIONES EN REDES DOMICILIARIAS Y DE DISTRIBUCIÓN. LOS DAÑOS PRELIMINARMENTE IDENTIFICADOS CORRESPONDEN APROXIMADAMENTE A: • SETENTA Y DOS (72) METROS DE TUBERÍA DE 1/2 PULGADA CORRESPONDIENTE A ACOMETIDAS DOMICILIARIAS. • TREINTA Y SEIS (36) METROS DE TUBERÍA DE DISTRIBUCIÓN DE DOS (2) PULGADAS, RDE 21. LAS AFECTACIONES REQUIEREN LA REPOSICIÓN DE LOS TRAMOS COMPROMETIDOS Y DE LOS ACCESORIOS QUE RESULTEN NECESARIOS PARA RECUPERAR LAS CONDICIONES NORMALES DE OPERACIÓN",
+    "componentes": [
+      "ADUCCIÓN / CONDUCCIÓN",
+      "DISTRIBUCIÓN",
+      "DESINFECCIÓN"
+    ]
+  },
+  {
+    "id": "DEP-ACU-DAGUA-2897",
+    "municipio": "Dagua",
+    "aro": "Sur Cali",
+    "sistema": "ASOCIACION COMUNITARIA DE ACUEDUCTO DE CHIPRE, ASOCHIPRE",
+    "localidad": "CHIPRE",
+    "prioridad": "MEDIA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 104000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 104000000,
+    "accion_requerida": "VALLECAUCANA [VAL-0018]: CONSTRUIR DOS TANQUES DE OCHO MIL LITROS CADA UNO EN CONCRETO",
+    "afectacion": "VALLECAUCANA [VAL-0018]:  FISURAS EN LOS TANQUES DE ALMACENAMIENTO. SON DOS TANQUES DE 8MIL LITROS. LAS FISURAS SON INTERNAS Y EXTERNAS",
+    "componentes": [
+      "ALMACENAMIENTO",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-ACU-DAGUA-3417",
+    "municipio": "Dagua",
+    "aro": "Sur Cali",
+    "sistema": "ASOCIACION DE USUARIOS ACUEDUCTO VEREDA LA CLORINDA",
+    "localidad": "LA CLORINDA",
+    "prioridad": "MEDIA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 104000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 104000000,
+    "accion_requerida": "VALLECAUCANA [VAL-0020]: EVALUACION DE RED PRINCIPAL DE MAS DE  180 METROS DE 3 PULGADAS",
+    "afectacion": "VALLECAUCANA [VAL-0020]: Avería de tuberías de la red principal que obliga a la prestacion de servicio parcial",
+    "componentes": [
+      "ADUCCIÓN / CONDUCCIÓN"
+    ]
+  },
+  {
+    "id": "DEP-ACU-DAGUA-2868",
+    "municipio": "Dagua",
+    "aro": "Sur Cali",
+    "sistema": "ASOCIACIÓN DE USUARIOS DEL ACUEDUCTO COMUNITARIO NACIMIENTO LA ROSITA - AGUA BUENA",
+    "localidad": "YERBABUENA",
+    "prioridad": "MEDIA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 875000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 875000000,
+    "accion_requerida": "VALLECAUCANA [VAL-0016]: CONSTRUCION DE TANQUE DE ALMACENAMIENTO EN CONCRETO DE 40 METROS CUBICOS, REMPLAZO DE LOS DOS TANQUES PLASATICOS DE DOS METROS CUBICOS Y  SUMINISTRO E INSTALACION DE BOMBA LAPICERO DE POZO",
+    "afectacion": "VALLECAUCANA [VAL-0016]: EL TANQUE DE ALMACENAMIENTO EN CONCRETO DE APROXIMADAMENTE  30M³ PRESENTO FISURAS, FILTRACIONES ENTRE LOS MUROS Y LA LOSA SUPERIOR, DOS TANQUES  DE ALMACENAMIENTOS PLASTICOS AVERIADOS (2 METROS CUBICOS CADA UNO), BOMBA LAPICERO NO FUNCIONA (QUEMADA)",
+    "componentes": [
+      "CAPTACIÓN / FUENTE",
+      "TRATAMIENTO",
+      "ALMACENAMIENTO",
+      "BOMBEO / ELÉCTRICO",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-ACU-DAGUA-4057",
+    "municipio": "Dagua",
+    "aro": "Sur Cali",
+    "sistema": "ASOCIACION DE USUARIOS DEL ACUEDUCTO LOBOGUERRERO",
+    "localidad": "LOBOGUERRERO",
+    "prioridad": "ALTA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 123500000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 123500000,
+    "accion_requerida": "VALLECAUCANA [VAL-0022]: EVALUACION DE RED PRINCIPAL DE MAS DE  280 METROS DE 6 PULGADAS",
+    "afectacion": "VALLECAUCANA [VAL-0022]: Avería de tuberías de la red principal asociado a deslizamiento de tierra, afectacion en la continuidad del servicio a la comunidad tambien se afecta la calidad del agua",
+    "componentes": [
+      "ADUCCIÓN / CONDUCCIÓN",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-VAL-0019",
+    "municipio": "Dagua",
+    "aro": "Por validar",
+    "sistema": "LAS DELICIAS",
+    "localidad": "LAS DELICIAS",
+    "prioridad": "MEDIA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 110500000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 110500000,
+    "accion_requerida": "VALLECAUCANA [VAL-0019]: EVALUACION DE LOS METROS DE LINEA DE CONDUCION Y DISTRIBUCION DE TUBERIA AFECTADOS APROXIMADAMENTE 250 METROS DE 2 PULGADAS Y REMPLAZO DE FILTRO DE CALIDAD DEL AGUA",
+    "afectacion": "VALLECAUCANA [VAL-0019]: Avería de un filtro y daños en tuberías que afecta el servicio y la calidad del agua a la comunidad",
+    "componentes": [
+      "ADUCCIÓN / CONDUCCIÓN",
+      "TRATAMIENTO",
+      "DISTRIBUCIÓN"
+    ]
+  },
+  {
+    "id": "DEP-ACU-EL-AGUILA-66",
+    "municipio": "El Águila",
+    "aro": "Norte Cartago",
+    "sistema": "ACUAVALLE S.A. E.S.P. SUCURSAL EL AGUILA.",
+    "localidad": "CENTRO",
+    "prioridad": "BAJA",
+    "estado_operativo": "NORMAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 200000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 200000000,
+    "accion_requerida": "REPORTE_URBANO [ACU-0011]: Reparar daños de red matriz, reponer tuberia en PVC Gris",
+    "afectacion": "REPORTE_URBANO [ACU-0011]: Daños y afectaciones en las redes matrices y tuberías del sistema de acueducto, incluyendo posibles fisuras y roturas",
+    "componentes": [
+      "ADUCCIÓN / CONDUCCIÓN",
+      "DISTRIBUCIÓN",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-ACU-EL-CAIRO-65",
+    "municipio": "El Cairo",
+    "aro": "Norte Cartago",
+    "sistema": "ACUAVALLE S.A. E.S.P. SUCURSAL EL CAIRO.",
+    "localidad": "CENTRO",
+    "prioridad": "BAJA",
+    "estado_operativo": "NORMAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 300000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 300000000,
+    "accion_requerida": "REPORTE_URBANO [ACU-0012]: Reparar daños de red matriz, Realizar estudios de vulnerabilidad sismorresistente en los tanques de almacenamiento y edificios de operación.Implementar los refuerzos estructurales requeridos de acuerdo con los resultados de los estudios.Reponer las tuberías afectadas en AC.",
+    "afectacion": "REPORTE_URBANO [ACU-0012]: Daños y afectaciones en las redes matrices y tuberías del sistema de acueducto, incluyendo posibles fisuras y roturas",
+    "componentes": [
+      "ADUCCIÓN / CONDUCCIÓN",
+      "ALMACENAMIENTO",
+      "DISTRIBUCIÓN",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-ACU-EL-CAIRO-2215",
+    "municipio": "El Cairo",
+    "aro": "Norte Cartago",
+    "sistema": "ASOCIACIÓN DE USUARIOS DEL ACUEDUCTO RURAL COMUNITARIO DEL CORREGIMIENTO ALBAN AGUALBAN",
+    "localidad": "CORREGIMIENTO DE ALBAN",
+    "prioridad": "POR VALIDAR",
+    "estado_operativo": "POR VALIDAR",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 81000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 81000000,
+    "accion_requerida": "UESVALLE [ACU-EL-CAIRO-2215]: RECONSTRUIR O ADECUAR UNA EDIFICACIÓN SEGURA PARA LA OPERACIÓN ADMINISTRATIVA; REPONER EQUIPOS BÁSICOS Y RECUPERAR/RECONSTRUIR LOS SOPORTES DOCUMENTALES Y DE GESTIÓN DISPONIBLES.",
+    "afectacion": "UESVALLE [ACU-EL-CAIRO-2215]: REPORTE_UES_1: COLAPSO DE LA EDIFICACIÓN DONDE SE UBICABA EL ÁREA ADMINISTRATIVA, CON PÉRDIDA DE EQUIPOS Y ARCHIVO DEL ACUEDUCTO.",
+    "componentes": [
+      "OTRO / POR CLASIFICAR"
+    ]
+  },
+  {
+    "id": "DEP-RU-ACU-0014",
+    "municipio": "El Cerrito",
+    "aro": "Por validar",
+    "sistema": "ACUAVALLE",
+    "localidad": "FINCA LA AURORA",
+    "prioridad": "BAJA",
+    "estado_operativo": "NORMAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 2600000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 2600000000,
+    "accion_requerida": "REPORTE_URBANO [ACU-0014]: Reposición de las conducciones",
+    "afectacion": "REPORTE_URBANO [ACU-0014]: Conducciones: Se identificaron un total de tres fracturas/roturas en el sistema de conducción: dos localizadas en la Conducción 1 y una en la Conducción 2, dispuestas en distintos tramos del trazado. Las fallas fueron causadas por la concentración de esfuerzos mecánicos derivados del desplazamiento severo del terreno durante el evento sísmico.",
+    "componentes": [
+      "ADUCCIÓN / CONDUCCIÓN"
+    ]
+  },
+  {
+    "id": "DEP-ACU-EL-CERRITO-37",
+    "municipio": "El Cerrito",
+    "aro": "Sur Cali",
+    "sistema": "ACUAVALLE S.A. E.S.P. - SECCIONAL SANTA ELENA",
+    "localidad": "SANTA ELENA",
+    "prioridad": "BAJA",
+    "estado_operativo": "NORMAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 51000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 51000000,
+    "accion_requerida": "REPORTE_URBANO [ACU-0013]: Reforzamiento estructural metalico y reposición de codo afectado",
+    "afectacion": "REPORTE_URBANO [ACU-0013]: PTAP El Cerrito: Afectación estructural en dos vigas aéreas del tanque de procesos y la tubería de llenado en codo de 90°X14\" HF.",
+    "componentes": [
+      "ADUCCIÓN / CONDUCCIÓN",
+      "TRATAMIENTO",
+      "ALMACENAMIENTO",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-ACU-EL-CERRITO-40",
+    "municipio": "El Cerrito",
+    "aro": "Sur Cali",
+    "sistema": "ASOCIACION COMUNITARIA DE USUARIOS DE SERVICIOS PUBLICOS DOMICILIARIOS DEL CORREGIMIENTO DE EL PLACER MUNICIPIO DE EL CERRITO DEPARTAMENTO DEL VALLE DEL CAUCA E.S.P. AUSERPUB E.S.P.",
+    "localidad": "VILLANELLY",
+    "prioridad": "MEDIA",
+    "estado_operativo": "NORMAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 210000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 210000000,
+    "accion_requerida": "VALLECAUCANA [VAL-0015]: DEMOLICION TANQUE",
+    "afectacion": "Validación telefónica 04/09/2026: el sistema se encuentra en operación normal. Se presentaron problemas en el tanque de almacenamiento elevado.",
+    "componentes": [
+      "ALMACENAMIENTO"
+    ]
+  },
+  {
+    "id": "DEP-ACU-EL-DOVIO-51",
+    "municipio": "El Dovio",
+    "aro": "Norte Cartago",
+    "sistema": "ACUAVALLE S.A. E.S.P. SUCURSAL EL DOVIO",
+    "localidad": "CENTRO",
+    "prioridad": "BAJA",
+    "estado_operativo": "NORMAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 190000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 190000000,
+    "accion_requerida": "REPORTE_URBANO [ACU-0015]: Ejecutar reposición de 250 m de tuberia en Ø14\" PVC con 4 cámaras intermedias- trazado en tierra.Evaluar el segundo y tercer piso de la casa de operación y elementos asociados para establecer estabilidad y alcance de intervención.",
+    "afectacion": "REPORTE_URBANO [ACU-0015]: Tuberia de dasague de Ø14\" desacoplada y aplastada por entiguedad y material.Vulnerabilidad sísmica y geológica al Edificio de Operaciones",
+    "componentes": [
+      "ADUCCIÓN / CONDUCCIÓN"
+    ]
+  },
+  {
+    "id": "DEP-ACU-FLORIDA-111",
+    "municipio": "Florida",
+    "aro": "Sur Cali",
+    "sistema": "ASOCIACION COMUNITARIA DE USUARIOS DEL ACUEDUCTO DE LOS CORREGIMIENTOS EL TAMBORAL LA UNION Y EL AGRADO FLORIDA VALLE AUNITAMBO",
+    "localidad": "LA UNION",
+    "prioridad": "MEDIA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 54000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 54000000,
+    "accion_requerida": "VALLECAUCANA [VAL-0025]:  MALLA PARA REVESTIR TANQUE DE ALMACENAMIENTO 70M3 , REPELLO PARA TANQUE DE ALMACENAMIENTO, APLICAR SELLADOR PARA TANQUE EN HORMIGÓN Y REPARAR MURO TRANSPORTADOR DE AGUA (20 METROS)",
+    "afectacion": "UESVALLE [ACU-FLORIDA-111]: VERIFICACIÓN: PRESENTA FISURAS EL TANQUE DE ALMACENAMIENTO Y SE ESTA FILTRANDO\nVALLECAUCANA [VAL-0025]: ASENTAMIENTO DE LA CIMENTACIÓN DEL TANQUE \nFISURAS EN EL TANQUE DE ALMACENAMIENTO \nMURO QUE CONECTA TUBERÍA Y TANQUE DE ALMACENAMIENTO AGRIETADO",
+    "componentes": [
+      "ADUCCIÓN / CONDUCCIÓN",
+      "ALMACENAMIENTO",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-ACU-FLORIDA-117",
+    "municipio": "Florida",
+    "aro": "Sur Cali",
+    "sistema": "ASOCIACIÓN DE USUARIO DEL ACUEDUCTO DEL CORREGIMIENTO LA DIANA - ACUASALUD LA DIANA",
+    "localidad": "LA DIANA",
+    "prioridad": "MEDIA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 13500000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 13500000,
+    "accion_requerida": "VALLECAUCANA [VAL-0023]:  6 TUBOS DE 4 PULGADAS - ALTA PRESIÓN, 6 UNIONES 4 PULGADAS -ALTA PRESIÓN, 3 CODOS DE 4 PULGADAS, 2 UNIVERSALES 4 PULGADAS - ALTA PRESIÓN  Y PEGANTE PVC AZUL \nMANO DE OBRA",
+    "afectacion": "VALLECAUCANA [VAL-0023]: SE DESTRUYO UNA TUBERÍA PRINCIPAL DEL ACUEDUCTO Y AGRIETAMIENTO EN LA BOCATOMA",
+    "componentes": [
+      "CAPTACIÓN / FUENTE",
+      "ADUCCIÓN / CONDUCCIÓN",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-ACU-FLORIDA-1633",
+    "municipio": "Florida",
+    "aro": "Sur Cali",
+    "sistema": "ASOCIACION DE USUARIOS DEL ACUEDUCTO Y/O ALCANTARILLADO Y/O ASEO ACUALLANITO E.S.P EN LIQUIDACION",
+    "localidad": "EL LLANITO",
+    "prioridad": "MEDIA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 13500000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 13500000,
+    "accion_requerida": "VALLECAUCANA [VAL-0024]: REPARACION DE FISURAS EN TANQIE DESARENADOR Y CLORACION",
+    "afectacion": "UESVALLE [ACU-FLORIDA-1633]: VERIFICACIÓN: PRESENTA FISURAS EN DOS TANQUES DE ALMACENAMIENTO\nVALLECAUCANA [VAL-0024]:  FISURAS  EN EL TANQUE DESARENADOR Y EN EL DE CLORACION",
+    "componentes": [
+      "TRATAMIENTO",
+      "ALMACENAMIENTO",
+      "DESINFECCIÓN",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-ACU-GINEBRA-38",
+    "municipio": "Ginebra",
+    "aro": "Sur Cali",
+    "sistema": "ACUAVALLE S.A. E.S.P. - SECCIONAL GINEBRA",
+    "localidad": "URBANO -LA FLORESTA(500) -LA 150(64)- VILLA VANEGAS(172)- LA 60(21)- VILLA LIBIA(196)- LA 40(56)- LA 42(18)- MOSOCO Y GUABITO(181)- LA 150(58)- LA 115(17)- LA 43(65)- LA 15(112)",
+    "prioridad": "POR VALIDAR",
+    "estado_operativo": "POR VALIDAR",
+    "afectado_acueducto": "POR VALIDAR",
+    "inversion_acueducto": 0,
+    "inversion_alcantarillado": 7400000,
+    "inversion_total": 7400000,
+    "accion_requerida": "REPORTE_URBANO [ACU-ALC-002]: Construcción de 3 columnas",
+    "afectacion": "REPORTE_URBANO [ACU-ALC-002]: PTAR Ginebra: afectación estructural en vigas del edificio de labores",
+    "componentes": [
+      "ESTRUCTURAL / GEOTÉCNICO",
+      "ALCANTARILLADO"
+    ]
+  },
+  {
+    "id": "DEP-ACU-GINEBRA-3042",
+    "municipio": "Ginebra",
+    "aro": "Sur Cali",
+    "sistema": "ASOCIACION DE USUARIOS DEL SERVICIO DE AGUA POTABLE Y/O ALCANTARILLADO Y/O ASEO DEL CORREGIMIENTO DE COSTA RICA - MUNICIPIO DE GINEBRA - ASUALCAN",
+    "localidad": "COSTA RICA",
+    "prioridad": "POR VALIDAR",
+    "estado_operativo": "POR VALIDAR",
+    "afectado_acueducto": "NO REPORTADO",
+    "inversion_acueducto": 0,
+    "inversion_alcantarillado": 126000000,
+    "inversion_total": 126000000,
+    "accion_requerida": "UESVALLE [ACU-GINEBRA-3042]: REALIZAR INSPECCIÓN Y DIAGNÓSTICO DEL COLECTOR, IDENTIFICAR TRAMOS FRACTURADOS O DESPLAZADOS Y EJECUTAR REPOSICIÓN DE TUBERÍA, EMPALMES, EXCAVACIÓN, RELLENO Y PRUEBAS DE FUNCIONAMIENTO.",
+    "afectacion": "UESVALLE [ACU-GINEBRA-3042]: VERIFICACIÓN: PRESENTA AFECTACIONES EN LA TUBERIA DE ALCANTARILLADO\nREPORTE_UES_1: AFECTACIONES EN EL COLECTOR DEL SISTEMA DE ALCANTARILLADO ASOCIADAS AL EVENTO SÍSMICO.",
+    "componentes": [
+      "ADUCCIÓN / CONDUCCIÓN",
+      "ALCANTARILLADO"
+    ]
+  },
+  {
+    "id": "DEP-ACU-LA-CUMBRE-110",
+    "municipio": "La Cumbre",
+    "aro": "Sur Cali",
+    "sistema": "ADMINISTRACION COOPERATIVA LA CUMBRE DAGUA E.S.P.",
+    "localidad": "PUENTE PALO",
+    "prioridad": "ALTA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 52000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 52000000,
+    "accion_requerida": "VALLECAUCANA [VAL-0021]:  PUNTO DE MUESTREO R11 – SECTOR LA VIRGEN: AFECTACIÓN ESTRUCTURAL DE LA CASETA CORRESPONDIENTE AL PUNTO DE MUESTREO.\nLÍNEA PRINCIPAL R3 – BELLAVISTA: AFECTACIÓN EN TUBERÍA DE SEIS (6) PULGADAS.\n PUENTE PALO – SECTOR CEMENTERIO: AFECTACIÓN SOBRE LA LÍNEA PRINCIPAL.",
+    "afectacion": "UESVALLE [ACU-LA-CUMBRE-110]: FORMULARIO: los daños estuvieron relacionados con afectaciones estructurales en puntos de...\nVALLECAUCANA [VAL-0021]: Avería de tuberías de la red principal y de distribución que afectan el servicio de agua a la comunidad",
+    "componentes": [
+      "ADUCCIÓN / CONDUCCIÓN",
+      "DISTRIBUCIÓN",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-ACU-LA-CUMBRE-107",
+    "municipio": "La Cumbre",
+    "aro": "Sur Cali",
+    "sistema": "ASOCIACION COMUNITARIA ADMINISTRADORA DEL ACUEDUCTO DEL CORREGIMIENTO SAN JOSE DE PAVAS MUNICIPIO DE LA CUMBRE VALLE DEL CAUCA - ACAAPAVAS",
+    "localidad": "SAN JOSE DE PAVAS",
+    "prioridad": "MEDIA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 81000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 81000000,
+    "accion_requerida": "VALLECAUCANA [VAL-0027]: DEMOLICION Y CONSTRUCION EN CONCRETO",
+    "afectacion": "VALLECAUCANA [VAL-0027]: DAÑOS ESTRUCTURALES SEVEROS EN CASETA DE OPERACIÓN, GRIETAS POR TENSION DIAGONAL EN MUROS DE ADOBE Y TAPIAS",
+    "componentes": [
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-ACU-LA-CUMBRE-3957",
+    "municipio": "La Cumbre",
+    "aro": "Sur Cali",
+    "sistema": "ASOCIACION DE SUSCRIPTORES DEL ACUEDUCTO VEREDAL UNIDO DEL CORREGIMIENTO DE JIGUALES, MUNICIPIO DE LA CUMBRE - ASOJIGUA",
+    "localidad": "JIGUALES",
+    "prioridad": "ALTA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 87750000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 87750000,
+    "accion_requerida": "VALLECAUCANA [VAL-0026]:  EL SUMINISTRO DE MATERIALES Y ACCESORIOS NECESARIOS PARA EFECTUAR LAS REPARACIONES CORRESPONDIENTES QUE PERMITAN REMPLAZAR LAS TUBERIAS, HABILITGAR LOS SITEMAS DE FILTRACION.",
+    "afectacion": "UESVALLE [ACU-LA-CUMBRE-3957]: FORMULARIO: Las redes de conducción y aducción se encuentran fracturadas en varios tramos...\nVALLECAUCANA [VAL-0026]: SE REPORTARON DAÑOS EN ACCESORIOS Y TUBERÍAS DE DOS (2) PULGADAS CORRESPONDIENTES A LA INTERCONEXIÓN DEL SISTEMA DE FILTRACIÓN DE LAS PLANTAS DE TRATAMIENTO DE AGUA POTABLE UBICADAS EN LOS SECTORES LAURELES Y ALTO SINÚ.",
+    "componentes": [
+      "ADUCCIÓN / CONDUCCIÓN",
+      "TRATAMIENTO",
+      "DISTRIBUCIÓN"
+    ]
+  },
+  {
+    "id": "DEP-VAL-0028",
+    "municipio": "La Cumbre",
+    "aro": "Por validar",
+    "sistema": "PARRAGA MORALES",
+    "localidad": "PARRAGA MORALES",
+    "prioridad": "MEDIA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 60750000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 60750000,
+    "accion_requerida": "VALLECAUCANA [VAL-0028]: SUMINISTRO E INSTALACION DE TANQUES PLASTICOS DE 20.000 LITROS O 10 MIL LITROS CADA UNO",
+    "afectacion": "VALLECAUCANA [VAL-0028]: AFECTACION EN TANQUE No 6 DEBIDO FALLA EN LA UNION ENTRE LOSA DE CONCRETO DE FONDO Y MUROS DE MANPOSTERIA",
+    "componentes": [
+      "ALMACENAMIENTO",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-ACU-LA-UNION-3180",
+    "municipio": "La Unión",
+    "aro": "Norte Cartago",
+    "sistema": "JUNTA ADMINISTRADORA ACUEDUCTO VEREDA LA ISLA",
+    "localidad": "VEREDA LA ISLA",
+    "prioridad": "MEDIA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 546000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 546000000,
+    "accion_requerida": "VALLECAUCANA [VAL-0030]:  DEMOLICIÓN DEL TANQUE EXISTENTE Y CONSTRUCCIÓN/INSTALACIÓN DE UN NUEVO TANQUE DE ALMACENAMIENTO QUE GARANTICE LA CONTINUIDAD DEL SERVICIO.",
+    "afectacion": "VALLECAUCANA [VAL-0030]: TANQUE DE ALMACENAMIENTO ALTO AFECTADO POR EL SISMO, PRESENTANDO GRIETAS Y FISURAS DE CONSIDERACIÓN EN ELEMENTOS ESTRUCTURALES, DESPRENDIMIENTO DE CONCRETO Y EXPOSICIÓN DEL ACERO DE REFUERZO, COMPROMETIENDO SU ESTABILIDAD Y FUNCIONAMIENTO.",
+    "componentes": [
+      "ALMACENAMIENTO",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-VAL-0029",
+    "municipio": "La Unión",
+    "aro": "Por validar",
+    "sistema": "SAN PEDRO SAN LUIS Y SILOE ASUASPEL",
+    "localidad": "SAN PEDRO SAN LUIS Y SILOE ASUASPEL",
+    "prioridad": "MEDIA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 344500000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 344500000,
+    "accion_requerida": "VALLECAUCANA [VAL-0029]:  EVALUACIÓN TÉCNICA Y ESTRUCTURAL DE LOS ELEMENTOS AFECTADOS, REPARACIÓN O RECONSTRUCCIÓN DE LAS ESTRUCTURAS QUE PRESENTEN COMPROMISO, IMPERMEABILIZACIÓN CUANDO CORRESPONDA Y REALIZACIÓN DE PRUEBAS DE FUNCIONAMIENTO ANTES DEL RESTABLECIMIENTO DEL SERVICIO",
+    "afectacion": "VALLECAUCANA [VAL-0029]:  TANQUES DE ALMACENAMIENTO, FLOCULADOR, MURO DE CERRAMIENTO Y CASETA DE CLORACIÓN PRESENTAN GRIETAS Y FISURAS ASOCIADAS AL EVENTO SÍSMICO, CON AFECTACIÓN DE LA INFRAESTRUCTURA DEL SISTEMA DE ACUEDUCTO.",
+    "componentes": [
+      "TRATAMIENTO",
+      "ALMACENAMIENTO",
+      "DESINFECCIÓN",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-ACU-LA-VICTORIA-2892",
+    "municipio": "La Victoria",
+    "aro": "Norte Cartago",
+    "sistema": "ASOCIACION DE USUARIOS DEL ACUEDUCTO RURAL COMUNITARIO DEL CORREGIMIENTO TAGUALES",
+    "localidad": "CORREGIMIENTO TAGUALES",
+    "prioridad": "MEDIA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 13000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 13000000,
+    "accion_requerida": "VALLECAUCANA [VAL-0031]: REPARAR FISURAS DE LA ESTRUCTURA Y  DE LOS TANQUES, REALIZAR LA IMPERMEABILIZACION DE LOS TANQUES",
+    "afectacion": "VALLECAUCANA [VAL-0031]: TANQUE ELEVADO DE ALMACENAMIENTO PRESENTA FISURAS EN LOS NUDOS(COLUMNAS Y VIGAS),  FILTRACIONES EN LAS UNIONES DE LA LOSA  DE FONDO CON LOS MUROS.\nFISURAS EN MUROS DEL TANQUE DE BOMBEO",
+    "componentes": [
+      "TRATAMIENTO",
+      "ALMACENAMIENTO",
+      "BOMBEO / ELÉCTRICO",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-ACU-OBANDO-9361",
+    "municipio": "Obando",
+    "aro": "Norte Cartago",
+    "sistema": "ASOCIACIÓN DE USUARIOS DEL ACUEDUCTO AGUAS, AGUA Y VIDA YUCATAN Y LIMONES",
+    "localidad": "VEREDA LIMONES",
+    "prioridad": "MEDIA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 45500000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 45500000,
+    "accion_requerida": "VALLECAUCANA [VAL-0033]:  REPOSICIÓN Y ALINEACIÓN DEL TRAMO DE TUBERÍA DESPLAZADO, INCLUYENDO REVISIÓN Y ASEGURAMIENTO DE LAS CONEXIONES PARA GARANTIZAR LA CONTINUIDAD DEL SERVICIO.",
+    "afectacion": "VALLECAUCANA [VAL-0033]: DESPLAZAMIENTO DE LA TUBERÍA DE 2½ PULGADAS, OCASIONANDO AFECTACIÓN EN LA CONDUCCIÓN.",
+    "componentes": [
+      "ADUCCIÓN / CONDUCCIÓN"
+    ]
+  },
+  {
+    "id": "DEP-ACU-OBANDO-2620",
+    "municipio": "Obando",
+    "aro": "Norte Cartago",
+    "sistema": "JUNTA ADMINISTRADORA ACUEDUCTO CRUCES",
+    "localidad": "CORREGIMIENTO CRUCES",
+    "prioridad": "MEDIA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 143000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 143000000,
+    "accion_requerida": "VALLECAUCANA [VAL-0034]:  EVALUACIÓN TÉCNICA DEL VIADUCTO Y LAS ESTRUCTURAS AFECTADAS.\nINSPECCIÓN DE ESTABILIDAD DEL TERRENO Y DEL BARRANCO.\nREPARACIÓN DE LOS AGRIETAMIENTOS EN EL ÚLTIMO FILTRO Y CAJA DE QUIEBRE.\nESTABILIZACIÓN Y PROTECCIÓN DEL TERRENO EN EL SECTOR DEL VIADUCTO.\nREVISIÓN Y ASEGURAMIENTO DE LA CONDUCCIÓN DE AGUA PARA EVITAR LA INTERRUPCIÓN DEL SERVICIO.\nINTERVENCIÓN PRIORITARIA ANTES DE LA TEMPORADA DE LLUVIAS, DEBIDO AL RIESGO DE MAYOR DESPLAZAMIENTO DEL TERRENO.",
+    "afectacion": "VALLECAUCANA [VAL-0034]: AGRIETAMIENTO EN EL ÚLTIMO FILTRO Y CAJA DE QUIEBRE, CON POSIBLE AFECTACIÓN DE SU ESTABILIDAD Y FUNCIONAMIENTO.",
+    "componentes": [
+      "ADUCCIÓN / CONDUCCIÓN",
+      "TRATAMIENTO",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-ACU-RESTREPO-537",
+    "municipio": "Restrepo",
+    "aro": "Centro Tuluá",
+    "sistema": "ACUAPALTRES ASOCIACION DE USUARIOS DEL ACUEDUCTO TRES PUERTAS",
+    "localidad": "TRES PUERTAS",
+    "prioridad": "MEDIA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 13000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 13000000,
+    "accion_requerida": "VALLECAUCANA [VAL-0035]:  REPARACIÓN DE LA UNIÓN DE LA TUBERÍA GALVANIZADA DE 4 PULGADAS MEDIANTE SOLDADURA, VERIFICACIÓN DE LA INTEGRIDAD DE LA TUBERÍA, PRUEBA DE PRESIÓN Y FUNCIONAMIENTO PARA GARANTIZAR EL RESTABLECIMIENTO DEL SERVICIO.",
+    "afectacion": "VALLECAUCANA [VAL-0035]:   SIN SERVICIO DE AGUA, RUPTURA DE TUBERÍA GALVANIZADA DE 4 PULGADAS EN UNA UNION",
+    "componentes": [
+      "ADUCCIÓN / CONDUCCIÓN"
+    ]
+  },
+  {
+    "id": "DEP-ACU-RESTREPO-190",
+    "municipio": "Restrepo",
+    "aro": "Centro Tuluá",
+    "sistema": "ACUAVALLE S.A. ESP",
+    "localidad": "URBANO",
+    "prioridad": "BAJA",
+    "estado_operativo": "NORMAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 95000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 95000000,
+    "accion_requerida": "REPORTE_URBANO [ACU-0024]: Demolicion y construccion de una caseta nueva | Demolicion y construccion de una caseta nueva con losa superior para soporte de tanque",
+    "afectacion": "REPORTE_URBANO [ACU-0024]: Durante el evento sismico se presentaron daños estructurales en la caseta de dosificación de cloro, se evidencian grietas de los muros a 45 grados en el 80% de la longitud de la pared, el riesgo es crítico se recomendó no usar este espacio dentro de la operación de la planta .\nLa tuberia que transporta el agua procesada a los tanques de almacenamiento se fracturo debido al evento | Vulnerabilidad sísmica y geológica a la caseta dosificacion de sulfato R.Alto",
+    "componentes": [
+      "ADUCCIÓN / CONDUCCIÓN",
+      "ALMACENAMIENTO",
+      "DESINFECCIÓN",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-ACU-RESTREPO-2064",
+    "municipio": "Restrepo",
+    "aro": "Centro Tuluá",
+    "sistema": "ACUEDUCTO ALTO DEL OSO - LA ESPERANZA",
+    "localidad": "ALTO DEL OSO",
+    "prioridad": "MEDIA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 180000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 180000000,
+    "accion_requerida": "VALLECAUCANA [VAL-0057]: Intervención de alta prioridad por afectación importante.",
+    "afectacion": "UESVALLE [ACU-RESTREPO-2064]: VERIFICACIÓN: tuvo daño en cortina y afectación en tanque de almacenamiento\nVALLECAUCANA [VAL-0057]: PRESENTA FISURAS QUE AFECTAN DE MANERA CONSIDERABLE LA ESTANQUIDAD DEL COMPONENTE",
+    "componentes": [
+      "ALMACENAMIENTO",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-ACU-RESTREPO-7545",
+    "municipio": "Restrepo",
+    "aro": "Centro Tuluá",
+    "sistema": "ACUEDUCTO ALTO DEL OSO LA FLORIDA",
+    "localidad": "LA FLORIDA",
+    "prioridad": "MEDIA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 480000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 480000000,
+    "accion_requerida": "VALLECAUCANA [VAL-0058]: INTERVENCION PRIORIETARIAS PARA REGULAR EL SERVICIO DE ACUEDUCTO\nVALLECAUCANA [VAL-0059]: Intervención inmediata por riesgo o afectación crítica del servicio.",
+    "afectacion": "VALLECAUCANA [VAL-0058]: LAS FISURAS QUE PRESENTABA CON EL SISMO SE AGRAVARON\nVALLECAUCANA [VAL-0059]: EL TANQUE PRESENTO FISURAS CON PERDIDA IMPORTANTE DE AGUA. LA CAPTACIÓN PRESENTO AVERIAS SEVERAS, EL AGUA SE DESVIA Y NO INGRESA.",
+    "componentes": [
+      "CAPTACIÓN / FUENTE",
+      "ALMACENAMIENTO",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-ACU-RESTREPO-14230",
+    "municipio": "Restrepo",
+    "aro": "Centro Tuluá",
+    "sistema": "ACUEDUCTO RURAL ALTO ZABALETAS",
+    "localidad": "ALTO ZABALETAS",
+    "prioridad": "MEDIA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 456000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 456000000,
+    "accion_requerida": "VALLECAUCANA [VAL-0051]: INTERVENCIÓN INMEDIATA POR RIESGO O AFECTACIÓN CRITICA DEL SERVICIO",
+    "afectacion": "VALLECAUCANA [VAL-0051]:  Fisura en tubería de salida de bocatoma y muro en la captación, desarenador  con Múltiples fisuras y ampliación de grietas preexistentes.  Tanque con Múltiples fisuras en la estructura de almacenamiento.",
+    "componentes": [
+      "CAPTACIÓN / FUENTE",
+      "ADUCCIÓN / CONDUCCIÓN",
+      "TRATAMIENTO",
+      "ALMACENAMIENTO",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-ACU-RESTREPO-157",
+    "municipio": "Restrepo",
+    "aro": "Centro Tuluá",
+    "sistema": "ACUEDUCTO RURAL TABLEROS ACUAVALLE S.A ESP",
+    "localidad": "TABLEROS",
+    "prioridad": "BAJA",
+    "estado_operativo": "NORMAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 135000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 135000000,
+    "accion_requerida": "REPORTE_URBANO [ACU-0025]: Se requiere un analisis dinamico de la estructura teniendo en cuenta las afectaciones existentes para asi determinar su estabilidad y procedimiento para rehabilitacion.Demolicion y construccion de una caseta nueva con losa superior para soporte de tanque",
+    "afectacion": "REPORTE_URBANO [ACU-0025]: Durante el evento sismico se presentaron daños estructurales a la caseta de dosificación de sulfato",
+    "componentes": [
+      "ALMACENAMIENTO",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-VAL-0055",
+    "municipio": "Restrepo",
+    "aro": "Por validar",
+    "sistema": "ALTO DEL OSO",
+    "localidad": "ALTO DEL OSO",
+    "prioridad": "MEDIA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 480000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 480000000,
+    "accion_requerida": "VALLECAUCANA [VAL-0055]: Intervención de alta prioridad por afectación importante EN EL SERVICIO.",
+    "afectacion": "VALLECAUCANA [VAL-0055]: EL DESARENADOR SU ESTRUCTURA SE FISURO CON DESPERDICIO DE AGUA Y EL TANQUE DE ALMACENAMIENTO TAMBIEN PRESENTO FISURAS Y AVERIAS EN LOS MUROS",
+    "componentes": [
+      "TRATAMIENTO",
+      "ALMACENAMIENTO",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-ACU-RESTREPO-3393",
+    "municipio": "Restrepo",
+    "aro": "Centro Tuluá",
+    "sistema": "ASOCIACION DE SUSCRIPTORES DEL SISTEMA DE SUMINISTRO DE AGUA RURAL COMUNITARIA LA VEREDA LA ALBANIA ASOAGUALBANIA",
+    "localidad": "ALBANIA",
+    "prioridad": "MEDIA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 660000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 660000000,
+    "accion_requerida": "VALLECAUCANA [VAL-0056]: INTERVENCION PRIORIETARIAS PARA REGULAR EL SERVICIO DE ACUEDUCTO",
+    "afectacion": "VALLECAUCANA [VAL-0056]: ADUCCIÓN PRESENTO FILTRACIONES EN UNIONES / TUBERÍA FALLADA EN LA VEREDA. EL TANQUE MOSTRO FILTRACIONES TRANSVERSALES CON HUMEDAD DESCENDENTE. LA RED MUESTRA FILTRACIONES Y FALLAS EN VARIOS TRAMOS,",
+    "componentes": [
+      "ADUCCIÓN / CONDUCCIÓN",
+      "TRATAMIENTO",
+      "ALMACENAMIENTO"
+    ]
+  },
+  {
+    "id": "DEP-ACU-RESTREPO-3304",
+    "municipio": "Restrepo",
+    "aro": "Centro Tuluá",
+    "sistema": "ASOCIACION USUARIOS COMUNIDAD VDA SAN SALVADOR Y EL SILENCIO - EL SILENCIO",
+    "localidad": "SILENCIO",
+    "prioridad": "MEDIA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 480000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 480000000,
+    "accion_requerida": "VALLECAUCANA [VAL-0052]: INTERVENCIÓN INMEDIATA POR RIESGO O AFECTACIÓN CRITICA DEL SERVICIO",
+    "afectacion": "VALLECAUCANA [VAL-0052]: Fisuras en tanque de almacenamiento y cámara de caída.",
+    "componentes": [
+      "ALMACENAMIENTO",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-ACU-RESTREPO-13516",
+    "municipio": "Restrepo",
+    "aro": "Centro Tuluá",
+    "sistema": "JUNTA ADMINISTRADORA ACUEDUCTO ROMAN",
+    "localidad": "ROMAN",
+    "prioridad": "MEDIA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 216000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 216000000,
+    "accion_requerida": "VALLECAUCANA [VAL-0053]: Intervención programable para evitar mayor deterioro.",
+    "afectacion": "VALLECAUCANA [VAL-0053]: FISURAS CON RIESGO DE AMPLIACIÓN PRODUCTO DEL SISMO en tanque",
+    "componentes": [
+      "ALMACENAMIENTO",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-VAL-0054",
+    "municipio": "Restrepo",
+    "aro": "Por validar",
+    "sistema": "RIOGRANDE",
+    "localidad": "RIOGRANDE",
+    "prioridad": "MEDIA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 240000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 240000000,
+    "accion_requerida": "VALLECAUCANA [VAL-0054]: Intervención de alta prioridad por afectación importante",
+    "afectacion": "VALLECAUCANA [VAL-0054]: FISURAS EN JUNTAS; Y SIN RECUBRIMIENTO IMPERMEABILIZANTE  EN TANQUE",
+    "componentes": [
+      "ALMACENAMIENTO",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-ACU-RIOFRIO-510",
+    "municipio": "Riofrío",
+    "aro": "Centro Tuluá",
+    "sistema": "ACUEDUCTO RURAL FENICIA ACUAFENICIA",
+    "localidad": "FENICIA",
+    "prioridad": "ALTA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 236600000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 236600000,
+    "accion_requerida": "VALLECAUCANA [VAL-0036]: REMPLAZO DE TUBERIA",
+    "afectacion": "VALLECAUCANA [VAL-0036]: DEBIDO AL DERRUMBES, SE VIERON AFECTADOS 4KM DE TUBERIA DE 2.5\".",
+    "componentes": [
+      "ADUCCIÓN / CONDUCCIÓN",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-ACU-RIOFRIO-505",
+    "municipio": "Riofrío",
+    "aro": "Centro Tuluá",
+    "sistema": "ACUEDUCTO RURAL LOS ESTRECHOS",
+    "localidad": "LOS ESTRECHOS",
+    "prioridad": "MEDIA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 364000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 364000000,
+    "accion_requerida": "VALLECAUCANA [VAL-0037]: EVALUAR REPARACION DE TANQUE DE ALMACENAMIENTO REVESTICIMIENTO, IMPERMEABILIZADA Y CONSTRUCCION DE CASETA  DE OPERACIÓN",
+    "afectacion": "VALLECAUCANA [VAL-0037]: SE PRESENTAN GRIETAS DEL TANQUE DE ALMACENAMIENTO Y SE PRESENTAN COLAPSO DE LA CASETA DE OPERACIONES DEL ACUEDUCTO",
+    "componentes": [
+      "ALMACENAMIENTO",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-ACU-RIOFRIO-513",
+    "municipio": "Riofrío",
+    "aro": "Centro Tuluá",
+    "sistema": "ACUEDUCTO RURAL MADRIGAL ACUAMADRIGAL",
+    "localidad": "MADRIGAL",
+    "prioridad": "POR VALIDAR",
+    "estado_operativo": "POR VALIDAR",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 364000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 364000000,
+    "accion_requerida": "UESVALLE [ACU-RIOFRIO-513]: EVALUAR Y REHABILITAR O RECONSTRUIR EL TANQUE DE ALMACENAMIENTO; RECONSTRUIR EL ESPACIO ADMINISTRATIVO Y REPONER LOS EQUIPOS BÁSICOS NECESARIOS PARA LA OPERACIÓN Y ATENCIÓN A USUARIOS.",
+    "afectacion": "UESVALLE [ACU-RIOFRIO-513]: REPORTE_UES_1: AGRIETAMIENTO DEL TANQUE DE ALMACENAMIENTO Y COLAPSO DE LA EDIFICACIÓN DONDE SE REALIZABAN LABORES ADMINISTRATIVAS, CON PÉRDIDA DE EQUIPO DE IMPRESIÓN Y DEL ESPACIO DE ATENCIÓN A USUARIOS.",
+    "componentes": [
+      "ALMACENAMIENTO",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-ACU-ROLDANILLO-895",
+    "municipio": "Roldanillo",
+    "aro": "Norte Cartago",
+    "sistema": "ACUACAMPO: ISUGU EL SILENCIO PUERTO QUINTERO, CANDELARIA, PUEBLO NUEVO, EL RINCON, SIMON BOLIVAR Y REMOLINO",
+    "localidad": "VEREDA SIMON BOLIVAR",
+    "prioridad": "POR VALIDAR",
+    "estado_operativo": "POR VALIDAR",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 115500000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 115500000,
+    "accion_requerida": "UESVALLE [ACU-ROLDANILLO-895]: REALIZAR EVALUACIÓN GEOTÉCNICA E HIDRÁULICA DE LOS JARILLONES Y DEL RIESGO SOBRE LA INFRAESTRUCTURA DEL SISTEMA; EJECUTAR OBRAS DE ESTABILIZACIÓN, RECONFORMACIÓN Y PROTECCIÓN EN LOS SECTORES COMPROMETIDOS.",
+    "afectacion": "UESVALLE [ACU-ROLDANILLO-895]: REPORTE_UES_1: AFECTACIONES EN LOS JARILLONES DEL RÍO CAUCA REPORTADAS PARA EL SISTEMA ACUACAMPO.",
+    "componentes": [
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-ACU-ROLDANILLO-53",
+    "municipio": "Roldanillo",
+    "aro": "Norte Cartago",
+    "sistema": "ACUAVALLE S.A. E.S.P. SUCURSAL ROLDANILLO.",
+    "localidad": "EL CENTRO",
+    "prioridad": "BAJA",
+    "estado_operativo": "NORMAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 651000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 651000000,
+    "accion_requerida": "REPORTE_URBANO [ACU-0027]: •Contratar reparación de la cubierta en teja de barro para protejer ante lluvias los equipos eléctricos y electrónicos al interior de estas 2 edificaciones.\n•Realizar estudio técnico de paredes, columnas, vigas y demás elementos para determinar estabilidad, alcance de intervención y necesidad de reconstrucción.Reposición de tuberías afectadas acueducto de la:\n• Cra 7 Calle 11 a 15\n• Calle 10 Cras 4 a 9",
+    "afectacion": "REPORTE_URBANO [ACU-0027]: El Edificio de Operaciones y Cuarto de Planta Eléctrica de Emergencia presenta afectaciones en la cubierta de barro y en sus aleros, además de algunas fisuras en muros de ladrillo común.Daños y afectaciones en las redes matrices y tuberías del sistema de acueducto, incluyendo posibles fisuras y roturas.",
+    "componentes": [
+      "ADUCCIÓN / CONDUCCIÓN",
+      "DISTRIBUCIÓN",
+      "BOMBEO / ELÉCTRICO",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-ACU-SEVILLA-224",
+    "municipio": "Sevilla",
+    "aro": "Centro Tuluá",
+    "sistema": "ACUAVALLE S.A ESP",
+    "localidad": "URBANO",
+    "prioridad": "BAJA",
+    "estado_operativo": "NORMAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 3400000000,
+    "inversion_alcantarillado": 200000000,
+    "inversion_total": 3600000000,
+    "accion_requerida": "REPORTE_URBANO [ACU-0029]: Ejecutar la reposición de las redes de acueducto afectadas por el sismo en las siguientes direcciones: Calle 61 Cra 46 y 47 L = 100 metros diametro 3\" AC. Cra 49a Calle 62A L= 130 metros.diametro 3\" . Calle 61a con Calle 47 L= 12 metros diametro 10\" AC. Salida Ptap hasta la Calle 46 con Cra 49 L= 640 metros diametro 18\" American PIPE.Cra 53 Calle 56 Diametro 3\" AC L= 90 Metros. Carrera 40 entre Calles 51 y 54 sector los Lauros L= 500 metros diametro 14\" AC. | Realizar estudios de vulnerabilidad sismorresistente en edificios de operación.Implementar los refuerzos estructurales requeridos de acuerdo con los resultados de los estudios.\nREPORTE_URBANO [ACU-0030]: Ejecutar la reposición de la tuberia de aducción L= 400 metros diametro 18\" | Realizar estudios de vulnerabilidad sismorresistente en los tanques de almacenamiento, casetas y edificios de operación.Implementar los refuerzos estructurales requeridos de acuerdo con los resultados de los estudios.Reponer las tuberías afectadas en AC. Reparar y asegurar estructuralmente las casetas afectadas.\nREPORTE_URBANO [ACU-ALC-003]: Realizar la revisión interna con camaras de video de las redes de alcantarillado en los barrios Brasil, Granada,  San Vicente, cafetero, Monserrate, afectados por el sismo L= 3000 metros lineales tuberia",
+    "afectacion": "REPORTE_URBANO [ACU-0029]: Daños y afectaciones en las redes matrices y tuberías del sistema de acueducto, incluyendo posibles fisuras y roturas. | Daños en EB y Bodega Planta No.1\nREPORTE_URBANO [ACU-0030]: Daños en aducción principal de San Marcos | Daños en estructura del Tanque elevado y caseta de cloración.\nREPORTE_URBANO [ACU-ALC-003]: Fisuras en camaras de alcantarillado y en colectores de alcantarillado de HS.",
+    "componentes": [
+      "ADUCCIÓN / CONDUCCIÓN",
+      "TRATAMIENTO",
+      "ALMACENAMIENTO",
+      "DISTRIBUCIÓN",
+      "DESINFECCIÓN",
+      "ESTRUCTURAL / GEOTÉCNICO",
+      "ALCANTARILLADO"
+    ]
+  },
+  {
+    "id": "DEP-ACU-SEVILLA-3284",
+    "municipio": "Sevilla",
+    "aro": "Centro Tuluá",
+    "sistema": "ASOCIACION DE USUARIOS DEL ACUEDUCTO DE LAS VEREDAS LA CRISTALINA Y PURNIO - AGUA PORVENIR PURNIO",
+    "localidad": "PURNIO",
+    "prioridad": "MEDIA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 104000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 104000000,
+    "accion_requerida": "VALLECAUCANA [VAL-0038]: REPARACIÓN DE GRIETAS, SELLADO E IMPERMEABILIZACIÓN DEL DESARENADOR PARA GARANTIZAR SU ESTANQUEIDAD Y ADECUADO FUNCIONAMIENTO.",
+    "afectacion": "VALLECAUCANA [VAL-0038]: AGRIETAMIENTO Y FILTRACIÓN DE AGUA EN EL DESARENADOR NUEVO, AFECTANDO SU ESTANQUEIDAD Y FUNCIONAMIENTO.",
+    "componentes": [
+      "TRATAMIENTO",
+      "ALMACENAMIENTO",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-ACU-TORO-59",
+    "municipio": "Toro",
+    "aro": "Norte Cartago",
+    "sistema": "ACUAVALLE S.A. E.S.P. SUCURSAL TORO.",
+    "localidad": "SAN ANTONIO-EL BOHIO-LA CAYETANA(AGUA EN BLOQUE)",
+    "prioridad": "BAJA",
+    "estado_operativo": "NORMAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 900000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 900000000,
+    "accion_requerida": "REPORTE_URBANO [ACU-0031]: Construcción de muro de contención para estabilizar el talud colindante con las estructuras de tratamiento.Reposición de los aleros afectados de la cubierta.Reposición de los tramos de tubería en AC afectados. Realizar estudios de vulnerabilidad sismorresistente en los tanques de almacenamiento y edificios de operación.",
+    "afectacion": "REPORTE_URBANO [ACU-0031]: Deslizamiento y pérdida de estabilidad del talud de la montaña colindante con las estructuras de tratamiento.Afectación en los aleros de la cubierta de las estructuras.Posibles daños en la red matriz de acueducto.",
+    "componentes": [
+      "ADUCCIÓN / CONDUCCIÓN",
+      "TRATAMIENTO",
+      "ALMACENAMIENTO",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-ACU-TORO-44",
+    "municipio": "Toro",
+    "aro": "Norte Cartago",
+    "sistema": "ASOCIACION CIVICA JUNTA ADMINISTRADORA DEL ACUEDUCTO CGTO SAN FRANCISCO",
+    "localidad": "SAN FRANCISCO",
+    "prioridad": "ALTA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 3575000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 3575000000,
+    "accion_requerida": "VALLECAUCANA [VAL-0039]:  INSTALACIÓN DE UNA PLANTA COMPACTA, REHABILITACIÓN DE LA BOCATOMA Y DESARENADOR, REPARACIÓN DEL TANQUE DE ALMACENAMIENTO Y LA SUSTITUCIÓN DEL TRAMO AFECTADO DE LA LÍNEA DE CONDUCCIÓN",
+    "afectacion": "VALLECAUCANA [VAL-0039]: EN LA BOCATOMA SE PRESENTAN FISURAS EN EL MURO, LAS CUALES HAN GENERADO FILTRACIONES. ASÍ MISMO, EL DESARENADOR 1 PRESENTA AGRIETAMIENTO Y FILTRACIONES, MIENTRAS QUE EN EL TANQUE DE ALMACENAMIENTO SE PRESENTA AGRIETAMIENTO DE LA ESTRUCTURA. ADICIONALMENTE LA LINEA DE CONDUCCIÓN PRESENTA RUPTURA DE EXTENSO TRAMO DE TUBERÍA DE ASBESTO DE 8 PULGADAS AFECTANDO ASÍ LA CONTINUIDAD DEL SISTEMA DE CONDUCCIÓN.",
+    "componentes": [
+      "CAPTACIÓN / FUENTE",
+      "ADUCCIÓN / CONDUCCIÓN",
+      "TRATAMIENTO",
+      "ALMACENAMIENTO",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-VAL-0064",
+    "municipio": "Trujillo",
+    "aro": "Por validar",
+    "sistema": "AGUAPUDEMIA",
+    "localidad": "AGUAPUDEMIA",
+    "prioridad": "MEDIA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 96000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 96000000,
+    "accion_requerida": "VALLECAUCANA [VAL-0064]: Construir caseta de operaciones",
+    "afectacion": "VALLECAUCANA [VAL-0064]: 4 Tanques de quiebre",
+    "componentes": [
+      "ALMACENAMIENTO"
+    ]
+  },
+  {
+    "id": "DEP-VAL-0062",
+    "municipio": "Trujillo",
+    "aro": "Por validar",
+    "sistema": "ALTO CACERES",
+    "localidad": "ALTO CACERES",
+    "prioridad": "MEDIA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 60000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 60000000,
+    "accion_requerida": "VALLECAUCANA [VAL-0062]: Construir caseta de operaciones",
+    "afectacion": "VALLECAUCANA [VAL-0062]: Caseta de Operaciones",
+    "componentes": [
+      "OTRO / POR CLASIFICAR"
+    ]
+  },
+  {
+    "id": "DEP-ACU-TRUJILLO-228",
+    "municipio": "Trujillo",
+    "aro": "Centro Tuluá",
+    "sistema": "ASOCIACION DE USUARIOS ACUEDUCTO RURAL COLECTIVO AL OTRO MUNDO VEREDA LA CRISTALINA",
+    "localidad": "LA CRISTALINA",
+    "prioridad": "POR VALIDAR",
+    "estado_operativo": "POR VALIDAR",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 360000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 360000000,
+    "accion_requerida": "UESVALLE [ACU-TRUJILLO-228]: REALIZAR LEVANTAMIENTO DE LOS TRAMOS DE TUBERÍA Y VIADUCTOS AFECTADOS; REPONER TUBERÍAS, ACCESORIOS Y ANCLAJES, Y REHABILITAR BASES, APOYOS Y ELEMENTOS ESTRUCTURALES DE LOS VIADUCTOS.",
+    "afectacion": "UESVALLE [ACU-TRUJILLO-228]: REPORTE_UES_1: AFECTACIONES EN TUBERÍA Y VIADUCTOS DEL SISTEMA DE ACUEDUCTO.",
+    "componentes": [
+      "ADUCCIÓN / CONDUCCIÓN",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-ACU-TRUJILLO-231",
+    "municipio": "Trujillo",
+    "aro": "Centro Tuluá",
+    "sistema": "ASOCIACION DE USUARIOS DEL ACUEDUCTO VEREDAS BUENAVISTA LA BOHEMIA",
+    "localidad": "BUENAVISTA",
+    "prioridad": "MEDIA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 480000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 480000000,
+    "accion_requerida": "VALLECAUCANA [VAL-0063]: Tanque de almacenamiento agrietado y Construir caseta de operaciones",
+    "afectacion": "VALLECAUCANA [VAL-0063]: Caseta de Operaciones, Tanque de almacenamiento agrietado",
+    "componentes": [
+      "ALMACENAMIENTO",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-VAL-0060",
+    "municipio": "Trujillo",
+    "aro": "Por validar",
+    "sistema": "EL REMOLINO",
+    "localidad": "EL REMOLINO",
+    "prioridad": "MEDIA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 249600000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 249600000,
+    "accion_requerida": "VALLECAUCANA [VAL-0060]: Evaluar reparación temporal, demoler y construir el tanque",
+    "afectacion": "VALLECAUCANA [VAL-0060]: No tienen agua, están diagnosticando el problema.",
+    "componentes": [
+      "ALMACENAMIENTO"
+    ]
+  },
+  {
+    "id": "DEP-VAL-0065",
+    "municipio": "Trujillo",
+    "aro": "Por validar",
+    "sistema": "NUEVA SONORA",
+    "localidad": "NUEVA SONORA",
+    "prioridad": "MEDIA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 360000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 360000000,
+    "accion_requerida": "VALLECAUCANA [VAL-0065]: Demoler construir tanque",
+    "afectacion": "VALLECAUCANA [VAL-0065]: SE PRESENTAN GRIETAS EN 4 TANQUES DE QUIEBRE, DAÑO EN 4 Km DE TUBERIA DE 4\".",
+    "componentes": [
+      "ADUCCIÓN / CONDUCCIÓN",
+      "ALMACENAMIENTO",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-VAL-0061",
+    "municipio": "Trujillo",
+    "aro": "Por validar",
+    "sistema": "PUENTE BLANCO LA DEBORA MARACAIBO",
+    "localidad": "PUENTE BLANCO LA DEBORA MARACAIBO",
+    "prioridad": "MEDIA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 360000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 360000000,
+    "accion_requerida": "VALLECAUCANA [VAL-0061]: Evaluar reparación temporal, demoler y construir el tanque",
+    "afectacion": "VALLECAUCANA [VAL-0061]: Debido al derrumbes, se vieron afectados 4Km de tubería de 4\" y 4 Tanques de quiebre",
+    "componentes": [
+      "ADUCCIÓN / CONDUCCIÓN",
+      "ALMACENAMIENTO",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-VAL-0042",
+    "municipio": "Tuluá",
+    "aro": "Por validar",
+    "sistema": "BOCAS DE TULUA",
+    "localidad": "BOCAS DE TULUA",
+    "prioridad": "MEDIA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 748000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 748000000,
+    "accion_requerida": "VALLECAUCANA [VAL-0042]:  CONSTRUCCIÓN DE UN NUEVO TANQUE DE ALMACENAMIENTO ELEVADO, INCLUYENDO EL DISEÑO, CIMENTACIÓN, ESTRUCTURA DE SOPORTE, SISTEMA DE ENTRADA Y SALIDA, ACCESORIOS HIDRÁULICOS, IMPERMEABILIZACIÓN Y DEMÁS COMPONENTES NECESARIOS.",
+    "afectacion": "VALLECAUCANA [VAL-0042]: \nFISURAS IDENTIFICADAS EN LOS NODOS DE SOPORTE DEL TANQUE ELEVADO, EVIDENCIANDO AFECTACIÓN ESTRUCTURAL",
+    "componentes": [
+      "ALMACENAMIENTO",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-VAL-0041",
+    "municipio": "Tuluá",
+    "aro": "Por validar",
+    "sistema": "EL RETIRO",
+    "localidad": "EL RETIRO",
+    "prioridad": "MEDIA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 115500000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 115500000,
+    "accion_requerida": "VALLECAUCANA [VAL-0041]:  ESTABILIZACIÓN DEL TERRENO Y REPOSICIÓN DE LA TUBERÍA AFECTADA.",
+    "afectacion": "VALLECAUCANA [VAL-0041]: DESLIZAMIENTO DE TIERRA EN EL SECTOR DONDE SE ENCUENTRAN UBICADOS LOS APOYOS O PATAS DEL VIADUCTO DEL SISTEMA DE ACUEDUCTO",
+    "componentes": [
+      "ADUCCIÓN / CONDUCCIÓN",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-VAL-0040",
+    "municipio": "Tuluá",
+    "aro": "Por validar",
+    "sistema": "MONTELORO",
+    "localidad": "MONTELORO",
+    "prioridad": "ALTA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 495000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 495000000,
+    "accion_requerida": "VALLECAUCANA [VAL-0040]:  CONSTRUCCIÓN DE UN NUEVO DESARENADOR, DE ACUERDO CON LAS CONDICIONES HIDRÁULICAS Y ESTRUCTURALES REQUERIDAS PARA EL SISTEMA DE ACUEDUCTO.\nCONSTRUCCIÓN DE UN NUEVO TANQUE DE ALMACENAMIENTO",
+    "afectacion": "VALLECAUCANA [VAL-0040]: SE EVIDENCIÓ EL COLAPSO DE LA ESTRUCTURA DEL DESARENADOR, CON DESPLAZAMIENTO Y CAÍDA HACIA EL CAUCE. LA AFECTACIÓN COMPROMETE LA ESTABILIDAD E INTEGRIDAD DE LA INFRAESTRUCTURA Y LIMITA SU FUNCIONAMIENTO.\nAFECTACIÓN CRÍTICA EN EL ÁREA DE EMPLAZAMIENTO DEL TANQUE DE ALMACENAMIENTO, ASOCIADA A LA PÉRDIDA DE ESTABILIDAD DEL TERRENO Y A UN PROCESO DE EROSIÓN Y DESPRENDIMIENTO DEL TALUD. LA ESTRUCTURA PRESENTA UNA CONDICIÓN DE INESTABILIDAD POTENCIAL Y RIESGO DE COLAPSO",
+    "componentes": [
+      "TRATAMIENTO",
+      "ALMACENAMIENTO",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-VAL-0066",
+    "municipio": "Tuluá",
+    "aro": "Por validar",
+    "sistema": "QUEBRTADA GRANDE",
+    "localidad": "QUEBRTADA GRANDE",
+    "prioridad": "MEDIA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 360000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 360000000,
+    "accion_requerida": "VALLECAUCANA [VAL-0066]: Demolición de tanques y reconstrucción, materiales, transporte de materiales, prueba de estanqueidad, limpieza, desinfección y funcionamiento",
+    "afectacion": "VALLECAUCANA [VAL-0066]: Fisuras, desprendimiento y separación del concreto en las paredes de 2 tanques de almacenamiento con filtración de agua",
+    "componentes": [
+      "TRATAMIENTO",
+      "ALMACENAMIENTO",
+      "DISTRIBUCIÓN",
+      "DESINFECCIÓN",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-ACU-ULLOA-68",
+    "municipio": "Ulloa",
+    "aro": "Norte Cartago",
+    "sistema": "ACUAVALLE S.A. E.S.P. SUCURSAL ULLOA.",
+    "localidad": "CENTRO",
+    "prioridad": "BAJA",
+    "estado_operativo": "NORMAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 10000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 10000000,
+    "accion_requerida": "REPORTE_URBANO [ACU-0034]: Realizar reparaciones basicas para evitar fugas de agua dentro del proceso de potabilizacion, y asi mismo evitar que debiliten el suelo de soporte de las estructuras de la Ptap, mientras se define la reubicacion de esta Ptap por encontrarse sobre una falla geologica.",
+    "afectacion": "REPORTE_URBANO [ACU-0034]: Vulnerabilidad sísmica y geológica a la caseta de proteccion planta de emergencia",
+    "componentes": [
+      "TRATAMIENTO",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-VAL-0043",
+    "municipio": "Ulloa",
+    "aro": "Por validar",
+    "sistema": "BERLIN VENECIA EL COFRE CENTRO POBLADO MOCTEZUMA LA PASTORA DINAMARCA SECTOR LOS ANGELES CALAMONTE ALTO CHAPINERO",
+    "localidad": "BERLIN VENECIA EL COFRE CENTRO POBLADO MOCTEZUMA LA PASTORA DINAMARCA SECTOR LOS ANGELES CALAMONTE ALTO CHAPINERO",
+    "prioridad": "ALTA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 748000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 748000000,
+    "accion_requerida": "VALLECAUCANA [VAL-0043]:  EVALUAR REPARACIÓN TEMPORAL, CONSTRUIR BOCATOMA NUEVA.",
+    "afectacion": "VALLECAUCANA [VAL-0043]: BOCATOMA CHAPINERO, DISMINUCIÓN CONSIDERABLE DEL CAUDAL DE AGUA, SEGUN DIAGNOSTICO AGRITAMIENTO DEL SUELO DE LA BOCATOMA, HAY FILTRACIÓN DE AGUA HACIA EL SUBSUELO.\nTANQUE #4 (240M3) EN BERLIN AGRIETADO Y CON FILTRACIONES\nTANQUE #5 (110M3) EN MOCTEZUMA AGRIETADO Y CON FILTRACIONES\nDEBIDO AL DERRUMBES, SE VIERON AFECTADOS 4KM DE TUBERIA DE 6\".",
+    "componentes": [
+      "CAPTACIÓN / FUENTE",
+      "ADUCCIÓN / CONDUCCIÓN",
+      "TRATAMIENTO",
+      "ALMACENAMIENTO",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-RU-EXT-007",
+    "municipio": "Versalles",
+    "aro": "Por validar",
+    "sistema": "ACUACAMPO",
+    "localidad": "PTAP, PTAR, PMIRS, BOCATOMA Y REDES DE ACUEDUCTO Y ALCANTARILLADO DE LA ZONA URBANA DEL MUNICIPIO",
+    "prioridad": "BAJA",
+    "estado_operativo": "NORMAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 250000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 250000000,
+    "accion_requerida": "REPORTE_URBANO [EXT-007]: Reparacion de fugas en acueducto, hacer la evaluacion y reparacion de fugas en alcantarillado y PTAR, y de manera urgente se necesita la evacuacion de los residuos de la PMIRS, este ultimo invconveniente es el mas urgente porque podria interrumpir el servicio de aseo",
+    "afectacion": "REPORTE_URBANO [EXT-007]: ACUEDUCTO: La bocatoma no presenta daños aparentes y funciona con normalida pero la caseta de la estación de bombeo tuvo un colapso en su techo y parte de los paneles electricos de las bombas quedaron expuestos, aun esperamos la valoracion de ingenieros civiles de la estrucutra hidraulica de la bocatoma y sedimentadores. En cuanto a la PTAP a pesar que esta operando con relativa normalidad, se presenta una filtracion en uno de los filtros de arena y en uno de los tanques de almacenamiento. Tambien se presenta daño estrucutral en una caseta de bombeo que sumiistra agua al barrio neblina alta. Respecto a los tanques de distribucion de la red (3 tanques) no presentan ningun tipo de daño estructural aparente, sin embargo, en la red si hubieron varios daños, los principales ya fueron resueltos para dar sumistro, pero aún se siguen presentando muchos daños domiciliarios, hasta la fecha ya se han resuelto mas de 50 pero se siguen presentando por las obras de demolicion en curso.",
+    "componentes": [
+      "CAPTACIÓN / FUENTE",
+      "TRATAMIENTO",
+      "ALMACENAMIENTO",
+      "DISTRIBUCIÓN",
+      "BOMBEO / ELÉCTRICO",
+      "ESTRUCTURAL / GEOTÉCNICO",
+      "ALCANTARILLADO"
+    ]
+  },
+  {
+    "id": "DEP-ACU-VERSALLES-1953",
+    "municipio": "Versalles",
+    "aro": "Norte Cartago",
+    "sistema": "ASOCIACION ADMINISTRADORA DEL ACUEDUCTO RURAL COMUNITARIO DEL CORREGIMIENTO DE LA FLORIDA",
+    "localidad": "CORREGIMIENTO LA FLORIDA",
+    "prioridad": "MEDIA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 240000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 240000000,
+    "accion_requerida": "VALLECAUCANA [VAL-0050]: REALIZAR REPARACIÓN Y SELLADO DE GRIETAS Y FISURAS, RECUPERACIÓN DE SUPERFICIES E IMPERMEABILIZACIÓN INTERNA DEL DESARENADOR Y TANQUE DE DISTRIBUCIÓN, GARANTIZANDO SU ESTANQUEIDAD Y ADECUADO FUNCIONAMIENTO.",
+    "afectacion": "VALLECAUCANA [VAL-0050]:  AGRIETAMIENTO Y FILTRACIÓN DE AGUA EN EL DESARENADOR Y TANQUE DE DISTRIBUCION.",
+    "componentes": [
+      "TRATAMIENTO",
+      "ALMACENAMIENTO",
+      "DISTRIBUCIÓN",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-ACU-VERSALLES-1952",
+    "municipio": "Versalles",
+    "aro": "Norte Cartago",
+    "sistema": "ASOCIACION COMUNITARIA ADMINISTRADORA DEL ACUEDUCTO ACUASALUD EL BALSAL",
+    "localidad": "CORREGIMIENTO EL BALSAL",
+    "prioridad": "MEDIA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 1020000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 1020000000,
+    "accion_requerida": "VALLECAUCANA [VAL-0049]: REALIZAR EVALUACIÓN ESTRUCTURAL DEL TANQUE, REPARACIÓN DE GRIETAS Y FISURAS, RECUPERACIÓN DEL RECUBRIMIENTO Y PROTECCIÓN DEL ACERO DE REFUERZO, PREVIA VERIFICACIÓN DE SU ESTABILIDAD Y ESTANQUEIDAD",
+    "afectacion": "VALLECAUCANA [VAL-0049]: TANQUE DE ALMACENAMIENTO AFECTADO, PRESENTANDO GRIETAS Y FISURAS SIGNIFICATIVAS EN ELEMENTOS ESTRUCTURALES, DESPRENDIMIENTO DEL RECUBRIMIENTO DE CONCRETO Y EXPOSICIÓN DEL ACERO DE REFUERZO.",
+    "componentes": [
+      "ALMACENAMIENTO",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-ACU-VERSALLES-52",
+    "municipio": "Versalles",
+    "aro": "Norte Cartago",
+    "sistema": "COOPERATIVA DE SERVICIOS PUBLICOS DE VERSALLES CAMINO VERDE APC",
+    "localidad": "GUAYABITO",
+    "prioridad": "POR VALIDAR",
+    "estado_operativo": "POR VALIDAR",
+    "afectado_acueducto": "POR VALIDAR",
+    "inversion_acueducto": 0,
+    "inversion_alcantarillado": 100000000,
+    "inversion_total": 100000000,
+    "accion_requerida": "REPORTE_URBANO [EXT-008]: Reparacion de fugas en acueducto, hacer la evaluacion y reparacion de fugas en alcantarillado y PTAR, y de manera urgente se necesita la evacuacion de los residuos de la PMIRS, este ultimo invconveniente es el mas urgente porque podria interrumpir el servicio",
+    "afectacion": "REPORTE_URBANO [EXT-008]: ALCANTARILLADO: Respecto a la PTAR, aun seguimos esperando evalucaion de ingenieros civiles para determinar los daños estructurales, pero aparentemente se presenta colapso en el techo de la caseta y un descenso en los niveles de las lagunas lo cual puede ser una posible filtracion, en caso de ser asi, se necesitaria hacer un mantenimiento total de las lagunas (4 lagunas, una anaerobia y 3 facultativas), referente a la red de alcantarilado, se han identificado dos fugas grandes en la red madre de 12 pulgadas, en una de ellas es necesario la implementacion de un viaducto alzado, sin embargo, se aclara que aun no hemos podido inspeccionar la totalidad de las redes de alcantarillado porque estamos requiriendo personal para dicha labor, ya que nuestro personal operativo se ha enfocado en los servicios de acuaducto -",
+    "componentes": [
+      "ADUCCIÓN / CONDUCCIÓN",
+      "TRATAMIENTO",
+      "DISTRIBUCIÓN",
+      "ESTRUCTURAL / GEOTÉCNICO",
+      "ALCANTARILLADO"
+    ]
+  },
+  {
+    "id": "DEP-ACU-YOTOCO-499",
+    "municipio": "Yotoco",
+    "aro": "Centro Tuluá",
+    "sistema": "ASOCIACION DE USUARIOS DE LOS ACUEDUCTOS EL JARDIN - CALIMITA - CALIMITA",
+    "localidad": "CALIMITA",
+    "prioridad": "MEDIA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 65000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 65000000,
+    "accion_requerida": "VALLECAUCANA [VAL-0071]: UNIONES DE REPARACIÓN DESLIZANTES (2\" Y 3\"): PERMITEN REPARAR TUBERÍAS DE GRAN DIÁMETRO BAJO TIERRA EN ESPACIOS REDUCIDOS, DESLIZÁNDOSE SOBRE EL TUBO DAÑADO PARA SELLAR LA FALLA SIN REQUERIR GRANDES EXCAVACIONES.\n\nTUBERÍA Y UNIONES DE 1\" Y 3/4\": REPOSICIÓN DE LOS TRAMOS SECUNDARIOS COLAPSADOS PARA RESTABLECER EL FLUJO HACIA LOS RAMALES DOMICILIARIOS.\n\nKITS DE 1/2\" (TUBOS, CODOS, UNIONES LISAS, MACHO Y HEMBRA): RECONSTRUCCIÓN INTEGRAL DE ACOMETIDAS Y EMPALMES A ROSCA O PRESIÓN EN LOS PREDIOS AFECTADOS.\n\nPEGANTE, LIMPIADOR (3/8) Y HOJAS DE SEGUETA: INSUMOS PARA EL ACONDICIONAMIENTO, CORTE PRECISO Y SOLDADURA QUÍMICA DE LA TUBERÍA PVC, ASEGURANDO ESTANQUEIDAD EN TODAS LAS UNIONES.",
+    "afectacion": "VALLECAUCANA [VAL-0071]: LA INFRAESTRUCTURA DE SERVICIOS PÚBLICOS EN EL MUNICIPIO DE YOTOCO SUFRIÓ AFECTACIONES ESTRUCTURALES. EN EL SECTOR CORRESPONDIENTE AL ACUEDUCTO EL JARDÍN – CALIMITA, ZONA RURAL DEL MUNICIPIO. LAS CARGAS DINÁMICAS Y EL DESPLAZAMIENTO DE ESTRATOS DE SUELO GENERARON LA RUPTURA DE LA RED DE DISTRIBUCIÓN Y DAÑOS EN MÚLTIPLES ACOMETIDAS DOMICILIARIAS.",
+    "componentes": [
+      "ADUCCIÓN / CONDUCCIÓN",
+      "ALMACENAMIENTO",
+      "DISTRIBUCIÓN",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-ACU-YOTOCO-2787",
+    "municipio": "Yotoco",
+    "aro": "Centro Tuluá",
+    "sistema": "ASOCIACION DE USUARIOS DEL SISTEMA DE SUMINISTRO DE AGUA RURAL COMUNITARIA - PROAGUAS DE MUÑECOS",
+    "localidad": "MUÑECOS",
+    "prioridad": "ALTA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 89000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 89000000,
+    "accion_requerida": "VALLECAUCANA [VAL-0072]: · TUBERÍA Y ACCESORIOS DE 4\": RESTABLECIMIENTO DE LA CONDUCCIÓN PRINCIPAL O LÍNEA DE DESAGÜE GOLPEADA POR EL SISMO.\n\n· TUBERÍA, UNIONES, ADAPTADORES Y ACOPLES RÁPIDOS DE 2\": RECONSTRUCCIÓN DEL TRAMO MATRIZ COLAPSADO. LOS ACOPLES RÁPIDOS PERMITEN HACER REPARACIONES DE EMERGENCIA SIN NECESIDAD DE SOLDAR EN ZONAS CON PRESENCIA DE HUMEDAD O FLUJO RESIDUAL.\n\n· LLAVES DE PASO (1\" Y 2\"): REPOSICIÓN DE LOS ELEMENTOS DE MANIOBRA PARA RECUPERAR EL CONTROL HIDRÁULICO Y LA CAPACIDAD DE SECCIONAMIENTO EN EL ACUEDUCTO.\n\n· KITS DE 1\" Y 1/2\" (TUBOS Y ACCESORIOS VARIADOS): REPARACIÓN DE RAMALES DE DISTRIBUCIÓN DOMICILIARIA Y RECONSTRUCCIÓN DE ACOMETIDAS EN LAS VIVIENDAS AFECTADAS.\n\n· LIMPIADOR Y PEGANTE PVC (3/8): ACONDICIONAMIENTO QUÍMICO Y SOLDADURA DE ALTA RESISTENCIA PARA GARANTIZAR LA ESTANQUEIDAD DE LAS UNIONES EN TODO EL SISTEMA.",
+    "afectacion": "Validación telefónica 04/09/2026: presentó daños severos en la conducción de 4 pulgadas, redes de 2 y 1 pulgada y acometidas. El servicio se encuentra operando parcialmente y continúa suministrando agua a la comunidad.",
+    "componentes": [
+      "ADUCCIÓN / CONDUCCIÓN",
+      "ALMACENAMIENTO",
+      "DISTRIBUCIÓN"
+    ]
+  },
+  {
+    "id": "DEP-VAL-0070",
+    "municipio": "Yotoco",
+    "aro": "Por validar",
+    "sistema": "CORREGIMIENTO PUENTE TIERRA",
+    "localidad": "CORREGIMIENTO PUENTE TIERRA",
+    "prioridad": "MEDIA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 72000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 72000000,
+    "accion_requerida": "VALLECAUCANA [VAL-0070]: LA REPARACIÓN DE LA RED DE ACUEDUCTO EN EL SECTOR PUENTE TIERRA – LA OFELIA RESULTA PRIORITARIA DEBIDO A QUE EL AGUA POTABLE ES UN SERVICIO BÁSICO ESENCIAL PARA LA SALUBRIDAD E HIGIENE DE LAS FAMILIAS RESIDENTES EN LAS VIVIENDAS. MANTENER LA TUBERÍA MATRIZ DE 3\" DAÑADA INCREMENTA LOS RIESGOS DE CONTAMINACIÓN DEL AGUA POR INFILTRACIÓN DE TIERRA U OTROS AGENTES EXTERNOS, ADEMÁS DE GENERAR SOCAVACIÓN E INESTABILIDAD EN EL TERRENO POR FUGAS CONTINUAS. LA RÁPIDA RESTITUCIÓN DE LA VÁLVULA DE PASO DE 3\" Y LOS TRAMOS DE PRESIÓN PERMITIRÁ OPERAR LA RED DE FORMA SEGURA Y CONTROLADA.",
+    "afectacion": "VALLECAUCANA [VAL-0070]: A RAÍZ DEL EVENTO, LA FUERZA DE LA ONDA SÍSMICA FRACTURÓ LA TUBERÍA MATRIZ DE PRESIÓN DE 3 PULGADAS Y COLAPSÓ LA INFRAESTRUCTURA HIDRÁULICA INTERNA EN UN TOTAL DE 17 VIVIENDAS, GENERANDO LA SUSPENSIÓN INMEDIATA DEL SERVICIO DE AGUA POTABLE Y DEJANDO EN SITUACIÓN DE VULNERABILIDAD A LOS HABITANTES DE LA ZONA.",
+    "componentes": [
+      "ADUCCIÓN / CONDUCCIÓN",
+      "TRATAMIENTO",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-VAL-0073",
+    "municipio": "Yotoco",
+    "aro": "Por validar",
+    "sistema": "VEREDA COLORADAS",
+    "localidad": "VEREDA COLORADAS",
+    "prioridad": "MEDIA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 145000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 145000000,
+    "accion_requerida": "VALLECAUCANA [VAL-0073]: EL SERVICIO ESTA FUNCIONANDO DE MANERA RACIONADA , TODA VEZ QUE SI SE UTILIZA LA CAPACIDAD TOTAL DEL TANQUE DEBIDO A LAS FISURAS EL RECURSO HIDRICO SE DESPERDICIARIA, SE REQUIERE INTERVENCION EN EL TANQUE PARA EVITAR EL DESPERDICIO.",
+    "afectacion": "VALLECAUCANA [VAL-0073]: A RAÍZ DEL EVENTO SISMICO, LA FUERZA DE LA ONDA SÍSMICA FISURO UN TANQUE DE ALMACENAMIENTO ,EL CUAL ESTAN UTILIZANDO AL 40 % DE LA CAPACIDAD TOTAL.",
+    "componentes": [
+      "ALMACENAMIENTO",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-VAL-0045",
+    "municipio": "Yumbo",
+    "aro": "Por validar",
+    "sistema": "BRISAS DE MULALO",
+    "localidad": "BRISAS DE MULALO",
+    "prioridad": "MEDIA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 561000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 561000000,
+    "accion_requerida": "VALLECAUCANA [VAL-0045]: CONSTRUIR ALGIBE Y REMPLAZAR BOMBA",
+    "afectacion": "VALLECAUCANA [VAL-0045]: ALGIBE COLAPZO DE 30 METROS Y AFECTACION DE BOMBA",
+    "componentes": [
+      "BOMBEO / ELÉCTRICO"
+    ]
+  },
+  {
+    "id": "DEP-VAL-0046",
+    "municipio": "Yumbo",
+    "aro": "Por validar",
+    "sistema": "CORREGIMIENTO MANGA VIEJA",
+    "localidad": "CORREGIMIENTO MANGA VIEJA",
+    "prioridad": "MEDIA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 275000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 275000000,
+    "accion_requerida": "VALLECAUCANA [VAL-0046]:  SE REQUIERE CAMBIO DE VÁLVULA Y  MEDIOS FILTRANTES, RETIRO DE MEDIO FILTRANTE, (MATERIAL PÉTREO) A MÁQUINA, SUMINISTRO DE MEDIOS FILTRANTES, MATERIAL PETREO SELECCIONADO Y ANTRACITA, ARREGLO DE LATERALES Y BASE",
+    "afectacion": "VALLECAUCANA [VAL-0046]:  ROTURA DE LA VÁLVULA DE ACCESO A LOS FILTROS, PERMITIENDO EL INGRESO DE AGUA CON ALTA TURBIEDAD, LO QUE OCASIONÓ LA COLMATACIÓN DE LOS FILTROS DE LA PLANTA DE TRATAMIENTO QUE AFECTO SU ADECUADO FUNCIONAMIENTO, AFECTO ESTRUCTURA",
+    "componentes": [
+      "TRATAMIENTO",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  },
+  {
+    "id": "DEP-VAL-0044",
+    "municipio": "Yumbo",
+    "aro": "Por validar",
+    "sistema": "SAN MARCOS",
+    "localidad": "SAN MARCOS",
+    "prioridad": "MEDIA",
+    "estado_operativo": "NORMAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 935000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 935000000,
+    "accion_requerida": "Bomba reparada. Se recomienda el cambio del pozo como intervención definitiva para reducir la vulnerabilidad del sistema.",
+    "afectacion": "Validación telefónica 04/09/2026: el sistema se encuentra operando. Se presentaron daños en la bomba del pozo por desprendimiento del filtro; la bomba fue reparada.",
+    "componentes": [
+      "CAPTACIÓN / FUENTE",
+      "TRATAMIENTO",
+      "BOMBEO / ELÉCTRICO"
+    ]
+  },
+  {
+    "id": "DEP-ACU-ZARZAL-167",
+    "municipio": "Zarzal",
+    "aro": "Centro Tuluá",
+    "sistema": "ACUAVALLE S.A (ESP)",
+    "localidad": "URBANO",
+    "prioridad": "BAJA",
+    "estado_operativo": "NORMAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 5000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 5000000,
+    "accion_requerida": "REPORTE_URBANO [ACU-0038]: Se requiere la reparación de la tuberia para regular presiones en el sistema calle 11 con cra 6",
+    "afectacion": "REPORTE_URBANO [ACU-0038]: Daño en red matriz tuberia de Ø14\"",
+    "componentes": [
+      "ADUCCIÓN / CONDUCCIÓN"
+    ]
+  },
+  {
+    "id": "DEP-ACU-ZARZAL-159",
+    "municipio": "Zarzal",
+    "aro": "Centro Tuluá",
+    "sistema": "ACUEDUCTO ACUASALUD VALLEJUELO",
+    "localidad": "VALLEJUELO",
+    "prioridad": "ALTA",
+    "estado_operativo": "PARCIAL",
+    "afectado_acueducto": "SI",
+    "inversion_acueducto": 275000000,
+    "inversion_alcantarillado": 0,
+    "inversion_total": 275000000,
+    "accion_requerida": "VALLECAUCANA [VAL-0047]: EVALUACION DE LOS TANQUES DE ALMACENAMIENTO, REVESTIMIENTO, REPARACION DE LOZAS, CONSTRUCION DE CASETA DE CLORACION, REVISAR LINEAS DE CONDUCION DE REDES DE DISTRIBUCION  DE 500 METROS",
+    "afectacion": "VALLECAUCANA [VAL-0047]: EL TANQUE DE ALMACENAMIENTO PRINCIPAL DE LA CARMELITA SE NOS CAYO UNA CASETA Y FRACTURO EL TANQUE . EN LA PLANTA DE TRATAMIENTO EN COROZAL SE PRESENTARON FISURAS EN LOS TANQUES , EN LA REDES DE DISTRIBUCIÓN ALGUNOS DAÑOS POR EL MOVIMIENTO DE TIERRA.",
+    "componentes": [
+      "TRATAMIENTO",
+      "ALMACENAMIENTO",
+      "DISTRIBUCIÓN",
+      "DESINFECCIÓN",
+      "ESTRUCTURAL / GEOTÉCNICO"
+    ]
+  }
+]

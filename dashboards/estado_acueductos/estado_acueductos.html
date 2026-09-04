@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>UESVALLE | Estado de acueductos postevento</title>
+  <meta name="description" content="Tablero interinstitucional de diagnóstico, afectaciones, priorización e inversión para recuperación de acueductos posterior al evento sísmico de 2026.">
+  <link rel="stylesheet" href="acueductos.css?v=1.3.1">
+</head>
+<body>
+<header class="site-header">
+  <div class="institutional-area container">
+    <span class="partner-kicker">TRABAJO INTERINSTITUCIONAL</span>
+    <div class="logos-centered" aria-label="Entidades participantes">
+      <div class="logo-item main-logo-item"><img src="https://uesvalle.github.io/dashboards/vigilancia_sanitaria/assets/logos/logos_institucionales.png" alt="Gobernación del Valle del Cauca y UESVALLE" class="logo-main"></div>
+      <span class="logo-separator"></span>
+      <div class="logo-item"><img src="../../assets/estado_acueductos/logos/vallecaucana.png" alt="Vallecaucana de Aguas" class="logo-partner vallecaucana"></div>
+      <span class="logo-separator"></span>
+      <div class="logo-item"><img src="../../assets/estado_acueductos/logos/acuavalle.png" alt="ACUAVALLE" class="logo-partner acuavalle"></div>
+    </div>
+    <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Cambiar modo de visualización"><span id="theme-icon">☾</span><span id="theme-label">Modo oscuro</span></button>
+  </div>
+  <div class="hero-strip">
+    <div class="container hero-inner">
+      <p class="eyebrow light">RESPUESTA SANITARIA POSTEVENTO · AGUA PARA CONSUMO HUMANO</p>
+      <h1>Estado y recuperación de acueductos afectados</h1>
+      <p class="hero-sub">Diagnóstico interinstitucional para orientar recuperación, priorización técnica e inversión posterior al evento sísmico.</p>
+      <p class="hero-meta">Corte de información: <strong>04/09/2026</strong><span>·</span>Versión <strong>V1.3.1</strong></p>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="container kpi-grid" id="kpis" aria-label="Indicadores principales"></section>
+
+  <nav class="container tabs module-tabs" aria-label="Módulos del tablero">
+    <button class="tab active" data-tab="res"><span class="tab-kicker">01</span><span>Resumen general</span></button>
+    <button class="tab" data-tab="diag"><span class="tab-kicker">02</span><span>Diagnóstico por acueducto</span></button>
+    <button class="tab" data-tab="pri"><span class="tab-kicker">03</span><span>Priorización</span></button>
+    <button class="tab investment-tab" data-tab="inv"><span class="tab-kicker">04</span><span>Inversiones resumen</span></button>
+    <button class="tab" data-tab="met"><span class="tab-kicker">05</span><span>Metodología</span></button>
+  </nav>
+
+  <section class="container global-filter-block" aria-label="Filtros de consulta">
+    <div class="filter-title-row">
+      <div><span class="eyebrow">FILTROS</span><h2>Consulta</h2></div>
+      <span class="filter-help">Aplican al contenido de las pestañas. Los KPI superiores conservan la lectura departamental.</span>
+    </div>
+    <div class="filters global-filters">
+      <label>Buscar<input id="search" type="search" placeholder="Municipio, acueducto o localidad..."></label>
+      <label>Municipio<select id="filter-mun"><option value="">Todos</option></select></label>
+      <label>Prioridad<select id="filter-pri"><option value="">Todas</option></select></label>
+      <label>Estado<select id="filter-op"><option value="">Todos</option></select></label>
+      <label>Componente<select id="filter-comp"><option value="">Todos</option></select></label>
+      <label>Evidencia<select id="filter-photo"><option value="">Todos</option><option value="con">Con evidencia</option><option value="sin">Sin evidencia</option></select></label>
+      <button class="btn small" id="clear-filters">Limpiar</button>
+    </div>
+    <div class="active-filter-text" id="active-filter-text">Vista departamental · 98 acueductos afectados.</div>
+  </section>
+
+  <section class="tab-panel active" id="panel-res">
+    <div class="container">
+      <div class="section-head"><div><span class="eyebrow">RESUMEN GENERAL</span><h2>¿Cuál es la situación actual?</h2><p>Diagnóstico territorial, condición operativa de los acueductos afectados y necesidades principales de recuperación.</p></div></div>
+      <div class="map-dashboard-grid">
+        <article class="panel-card map-card">
+          <div class="panel-title-row"><div><h3>Diagnóstico de acueductos por municipio</h3><span class="small-note">Color = porcentaje de acueductos con estado operativo conocido</span></div><button class="btn ghost tiny" id="expand-map">Ampliar mapa</button></div>
+          <div class="geo-map-wrap"><svg id="valle-map" viewBox="0 0 760 760" role="img" aria-label="Mapa municipal del Valle del Cauca"></svg><div class="map-tooltip" id="map-tooltip" hidden></div></div>
+          <div class="map-legend"><span><i class="lg l0"></i>&lt;25%</span><span><i class="lg l1"></i>25–49%</span><span><i class="lg l2"></i>50–74%</span><span><i class="lg l3"></i>75–99%</span><span><i class="lg l4"></i>100%</span></div>
+        </article>
+        <article class="panel-card municipal-detail-card"><h3>Lectura municipal</h3><div id="map-selected" class="map-selected"><p>Seleccione un municipio en el mapa para consultar su diagnóstico.</p></div><div class="mini-ranking" id="diagnostic-ranking-mini"></div></article>
+      </div>
+      <div class="executive-grid">
+        <article class="panel-card"><div class="panel-title-row"><h3>¿Cómo operan los 98 afectados?</h3><span class="small-note" id="operation-note"></span></div><div id="operation-bars" class="bars"></div></article>
+        <article class="panel-card"><div class="panel-title-row"><h3>Prioridad propuesta</h3><span class="small-note" id="priority-note"></span></div><div id="priority-bars" class="bars"></div></article>
+        <article class="panel-card wide"><div class="panel-title-row"><h3>¿Qué componentes presentan afectaciones?</h3><span class="small-note">Un acueducto puede tener más de un componente · clic en una barra para filtrar</span></div><div id="component-bars" class="bars compact"></div></article>
+      </div>
+      <div class="money-strip">
+        <div><span>Inversión aproximada total</span><strong id="money-total">$0</strong></div>
+        <div><span>Acueducto</span><strong id="money-acueducto">$0</strong></div>
+        <div><span>Alcantarillado</span><strong id="money-alcantarillado">$0</strong></div>
+        <button class="btn ghost" data-go-tab="inv">Ver inversiones →</button>
+      </div>
+      <div class="section-head subsection"><div><span class="eyebrow">LECTURA TERRITORIAL</span><h2>Municipios con mayor presión de recuperación</h2><p>Acueductos afectados, población afectada reportada e inversión aproximada.</p></div></div>
+      <div class="municipal-ranking" id="municipal-ranking"></div>
+    </div>
+  </section>
+
+  <section class="tab-panel" id="panel-diag">
+    <div class="container">
+      <div class="section-head"><div><span class="eyebrow">DIAGNÓSTICO POR ACUEDUCTO</span><h2>¿Qué se afectó, qué se debe hacer y cuánto cuesta?</h2><p>Fichas de los 98 acueductos con afectación identificada, presentadas en formato visual para consulta rápida.</p></div><a class="btn ghost" href="../../data/estado_acueductos/current/acueductos_afectados.csv" download>Descargar CSV</a></div>
+      <div class="diagnosis-console fixed-console"><div><span class="console-module">ACUEDUCTOS AFECTADOS</span><span class="console-concept">Afectación · Operación · Recuperación · Evidencia · Inversión</span></div><div><div class="compact-summary" id="affected-summary"></div><div class="photo-publication-summary" id="photo-publication-summary"></div></div></div>
+      <div class="affected-module fixed-module"><div class="result-count" id="affected-count"></div><div class="card-grid" id="affected-cards"></div><div class="pagination" id="pagination"></div></div>
+    </div>
+  </section>
+
+  <section class="tab-panel" id="panel-pri">
+    <div class="container">
+      <div class="section-head"><div><span class="eyebrow">PRIORIZACIÓN</span><h2>¿Por cuáles acueductos se debe empezar?</h2><p>Orden inicial de atención a partir de la prioridad propuesta en el consolidado V1.2, estado operativo y población afectada reportada.</p></div></div>
+      <div class="priority-callout">
+        <div class="priority-high"><span>Alta</span><strong id="high-count">0</strong><small>Atención prioritaria</small></div>
+        <div class="priority-medium"><span>Media</span><strong id="med-count">0</strong><small>Intervención programada</small></div>
+        <div class="priority-low"><span>Baja</span><strong id="low-count">0</strong><small>Seguimiento / reparación</small></div>
+        <div class="priority-unknown"><span>Por validar</span><strong id="unk-count">0</strong><small>Requiere definición técnica</small></div>
+      </div>
+      <div class="table-wrap priority-table-wrap"><table class="data-table" id="priority-table"><thead><tr><th>Prioridad</th><th>Municipio</th><th>Acueducto</th><th>Operación</th><th>Población afectada</th><th>Afectación principal</th><th>Qué se debe hacer</th><th>Inversión</th></tr></thead><tbody></tbody></table></div>
+    </div>
+  </section>
+
+  <section class="tab-panel" id="panel-inv">
+    <div class="container">
+      <div class="section-head"><div><span class="eyebrow">INVERSIONES</span><h2>¿Cuánto cuesta la recuperación?</h2><p>Valor aproximado consolidado adoptado en la V1.2, incluyendo intervenciones de acueducto y alcantarillado.</p></div></div>
+      <div class="investment-kpis">
+        <article class="total"><span>Inversión aproximada total</span><strong id="inv-total">$0</strong><small>Agua y saneamiento</small></article>
+        <article><span>Acueducto</span><strong id="inv-acu">$0</strong><small>Recuperación de sistemas de abastecimiento</small></article>
+        <article class="alc"><span>Alcantarillado</span><strong id="inv-alc">$0</strong><small>Afectaciones sanitarias incorporadas</small></article>
+        <article><span>Participación acueducto</span><strong id="inv-acu-pct">0%</strong><small>Sobre el total aproximado</small></article>
+      </div>
+      <div class="investment-grid">
+        <article class="panel-card"><div class="panel-title-row"><h3>Inversión aproximada por municipio</h3><span class="small-note">Top 12</span></div><div id="investment-municipality-bars" class="bars investment-bars"></div></article>
+        <article class="panel-card"><div class="panel-title-row"><h3>Distribución por servicio</h3><span class="small-note">Acueducto / alcantarillado</span></div><div id="investment-service-bars" class="bars investment-bars"></div></article>
+      </div>
+      <div class="section-head subsection"><div><span class="eyebrow">MAYORES NECESIDADES</span><h2>Intervenciones con mayor valor aproximado</h2></div></div>
+      <div class="table-wrap"><table class="data-table" id="investment-table"><thead><tr><th>#</th><th>Municipio</th><th>Acueducto / sistema</th><th>Prioridad</th><th>Operación</th><th>Inversión aproximada</th><th>Acción requerida</th></tr></thead><tbody></tbody></table></div>
+    </div>
+  </section>
+
+  <section class="tab-panel" id="panel-met">
+    <div class="container">
+      <div class="section-head"><div><span class="eyebrow">METODOLOGÍA</span><h2>¿Cómo interpretar el tablero?</h2><p>Definiciones breves para mantener una lectura consistente de diagnóstico, afectación e inversión.</p></div></div>
+      <div class="method-grid" id="method-grid"></div>
+      <div class="section-head subsection"><div><span class="eyebrow">FUENTES</span><h2>Trabajo interinstitucional</h2></div></div>
+      <div class="sources-grid" id="sources-grid"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer"><div class="container"><strong>UESVALLE · Estado de acueductos postevento</strong><span>Fuente oficial: CONSOLIDADO_DEPARTAMENTAL_ESTADO_ACUEDUCTOS_2026_V1_2.xlsx</span></div></footer>
+
+<div class="modal" id="detail-modal" aria-hidden="true"><div class="modal-backdrop" data-close="detail"></div><div class="modal-dialog"><button class="modal-close" data-close="detail" aria-label="Cerrar">×</button><div id="modal-content"></div></div></div>
+
+<div class="modal" id="diagnostic-map-modal" aria-hidden="true"><div class="modal-backdrop" data-close="map"></div><div class="modal-dialog map-dialog"><button class="modal-close" data-close="map" aria-label="Cerrar">×</button><div class="modal-head"><span class="eyebrow">% ACUEDUCTOS DIAGNOSTICADOS</span><h2>Diagnóstico por municipio</h2><p>Un acueducto se considera diagnosticado cuando su operación está definida como normal, parcial o suspendida.</p></div><div class="map-modal-body"><div class="map-summary"><div><strong id="map-universe">598</strong><span>Universo</span></div><div><strong id="map-diagnosed">166</strong><span>Diagnosticados</span></div><div><strong id="map-pct">27,8 %</strong><span>Avance departamental</span></div></div><div class="map-layout"><div><div class="geo-map-wrap modal-map"><svg id="valle-map-modal" viewBox="0 0 760 760"></svg><div class="map-tooltip" id="map-tooltip-modal" hidden></div></div><div class="map-legend"><span><i class="lg l0"></i>&lt;25%</span><span><i class="lg l1"></i>25–49%</span><span><i class="lg l2"></i>50–74%</span><span><i class="lg l3"></i>75–99%</span><span><i class="lg l4"></i>100%</span></div></div><aside class="map-side"><h3>Detalle municipal</h3><div id="map-selected-modal" class="map-selected"><p>Seleccione un municipio.</p></div><h3 class="rank-title">Avance por municipio</h3><div class="map-ranking" id="diagnostic-ranking"></div></aside></div></div></div></div>
+
+<div class="modal" id="affected-modal" aria-hidden="true"><div class="modal-backdrop" data-close="affected"></div><div class="modal-dialog affected-dialog"><button class="modal-close" data-close="affected" aria-label="Cerrar">×</button><div class="modal-head"><span class="eyebrow">98 ACUEDUCTOS CON AFECTACIONES</span><h2>¿Cómo están operando?</h2><p>Distribución del estado operativo actual dentro de los acueductos con afectación identificada.</p></div><div class="affected-breakdown" id="affected-breakdown"></div><button class="btn large" id="go-diagnosis">Ver diagnóstico de los 98 acueductos →</button></div></div>
+
+<script src="../../data/estado_acueductos/current/acueductos_data.js?v=1.3.1"></script>
+<script src="acueductos.js?v=1.3.1"></script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+{
+  "version": "V1.2",
+  "corte": "04/09/2026",
+  "fuente": "CONSOLIDADO_DEPARTAMENTAL_ESTADO_ACUEDUCTOS_2026_V1_2.xlsx",
+  "universo_acueductos": 598,
+  "diagnosticados": 166,
+  "porcentaje_diagnosticado": 27.8,
+  "poblacion_afectada_reportada": 163209,
+  "acueductos_afectados": 98,
+  "operacion_normal_afectados": 34,
+  "operacion_parcial_afectados": 57,
+  "suspendidos_afectados": 0,
+  "operacion_por_validar_afectados": 7,
+  "inversion_acueducto_cop": 45684800000,
+  "inversion_alcantarillado_cop": 853400000,
+  "inversion_aproximada_total_cop": 46538200000,
+  "prioridades": {
+    "BAJA": 29,
+    "ALTA": 13,
+    "MEDIA": 49,
+    "POR VALIDAR": 7
+  },
+  "nota_inversion": "Valor aproximado consolidado adoptado en la V1.2. Incluye acueducto y alcantarillado."
+}
