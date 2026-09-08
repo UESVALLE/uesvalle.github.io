@@ -1,0 +1,173 @@
+[
+  {
+    "fecha_corte": "2026-09-08",
+    "modulo": "ATI",
+    "municipio": "La Victoria",
+    "establecimiento": "Coliseo CIC - Villa Mariana",
+    "accion": "ACTUALIZAR_VISITA",
+    "fuente": "Albergue La Victoria Valle-Coliseo CIC-01092026.pdf",
+    "nota": "Visita directa 01/09; 6 personas."
+  },
+  {
+    "fecha_corte": "2026-09-08",
+    "modulo": "ATI",
+    "municipio": "El Dovio",
+    "establecimiento": "Estadio Municipal Rodrigo Lloreda Caicedo",
+    "accion": "NUEVO_ATI",
+    "fuente": "Albergue el Dovio-Estadio Muncipal-01092026.pdf",
+    "nota": "Visita directa 01/09; 6 personas."
+  },
+  {
+    "fecha_corte": "2026-09-08",
+    "modulo": "ATI",
+    "municipio": "Versalles",
+    "establecimiento": "Coliseo Deportivo - Corregimiento La Florida",
+    "accion": "NUEVO_ATI",
+    "fuente": "VERSALLES RURAL ALBERGUE COLISEO DEPORTIVO, CORREGIMIENTO LA FLORIDA.pdf",
+    "nota": "Visita directa 31/08; 7 personas."
+  },
+  {
+    "fecha_corte": "2026-09-08",
+    "modulo": "ATI",
+    "municipio": "La Unión",
+    "establecimiento": "Coliseo Angelino Garzón",
+    "accion": "CAMBIO_ESTADO",
+    "fuente": "PIC/Gobernación · seguimiento 31/08",
+    "nota": "Fuente expresa 'No hay albergue'; se registra cierre operacional con trazabilidad."
+  },
+  {
+    "fecha_corte": "2026-09-08",
+    "modulo": "ATI",
+    "municipio": "Ansermanuevo",
+    "establecimiento": "Parque Recreacional → Alcaldía Municipal",
+    "accion": "TRAZABILIDAD_REUBICACION",
+    "fuente": "Carpeta municipal UESVALLE",
+    "nota": "Se conservan ambos sitios; el primero queda histórico."
+  },
+  {
+    "fecha_corte": "2026-09-08",
+    "modulo": "ATI",
+    "municipio": "Roldanillo",
+    "establecimiento": "Coliseo Iván Muñoz Villa → Coliseo N. S. de Chiquinquirá",
+    "accion": "TRAZABILIDAD_REUBICACION",
+    "fuente": "UESVALLE + PIC/Gobernación",
+    "nota": "Traslado por riesgo del sitio inicial."
+  },
+  {
+    "fecha_corte": "2026-09-08",
+    "modulo": "ATI",
+    "municipio": "Zarzal",
+    "establecimiento": "DLS → Estadio Municipal",
+    "accion": "TRAZABILIDAD_REUBICACION",
+    "fuente": "UESVALLE + PIC/Gobernación",
+    "nota": "Se conserva el sitio anterior como histórico."
+  },
+  {
+    "fecha_corte": "2026-09-08",
+    "modulo": "CEMENTERIOS",
+    "municipio": "Argelia",
+    "establecimiento": "Cementerio Municipal de Argelia",
+    "accion": "NUEVO",
+    "fuente": "CEMENTERIO ARGELIA.PDF",
+    "nota": "Evidencia municipal incorporada al corte V3.1."
+  },
+  {
+    "fecha_corte": "2026-09-08",
+    "modulo": "CEMENTERIOS",
+    "municipio": "El Cairo",
+    "establecimiento": "Cementerio Nuestra Señora de las Mercedes",
+    "accion": "NUEVO",
+    "fuente": "CEMENTERIO EL CAIRO-NUESTRA SEÑORA DE MERCEDES.PDF",
+    "nota": "Evidencia municipal incorporada al corte V3.1."
+  },
+  {
+    "fecha_corte": "2026-09-08",
+    "modulo": "CEMENTERIOS",
+    "municipio": "La Unión",
+    "establecimiento": "Cementerio Público Municipal San Miguel Arcángel",
+    "accion": "NUEVO",
+    "fuente": "CEMENTERIO LA UNION VALLE-SAN MIGUEL.PDF",
+    "nota": "Evidencia municipal incorporada al corte V3.1."
+  },
+  {
+    "fecha_corte": "2026-09-08",
+    "modulo": "CEMENTERIOS",
+    "municipio": "Toro",
+    "establecimiento": "Cementerio Nuestra Señora de la Consolación",
+    "accion": "NUEVO",
+    "fuente": "CEMENTERIO TORO-NUESTRA SEÑORA DE LA CONSOLACION.PDF",
+    "nota": "Evidencia municipal incorporada al corte V3.1."
+  },
+  {
+    "fecha_corte": "2026-09-08",
+    "modulo": "CEMENTERIOS",
+    "municipio": "Guacarí",
+    "establecimiento": "Cementerio Cristo Rey - Sonso",
+    "accion": "NUEVO",
+    "fuente": "CEMENTERIO CRISTO REY GUACARI-SEGUNDA VISITA.pdf",
+    "nota": "Evidencia municipal incorporada al corte V3.1."
+  },
+  {
+    "fecha_corte": "2026-09-08",
+    "modulo": "CEMENTERIOS",
+    "municipio": "Dagua",
+    "establecimiento": "Cementerio Corregimiento Zabaletas",
+    "accion": "NUEVO",
+    "fuente": "CEMENTERIO ZABALETAS-DAGUA.pdf",
+    "nota": "Evidencia municipal incorporada al corte V3.1."
+  },
+  {
+    "fecha_corte": "2026-09-08",
+    "modulo": "CEMENTERIOS",
+    "municipio": "Vijes",
+    "establecimiento": "Cementerio Sagrado Corazón de Jesús",
+    "accion": "NUEVO",
+    "fuente": "CEMENTERIO SAGRADO CORAZON DE JESUS-VIJES.pdf",
+    "nota": "Evidencia municipal incorporada al corte V3.1."
+  },
+  {
+    "fecha_corte": "2026-09-08",
+    "modulo": "CONTROL",
+    "municipio": "Ansermanuevo",
+    "establecimiento": "",
+    "accion": "REVISADO_SIN_CAMBIO_MODULO",
+    "fuente": "Carpeta municipal Drive",
+    "nota": "Nuevas evidencias de instituciones educativas; sin nuevo ATI adicional validado."
+  },
+  {
+    "fecha_corte": "2026-09-08",
+    "modulo": "CONTROL",
+    "municipio": "El Águila",
+    "establecimiento": "",
+    "accion": "REVISADO_SIN_CAMBIO_MODULO",
+    "fuente": "Carpeta municipal Drive",
+    "nota": "Nuevas evidencias de instituciones educativas; ATI existente se conserva."
+  },
+  {
+    "fecha_corte": "2026-09-08",
+    "modulo": "CONTROL",
+    "municipio": "Obando",
+    "establecimiento": "",
+    "accion": "REVISADO_SIN_CAMBIO_MODULO",
+    "fuente": "Carpeta municipal Drive",
+    "nota": "Nuevas evidencias educativas; no se genera nuevo ATI."
+  },
+  {
+    "fecha_corte": "2026-09-08",
+    "modulo": "CONTROL",
+    "municipio": "Roldanillo",
+    "establecimiento": "",
+    "accion": "REVISADO_SIN_CAMBIO_MODULO",
+    "fuente": "Carpeta municipal Drive",
+    "nota": "Nuevas evidencias educativas además de la trazabilidad ATI ya consolidada."
+  },
+  {
+    "fecha_corte": "2026-09-08",
+    "modulo": "CONTROL",
+    "municipio": "Ulloa",
+    "establecimiento": "",
+    "accion": "REVISADO_SIN_CAMBIO_MODULO",
+    "fuente": "Carpeta municipal Drive",
+    "nota": "Nuevas evidencias educativas; sin cambio directo en módulos ATI/Cementerios para este corte."
+  }
+]

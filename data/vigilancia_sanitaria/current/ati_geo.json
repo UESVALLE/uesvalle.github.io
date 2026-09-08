@@ -1,0 +1,162 @@
+[
+  {
+    "id_establecimiento": "ATI-001",
+    "municipio": "Ansermanuevo",
+    "establecimiento": "Alcaldía Municipal de Ansermanuevo",
+    "latitud": null,
+    "longitud": null,
+    "estado_georreferenciacion": "Pendiente"
+  },
+  {
+    "id_establecimiento": "ATI-002",
+    "municipio": "Ansermanuevo",
+    "establecimiento": "Parque Recreacional",
+    "latitud": null,
+    "longitud": null,
+    "estado_georreferenciacion": "Pendiente"
+  },
+  {
+    "id_establecimiento": "ATI-003",
+    "municipio": "Caicedonia",
+    "establecimiento": "Coliseo CIC - Caicedonia",
+    "latitud": null,
+    "longitud": null,
+    "estado_georreferenciacion": "Pendiente"
+  },
+  {
+    "id_establecimiento": "ATI-004",
+    "municipio": "Calima",
+    "establecimiento": "CIC - Centro de Integración Ciudadana",
+    "latitud": null,
+    "longitud": null,
+    "estado_georreferenciacion": "Pendiente"
+  },
+  {
+    "id_establecimiento": "ATI-005",
+    "municipio": "El Águila",
+    "establecimiento": "Colegio Parroquial El Águila",
+    "latitud": null,
+    "longitud": null,
+    "estado_georreferenciacion": "Pendiente"
+  },
+  {
+    "id_establecimiento": "ATI-006",
+    "municipio": "La Unión",
+    "establecimiento": "Coliseo Angelino Garzón",
+    "latitud": null,
+    "longitud": null,
+    "estado_georreferenciacion": "Pendiente"
+  },
+  {
+    "id_establecimiento": "ATI-007",
+    "municipio": "La Victoria",
+    "establecimiento": "Coliseo CIC - Villa Mariana",
+    "latitud": null,
+    "longitud": null,
+    "estado_georreferenciacion": "Pendiente"
+  },
+  {
+    "id_establecimiento": "ATI-008",
+    "municipio": "Obando",
+    "establecimiento": "Caseta Comunal - Puerto Molina",
+    "latitud": null,
+    "longitud": null,
+    "estado_georreferenciacion": "Pendiente"
+  },
+  {
+    "id_establecimiento": "ATI-009",
+    "municipio": "Obando",
+    "establecimiento": "Centro de Pensamiento Infantil",
+    "latitud": null,
+    "longitud": null,
+    "estado_georreferenciacion": "Pendiente"
+  },
+  {
+    "id_establecimiento": "ATI-010",
+    "municipio": "Restrepo",
+    "establecimiento": "Vivienda acondicionada detrás del Coliseo Municipal",
+    "latitud": null,
+    "longitud": null,
+    "estado_georreferenciacion": "Pendiente"
+  },
+  {
+    "id_establecimiento": "ATI-011",
+    "municipio": "Riofrío",
+    "establecimiento": "I.E. Nemesio Rodríguez Escobar - Sede Principal (Fenicia)",
+    "latitud": null,
+    "longitud": null,
+    "estado_georreferenciacion": "Pendiente"
+  },
+  {
+    "id_establecimiento": "ATI-012",
+    "municipio": "Roldanillo",
+    "establecimiento": "Coliseo Iván Muñoz Villa",
+    "latitud": null,
+    "longitud": null,
+    "estado_georreferenciacion": "Pendiente"
+  },
+  {
+    "id_establecimiento": "ATI-013",
+    "municipio": "Roldanillo",
+    "establecimiento": "Coliseo Nuestra Señora de Chiquinquirá",
+    "latitud": null,
+    "longitud": null,
+    "estado_georreferenciacion": "Pendiente"
+  },
+  {
+    "id_establecimiento": "ATI-014",
+    "municipio": "Sevilla",
+    "establecimiento": "Alojamiento Temporal Municipal de Sevilla",
+    "latitud": null,
+    "longitud": null,
+    "estado_georreferenciacion": "Pendiente"
+  },
+  {
+    "id_establecimiento": "ATI-015",
+    "municipio": "Versalles",
+    "establecimiento": "Coliseo Cubierto María Isabel Cruz",
+    "latitud": null,
+    "longitud": null,
+    "estado_georreferenciacion": "Pendiente"
+  },
+  {
+    "id_establecimiento": "ATI-016",
+    "municipio": "Yotoco",
+    "establecimiento": "Coliseo Polideportivo Zawadski",
+    "latitud": null,
+    "longitud": null,
+    "estado_georreferenciacion": "Pendiente"
+  },
+  {
+    "id_establecimiento": "ATI-017",
+    "municipio": "Zarzal",
+    "establecimiento": "Estadio Municipal de Zarzal",
+    "latitud": null,
+    "longitud": null,
+    "estado_georreferenciacion": "Pendiente"
+  },
+  {
+    "id_establecimiento": "ATI-018",
+    "municipio": "Zarzal",
+    "establecimiento": "Primer piso Dirección Local de Salud",
+    "latitud": null,
+    "longitud": null,
+    "estado_georreferenciacion": "Pendiente"
+  },
+  {
+    "id_establecimiento": "ATI-019",
+    "municipio": "El Dovio",
+    "establecimiento": "Estadio Municipal Rodrigo Lloreda Caicedo",
+    "latitud": null,
+    "longitud": null,
+    "estado_georreferenciacion": "Pendiente"
+  },
+  {
+    "id_establecimiento": "ATI-020",
+    "municipio": "Versalles",
+    "establecimiento": "Coliseo Deportivo - Corregimiento La Florida",
+    "latitud": null,
+    "longitud": null,
+    "estado_georreferenciacion": "Pendiente"
+  }
+]

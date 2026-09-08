@@ -1,0 +1,32 @@
+/* UESVALLE · Vigilancia Sanitaria V3.1 · estilos encapsulados ATI */
+.ati-v31-shell{margin:18px 0 20px;font-family:inherit;color:#23302b}
+.ati-v31-shell *{box-sizing:border-box}
+.v31-viewbar{display:flex;gap:8px;flex-wrap:wrap;padding:8px;background:#f4f7f5;border:1px solid #dfe8e2;border-radius:14px;margin-bottom:16px}
+.v31-viewbtn{border:0;background:transparent;padding:10px 16px;border-radius:10px;font-weight:750;color:#405047;cursor:pointer;transition:.15s ease}
+.v31-viewbtn:hover{background:#e7efe9}.v31-viewbtn.active{background:#0d6b47;color:#fff;box-shadow:0 2px 8px rgba(13,107,71,.18)}
+.v31-panel{display:none}.v31-panel.active{display:block}
+.v31-note{padding:12px 14px;border:1px solid #dfe8e2;background:#f8fbf9;border-radius:12px;font-size:.92rem;line-height:1.45;margin-bottom:14px}
+.v31-note strong{color:#0d6b47}
+.v31-kpis{display:grid;grid-template-columns:repeat(6,minmax(130px,1fr));gap:10px;margin-bottom:16px}
+.v31-kpi{border:1px solid #dde6df;background:#fff;border-radius:14px;padding:14px 14px 12px;text-align:left;min-height:106px;box-shadow:0 3px 14px rgba(34,55,44,.05)}
+button.v31-kpi{cursor:pointer;font:inherit}.v31-kpi:hover{border-color:#abc8b7}
+.v31-kpi .v{display:block;font-size:1.75rem;line-height:1;font-weight:850;color:#173d2d;margin-bottom:8px}.v31-kpi .l{display:block;font-weight:750;font-size:.86rem}.v31-kpi .s{display:block;font-size:.72rem;color:#68756e;margin-top:5px;line-height:1.25}
+.v31-kpi.closed{border-left:5px solid #b42318}.v31-kpi.moved{border-left:5px solid #b7791f}.v31-kpi.active{border-left:5px solid #16794f}.v31-kpi.unknown{border-left:5px solid #737b77}.v31-kpi.empty{border-left:5px solid #39749b}
+.v31-grid2{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(270px,.75fr);gap:14px;align-items:start}
+.v31-card{background:#fff;border:1px solid #dfe8e2;border-radius:14px;padding:15px;box-shadow:0 3px 14px rgba(34,55,44,.04)}
+.v31-card h3{margin:0 0 10px;font-size:1rem;color:#1d3c2f}.v31-card p{margin:.3rem 0;font-size:.88rem;color:#56635d;line-height:1.4}
+.v31-status-bars{display:grid;gap:9px}.v31-status-row{display:grid;grid-template-columns:175px minmax(80px,1fr) 30px;gap:8px;align-items:center;font-size:.82rem}
+.v31-bar{height:8px;background:#edf1ee;border-radius:999px;overflow:hidden}.v31-bar span{display:block;height:100%;background:#3b8c66;border-radius:999px}
+.v31-toolbar{display:flex;gap:10px;align-items:end;flex-wrap:wrap;margin:10px 0 12px}.v31-toolbar label{font-size:.76rem;color:#58675f;font-weight:700;display:grid;gap:4px}.v31-toolbar input,.v31-toolbar select{min-width:170px;padding:9px 10px;border:1px solid #ccd8d0;border-radius:9px;background:#fff;color:#25372f;font:inherit}.v31-toolbar .v31-reset{padding:9px 12px;border:1px solid #c8d4cc;border-radius:9px;background:#fff;cursor:pointer;font-weight:700}
+.v31-table-wrap{overflow:auto;border:1px solid #dde5e0;border-radius:12px;background:#fff}.v31-table{width:100%;border-collapse:collapse;font-size:.82rem;min-width:880px}.v31-table th{position:sticky;top:0;background:#edf4f0;color:#355344;text-align:left;padding:10px;border-bottom:1px solid #d6e1da;white-space:nowrap}.v31-table td{padding:10px;border-bottom:1px solid #edf1ee;vertical-align:top}.v31-table tbody tr:hover{background:#f8fbf9}.v31-table .num{text-align:right;font-variant-numeric:tabular-nums}.v31-table .muted{color:#77827d;font-size:.75rem}
+.v31-badge{display:inline-flex;align-items:center;gap:5px;padding:4px 8px;border-radius:999px;font-weight:750;font-size:.72rem;white-space:nowrap}.v31-badge.active{background:#e2f4e9;color:#145b39}.v31-badge.closed{background:#fde8e7;color:#9d241c}.v31-badge.moved{background:#fff1d8;color:#8c5a0b}.v31-badge.empty{background:#e8f2f8;color:#285f82}.v31-badge.unknown{background:#ecefed;color:#59615d}.v31-badge.stale{background:#f4eee0;color:#806018}
+.v31-linkbtn{border:1px solid #c9d8cf;background:#fff;border-radius:8px;padding:6px 8px;font-weight:700;color:#1c6344;cursor:pointer;font-size:.75rem;margin:1px}.v31-linkbtn:hover{background:#edf6f1}
+.v31-history{margin-top:12px;display:none}.v31-history.open{display:block}.v31-timeline{border-left:3px solid #dbe8df;margin-left:8px;padding-left:15px;display:grid;gap:11px}.v31-event{position:relative}.v31-event:before{content:"";position:absolute;width:9px;height:9px;border-radius:50%;background:#2a7a55;left:-21px;top:5px}.v31-event .date{font-weight:800;color:#234736;font-size:.8rem}.v31-event .event-title{font-weight:700;font-size:.86rem}.v31-event .source{font-size:.72rem;color:#77827d}.v31-event .note{font-size:.78rem;color:#4f5c56;margin-top:2px}
+.v31-mapbox{min-height:280px;border:1px dashed #aac1b3;border-radius:14px;background:linear-gradient(135deg,#f6faf7,#edf5f0);display:grid;place-items:center;text-align:center;padding:28px}.v31-mapbox .map-icon{font-size:2.4rem}.v31-mapbox h3{margin:8px 0 5px}.v31-mapbox p{max-width:650px;margin:4px auto;color:#5d6a64}.v31-map-metrics{display:flex;justify-content:center;gap:18px;margin-top:12px;flex-wrap:wrap}.v31-map-metrics span{background:#fff;border:1px solid #d9e6de;padding:7px 10px;border-radius:10px;font-weight:750;font-size:.82rem}
+.v31-source-legend{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.v31-source-chip{padding:5px 8px;border-radius:8px;background:#f0f4f2;font-size:.72rem;color:#59665f}
+.v31-diag-intro{padding:14px;border:1px solid #dce8e0;border-radius:12px;background:#f7faf8}.v31-diag-intro h3{margin:0 0 5px}.v31-diag-intro p{margin:0;color:#5a6761;font-size:.86rem}
+#panel-ati:not(.v31-diag-mode) #ati-console,#panel-ati:not(.v31-diag-mode) #ati-count,#panel-ati:not(.v31-diag-mode) #ati-cards,#panel-ati:not(.v31-diag-mode) #ati-pagination{display:none!important}
+#panel-ati.v31-diag-mode #ati-console,#panel-ati.v31-diag-mode #ati-count,#panel-ati.v31-diag-mode #ati-cards,#panel-ati.v31-diag-mode #ati-pagination{display:revert}
+.v31-method-note{border-left:4px solid #0d6b47}
+@media(max-width:1050px){.v31-kpis{grid-template-columns:repeat(3,1fr)}.v31-grid2{grid-template-columns:1fr}}
+@media(max-width:620px){.v31-kpis{grid-template-columns:repeat(2,1fr)}.v31-viewbtn{flex:1 1 40%}.v31-toolbar label,.v31-toolbar input,.v31-toolbar select{width:100%;min-width:0}.v31-status-row{grid-template-columns:130px 1fr 26px}}

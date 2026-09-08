@@ -1,0 +1,20 @@
+﻿fecha_corte,modulo,municipio,establecimiento,accion,fuente,nota
+2026-09-08,ATI,La Victoria,Coliseo CIC - Villa Mariana,ACTUALIZAR_VISITA,Albergue La Victoria Valle-Coliseo CIC-01092026.pdf,Visita directa 01/09; 6 personas.
+2026-09-08,ATI,El Dovio,Estadio Municipal Rodrigo Lloreda Caicedo,NUEVO_ATI,Albergue el Dovio-Estadio Muncipal-01092026.pdf,Visita directa 01/09; 6 personas.
+2026-09-08,ATI,Versalles,Coliseo Deportivo - Corregimiento La Florida,NUEVO_ATI,"VERSALLES RURAL ALBERGUE COLISEO DEPORTIVO, CORREGIMIENTO LA FLORIDA.pdf",Visita directa 31/08; 7 personas.
+2026-09-08,ATI,La Unión,Coliseo Angelino Garzón,CAMBIO_ESTADO,PIC/Gobernación · seguimiento 31/08,Fuente expresa 'No hay albergue'; se registra cierre operacional con trazabilidad.
+2026-09-08,ATI,Ansermanuevo,Parque Recreacional → Alcaldía Municipal,TRAZABILIDAD_REUBICACION,Carpeta municipal UESVALLE,Se conservan ambos sitios; el primero queda histórico.
+2026-09-08,ATI,Roldanillo,Coliseo Iván Muñoz Villa → Coliseo N. S. de Chiquinquirá,TRAZABILIDAD_REUBICACION,UESVALLE + PIC/Gobernación,Traslado por riesgo del sitio inicial.
+2026-09-08,ATI,Zarzal,DLS → Estadio Municipal,TRAZABILIDAD_REUBICACION,UESVALLE + PIC/Gobernación,Se conserva el sitio anterior como histórico.
+2026-09-08,CEMENTERIOS,Argelia,Cementerio Municipal de Argelia,NUEVO,CEMENTERIO ARGELIA.PDF,Evidencia municipal incorporada al corte V3.1.
+2026-09-08,CEMENTERIOS,El Cairo,Cementerio Nuestra Señora de las Mercedes,NUEVO,CEMENTERIO EL CAIRO-NUESTRA SEÑORA DE MERCEDES.PDF,Evidencia municipal incorporada al corte V3.1.
+2026-09-08,CEMENTERIOS,La Unión,Cementerio Público Municipal San Miguel Arcángel,NUEVO,CEMENTERIO LA UNION VALLE-SAN MIGUEL.PDF,Evidencia municipal incorporada al corte V3.1.
+2026-09-08,CEMENTERIOS,Toro,Cementerio Nuestra Señora de la Consolación,NUEVO,CEMENTERIO TORO-NUESTRA SEÑORA DE LA CONSOLACION.PDF,Evidencia municipal incorporada al corte V3.1.
+2026-09-08,CEMENTERIOS,Guacarí,Cementerio Cristo Rey - Sonso,NUEVO,CEMENTERIO CRISTO REY GUACARI-SEGUNDA VISITA.pdf,Evidencia municipal incorporada al corte V3.1.
+2026-09-08,CEMENTERIOS,Dagua,Cementerio Corregimiento Zabaletas,NUEVO,CEMENTERIO ZABALETAS-DAGUA.pdf,Evidencia municipal incorporada al corte V3.1.
+2026-09-08,CEMENTERIOS,Vijes,Cementerio Sagrado Corazón de Jesús,NUEVO,CEMENTERIO SAGRADO CORAZON DE JESUS-VIJES.pdf,Evidencia municipal incorporada al corte V3.1.
+2026-09-08,CONTROL,Ansermanuevo,,REVISADO_SIN_CAMBIO_MODULO,Carpeta municipal Drive,Nuevas evidencias de instituciones educativas; sin nuevo ATI adicional validado.
+2026-09-08,CONTROL,El Águila,,REVISADO_SIN_CAMBIO_MODULO,Carpeta municipal Drive,Nuevas evidencias de instituciones educativas; ATI existente se conserva.
+2026-09-08,CONTROL,Obando,,REVISADO_SIN_CAMBIO_MODULO,Carpeta municipal Drive,Nuevas evidencias educativas; no se genera nuevo ATI.
+2026-09-08,CONTROL,Roldanillo,,REVISADO_SIN_CAMBIO_MODULO,Carpeta municipal Drive,Nuevas evidencias educativas además de la trazabilidad ATI ya consolidada.
+2026-09-08,CONTROL,Ulloa,,REVISADO_SIN_CAMBIO_MODULO,Carpeta municipal Drive,Nuevas evidencias educativas; sin cambio directo en módulos ATI/Cementerios para este corte.

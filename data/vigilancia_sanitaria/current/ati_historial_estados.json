@@ -1,0 +1,482 @@
+[
+  {
+    "id_establecimiento": "ATI-001",
+    "fecha": "2026-08-21",
+    "estado": "Activo - ocupado",
+    "poblacion": 25,
+    "fuente": "UESVALLE · lista de chequeo",
+    "nota": "Seguimiento posterior en Alcaldía Municipal."
+  },
+  {
+    "id_establecimiento": "ATI-001",
+    "fecha": "2026-08-21",
+    "estado": "Diagnóstico / línea base",
+    "poblacion": null,
+    "fuente": "UESVALLE · diagnóstico sanitario",
+    "nota": "Registro base consolidado."
+  },
+  {
+    "id_establecimiento": "ATI-002",
+    "fecha": "2026-08-12",
+    "estado": "Diagnóstico / línea base",
+    "poblacion": null,
+    "fuente": "UESVALLE · diagnóstico sanitario",
+    "nota": "Registro base consolidado."
+  },
+  {
+    "id_establecimiento": "ATI-002",
+    "fecha": "2026-08-12",
+    "estado": "Habilitado - sin ocupación",
+    "poblacion": 0,
+    "fuente": "UESVALLE / carpeta municipal",
+    "nota": "Parque Recreacional."
+  },
+  {
+    "id_establecimiento": "ATI-003",
+    "fecha": "2026-08-14",
+    "estado": "Diagnóstico / línea base",
+    "poblacion": null,
+    "fuente": "UESVALLE · diagnóstico sanitario",
+    "nota": "Registro base consolidado."
+  },
+  {
+    "id_establecimiento": "ATI-004",
+    "fecha": "2026-08-14",
+    "estado": "Diagnóstico / línea base",
+    "poblacion": null,
+    "fuente": "UESVALLE · diagnóstico sanitario",
+    "nota": "Registro base consolidado."
+  },
+  {
+    "id_establecimiento": "ATI-005",
+    "fecha": "2026-08-18",
+    "estado": "Diagnóstico / línea base",
+    "poblacion": null,
+    "fuente": "UESVALLE · diagnóstico sanitario",
+    "nota": "Registro base consolidado."
+  },
+  {
+    "id_establecimiento": "ATI-006",
+    "fecha": "2026-08-12",
+    "estado": "Activo - ocupado",
+    "poblacion": 40,
+    "fuente": "PIC/Gobernación · complementaria",
+    "nota": ""
+  },
+  {
+    "id_establecimiento": "ATI-006",
+    "fecha": "2026-08-12",
+    "estado": "Diagnóstico / línea base",
+    "poblacion": null,
+    "fuente": "UESVALLE · diagnóstico sanitario",
+    "nota": "Registro base consolidado."
+  },
+  {
+    "id_establecimiento": "ATI-006",
+    "fecha": "2026-08-13",
+    "estado": "Activo - ocupado",
+    "poblacion": 47,
+    "fuente": "PIC/Gobernación · complementaria",
+    "nota": ""
+  },
+  {
+    "id_establecimiento": "ATI-006",
+    "fecha": "2026-08-14",
+    "estado": "Activo - ocupado",
+    "poblacion": 45,
+    "fuente": "PIC/Gobernación · complementaria",
+    "nota": ""
+  },
+  {
+    "id_establecimiento": "ATI-006",
+    "fecha": "2026-08-18",
+    "estado": "Activo - ocupado",
+    "poblacion": 48,
+    "fuente": "PIC/Gobernación · complementaria",
+    "nota": ""
+  },
+  {
+    "id_establecimiento": "ATI-006",
+    "fecha": "2026-08-21",
+    "estado": "Activo - ocupado",
+    "poblacion": 20,
+    "fuente": "PIC/Gobernación · complementaria",
+    "nota": ""
+  },
+  {
+    "id_establecimiento": "ATI-006",
+    "fecha": "2026-08-24",
+    "estado": "Activo - ocupado",
+    "poblacion": 12,
+    "fuente": "PIC/Gobernación · complementaria",
+    "nota": ""
+  },
+  {
+    "id_establecimiento": "ATI-006",
+    "fecha": "2026-08-25",
+    "estado": "Activo - ocupado",
+    "poblacion": 9,
+    "fuente": "PIC/Gobernación · complementaria",
+    "nota": ""
+  },
+  {
+    "id_establecimiento": "ATI-006",
+    "fecha": "2026-08-31",
+    "estado": "Cerrado / desmontado",
+    "poblacion": 0,
+    "fuente": "PIC/Gobernación · complementaria",
+    "nota": "31/08: fuente expresa 'No hay albergue'."
+  },
+  {
+    "id_establecimiento": "ATI-007",
+    "fecha": "2026-08-12",
+    "estado": "Activo - ocupado",
+    "poblacion": 16,
+    "fuente": "PIC/Gobernación · complementaria",
+    "nota": ""
+  },
+  {
+    "id_establecimiento": "ATI-007",
+    "fecha": "2026-08-18",
+    "estado": "Activo - ocupado",
+    "poblacion": 22,
+    "fuente": "PIC/Gobernación · complementaria",
+    "nota": ""
+  },
+  {
+    "id_establecimiento": "ATI-007",
+    "fecha": "2026-08-24",
+    "estado": "Activo - ocupado",
+    "poblacion": 4,
+    "fuente": "PIC/Gobernación · complementaria",
+    "nota": ""
+  },
+  {
+    "id_establecimiento": "ATI-007",
+    "fecha": "2026-08-25",
+    "estado": "Activo - ocupado",
+    "poblacion": 12,
+    "fuente": "PIC/Gobernación · complementaria",
+    "nota": ""
+  },
+  {
+    "id_establecimiento": "ATI-007",
+    "fecha": "2026-08-31",
+    "estado": "Activo - ocupado",
+    "poblacion": 6,
+    "fuente": "PIC/Gobernación · complementaria",
+    "nota": ""
+  },
+  {
+    "id_establecimiento": "ATI-007",
+    "fecha": "2026-09-01",
+    "estado": "Activo - ocupado",
+    "poblacion": 6,
+    "fuente": "UESVALLE · lista de chequeo",
+    "nota": "Visita sanitaria directa."
+  },
+  {
+    "id_establecimiento": "ATI-007",
+    "fecha": "2026-09-01",
+    "estado": "Diagnóstico / línea base",
+    "poblacion": null,
+    "fuente": "UESVALLE · diagnóstico sanitario",
+    "nota": "Registro base consolidado."
+  },
+  {
+    "id_establecimiento": "ATI-008",
+    "fecha": "2026-08-12",
+    "estado": "Diagnóstico / línea base",
+    "poblacion": null,
+    "fuente": "UESVALLE · diagnóstico sanitario",
+    "nota": "Registro base consolidado."
+  },
+  {
+    "id_establecimiento": "ATI-009",
+    "fecha": "2026-08-12",
+    "estado": "Diagnóstico / línea base",
+    "poblacion": null,
+    "fuente": "UESVALLE · diagnóstico sanitario",
+    "nota": "Registro base consolidado."
+  },
+  {
+    "id_establecimiento": "ATI-010",
+    "fecha": "2026-08-19",
+    "estado": "Diagnóstico / línea base",
+    "poblacion": null,
+    "fuente": "UESVALLE · diagnóstico sanitario",
+    "nota": "Registro base consolidado."
+  },
+  {
+    "id_establecimiento": "ATI-011",
+    "fecha": "2026-08-12",
+    "estado": "Diagnóstico / línea base",
+    "poblacion": null,
+    "fuente": "UESVALLE · diagnóstico sanitario",
+    "nota": "Registro base consolidado."
+  },
+  {
+    "id_establecimiento": "ATI-012",
+    "fecha": "2026-08-12",
+    "estado": "Activo - ocupado",
+    "poblacion": 32,
+    "fuente": "UESVALLE · Registro EIS",
+    "nota": "Coliseo Iván Muñoz Villa."
+  },
+  {
+    "id_establecimiento": "ATI-012",
+    "fecha": "2026-08-12",
+    "estado": "Diagnóstico / línea base",
+    "poblacion": null,
+    "fuente": "UESVALLE · diagnóstico sanitario",
+    "nota": "Registro base consolidado."
+  },
+  {
+    "id_establecimiento": "ATI-012",
+    "fecha": "2026-08-13",
+    "estado": "Trasladado / reubicado",
+    "poblacion": 0,
+    "fuente": "PIC/Gobernación · complementaria",
+    "nota": "Traslado por afectación del sitio."
+  },
+  {
+    "id_establecimiento": "ATI-013",
+    "fecha": "2026-08-13",
+    "estado": "Activo - ocupado",
+    "poblacion": 54,
+    "fuente": "PIC/Gobernación · complementaria",
+    "nota": "Coliseo Nuestra Señora de Chiquinquirá."
+  },
+  {
+    "id_establecimiento": "ATI-013",
+    "fecha": "2026-08-14",
+    "estado": "Activo - ocupado",
+    "poblacion": 61,
+    "fuente": "PIC/Gobernación · complementaria",
+    "nota": "Coliseo Nuestra Señora de Chiquinquirá."
+  },
+  {
+    "id_establecimiento": "ATI-013",
+    "fecha": "2026-08-15",
+    "estado": "Activo - ocupado",
+    "poblacion": 77,
+    "fuente": "PIC/Gobernación · complementaria",
+    "nota": "Coliseo Nuestra Señora de Chiquinquirá."
+  },
+  {
+    "id_establecimiento": "ATI-013",
+    "fecha": "2026-08-16",
+    "estado": "Activo - ocupado",
+    "poblacion": 81,
+    "fuente": "PIC/Gobernación · complementaria",
+    "nota": "Coliseo Nuestra Señora de Chiquinquirá."
+  },
+  {
+    "id_establecimiento": "ATI-013",
+    "fecha": "2026-08-17",
+    "estado": "Activo - ocupado",
+    "poblacion": 86,
+    "fuente": "PIC/Gobernación · complementaria",
+    "nota": "Coliseo Nuestra Señora de Chiquinquirá."
+  },
+  {
+    "id_establecimiento": "ATI-013",
+    "fecha": "2026-08-18",
+    "estado": "Activo - ocupado",
+    "poblacion": 87,
+    "fuente": "PIC/Gobernación · complementaria",
+    "nota": "Coliseo Nuestra Señora de Chiquinquirá."
+  },
+  {
+    "id_establecimiento": "ATI-013",
+    "fecha": "2026-08-20",
+    "estado": "Activo - ocupado",
+    "poblacion": 67,
+    "fuente": "PIC/Gobernación · complementaria",
+    "nota": "Coliseo Nuestra Señora de Chiquinquirá."
+  },
+  {
+    "id_establecimiento": "ATI-013",
+    "fecha": "2026-08-20",
+    "estado": "Diagnóstico / línea base",
+    "poblacion": null,
+    "fuente": "UESVALLE · diagnóstico sanitario",
+    "nota": "Registro base consolidado."
+  },
+  {
+    "id_establecimiento": "ATI-013",
+    "fecha": "2026-08-27",
+    "estado": "Activo - ocupado",
+    "poblacion": 67,
+    "fuente": "PIC/Gobernación · complementaria",
+    "nota": "Coliseo Nuestra Señora de Chiquinquirá."
+  },
+  {
+    "id_establecimiento": "ATI-014",
+    "fecha": "2026-08-14",
+    "estado": "Diagnóstico / línea base",
+    "poblacion": null,
+    "fuente": "UESVALLE · diagnóstico sanitario",
+    "nota": "Registro base consolidado."
+  },
+  {
+    "id_establecimiento": "ATI-015",
+    "fecha": "2026-08-13",
+    "estado": "Diagnóstico / línea base",
+    "poblacion": null,
+    "fuente": "UESVALLE · diagnóstico sanitario",
+    "nota": "Registro base consolidado."
+  },
+  {
+    "id_establecimiento": "ATI-015",
+    "fecha": "2026-08-18",
+    "estado": "Habilitado - sin ocupación",
+    "poblacion": 0,
+    "fuente": "PIC/Gobernación · complementaria",
+    "nota": "Se reporta que las personas ya no están en el albergue; cierre formal no documentado."
+  },
+  {
+    "id_establecimiento": "ATI-016",
+    "fecha": "2026-08-14",
+    "estado": "Diagnóstico / línea base",
+    "poblacion": null,
+    "fuente": "UESVALLE · diagnóstico sanitario",
+    "nota": "Registro base consolidado."
+  },
+  {
+    "id_establecimiento": "ATI-017",
+    "fecha": "2026-08-13",
+    "estado": "Activo - ocupado",
+    "poblacion": 6,
+    "fuente": "UESVALLE · Registro EIS",
+    "nota": "Estadio Municipal."
+  },
+  {
+    "id_establecimiento": "ATI-017",
+    "fecha": "2026-08-13",
+    "estado": "Diagnóstico / línea base",
+    "poblacion": null,
+    "fuente": "UESVALLE · diagnóstico sanitario",
+    "nota": "Registro base consolidado."
+  },
+  {
+    "id_establecimiento": "ATI-017",
+    "fecha": "2026-09-01",
+    "estado": "Seguimiento complementario",
+    "poblacion": 9,
+    "fuente": "PIC/Gobernación · complementaria",
+    "nota": "Reportado como 'Coliseo municipal'; alias pendiente de confirmación con Estadio Municipal."
+  },
+  {
+    "id_establecimiento": "ATI-018",
+    "fecha": "2026-08-12",
+    "estado": "Activo - ocupado",
+    "poblacion": 11,
+    "fuente": "UESVALLE · Registro EIS",
+    "nota": "Primer piso Dirección Local de Salud."
+  },
+  {
+    "id_establecimiento": "ATI-018",
+    "fecha": "2026-08-12",
+    "estado": "Diagnóstico / línea base",
+    "poblacion": null,
+    "fuente": "UESVALLE · diagnóstico sanitario",
+    "nota": "Registro base consolidado."
+  },
+  {
+    "id_establecimiento": "ATI-018",
+    "fecha": "2026-08-13",
+    "estado": "Trasladado / reubicado",
+    "poblacion": 0,
+    "fuente": "PIC/Gobernación · complementaria",
+    "nota": "Traslado al sitio deportivo municipal."
+  },
+  {
+    "id_establecimiento": "ATI-019",
+    "fecha": "2026-08-20",
+    "estado": "Activo - ocupado",
+    "poblacion": 5,
+    "fuente": "PIC/Gobernación · complementaria",
+    "nota": ""
+  },
+  {
+    "id_establecimiento": "ATI-019",
+    "fecha": "2026-08-21",
+    "estado": "Activo - ocupado",
+    "poblacion": 6,
+    "fuente": "PIC/Gobernación · complementaria",
+    "nota": ""
+  },
+  {
+    "id_establecimiento": "ATI-019",
+    "fecha": "2026-08-24",
+    "estado": "Activo - ocupado",
+    "poblacion": 6,
+    "fuente": "PIC/Gobernación · complementaria",
+    "nota": ""
+  },
+  {
+    "id_establecimiento": "ATI-019",
+    "fecha": "2026-08-26",
+    "estado": "Activo - ocupado",
+    "poblacion": 6,
+    "fuente": "PIC/Gobernación · complementaria",
+    "nota": ""
+  },
+  {
+    "id_establecimiento": "ATI-019",
+    "fecha": "2026-08-27",
+    "estado": "Activo - ocupado",
+    "poblacion": 6,
+    "fuente": "PIC/Gobernación · complementaria",
+    "nota": ""
+  },
+  {
+    "id_establecimiento": "ATI-019",
+    "fecha": "2026-08-28",
+    "estado": "Activo - ocupado",
+    "poblacion": 6,
+    "fuente": "PIC/Gobernación · complementaria",
+    "nota": ""
+  },
+  {
+    "id_establecimiento": "ATI-019",
+    "fecha": "2026-08-31",
+    "estado": "Activo - ocupado",
+    "poblacion": 6,
+    "fuente": "PIC/Gobernación · complementaria",
+    "nota": ""
+  },
+  {
+    "id_establecimiento": "ATI-019",
+    "fecha": "2026-09-01",
+    "estado": "Activo - ocupado",
+    "poblacion": 6,
+    "fuente": "UESVALLE · lista de chequeo",
+    "nota": "Validación sanitaria directa del Estadio Municipal."
+  },
+  {
+    "id_establecimiento": "ATI-019",
+    "fecha": "2026-09-01",
+    "estado": "Diagnóstico / línea base",
+    "poblacion": null,
+    "fuente": "UESVALLE · diagnóstico sanitario",
+    "nota": "Registro base consolidado."
+  },
+  {
+    "id_establecimiento": "ATI-020",
+    "fecha": "2026-08-31",
+    "estado": "Activo - ocupado",
+    "poblacion": 7,
+    "fuente": "UESVALLE · lista de chequeo",
+    "nota": "Nuevo alojamiento rural en corregimiento La Florida."
+  },
+  {
+    "id_establecimiento": "ATI-020",
+    "fecha": "2026-08-31",
+    "estado": "Diagnóstico / línea base",
+    "poblacion": null,
+    "fuente": "UESVALLE · diagnóstico sanitario",
+    "nota": "Registro base consolidado."
+  }
+]

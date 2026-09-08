@@ -1,0 +1,21 @@
+{
+  "version": "3.1",
+  "fecha_corte": "2026-09-08",
+  "segunda_validacion": "APROBADA",
+  "validaciones_superadas": 26,
+  "validaciones_totales": 26,
+  "históricos": 20,
+  "vigentes": 16,
+  "ocupados": 12,
+  "habilitados": 2,
+  "sin_verificar": 2,
+  "cerrados": 1,
+  "reubicados": 3,
+  "ati_patch": 3,
+  "cementerios_patch": 7,
+  "coordenadas_validadas": 0,
+  "coordenadas_pendientes": 20,
+  "mojibake_detectado": false,
+  "telefonos_correos_publicos_detectados": false,
+  "publicacion_realizada": false
+}

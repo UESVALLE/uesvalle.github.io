@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>UESVALLE | Vigilancia sanitaria ATI y Cementerios</title>
   <meta name="description" content="Tablero UESVALLE de vigilancia sanitaria postevento: Alojamientos Temporales (ATI) y Cementerios.">
-  <link rel="stylesheet" href="vigilancia_sanitaria.css?v=2.2">
+  <link rel="stylesheet" href="vigilancia_sanitaria.css?v=3.1">
+  <link rel="stylesheet" href="vigilancia_sanitaria_v31.css?v=3.1">
 </head>
 <body>
   <header class="site-header">
@@ -13,7 +14,7 @@
       <img src="assets/logos/logos_institucionales.png" alt="Gobernación del Valle del Cauca y UESVALLE" class="institutional-logos">
       <div class="header-meta">
         <span class="eyebrow">RESPUESTA SANITARIA POSTEVENTO</span>
-        <strong>Corte 31/08/2026</strong>
+        <strong>Corte 08/09/2026</strong>
       </div>
     </div>
     <div class="hero-strip">
@@ -46,8 +47,11 @@
             <h2>Alojamientos Temporales / ATI</h2>
             <p>Tres líneas sanitarias: condiciones locativas y saneamiento, preparación/suministro de alimentos, y vectores/zoonosis.</p>
           </div>
-          <a class="btn ghost" href="../../data/vigilancia_sanitaria/current/ati_establecimientos.csv" download>Descargar CSV ATI</a>
+          <a class="btn ghost" href="../../data/vigilancia_sanitaria/current/ati_operacion_v31.csv" download>Descargar estado ATI</a>
         </div>
+
+        <div id="ati-v31-shell" class="ati-v31-shell" aria-label="Seguimiento operativo de alojamientos temporales"></div>
+
         <div class="module-console ati-console" id="ati-console">
           <div class="console-context">
             <div class="console-identity">
@@ -84,7 +88,7 @@
             <h2>Cementerios</h2>
             <p>Condiciones locativas, bóvedas/osarios, exposición de restos, seguridad de acceso, agua, residuos y riesgo para la salud.</p>
           </div>
-          <a class="btn ghost" href="../../data/vigilancia_sanitaria/current/cementerios.csv" download>Descargar CSV cementerios</a>
+          <a class="btn ghost" href="../../data/vigilancia_sanitaria/current/cementerios_v31_patch.csv" download>Descargar actualizaciones cementerios</a>
         </div>
         <div class="module-console cem-console" id="cem-console">
           <div class="console-context">
@@ -125,9 +129,7 @@
           </div>
           <a class="btn ghost" href="../../data/vigilancia_sanitaria/current/resumen_municipal.csv" download>Descargar resumen CSV</a>
         </div>
-        <div class="municipal-tools">
-          <input id="mun-search" type="search" placeholder="Filtrar municipio...">
-        </div>
+        <div class="municipal-tools"><input id="mun-search" type="search" placeholder="Filtrar municipio..."></div>
         <div class="table-wrap">
           <table class="data-table" id="mun-table">
             <thead><tr><th>Municipio</th><th>Cementerios</th><th>Cem. Alta/Crítica</th><th>Restricción</th><th>ATI</th><th>ATI Alta/Crítica</th><th>No concluyente</th><th>Población ATI documentada</th><th>Fotos</th></tr></thead>
@@ -142,21 +144,24 @@
         <div class="section-head"><div><span class="eyebrow">TRAZABILIDAD</span><h2>Metodología, jerarquía de fuentes y reglas de calidad</h2></div></div>
         <div class="method-grid">
           <article><span class="method-number">1</span><h3>Carpetas municipales / evidencia directa</h3><p>Actas, listas de chequeo, PDFs y registro fotográfico tienen prioridad para resolver la información de cada establecimiento.</p></article>
-          <article><span class="method-number">2</span><h3>Bases de consolidación</h3><p>El cuadro de cementerios del 21/08 y el registro EIS sirven como bases de trabajo; no sustituyen evidencia directa posterior.</p></article>
+          <article><span class="method-number">2</span><h3>Bases de consolidación</h3><p>El cuadro de cementerios y el registro EIS sirven como bases de trabajo; no sustituyen evidencia directa posterior.</p></article>
           <article><span class="method-number">3</span><h3>Informe fotográfico</h3><p>Se utiliza para contextualizar, verificar establecimientos y asociar fotografías institucionales al registro.</p></article>
           <article><span class="method-number">4</span><h3>Vacíos y calidad</h3><p>“No documentado” no equivale a “No”. Los registros con insuficiente evidencia quedan como “No concluyente”.</p></article>
           <article><span class="method-number">5</span><h3>Separación de conceptos</h3><p>En cementerios, “afectación fuente” y “prioridad sanitaria operativa” se muestran separadas. La prioridad no es un concepto sanitario formal.</p></article>
           <article><span class="method-number">6</span><h3>Protección de información</h3><p>El tablero público no incluye teléfonos, contactos personales ni variables individuales de salud.</p></article>
         </div>
+        <div class="source-panel v31-method-note">
+          <h3>V3.1 · seguimiento operativo</h3>
+          <p>Se separa el diagnóstico sanitario del estado operacional. El reporte operativo puede ser diario y la verificación técnica de agua y saneamiento se consolida como seguimiento semanal. La fuente PIC/Gobernación se presenta como complementaria y no se atribuye como visita directa UESVALLE.</p>
+          <p>Los estados <strong>Cerrado</strong> y <strong>Reubicado</strong> conservan el sitio en el histórico y evitan perder trazabilidad. Un reporte de 0 personas no equivale automáticamente a cierre.</p>
+        </div>
         <div class="source-panel">
           <h3>Fuentes del corte</h3>
           <ul>
             <li>Carpeta EIS UESVALLE - ARO Cartago, ARO Tuluá y ARO Cali.</li>
-            <li><code>CUADRO CEMENTERIOS TOTALES-21082026.xlsx</code>.</li>
-            <li><code>Informe Areas Operativas-EIS -Registro fotografico Agosto 24-2026.docx</code>.</li>
             <li><code>Registro de Estado Sanitario de Establecimientos.xlsx</code>.</li>
             <li>Actas, listas de chequeo, PDFs y evidencias fotográficas municipales.</li>
-            <li>Seguimiento PIC/Gobernación se conserva como fuente complementaria, sin atribuirlo como visita UESVALLE.</li>
+            <li>Seguimiento PIC/Gobernación como fuente complementaria, sin atribuirlo como visita UESVALLE.</li>
           </ul>
           <div class="doc-links">
             <a class="btn" href="../../docs/vigilancia_sanitaria/VIGILANCIA_SANITARIA_ATI_CEMENTERIOS.xlsx" download>Excel</a>
@@ -167,12 +172,7 @@
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="container footer-inner">
-      <span>UESVALLE · Vigilancia sanitaria postevento</span>
-      <span>Versión integrada V2.2 · corte 31/08/2026</span>
-    </div>
-  </footer>
+  <footer class="footer"><div class="container footer-inner"><span>UESVALLE · Vigilancia sanitaria postevento</span><span>Versión integrada V3.1 · corte 08/09/2026</span></div></footer>
 
   <div class="modal" id="detail-modal" aria-hidden="true">
     <div class="modal-backdrop" data-close></div>
@@ -189,6 +189,7 @@
     <div id="lightbox-caption"></div>
   </div>
 
-  <script src="vigilancia_sanitaria.js?v=2.2"></script>
+  <script src="vigilancia_sanitaria.js?v=3.1"></script>
+  <script src="vigilancia_sanitaria_v31.js?v=3.1"></script>
 </body>
 </html>

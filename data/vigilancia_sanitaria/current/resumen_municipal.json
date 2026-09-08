@@ -24,6 +24,18 @@
     "fotos_ati": 0
   },
   {
+    "municipio": "Argelia",
+    "cementerios": 1,
+    "cementerios_alta_critica": 0,
+    "cementerios_restriccion": 0,
+    "ati_sitios": 0,
+    "ati_alta_critica": 0,
+    "ati_no_concluyente": 0,
+    "poblacion_documentada": 0,
+    "fotos_cementerios": 0,
+    "fotos_ati": 0
+  },
+  {
     "municipio": "Bolívar",
     "cementerios": 1,
     "cementerios_alta_critica": 0,
@@ -61,7 +73,7 @@
   },
   {
     "municipio": "Dagua",
-    "cementerios": 8,
+    "cementerios": 9,
     "cementerios_alta_critica": 2,
     "cementerios_restriccion": 1,
     "ati_sitios": 0,
@@ -69,6 +81,30 @@
     "ati_no_concluyente": 0,
     "poblacion_documentada": 0,
     "fotos_cementerios": 1,
+    "fotos_ati": 0
+  },
+  {
+    "municipio": "El Águila",
+    "cementerios": 1,
+    "cementerios_alta_critica": 0,
+    "cementerios_restriccion": 0,
+    "ati_sitios": 1,
+    "ati_alta_critica": 0,
+    "ati_no_concluyente": 0,
+    "poblacion_documentada": 9,
+    "fotos_cementerios": 3,
+    "fotos_ati": 0
+  },
+  {
+    "municipio": "El Cairo",
+    "cementerios": 1,
+    "cementerios_alta_critica": 0,
+    "cementerios_restriccion": 0,
+    "ati_sitios": 0,
+    "ati_alta_critica": 0,
+    "ati_no_concluyente": 0,
+    "poblacion_documentada": 0,
+    "fotos_cementerios": 0,
     "fotos_ati": 0
   },
   {
@@ -88,23 +124,11 @@
     "cementerios": 1,
     "cementerios_alta_critica": 1,
     "cementerios_restriccion": 1,
-    "ati_sitios": 0,
-    "ati_alta_critica": 0,
-    "ati_no_concluyente": 0,
-    "poblacion_documentada": 0,
-    "fotos_cementerios": 0,
-    "fotos_ati": 0
-  },
-  {
-    "municipio": "El Águila",
-    "cementerios": 1,
-    "cementerios_alta_critica": 0,
-    "cementerios_restriccion": 0,
     "ati_sitios": 1,
     "ati_alta_critica": 0,
     "ati_no_concluyente": 0,
-    "poblacion_documentada": 9,
-    "fotos_cementerios": 3,
+    "poblacion_documentada": 6,
+    "fotos_cementerios": 0,
     "fotos_ati": 0
   },
   {
@@ -132,10 +156,10 @@
     "fotos_ati": 0
   },
   {
-    "municipio": "Guacari",
+    "municipio": "Guacarí",
     "cementerios": 1,
-    "cementerios_alta_critica": 1,
-    "cementerios_restriccion": 1,
+    "cementerios_alta_critica": 0,
+    "cementerios_restriccion": 0,
     "ati_sitios": 0,
     "ati_alta_critica": 0,
     "ati_no_concluyente": 0,
@@ -158,7 +182,7 @@
   {
     "municipio": "La Unión",
     "cementerios": 1,
-    "cementerios_alta_critica": 1,
+    "cementerios_alta_critica": 0,
     "cementerios_restriccion": 0,
     "ati_sitios": 1,
     "ati_alta_critica": 0,
@@ -175,7 +199,7 @@
     "ati_sitios": 1,
     "ati_alta_critica": 0,
     "ati_no_concluyente": 0,
-    "poblacion_documentada": 16,
+    "poblacion_documentada": 6,
     "fotos_cementerios": 0,
     "fotos_ati": 2
   },
@@ -253,9 +277,9 @@
   },
   {
     "municipio": "Toro",
-    "cementerios": 1,
+    "cementerios": 2,
     "cementerios_alta_critica": 0,
-    "cementerios_restriccion": 1,
+    "cementerios_restriccion": 2,
     "ati_sitios": 0,
     "ati_alta_critica": 0,
     "ati_no_concluyente": 0,
@@ -280,16 +304,16 @@
     "cementerios": 1,
     "cementerios_alta_critica": 1,
     "cementerios_restriccion": 1,
-    "ati_sitios": 1,
+    "ati_sitios": 2,
     "ati_alta_critica": 0,
     "ati_no_concluyente": 0,
-    "poblacion_documentada": 11,
+    "poblacion_documentada": 18,
     "fotos_cementerios": 7,
     "fotos_ati": 3
   },
   {
     "municipio": "Vijes",
-    "cementerios": 1,
+    "cementerios": 2,
     "cementerios_alta_critica": 1,
     "cementerios_restriccion": 1,
     "ati_sitios": 0,
