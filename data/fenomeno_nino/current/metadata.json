@@ -1,0 +1,11 @@
+{
+  "proyecto": "Fenómeno de El Niño - UESVALLE",
+  "version_estructura": "V1",
+  "alcance": "Informativo y preventivo",
+  "estado": "ESTRUCTURA_CREADA",
+  "fuentes": {
+    "acueductos": "BASE_UNICA_ACUEDUCTOS_UESVALLE",
+    "cvc": "GeoCVC - CAMBIO_CLIMATICO/Precipitacion",
+    "ideam": "IDEAM - Fenómeno de El Niño"
+  }
+}

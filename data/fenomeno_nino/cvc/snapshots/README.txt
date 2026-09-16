@@ -1,0 +1,1 @@
+Snapshots CVC generados automáticamente.

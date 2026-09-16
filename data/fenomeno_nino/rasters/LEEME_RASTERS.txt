@@ -1,0 +1,30 @@
+GEOTIFF INTEGRADOS · EARTH ENGINE · UESVALLE EL NIÑO V0.5
+
+El paquete ya incluye los raster generados para el corte 1–15 agosto 2026:
+
+- precip_mm_20260801_15.tif
+  Precipitación acumulada CHIRPS (mm).
+
+- precip_indice_20260801_15.tif
+  Índice de precipitación frente a climatología 1991–2020 (%).
+
+- temp_media_20260801_15.tif
+  Temperatura media ERA5-Land (°C).
+
+- temp_anom_20260801_15.tif
+  Anomalía térmica frente a climatología 1991–2020 (°C).
+
+También se conserva:
+- clasificacion_climatica_20260801_15.tif
+  Exportación original de Earth Engine.
+- P_clima_20260801_15.tif
+  Banda de clasificación original exportada.
+
+IMPORTANTE
+El visor V0.5 recalcula P1/P2/P3 con una matriz graduada para evitar que
+una regla binaria clasifique los 639 sistemas en una sola categoría.
+
+Para actualizar otro corte:
+1. Sustituya los 4 raster principales conservando los mismos nombres.
+2. Ejecute INTEGRAR_RASTERS_GEE.bat.
+3. Ejecute VALIDAR.bat.

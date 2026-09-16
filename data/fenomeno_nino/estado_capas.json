@@ -1,0 +1,38 @@
+{
+  "version": "0.5",
+  "corte": "16/09/2026",
+  "clasificacion_final": true,
+  "acueductos_total": 690,
+  "acueductos_georreferenciados": 639,
+  "precip_cvc_estaciones": 6,
+  "precip_cvc_bloques": 234,
+  "bloques_clima": 234,
+  "rasters_gee": {
+    "precip_indice": true,
+    "temp_anom": true,
+    "precip_mm": true,
+    "temp_media": true
+  },
+  "regla_clima": {
+    "precipitacion": "severidad 2: índice <30%; severidad 1: 30–<50%; severidad 0: >=50%",
+    "temperatura": "severidad 2: anomalía >=+1.5 °C; severidad 1: +1.0–<+1.5 °C; severidad 0: <+1.0 °C",
+    "P1": "suma de severidades >=3",
+    "P2": "suma de severidades =2",
+    "P3": "suma de severidades <=1"
+  },
+  "nota": "Clasificación orientativa de exposición climática por ubicación. No equivale a afectación confirmada ni diagnóstico formal de riesgo.",
+  "conteo_acueductos_clima": {
+    "P1": 303,
+    "P2": 272,
+    "P3": 64
+  },
+  "conteo_bloques_clima": {
+    "P2": 89,
+    "P1": 104,
+    "SIN_DATO": 9,
+    "P3": 32
+  },
+  "clasificacion_metodo": "Matriz graduada V0.6: precip <30/30-50/>=50%; temp >=1.5/1.0-1.5/<1.0 C; P1 score>=3, P2 score=2, P3 score<=1",
+  "capa_presion_municipal": true,
+  "regla_presion_municipal": "Alta >=60% sistemas en alta exposición; Importante 40-<60%; Moderada 20-<40%; Referencia <20%."
+}

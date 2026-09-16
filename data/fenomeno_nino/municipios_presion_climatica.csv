@@ -1,0 +1,43 @@
+﻿code,municipio,aro,sistemas_geo,alta_exp,media_exp,menor_exp,pct_alta,indice_municipal,presion_municipal,prioridad_diag
+76001,CALI,SUR,0,0,0,0,,,SIN_DATO,Sin sistemas georreferenciados
+76036,ANDALUCÍA,CENTRO,8,6,2,0,75.0,2.75,ALTA,Diagnóstico prioritario
+76041,ANSERMANUEVO,NORTE,18,2,16,0,11.1,2.111,REFERENCIA,Monitoreo de referencia
+76054,ARGELIA,NORTE,8,1,7,0,12.5,2.125,REFERENCIA,Monitoreo de referencia
+76111,GUADALAJARA DE BUGA,CENTRO,0,0,0,0,,,SIN_DATO,Sin sistemas georreferenciados
+76113,BUGALAGRANDE,CENTRO,20,10,10,0,50.0,2.5,IMPORTANTE,Seguimiento reforzado
+76122,CAICEDONIA,NORTE,23,21,2,0,91.3,2.913,ALTA,Diagnóstico prioritario
+76126,CALIMA,CENTRO,28,8,19,1,28.6,2.25,MODERADA,Seguimiento preventivo
+76130,CANDELARIA,SUR,0,0,0,0,,,SIN_DATO,Sin sistemas georreferenciados
+76147,CARTAGO,NORTE,0,0,0,0,,,SIN_DATO,Sin sistemas georreferenciados
+76243,EL ÁGUILA,NORTE,22,1,13,8,4.5,1.682,REFERENCIA,Monitoreo de referencia
+76246,EL CAIRO,NORTE,18,0,17,1,0.0,1.944,REFERENCIA,Monitoreo de referencia
+76248,EL CERRITO,CENTRO,15,4,5,6,26.7,1.867,MODERADA,Seguimiento preventivo
+76250,EL DOVIO,NORTE,26,6,17,3,23.1,2.115,MODERADA,Seguimiento preventivo
+76275,FLORIDA,SUR,11,1,10,0,9.1,2.091,REFERENCIA,Monitoreo de referencia
+76306,GINEBRA,CENTRO,25,12,12,1,48.0,2.44,IMPORTANTE,Seguimiento reforzado
+76318,GUACARÍ,CENTRO,8,4,4,0,50.0,2.5,IMPORTANTE,Seguimiento reforzado
+76020,ALCALÁ,NORTE,10,5,5,0,50.0,2.5,IMPORTANTE,Seguimiento reforzado
+76497,OBANDO,NORTE,10,10,0,0,100.0,3.0,ALTA,Diagnóstico prioritario
+76520,PALMIRA,SUR,0,0,0,0,,,SIN_DATO,Sin sistemas georreferenciados
+76563,PRADERA,SUR,10,1,9,0,10.0,2.1,REFERENCIA,Monitoreo de referencia
+76606,RESTREPO,CENTRO,33,23,8,2,69.7,2.636,ALTA,Diagnóstico prioritario
+76616,RIOFRÍO,CENTRO,26,3,10,13,11.5,1.615,REFERENCIA,Monitoreo de referencia
+76622,ROLDANILLO,NORTE,13,5,8,0,38.5,2.385,MODERADA,Seguimiento preventivo
+76670,SAN PEDRO,CENTRO,13,13,0,0,100.0,3.0,ALTA,Diagnóstico prioritario
+76736,SEVILLA,NORTE,28,26,2,0,92.9,2.929,ALTA,Diagnóstico prioritario
+76823,TORO,NORTE,10,1,9,0,10.0,2.1,REFERENCIA,Monitoreo de referencia
+76828,TRUJILLO,CENTRO,34,4,17,13,11.8,1.735,REFERENCIA,Monitoreo de referencia
+76834,TULUÁ,CENTRO,0,0,0,0,,,SIN_DATO,Sin sistemas georreferenciados
+76845,ULLOA,NORTE,7,3,4,0,42.9,2.429,IMPORTANTE,Seguimiento reforzado
+76863,VERSALLES,NORTE,12,0,8,4,0.0,1.667,REFERENCIA,Monitoreo de referencia
+76869,VIJES,SUR,25,25,0,0,100.0,3.0,ALTA,Diagnóstico prioritario
+76890,YOTOCO,CENTRO,31,10,9,12,32.3,1.935,MODERADA,Seguimiento preventivo
+76892,YUMBO,SUR,0,0,0,0,,,SIN_DATO,Sin sistemas georreferenciados
+76895,ZARZAL,NORTE,5,5,0,0,100.0,3.0,ALTA,Diagnóstico prioritario
+76403,LA VICTORIA,NORTE,6,6,0,0,100.0,3.0,ALTA,Diagnóstico prioritario
+76400,LA UNIÓN,NORTE,9,6,3,0,66.7,2.667,ALTA,Diagnóstico prioritario
+76377,LA CUMBRE,SUR,29,28,1,0,96.6,2.966,ALTA,Diagnóstico prioritario
+76364,JAMUNDÍ,SUR,0,0,0,0,,,SIN_DATO,Sin sistemas georreferenciados
+76100,BOLÍVAR,NORTE,25,7,18,0,28.0,2.28,MODERADA,Seguimiento preventivo
+76233,DAGUA,SUR,73,46,27,0,63.0,2.63,ALTA,Diagnóstico prioritario
+76109,BUENAVENTURA,SUR,0,0,0,0,,,SIN_DATO,Sin sistemas georreferenciados

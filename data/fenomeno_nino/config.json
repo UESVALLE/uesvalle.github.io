@@ -1,0 +1,14 @@
+{
+  "corte": "16 de septiembre de 2026",
+  "corte_id": "20260916",
+  "version": "0.6",
+  "fuente_clima": "CVC 1–15 ago 2026 + scripts GEE CHIRPS/ERA5-Land",
+  "logo": "assets/logo_gobernacion_valle.png",
+  "nota": "La superficie CVC IDW es observada/offline. La clasificación visible usa Alta/Media/Menor y se calcula con una matriz graduada CHIRPS + ERA5-Land por ubicación de cada acueducto.",
+  "regla_clima": {
+    "Alta": "precipitación severidad 2 (<30%) + temperatura severidad >=1, o precipitación severidad >=1 + temperatura severidad 2; equivalente a score >=3",
+    "Media": "score climático = 2",
+    "Menor": "score climático <=1",
+    "interno": "P1/P2/P3 se conserva solo como código técnico de datos"
+  }
+}
