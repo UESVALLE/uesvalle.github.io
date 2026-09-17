@@ -1171,12 +1171,7 @@ button{font:inherit}
 }
 
 
-/* ============================================================
-   V9.1.1 · botón Fuentes encima del control +
-   ============================================================ */
-.sources-help-btn{
-  bottom:auto!important;
-  /* top/right los calcula JavaScript a partir del control real de zoom */
+/* top/right los calcula JavaScript a partir del control real de zoom */
   transition:top .20s ease,right .20s ease!important;
 }
 #app.analytics-open .sources-help-btn{
@@ -1189,6 +1184,31 @@ button{font:inherit}
   #app.analytics-open .sources-help-btn{
     display:grid!important;
   }
+}
+
+
+/* ============================================================
+   V9.2 · interfaz limpia de controles
+   ============================================================ */
+
+/* Fuentes pasa a la barra superior del mapa */
+.sources-top-btn{
+  width:38px;
+  min-width:38px;
+  justify-content:center;
+  padding:0!important;
+  font-size:16px!important;
+  font-weight:900!important;
+}
+
+/* El control + / - se desplaza horizontalmente cuando abre un panel derecho */
+.maplibregl-ctrl-bottom-right{
+  transition:right .24s ease,bottom .24s ease!important;
+}
+
+/* El viejo botón flotante ya no existe */
+.sources-help-btn{
+  display:none!important;
 }
 
 </style>
@@ -1214,7 +1234,7 @@ button{font:inherit}
       <button class="nav-item" data-view="acu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2s6 7 6 12a6 6 0 0 1-12 0c0-5 6-12 6-12Z"/></svg><small>Sistemas</small></button>
       <button class="nav-item" data-view="capas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 2 9 5-9 5-9-5 9-5Z"/><path d="m3 12 9 5 9-5M3 17l9 5 9-5"/></svg><small>Capas</small></button>
       <div class="sidebar-spacer"></div>
-      <div class="version-badge">V9.1.1</div>
+      <div class="version-badge">V9.2</div>
     </nav>
 
     <div class="map-shell">
@@ -1224,17 +1244,13 @@ button{font:inherit}
       <div class="fabs">
         <button class="icon-btn" id="fabReset"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>Vista</button>
         <button class="icon-btn" id="fabPng"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M4 17v3h16v-3"/></svg>PNG</button>
+        <button class="icon-btn sources-top-btn" id="sourcesHelpBtn" type="button" aria-label="Fuentes y metodología" title="Fuentes y metodología">?</button>
       </div>
 
       <div class="ptip" id="ptip"></div>
 
       <div class="legend floating-legend glass-soft" id="legend"></div>
-      
-      
-      <button class="sources-help-btn" id="sourcesHelpBtn" type="button"
-              aria-label="Fuentes y metodología" title="Fuentes y metodología">?</button>
-
-      <div class="map-attribution-static" id="mapAttributionStatic" aria-hidden="true">
+<div class="map-attribution-static" id="mapAttributionStatic" aria-hidden="true">
         Tiles © Esri · UESVALLE · IDEAM · CVC · DANE
       </div>
 
@@ -1797,8 +1813,7 @@ map.on("load",()=>{
     $$('input[name="base"]').forEach(r=>r.checked=r.value==="topo");
     setBase("topo");
   }catch(e){console.warn("No fue posible reafirmar el mapa base Topográfico.",e)}},300);
-  scheduleSourcesHelpPosition();
-  const ready=climateReady();
+    const ready=climateReady();
   $$('.filter-chip[data-f="P"]').forEach(b=>b.disabled=!ready);
   $("#climaReadyTag").textContent=ready?"clasificación climática activa":"pendiente raster GEE";
   $("#rasterStateNote").textContent=ready?"Cruce raster activo: los filtros Alta/Media/Menor usan precipitación y temperatura por ubicación.":"La clasificación Alta/Media/Menor se activa al integrar los GeoTIFF exportados por Earth Engine.";
@@ -2134,12 +2149,14 @@ function openMuni(p,id){
     ". Son lecturas orientativas y no equivalen a afectación confirmada.";
   $("#muniCard").classList.add("open");map.flyTo({center:centroid(id),zoom:9.3,padding:{right:360}});
   scheduleLegendPosition();
+  scheduleMapNavigation();
 }
 function rowPB(f){const p=f.properties||f,pc=p.P_clima||"PENDIENTE_RASTER";return `<div class="pbrow"><span class="tag" style="background:${PRIO[pc]||'#61788a'}">${pc==='PENDIENTE_RASTER'?'—':exposureLabel(pc)}</span><div style="flex:1;min-width:0"><div class="nm">${(p.loc||p.prest||"").toString().slice(0,40)}</div><div class="mt">${p.q!=null?p.q+" L/s · ":""}${fmt(p.pob)} hab</div></div></div>`}
 function openAcu(p){
   closeCards();
   $("#acuCard").classList.add("open");
   scheduleLegendPosition();
+  scheduleMapNavigation();
   const pc=p.P_clima||"PENDIENTE_RASTER";
   $("#apPrio").textContent=pc==="PENDIENTE_RASTER"?"Exposición pendiente":exposureLabel(pc)+" exposición climática";
   $("#apPrio").style.color=PRIO[pc]||"#9bb0bf";
@@ -2390,41 +2407,33 @@ function closeCards(){
   $("#app").classList.remove("detail-open","legend-compact","legend-hidden-by-space");
   const legend=$("#legend");
   if(legend)legend.style.setProperty("right","12px","important");
+  const ctrl=document.querySelector(".maplibregl-ctrl-bottom-right");
+  if(ctrl)ctrl.style.setProperty("right","8px","important");
 }
 $$("[data-close]").forEach(b=>b.onclick=()=>{closeCards();$("#mapPanel").classList.remove("open");$("#muniList").classList.remove("open");$("#acuList").classList.remove("open");$("#capasPanel").classList.remove("open");$$(".nav-item").forEach(n=>n.classList.toggle("active",n.dataset.view==="mapa"));selMuni(null);});
 
-function positionSourcesHelpBtn(){
-  const btn=$("#sourcesHelpBtn");
+
+function positionMapNavigation(){
   const shell=document.querySelector(".map-shell");
-  if(!btn||!shell)return;
+  const ctrl=document.querySelector(".maplibregl-ctrl-bottom-right");
+  if(!shell||!ctrl)return;
+
+  const openCard=document.querySelector(".card.open");
+  ctrl.style.setProperty("right","8px","important");
+
+  if(!openCard)return;
 
   const mapRect=shell.getBoundingClientRect();
-  const groups=[...document.querySelectorAll(".maplibregl-ctrl-bottom-right .maplibregl-ctrl-group")]
-    .filter(g=>g.offsetParent!==null);
-
-  if(!groups.length){
-    btn.style.top="auto";
-    btn.style.right="13px";
-    return;
-  }
-
-  // El grupo de navegación (+ / -) es el grupo visible con botones.
-  const nav=groups.find(g=>g.querySelector("button"))||groups[0];
-  const r=nav.getBoundingClientRect();
-
-  const gap=8;
-  const btnSize=32;
-  const top=Math.max(8,Math.round(r.top-mapRect.top-btnSize-gap));
-  const right=Math.max(8,Math.round(mapRect.right-r.right+(r.width-btnSize)/2));
-
-  btn.style.top=top+"px";
-  btn.style.right=right+"px";
+  const cardRect=openCard.getBoundingClientRect();
+  const gap=16;
+  const rightOffset=Math.max(8,Math.round(mapRect.right-cardRect.left+gap));
+  ctrl.style.setProperty("right",rightOffset+"px","important");
 }
 
-function scheduleSourcesHelpPosition(){
+function scheduleMapNavigation(){
   requestAnimationFrame(()=>{
-    positionSourcesHelpBtn();
-    setTimeout(positionSourcesHelpBtn,260);
+    positionMapNavigation();
+    setTimeout(positionMapNavigation,280);
   });
 }
 
@@ -2450,7 +2459,7 @@ document.addEventListener("keydown",e=>{
 });
 $("#recommendedViewBtn").onclick=()=>recommendedView(true);
 $("#mapStateBadge").onclick=()=>setView("mapa");
-$("#drawerToggle").onclick=()=>{const a=$("#analytics");a.classList.toggle("open");const open=a.classList.contains("open");$("#app").classList.toggle("analytics-open",open);$("#drawerIcon").textContent=open?"▾":"▴";scheduleLegendPosition();scheduleSourcesHelpPosition();};
+$("#drawerToggle").onclick=()=>{const a=$("#analytics");a.classList.toggle("open");const open=a.classList.contains("open");$("#app").classList.toggle("analytics-open",open);$("#drawerIcon").textContent=open?"▾":"▴";scheduleLegendPosition();scheduleMapNavigation();};
 $("#fabReset").onclick=()=>{closeCards();selMuni(null);recommendedView(true);};
 $("#fabPng").onclick=()=>{try{const u=map.getCanvas().toDataURL("image/png");const a=document.createElement("a");a.href=u;a.download="visor_elnino_uesvalle_"+CFG.corte_id+".png";a.click();toast("Imagen del mapa descargada.");}catch(e){toast("Para exportar, desactiva la base cartográfica y otras capas externas y reintenta.");}};
 function centroid(id){return bboxCenter(DATA.municipios.features.find(x=>x.properties.code===id));}
@@ -2460,9 +2469,9 @@ function hexA(h,a){const n=parseInt(h.slice(1),16);return`rgba(${n>>16&255},${n>
 renderLegend();renderKpis();renderCharts();syncActiveLayers();
 window.addEventListener("resize",scheduleLegendPosition);
 window.addEventListener("orientationchange",scheduleLegendPosition);
-window.addEventListener("resize",scheduleSourcesHelpPosition);
-window.addEventListener("orientationchange",scheduleSourcesHelpPosition);
-scheduleSourcesHelpPosition();
+window.addEventListener("resize",scheduleMapNavigation);
+window.addEventListener("orientationchange",scheduleMapNavigation);
+scheduleMapNavigation();
 const osmOpt=$("#osmBaseOpt");
 if(osmOpt){
   const isWeb=/^https?:$/.test(location.protocol);
