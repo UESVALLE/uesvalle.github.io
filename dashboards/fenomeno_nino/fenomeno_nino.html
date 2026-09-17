@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>V10.4 Candidata · Priorización territorial de vigilancia · UESVALLE</title>
+<title>Priorización de vigilancia · UESVALLE</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -172,7 +172,7 @@ button,select,input{font:inherit}.glass{background:linear-gradient(180deg,rgba(1
           </div>
           <div class="layer-group"><div class="layer-group-title">Temperatura</div>
             <label class="layer-row"><input type="radio" name="climateSurface" value="temp-anom"><span class="ltxt"><b>Anomalía térmica ERA5-Land</b><small>°C frente a climatología 1991–2020.</small></span></label>
-            <div class="layer-note"><b>Tmax diaria media:</b> no se sustituye por temperatura media. La superficie Tmax no está publicada en la base remota que consume esta candidata, por lo que V10.4 no muestra una capa inventada o equivalente.</div>
+            <div class="layer-note"><b>Tmax diaria media:</b> no se sustituye por temperatura media. La superficie Tmax no está publicada en la base remota que consume esta candidata, por lo que no muestra una capa inventada o equivalente.</div>
           </div>
         </div>
       </aside>
@@ -193,7 +193,7 @@ button,select,input{font:inherit}.glass{background:linear-gradient(180deg,rgba(1
         </div>
       </section>
 
-      <div class="loading" id="loading"><div><div class="spinner"></div><div class="load-title">Preparando V10.4 candidata</div><div class="load-sub">Cargando municipios y sistemas desde la base vigente UESVALLE…</div></div></div>
+      <div class="loading" id="loading"><div><div class="spinner"></div><div class="load-title">Preparando</div><div class="load-sub">Cargando municipios y sistemas desde la base vigente UESVALLE…</div></div></div>
     </section>
   </main>
 </div>
@@ -209,7 +209,7 @@ button,select,input{font:inherit}.glass{background:linear-gradient(180deg,rgba(1
     <h3>1. Clasificación climática de los sistemas</h3>
     <p>Se conserva la clasificación <b>P1 / P2 / P3</b> de la base técnica: alta, media y menor exposición climática, construida con precipitación CHIRPS y anomalía térmica ERA5-Land para el corte analizado.</p>
     <h3>2. Prioridad municipal de vigilancia</h3>
-    <p>La prioridad municipal se calcula a partir de la <b>prioridad operativa de los sistemas</b> con información suficiente. Se usa un índice ponderado <b>3–2–1</b>: Inmediata = 3, Reforzada = 2 y Rutinaria = 1. El índice municipal es <code>(3×Inmediata + 2×Reforzada + Rutinaria) / sistemas clasificados</code>. La lectura técnica se conserva con los umbrales: <b>Alta ≥2,5</b>; <b>Importante ≥2,0</b>; <b>Moderada ≥1,5</b>; <b>Referencia &lt;1,5</b>. En V10.4 se mantiene la comunicación simplificada: Alta → <b>Prioridad alta</b>; Importante + Moderada → <b>Seguimiento</b>; Referencia → <b>Rutinaria</b>; sin sistemas clasificables → <b>Sin información</b>.</p>
+    <p>La prioridad municipal se calcula a partir de la <b>prioridad operativa de los sistemas</b> con información suficiente. Se usa un índice ponderado <b>3–2–1</b>: Inmediata = 3, Reforzada = 2 y Rutinaria = 1. El índice municipal es <code>(3×Inmediata + 2×Reforzada + Rutinaria) / sistemas clasificados</code>. La lectura técnica se conserva con los umbrales: <b>Alta ≥2,5</b>; <b>Importante ≥2,0</b>; <b>Moderada ≥1,5</b>; <b>Referencia &lt;1,5</b>. se mantiene la comunicación simplificada: Alta → <b>Prioridad alta</b>; Importante + Moderada → <b>Seguimiento</b>; Referencia → <b>Rutinaria</b>; sin sistemas clasificables → <b>Sin información</b>.</p>
     <h3>3. Prioridad operativa de cada sistema</h3>
     <table><tr><th>Exposición climática</th><th>Sensibilidad por caudal</th><th>Resultado</th></tr>
       <tr><td>Alta (P1)</td><td>Alta o media (≤4 L/s)</td><td>Priorizar visita</td></tr>
@@ -232,7 +232,7 @@ button,select,input{font:inherit}.glass{background:linear-gradient(180deg,rgba(1
       <div class="source-card"><b>IDEAM</b><span>Contexto climático y boletines técnicos nacionales de referencia.</span><a href="https://www.ideam.gov.co/" target="_blank" rel="noopener">Sitio institucional ↗</a></div>
       <div class="source-card"><b>UESVALLE</b><span>Base de sistemas de abastecimiento, localización, caudal y variables operativas del visor.</span><a href="https://uesvalle.github.io/" target="_blank" rel="noopener">Portal UESVALLE ↗</a></div>
     </div>
-    <div class="method-warning"><b>Tmax:</b> la metodología puede conservar este indicador complementario cuando exista una superficie publicada. V10.4 no reemplaza Tmax con temperatura media ni altera la clasificación P_clima por ausencia de esa superficie en la base remota actual.</div>
+    <div class="method-warning"><b>Tmax:</b> la metodología puede conservar este indicador complementario cuando exista una superficie publicada. no reemplaza Tmax con temperatura media ni altera la clasificación P_clima por ausencia de esa superficie en la base remota actual.</div>
   </div>
   <div class="modal-actions"><button id="closeMethod">Cerrar</button></div>
 </div></div>
@@ -357,7 +357,7 @@ $('#lyrStations').onchange=e=>{STATE.showStations=e.target.checked;syncLayerVisi
 $('#legendCollapse').onclick=()=>{const l=$('#legend'),on=l.classList.toggle('collapsed');$('#legendCollapse').textContent=on?'+':'−';$('#legendCollapse').title=on?'Mostrar leyenda':'Ocultar leyenda';$('#legendCollapse').setAttribute('aria-label',on?'Mostrar leyenda':'Ocultar leyenda')};
 
 function resetView(){map?.easeTo({center:[-76.2,3.85],zoom:7.35,duration:650})}
-async function load(){try{const [m,a]=await Promise.all([fetch(URLS.municipios,{cache:'no-store'}),fetch(URLS.acueductos,{cache:'no-store'})]);if(!m.ok||!a.ok)throw new Error('No fue posible descargar la base vigente.');STATE.municipios=await m.json();STATE.acueductos=await a.json();augmentSystems();buildMunicipalStats();fillSelects();renderKpis();renderMuniRanking();renderSystemsList();renderLegend();syncPanelOffset();initMap();$('#loading').style.display='none';requestAnimationFrame(syncPanelOffset)}catch(err){console.error(err);$('#loading').innerHTML=`<div><div class="load-title">No fue posible cargar los datos</div><div class="load-sub">${esc(err.message)}<br>V10.4 necesita conexión a Internet para consultar la base vigente publicada.</div></div>`}}
+async function load(){try{const [m,a]=await Promise.all([fetch(URLS.municipios,{cache:'no-store'}),fetch(URLS.acueductos,{cache:'no-store'})]);if(!m.ok||!a.ok)throw new Error('No fue posible descargar la base vigente.');STATE.municipios=await m.json();STATE.acueductos=await a.json();augmentSystems();buildMunicipalStats();fillSelects();renderKpis();renderMuniRanking();renderSystemsList();renderLegend();syncPanelOffset();initMap();$('#loading').style.display='none';requestAnimationFrame(syncPanelOffset)}catch(err){console.error(err);$('#loading').innerHTML=`<div><div class="load-title">No fue posible cargar los datos</div><div class="load-sub">${esc(err.message)}<br>se necesita conexión a Internet para consultar la base vigente publicada.</div></div>`}}
 window.addEventListener('resize',syncPanelOffset);
 load();
 </script>
