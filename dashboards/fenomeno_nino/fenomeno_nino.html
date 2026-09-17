@@ -894,6 +894,303 @@ button{font:inherit}
 
 /* V8.0.3 · Esri Topográfico predeterminado; OSM opcional en web */
 #osmBaseOpt{font-weight:700}
+
+/* ============================================================
+   V8.0.5 · selección municipal + panel derecho
+   ============================================================ */
+
+/* El panel derecho nunca invade la barra inferior de Análisis */
+.card{
+  bottom:68px!important;
+  max-height:none!important;
+}
+#app.analytics-open .card{
+  bottom:min(326px,calc(46vh + 24px))!important;
+  max-height:none!important;
+}
+
+/* El panel izquierdo mantiene el mismo criterio geométrico */
+.lpanel{
+  bottom:68px;
+  max-height:none;
+}
+#app.analytics-open .lpanel{
+  bottom:min(326px,calc(46vh + 24px))!important;
+  max-height:none!important;
+}
+
+/* Estado seleccionado: perímetro muy visible sobre cualquier relleno municipal */
+.selected-muni-note{
+  margin:0 0 10px;
+  padding:7px 9px;
+  border-radius:9px;
+  background:rgba(0,178,255,.12);
+  border:1px solid rgba(0,194,255,.48);
+  color:#bfeeff;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+}
+
+/* Responsive */
+@media(max-width:820px){
+  .card,.lpanel{
+    bottom:60px!important;
+  }
+  #app.analytics-open .card,
+  #app.analytics-open .lpanel{
+    bottom:min(520px,72vh)!important;
+  }
+}
+
+
+/* ============================================================
+   V8.0.6 · panel derecho + atribución pasiva
+   ============================================================ */
+
+/* Panel derecho: inicia por debajo de Vista / PNG */
+.card{
+  top:72px!important;
+}
+
+/* Mantener altura útil sin invadir Análisis */
+.card{
+  bottom:68px!important;
+  max-height:none!important;
+}
+#app.analytics-open .card{
+  bottom:min(326px,calc(46vh + 24px))!important;
+  max-height:none!important;
+}
+
+/* Se elimina el control expandible de atribución.
+   Se conserva una atribución pasiva y discreta. */
+.map-attribution-static{
+  position:absolute;
+  z-index:10;
+  right:52px;
+  bottom:62px;
+  max-width:420px;
+  color:rgba(36,52,65,.48);
+  font-size:7.5px;
+  font-weight:700;
+  line-height:1.15;
+  text-align:right;
+  pointer-events:none;
+  user-select:none;
+  text-shadow:0 1px 0 rgba(255,255,255,.55);
+}
+#app.analytics-open .map-attribution-static{
+  bottom:min(330px,calc(46vh + 28px));
+}
+
+/* El control nativo de atribución no debe aparecer */
+.maplibregl-ctrl-attrib,
+.maplibregl-ctrl-attrib-button{
+  display:none!important;
+}
+
+@media(max-width:820px){
+  .card{
+    top:60px!important;
+  }
+  .map-attribution-static{
+    right:44px;
+    bottom:54px;
+    font-size:6.8px;
+    max-width:260px;
+  }
+  #app.analytics-open .map-attribution-static{
+    display:none;
+  }
+}
+
+
+/* ============================================================
+   V8.0.7 · leyenda adaptativa frente al panel derecho
+   ============================================================ */
+.legend.floating-legend{
+  transition:right .24s ease, width .24s ease, opacity .18s ease!important;
+}
+#app.detail-open .legend.floating-legend{
+  width:248px!important;
+}
+#app.legend-compact .legend.floating-legend{
+  width:210px!important;
+  font-size:9px!important;
+}
+#app.legend-compact .legend.floating-legend .legend-title{
+  font-size:9px!important;
+}
+#app.legend-hidden-by-space .legend.floating-legend{
+  opacity:0!important;
+  pointer-events:none!important;
+}
+@media(max-width:820px){
+  #app.detail-open .legend.floating-legend{
+    display:none!important;
+  }
+}
+
+
+/* V8.0.8 · corrección real del desplazamiento dinámico de la leyenda.
+   En V8.0.7, right:12px!important impedía que style.right desde JS surtiera efecto. */
+#app.detail-open .legend.floating-legend{
+  box-shadow:0 10px 30px rgba(0,0,0,.26)!important;
+}
+
+
+/* ============================================================
+   V9.0 · alineación superior de leyenda y lectura territorial
+   ============================================================ */
+
+/* Ambos módulos arrancan exactamente a la misma altura */
+.legend.floating-legend{
+  top:72px!important;
+}
+.card{
+  top:72px!important;
+}
+
+/* En móvil ambos conservan la misma referencia vertical */
+@media(max-width:820px){
+  .legend.floating-legend{
+    top:60px!important;
+  }
+  .card{
+    top:60px!important;
+  }
+}
+
+
+/* ============================================================
+   V9.1 · Fuentes y metodología
+   ============================================================ */
+.sources-help-btn{
+  position:absolute;
+  z-index:18;
+  right:13px;
+  bottom:108px;
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  border:1px solid #3a6b8d;
+  background:rgba(8,33,50,.94);
+  color:#e8f7ff;
+  display:grid;
+  place-items:center;
+  font-size:17px;
+  font-weight:900;
+  cursor:pointer;
+  box-shadow:0 5px 18px rgba(0,0,0,.22);
+}
+.sources-help-btn:hover{
+  background:#0f4c73;
+  border-color:#63bdf0;
+}
+#app.analytics-open .sources-help-btn{
+  bottom:min(376px,calc(46vh + 74px));
+}
+.sources-modal-backdrop{
+  position:absolute;
+  inset:0;
+  z-index:60;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+  background:rgba(1,12,20,.62);
+  backdrop-filter:blur(5px);
+}
+.sources-modal-backdrop.open{display:flex}
+.sources-modal{
+  width:min(760px,94vw);
+  max-height:min(82vh,760px);
+  display:flex;
+  flex-direction:column;
+  border-radius:16px;
+  border:1px solid #2d5875;
+  background:linear-gradient(180deg,#071d2c,#061724);
+  color:#d9e8f2;
+  box-shadow:0 22px 70px rgba(0,0,0,.42);
+  overflow:hidden;
+}
+.sources-modal-head{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:15px;
+  padding:16px 18px 12px;
+  border-bottom:1px solid #17364a;
+}
+.sources-modal-head h3{margin:2px 0 2px;font-size:23px;color:#fff}
+.sources-modal-head small{color:#88a1b3}
+.sources-modal-body{overflow:auto;padding:14px 18px 18px}
+.sources-intro{
+  display:flex;flex-direction:column;gap:5px;margin-bottom:12px;padding:11px 12px;
+  border:1px solid #1f4b67;background:#092538;border-radius:11px
+}
+.sources-intro b{color:#fff}
+.sources-intro span{color:#9eb4c3;font-size:10.5px;line-height:1.45}
+.source-card{
+  display:grid;grid-template-columns:34px 1fr;gap:10px;padding:10px 0;
+  border-bottom:1px solid #17364a
+}
+.source-num{
+  width:30px;height:30px;border-radius:8px;display:grid;place-items:center;
+  border:1px solid #235778;background:#0a2b42;color:#6ec9ff;font-size:10px;font-weight:900
+}
+.source-card b{color:#f0f8fc;font-size:11.5px}
+.source-card p{margin:4px 0;color:#9db3c1;font-size:10.2px;line-height:1.45}
+.source-card a{color:#69c7ff;font-size:9.7px;text-decoration:none}
+.source-card a:hover{text-decoration:underline}
+.method-box{
+  margin-top:14px;padding:12px;border-radius:11px;border:1px solid #31556e;background:#081e2d
+}
+.method-box>b{color:#fff;font-size:11px}
+.method-box p{margin:7px 0 0;color:#9fb4c3;font-size:10px;line-height:1.42}
+.method-warning{
+  margin-top:10px;padding:10px 12px;border-radius:10px;background:rgba(230,171,47,.09);
+  border:1px solid rgba(230,171,47,.34);display:flex;flex-direction:column;gap:4px
+}
+.method-warning b{color:#f5cd62;font-size:10.5px}
+.method-warning span{color:#c3b58b;font-size:9.8px;line-height:1.42}
+.sources-foot{
+  display:flex;justify-content:space-between;gap:10px;margin-top:12px;color:#708a9b;font-size:8.8px
+}
+@media(max-width:820px){
+  .sources-help-btn{right:8px;bottom:96px}
+  .sources-modal-backdrop{padding:7px}
+  .sources-modal{width:100%;max-height:88vh;border-radius:13px}
+  .sources-modal-head{padding:12px 13px 10px}
+  .sources-modal-head h3{font-size:19px}
+  .sources-modal-body{padding:10px 13px 14px}
+  .sources-foot{flex-direction:column;gap:3px}
+  #app.analytics-open .sources-help-btn{display:none}
+}
+
+
+/* ============================================================
+   V9.1.1 · botón Fuentes encima del control +
+   ============================================================ */
+.sources-help-btn{
+  bottom:auto!important;
+  /* top/right los calcula JavaScript a partir del control real de zoom */
+  transition:top .20s ease,right .20s ease!important;
+}
+#app.analytics-open .sources-help-btn{
+  bottom:auto!important;
+}
+@media(max-width:820px){
+  .sources-help-btn{
+    bottom:auto!important;
+  }
+  #app.analytics-open .sources-help-btn{
+    display:grid!important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -917,7 +1214,7 @@ button{font:inherit}
       <button class="nav-item" data-view="acu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2s6 7 6 12a6 6 0 0 1-12 0c0-5 6-12 6-12Z"/></svg><small>Sistemas</small></button>
       <button class="nav-item" data-view="capas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 2 9 5-9 5-9-5 9-5Z"/><path d="m3 12 9 5 9-5M3 17l9 5 9-5"/></svg><small>Capas</small></button>
       <div class="sidebar-spacer"></div>
-      <div class="version-badge">V8.0.3</div>
+      <div class="version-badge">V9.1.1</div>
     </nav>
 
     <div class="map-shell">
@@ -932,6 +1229,15 @@ button{font:inherit}
       <div class="ptip" id="ptip"></div>
 
       <div class="legend floating-legend glass-soft" id="legend"></div>
+      
+      
+      <button class="sources-help-btn" id="sourcesHelpBtn" type="button"
+              aria-label="Fuentes y metodología" title="Fuentes y metodología">?</button>
+
+      <div class="map-attribution-static" id="mapAttributionStatic" aria-hidden="true">
+        Tiles © Esri · UESVALLE · IDEAM · CVC · DANE
+      </div>
+
       <div class="map-state-badge glass-soft" id="mapStateBadge" title="Abrir panel de capas">
         <span class="eye">◉</span>
         <span class="state-text" id="mapStateText"><b>Activas:</b> prioridad municipal · sistemas por prioridad</span>
@@ -941,6 +1247,7 @@ button{font:inherit}
       <aside class="card glass" id="muniCard">
         <button class="close" data-close>×</button>
         <div class="eyebrow">Lectura territorial</div>
+        <div class="selected-muni-note" id="selectedMuniNote">Municipio seleccionado en el mapa</div>
         <h2 id="mpName">Municipio</h2>
         <div class="subt" id="mpAro"></div>
         <div class="statline" id="mpStat"><span class="d"></span><span class="t"></span></div>
@@ -1145,7 +1452,100 @@ button{font:inherit}
     </div>
   </div>
 
-  <section class="analytics glass" id="analytics">
+  
+      <div class="sources-modal-backdrop" id="sourcesModalBackdrop" aria-hidden="true">
+        <section class="sources-modal" id="sourcesModal" role="dialog" aria-modal="true"
+                 aria-labelledby="sourcesModalTitle">
+          <div class="sources-modal-head">
+            <div>
+              <div class="eyebrow">Trazabilidad</div>
+              <h3 id="sourcesModalTitle">Fuentes y metodología</h3>
+              <small>Origen de los datos utilizados en el visor</small>
+            </div>
+            <button class="panel-close" id="sourcesModalClose" type="button"
+                    aria-label="Cerrar fuentes">×</button>
+          </div>
+
+          <div class="sources-modal-body">
+            <div class="sources-intro">
+              <b>Vigilancia preventiva de abastecimiento · El Niño 2026–2027</b>
+              <span>El visor integra información institucional, climática e hidroclimatológica para orientar la verificación preventiva de los sistemas de abastecimiento.</span>
+            </div>
+
+            <div class="source-card">
+              <div class="source-num">01</div>
+              <div>
+                <b>UESVALLE · sistemas de abastecimiento</b>
+                <p>Base consolidada de acueductos bajo seguimiento UESVALLE. Universo actual: <strong>690 sistemas</strong>; <strong>639 georreferenciados</strong>.</p>
+              </div>
+            </div>
+
+            <div class="source-card">
+              <div class="source-num">02</div>
+              <div>
+                <b>CHIRPS Daily · precipitación</b>
+                <p>Precipitación acumulada para el periodo <strong>1–15 de agosto de 2026</strong>. Procesamiento y muestreo realizados en <strong>Google Earth Engine</strong>. Comparación relativa frente a climatología <strong>1991–2020</strong>.</p>
+                <a href="https://www.chc.ucsb.edu/data/chirps" target="_blank" rel="noopener">Referencia CHIRPS</a>
+              </div>
+            </div>
+
+            <div class="source-card">
+              <div class="source-num">03</div>
+              <div>
+                <b>ERA5-Land · temperatura</b>
+                <p>Temperatura media del aire y anomalía térmica para <strong>1–15 de agosto de 2026</strong>, procesadas en <strong>Google Earth Engine</strong> y comparadas con climatología <strong>1991–2020</strong>.</p>
+                <a href="https://cds.climate.copernicus.eu/" target="_blank" rel="noopener">Referencia ERA5-Land / Copernicus</a>
+              </div>
+            </div>
+
+            <div class="source-card">
+              <div class="source-num">04</div>
+              <div>
+                <b>CVC · contexto hidroclimatológico observado</b>
+                <p>Información observada de precipitación y caudales utilizada como contraste territorial del corte. En el visor se representan <strong>6 estaciones CVC de precipitación</strong> para el análisis observado disponible.</p>
+                <a href="https://portal-hidroclimatologico.cvc.gov.co/" target="_blank" rel="noopener">Portal hidroclimatológico CVC</a>
+              </div>
+            </div>
+
+            <div class="source-card">
+              <div class="source-num">05</div>
+              <div>
+                <b>IDEAM · contexto climático nacional</b>
+                <p>Boletines, seguimiento de El Niño y contexto climático empleados para interpretar el escenario regional. IDEAM no determina directamente el color de cada sistema en la clasificación puntual del visor.</p>
+                <a href="https://www.ideam.gov.co/fenomeno-del-nino" target="_blank" rel="noopener">Fenómeno de El Niño · IDEAM</a>
+              </div>
+            </div>
+
+            <div class="source-card">
+              <div class="source-num">06</div>
+              <div>
+                <b>Cartografía y mapa base</b>
+                <p>Cartografía municipal y referencias territoriales integradas por UESVALLE. El mapa base predeterminado corresponde a <strong>Esri World Topographic Map</strong>.</p>
+              </div>
+            </div>
+
+            <div class="method-box">
+              <b>Cómo se construyen las clasificaciones</b>
+              <p><strong>Exposición climática:</strong> combina índice de precipitación CHIRPS y anomalía térmica ERA5-Land.</p>
+              <p><strong>Sensibilidad operativa:</strong> utiliza el caudal reportado de cada sistema.</p>
+              <p><strong>Prioridad de verificación:</strong> cruza exposición climática + sensibilidad operativa.</p>
+              <p><strong>Prioridad municipal:</strong> agrega la prioridad de los sistemas del municipio y reporta por separado la cobertura de información de caudal.</p>
+            </div>
+
+            <div class="method-warning">
+              <b>Nota metodológica</b>
+              <span>Las categorías Alta / Media / Menor y las prioridades Inmediata / Reforzada / Rutinaria son criterios analíticos de UESVALLE para vigilancia preventiva. No corresponden a clasificaciones oficiales de riesgo de IDEAM, CVC, CHIRPS, ECMWF o Esri.</span>
+            </div>
+
+            <div class="sources-foot">
+              <span>Corte de datos climáticos: 1–15 de agosto de 2026.</span>
+              <span>Actualización del visor: septiembre de 2026.</span>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <section class="analytics glass" id="analytics">
     <button class="drawer-handle" id="drawerToggle"><span><span id="drawerIcon">▴</span>&nbsp; Análisis</span><span class="hint">Municipios · lluvia · temperatura · caudal</span></button>
     <div class="analytics-body">
       <div class="acard"><h4>Municipios prioritarios para diagnóstico</h4><div id="chartPrio"></div></div>
@@ -1263,7 +1663,7 @@ function recommendedView(notify=true){
 
   setCheck("muni",true);
   setCheck("valle",true);
-  ["muni-fill","muni-line","valle-line"].forEach(l=>vis(l,true));
+  ["muni-fill","muni-line","muni-selected-halo","muni-selected-line","valle-line"].forEach(l=>vis(l,true));
   setMunicipioHtmlLabels(true);
 
   setCheck("munipressure",true);
@@ -1292,10 +1692,34 @@ if(CFG.corte)$("#corteTxt").textContent="Corte "+CFG.corte;
 
 const map=new maplibregl.Map({container:"map",preserveDrawingBuffer:true,attributionControl:false,
   center:[-76.3,3.95],zoom:7.35,minZoom:6,maxZoom:12,
-  style:{version:8,glyphs:"https://fonts.openmaptiles.org/{fontstack}/{range}.pbf",sources:{},
-    layers:[{id:"bg",type:"background",paint:{"background-color":"#e7edf1"}}]}});
+  style:{
+    version:8,
+    glyphs:"https://fonts.openmaptiles.org/{fontstack}/{range}.pbf",
+    sources:{
+      "src-base-topo":{
+        type:"raster",
+        tiles:["https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}"],
+        tileSize:256,
+        attribution:"Tiles © Esri"
+      }
+    },
+    layers:[
+      {id:"bg",type:"background",paint:{"background-color":"#e7edf1"}},
+      {id:"base-topo",type:"raster",source:"src-base-topo",paint:{"raster-opacity":.94}}
+    ]
+  }});
 map.addControl(new maplibregl.NavigationControl({showCompass:false}),"bottom-right");
-map.addControl(new maplibregl.AttributionControl({compact:true,customAttribution:"UESVALLE · IDEAM · CVC · DANE"}),"bottom-right");
+
+
+let baseTileErrorShown=false;
+map.on("error",e=>{
+  const sid=e?.sourceId||e?.source?.id||"";
+  if(!baseTileErrorShown && String(sid).includes("base-topo")){
+    baseTileErrorShown=true;
+    console.warn("Error de teselas del mapa base Topográfico Esri.",e?.error||e);
+    toast("El mapa base Topográfico no respondió. Puede elegir otra base en Capas.");
+  }
+});
 
 const HEAT=[0,"rgba(6,17,29,0)",0.15,"rgba(95,208,127,.5)",0.35,"rgba(255,214,51,.72)",0.6,"rgba(255,158,61,.85)",0.85,"rgba(255,90,90,.93)",1,"rgba(190,20,20,.98)"];
 const PRECIP=["interpolate",["linear"],["get","v"],0,"#7a1616",15,"#c23b2b",30,"#e88a2e",45,"#ecd24a",60,"#4a9e6a",90,"#2b6fae"];
@@ -1315,7 +1739,7 @@ function buildMunicipioHtmlLabels(){
 }
 function setMunicipioHtmlLabels(on){muniHtmlMarkers.forEach(x=>x.el.style.display=on?'block':'none');}
 function activateMunicipalView(){
-  vis('muni-pressure-fill',true);vis('muni-verify-fill',false);vis('clima-block-fill',false);vis('muni-fill',true);vis('muni-line',true);
+  vis('muni-pressure-fill',true);vis('muni-verify-fill',false);vis('clima-block-fill',false);vis('muni-fill',true);vis('muni-line',true);vis('muni-selected-halo',true);vis('muni-selected-line',true);
   setMunicipioHtmlLabels(true);
   const mp=document.querySelector('[data-lyr="munipressure"]');if(mp)mp.checked=true;
   const mv=document.querySelector('[data-lyr="muniverify"]');if(mv)mv.checked=false;
@@ -1349,7 +1773,18 @@ map.on("load",()=>{
   map.addLayer({id:"muni-fill",type:"fill",source:"muni",paint:{"fill-color":"#b6c9d6","fill-opacity":["case",["boolean",["feature-state","sel"],false],.15,.025]}});
   map.addLayer({id:"muni-pressure-fill",type:"fill",source:"muni",layout:{visibility:"visible"},paint:{"fill-color":["match",["get","presion_municipal"],"ALTA","#d84c4c","IMPORTANTE","#e58a2c","MODERADA","#e3b93e","REFERENCIA","#3fa878","#66798a"],"fill-opacity":["case",["==",["get","presion_municipal"],"SIN_DATO"],.28,.68]}});
   map.addLayer({id:"muni-verify-fill",type:"fill",source:"muni",layout:{visibility:"none"},paint:{"fill-color":["match",["get","prioridad_municipal_verificacion"],"ALTA",MVERIFY.ALTA,"IMPORTANTE",MVERIFY.IMPORTANTE,"MODERADA",MVERIFY.MODERADA,"REFERENCIA",MVERIFY.REFERENCIA,MVERIFY.SIN_DATO],"fill-opacity":["case",["==",["get","prioridad_municipal_verificacion"],"SIN_DATO"],.28,.70]}});
-  map.addLayer({id:"muni-line",type:"line",source:"muni",paint:{"line-color":"#202a33","line-width":["case",["boolean",["feature-state","sel"],false],3.0,1.45],"line-opacity":.98}});
+  map.addLayer({id:"muni-line",type:"line",source:"muni",paint:{"line-color":"#202a33","line-width":1.45,"line-opacity":.98}});
+  map.addLayer({id:"muni-selected-halo",type:"line",source:"muni",paint:{
+    "line-color":"#ffffff",
+    "line-width":["case",["boolean",["feature-state","sel"],false],8,0],
+    "line-opacity":["case",["boolean",["feature-state","sel"],false],.96,0],
+    "line-blur":1.5
+  }});
+  map.addLayer({id:"muni-selected-line",type:"line",source:"muni",paint:{
+    "line-color":"#00bfff",
+    "line-width":["case",["boolean",["feature-state","sel"],false],4.5,0],
+    "line-opacity":["case",["boolean",["feature-state","sel"],false],1,0]
+  }});
   map.addLayer({id:"valle-line",type:"line",source:"valle",paint:{"line-color":"#0b0f14","line-width":3.2,"line-opacity":.98}});
   map.addLayer({id:"muni-lbl",type:"symbol",source:"muni",layout:{visibility:"none","text-field":["get","name"],"text-size":10},paint:{"text-color":"#17232d"}});
   map.addLayer({id:"acu-pt",type:"circle",source:"acu",layout:{visibility:"none"},paint:{"circle-radius":["interpolate",["linear"],["zoom"],6,3.2,11,7],"circle-color":"#20d9ff","circle-stroke-color":"#06111d","circle-stroke-width":1,"circle-opacity":.95}});
@@ -1358,6 +1793,11 @@ map.on("load",()=>{
   map.addLayer({id:"est-pt",type:"circle",source:"est",layout:{visibility:"none"},paint:{"circle-radius":6,"circle-color":"#ffffff","circle-stroke-color":"#20d9ff","circle-stroke-width":2,"circle-opacity":.98}});
 
   buildMunicipioHtmlLabels();setMunicipioHtmlLabels(true);interactions();applyFilters();recommendedView(false);
+  setTimeout(()=>{try{
+    $$('input[name="base"]').forEach(r=>r.checked=r.value==="topo");
+    setBase("topo");
+  }catch(e){console.warn("No fue posible reafirmar el mapa base Topográfico.",e)}},300);
+  scheduleSourcesHelpPosition();
   const ready=climateReady();
   $$('.filter-chip[data-f="P"]').forEach(b=>b.disabled=!ready);
   $("#climaReadyTag").textContent=ready?"clasificación climática activa":"pendiente raster GEE";
@@ -1387,7 +1827,7 @@ function setSystemMode(mode,notify=true){
 }
 $$('[data-lyr]').forEach(inp=>inp.addEventListener("change",e=>{
   const k=e.target.dataset.lyr,on=e.target.checked;
-  if(k==="muni"){["muni-fill","muni-line"].forEach(l=>vis(l,on));setMunicipioHtmlLabels(on);}
+  if(k==="muni"){["muni-fill","muni-line","muni-selected-halo","muni-selected-line"].forEach(l=>vis(l,on));setMunicipioHtmlLabels(on);}
   else if(k==="munipressure"){
     vis("muni-pressure-fill",on);
     if(map.getLayer("muni-fill")) map.setPaintProperty("muni-fill","fill-opacity",on?["case",["boolean",["feature-state","sel"],false],.10,.01]:["case",["boolean",["feature-state","sel"],false],.18,.05]);
@@ -1456,6 +1896,17 @@ const BASES={
  topo:{tiles:["https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}"],attribution:"Tiles © Esri"},
  satelite:{tiles:["https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"],attribution:"Tiles © Esri"}
 };
+function updateStaticAttribution(kind){
+  const el=$("#mapAttributionStatic");
+  if(!el)return;
+  if(kind==="osm"){
+    el.textContent="© OpenStreetMap contributors · UESVALLE · IDEAM · CVC · DANE";
+  }else if(kind==="none"){
+    el.textContent="UESVALLE · IDEAM · CVC · DANE";
+  }else{
+    el.textContent="Tiles © Esri · UESVALLE · IDEAM · CVC · DANE";
+  }
+}
 function setBase(kind){
   ["base-osm","base-gris","base-calles","base-topo","base-satelite"].forEach(id=>vis(id,false));
 
@@ -1468,6 +1919,7 @@ function setBase(kind){
 
   if(kind==="none"){
     map.setPaintProperty("muni-fill","fill-opacity",["case",["boolean",["feature-state","sel"],false],.18,.05]);
+    updateStaticAttribution("none");
     syncActiveLayers();
     return;
   }
@@ -1478,6 +1930,7 @@ function setBase(kind){
   if(!map.getLayer(id))map.addLayer({id,type:"raster",source:"src-"+id,paint:{"raster-opacity":kind==="satelite"?.96:.94}},"precip-fill");
   vis(id,true);
   map.setPaintProperty("muni-fill","fill-opacity",["case",["boolean",["feature-state","sel"],false],.13,.02]);
+  updateStaticAttribution(kind);
   syncActiveLayers();
   toast(kind==="osm"?"OpenStreetMap activado.":"Mapa base Esri activado.");
 }
@@ -1611,6 +2064,41 @@ function interactions(){
 }
 function selMuni(id){if(S.selId)map.setFeatureState({source:"muni",id:S.selId},{sel:false});S.selId=id;if(id)map.setFeatureState({source:"muni",id},{sel:true});}
 
+
+function positionFloatingLegend(){
+  const legend=$("#legend");
+  const mapShell=document.querySelector(".map-shell");
+  if(!legend||!mapShell)return;
+
+  const app=$("#app");
+  const openCard=document.querySelector(".card.open");
+
+  app.classList.remove("detail-open","legend-compact","legend-hidden-by-space");
+  legend.style.setProperty("right","12px","important");
+
+  if(!openCard)return;
+
+  app.classList.add("detail-open");
+
+  const mapRect=mapShell.getBoundingClientRect();
+  const cardRect=openCard.getBoundingClientRect();
+
+  const gap=16;
+  const rightOffset=Math.max(12,Math.round(mapRect.right-cardRect.left+gap));
+  legend.style.setProperty("right",rightOffset+"px","important");
+
+  const available=cardRect.left-mapRect.left-gap-18;
+  if(available<560)app.classList.add("legend-compact");
+  if(available<285)app.classList.add("legend-hidden-by-space");
+}
+
+function scheduleLegendPosition(){
+  requestAnimationFrame(()=>{
+    positionFloatingLegend();
+    setTimeout(positionFloatingLegend,280);
+  });
+}
+
 function openMuni(p,id){
   closeCards();selMuni(id);
   $("#mpName").textContent=p.name;$("#mpAro").textContent=(p.aro||"—")+" · lectura climática por ubicación de acueductos";
@@ -1645,10 +2133,13 @@ function openMuni(p,id){
     ". Prioridad municipal de verificación: "+muniVerifyLabel(mv)+
     ". Son lecturas orientativas y no equivalen a afectación confirmada.";
   $("#muniCard").classList.add("open");map.flyTo({center:centroid(id),zoom:9.3,padding:{right:360}});
+  scheduleLegendPosition();
 }
 function rowPB(f){const p=f.properties||f,pc=p.P_clima||"PENDIENTE_RASTER";return `<div class="pbrow"><span class="tag" style="background:${PRIO[pc]||'#61788a'}">${pc==='PENDIENTE_RASTER'?'—':exposureLabel(pc)}</span><div style="flex:1;min-width:0"><div class="nm">${(p.loc||p.prest||"").toString().slice(0,40)}</div><div class="mt">${p.q!=null?p.q+" L/s · ":""}${fmt(p.pob)} hab</div></div></div>`}
 function openAcu(p){
+  closeCards();
   $("#acuCard").classList.add("open");
+  scheduleLegendPosition();
   const pc=p.P_clima||"PENDIENTE_RASTER";
   $("#apPrio").textContent=pc==="PENDIENTE_RASTER"?"Exposición pendiente":exposureLabel(pc)+" exposición climática";
   $("#apPrio").style.color=PRIO[pc]||"#9bb0bf";
@@ -1893,11 +2384,73 @@ function setView(v){
   else if(v==="mapa"){renderLegend();syncActiveLayers();}
 }
 $$(".nav-item").forEach(n=>n.onclick=()=>setView(n.dataset.view));
-function closeCards(){$("#muniCard").classList.remove("open");$("#acuCard").classList.remove("open");}
+function closeCards(){
+  $("#muniCard").classList.remove("open");
+  $("#acuCard").classList.remove("open");
+  $("#app").classList.remove("detail-open","legend-compact","legend-hidden-by-space");
+  const legend=$("#legend");
+  if(legend)legend.style.setProperty("right","12px","important");
+}
 $$("[data-close]").forEach(b=>b.onclick=()=>{closeCards();$("#mapPanel").classList.remove("open");$("#muniList").classList.remove("open");$("#acuList").classList.remove("open");$("#capasPanel").classList.remove("open");$$(".nav-item").forEach(n=>n.classList.toggle("active",n.dataset.view==="mapa"));selMuni(null);});
+
+function positionSourcesHelpBtn(){
+  const btn=$("#sourcesHelpBtn");
+  const shell=document.querySelector(".map-shell");
+  if(!btn||!shell)return;
+
+  const mapRect=shell.getBoundingClientRect();
+  const groups=[...document.querySelectorAll(".maplibregl-ctrl-bottom-right .maplibregl-ctrl-group")]
+    .filter(g=>g.offsetParent!==null);
+
+  if(!groups.length){
+    btn.style.top="auto";
+    btn.style.right="13px";
+    return;
+  }
+
+  // El grupo de navegación (+ / -) es el grupo visible con botones.
+  const nav=groups.find(g=>g.querySelector("button"))||groups[0];
+  const r=nav.getBoundingClientRect();
+
+  const gap=8;
+  const btnSize=32;
+  const top=Math.max(8,Math.round(r.top-mapRect.top-btnSize-gap));
+  const right=Math.max(8,Math.round(mapRect.right-r.right+(r.width-btnSize)/2));
+
+  btn.style.top=top+"px";
+  btn.style.right=right+"px";
+}
+
+function scheduleSourcesHelpPosition(){
+  requestAnimationFrame(()=>{
+    positionSourcesHelpBtn();
+    setTimeout(positionSourcesHelpBtn,260);
+  });
+}
+
+$("#sourcesHelpBtn").onclick=()=>{
+  $("#sourcesModalBackdrop").classList.add("open");
+  $("#sourcesModalBackdrop").setAttribute("aria-hidden","false");
+};
+$("#sourcesModalClose").onclick=()=>{
+  $("#sourcesModalBackdrop").classList.remove("open");
+  $("#sourcesModalBackdrop").setAttribute("aria-hidden","true");
+};
+$("#sourcesModalBackdrop").addEventListener("click",e=>{
+  if(e.target===e.currentTarget){
+    e.currentTarget.classList.remove("open");
+    e.currentTarget.setAttribute("aria-hidden","true");
+  }
+});
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape"&&$("#sourcesModalBackdrop").classList.contains("open")){
+    $("#sourcesModalBackdrop").classList.remove("open");
+    $("#sourcesModalBackdrop").setAttribute("aria-hidden","true");
+  }
+});
 $("#recommendedViewBtn").onclick=()=>recommendedView(true);
 $("#mapStateBadge").onclick=()=>setView("mapa");
-$("#drawerToggle").onclick=()=>{const a=$("#analytics");a.classList.toggle("open");const open=a.classList.contains("open");$("#app").classList.toggle("analytics-open",open);$("#drawerIcon").textContent=open?"▾":"▴";};
+$("#drawerToggle").onclick=()=>{const a=$("#analytics");a.classList.toggle("open");const open=a.classList.contains("open");$("#app").classList.toggle("analytics-open",open);$("#drawerIcon").textContent=open?"▾":"▴";scheduleLegendPosition();scheduleSourcesHelpPosition();};
 $("#fabReset").onclick=()=>{closeCards();selMuni(null);recommendedView(true);};
 $("#fabPng").onclick=()=>{try{const u=map.getCanvas().toDataURL("image/png");const a=document.createElement("a");a.href=u;a.download="visor_elnino_uesvalle_"+CFG.corte_id+".png";a.click();toast("Imagen del mapa descargada.");}catch(e){toast("Para exportar, desactiva la base cartográfica y otras capas externas y reintenta.");}};
 function centroid(id){return bboxCenter(DATA.municipios.features.find(x=>x.properties.code===id));}
@@ -1905,6 +2458,11 @@ function bboxCenter(f){let x0=180,y0=90,x1=-180,y1=-90;const w=c=>{if(typeof c[0
 function fitValle(){map.fitBounds([[-77.65,3.0],[-75.55,5.15]],{padding:40,duration:700});}
 function hexA(h,a){const n=parseInt(h.slice(1),16);return`rgba(${n>>16&255},${n>>8&255},${n&255},${a})`}
 renderLegend();renderKpis();renderCharts();syncActiveLayers();
+window.addEventListener("resize",scheduleLegendPosition);
+window.addEventListener("orientationchange",scheduleLegendPosition);
+window.addEventListener("resize",scheduleSourcesHelpPosition);
+window.addEventListener("orientationchange",scheduleSourcesHelpPosition);
+scheduleSourcesHelpPosition();
 const osmOpt=$("#osmBaseOpt");
 if(osmOpt){
   const isWeb=/^https?:$/.test(location.protocol);
