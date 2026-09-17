@@ -1211,6 +1211,147 @@ button{font:inherit}
   display:none!important;
 }
 
+
+/* ============================================================
+   V9.3 · lectura térmica clara + leyenda controlable
+   ============================================================ */
+
+/* Indicadores térmicos: textos largos sin perder legibilidad */
+.climate-stat3.temp-stat-v93 span{
+  min-height:24px;
+  line-height:1.2;
+}
+
+/* Cabecera propia de la leyenda */
+.legend-head-v93{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  margin:-2px 0 9px;
+  padding-bottom:7px;
+  border-bottom:1px solid #294155;
+  position:sticky;
+  top:-10px;
+  z-index:2;
+  background:rgba(5,20,31,.97);
+}
+.legend-head-v93 .legend-main-title{
+  font-size:10px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:#d8ebf7;
+  font-weight:900;
+}
+.legend-actions-v93{
+  display:flex;
+  gap:5px;
+}
+.legend-action-v93{
+  width:25px;
+  height:25px;
+  border-radius:7px;
+  border:1px solid #34546a;
+  background:#0a2233;
+  color:#cfe4f2;
+  cursor:pointer;
+  display:grid;
+  place-items:center;
+  padding:0;
+  font-size:14px;
+  font-weight:900;
+  line-height:1;
+}
+.legend-action-v93:hover{
+  background:#10324a;
+  border-color:#4c85a9;
+  color:#fff;
+}
+.legend-body-v93{
+  display:block;
+}
+
+/* Estado minimizado: solo una barra compacta */
+.legend.floating-legend.legend-collapsed-v93{
+  width:145px!important;
+  max-height:43px!important;
+  min-height:0!important;
+  overflow:hidden!important;
+  padding:8px 9px!important;
+}
+.legend.floating-legend.legend-collapsed-v93 .legend-head-v93{
+  margin:0!important;
+  padding:0!important;
+  border-bottom:0!important;
+  top:auto!important;
+}
+.legend.floating-legend.legend-collapsed-v93 .legend-body-v93{
+  display:none!important;
+}
+
+/* Estado oculto: aparece un botón discreto para restaurar */
+.legend.floating-legend.legend-hidden-v93{
+  display:none!important;
+}
+.legend-restore-v93{
+  position:absolute;
+  z-index:14;
+  top:72px;
+  right:12px;
+  display:none;
+  align-items:center;
+  gap:6px;
+  height:32px;
+  padding:0 10px;
+  border-radius:9px;
+  border:1px solid rgba(45,85,112,.88);
+  background:rgba(5,20,31,.90);
+  color:#cfe4f2;
+  box-shadow:0 7px 22px rgba(0,0,0,.20);
+  backdrop-filter:blur(8px);
+  cursor:pointer;
+  font-size:10px;
+  font-weight:850;
+  transition:right .24s ease,opacity .18s ease;
+}
+.legend-restore-v93.show{
+  display:flex;
+}
+.legend-restore-v93:hover{
+  background:#0b2a3f;
+  border-color:#4c85a9;
+  color:#fff;
+}
+
+/* Si no hay espacio por el panel derecho, no añadir ruido visual */
+#app.legend-hidden-by-space .legend-restore-v93{
+  opacity:0!important;
+  pointer-events:none!important;
+}
+
+/* En móvil: la leyenda inicia minimizada y el control queda compacto */
+@media(max-width:820px){
+  .legend-restore-v93{
+    top:60px;
+    right:7px;
+  }
+  .legend.floating-legend.legend-collapsed-v93{
+    width:132px!important;
+  }
+  #app.analytics-open .legend-restore-v93{
+    display:none!important;
+  }
+}
+
+/* En pantallas muy pequeñas, botones aún más discretos */
+@media(max-width:520px){
+  .legend-action-v93{
+    width:23px;
+    height:23px;
+    font-size:13px;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -1234,7 +1375,7 @@ button{font:inherit}
       <button class="nav-item" data-view="acu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2s6 7 6 12a6 6 0 0 1-12 0c0-5 6-12 6-12Z"/></svg><small>Sistemas</small></button>
       <button class="nav-item" data-view="capas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 2 9 5-9 5-9-5 9-5Z"/><path d="m3 12 9 5 9-5M3 17l9 5 9-5"/></svg><small>Capas</small></button>
       <div class="sidebar-spacer"></div>
-      <div class="version-badge">V9.2</div>
+      <div class="version-badge">V9.3</div>
     </nav>
 
     <div class="map-shell">
@@ -1250,6 +1391,7 @@ button{font:inherit}
       <div class="ptip" id="ptip"></div>
 
       <div class="legend floating-legend glass-soft" id="legend"></div>
+      <button class="legend-restore-v93" id="legendRestore" type="button" aria-label="Mostrar leyenda" title="Mostrar leyenda">▤ <span>Leyenda</span></button>
 <div class="map-attribution-static" id="mapAttributionStatic" aria-hidden="true">
         Tiles © Esri · UESVALLE · IDEAM · CVC · DANE
       </div>
@@ -2082,14 +2224,16 @@ function selMuni(id){if(S.selId)map.setFeatureState({source:"muni",id:S.selId},{
 
 function positionFloatingLegend(){
   const legend=$("#legend");
+  const restore=$("#legendRestore");
   const mapShell=document.querySelector(".map-shell");
-  if(!legend||!mapShell)return;
+  if(!legend||!restore||!mapShell)return;
 
   const app=$("#app");
   const openCard=document.querySelector(".card.open");
 
   app.classList.remove("detail-open","legend-compact","legend-hidden-by-space");
   legend.style.setProperty("right","12px","important");
+  restore.style.setProperty("right","12px","important");
 
   if(!openCard)return;
 
@@ -2101,6 +2245,7 @@ function positionFloatingLegend(){
   const gap=16;
   const rightOffset=Math.max(12,Math.round(mapRect.right-cardRect.left+gap));
   legend.style.setProperty("right",rightOffset+"px","important");
+  restore.style.setProperty("right",rightOffset+"px","important");
 
   const available=cardRect.left-mapRect.left-gap-18;
   if(available<560)app.classList.add("legend-compact");
@@ -2317,13 +2462,13 @@ function renderCharts(){
   ].filter(x=>x[1]!=null);
   const tempMaxBy=Math.max(...tempBy.map(x=>x[1]),1);
   $("#chartTemp").innerHTML=
-    `<div class="climate-stat3">
-      <div><span>Temperatura promedio</span><b>${tempMean==null?'—':tempMean.toFixed(1)+' °C'}</b></div>
-      <div><span>Mínima</span><b>${tempMin==null?'—':tempMin.toFixed(1)+' °C'}</b></div>
-      <div><span>Máxima</span><b>${tempMax==null?'—':tempMax.toFixed(1)+' °C'}</b></div>
+    `<div class="climate-stat3 temp-stat-v93">
+      <div><span>Media promedio en sistemas</span><b>${tempMean==null?'—':tempMean.toFixed(1)+' °C'}</b></div>
+      <div><span>Menor temperatura media</span><b>${tempMin==null?'—':tempMin.toFixed(1)+' °C'}</b></div>
+      <div><span>Mayor temperatura media</span><b>${tempMax==null?'—':tempMax.toFixed(1)+' °C'}</b></div>
     </div>`+
     tempBy.map(([k,v,c])=>`<div class="hbar"><span class="n">${k}</span><span class="track"><i style="width:${Math.max(8,(v/tempMaxBy)*100)}%;background:${c}"></i></span><span class="v">${v.toFixed(1)}</span></div>`).join("")+
-    `<div class="simple-reading"><strong>Lectura:</strong> temperatura media estimada del aire entre el 1 y el 15 de agosto. ${anomMean==null?'':`En promedio estuvo <strong>${anomMean>=0?'+':''}${anomMean.toFixed(1)} °C</strong> respecto de lo habitual para el mismo periodo.`}</div>`;
+    `<div class="simple-reading"><strong>Lectura:</strong> temperatura media del aire ERA5-Land entre el 1 y el 15 de agosto, muestreada en las ubicaciones de los sistemas visibles. ${anomMean==null?'':`En promedio estuvo <strong>${anomMean>=0?'+':''}${anomMean.toFixed(1)} °C</strong> respecto de lo habitual para el mismo periodo.`}<br><strong>Importante:</strong> “menor” y “mayor” son extremos de la <em>temperatura media</em> en los sistemas; no corresponden a temperatura mínima ni máxima diaria.</div>`;
 
   const rng={"≤1":0,"1–4":0,">4":0,"Sin dato":0};
   A.forEach(p=>{
@@ -2342,6 +2487,37 @@ function renderCharts(){
   if(chartCombined)chartCombined.innerHTML=`<div class="priority-grid-v8a"><div><span>Inmediata</span><b>${pr.INMEDIATA}</b></div><div><span>Reforzada</span><b>${pr.REFORZADA}</b></div><div><span>Rutinaria</span><b>${pr.RUTINARIA}</b></div><div><span>Por completar</span><b>${pr.POR_COMPLETAR}</b></div></div><div class="v8a-note"><b>Lectura complementaria:</b> cruza exposición climática y sensibilidad operativa por caudal. No modifica la clasificación climática y no equivale a afectación confirmada.</div>`;
 
 }
+
+let legendMode = window.matchMedia && window.matchMedia("(max-width:820px)").matches
+  ? "collapsed"
+  : "expanded";
+
+function applyLegendMode(){
+  const legend=$("#legend");
+  const restore=$("#legendRestore");
+  if(!legend||!restore)return;
+
+  legend.classList.toggle("legend-collapsed-v93",legendMode==="collapsed");
+  legend.classList.toggle("legend-hidden-v93",legendMode==="hidden");
+  restore.classList.toggle("show",legendMode==="hidden");
+
+  const toggle=legend.querySelector('[data-legend-action="toggle"]');
+  if(toggle){
+    const collapsed=legendMode==="collapsed";
+    toggle.textContent=collapsed?"+":"−";
+    toggle.title=collapsed?"Expandir leyenda":"Minimizar leyenda";
+    toggle.setAttribute("aria-label",collapsed?"Expandir leyenda":"Minimizar leyenda");
+  }
+  scheduleLegendPosition();
+}
+
+function restoreLegend(){
+  legendMode=(window.matchMedia && window.matchMedia("(max-width:820px)").matches)
+    ? "collapsed"
+    : "expanded";
+  applyLegendMode();
+}
+
 function layerIsVisible(id){return map&&map.getLayer(id)&&map.getLayoutProperty(id,"visibility")!=="none"}
 function renderLegend(){
   const c1=climateReady()?fmt(DATA.acueductos.features.filter(f=>f.properties.P_clima==="P1").length):'—';
@@ -2388,7 +2564,16 @@ function renderLegend(){
   if(layerIsVisible("precip-index-fill"))raster.push(`<div class=\"raster-scale\"><div class=\"raster-title\"><b>Escala · índice de precipitación</b><span>% normal</span></div><div class=\"raster-gradient\" style=\"background:linear-gradient(90deg,#7a1616 0%,#c23b2b 17%,#e88a2e 34%,#ecd24a 52%,#4a9e6a 72%,#2b6fae 100%)\"></div><div class=\"raster-ticks\"><span>0</span><span>15</span><span>30</span><span>45</span><span>60</span><span>90+</span></div><div class=\"raster-caption\">100 % ≈ climatología 1991–2020; valores menores indican menos lluvia relativa.</div></div>`);
   if(layerIsVisible("temp-anom-fill"))raster.push(`<div class=\"raster-scale\"><div class=\"raster-title\"><b>Escala · anomalía térmica</b><span>°C</span></div><div class=\"raster-gradient\" style=\"background:linear-gradient(90deg,#2563eb 0%,#7dd3fc 24%,#e5e7eb 42%,#fde047 58%,#fb923c 77%,#dc2626 100%)\"></div><div class=\"raster-ticks\"><span>-1</span><span>0</span><span>+0.5</span><span>+1.0</span><span>+1.5</span><span>+2.3</span></div><div class=\"raster-caption\">Diferencia frente a climatología 1991–2020; positivo = más cálido.</div></div>`);
   const rasterHtml=raster.length?`<div class="legend-raster"><div class="legend-title">Escala de capa raster activa</div>${raster.join("")}</div>`:"";
-  $("#legend").innerHTML=`${territorial}${sys}<div class="row" style="margin-top:8px"><span style="width:16px;border-top:3px solid #0b0f14"></span>Contorno Valle del Cauca</div>${rasterHtml}`;
+  $("#legend").innerHTML=
+    `<div class="legend-head-v93">
+      <span class="legend-main-title">Leyenda</span>
+      <span class="legend-actions-v93">
+        <button class="legend-action-v93" type="button" data-legend-action="toggle" aria-label="Minimizar leyenda" title="Minimizar leyenda">−</button>
+        <button class="legend-action-v93" type="button" data-legend-action="hide" aria-label="Ocultar leyenda" title="Ocultar leyenda">×</button>
+      </span>
+    </div>
+    <div class="legend-body-v93">${territorial}${sys}<div class="row" style="margin-top:8px"><span style="width:16px;border-top:3px solid #0b0f14"></span>Contorno Valle del Cauca</div>${rasterHtml}</div>`;
+  applyLegendMode();
 }
 function setView(v){
   $$(".nav-item").forEach(n=>n.classList.toggle("active",n.dataset.view===v));
@@ -2407,6 +2592,8 @@ function closeCards(){
   $("#app").classList.remove("detail-open","legend-compact","legend-hidden-by-space");
   const legend=$("#legend");
   if(legend)legend.style.setProperty("right","12px","important");
+  const restore=$("#legendRestore");
+  if(restore)restore.style.setProperty("right","12px","important");
   const ctrl=document.querySelector(".maplibregl-ctrl-bottom-right");
   if(ctrl)ctrl.style.setProperty("right","8px","important");
 }
@@ -2437,6 +2624,23 @@ function scheduleMapNavigation(){
   });
 }
 
+$("#legend").addEventListener("click",e=>{
+  const btn=e.target.closest("[data-legend-action]");
+  if(!btn)return;
+  e.preventDefault();
+  e.stopPropagation();
+  const action=btn.dataset.legendAction;
+  if(action==="toggle"){
+    legendMode=legendMode==="collapsed"?"expanded":"collapsed";
+    applyLegendMode();
+  }else if(action==="hide"){
+    legendMode="hidden";
+    applyLegendMode();
+  }
+});
+$("#legendRestore").onclick=()=>{
+  restoreLegend();
+};
 $("#sourcesHelpBtn").onclick=()=>{
   $("#sourcesModalBackdrop").classList.add("open");
   $("#sourcesModalBackdrop").setAttribute("aria-hidden","false");
