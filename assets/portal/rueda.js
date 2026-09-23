@@ -135,6 +135,15 @@ function build(cat){
       buscar(v);
     });
   }
+  desdeHash();
+  window.addEventListener('hashchange', desdeHash);
+}
+
+/* enlaces desde los tableros: index.html#eis, #ach, #zoo, #aym, #sismo2026, #nino2026, #transversal */
+function desdeHash(){
+  const id = decodeURIComponent((location.hash || '').slice(1));
+  if(Q[id]) return select('proc', id);
+  if(RING.some(r => r.id === id)) return select('ring', id);
   select(null, null);
 }
 

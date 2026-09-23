@@ -1,5 +1,5 @@
 {
- "version": "Portal V2.4",
+ "version": "Portal V2.5",
  "actualizado": "2026-09-23",
  "fuente_procesos": "Plan Operativo Anual por proceso 2026 (F-PI-04, versión final)",
  "procesos": [
@@ -230,8 +230,8 @@
    "tipo": "Tablero",
    "proceso": "eis",
    "evento": "sismo2026",
-   "version": "V4.2",
-   "publicado": "2026-09-22",
+   "version": "V5.1",
+   "publicado": "2026-09-23",
    "requiere_clave": false,
    "estado": "publicado",
    "enlaces": []
