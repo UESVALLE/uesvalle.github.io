@@ -51,7 +51,8 @@ const COMP_ICON = {agua:'drop', saneamiento:'toilet', alimentos:'food', animales
 
 function render(){
   const k = DB.kpis, P = DB.poblacion;
-  $('#cutDate').textContent = matchMedia('(max-width:720px)').matches ? fecha(DB.metadata.corte) : fecha(DB.metadata.corte, true);
+  $('#cutDate').textContent = fecha(DB.metadata.corte, true);
+  $('#updated').innerHTML = `<i></i>Actualizado ${fecha((DB.metadata.generado || '').slice(0,10))}`;
   $('#lede').textContent = `Estado de los alojamientos habilitados en el Valle del Cauca tras el ${DB.metadata.evento.charAt(0).toLowerCase()+DB.metadata.evento.slice(1)}.`;
 
   const kpi = (cls, icon, n, label, sub, target, extra='') => `
@@ -60,12 +61,12 @@ function render(){
       <span><span class="n">${n}</span><span class="l">${label}</span>${extra}<span class="s">${sub}</span><span class="go">Clic para consultar</span></span>
     </button>`;
   $('#kpis').innerHTML =
-    kpi('k1','people',fmt.format(k.personas),'Personas alojadas',`${fmt.format(k.censadas)} censadas y ${fmt.format(k.por_validar)} por validar`,'mod-poblacion',
+    kpi('k1','people',fmt.format(k.personas),'Personas alojadas',`${fmt.format(k.censadas)} censadas y ${fmt.format(k.por_validar)} por validar`,'poblacion',
       `<span class="split" aria-hidden="true"><i class="a" style="width:${pct(k.censadas,k.personas)}%"></i><i class="b" style="width:${pct(k.por_validar,k.personas)}%"></i></span>`) +
-    kpi('k2','house',k.alojamientos,'Alojamientos',`${k.en_operacion} en operación${k.estado_por_validar?` y ${k.estado_por_validar} por validar`:''}`,'mod-estado') +
-    kpi('k3','pin',k.municipios,'Municipios','con alojamientos, de los 42 del departamento','mod-territorio') +
-    kpi('k4','family',fmt.format(k.dependientes),'Niñas, niños, adolescentes y personas mayores',`${k.dependientes_pct} % de la población censada`,'mod-poblacion');
-  $$('.kpi[data-go]').forEach(b => b.onclick = () => document.getElementById(b.dataset.go).scrollIntoView({behavior:'smooth'}));
+    kpi('k2','house',k.alojamientos,'Alojamientos',`${k.en_operacion} en operación${k.estado_por_validar?` y ${k.estado_por_validar} por validar`:''}`,'estado') +
+    kpi('k3','pin',k.municipios,'Municipios','con alojamientos, de los 42 del departamento','territorio') +
+    kpi('k4','family',fmt.format(k.dependientes),'Niñas, niños, adolescentes y personas mayores',`${k.dependientes_pct} % de la población censada`,'poblacion');
+  $$('.kpi[data-go]').forEach(b => b.onclick = () => UESPlantilla.tab(b.dataset.go, true));
 
   const n = DB.alojamientos.length;
   $('#components').innerHTML = COMP.map(([key,label]) => {
@@ -96,7 +97,7 @@ function render(){
   $('#terrLede').textContent = `${maxA.municipio} concentra ${maxA.alojamientos} de los ${k.alojamientos} alojamientos. ${top.municipio === maxA.municipio ? top2.municipio : top.municipio} tiene el alojamiento con mayor número de personas.`;
   const maxM = Math.max(...DB.municipios.map(m => m.personas));
   $('#munBars').innerHTML = DB.municipios.map(m => `
-    <div class="bar" title="${esc(m.municipio)}: ${m.personas} personas en ${m.alojamientos} alojamiento(s)">
+    <div class="bar clk" data-mun="${esc(m.municipio)}" role="button" tabindex="0" title="${esc(m.municipio)}: ${m.personas} personas en ${m.alojamientos} alojamiento(s). Clic para ver sus alojamientos">
       <span class="lb">${esc(m.municipio)} <small>${m.alojamientos>1?`· ${m.alojamientos} sitios`:''}</small></span>
       <span class="tr"><i class="a" style="width:${m.censadas/maxM*100}%"></i><i class="b" style="width:${m.por_validar/maxM*100}%"></i></span>
       <b class="v">${fmt.format(m.personas)}</b>
@@ -133,24 +134,40 @@ function render(){
   $('#src').innerHTML = `${esc(DB.metadata.fuente_publica)} · corte ${fecha(DB.metadata.corte)} · ${esc(DB.metadata.version)}`;
   $('#btnPrint').onclick = () => window.print();
 
-  // pestaña activa según la sección visible
-  const tabs = $$('.tabs a');
-  if('IntersectionObserver' in window){
-    const io = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting) tabs.forEach(t => t.classList.toggle('on', t.getAttribute('href') === '#'+e.target.id)); }), {rootMargin:'-40% 0px -55% 0px'});
-    ['mod-estado','mod-territorio','mod-poblacion','mod-metodo'].forEach(id => io.observe(document.getElementById(id)));
-  }
-  $$('.tabs a[href="#mod-metodo"]').forEach(a => a.addEventListener('click', () => { $('#methodBox').open = true; }));
+  // clic en una barra municipal: filtra el estado de los alojamientos (filtro cruzado)
+  $$('#munBars .bar.clk').forEach(el => {
+    const go = () => filtrarMunicipio(el.dataset.mun);
+    el.onclick = go; el.onkeydown = e => { if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); go(); } };
+  });
+  $('#carga').innerHTML = [
+    ['Fuente', DB.metadata.fuente_publica],
+    ['Corte de la información', fecha(DB.metadata.corte)],
+    ['Datos generados', fecha((DB.metadata.generado || '').slice(0,10)) + ' ' + (DB.metadata.generado || '').slice(11,16)],
+    ['Registros', `${DB.alojamientos.length} alojamientos · ${k.fotos || 0} fotografías`]
+  ].map(([l,v]) => `<div>${esc(l)}<b>${esc(v)}</b></div>`).join('');
 
-  if(INTERNAL && DB.seguimiento) renderInternal();
+  if(INTERNAL && DB.seguimiento){ $('#tabInterno').hidden = false; renderInternal(); }
   bindModal();
   drawMap();
 }
 
+function filtrarMunicipio(m){
+  $('#fMun').value = m; drawRows(); UESPlantilla.tab('estado', true);
+}
+function pintarActivos(){
+  const items = [];
+  const fm = $('#fMun'), fc = $('#fComp'), ff = $('#fFoto');
+  if(fm.value) items.push({texto:`Municipio: ${fm.value}`, quitar:() => { fm.value = ''; drawRows(); }});
+  if(fc.value) items.push({texto:fc.options[fc.selectedIndex].text, quitar:() => { fc.value = ''; drawRows(); }});
+  if(ff.value) items.push({texto:ff.options[ff.selectedIndex].text, quitar:() => { ff.value = ''; drawRows(); }});
+  UESPlantilla.activos($('#activos'), items, () => { fm.value = ''; fc.value = ''; ff.value = ''; drawRows(); });
+}
 function drawRows(){
   const fm = $('#fMun').value, fc = $('#fComp').value, ff = $('#fFoto').value;
   const nf = a => (a.fotos || []).length;
   const rows = DB.alojamientos.filter(a => (!fm || a.municipio === fm) && (!fc || a.condiciones[fc].estado === 'O') && (!ff || (ff === 'con' ? nf(a) > 0 : nf(a) === 0)));
   $('#count').textContent = `${rows.length} de ${DB.alojamientos.length} alojamientos`;
+  pintarActivos();
   if(!rows.length){ $('#rows').innerHTML = `<tr><td colspan="8" class="empty">Ningún alojamiento cumple el filtro. Cambie los filtros o use Limpiar.</td></tr>`; return; }
   let prev = null;
   $('#rows').innerHTML = rows.map(a => {
@@ -283,16 +300,17 @@ function drawMap(){
         <span><i style="background:#2f6fa8"></i>31 a 60</span><span><i style="background:#173f6b"></i>Más de 60 personas</span>
         <span><i style="background:#e4eaef"></i>Sin alojamientos</span></div>`;
     $$('#map path.on').forEach(p => p.onclick = () => {
-      $('#fMun').value = p.dataset.mun; drawRows();
-      document.getElementById('h-estado').scrollIntoView({behavior:'smooth'});
+      filtrarMunicipio(p.dataset.mun);
     });
   }).catch(() => { $('#map').innerHTML = '<div class="map-msg">Mapa no disponible. La distribución por municipio se muestra en las barras.</div>'; });
 }
 
-fetch(DATA + '?v=4&ts=' + Date.now())
+UESPlantilla.init({raiz:'../../', proceso:'eis', evento:'sismo2026', tablero:'alojamientos_temporales'});
+
+fetch(DATA + '?v=5&ts=' + Date.now())
   .then(r => { if(!r.ok) throw new Error('No se encontró dashboard_data.json'); return r.json(); })
   .then(d => { DB = d; render(); })
   .catch(err => {
-    document.getElementById('sheet').innerHTML = `<div style="padding:40px"><h2>No se pudieron cargar los datos</h2><p>${esc(err.message)}.</p><p>Abra el tablero con el BAT de instalación, desde la estructura UESVALLE (servidor local, puerto 8766).</p></div>`;
+    document.getElementById('sheet').innerHTML = `<div class="module" style="padding:40px"><h2>No se pudieron cargar los datos</h2><p>${esc(err.message)}.</p><p>Abra el tablero con el BAT de instalación, desde la estructura UESVALLE (servidor local, puerto 8766).</p></div>`;
   });
 })();

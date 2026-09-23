@@ -4,39 +4,52 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <title>Alojamientos temporales · Valle del Cauca</title>
+  <title>Alojamientos temporales · UESVALLE</title>
   <meta name="description" content="Estado de los alojamientos temporales habilitados en el Valle del Cauca.">
-  <link rel="stylesheet" href="alojamientos_temporales.css?v=4.2">
+  <link rel="stylesheet" href="../../assets/plantilla/uesvalle_plantilla.css?v=1.1">
+  <link rel="stylesheet" href="alojamientos_temporales.css?v=5.1">
 </head>
 <body>
-<main class="sheet" id="sheet">
+<div class="govco"><div class="in"><a href="https://www.gov.co/" target="_blank" rel="noopener" title="Ir al portal GOV.CO"><img src="../../assets/plantilla/logo_govco.png" alt="GOV.CO, portal del Estado colombiano"></a></div></div>
 
-  <header class="topbar">
-    <img class="logos" src="assets/logos/logos_institucionales.png" alt="Gobernación del Valle del Cauca y Unidad Ejecutora de Saneamiento del Valle del Cauca">
-    <div class="topmeta">
-      <span class="eyebrow dark">Respuesta sanitaria postevento</span>
-      <span class="cut-pill">Corte <b id="cutDate">—</b></span>
+<header class="inst">
+  <div class="in">
+    <img class="logos" src="../../assets/plantilla/logos_institucionales.png" alt="Gobernación del Valle del Cauca y Unidad Ejecutora de Saneamiento del Valle del Cauca">
+    <div class="inst-r">
+      <a class="to-portal no-print" href="../../index.html"><svg viewBox="0 0 24 24" class="ico" aria-hidden="true"><path d="M19 12H6M11 6.5 5.5 12l5.5 5.5"/></svg><span>Portal de tableros</span></a>
+      <span class="updated" id="updated"><i></i>Actualizado —</span>
     </div>
-  </header>
+  </div>
+</header>
 
-  <section class="hero">
-    <div class="hero-in">
-      <span class="eyebrow">Gobernación del Valle del Cauca · Salud ambiental</span>
+<section class="band">
+  <div class="in">
+    <div>
+      <div class="band-tags">
+        <a class="tag-p" style="--c:var(--p-eis)" href="../../index.html#eis" title="Ver todos los tableros de este proceso en el portal">Proceso 4 · Establecimientos de interés sanitario</a>
+        <a class="tag-p" style="--c:var(--e-sismo)" href="../../index.html#sismo2026" title="Ver todos los tableros del evento en el portal">Sismo 2026</a>
+      </div>
       <h1>Alojamientos temporales</h1>
       <p class="lede" id="lede">Estado de los alojamientos habilitados en el Valle del Cauca.</p>
     </div>
-  </section>
+    <div class="band-r">Corte de la información<b id="cutDate">—</b></div>
+  </div>
+</section>
 
+<main class="in" id="sheet">
   <section class="kpis" id="kpis" aria-label="Cifras principales"></section>
 
-  <nav class="tabs no-print" aria-label="Secciones">
-    <a href="#mod-estado"><small>01 · Principal</small>Estado de los alojamientos</a>
-    <a href="#mod-territorio"><small>02</small>Distribución territorial</a>
-    <a href="#mod-poblacion"><small>03</small>Perfil de la población</a>
-    <a href="#mod-metodo"><small>Trazabilidad</small>Cómo se construyen las cifras</a>
-  </nav>
+  <div class="tabs no-print" role="tablist" aria-label="Módulos de consulta">
+    <button type="button" role="tab" data-tab="estado"><small>01 · Principal</small>Estado de los alojamientos</button>
+    <button type="button" role="tab" data-tab="territorio"><small>02</small>Distribución territorial</button>
+    <button type="button" role="tab" data-tab="poblacion"><small>03</small>Perfil de la población</button>
+    <button type="button" role="tab" data-tab="trazabilidad"><small>Trazabilidad</small>Cómo se construyen las cifras</button>
+    <button type="button" role="tab" data-tab="seguimiento" id="tabInterno" hidden><small>Interno</small>Seguimiento</button>
+  </div>
 
-  <section class="module m-estado" id="mod-estado" aria-labelledby="h-estado">
+  <div class="activos no-print" id="activos" aria-live="polite"></div>
+
+  <section class="module m-estado" data-mod="estado" id="mod-estado" style="--mc:var(--navy)" aria-labelledby="h-estado">
     <div class="module-head">
       <div>
         <span class="eyebrow dark">Módulo 1</span>
@@ -97,7 +110,7 @@
     </div>
   </section>
 
-  <section class="module m-terr" id="mod-territorio" aria-labelledby="h-terr">
+  <section class="module m-terr" data-mod="territorio" id="mod-territorio" style="--mc:var(--blue)" aria-labelledby="h-terr">
     <div class="module-head">
       <div>
         <span class="eyebrow dark">Módulo 2</span>
@@ -119,7 +132,7 @@
     </div>
   </section>
 
-  <section class="module m-pob" id="mod-poblacion" aria-labelledby="h-pob">
+  <section class="module m-pob" data-mod="poblacion" id="mod-poblacion" style="--mc:#2f8a86" aria-labelledby="h-pob">
     <div class="module-head">
       <div>
         <span class="eyebrow dark">Módulo 3</span>
@@ -147,7 +160,7 @@
     </div>
   </section>
 
-  <section class="module internal" id="internal" hidden aria-labelledby="h-int">
+  <section class="module internal" data-mod="seguimiento" id="internal" style="--mc:var(--O)" aria-labelledby="h-int">
     <div class="module-head">
       <div>
         <span class="eyebrow dark">Vista de trabajo</span>
@@ -158,23 +171,28 @@
     <div class="module-body" id="internalBody"></div>
   </section>
 
-  <section class="module method" id="mod-metodo">
-    <details id="methodBox">
-      <summary>
-        <span><span class="eyebrow dark">Trazabilidad</span><b>Cómo se construyen estas cifras</b></span>
-        <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-      </summary>
-      <div class="method-body">
-        <ol id="method"></ol>
+  <section class="module method" data-mod="trazabilidad" id="mod-metodo" style="--mc:var(--ink3)">
+    <div class="module-head">
+      <div>
+        <span class="eyebrow dark">Trazabilidad</span>
+        <h2>Cómo se construyen estas cifras</h2>
+        <p>Reglas de consolidación y estado de la carga de datos.</p>
       </div>
-    </details>
+    </div>
+    <div class="module-body">
+      <ol class="method-list" id="method"></ol>
+      <h3 style="margin:20px 0 0">Estado de la carga de datos</h3>
+      <div class="carga" id="carga"></div>
+    </div>
   </section>
-
-  <footer class="foot">
-    <p id="src"></p>
-    <button type="button" id="btnPrint" class="btn no-print">Imprimir o guardar PDF</button>
-  </footer>
 </main>
+
+<footer class="foot">
+  <div class="in">
+    <span><span class="privacy"><svg viewBox="0 0 24 24" class="ico" aria-hidden="true"><path d="M12 3l7.5 3v5.5c0 4.6-3.2 8.2-7.5 9.5-4.3-1.3-7.5-4.9-7.5-9.5V6z"/></svg>Datos agregados y operacionales, sin identificación individual.</span><br><span id="src"></span></span>
+    <button type="button" id="btnPrint" class="btn no-print">Imprimir o guardar PDF</button>
+  </div>
+</footer>
 
 <div class="modal" id="modal" aria-hidden="true">
   <div class="modal-bg" data-close></div>
@@ -195,6 +213,7 @@
   <button type="button" class="lb-btn lb-close" id="lbClose" data-lbclose aria-label="Cerrar foto">×</button>
 </div>
 
-<script src="alojamientos_temporales.js?v=4.2"></script>
+<script src="../../assets/plantilla/uesvalle_plantilla.js?v=1.1"></script>
+<script src="alojamientos_temporales.js?v=5.1"></script>
 </body>
 </html>
