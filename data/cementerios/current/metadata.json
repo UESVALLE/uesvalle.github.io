@@ -1,0 +1,21 @@
+{
+  "version": "V3.0.1 · Cementerios · publicación oficial",
+  "corte": "2026-08-28",
+  "generado": "2026-09-23",
+  "evento": "Sismo de agosto de 2026",
+  "fuente_publica": "Consolidado UESVALLE de cementerios evaluados",
+  "nota": "La afectación conserva la clasificación de la fuente. La prioridad sanitaria es una herramienta operativa de seguimiento y no reemplaza evaluación estructural ni concepto sanitario formal.",
+  "evidencias_base": "../../data/cementerios/evidencias/current/",
+  "indicadores": {
+    "cementerios": 55,
+    "municipios": 29,
+    "con_afectacion": 37,
+    "sin_afectacion": 18,
+    "alta_critica": 22,
+    "restriccion": 19,
+    "con_fotos": 19,
+    "fotos": 61,
+    "baja_completitud": 12
+  },
+  "nota_evidencias": "Las 61 evidencias referenciadas por el tablero se publican dentro de data/cementerios/evidencias/current/."
+}
