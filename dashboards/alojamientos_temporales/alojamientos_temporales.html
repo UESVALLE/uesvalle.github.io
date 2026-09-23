@@ -6,8 +6,8 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <title>Alojamientos temporales · UESVALLE</title>
   <meta name="description" content="Estado de los alojamientos temporales habilitados en el Valle del Cauca.">
-  <link rel="stylesheet" href="../../assets/plantilla/uesvalle_plantilla.css?v=1.1">
-  <link rel="stylesheet" href="alojamientos_temporales.css?v=5.1">
+  <link rel="stylesheet" href="../../assets/plantilla/uesvalle_plantilla.css?v=1.3">
+  <link rel="stylesheet" href="alojamientos_temporales.css?v=6.2">
 </head>
 <body>
 <div class="govco"><div class="in"><a href="https://www.gov.co/" target="_blank" rel="noopener" title="Ir al portal GOV.CO"><img src="../../assets/plantilla/logo_govco.png" alt="GOV.CO, portal del Estado colombiano"></a></div></div>
@@ -32,7 +32,12 @@
       <h1>Alojamientos temporales</h1>
       <p class="lede" id="lede">Estado de los alojamientos habilitados en el Valle del Cauca.</p>
     </div>
-    <div class="band-r">Corte de la información<b id="cutDate">—</b></div>
+    <div class="band-r">
+      <button type="button" id="btnPrint" class="band-dl no-print" title="Genera la infografía de una hoja (A3). En el cuadro de impresión elija &quot;Guardar como PDF&quot; y active &quot;Gráficos de fondo&quot;.">
+        <svg viewBox="0 0 24 24" class="ico" aria-hidden="true"><path d="M12 4v11M7.5 10.5 12 15l4.5-4.5M5 19.5h14"/></svg>Descargar infografía
+      </button>
+      Corte de la información<b id="cutDate">—</b>
+    </div>
   </div>
 </section>
 
@@ -118,15 +123,19 @@
         <p id="terrLede">Municipios con alojamientos temporales en operación.</p>
       </div>
     </div>
-    <div class="module-body terr-grid">
-      <figure class="map" id="map" aria-label="Mapa de municipios del Valle del Cauca con alojamientos temporales">
-        <div class="map-msg">Cargando mapa…</div>
-      </figure>
-      <div>
-        <div class="bars" id="munBars"></div>
-        <div class="legend small">
-          <span><i class="sw cens"></i>Personas censadas</span>
-          <span><i class="sw pv"></i>Por validar</span>
+    <div class="module-body">
+      <div class="terr-kpis" id="terrKpis"></div>
+      <div class="terr-grid">
+        <figure class="map" id="map" aria-label="Mapa de municipios del Valle del Cauca con alojamientos temporales">
+          <div class="map-msg">Cargando mapa…</div>
+        </figure>
+        <div>
+          <div class="mlist" id="munBars" role="table" aria-label="Personas, núcleos familiares y sitios por municipio"></div>
+          <div class="legend small">
+            <span><i class="sw cens"></i>Personas censadas</span>
+            <span id="lgPv"><i class="sw pv"></i>Por validar</span>
+            <span>Clic en un municipio para ver sus sitios</span>
+          </div>
         </div>
       </div>
     </div>
@@ -190,7 +199,6 @@
 <footer class="foot">
   <div class="in">
     <span><span class="privacy"><svg viewBox="0 0 24 24" class="ico" aria-hidden="true"><path d="M12 3l7.5 3v5.5c0 4.6-3.2 8.2-7.5 9.5-4.3-1.3-7.5-4.9-7.5-9.5V6z"/></svg>Datos agregados y operacionales, sin identificación individual.</span><br><span id="src"></span></span>
-    <button type="button" id="btnPrint" class="btn no-print">Imprimir o guardar PDF</button>
   </div>
 </footer>
 
@@ -214,6 +222,6 @@
 </div>
 
 <script src="../../assets/plantilla/uesvalle_plantilla.js?v=1.1"></script>
-<script src="alojamientos_temporales.js?v=5.1"></script>
+<script src="alojamientos_temporales.js?v=6.2"></script>
 </body>
 </html>

@@ -1,43 +1,54 @@
 {
  "metadata": {
-  "version": "V5.1 · Plantilla UESVALLE",
-  "corte": "2026-09-21",
-  "generado": "2026-09-23T13:55:14",
+  "version": "V6.2 · SDS V23",
+  "corte": "2026-09-23",
+  "generado": "2026-09-23T16:39:08",
   "fuente_publica": "Consolidado institucional de alojamientos temporales",
   "evento": "Sismo del 10 de agosto de 2026",
   "privacidad": "Datos agregados y operacionales. Sin identificación individual."
  },
  "kpis": {
-  "personas": 270,
-  "censadas": 240,
-  "por_validar": 30,
+  "personas": 253,
+  "censadas": 253,
+  "por_validar": 0,
   "alojamientos": 20,
   "en_operacion": 19,
   "estado_por_validar": 1,
   "municipios": 12,
-  "nna": 72,
-  "mayores": 32,
-  "dependientes": 104,
-  "dependientes_pct": 43,
+  "nna": 77,
+  "mayores": 35,
+  "dependientes": 112,
+  "dependientes_pct": 44,
   "con_fotos": 2,
-  "fotos": 5
+  "fotos": 5,
+  "nucleos": 96,
+  "albergues": 1,
+  "alojamientos_temporales": 19,
+  "pendientes_curso": 0,
+  "pendientes_eps": 0
  },
  "municipios": [
-  {
-   "municipio": "Yotoco",
-   "clave": "YOTOCO",
-   "personas": 69,
-   "censadas": 56,
-   "por_validar": 13,
-   "alojamientos": 7
-  },
   {
    "municipio": "Bugalagrande",
    "clave": "BUGALAGRANDE",
    "personas": 66,
    "censadas": 66,
    "por_validar": 0,
-   "alojamientos": 1
+   "alojamientos": 1,
+   "nucleos": 28,
+   "albergues_sds": 1,
+   "alojamientos_sds": 0
+  },
+  {
+   "municipio": "Yotoco",
+   "clave": "YOTOCO",
+   "personas": 56,
+   "censadas": 56,
+   "por_validar": 0,
+   "alojamientos": 6,
+   "nucleos": 18,
+   "albergues_sds": 0,
+   "alojamientos_sds": 6
   },
   {
    "municipio": "El Cairo",
@@ -45,7 +56,10 @@
    "personas": 31,
    "censadas": 31,
    "por_validar": 0,
-   "alojamientos": 1
+   "alojamientos": 1,
+   "nucleos": 13,
+   "albergues_sds": 0,
+   "alojamientos_sds": 1
   },
   {
    "municipio": "Restrepo",
@@ -53,15 +67,10 @@
    "personas": 25,
    "censadas": 25,
    "por_validar": 0,
-   "alojamientos": 1
-  },
-  {
-   "municipio": "Obando",
-   "clave": "OBANDO",
-   "personas": 17,
-   "censadas": 0,
-   "por_validar": 17,
-   "alojamientos": 3
+   "alojamientos": 1,
+   "nucleos": 8,
+   "albergues_sds": 0,
+   "alojamientos_sds": 1
   },
   {
    "municipio": "Yumbo",
@@ -69,7 +78,21 @@
    "personas": 17,
    "censadas": 17,
    "por_validar": 0,
-   "alojamientos": 1
+   "alojamientos": 1,
+   "nucleos": 6,
+   "albergues_sds": 0,
+   "alojamientos_sds": 1
+  },
+  {
+   "municipio": "Obando",
+   "clave": "OBANDO",
+   "personas": 13,
+   "censadas": 13,
+   "por_validar": 0,
+   "alojamientos": 4,
+   "nucleos": 4,
+   "albergues_sds": 0,
+   "alojamientos_sds": 4
   },
   {
    "municipio": "Ulloa",
@@ -77,7 +100,10 @@
    "personas": 11,
    "censadas": 11,
    "por_validar": 0,
-   "alojamientos": 1
+   "alojamientos": 1,
+   "nucleos": 1,
+   "albergues_sds": 0,
+   "alojamientos_sds": 1
   },
   {
    "municipio": "Zarzal",
@@ -85,7 +111,10 @@
    "personas": 9,
    "censadas": 9,
    "por_validar": 0,
-   "alojamientos": 1
+   "alojamientos": 1,
+   "nucleos": 3,
+   "albergues_sds": 0,
+   "alojamientos_sds": 1
   },
   {
    "municipio": "Ansermanuevo",
@@ -93,7 +122,10 @@
    "personas": 8,
    "censadas": 8,
    "por_validar": 0,
-   "alojamientos": 1
+   "alojamientos": 1,
+   "nucleos": 6,
+   "albergues_sds": 0,
+   "alojamientos_sds": 1
   },
   {
    "municipio": "El Dovio",
@@ -101,7 +133,10 @@
    "personas": 8,
    "censadas": 8,
    "por_validar": 0,
-   "alojamientos": 1
+   "alojamientos": 1,
+   "nucleos": 3,
+   "albergues_sds": 0,
+   "alojamientos_sds": 1
   },
   {
    "municipio": "Versalles",
@@ -109,7 +144,10 @@
    "personas": 7,
    "censadas": 7,
    "por_validar": 0,
-   "alojamientos": 1
+   "alojamientos": 1,
+   "nucleos": 5,
+   "albergues_sds": 0,
+   "alojamientos_sds": 1
   },
   {
    "municipio": "Trujillo",
@@ -117,14 +155,53 @@
    "personas": 2,
    "censadas": 2,
    "por_validar": 0,
-   "alojamientos": 1
+   "alojamientos": 1,
+   "nucleos": 1,
+   "albergues_sds": 0,
+   "alojamientos_sds": 1
   }
  ],
  "alojamientos": [
   {
+   "id": "ATI-035",
+   "municipio": "Bugalagrande",
+   "nombre": "Prados de San Bernabé",
+   "tipo": "Albergue",
+   "personas": 66,
+   "poblacion": "Censada",
+   "estado": "En operación",
+   "capacidad": 120,
+   "ocupacion_pct": 55,
+   "infraestructura": "Carpas",
+   "sector": "Prados de San Bernabé zona urbana",
+   "direccion": "Torres de prados de San Bernabé",
+   "ultima_verificacion": "2026-09-07",
+   "condiciones": {
+    "agua": {
+     "estado": "O",
+     "texto": "Mangueras/tuberías plásticas artesanales; agua almacenada en canecas sobre el piso."
+    },
+    "saneamiento": {
+     "estado": "O",
+     "texto": "Unidades sanitarias improvisadas, sin lavamanos ni elementos de higiene."
+    },
+    "alimentos": {
+     "estado": "O",
+     "texto": "Cocinas improvisadas; sin refrigeración adecuada; cilindros de gas en el suelo."
+    },
+    "animales": {
+     "estado": "O",
+     "texto": "4 perros, 3 gatos; mosquitos y roedores."
+    }
+   },
+   "observacion": "",
+   "fotos": []
+  },
+  {
    "id": "ATI-016",
    "municipio": "Yotoco",
    "nombre": "Coliseo de la I.E. Alfonso Zawadzky",
+   "tipo": "Alojamiento temporal",
    "personas": 23,
    "poblacion": "Censada",
    "estado": "En operación",
@@ -158,43 +235,10 @@
    ]
   },
   {
-   "id": "ATI-024",
-   "municipio": "Yotoco",
-   "nombre": "Polideportivo – Corregimiento de Miravalle",
-   "personas": 13,
-   "poblacion": "Por validar",
-   "estado": "En operación",
-   "capacidad": null,
-   "ocupacion_pct": null,
-   "infraestructura": null,
-   "sector": null,
-   "direccion": "Polideportivo Miravalle",
-   "ultima_verificacion": "2026-09-17",
-   "condiciones": {
-    "agua": {
-     "estado": "S",
-     "texto": "Asociación de Usuarios Agua Albania; agua clorada."
-    },
-    "saneamiento": {
-     "estado": "S",
-     "texto": "Pozo séptico; 1 batería sanitaria de uso general."
-    },
-    "alimentos": {
-     "estado": "O",
-     "texto": "Cocina comunitaria; sin tapabocas ni protección de cabello."
-    },
-    "animales": {
-     "estado": "S",
-     "texto": "Sin mascotas documentadas."
-    }
-   },
-   "observacion": "Condiciones estables.",
-   "fotos": []
-  },
-  {
    "id": "ATI-026",
    "municipio": "Yotoco",
    "nombre": "Cancha de Baloncesto – Vereda El Jardín",
+   "tipo": "Alojamiento temporal",
    "personas": 12,
    "poblacion": "Censada",
    "estado": "En operación",
@@ -229,6 +273,7 @@
    "id": "ATI-022",
    "municipio": "Yotoco",
    "nombre": "Refugio Nuevo Renacer – Vereda El Dopo",
+   "tipo": "Alojamiento temporal",
    "personas": 9,
    "poblacion": "Censada",
    "estado": "En operación",
@@ -263,6 +308,7 @@
    "id": "ATI-027",
    "municipio": "Yotoco",
    "nombre": "Puesto de Salud – Vereda El Caney",
+   "tipo": "Alojamiento temporal",
    "personas": 5,
    "poblacion": "Censada",
    "estado": "En operación",
@@ -297,6 +343,7 @@
    "id": "ATI-025",
    "municipio": "Yotoco",
    "nombre": "Puesto de Salud – Vereda Campo Alegre",
+   "tipo": "Alojamiento temporal",
    "personas": 4,
    "poblacion": "Censada",
    "estado": "En operación",
@@ -331,6 +378,7 @@
    "id": "ATI-023",
    "municipio": "Yotoco",
    "nombre": "Puesto de Salud – Corregimiento de Miravalle",
+   "tipo": "Alojamiento temporal",
    "personas": 3,
    "poblacion": "Censada",
    "estado": "En operación",
@@ -362,43 +410,10 @@
    "fotos": []
   },
   {
-   "id": "ATI-035",
-   "municipio": "Bugalagrande",
-   "nombre": "Prados de San Bernabé",
-   "personas": 66,
-   "poblacion": "Censada",
-   "estado": "En operación",
-   "capacidad": 120,
-   "ocupacion_pct": 55,
-   "infraestructura": "Carpas",
-   "sector": "Prados de San Bernabé zona urbana",
-   "direccion": "Torres de prados de San Bernabé",
-   "ultima_verificacion": "2026-09-07",
-   "condiciones": {
-    "agua": {
-     "estado": "O",
-     "texto": "Mangueras/tuberías plásticas artesanales; agua almacenada en canecas sobre el piso."
-    },
-    "saneamiento": {
-     "estado": "O",
-     "texto": "Unidades sanitarias improvisadas, sin lavamanos ni elementos de higiene."
-    },
-    "alimentos": {
-     "estado": "O",
-     "texto": "Cocinas improvisadas; sin refrigeración adecuada; cilindros de gas en el suelo."
-    },
-    "animales": {
-     "estado": "O",
-     "texto": "4 perros, 3 gatos; mosquitos y roedores."
-    }
-   },
-   "observacion": "",
-   "fotos": []
-  },
-  {
    "id": "ATI-033",
    "municipio": "El Cairo",
    "nombre": "Alojamiento Temporal La Esperanza",
+   "tipo": "Alojamiento temporal",
    "personas": 31,
    "poblacion": "Censada",
    "estado": "En operación",
@@ -433,6 +448,7 @@
    "id": "ATI-021",
    "municipio": "Restrepo",
    "nombre": "Antiguo Hogar Vida del Anciano – Restrepo",
+   "tipo": "Alojamiento temporal",
    "personas": 25,
    "poblacion": "Censada",
    "estado": "En operación",
@@ -464,111 +480,10 @@
    "fotos": []
   },
   {
-   "id": "ATI-030",
-   "municipio": "Obando",
-   "nombre": "Caseta Comunal – Corregimiento San Isidro",
-   "personas": 9,
-   "poblacion": "Por validar",
-   "estado": "En operación",
-   "capacidad": null,
-   "ocupacion_pct": null,
-   "infraestructura": null,
-   "sector": null,
-   "direccion": "Caseta comunal Corregimiento San Isidro",
-   "ultima_verificacion": "2026-09-16",
-   "condiciones": {
-    "agua": {
-     "estado": "O",
-     "texto": "Acueducto rural San Isidro; para consumo se reporta agua embotellada y ausencia de agua tratada en red."
-    },
-    "saneamiento": {
-     "estado": "V",
-     "texto": "Sin detalle de baterías en último reporte."
-    },
-    "alimentos": {
-     "estado": "S",
-     "texto": "Preparación de alimentos en sitio."
-    },
-    "animales": {
-     "estado": "O",
-     "texto": "3 perros, 2 gatos y 2 aves."
-    }
-   },
-   "observacion": "Requiere seguimiento de calidad del agua para consumo.",
-   "fotos": []
-  },
-  {
-   "id": "ATI-031",
-   "municipio": "Obando",
-   "nombre": "Casa Cural – Corregimiento San Isidro",
-   "personas": 4,
-   "poblacion": "Por validar",
-   "estado": "En operación",
-   "capacidad": null,
-   "ocupacion_pct": null,
-   "infraestructura": null,
-   "sector": null,
-   "direccion": "Casa Cural Corregimiento San Isidro",
-   "ultima_verificacion": "2026-09-16",
-   "condiciones": {
-    "agua": {
-     "estado": "O",
-     "texto": "Acueducto rural; agua reportada como no potable."
-    },
-    "saneamiento": {
-     "estado": "S",
-     "texto": "1 batería compartida."
-    },
-    "alimentos": {
-     "estado": "S",
-     "texto": "Preparación de alimentos en sitio; cuenta con cocina."
-    },
-    "animales": {
-     "estado": "O",
-     "texto": "1 perro y 1 gato."
-    }
-   },
-   "observacion": "Requiere seguimiento de agua para consumo.",
-   "fotos": []
-  },
-  {
-   "id": "ATI-008",
-   "municipio": "Obando",
-   "nombre": "Caseta Comunal – Corregimiento Puerto Molina",
-   "personas": 4,
-   "poblacion": "Por validar",
-   "estado": "En operación",
-   "capacidad": null,
-   "ocupacion_pct": null,
-   "infraestructura": null,
-   "sector": null,
-   "direccion": "Caseta Comunal Corregimiento Puerto Molina",
-   "ultima_verificacion": "2026-09-16",
-   "condiciones": {
-    "agua": {
-     "estado": "O",
-     "texto": "Suministro por manguera desde Acuavalle; almacenamiento en canecas."
-    },
-    "saneamiento": {
-     "estado": "S",
-     "texto": "1 batería compartida."
-    },
-    "alimentos": {
-     "estado": "S",
-     "texto": "Preparación de alimentos en sitio."
-    },
-    "animales": {
-     "estado": "O",
-     "texto": "3 perros y 1 gato."
-    }
-   },
-   "observacion": "Seguimiento por forma de suministro/almacenamiento.",
-   "fotos": []
-  },
-  {
    "id": "ATI-034",
    "municipio": "Yumbo",
    "nombre": "Coliseo Carlos Alberto Bejarano",
+   "tipo": "Alojamiento temporal",
    "personas": 17,
    "poblacion": "Censada",
    "estado": "Por validar",
@@ -600,9 +515,150 @@
    "fotos": []
   },
   {
+   "id": "ATI-030",
+   "municipio": "Obando",
+   "nombre": "Caseta Comunal – Corregimiento San Isidro",
+   "tipo": "Alojamiento temporal",
+   "personas": 5,
+   "poblacion": "Censada",
+   "estado": "En operación",
+   "capacidad": 10,
+   "ocupacion_pct": 50,
+   "infraestructura": null,
+   "sector": null,
+   "direccion": "Caseta comunal Corregimiento San Isidro",
+   "ultima_verificacion": "2026-09-16",
+   "condiciones": {
+    "agua": {
+     "estado": "O",
+     "texto": "Acueducto rural San Isidro; para consumo se reporta agua embotellada y ausencia de agua tratada en red."
+    },
+    "saneamiento": {
+     "estado": "V",
+     "texto": "Sin detalle de baterías en último reporte."
+    },
+    "alimentos": {
+     "estado": "S",
+     "texto": "Preparación de alimentos en sitio."
+    },
+    "animales": {
+     "estado": "O",
+     "texto": "3 perros, 2 gatos y 2 aves."
+    }
+   },
+   "observacion": "Requiere seguimiento de calidad del agua para consumo.",
+   "fotos": []
+  },
+  {
+   "id": "ATI-031",
+   "municipio": "Obando",
+   "nombre": "Casa Cural – Corregimiento San Isidro",
+   "tipo": "Alojamiento temporal",
+   "personas": 4,
+   "poblacion": "Censada",
+   "estado": "En operación",
+   "capacidad": 10,
+   "ocupacion_pct": 40,
+   "infraestructura": null,
+   "sector": null,
+   "direccion": "Casa Cural Corregimiento San Isidro",
+   "ultima_verificacion": "2026-09-16",
+   "condiciones": {
+    "agua": {
+     "estado": "O",
+     "texto": "Acueducto rural; agua reportada como no potable."
+    },
+    "saneamiento": {
+     "estado": "S",
+     "texto": "1 batería compartida."
+    },
+    "alimentos": {
+     "estado": "S",
+     "texto": "Preparación de alimentos en sitio; cuenta con cocina."
+    },
+    "animales": {
+     "estado": "O",
+     "texto": "1 perro y 1 gato."
+    }
+   },
+   "observacion": "Requiere seguimiento de agua para consumo.",
+   "fotos": []
+  },
+  {
+   "id": "ATI-008",
+   "municipio": "Obando",
+   "nombre": "Caseta Comunal – Corregimiento Puerto Molina",
+   "tipo": "Alojamiento temporal",
+   "personas": 3,
+   "poblacion": "Censada",
+   "estado": "En operación",
+   "capacidad": 10,
+   "ocupacion_pct": 30,
+   "infraestructura": null,
+   "sector": null,
+   "direccion": "Caseta Comunal Corregimiento Puerto Molina",
+   "ultima_verificacion": "2026-09-16",
+   "condiciones": {
+    "agua": {
+     "estado": "O",
+     "texto": "Suministro por manguera desde Acuavalle; almacenamiento en canecas."
+    },
+    "saneamiento": {
+     "estado": "S",
+     "texto": "1 batería compartida."
+    },
+    "alimentos": {
+     "estado": "S",
+     "texto": "Preparación de alimentos en sitio."
+    },
+    "animales": {
+     "estado": "O",
+     "texto": "3 perros y 1 gato."
+    }
+   },
+   "observacion": "Seguimiento por forma de suministro/almacenamiento.",
+   "fotos": []
+  },
+  {
+   "id": "ATI-036",
+   "municipio": "Obando",
+   "nombre": "Obando Urbano Caseta comuna",
+   "tipo": "Alojamiento temporal",
+   "personas": 1,
+   "poblacion": "Censada",
+   "estado": "En operación",
+   "capacidad": 10,
+   "ocupacion_pct": 10,
+   "infraestructura": null,
+   "sector": null,
+   "direccion": null,
+   "ultima_verificacion": null,
+   "condiciones": {
+    "agua": {
+     "estado": "V",
+     "texto": "Por validar."
+    },
+    "saneamiento": {
+     "estado": "V",
+     "texto": "Por validar."
+    },
+    "alimentos": {
+     "estado": "V",
+     "texto": "Por validar."
+    },
+    "animales": {
+     "estado": "V",
+     "texto": "Por validar."
+    }
+   },
+   "observacion": "Sitio nuevo en V23; IVC pendiente.",
+   "fotos": []
+  },
+  {
    "id": "ATI-032",
    "municipio": "Ulloa",
    "nombre": "Salón Comunitario – Barrio Bolívar",
+   "tipo": "Alojamiento temporal",
    "personas": 11,
    "poblacion": "Censada",
    "estado": "En operación",
@@ -637,6 +693,7 @@
    "id": "ATI-017",
    "municipio": "Zarzal",
    "nombre": "Estadio Municipal de Zarzal",
+   "tipo": "Alojamiento temporal",
    "personas": 9,
    "poblacion": "Censada",
    "estado": "En operación",
@@ -676,6 +733,7 @@
    "id": "ATI-002",
    "municipio": "Ansermanuevo",
    "nombre": "Parque Recreacional",
+   "tipo": "Alojamiento temporal",
    "personas": 8,
    "poblacion": "Censada",
    "estado": "En operación",
@@ -710,6 +768,7 @@
    "id": "ATI-019",
    "municipio": "El Dovio",
    "nombre": "Estadio Municipal Rodrigo Lloreda Caicedo",
+   "tipo": "Alojamiento temporal",
    "personas": 8,
    "poblacion": "Censada",
    "estado": "En operación",
@@ -744,6 +803,7 @@
    "id": "ATI-020",
    "municipio": "Versalles",
    "nombre": "Coliseo Deportivo – Corregimiento La Florida",
+   "tipo": "Alojamiento temporal",
    "personas": 7,
    "poblacion": "Censada",
    "estado": "En operación",
@@ -778,6 +838,7 @@
    "id": "ATI-029",
    "municipio": "Trujillo",
    "nombre": "Hogar de Paso – Vivienda",
+   "tipo": "Alojamiento temporal",
    "personas": 2,
    "poblacion": "Censada",
    "estado": "En operación",
@@ -811,29 +872,29 @@
  ],
  "condiciones_resumen": {
   "agua": {
-   "S": 14,
+   "S": 13,
    "O": 4,
-   "V": 2
+   "V": 3
   },
   "saneamiento": {
-   "S": 12,
+   "S": 11,
    "O": 4,
-   "V": 4
+   "V": 5
   },
   "alimentos": {
    "S": 12,
-   "O": 7,
-   "V": 1
+   "O": 6,
+   "V": 2
   },
   "animales": {
-   "S": 8,
+   "S": 7,
    "O": 10,
-   "V": 2
+   "V": 3
   }
  },
  "poblacion": {
-  "censadas": 240,
-  "municipios": 11,
+  "censadas": 253,
+  "municipios": 12,
   "curso_vida": [
    {
     "grupo": "Primera infancia (0 a 5 años)",
@@ -841,23 +902,23 @@
    },
    {
     "grupo": "Infancia (6 a 11 años)",
-    "personas": 30
+    "personas": 32
    },
    {
     "grupo": "Adolescencia (12 a 17 años)",
-    "personas": 23
+    "personas": 26
    },
    {
     "grupo": "Joven (18 a 28 años)",
-    "personas": 38
+    "personas": 40
    },
    {
     "grupo": "Adultez (29 a 59 años)",
-    "personas": 96
+    "personas": 99
    },
    {
     "grupo": "Persona mayor (60 años o más)",
-    "personas": 32
+    "personas": 35
    },
    {
     "grupo": "S/D",
@@ -865,8 +926,8 @@
    }
   ],
   "sexo": {
-   "hombres": 124,
-   "mujeres": 116
+   "hombres": 128,
+   "mujeres": 125
   },
   "interes": [
    {
@@ -889,7 +950,7 @@
   "aseguramiento": [
    {
     "eps": "Nueva EPS",
-    "personas": 89
+    "personas": 102
    },
    {
     "eps": "Emssanar",
@@ -917,11 +978,13 @@
    }
   ],
   "no_asegurados": 12,
-  "asegurados_pct": 95
+  "asegurados_pct": 95,
+  "pendientes": 0
  },
  "metodologia": [
-  "Población: censo individual de caracterización en los alojamientos; donde no existe censo se conserva el último registro de campo, marcado como por validar.",
-  "Perfil de población: calculado únicamente sobre las personas censadas.",
+  "Población: censo individual de caracterización en los sitios (SDS V23). Donde no exista censo se conserva el último registro de campo, marcado como por validar.",
+  "Perfil de población: calculado sobre las personas censadas. Las personas aún sin clasificar por curso de vida o aseguramiento se muestran aparte y no entran en los porcentajes.",
+  "Tipo de sitio y núcleos familiares: según la caracterización del censo (albergue o alojamiento temporal).",
   "Condiciones sanitarias: último seguimiento de campo por alojamiento. Sin observación, con observación documentada o por validar. No constituye una clasificación de riesgo."
  ]
 }

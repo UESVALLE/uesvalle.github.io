@@ -1,22 +1,27 @@
 {
- "version": "V5.1 · Plantilla UESVALLE",
- "corte": "2026-09-21",
- "generado": "2026-09-23T13:55:14",
+ "version": "V6.2 · SDS V23",
+ "corte": "2026-09-23",
+ "generado": "2026-09-23T16:39:08",
  "fuente_publica": "Consolidado institucional de alojamientos temporales",
  "indicadores": {
-  "personas": 270,
-  "censadas": 240,
-  "por_validar": 30,
+  "personas": 253,
+  "censadas": 253,
+  "por_validar": 0,
   "alojamientos": 20,
   "en_operacion": 19,
   "estado_por_validar": 1,
   "municipios": 12,
-  "nna": 72,
-  "mayores": 32,
-  "dependientes": 104,
-  "dependientes_pct": 43,
+  "nna": 77,
+  "mayores": 35,
+  "dependientes": 112,
+  "dependientes_pct": 44,
   "con_fotos": 2,
-  "fotos": 5
+  "fotos": 5,
+  "nucleos": 96,
+  "albergues": 1,
+  "alojamientos_temporales": 19,
+  "pendientes_curso": 0,
+  "pendientes_eps": 0
  },
- "maestro": "MAESTRO_ALOJAMIENTOS_TEMPORALES_SDS_IESVALLE_V1.xlsx"
+ "maestro": "MAESTRO_ALOJAMIENTOS_TEMPORALES_SDS_IESVALLE_V4.xlsx"
 }

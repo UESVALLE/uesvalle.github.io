@@ -53,7 +53,7 @@ function render(){
   const k = DB.kpis, P = DB.poblacion;
   $('#cutDate').textContent = fecha(DB.metadata.corte, true);
   $('#updated').innerHTML = `<i></i>Actualizado ${fecha((DB.metadata.generado || '').slice(0,10))}`;
-  $('#lede').textContent = `Estado de los alojamientos habilitados en el Valle del Cauca tras el ${DB.metadata.evento.charAt(0).toLowerCase()+DB.metadata.evento.slice(1)}.`;
+  $('#lede').textContent = `Estado de los alojamientos temporales y albergues habilitados en el Valle del Cauca tras el ${DB.metadata.evento.charAt(0).toLowerCase()+DB.metadata.evento.slice(1)}.`;
 
   const kpi = (cls, icon, n, label, sub, target, extra='') => `
     <button type="button" class="kpi ${cls}" data-go="${target}">
@@ -61,11 +61,11 @@ function render(){
       <span><span class="n">${n}</span><span class="l">${label}</span>${extra}<span class="s">${sub}</span><span class="go">Clic para consultar</span></span>
     </button>`;
   $('#kpis').innerHTML =
-    kpi('k1','people',fmt.format(k.personas),'Personas alojadas',`${fmt.format(k.censadas)} censadas y ${fmt.format(k.por_validar)} por validar`,'poblacion',
+    kpi('k1','people',fmt.format(k.personas),'Personas alojadas',`en ${fmt.format(k.nucleos)} núcleos familiares${k.por_validar ? ` · ${fmt.format(k.por_validar)} por validar` : ''}`,'poblacion',
       `<span class="split" aria-hidden="true"><i class="a" style="width:${pct(k.censadas,k.personas)}%"></i><i class="b" style="width:${pct(k.por_validar,k.personas)}%"></i></span>`) +
-    kpi('k2','house',k.alojamientos,'Alojamientos',`${k.en_operacion} en operación${k.estado_por_validar?` y ${k.estado_por_validar} por validar`:''}`,'estado') +
+    kpi('k2','house',k.alojamientos,'Sitios habilitados',`${k.alojamientos_temporales} alojamientos temporales y ${k.albergues} albergue${k.albergues === 1 ? '' : 's'}`,'estado') +
     kpi('k3','pin',k.municipios,'Municipios','con alojamientos, de los 42 del departamento','territorio') +
-    kpi('k4','family',fmt.format(k.dependientes),'Niñas, niños, adolescentes y personas mayores',`${k.dependientes_pct} % de la población censada`,'poblacion');
+    kpi('k4','family',fmt.format(k.dependientes),'Niñas, niños, adolescentes y personas mayores',`${k.dependientes_pct} % de las personas con curso de vida registrado`,'poblacion');
   $$('.kpi[data-go]').forEach(b => b.onclick = () => UESPlantilla.tab(b.dataset.go, true));
 
   const n = DB.alojamientos.length;
@@ -92,26 +92,49 @@ function render(){
   $('#btnClear').onclick = () => { $('#fMun').value = ''; $('#fComp').value = ''; $('#fFoto').value = ''; drawRows(); };
   drawRows();
 
-  const top = DB.municipios[0], top2 = DB.municipios[1];
-  const maxA = DB.municipios.reduce((a,b) => b.alojamientos > a.alojamientos ? b : a);
-  $('#terrLede').textContent = `${maxA.municipio} concentra ${maxA.alojamientos} de los ${k.alojamientos} alojamientos. ${top.municipio === maxA.municipio ? top2.municipio : top.municipio} tiene el alojamiento con mayor número de personas.`;
-  const maxM = Math.max(...DB.municipios.map(m => m.personas));
-  $('#munBars').innerHTML = DB.municipios.map(m => `
-    <div class="bar clk" data-mun="${esc(m.municipio)}" role="button" tabindex="0" title="${esc(m.municipio)}: ${m.personas} personas en ${m.alojamientos} alojamiento(s). Clic para ver sus alojamientos">
-      <span class="lb">${esc(m.municipio)} <small>${m.alojamientos>1?`· ${m.alojamientos} sitios`:''}</small></span>
-      <span class="tr"><i class="a" style="width:${m.censadas/maxM*100}%"></i><i class="b" style="width:${m.por_validar/maxM*100}%"></i></span>
-      <b class="v">${fmt.format(m.personas)}</b>
-    </div>`).join('');
+  // ---- distribución territorial: indicadores, lectura y lista por municipio
+  const MUN = DB.municipios;
+  const maxA = MUN.reduce((a,b) => b.alojamientos > a.alojamientos ? b : a);
+  const sitioMax = DB.alojamientos.reduce((a,b) => b.personas > a.personas ? b : a);
+  const top2 = [...MUN].sort((a,b) => b.personas - a.personas).slice(0,2);
+  const pctTop2 = pct(top2[0].personas + top2[1].personas, k.personas);
+  const nucMax = MUN.reduce((a,b) => (b.nucleos || 0) > (a.nucleos || 0) ? b : a);
+  const perNuc = k.nucleos ? (k.personas / k.nucleos).toLocaleString('es-CO', {maximumFractionDigits:1}) : '—';
+  const cobert = pct(k.municipios, 42);
+  $('#terrKpis').innerHTML = `
+    <div class="tk"><span class="tk-l">Municipios con sitios</span><b>${k.municipios}<small> de 42</small></b>
+      <span class="tk-bar" aria-hidden="true"><i style="width:${cobert}%"></i></span><span class="tk-s">${cobert} % del departamento</span></div>
+    <div class="tk"><span class="tk-l">Sitios habilitados</span><b>${k.alojamientos}</b>
+      <span class="tk-s">${k.alojamientos_temporales} alojamientos temporales y ${k.albergues} albergue${k.albergues === 1 ? '' : 's'}</span></div>
+    <div class="tk"><span class="tk-l">Núcleos familiares</span><b>${fmt.format(k.nucleos)}</b>
+      <span class="tk-s">${perNuc} personas por núcleo en promedio</span></div>
+    <div class="tk"><span class="tk-l">Concentración</span><b>${pctTop2} %</b>
+      <span class="tk-s">de las personas está en ${esc(top2[0].municipio)} y ${esc(top2[1].municipio)}</span></div>`;
+  $('#terrLede').innerHTML = `<b>${esc(maxA.municipio)}</b> concentra ${maxA.alojamientos} de los ${k.alojamientos} sitios. `
+    + `<b>${esc(sitioMax.municipio)}</b> tiene el sitio con mayor número de personas (${fmt.format(sitioMax.personas)}${sitioMax.tipo === 'Albergue' ? ', albergue' : ''}). `
+    + `${esc(nucMax.municipio)} reúne más núcleos familiares (${nucMax.nucleos}).`;
+  const maxM = Math.max(...MUN.map(m => m.personas));
+  if($('#lgPv')) $('#lgPv').hidden = !k.por_validar;
+  $('#munBars').innerHTML = `<div class="mrow mhead" role="row"><span role="columnheader">Municipio</span><span role="columnheader"></span><span class="n" role="columnheader">Personas</span><span class="n" role="columnheader">Núcleos</span><span class="n" role="columnheader">Sitios</span></div>`
+    + MUN.map(m => `
+    <div class="mrow bar clk" data-mun="${esc(m.municipio)}" role="row" tabindex="0" title="${esc(m.municipio)}: ${m.personas} personas, ${m.nucleos ?? '—'} núcleos familiares, ${m.alojamientos} sitio(s). Clic para ver sus sitios">
+      <span class="lb" role="cell">${esc(m.municipio)}</span>
+      <span class="tr" role="cell" aria-hidden="true"><i class="a" style="width:${m.censadas/maxM*100}%"></i><i class="b" style="width:${m.por_validar/maxM*100}%"></i></span>
+      <b class="n" role="cell">${fmt.format(m.personas)}</b>
+      <span class="n" role="cell">${m.nucleos ?? '—'}</span>
+      <span class="n" role="cell">${m.alojamientos}</span>
+    </div>`).join('')
+    + `<div class="mrow mtot" role="row"><span role="cell">Total</span><span role="cell"></span><b class="n" role="cell">${fmt.format(k.personas)}</b><b class="n" role="cell">${fmt.format(k.nucleos)}</b><b class="n" role="cell">${k.alojamientos}</b></div>`;
 
   // población
-  $('#pobLede').textContent = `${fmt.format(P.censadas)} personas caracterizadas individualmente en ${P.municipios} municipios.`;
-  const LIFE = [['Primera','baby','Primera infancia'],['Infancia','child','Infancia'],['Adolesc','teen','Adolescencia'],['Joven','young','Juventud'],['Adultez','adult','Adultez'],['Persona mayor','elder','Personas mayores'],['S/D','unknown','Sin dato']];
+  $('#pobLede').textContent = `${fmt.format(P.censadas)} personas caracterizadas individualmente en ${P.municipios} municipios${P.pendientes ? `; ${P.pendientes} aún pendientes de clasificación por curso de vida y aseguramiento` : ''}.`;
+  const LIFE = [['Pendiente','unknown','Pendiente de clasificación'],['Primera','baby','Primera infancia'],['Infancia','child','Infancia'],['Adolesc','teen','Adolescencia'],['Joven','young','Juventud'],['Adultez','adult','Adultez'],['Persona mayor','elder','Personas mayores'],['S/D','unknown','Sin dato']];
   const maxC = Math.max(...P.curso_vida.map(x => x.personas));
   $('#courseBars').innerHTML = P.curso_vida.map(x => {
     const L = LIFE.find(l => x.grupo.startsWith(l[0])) || ['', 'unknown', x.grupo];
     const edad = ((x.grupo.match(/\(([^)]+)\)/)||[])[1] || '').replace(' años o más','+').replace(' años','');
     const dep = /Primera|Infancia|Adolesc|Persona mayor/.test(x.grupo);
-    return `<div class="life-row ${dep?'dep':''}" title="${esc(x.grupo)}">
+    return `<div class="life-row ${dep?'dep':''}${x.grupo.startsWith('Pendiente')?' pend':''}" title="${esc(x.grupo)}">
       <span class="ib">${ico(L[1])}</span>
       <span><span class="nm">${L[2]}<small>${esc(edad)}</small></span><span class="tr" style="display:block"><i style="width:${x.personas/maxC*100}%"></i></span></span>
       <b class="v">${fmt.format(x.personas)}</b></div>`;
@@ -123,11 +146,11 @@ function render(){
   const GI = {'Personas con discapacidad':['wheel','#2e6f9e'],'Afrocolombianas':['people','#8a5a2b'],'Indígenas':['people','#2f8a86'],'Gestantes':['heart','#b8567f']};
   $('#groups').innerHTML = P.interes.map(g => { const [ic,c] = GI[g.grupo] || ['people','#1f4e79'];
     return `<div class="gcard" style="--c:${c}"><span class="ib">${ico(ic)}</span><div><b>${fmt.format(g.personas)}</b><span>${esc(g.grupo)}</span></div></div>`; }).join('');
-  $('#insured').innerHTML = `${ico('shield')}<div><b>${P.asegurados_pct} %</b><span>con afiliación en salud · ${P.no_asegurados} personas sin afiliación registrada</span></div>`;
+  $('#insured').innerHTML = `${ico('shield')}<div><b>${P.asegurados_pct} %</b><span>con afiliación en salud · ${P.no_asegurados} sin afiliación registrada${P.pendientes ? ` · ${P.pendientes} pendientes de clasificación` : ''}</span></div>`;
   const maxE = Math.max(...P.aseguramiento.map(x => x.personas));
   $('#epsBars').innerHTML = P.aseguramiento.map(x => `
     <div class="bar"><span class="lb">${esc(x.eps)}</span>
-      <span class="tr"><i class="c" style="width:${x.personas/maxE*100}%"></i></span>
+      <span class="tr"><i class="${x.eps.startsWith('Pendiente') ? 'b' : 'c'}" style="width:${x.personas/maxE*100}%"></i></span>
       <b class="v">${fmt.format(x.personas)}</b></div>`).join('');
 
   $('#method').innerHTML = DB.metodologia.map(t => `<li>${esc(t)}</li>`).join('');
@@ -135,7 +158,7 @@ function render(){
   $('#btnPrint').onclick = () => window.print();
 
   // clic en una barra municipal: filtra el estado de los alojamientos (filtro cruzado)
-  $$('#munBars .bar.clk').forEach(el => {
+  $$('#munBars .mrow.clk').forEach(el => {
     const go = () => filtrarMunicipio(el.dataset.mun);
     el.onclick = go; el.onkeydown = e => { if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); go(); } };
   });
@@ -177,7 +200,7 @@ function drawRows(){
       : `<span class="occ">—</span>`;
     return `<tr class="${first?'grp':''}" data-id="${esc(a.id)}" tabindex="0" aria-label="Ver ficha de ${esc(a.nombre)}">
       <td class="mun ${first?'':'rep'}">${esc(a.municipio)}</td>
-      <td class="site">${esc(a.nombre)}${nf(a)?` <span class="cam" title="Registro fotográfico: ${nf(a)} foto${nf(a)>1?'s':''}" aria-label="Con registro fotográfico, ${nf(a)} foto${nf(a)>1?'s':''}">${ico('camera')}<small>${nf(a)}</small></span>`:''}${a.estado!=='En operación'?' <span class="tag pv">Estado por validar</span>':''}${a.sector?`<small class="sec">${esc(a.sector)}</small>`:''}</td>
+      <td class="site">${esc(a.nombre)}${a.tipo === 'Albergue' ? ' <span class="tag alb">Albergue</span>' : ''}${nf(a)?` <span class="cam" title="Registro fotográfico: ${nf(a)} foto${nf(a)>1?'s':''}" aria-label="Con registro fotográfico, ${nf(a)} foto${nf(a)>1?'s':''}">${ico('camera')}<small>${nf(a)}</small></span>`:''}${a.estado!=='En operación'?' <span class="tag pv">Estado por validar</span>':''}${a.sector?`<small class="sec">${esc(a.sector)}</small>`:''}</td>
       <td class="num" data-l="Personas"><b>${fmt.format(a.personas)}</b>${a.poblacion==='Por validar'?'<span class="tag pv">por validar</span>':''}</td>
       <td class="occ-td${a.ocupacion_pct == null ? ' nocap' : ''}" data-l="Ocupación">${occ}</td>
       ${COMP.map(([key,label]) => `<td class="c" data-l="${label}"><span class="cell ${a.condiciones[key].estado}" title="${label}: ${ESTADO[a.condiciones[key].estado]}" aria-label="${label}: ${ESTADO[a.condiciones[key].estado]}"></span></td>`).join('')}
@@ -192,7 +215,7 @@ function drawRows(){
 function openFicha(id){
   const a = DB.alojamientos.find(x => x.id === id); if(!a) return;
   $('#modalBody').innerHTML = `
-    <div class="f-head"><span class="eyebrow dark">Ficha del alojamiento</span><h2 id="mTitle">${esc(a.nombre)}</h2><p>${esc(a.municipio)}${a.sector?` · ${esc(a.sector)}`:''}</p></div>
+    <div class="f-head"><span class="eyebrow dark">Ficha · ${esc(a.tipo || 'Alojamiento temporal')}</span><h2 id="mTitle">${esc(a.nombre)}</h2><p>${esc(a.municipio)}${a.sector?` · ${esc(a.sector)}`:''}</p></div>
     <div class="f-grid">
       <div><span>Personas</span><b>${fmt.format(a.personas)}</b>${a.poblacion==='Por validar'?'<span class="tag pv" style="margin:4px 0 0">por validar</span>':''}</div>
       <div><span>Capacidad</span><b>${a.capacidad ?? '—'}</b></div>
@@ -283,7 +306,7 @@ function drawMap(){
       const m = byKey[f.properties.clave];
       const rings = f.geometry.type === 'Polygon' ? [f.geometry.coordinates] : f.geometry.coordinates;
       const d = rings.map(poly => poly.map(r => 'M' + r.map(c => P(c).map(v => v.toFixed(1)).join(',')).join('L') + 'Z').join('')).join('');
-      polys.push(`<path d="${d}" fill="${color(m && m.personas)}" class="${m?'on':''}" data-mun="${m?esc(m.municipio):''}"><title>${esc(f.properties.nombre)}${m?`: ${m.personas} personas en ${m.alojamientos} alojamiento(s)`:''}</title></path>`);
+      polys.push(`<path d="${d}" fill="${color(m && m.personas)}" class="${m?'on':''}" data-mun="${m?esc(m.municipio):''}"><title>${esc(f.properties.nombre)}${m?`: ${m.personas} personas · ${m.nucleos ?? '—'} núcleos familiares · ${m.alojamientos} sitio(s)`:''}</title></path>`);
       if(m){
         let best = null, ba = 0;
         rings.forEach(poly => { const r = poly[0]; let a=0,cx=0,cy=0;

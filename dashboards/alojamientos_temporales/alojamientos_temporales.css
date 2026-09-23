@@ -128,12 +128,12 @@
 .f-meta{font-size:13px;color:var(--ink2);margin-top:14px}
 .f-meta p+p{margin-top:4px}
 
-@media (max-width:1000px){
+@media screen and (max-width:1000px){
   .components{grid-template-columns:1fr 1fr}
   .terr-grid,.people-grid{grid-template-columns:1fr}
   .f-grid{grid-template-columns:1fr 1fr}
 }
-@media (max-width:560px){
+@media screen and (max-width:560px){
   .bar{grid-template-columns:100px 1fr 36px}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
@@ -169,7 +169,7 @@
 .lb-close{right:12px;top:10px;font-size:28px}
 
 /* celular */
-@media (max-width:720px){
+@media screen and (max-width:720px){
   .comp .t .ci{display:none}
   .matrix td.occ-td.nocap{display:none}
   .lede{font-size:15.5px}
@@ -218,30 +218,89 @@
 
 
 .m-estado .toolbar label:first-child{grid-column:auto}
-@media (max-width:720px){.toolbar label:first-child{grid-column:1 / -1}}
+@media screen and (max-width:720px){.toolbar label:first-child{grid-column:1 / -1}}
 
-/* ---- infografía A3 de una página ---- */
-@page{size:A3 portrait;margin:7mm}
-@media print{
-  .modal,.lightbox,.internal,.method,.note{display:none!important}
-  body{zoom:.62}
-  .in{max-width:none;padding:0 10px}
-  #sheet{display:grid;grid-template-columns:1.5fr 1fr;column-gap:16px;grid-template-areas:"kpis kpis" "estado terr" "estado pob"}
-  .kpis{grid-area:kpis}.m-estado{grid-area:estado}.m-terr{grid-area:terr}.m-pob{grid-area:pob}
-  .module{margin-top:12px}
-  .module-head{padding:10px 14px}.module-head h2{font-size:20px}.module-body{padding:10px 12px}
-  .components{grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
-  .matrix{font-size:12.5px}.matrix td,.matrix th{padding:4px 6px}
-  .matrix td.site small.sec,.occ .tr,.cam{display:none}
-  .matrix td.site{min-width:0}.matrix th.c,.matrix td.c{width:50px}.cell{width:20px;height:13px}
-  .terr-grid{grid-template-columns:1fr;gap:8px}.map{min-height:0}.map svg{max-height:340px;width:auto;margin:0 auto}
-  .m-terr .bars{display:grid;grid-template-columns:1fr 1fr;column-gap:16px;row-gap:3px}
-  .people-grid{grid-template-columns:1fr 1fr;gap:10px}
-  .people-grid>.pcard:last-child{grid-column:1 / -1}
-  .people-grid>.pcard:last-child .bars{display:grid;grid-template-columns:1fr 1fr;column-gap:16px;row-gap:3px}
-  .pcard{padding:10px}
-  .foot{margin-top:10px}
-}
 .bar.clk{cursor:pointer;border-radius:6px;padding:2px 4px;margin:0 -4px}
 .bar.clk:hover,.bar.clk:focus-visible{background:#eef4f9}
 .band-tags .tag-p{white-space:nowrap}
+
+/* V5.2 · tipo de sitio y pendientes de clasificación */
+.tag.alb{background:#fdebd6;color:#9a5410;border:1px solid #f2c48d}
+.life-row.pend .tr i{background:var(--hatch)}
+.life-row.pend .ib{background:#eef1f3;color:var(--ink2)}
+
+/* V6 · distribución territorial */
+.terr-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px}
+.tk{border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:10px;padding:10px 12px;background:#fbfdfe;display:flex;flex-direction:column;gap:2px}
+.tk-l{font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3)}
+.tk b{font-size:28px;font-weight:800;color:var(--navy);line-height:1.1}
+.tk b small{font-size:15px;color:var(--ink3);font-weight:600}
+.tk-s{font-size:12.5px;color:var(--ink2)}
+.tk-bar{display:block;height:5px;background:var(--mist);border-radius:3px;overflow:hidden;margin:3px 0 2px}
+.tk-bar i{display:block;height:100%;background:var(--blue)}
+#terrLede b{color:var(--navy)}
+.mlist{display:flex;flex-direction:column}
+.mrow{display:grid;grid-template-columns:118px minmax(60px,1fr) 72px 68px 52px;gap:10px;align-items:center;padding:5px 6px;border-bottom:1px solid var(--line2);font-size:14px}
+.mrow .n{text-align:right;font-variant-numeric:tabular-nums}
+.mrow b.n{font-size:15.5px;font-weight:800}
+.mrow .lb{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mrow .tr{height:14px;display:flex}
+.mrow .tr i{display:block;height:100%}
+.mrow .tr .a{background:var(--navy);border-radius:3px 0 0 3px}
+.mrow .tr .b{background:var(--hatch)}
+.mhead{font-size:11px;font-weight:700;color:var(--ink3);text-transform:uppercase;letter-spacing:.03em;border-bottom:2px solid var(--navy);padding-top:0}
+.mtot{border-bottom:0;border-top:2px solid var(--line);font-weight:700}
+.mrow.clk{cursor:pointer;border-radius:6px}
+.mrow.clk:hover,.mrow.clk:focus-visible{background:#eef4f9}
+@media screen and (max-width:1000px){.terr-kpis{grid-template-columns:1fr 1fr}}
+@media screen and (max-width:720px){
+  .tk b{font-size:23px}
+  .mrow{grid-template-columns:1fr 50px 50px 40px;gap:6px;font-size:13px}
+  .mrow .tr{grid-column:1 / -1;grid-row:2;height:8px}
+  .mhead span:nth-child(2){display:none}
+}
+
+/* =====================================================================
+   INFOGRAFÍA · una hoja, A3 o A4 vertical
+   Chrome evalúa los @media de impresión con el papel por defecto (no con el
+   tamaño A3 declarado), por eso la impresión no depende de anchos: las reglas
+   responsivas son solo de pantalla y el diseño es fluido con escala fija.
+   ===================================================================== */
+@page{size:A3 portrait;margin:8mm}
+@media print{
+  html,body{background:#fff}
+  body{zoom:.64}
+  .modal,.lightbox,.internal,.method,.note,.toolbar,.legend.small{display:none!important}
+  .inst .in,.band .in,.foot .in,.in{max-width:none;padding-left:16px;padding-right:16px}
+  .band .in{padding-top:14px;padding-bottom:14px}
+  .band h1{font-size:40px}
+  .kpis{grid-template-columns:repeat(4,1fr)!important;gap:12px;margin-top:14px}
+  .kpi{padding:12px 14px}.kpi .n{font-size:36px}.kpi .ic{width:38px;height:38px}
+  #sheet{display:grid;grid-template-columns:1.12fr 1fr;column-gap:16px;align-items:start;
+    grid-template-areas:"kpis kpis" "estado terr" "pob pob"}
+  .kpis{grid-area:kpis}.m-estado{grid-area:estado}.m-terr{grid-area:terr}.m-pob{grid-area:pob}
+  .module{margin-top:14px}
+  .module-head{padding:10px 16px}.module-head h2{font-size:21px}.module-head p{font-size:13.5px}
+  .module-body{padding:12px 14px}
+  /* estado */
+  .components{grid-template-columns:repeat(2,1fr)!important;gap:8px;margin-bottom:10px}
+  .comp{padding:8px 10px}
+  .matrix{font-size:13px}.matrix td,.matrix th{padding:5px 6px}
+  .matrix td.site small.sec,.occ .tr,.cam{display:none}
+  .matrix td.site{min-width:0}.matrix th.c,.matrix td.c{width:52px}.cell{width:22px;height:14px}
+  .matrix thead{display:table-header-group}.matrix tbody tr{display:table-row}
+  .matrix td.num .tag{display:block;margin:2px 0 0;text-align:center}
+  /* territorio */
+  .terr-kpis{grid-template-columns:repeat(2,1fr)!important;gap:8px;margin-bottom:10px}
+  .tk{padding:7px 10px}.tk b{font-size:22px}
+  .terr-grid{grid-template-columns:1fr!important;gap:8px}
+  .map{min-height:0}.map svg{max-height:330px;width:auto;margin:0 auto}
+  .map-scale{font-size:11px}
+  .mrow{padding:3px 4px;font-size:13px;grid-template-columns:108px minmax(40px,1fr) 64px 60px 48px}
+  .mhead{font-size:10.5px;letter-spacing:0}
+  /* población: una franja de tres columnas */
+  .people-grid{grid-template-columns:1.1fr 1fr 1.1fr!important;gap:12px}
+  .pcard{padding:12px}
+  .life{gap:3px}.life-row .ib{width:28px;height:28px}
+  .foot{margin-top:12px}
+}
