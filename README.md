@@ -4,7 +4,7 @@ Repositorio institucional de la Unidad Ejecutora de Saneamiento del Valle del Ca
 
 Portal: https://uesvalle.github.io/
 
-## Organización del portal (V2.3)
+## Organización del portal (V2.5)
 
 La página principal presenta el **mapa de procesos** de la entidad como una rueda interactiva: los cuatro procesos misionales en el centro, con los colores institucionales, y un anillo exterior con los eventos y los tableros transversales. Al seleccionar una opción se muestran sus tableros en el panel lateral, que también tiene un buscador por nombre. En computador la página ocupa una sola pantalla: columna institucional a la izquierda, rueda al centro y panel a la derecha.
 
