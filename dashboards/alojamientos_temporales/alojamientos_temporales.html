@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <title>Alojamientos temporales · Valle del Cauca</title>
+  <meta name="description" content="Estado de los alojamientos temporales habilitados en el Valle del Cauca.">
+  <link rel="stylesheet" href="alojamientos_temporales.css?v=4.2">
+</head>
+<body>
+<main class="sheet" id="sheet">
+
+  <header class="topbar">
+    <img class="logos" src="assets/logos/logos_institucionales.png" alt="Gobernación del Valle del Cauca y Unidad Ejecutora de Saneamiento del Valle del Cauca">
+    <div class="topmeta">
+      <span class="eyebrow dark">Respuesta sanitaria postevento</span>
+      <span class="cut-pill">Corte <b id="cutDate">—</b></span>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-in">
+      <span class="eyebrow">Gobernación del Valle del Cauca · Salud ambiental</span>
+      <h1>Alojamientos temporales</h1>
+      <p class="lede" id="lede">Estado de los alojamientos habilitados en el Valle del Cauca.</p>
+    </div>
+  </section>
+
+  <section class="kpis" id="kpis" aria-label="Cifras principales"></section>
+
+  <nav class="tabs no-print" aria-label="Secciones">
+    <a href="#mod-estado"><small>01 · Principal</small>Estado de los alojamientos</a>
+    <a href="#mod-territorio"><small>02</small>Distribución territorial</a>
+    <a href="#mod-poblacion"><small>03</small>Perfil de la población</a>
+    <a href="#mod-metodo"><small>Trazabilidad</small>Cómo se construyen las cifras</a>
+  </nav>
+
+  <section class="module m-estado" id="mod-estado" aria-labelledby="h-estado">
+    <div class="module-head">
+      <div>
+        <span class="eyebrow dark">Módulo 1</span>
+        <h2 id="h-estado">Estado de los alojamientos</h2>
+        <p>Condiciones de agua, saneamiento, alimentos y animales según el último seguimiento de campo de cada sitio.</p>
+      </div>
+      <div class="legend" aria-label="Convenciones">
+        <span><i class="mk S"></i>Sin observación</span>
+        <span><i class="mk O"></i>Con observación documentada</span>
+        <span><i class="mk V"></i>Por validar</span>
+      </div>
+    </div>
+    <div class="module-body">
+      <div class="components" id="components"></div>
+
+      <div class="toolbar no-print">
+        <label>Municipio
+          <select id="fMun"><option value="">Todos</option></select>
+        </label>
+        <label>Componente
+          <select id="fComp">
+            <option value="">Todos</option>
+            <option value="agua">Con observación en agua</option>
+            <option value="saneamiento">Con observación en saneamiento</option>
+            <option value="alimentos">Con observación en alimentos</option>
+            <option value="animales">Con observación en animales</option>
+          </select>
+        </label>
+        <label>Registro fotográfico
+          <select id="fFoto">
+            <option value="">Todos</option>
+            <option value="con">Con fotografías</option>
+            <option value="sin">Sin fotografías</option>
+          </select>
+        </label>
+        <button type="button" class="btn ghost" id="btnClear">Limpiar</button>
+        <span class="count" id="count"></span>
+      </div>
+
+      <div class="table-wrap">
+        <table class="matrix">
+          <thead>
+            <tr>
+              <th scope="col">Municipio</th>
+              <th scope="col">Alojamiento</th>
+              <th scope="col" class="num">Personas</th>
+              <th scope="col">Ocupación</th>
+              <th scope="col" class="c">Agua</th>
+              <th scope="col" class="c">Saneam.</th>
+              <th scope="col" class="c">Alimentos</th>
+              <th scope="col" class="c">Animales</th>
+            </tr>
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+      <p class="note no-print">Seleccione un alojamiento para ver su ficha. <span class="cam-legend"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8.5h3l1.6-2.5h6.8L17 8.5h3v10.5H4z"/><circle cx="12" cy="13.5" r="3.3"/></svg> indica registro fotográfico.</span> Ocupación: personas censadas frente a la capacidad reportada del sitio.</p>
+    </div>
+  </section>
+
+  <section class="module m-terr" id="mod-territorio" aria-labelledby="h-terr">
+    <div class="module-head">
+      <div>
+        <span class="eyebrow dark">Módulo 2</span>
+        <h2 id="h-terr">Distribución territorial</h2>
+        <p id="terrLede">Municipios con alojamientos temporales en operación.</p>
+      </div>
+    </div>
+    <div class="module-body terr-grid">
+      <figure class="map" id="map" aria-label="Mapa de municipios del Valle del Cauca con alojamientos temporales">
+        <div class="map-msg">Cargando mapa…</div>
+      </figure>
+      <div>
+        <div class="bars" id="munBars"></div>
+        <div class="legend small">
+          <span><i class="sw cens"></i>Personas censadas</span>
+          <span><i class="sw pv"></i>Por validar</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="module m-pob" id="mod-poblacion" aria-labelledby="h-pob">
+    <div class="module-head">
+      <div>
+        <span class="eyebrow dark">Módulo 3</span>
+        <h2 id="h-pob">Perfil de la población censada</h2>
+        <p id="pobLede">Personas caracterizadas individualmente en los alojamientos.</p>
+      </div>
+    </div>
+    <div class="module-body people-grid">
+      <div class="pcard">
+        <h3>Curso de vida</h3>
+        <div class="life" id="courseBars"></div>
+        <p class="note">Tono oscuro: niñas, niños, adolescentes y personas mayores.</p>
+      </div>
+      <div class="pcard">
+        <h3>Sexo</h3>
+        <div id="sex"></div>
+        <h3 class="mt">Grupos de atención diferencial</h3>
+        <div class="groups" id="groups"></div>
+      </div>
+      <div class="pcard">
+        <h3>Aseguramiento en salud</h3>
+        <div class="insured" id="insured"></div>
+        <div class="bars" id="epsBars"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="module internal" id="internal" hidden aria-labelledby="h-int">
+    <div class="module-head">
+      <div>
+        <span class="eyebrow dark">Vista de trabajo</span>
+        <h2 id="h-int">Seguimiento interno</h2>
+        <p>No se muestra en la presentación ni en la versión impresa.</p>
+      </div>
+    </div>
+    <div class="module-body" id="internalBody"></div>
+  </section>
+
+  <section class="module method" id="mod-metodo">
+    <details id="methodBox">
+      <summary>
+        <span><span class="eyebrow dark">Trazabilidad</span><b>Cómo se construyen estas cifras</b></span>
+        <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+      </summary>
+      <div class="method-body">
+        <ol id="method"></ol>
+      </div>
+    </details>
+  </section>
+
+  <footer class="foot">
+    <p id="src"></p>
+    <button type="button" id="btnPrint" class="btn no-print">Imprimir o guardar PDF</button>
+  </footer>
+</main>
+
+<div class="modal" id="modal" aria-hidden="true">
+  <div class="modal-bg" data-close></div>
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+    <button type="button" class="modal-x" data-close aria-label="Cerrar ficha">×</button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Registro fotográfico ampliado">
+  <div class="lb-bg" data-lbclose></div>
+  <figure class="lb-fig">
+    <img id="lbImg" alt="">
+    <figcaption id="lbCap"></figcaption>
+  </figure>
+  <button type="button" class="lb-btn lb-prev" id="lbPrev" aria-label="Foto anterior">‹</button>
+  <button type="button" class="lb-btn lb-next" id="lbNext" aria-label="Foto siguiente">›</button>
+  <button type="button" class="lb-btn lb-close" id="lbClose" data-lbclose aria-label="Cerrar foto">×</button>
+</div>
+
+<script src="alojamientos_temporales.js?v=4.2"></script>
+</body>
+</html>

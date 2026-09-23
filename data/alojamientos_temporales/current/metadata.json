@@ -1,0 +1,22 @@
+{
+ "version": "V4.2 · Estado de los alojamientos",
+ "corte": "2026-09-21",
+ "generado": "2026-09-23T02:28:09",
+ "fuente_publica": "Consolidado institucional de alojamientos temporales",
+ "indicadores": {
+  "personas": 270,
+  "censadas": 240,
+  "por_validar": 30,
+  "alojamientos": 20,
+  "en_operacion": 19,
+  "estado_por_validar": 1,
+  "municipios": 12,
+  "nna": 72,
+  "mayores": 32,
+  "dependientes": 104,
+  "dependientes_pct": 43,
+  "con_fotos": 2,
+  "fotos": 5
+ },
+ "maestro": "MAESTRO_ALOJAMIENTOS_TEMPORALES_SDS_IESVALLE_V1.xlsx"
+}
