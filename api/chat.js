@@ -3,15 +3,31 @@ import { askNemotron } from "../lib/nvidia.js";
 
 const MAX_QUESTION = 2500;
 
+function normalizeOrigin(value) {
+  if (!value) return null;
+
+  const normalized = String(value).trim().replace(/\/+$/, "");
+
+  return normalized.startsWith("http://") || normalized.startsWith("https://")
+    ? normalized
+    : `https://${normalized}`;
+}
+
 function allowedOrigin(origin) {
   if (!origin) return true;
 
-  const configured =
-    process.env.ALLOWED_ORIGIN || "https://uesvalle.github.io";
+  const allowed = new Set(
+    [
+      process.env.ALLOWED_ORIGIN || "https://uesvalle.github.io",
+      process.env.VERCEL_URL,
+      process.env.VERCEL_BRANCH_URL,
+      process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ]
+      .filter(Boolean)
+      .map(normalizeOrigin)
+  );
 
-  if (origin === configured) return true;
-
-  return /^https:\/\/uesvalle-ai-api(?:-[a-z0-9-]+)?\.vercel\.app$/i.test(origin);
+  return allowed.has(normalizeOrigin(origin));
 }
 
 function setCors(req, res) {
