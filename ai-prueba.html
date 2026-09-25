@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Prueba Agente IA Nemotron · UESVALLE</title>
+  <link rel="stylesheet" href="assets/ai/assistant.css">
+</head>
+<body>
+  <header class="ai-topbar">
+    <strong>UESVALLE · PILOTO DE INTELIGENCIA ARTIFICIAL</strong>
+    <a href="/">Volver al portal</a>
+  </header>
+
+  <main class="ai-shell">
+    <section class="ai-hero">
+      <div class="ai-intro">
+        <div class="ai-kicker">Prueba controlada</div>
+        <h1>Asistente UESVALLE</h1>
+        <p>
+          Piloto de consulta institucional conectado a NVIDIA Nemotron.
+          Las respuestas se generan a partir de una lista blanca de fuentes
+          del repositorio UESVALLE y muestran las referencias utilizadas.
+        </p>
+      </div>
+
+      <aside class="ai-status">
+        <div class="ai-status-row"><span>Proveedor</span><b>NVIDIA</b></div>
+        <div class="ai-status-row"><span>API</span><b id="apiStatus">Verificando…</b></div>
+        <div class="ai-status-row"><span>Modelo</span><b id="modelStatus">—</b></div>
+        <div class="ai-status-row"><span>Modo</span><b>RAG · solo lectura</b></div>
+      </aside>
+    </section>
+
+    <section class="ai-chat" aria-label="Chat de prueba">
+      <div id="messages" class="ai-messages" aria-live="polite"></div>
+
+      <div class="ai-quick">
+        <button type="button" data-question="¿Qué tableros están publicados actualmente en el portal?">¿Qué tableros existen?</button>
+        <button type="button" data-question="¿Cómo se actualiza el tablero MPR?">¿Cómo se actualiza MPR?</button>
+        <button type="button" data-question="¿Cómo se genera el archivo operativo del tablero IRCAS?">¿Cómo funciona IRCAS?</button>
+      </div>
+
+      <form id="chatForm" class="ai-form">
+        <textarea id="messageInput" maxlength="2500" placeholder="Escriba una pregunta sobre la información autorizada de UESVALLE…" required></textarea>
+        <button id="sendButton" type="submit">Enviar</button>
+      </form>
+
+      <div class="ai-note">
+        Piloto experimental. El asistente no modifica datos ni ejecuta acciones
+        sobre los sistemas de UESVALLE.
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/ai/assistant.js"></script>
+</body>
+</html>
