@@ -2,21 +2,18 @@
   "use strict";
 
   const PROD_API = "https://uesvalle-ai-api.vercel.app";
-  const API_BASE = /\.vercel\.app$/i.test(window.location.hostname)
-    ? window.location.origin
-    : PROD_API;
+  const ON_VERCEL = /\.vercel\.app$/i.test(window.location.hostname);
+  const API_BASE = ON_VERCEL ? window.location.origin : PROD_API;
+  const API_CREDENTIALS = ON_VERCEL ? "same-origin" : "omit";
+  const CAT_SRC = "assets/ai/asistente-gatita.webp";
 
   const qs = (s, root = document) => root.querySelector(s);
-  let healthChecked = false;
   let previousFocus = null;
+  let healthChecked = false;
 
   function escapeHtml(value) {
     return String(value ?? "").replace(/[&<>"']/g, (c) => ({
-      "&": "&amp;",
-      "<": "&lt;",
-      ">": "&gt;",
-      '"': "&quot;",
-      "'": "&#39;"
+      "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
     })[c]);
   }
 
@@ -27,103 +24,84 @@
     return safe.replace(/\n/g, "<br>");
   }
 
-  function errorText(input) {
-    if (!input) return "No fue posible completar la consulta.";
-    if (typeof input === "string") return input;
-    if (input instanceof Error) {
-      return typeof input.message === "string" && input.message
-        ? input.message
-        : "No fue posible completar la consulta.";
-    }
-    if (typeof input === "object") {
-      const candidates = [input.error, input.message, input.detail];
-      for (const c of candidates) {
-        if (typeof c === "string" && c.trim()) return c;
-        if (c && typeof c === "object") {
-          const nested = errorText(c);
-          if (nested && nested !== "[object Object]") return nested;
+  function extractError(payload, fallback = "No fue posible completar la consulta.") {
+    if (!payload) return fallback;
+    if (typeof payload === "string") return payload.trim() || fallback;
+    if (payload instanceof Error) return extractError(payload.message, fallback);
+    if (typeof payload === "object") {
+      for (const key of ["message", "error", "detail"]) {
+        if (payload[key] != null) {
+          const text = extractError(payload[key], "");
+          if (text) return text;
         }
       }
-      try {
-        return JSON.stringify(input);
-      } catch {
-        return "No fue posible completar la consulta.";
-      }
     }
-    return String(input);
+    return fallback;
+  }
+
+  async function readPayload(response) {
+    const type = response.headers.get("content-type") || "";
+    if (type.includes("application/json")) {
+      try { return await response.json(); } catch { return null; }
+    }
+    try { return await response.text(); } catch { return null; }
   }
 
   function buildUi() {
     const launcher = document.createElement("button");
     launcher.type = "button";
     launcher.className = "pai-launcher";
-    launcher.id = "paiLauncher";
-    launcher.setAttribute("aria-haspopup", "dialog");
-    launcher.setAttribute("aria-controls", "paiChat");
     launcher.setAttribute("aria-label", "Abrir Asistente UESVALLE");
+    launcher.setAttribute("aria-haspopup", "dialog");
     launcher.innerHTML = `
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M12 3v3M6 7l2 2M18 7l-2 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-        <rect x="4" y="9" width="16" height="10.5" rx="4" fill="none" stroke="currentColor" stroke-width="1.8"/>
-        <circle cx="9" cy="14" r="1" fill="currentColor"/>
-        <circle cx="15" cy="14" r="1" fill="currentColor"/>
-        <path d="M9 17h6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-      </svg>
-      <span class="pai-launcher-text">Asistente UESVALLE</span>`;
+      <img class="pai-launcher-cat" src="${CAT_SRC}" alt="" aria-hidden="true">
+      <span class="pai-launcher-pill">
+        <span class="pai-launcher-chat" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M5 5h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-7l-4.5 3V17H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="8" cy="11" r="1" fill="currentColor"/><circle cx="12" cy="11" r="1" fill="currentColor"/><circle cx="16" cy="11" r="1" fill="currentColor"/></svg>
+        </span>
+        <span class="pai-launcher-text">Pregúntame aquí</span>
+        <span class="pai-launcher-arrow" aria-hidden="true">›</span>
+      </span>`;
 
-    const backdrop = document.createElement("div");
-    backdrop.className = "pai-backdrop";
-    backdrop.id = "paiBackdrop";
-    backdrop.hidden = true;
-
-    const drawer = document.createElement("aside");
-    drawer.className = "pai-chat";
-    drawer.id = "paiChat";
-    drawer.setAttribute("role", "dialog");
-    drawer.setAttribute("aria-modal", "true");
-    drawer.setAttribute("aria-labelledby", "paiTitle");
-    drawer.hidden = true;
-    drawer.innerHTML = `
+    const chat = document.createElement("aside");
+    chat.className = "pai-chat";
+    chat.id = "paiChat";
+    chat.hidden = true;
+    chat.setAttribute("role", "dialog");
+    chat.setAttribute("aria-labelledby", "paiTitle");
+    chat.innerHTML = `
       <div class="pai-head">
+        <div class="pai-avatar"><img src="${CAT_SRC}" alt=""></div>
         <div class="pai-brand">
-          <span class="pai-kicker">Consulta institucional asistida por IA</span>
-          <div class="pai-title-row">
-            <h2 id="paiTitle">Asistente UESVALLE</h2>
-          </div>
-          <div class="pai-sub">Pregunte sobre información autorizada del repositorio institucional.</div>
-          <div class="pai-status"><span class="pai-dot" id="paiDot" aria-hidden="true"></span><span id="paiStatus">Conexión pendiente</span></div>
+          <h2 id="paiTitle">Asistente UESVALLE</h2>
+          <div class="pai-presence"><span class="pai-dot" id="paiDot"></span><span id="paiStatus">Disponible</span></div>
         </div>
         <button class="pai-close" id="paiClose" type="button" aria-label="Cerrar asistente">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
         </button>
       </div>
       <div class="pai-messages" id="paiMessages" aria-live="polite"></div>
-      <div class="pai-quick" aria-label="Preguntas rápidas">
-        <button type="button" data-pai-question="¿Qué tableros existen?">¿Qué tableros existen?</button>
-        <button type="button" data-pai-question="¿Cómo se actualiza el tablero MPR?">¿Cómo se actualiza MPR?</button>
-        <button type="button" data-pai-question="¿Cómo funciona IRCAS?">¿Cómo funciona IRCAS?</button>
-      </div>
       <div class="pai-bottom">
         <form class="pai-form" id="paiForm">
-          <textarea id="paiInput" maxlength="2500" placeholder="Pregunte sobre información autorizada de UESVALLE…" aria-label="Pregunta para el Asistente UESVALLE" required></textarea>
-          <button class="pai-send" id="paiSend" type="submit">Enviar</button>
+          <textarea id="paiInput" maxlength="2500" rows="1" placeholder="Escribe tu pregunta…" aria-label="Pregunta para el Asistente UESVALLE" required></textarea>
+          <button class="pai-send" id="paiSend" type="submit" aria-label="Enviar pregunta">
+            <svg viewBox="0 0 24 24"><path d="m4 4 16 8-16 8 3-8-3-8Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 12h13" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+          </button>
         </form>
-        <p class="pai-note">Piloto de solo consulta. Las respuestas se generan a partir de fuentes autorizadas del repositorio UESVALLE.</p>
+        <p class="pai-foot">Consulta asistida por IA. Verifique la información crítica en la fuente citada.</p>
       </div>`;
 
-    document.body.append(launcher, backdrop, drawer);
-
+    document.body.append(launcher, chat);
     return {
       launcher,
-      backdrop,
-      drawer,
-      closeButton: qs("#paiClose", drawer),
-      messages: qs("#paiMessages", drawer),
-      form: qs("#paiForm", drawer),
-      input: qs("#paiInput", drawer),
-      send: qs("#paiSend", drawer),
-      status: qs("#paiStatus", drawer),
-      dot: qs("#paiDot", drawer)
+      chat,
+      close: qs("#paiClose", chat),
+      messages: qs("#paiMessages", chat),
+      form: qs("#paiForm", chat),
+      input: qs("#paiInput", chat),
+      send: qs("#paiSend", chat),
+      status: qs("#paiStatus", chat),
+      dot: qs("#paiDot", chat)
     };
   }
 
@@ -140,66 +118,66 @@
     if (sources.length) {
       const refs = document.createElement("div");
       refs.className = "pai-sources";
-      refs.innerHTML = "<b>Fuentes consultadas</b>";
-
+      const title = document.createElement("b");
+      title.textContent = sources.length === 1 ? "Fuente" : "Fuentes";
+      refs.appendChild(title);
       sources.forEach((source) => {
-        const a = document.createElement("a");
-        a.textContent = source.path || source.title || "Fuente";
-        a.href = source.url || "#";
-        a.target = "_blank";
-        a.rel = "noopener";
-        refs.appendChild(a);
+        const link = document.createElement("a");
+        link.textContent = source.path || source.title || "Fuente consultada";
+        link.href = source.url || "#";
+        link.target = "_blank";
+        link.rel = "noopener";
+        refs.appendChild(link);
       });
       box.appendChild(refs);
     }
 
     ui.messages.appendChild(box);
     ui.messages.scrollTop = ui.messages.scrollHeight;
+    return box;
   }
 
-  function setStatus(text, state = "") {
+  function addThinking() {
+    const box = document.createElement("div");
+    box.className = "pai-msg bot";
+    box.dataset.thinking = "1";
+    box.innerHTML = '<span class="pai-thinking" aria-label="Consultando"><i></i><i></i><i></i></span>';
+    ui.messages.appendChild(box);
+    ui.messages.scrollTop = ui.messages.scrollHeight;
+    return box;
+  }
+
+  function setStatus(text, bad = false) {
     ui.status.textContent = text;
-    ui.dot.classList.remove("ok", "bad");
-    if (state) ui.dot.classList.add(state);
+    ui.dot.classList.toggle("bad", bad);
   }
 
   async function checkHealth() {
     if (healthChecked) return;
     healthChecked = true;
-    setStatus("Conectando…");
-
     try {
       const response = await fetch(`${API_BASE}/api/health`, {
         cache: "no-store",
-        credentials: "omit"
+        credentials: API_CREDENTIALS
       });
-      const data = await response.json();
-
-      if (response.ok && data.ok && data.hasApiKey) {
-        setStatus("NVIDIA Nemotron · RAG institucional", "ok");
-      } else {
-        setStatus("Revisar configuración del servicio", "bad");
-      }
+      if (response.ok) setStatus("Disponible");
+      else setStatus("Servicio temporalmente no disponible", true);
     } catch {
-      setStatus("Servicio no disponible", "bad");
+      setStatus("Servicio temporalmente no disponible", true);
     }
   }
 
   function openChat() {
     previousFocus = document.activeElement;
-    ui.backdrop.hidden = false;
-    ui.drawer.hidden = false;
-    document.body.classList.add("pai-opened");
-    ui.launcher.setAttribute("aria-expanded", "true");
+    ui.launcher.hidden = true;
+    ui.chat.hidden = false;
     checkHealth();
     window.setTimeout(() => ui.input.focus(), 0);
   }
 
   function closeChat() {
-    ui.backdrop.hidden = true;
-    ui.drawer.hidden = true;
-    document.body.classList.remove("pai-opened");
-    ui.launcher.setAttribute("aria-expanded", "false");
+    ui.chat.hidden = true;
+    ui.launcher.hidden = false;
     if (previousFocus && typeof previousFocus.focus === "function") previousFocus.focus();
   }
 
@@ -210,55 +188,51 @@
     addMessage(question, "user");
     ui.input.value = "";
     ui.send.disabled = true;
-    ui.send.textContent = "Consultando…";
-    setStatus("Consultando fuentes autorizadas…");
+    const thinking = addThinking();
 
     try {
       const response = await fetch(`${API_BASE}/api/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        credentials: "omit",
+        credentials: API_CREDENTIALS,
         body: JSON.stringify({ message: question })
       });
 
-      let data;
-      try {
-        data = await response.json();
-      } catch {
-        throw new Error("El servicio devolvió una respuesta no válida.");
-      }
+      const payload = await readPayload(response);
+      if (!response.ok) throw new Error(extractError(payload));
 
-      if (!response.ok) {
-        throw new Error(errorText(data));
-      }
-
-      addMessage(data.answer, "bot", data.sources || []);
-      setStatus("NVIDIA Nemotron · RAG institucional", "ok");
+      thinking.remove();
+      addMessage(payload?.answer || "No se recibió una respuesta.", "bot", payload?.sources || []);
+      setStatus("Disponible");
     } catch (error) {
-      addMessage(errorText(error), "error");
-      setStatus("No fue posible completar la consulta", "bad");
+      thinking.remove();
+      const detail = extractError(error);
+      const friendly = /protected deployment/i.test(detail)
+        ? "El entorno de prueba requiere autenticación de Vercel. Recargue la página después de iniciar sesión."
+        : detail;
+      addMessage(friendly, "error");
+      setStatus("No fue posible completar la consulta", true);
     } finally {
       ui.send.disabled = false;
-      ui.send.textContent = "Enviar";
       ui.input.focus();
     }
   }
 
   ui.launcher.addEventListener("click", openChat);
-  ui.closeButton.addEventListener("click", closeChat);
-  ui.backdrop.addEventListener("click", closeChat);
+  ui.close.addEventListener("click", closeChat);
   ui.form.addEventListener("submit", (event) => {
     event.preventDefault();
     ask(ui.input.value);
   });
-
-  ui.drawer.querySelectorAll("[data-pai-question]").forEach((button) => {
-    button.addEventListener("click", () => ask(button.dataset.paiQuestion));
+  ui.input.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" && !event.shiftKey) {
+      event.preventDefault();
+      ui.form.requestSubmit();
+    }
   });
-
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && !ui.drawer.hidden) closeChat();
+    if (event.key === "Escape" && !ui.chat.hidden) closeChat();
   });
 
-  addMessage("Hola. Soy el Asistente UESVALLE. Puedo consultar fuentes autorizadas del repositorio institucional y mostrarle las referencias utilizadas.");
+  addMessage("Hola 👋 ¿En qué te puedo ayudar?");
 })();
