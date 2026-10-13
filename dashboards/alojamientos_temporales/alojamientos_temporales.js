@@ -53,7 +53,7 @@ function render(){
   const k = DB.kpis, P = DB.poblacion;
   $('#cutDate').textContent = fecha(DB.metadata.corte, true);
   $('#updated').innerHTML = `<i></i>Actualizado ${fecha((DB.metadata.generado || '').slice(0,10))}`;
-  $('#lede').textContent = `Estado de los alojamientos temporales y albergues habilitados en el Valle del Cauca tras el ${DB.metadata.evento.charAt(0).toLowerCase()+DB.metadata.evento.slice(1)}.`;
+  $('#lede').textContent = 'Seguimiento poblacional, demográfico e IVC';
 
   const kpi = (cls, icon, n, label, sub, target, extra='') => `
     <button type="button" class="kpi ${cls}" data-go="${target}">
