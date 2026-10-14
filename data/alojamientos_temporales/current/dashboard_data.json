@@ -1,9 +1,9 @@
 {
   "metadata": {
-    "version": "V6.3 · caracterización 13/10/2026",
+    "version": "V6.3 · censo 13/10/2026 · cierres informados",
     "corte": "2026-10-13",
-    "generado": "2026-10-14T01:51:42",
-    "fuente_publica": "Censo y caracterización ATE 13/10/2026 + histórico SDS V23 pendiente",
+    "generado": "2026-10-14T02:02:45",
+    "fuente_publica": "Consolidado ATE del 13/10/2026 y confirmación operativa de cierres",
     "evento": "Sismo del 10 de agosto de 2026",
     "privacidad": "Datos agregados y operacionales. Sin identificación individual.",
     "fuente_reciente": "FORMATO CARACTERIZACION ALBERGUES TEMPORALES DE EMERGENCIA-CONSOLIDADO - 13102026.xlsx",
@@ -14,31 +14,47 @@
       "Zarzal",
       "Ansermanuevo"
     ],
-    "aclaracion": "211 personas en censo del 13/10 y 34 del histórico del 23/09 pendientes de actualización; total combinado 245, no un censo único a fecha de corte."
+    "aclaracion": "211 personas censadas en 17 alojamientos activos de 9 municipios. Tres sitios cerrados, que registraban 34 personas en septiembre, se conservan solo en el histórico. Se desconoce la causa de salida y el destino habitacional de las personas.",
+    "situacion_cierre": "Tres cierres confirmados durante revisión; fecha exacta, causal y destino de personas no informados.",
+    "comparacion_cortes": {
+      "anterior": "2026-09-23",
+      "personas_anterior": 253,
+      "alojamientos_registrados_anterior": 20,
+      "actual": "2026-10-13",
+      "personas_actual": 211,
+      "alojamientos_activos_actual": 17,
+      "variacion_personas": -42,
+      "personas_ultimo_registro_en_sitios_cerrados": 34,
+      "reduccion_en_municipios_activos": 8,
+      "motivo_reduccion": "No documentado (posible acceso a vivienda o retorno no confirmado)"
+    }
   },
   "kpis": {
-    "personas": 245,
+    "personas": 211,
     "censadas": 211,
-    "por_validar": 34,
-    "alojamientos": 20,
+    "por_validar": 0,
+    "alojamientos": 17,
     "en_operacion": 17,
-    "estado_por_validar": 3,
-    "municipios": 12,
+    "estado_por_validar": 0,
+    "municipios": 9,
     "nna": 62,
     "mayores": 27,
     "dependientes": 89,
     "dependientes_pct": 43,
-    "con_fotos": 2,
-    "fotos": 5,
-    "nucleos": 85,
+    "con_fotos": 1,
+    "fotos": 1,
+    "nucleos": 70,
     "albergues": 1,
-    "alojamientos_temporales": 19,
+    "alojamientos_temporales": 16,
     "pendientes_curso": 2,
     "pendientes_eps": 0,
     "nucleos_octubre": 70,
-    "nucleos_por_validar": 15,
+    "nucleos_por_validar": 0,
     "sitios_actualizados": 17,
-    "sitios_sin_reporte": 3
+    "sitios_sin_reporte": 0,
+    "sitios_cerrados": 3,
+    "personas_ultimo_registro_cerrados": 34,
+    "variacion_poblacion_entre_cortes": -42
   },
   "municipios": [
     {
@@ -51,7 +67,7 @@
       "nucleos": 28,
       "albergues_sds": 1,
       "alojamientos_sds": 0,
-      "situacion_fuente": "Censo actualizado 13/10"
+      "situacion_fuente": "Censo actualizado al 13/10/2026"
     },
     {
       "municipio": "Yotoco",
@@ -63,7 +79,7 @@
       "nucleos": 10,
       "albergues_sds": 0,
       "alojamientos_sds": 6,
-      "situacion_fuente": "Censo actualizado 13/10"
+      "situacion_fuente": "Censo actualizado al 13/10/2026"
     },
     {
       "municipio": "Restrepo",
@@ -75,7 +91,7 @@
       "nucleos": 9,
       "albergues_sds": 0,
       "alojamientos_sds": 1,
-      "situacion_fuente": "Censo actualizado 13/10"
+      "situacion_fuente": "Censo actualizado al 13/10/2026"
     },
     {
       "municipio": "El Cairo",
@@ -87,19 +103,7 @@
       "nucleos": 9,
       "albergues_sds": 0,
       "alojamientos_sds": 1,
-      "situacion_fuente": "Censo actualizado 13/10"
-    },
-    {
-      "municipio": "Yumbo",
-      "clave": "YUMBO",
-      "personas": 17,
-      "censadas": 0,
-      "por_validar": 17,
-      "alojamientos": 1,
-      "nucleos": 6,
-      "albergues_sds": 0,
-      "alojamientos_sds": 1,
-      "situacion_fuente": "Histórico SDS V23: pendiente de actualización"
+      "situacion_fuente": "Censo actualizado al 13/10/2026"
     },
     {
       "municipio": "Obando",
@@ -111,7 +115,7 @@
       "nucleos": 4,
       "albergues_sds": 0,
       "alojamientos_sds": 4,
-      "situacion_fuente": "Censo actualizado 13/10"
+      "situacion_fuente": "Censo actualizado al 13/10/2026"
     },
     {
       "municipio": "Ulloa",
@@ -123,31 +127,7 @@
       "nucleos": 1,
       "albergues_sds": 0,
       "alojamientos_sds": 1,
-      "situacion_fuente": "Censo actualizado 13/10"
-    },
-    {
-      "municipio": "Zarzal",
-      "clave": "ZARZAL",
-      "personas": 9,
-      "censadas": 0,
-      "por_validar": 9,
-      "alojamientos": 1,
-      "nucleos": 3,
-      "albergues_sds": 0,
-      "alojamientos_sds": 1,
-      "situacion_fuente": "Histórico SDS V23: pendiente de actualización"
-    },
-    {
-      "municipio": "Ansermanuevo",
-      "clave": "ANSERMANUEVO",
-      "personas": 8,
-      "censadas": 0,
-      "por_validar": 8,
-      "alojamientos": 1,
-      "nucleos": 6,
-      "albergues_sds": 0,
-      "alojamientos_sds": 1,
-      "situacion_fuente": "Histórico SDS V23: pendiente de actualización"
+      "situacion_fuente": "Censo actualizado al 13/10/2026"
     },
     {
       "municipio": "El Dovio",
@@ -159,7 +139,7 @@
       "nucleos": 3,
       "albergues_sds": 0,
       "alojamientos_sds": 1,
-      "situacion_fuente": "Censo actualizado 13/10"
+      "situacion_fuente": "Censo actualizado al 13/10/2026"
     },
     {
       "municipio": "Versalles",
@@ -171,7 +151,7 @@
       "nucleos": 5,
       "albergues_sds": 0,
       "alojamientos_sds": 1,
-      "situacion_fuente": "Censo actualizado 13/10"
+      "situacion_fuente": "Censo actualizado al 13/10/2026"
     },
     {
       "municipio": "Trujillo",
@@ -183,7 +163,7 @@
       "nucleos": 1,
       "albergues_sds": 0,
       "alojamientos_sds": 1,
-      "situacion_fuente": "Censo actualizado 13/10"
+      "situacion_fuente": "Censo actualizado al 13/10/2026"
     }
   ],
   "alojamientos": [
@@ -658,43 +638,6 @@
       "actualizacion": "Censo del 13/10/2026"
     },
     {
-      "id": "ATI-034",
-      "municipio": "Yumbo",
-      "nombre": "Coliseo Carlos Alberto Bejarano",
-      "tipo": "Alojamiento temporal",
-      "personas": 17,
-      "poblacion": "Por validar",
-      "estado": "Por validar",
-      "capacidad": 300,
-      "ocupacion_pct": 6,
-      "infraestructura": "Coliseo cubierto",
-      "sector": "Belalcazar",
-      "direccion": "CALLE 6 # 6-27",
-      "ultima_verificacion": null,
-      "condiciones": {
-        "agua": {
-          "estado": "V",
-          "texto": "Por validar."
-        },
-        "saneamiento": {
-          "estado": "V",
-          "texto": "Por validar."
-        },
-        "alimentos": {
-          "estado": "V",
-          "texto": "Por validar."
-        },
-        "animales": {
-          "estado": "V",
-          "texto": "Por validar."
-        }
-      },
-      "observacion": "Sitio caracterizado en el censo; condiciones sanitarias por validar.",
-      "fotos": [],
-      "caracterizacion_octubre": null,
-      "actualizacion": "Sin reporte del 13/10/2026: se conserva censo histórico"
-    },
-    {
       "id": "ATI-030",
       "municipio": "Obando",
       "nombre": "Caseta Comunal – Corregimiento San Isidro",
@@ -955,85 +898,6 @@
       "actualizacion": "Censo del 13/10/2026"
     },
     {
-      "id": "ATI-017",
-      "municipio": "Zarzal",
-      "nombre": "Estadio Municipal de Zarzal",
-      "tipo": "Alojamiento temporal",
-      "personas": 9,
-      "poblacion": "Por validar",
-      "estado": "Por validar",
-      "capacidad": 15,
-      "ocupacion_pct": 60,
-      "infraestructura": "Estadio",
-      "sector": "El Placer",
-      "direccion": "Calle 4 Carrera 14",
-      "ultima_verificacion": "2026-09-17",
-      "condiciones": {
-        "agua": {
-          "estado": "S",
-          "texto": "Acuavalle."
-        },
-        "saneamiento": {
-          "estado": "S",
-          "texto": "8 baterías, 4 por sexo."
-        },
-        "alimentos": {
-          "estado": "S",
-          "texto": "Alimentos llegan preparados y empacados."
-        },
-        "animales": {
-          "estado": "S",
-          "texto": "Sin mascotas documentadas."
-        }
-      },
-      "observacion": "Sin hallazgo adicional consignado.",
-      "fotos": [
-        "ATI-017/ATI-017_01_estadio_zarzal.jpg",
-        "ATI-017/ATI-017_02_estadio_zarzal.jpg",
-        "ATI-017/ATI-017_03_estadio_zarzal.jpg",
-        "ATI-017/ATI-017_04_estadio_zarzal.jpg"
-      ],
-      "caracterizacion_octubre": null,
-      "actualizacion": "Sin reporte del 13/10/2026: se conserva censo histórico"
-    },
-    {
-      "id": "ATI-002",
-      "municipio": "Ansermanuevo",
-      "nombre": "Parque Recreacional",
-      "tipo": "Alojamiento temporal",
-      "personas": 8,
-      "poblacion": "Por validar",
-      "estado": "Por validar",
-      "capacidad": 15,
-      "ocupacion_pct": 53,
-      "infraestructura": "Kisko con carpas",
-      "sector": "Plaza vieja",
-      "direccion": "calle 12b # 4-24",
-      "ultima_verificacion": "2026-09-10",
-      "condiciones": {
-        "agua": {
-          "estado": "S",
-          "texto": "Red Acuavalle continua; almacenamiento de contingencia en recipientes."
-        },
-        "saneamiento": {
-          "estado": "S",
-          "texto": "6 baterías: 4 hombres y 2 mujeres."
-        },
-        "alimentos": {
-          "estado": "S",
-          "texto": "Preparación de alimentos en el alojamiento."
-        },
-        "animales": {
-          "estado": "S",
-          "texto": "Sin animales domésticos documentados."
-        }
-      },
-      "observacion": "Sin hallazgo crítico adicional consignado.",
-      "fotos": [],
-      "caracterizacion_octubre": null,
-      "actualizacion": "Sin reporte del 13/10/2026: se conserva censo histórico"
-    },
-    {
       "id": "ATI-019",
       "municipio": "El Dovio",
       "nombre": "Estadio Municipal Rodrigo Lloreda Caicedo",
@@ -1192,24 +1056,24 @@
   ],
   "condiciones_resumen": {
     "agua": {
-      "S": 13,
-      "O": 4,
-      "V": 3
-    },
-    "saneamiento": {
       "S": 11,
       "O": 4,
-      "V": 5
-    },
-    "alimentos": {
-      "S": 12,
-      "O": 6,
       "V": 2
     },
+    "saneamiento": {
+      "S": 9,
+      "O": 4,
+      "V": 4
+    },
+    "alimentos": {
+      "S": 10,
+      "O": 6,
+      "V": 1
+    },
     "animales": {
-      "S": 7,
+      "S": 5,
       "O": 10,
-      "V": 3
+      "V": 2
     }
   },
   "poblacion": {
@@ -1298,11 +1162,187 @@
     "pendientes": 0
   },
   "metodologia": [
-    "Cobertura mixta V6.3: censo del 13/10/2026 en 9 municipios (211 personas) y último registro SDS V23 del 23/09/2026 en Yumbo, Zarzal y Ansermanuevo (34 personas por validar). El total combinado de 245 NO equivale a un censo homogéneo de octubre.",
-    "Contradicción documental: la caracterización declara 261 alojadas en 17 sitios; el censo individual registra 211. Diferencias: Bugalagrande +39, El Cairo +8 y Restrepo +3; se visualizan los registros censados, sin asumir que los valores declarados estén verificados.",
-    "Núcleos familiares: el resumen del 13/10 reporta 70 en 9 municipios y se conservan 15 históricos pendientes, para total referencial 85. Los códigos ID Familia agrupados por municipio identifican 62 grupos en el censo y requieren conciliación con los 70 reportados.",
-    "El perfil poblacional (curso de vida, sexo, EPS e interés) corresponde exclusivamente a 211 personas del censo individual; no incorpora las 34 personas históricas ni publica datos identificables.",
-    "Condiciones sanitarias semaforizadas: corresponden al último seguimiento de campo previo registrado por sitio; el formulario ATE del 13/10 aporta datos declarativos complementarios y NO reemplaza la inspección sanitaria. No son una clasificación de riesgo.",
-    "Los 3 alojamientos sin reporte de octubre permanecen como antecedentes por validar, no como cierres confirmados. Capacidad de Versalles permanece sin valor numérico confirmado."
+    "Al corte 13/10/2026, el censo individual registra 211 personas alojadas en 17 sitios activos de 9 municipios. Los 3 sitios cerrados (Yumbo, Zarzal y Ansermanuevo) quedan excluidos de los indicadores activos, la distribución territorial y los semáforos sanitarios.",
+    "Los 3 cierres fueron informados durante la revisión del consolidado. No hay fecha exacta de cierre ni constancia de destino habitacional; las 34 personas corresponden a su último registro del 23/09/2026, no a población actual.",
+    "Variación entre cortes: de 253 a 211 personas (−42); 34 figuraban en los alojamientos posteriormente cerrados y 8 corresponden a la actualización de El Cairo. No se atribuye la disminución a consecución de vivienda o retorno sin documentación.",
+    "Contradicción entre fuentes de octubre: la hoja de caracterización declara 261 personas en 17 sitios, frente a 211 del censo individual. Diferencias: Bugalagrande +39, El Cairo +8 y Restrepo +3. Los indicadores activos utilizan el censo individual.",
+    "Núcleos familiares: el resumen del 13/10 reporta 70 en 9 municipios, pero 62 identificadores familiares agrupados por municipio en el censo; la conciliación continúa pendiente.",
+    "El perfil poblacional (curso de vida, sexo, aseguramiento e interés diferencial) corresponde únicamente a las 211 personas censadas. No se publican registros personales ni datos identificables.",
+    "Semáforos de agua, saneamiento, alimentos y animales: se calculan sobre los 17 sitios activos, conservando el último seguimiento de campo. La caracterización de octubre es declarativa y no sustituye una visita sanitaria.",
+    "Los registros de sitios cerrados se conservan en el módulo histórico; su último aforo y última ocupación no representan disponibilidad u ocupación actual. Versalles conserva capacidad numérica por validar."
+  ],
+  "alojamientos_cerrados": [
+    {
+      "id": "ATI-034",
+      "municipio": "Yumbo",
+      "nombre": "Coliseo Carlos Alberto Bejarano",
+      "tipo": "Alojamiento temporal",
+      "personas": 17,
+      "poblacion": "Último registro histórico",
+      "estado": "Cerrado",
+      "capacidad": 300,
+      "ocupacion_pct": 6,
+      "infraestructura": "Coliseo cubierto",
+      "sector": "Belalcazar",
+      "direccion": "CALLE 6 # 6-27",
+      "ultima_verificacion": null,
+      "condiciones": {
+        "agua": {
+          "estado": "V",
+          "texto": "Por validar."
+        },
+        "saneamiento": {
+          "estado": "V",
+          "texto": "Por validar."
+        },
+        "alimentos": {
+          "estado": "V",
+          "texto": "Por validar."
+        },
+        "animales": {
+          "estado": "V",
+          "texto": "Por validar."
+        }
+      },
+      "observacion": "Sitio caracterizado en el censo; condiciones sanitarias por validar.",
+      "fotos": [],
+      "caracterizacion_octubre": null,
+      "actualizacion": "Cierre informado en la revisión del consolidado del 13/10/2026",
+      "cierre": {
+        "estado": "CERRADO",
+        "corte_confirmacion": "2026-10-13",
+        "fecha_cierre_exacta": null,
+        "fuente_confirmacion": "Confirmación operativa durante la revisión del consolidado del 13/10/2026",
+        "motivo_cierre": "No documentado",
+        "destino_habitacional_de_las_personas": "No documentado",
+        "ultima_poblacion_registrada": 17,
+        "ultimo_corte_poblacion": "2026-09-23"
+      }
+    },
+    {
+      "id": "ATI-017",
+      "municipio": "Zarzal",
+      "nombre": "Estadio Municipal de Zarzal",
+      "tipo": "Alojamiento temporal",
+      "personas": 9,
+      "poblacion": "Último registro histórico",
+      "estado": "Cerrado",
+      "capacidad": 15,
+      "ocupacion_pct": 60,
+      "infraestructura": "Estadio",
+      "sector": "El Placer",
+      "direccion": "Calle 4 Carrera 14",
+      "ultima_verificacion": "2026-09-17",
+      "condiciones": {
+        "agua": {
+          "estado": "S",
+          "texto": "Acuavalle."
+        },
+        "saneamiento": {
+          "estado": "S",
+          "texto": "8 baterías, 4 por sexo."
+        },
+        "alimentos": {
+          "estado": "S",
+          "texto": "Alimentos llegan preparados y empacados."
+        },
+        "animales": {
+          "estado": "S",
+          "texto": "Sin mascotas documentadas."
+        }
+      },
+      "observacion": "Sin hallazgo adicional consignado.",
+      "fotos": [
+        "ATI-017/ATI-017_01_estadio_zarzal.jpg",
+        "ATI-017/ATI-017_02_estadio_zarzal.jpg",
+        "ATI-017/ATI-017_03_estadio_zarzal.jpg",
+        "ATI-017/ATI-017_04_estadio_zarzal.jpg"
+      ],
+      "caracterizacion_octubre": null,
+      "actualizacion": "Cierre informado en la revisión del consolidado del 13/10/2026",
+      "cierre": {
+        "estado": "CERRADO",
+        "corte_confirmacion": "2026-10-13",
+        "fecha_cierre_exacta": null,
+        "fuente_confirmacion": "Confirmación operativa durante la revisión del consolidado del 13/10/2026",
+        "motivo_cierre": "No documentado",
+        "destino_habitacional_de_las_personas": "No documentado",
+        "ultima_poblacion_registrada": 9,
+        "ultimo_corte_poblacion": "2026-09-23"
+      }
+    },
+    {
+      "id": "ATI-002",
+      "municipio": "Ansermanuevo",
+      "nombre": "Parque Recreacional",
+      "tipo": "Alojamiento temporal",
+      "personas": 8,
+      "poblacion": "Último registro histórico",
+      "estado": "Cerrado",
+      "capacidad": 15,
+      "ocupacion_pct": 53,
+      "infraestructura": "Kisko con carpas",
+      "sector": "Plaza vieja",
+      "direccion": "calle 12b # 4-24",
+      "ultima_verificacion": "2026-09-10",
+      "condiciones": {
+        "agua": {
+          "estado": "S",
+          "texto": "Red Acuavalle continua; almacenamiento de contingencia en recipientes."
+        },
+        "saneamiento": {
+          "estado": "S",
+          "texto": "6 baterías: 4 hombres y 2 mujeres."
+        },
+        "alimentos": {
+          "estado": "S",
+          "texto": "Preparación de alimentos en el alojamiento."
+        },
+        "animales": {
+          "estado": "S",
+          "texto": "Sin animales domésticos documentados."
+        }
+      },
+      "observacion": "Sin hallazgo crítico adicional consignado.",
+      "fotos": [],
+      "caracterizacion_octubre": null,
+      "actualizacion": "Cierre informado en la revisión del consolidado del 13/10/2026",
+      "cierre": {
+        "estado": "CERRADO",
+        "corte_confirmacion": "2026-10-13",
+        "fecha_cierre_exacta": null,
+        "fuente_confirmacion": "Confirmación operativa durante la revisión del consolidado del 13/10/2026",
+        "motivo_cierre": "No documentado",
+        "destino_habitacional_de_las_personas": "No documentado",
+        "ultima_poblacion_registrada": 8,
+        "ultimo_corte_poblacion": "2026-09-23"
+      }
+    }
+  ],
+  "municipios_cerrados": [
+    {
+      "municipio": "Yumbo",
+      "alojamientos_cerrados": 1,
+      "personas_en_ultimo_registro": 17,
+      "nucleos_en_ultimo_registro": 6,
+      "corte_ultimo_registro": "2026-09-23",
+      "fecha_cierre_exacta": null
+    },
+    {
+      "municipio": "Zarzal",
+      "alojamientos_cerrados": 1,
+      "personas_en_ultimo_registro": 9,
+      "nucleos_en_ultimo_registro": 3,
+      "corte_ultimo_registro": "2026-09-23",
+      "fecha_cierre_exacta": null
+    },
+    {
+      "municipio": "Ansermanuevo",
+      "alojamientos_cerrados": 1,
+      "personas_en_ultimo_registro": 8,
+      "nucleos_en_ultimo_registro": 6,
+      "corte_ultimo_registro": "2026-09-23",
+      "fecha_cierre_exacta": null
+    }
   ]
 }

@@ -30,7 +30,7 @@
         <a class="tag-p" style="--c:var(--e-sismo)" href="../../index.html#sismo2026" title="Ver todos los tableros del evento en el portal">Sismo 2026</a>
       </div>
       <h1>ALOJAMIENTOS TEMPORALES</h1>
-      <p class="lede" id="lede">Seguimiento poblacional, demográfico e IVC</p><p class="note" style="margin-top:10px">Cifras de cobertura mixta: 211 personas censadas al 13/10/2026 y 34 del registro histórico sin actualización. Datos preliminares sujetos a conciliación.</p>
+      <p class="lede" id="lede">Seguimiento poblacional, demográfico e IVC</p><p class="note" style="margin-top:10px">Corte 13/10/2026: 211 personas censadas en 17 alojamientos activos de 9 municipios. Tres sitios cerrados se conservan en el histórico; no se conoce documentalmente el motivo de salida de sus ocupantes.</p>
     </div>
     <div class="band-r">
       <button type="button" id="btnPrint" class="band-dl no-print" title="Genera la infografía de una hoja (A3). En el cuadro de impresión elija &quot;Guardar como PDF&quot; y active &quot;Gráficos de fondo&quot;.">
@@ -48,6 +48,7 @@
     <button type="button" role="tab" data-tab="estado"><small>01 · Principal</small>Estado de los alojamientos</button>
     <button type="button" role="tab" data-tab="territorio"><small>02</small>Distribución territorial</button>
     <button type="button" role="tab" data-tab="poblacion"><small>03</small>Perfil de la población</button>
+    <button type="button" role="tab" data-tab="cierres"><small>Histórico</small>Alojamientos cerrados</button>
     <button type="button" role="tab" data-tab="trazabilidad"><small>Trazabilidad</small>Cómo se construyen las cifras</button>
     <button type="button" role="tab" data-tab="seguimiento" id="tabInterno" hidden><small>Interno</small>Seguimiento</button>
   </div>
@@ -111,7 +112,7 @@
           <tbody id="rows"></tbody>
         </table>
       </div>
-      <p class="note no-print">Seleccione un alojamiento para ver su ficha. <span class="cam-legend"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8.5h3l1.6-2.5h6.8L17 8.5h3v10.5H4z"/><circle cx="12" cy="13.5" r="3.3"/></svg> indica registro fotográfico.</span> Ocupación: personas censadas o del registro anterior pendiente de actualización frente a la capacidad reportada del sitio.</p>
+      <p class="note no-print">Seleccione un alojamiento para ver su ficha. <span class="cam-legend"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8.5h3l1.6-2.5h6.8L17 8.5h3v10.5H4z"/><circle cx="12" cy="13.5" r="3.3"/></svg> indica registro fotográfico.</span> Ocupación: personas censadas al 13/10/2026 respecto a la capacidad reportada del alojamiento activo.</p>
     </div>
   </section>
 
@@ -169,6 +170,34 @@
     </div>
   </section>
 
+  <section class="module" data-mod="cierres" id="mod-cierres" style="--mc:var(--ink3)" aria-labelledby="h-cierres">
+    <div class="module-head">
+      <div>
+        <span class="eyebrow dark">Histórico operativo</span>
+        <h2 id="h-cierres">Alojamientos cerrados</h2>
+        <p>Se conserva su última caracterización para trazabilidad; no forman parte de los indicadores ni semáforos actuales.</p>
+      </div>
+    </div>
+    <div class="module-body">
+      <p class="note" id="cerradosResumen">Cargando histórico…</p>
+      <div class="table-wrap">
+        <table class="matrix">
+          <thead>
+            <tr>
+              <th scope="col">Municipio</th>
+              <th scope="col">Alojamiento</th>
+              <th scope="col" class="num">Personas en último registro</th>
+              <th scope="col">Corte del registro</th>
+              <th scope="col">Observaciones</th>
+            </tr>
+          </thead>
+          <tbody id="rowsCerrados"></tbody>
+        </table>
+      </div>
+      <p class="note">Seleccione un alojamiento para consultar su ficha histórica. La disminución de población no permite afirmar, por sí sola, el acceso a vivienda definitiva o el retorno a hogares.</p>
+    </div>
+  </section>
+
   <section class="module internal" data-mod="seguimiento" id="internal" style="--mc:var(--O)" aria-labelledby="h-int">
     <div class="module-head">
       <div>
@@ -222,6 +251,6 @@
 </div>
 
 <script src="../../assets/plantilla/uesvalle_plantilla.js?v=1.1"></script>
-<script src="alojamientos_temporales.js?v=6.3"></script>
+<script src="alojamientos_temporales.js?v=6.3.1"></script>
 </body>
 </html>

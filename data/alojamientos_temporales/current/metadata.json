@@ -1,33 +1,77 @@
 {
-  "version": "V6.3 · caracterización 13/10/2026",
+  "version": "V6.3 · censo 13/10/2026 · cierres informados",
   "corte": "2026-10-13",
-  "generado": "2026-10-14T01:51:42",
-  "fuente_publica": "Censo y caracterización ATE 13/10/2026 + histórico SDS V23 pendiente",
+  "generado": "2026-10-14T02:02:45",
+  "fuente_publica": "Consolidado ATE del 13/10/2026 y confirmación operativa de cierres",
   "indicadores": {
-    "personas": 245,
+    "personas": 211,
     "censadas": 211,
-    "por_validar": 34,
-    "alojamientos": 20,
+    "por_validar": 0,
+    "alojamientos": 17,
     "en_operacion": 17,
-    "estado_por_validar": 3,
-    "municipios": 12,
+    "estado_por_validar": 0,
+    "municipios": 9,
     "nna": 62,
     "mayores": 27,
     "dependientes": 89,
     "dependientes_pct": 43,
-    "con_fotos": 2,
-    "fotos": 5,
-    "nucleos": 85,
+    "con_fotos": 1,
+    "fotos": 1,
+    "nucleos": 70,
     "albergues": 1,
-    "alojamientos_temporales": 19,
+    "alojamientos_temporales": 16,
     "pendientes_curso": 2,
     "pendientes_eps": 0,
     "nucleos_octubre": 70,
-    "nucleos_por_validar": 15,
+    "nucleos_por_validar": 0,
     "sitios_actualizados": 17,
-    "sitios_sin_reporte": 3
+    "sitios_sin_reporte": 0,
+    "sitios_cerrados": 3,
+    "personas_ultimo_registro_cerrados": 34,
+    "variacion_poblacion_entre_cortes": -42
   },
   "maestro": "FORMATO CARACTERIZACION ALBERGUES TEMPORALES DE EMERGENCIA-CONSOLIDADO - 13102026.xlsx",
   "historico": "SDS V23, corte 2026-09-23",
-  "advertencia": "211 personas en censo del 13/10 y 34 del histórico del 23/09 pendientes de actualización; total combinado 245, no un censo único a fecha de corte."
+  "alojamientos_cerrados": [
+    {
+      "id": "ATI-034",
+      "municipio": "Yumbo",
+      "nombre": "Coliseo Carlos Alberto Bejarano",
+      "ultimo_registro_personas": 17,
+      "ultimo_corte": "2026-09-23",
+      "fecha_cierre_exacta": null,
+      "motivo_cierre": "No documentado"
+    },
+    {
+      "id": "ATI-017",
+      "municipio": "Zarzal",
+      "nombre": "Estadio Municipal de Zarzal",
+      "ultimo_registro_personas": 9,
+      "ultimo_corte": "2026-09-23",
+      "fecha_cierre_exacta": null,
+      "motivo_cierre": "No documentado"
+    },
+    {
+      "id": "ATI-002",
+      "municipio": "Ansermanuevo",
+      "nombre": "Parque Recreacional",
+      "ultimo_registro_personas": 8,
+      "ultimo_corte": "2026-09-23",
+      "fecha_cierre_exacta": null,
+      "motivo_cierre": "No documentado"
+    }
+  ],
+  "advertencia": "211 personas censadas en 17 alojamientos activos de 9 municipios. Tres sitios cerrados, que registraban 34 personas en septiembre, se conservan solo en el histórico. Se desconoce la causa de salida y el destino habitacional de las personas.",
+  "comparacion_cortes": {
+    "anterior": "2026-09-23",
+    "personas_anterior": 253,
+    "alojamientos_registrados_anterior": 20,
+    "actual": "2026-10-13",
+    "personas_actual": 211,
+    "alojamientos_activos_actual": 17,
+    "variacion_personas": -42,
+    "personas_ultimo_registro_en_sitios_cerrados": 34,
+    "reduccion_en_municipios_activos": 8,
+    "motivo_reduccion": "No documentado (posible acceso a vivienda o retorno no confirmado)"
+  }
 }
