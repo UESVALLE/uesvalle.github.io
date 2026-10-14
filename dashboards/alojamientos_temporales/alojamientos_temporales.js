@@ -227,7 +227,7 @@ function renderCierres(){
       <td>${fecha(a.cierre?.ultimo_corte_poblacion)}</td>
       <td>Fecha exacta y motivo no documentados</td>
     </tr>`).join('');
-  $('#rowsCerrados tr[data-id]').forEach(tr=>{
+  $$('#rowsCerrados tr[data-id]').forEach(tr=>{
     tr.onclick=()=>openFicha(tr.dataset.id);
     tr.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openFicha(tr.dataset.id);}};
   });
@@ -381,6 +381,6 @@ fetch(DATA + '?v=6.3.1&ts=' + Date.now())
   .then(r => { if(!r.ok) throw new Error('No se encontró dashboard_data.json'); return r.json(); })
   .then(d => { DB = d; render(); })
   .catch(err => {
-    document.getElementById('sheet').innerHTML = `<div class="module" style="padding:40px"><h2>No se pudieron cargar los datos</h2><p>${esc(err.message)}.</p><p>Abra el tablero con el BAT de instalación, desde la estructura UESVALLE (servidor local, puerto 8766).</p></div>`;
+    document.getElementById('sheet').innerHTML = `<div class="module" style="padding:40px"><h2>No se pudieron cargar los datos</h2><p>${esc(err.message)}.</p><p>Actualice la página. Si el problema persiste, informe al equipo técnico de UESVALLE y adjunte una captura del error.</p></div>`;
   });
 })();
