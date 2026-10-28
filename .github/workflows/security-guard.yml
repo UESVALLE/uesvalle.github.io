@@ -64,3 +64,5 @@ jobs:
           persist-credentials: false
       - name: Pruebas sintéticas PostgreSQL RLS y GRANT
         run: psql -X -v ON_ERROR_STOP=1 -f infra/supabase/tests/001_base_privada_smoke.sql
+      - name: Modelo canónico MPR + SISA sintético
+        run: psql -X -v ON_ERROR_STOP=1 -f infra/supabase/tests/002_modelo_sisa_smoke.sql
