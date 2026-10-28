@@ -20,3 +20,9 @@ Antes de ejecutar:
 5. Crear Storage privado y establecer políticas concretas por objeto con pruebas de URL directa.
 
 **Exposición futura:** si se desea consulta pública de indicadores, generar vistas agregadas _aprobadas_ con esquema separado y política de mínimo acceso. No abrir lectura de `ues_private` ni Storage evidencias.
+
+## Propuesta de modelo SISA (sin ejecución real)
+
+- `proposals/002_modelo_sisa_borrador.sql`: 13 tablas privadas candidatas en `ues_core`, `ues_ingesta`, `ues_operacion` y `ues_calidad`.
+- `tests/002_modelo_sisa_smoke.sql`: prueba PostgreSQL **efímera**, crea registros **sintéticos**, verifica RLS/GRANT, códigos de sistemas, idempotencia de lotes, actividades distintas el mismo día y confirmación controlada de cruces.
+- Este SQL NO debe aplicarse aún al proyecto real. La comparación del modelo antiguo está en `docs/arquitectura_seguridad/MATRIZ_REUTILIZACION_BD_HISTORICA_V1.csv`.
