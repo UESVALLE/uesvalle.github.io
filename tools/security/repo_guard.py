@@ -36,7 +36,9 @@ ENV_ASSIGNMENT = re.compile(r"(?im)^(?:[A-Z0-9_]*(?:TOKEN|SECRET|PASSWORD|API_KE
 
 def inspect_file(repo: pathlib.Path, name: str) -> list[str]:
     """Devuelve códigos de regla, sin extraer ni mostrar información del archivo."""
-    rel = name.replace("\\", "/").lstrip("./")
+    rel = name.replace("\\", "/")
+    while rel.startswith("./"):
+        rel = rel[2:]
     path = repo / rel
     if not path.is_file():
         return []
