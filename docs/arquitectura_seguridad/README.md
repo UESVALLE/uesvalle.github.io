@@ -62,3 +62,7 @@ Completar [SEC-01](https://github.com/UESVALLE/uesvalle.github.io/issues/2), [SE
 - [../../infra/supabase/tests/002_modelo_sisa_smoke.sql](../../infra/supabase/tests/002_modelo_sisa_smoke.sql): verificación con datos sintéticos en PostgreSQL CI.
 
 El respaldo antiguo pertenece a un contexto separado: se reutiliza como referencia, no se restauran datos, sesiones, roles o políticas RLS. La diferencia entre SISA y SIVICAP/laboratorio está documentada. Seguimiento: [SEC-11](https://github.com/UESVALLE/uesvalle.github.io/issues/13).
+
+## Evidencia de validación del prototipo SISA/MPR
+
+[VALIDACION_MODELO_SISA_V1_2026-10-28.md](VALIDACION_MODELO_SISA_V1_2026-10-28.md): 13 tablas privadas del borrador probadas con datos sintéticos en PostgreSQL CI, sin aplicar la propuesta al Supabase real.
