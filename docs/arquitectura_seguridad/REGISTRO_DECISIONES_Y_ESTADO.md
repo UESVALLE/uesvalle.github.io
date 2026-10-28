@@ -77,3 +77,11 @@ Ningún dato se publica por ser técnicamente accesible: sólo vistas/artefactos
 - Proyecto Vercel `uesvalle-ai-api` asociado a `uesvalle-tableros.vercel.app` bajo equipo personal `Javier Marin's projects` con plan **Hobby** (consulta de conexión Vercel).
 - Condiciones oficiales del plan: [Hobby](https://vercel.com/docs/plans/hobby) y [fair use](https://vercel.com/docs/limits/fair-use-guidelines). **Se requiere valorar el uso institucional/contractual concreto**; no se concluye incumplimiento automático.
 - [SEC-10](https://github.com/UESVALLE/uesvalle.github.io/issues/12) abierto. No se autoriza transferencia, contratación ni creación de cuentas con costos.
+
+## Hito real — Supabase (28/10/2026)
+
+- Se aplicó la migración `20261028154625_uesvalle_private_security_foundation` al proyecto Supabase `UESVALLE`, ref `hzenpizteypjydwgfhce`, región `us-west-2`.
+- Se creó `ues_private` con `user_memberships`, `dataset_registry` y `audit_events`; RLS habilitado en las tres tablas, roles `anon` y `authenticated` sin SELECT.
+- Los avisos `rls_enabled_no_policy` (INFO) son esperados bajo denegación predeterminada. [Consulta de referencia](https://supabase.com/docs/guides/database/database-linter?lint=0008_rls_enabled_no_policy).
+- No hay cuentas institucionales nuevas, datasets cargados ni políticas que autoricen consultas.
+- Sigue pendiente validar titularidad institucional, política de roles, almacenamiento privado, permisos y plan de respaldos antes de producción.
