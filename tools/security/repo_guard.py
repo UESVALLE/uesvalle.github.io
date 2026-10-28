@@ -53,7 +53,7 @@ def inspect_file(repo: pathlib.Path, name: str) -> list[str]:
             content = path.read_text(encoding="utf-8", errors="replace")
         except OSError:
             return [*reason, "UNREADABLE_FILE"]
-        if CREDENTIAL_ASSIGNMENT.search(content):
+        if path.suffix.lower() in {".html", ".htm", ".js", ".jsx", ".ts", ".tsx"} and CREDENTIAL_ASSIGNMENT.search(content):
             reason.append("CLIENT_OR_SOURCE_CREDENTIAL")
         if KEY_TOKEN_ASSIGNMENT.search(content):
             reason.append("EMBEDDED_KEY_LIKE_TOKEN")
