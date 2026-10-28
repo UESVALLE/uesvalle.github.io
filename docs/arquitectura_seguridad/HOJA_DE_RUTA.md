@@ -10,7 +10,7 @@
 | F0–F1 Inventario | Crítica | [SEC-02](https://github.com/UESVALLE/uesvalle.github.io/issues/3) Clasificación por archivo y flujo | F0 en paralelo | Inventario 100% con propietario/clasificación |
 | F0–F1 Endurecimiento | Alta | [SEC-03](https://github.com/UESVALLE/uesvalle.github.io/issues/4) Claves cliente, histórico, evidencia y credenciales | F0 en paralelo | Riesgos críticos mitigados/registrados |
 | F1 Gobierno | Alta | [SEC-04](https://github.com/UESVALLE/uesvalle.github.io/issues/5) Roles, procesos, ARO, operaciones | F0–F1 | Matriz de acceso institucional aprobada |
-| F2 Backend | Alta | [SEC-05](https://github.com/UESVALLE/uesvalle.github.io/issues/6) Supabase DB + Storage + políticas | SEC-02/04 | RLS/GRANT probados con datos sintéticos |
+| F1 Gobierno de plataformas | Crítica | [SEC-10](https://github.com/UESVALLE/uesvalle.github.io/issues/12) Titularidad de cuentas, licencias, continuidad y costos | Antes de usar datos institucionales en producción | Decisión institucional sobre plan y propietario de servicios |\n| F2 Backend | Alta | [SEC-05](https://github.com/UESVALLE/uesvalle.github.io/issues/6) Supabase DB + Storage + políticas | SEC-02/04 | RLS/GRANT probados con datos sintéticos |
 | F2 Automatización | Alta | [SEC-06](https://github.com/UESVALLE/uesvalle.github.io/issues/7) Python ETL seguro | SEC-02/05 | Conciliación y carga idempotente sin exposición |
 | F3 Piloto | Alta | [SEC-07](https://github.com/UESVALLE/uesvalle.github.io/issues/8) Estado de acueductos | SEC-04/05/06 | Funcionalidad y acceso controlado demostrados |
 | F4 Escalamiento | Media-alta | [SEC-08](https://github.com/UESVALLE/uesvalle.github.io/issues/9) Restantes tableros y evidencias | Piloto aprobado | Cada módulo migrado con acta de aceptación y rollback |
@@ -63,3 +63,7 @@
 ## Seguimiento
 
 La fuente de verdad de estado operativo son los [issues del repositorio](https://github.com/UESVALLE/uesvalle.github.io/issues); este archivo contiene fases y dependencias. Mantener [REGISTRO_DECISIONES_Y_ESTADO.md](REGISTRO_DECISIONES_Y_ESTADO.md) sólo con hitos verificados, no con proyecciones.
+
+## Restricción institucional identificada
+
+El proyecto Vercel de UESVALLE pertenece a un equipo personal en plan Hobby. Antes de migrar información operativa o poner usuarios institucionales en producción, completar [SEC-10](https://github.com/UESVALLE/uesvalle.github.io/issues/12): revisión jurídica/TI, titularidad institucional y compatibilidad con términos del proveedor. No contratar ni transferir sin autorización específica.
