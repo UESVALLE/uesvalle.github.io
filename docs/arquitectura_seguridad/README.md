@@ -15,6 +15,18 @@ Unificar el gobierno de datos, desarrollo, publicación y operación de los tabl
 5. [PLAN_DE_PRUEBAS.md](PLAN_DE_PRUEBAS.md): pruebas de seguridad, recuperación y operación.
 6. [REGISTRO_DECISIONES_Y_ESTADO.md](REGISTRO_DECISIONES_Y_ESTADO.md): estado comprobado, incertidumbres, decisiones pendientes.
 
+## Implementación y evidencia adicional
+
+- [MATRIZ_DEPENDENCIAS_FRONTEND_2026-10-28.csv](MATRIZ_DEPENDENCIAS_FRONTEND_2026-10-28.csv): dependencias, claves cliente y riesgo técnico de 19 tableros.
+- [HALLAZGOS_PRIORIZADOS_2026-10-28.md](HALLAZGOS_PRIORIZADOS_2026-10-28.md): riesgos H01–H10 sin divulgar claves ni registros privados.
+- [VERIFICACION_ACCESO_ANONIMO_2026-10-28.md](VERIFICACION_ACCESO_ANONIMO_2026-10-28.md): HTTP anónimo, evidencia de Actions.
+- [PROCEDIMIENTO_OPERATIVO_MIGRACION.md](PROCEDIMIENTO_OPERATIVO_MIGRACION.md): procedimiento de migración módulo por módulo.
+- [BLOQUEOS_Y_DECISIONES_OPERATIVAS.md](BLOQUEOS_Y_DECISIONES_OPERATIVAS.md): pendientes institucionales y técnicos.
+- [../../tools/security/README.md](../../tools/security/README.md): control preventivo de GitHub y auditoría HTTP.
+- [../../infra/supabase/README.md](../../infra/supabase/README.md): DDL de arranque privado, **sin ejecutar**.
+
+**Estado de validación:** workflow de PR y auditoría HTTP anónima han completado ejecuciones exitosas, pero ninguna base o módulo ha sido migrado a Supabase. La conexión instalada todavía no ofrece operaciones disponibles en esta ejecución.
+
 **Tablero de tareas:** [GitHub Issues](https://github.com/UESVALLE/uesvalle.github.io/issues). Cada SEC-xx tiene checklist y criterio de aceptación. La documentación y las incidencias deben mantenerse sincronizadas; una tarea no se marca completa por haber creado el documento.
 
 ## Reglas de ejecución
