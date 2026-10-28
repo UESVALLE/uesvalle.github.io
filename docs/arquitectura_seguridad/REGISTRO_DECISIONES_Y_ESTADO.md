@@ -85,3 +85,12 @@ Ningún dato se publica por ser técnicamente accesible: sólo vistas/artefactos
 - Los avisos `rls_enabled_no_policy` (INFO) son esperados bajo denegación predeterminada. [Consulta de referencia](https://supabase.com/docs/guides/database/database-linter?lint=0008_rls_enabled_no_policy).
 - No hay cuentas institucionales nuevas, datasets cargados ni políticas que autoricen consultas.
 - Sigue pendiente validar titularidad institucional, política de roles, almacenamiento privado, permisos y plan de respaldos antes de producción.
+
+## Hito de diseño y pruebas — integración SISA / modelo heredado
+
+- [SEC-11](https://github.com/UESVALLE/uesvalle.github.io/issues/13): matriz de comparación de **33 tablas / 96.746 registros del respaldo antiguo**; el DDL y las relaciones reales requieren auditoría del archivo fuente.
+- Contratos de cabeceras revisadas en `data/mpr`, `data/ircas`, `data/seguimiento_ach`, `data/muestras_irca` y `data/resultados_agua`, sin descargar datos de registros.
+- Diseño V1 separa `programacion_mpr`, `actividad_sisa`, `cruce_mpr`, `muestra` y `resultado_parametro`.
+- [GitHub Actions #40781003546](https://github.com/UESVALLE/uesvalle.github.io/actions/runs/40781003546): **SUCCESS** en el esquema SQL de 13 tablas con RLS y denegación anónima, carga idempotente, alias controlados y cruce no confirmado por texto.
+- La propuesta SQL **no ha sido aplicada a Supabase UESVALLE**; el esquema real `ues_private` sigue intacto. Sin registros privados importados.
+- Validar propiedad/autorización del respaldo y DDL/relaciones originales antes de decidir reuso; no confundir SISA, RASEM, SIVICAP y laboratorio.
