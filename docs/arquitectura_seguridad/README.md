@@ -52,3 +52,13 @@ Completar [SEC-01](https://github.com/UESVALLE/uesvalle.github.io/issues/2), [SE
 ## Puerta de gobierno de servicios
 
 [SEC-10 — Titularidad institucional, licenciamiento y continuidad](https://github.com/UESVALLE/uesvalle.github.io/issues/12) es un requisito antes de migrar **datos reales** o habilitar operación institucional continua. Vercel opera actualmente bajo un equipo personal Hobby; confirmar con la entidad y términos del proveedor.
+
+## Frente de integración SISA ↔ Supabase (SEC-11)
+
+- [MODELO_CANONICO_SISA_SUPABASE_V1.md](MODELO_CANONICO_SISA_SUPABASE_V1.md): relaciones operativas, capas y límites de fuentes.
+- [MATRIZ_REUTILIZACION_BD_HISTORICA_V1.csv](MATRIZ_REUTILIZACION_BD_HISTORICA_V1.csv): 33 tablas y 96.746 filas históricas, con **mapeo conceptual no validado contra DDL**.
+- [CONTRATOS_Y_REGLAS_ETL_SISA_V1.md](CONTRATOS_Y_REGLAS_ETL_SISA_V1.md): campos SISA/RASEM/MPR/IRCAS y reglas de idempotencia, trazabilidad y calidad.
+- [../../infra/supabase/proposals/002_modelo_sisa_borrador.sql](../../infra/supabase/proposals/002_modelo_sisa_borrador.sql): esquema lógico candidato, **no ejecutado en Supabase real**.
+- [../../infra/supabase/tests/002_modelo_sisa_smoke.sql](../../infra/supabase/tests/002_modelo_sisa_smoke.sql): verificación con datos sintéticos en PostgreSQL CI.
+
+El respaldo antiguo pertenece a un contexto separado: se reutiliza como referencia, no se restauran datos, sesiones, roles o políticas RLS. La diferencia entre SISA y SIVICAP/laboratorio está documentada. Seguimiento: [SEC-11](https://github.com/UESVALLE/uesvalle.github.io/issues/13).
