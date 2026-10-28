@@ -1,5 +1,5 @@
--- UESVALLE / Borrador técnico de migración 001.
--- NO EJECUTADO. Aplicar sólo en un proyecto institucional aprobado, inicialmente de PRUEBAS.
+-- UESVALLE / Migración de infraestructura privada 001.
+-- Aplicación prevista al proyecto UESVALLE vacío, sin importar datos ni habilitar APIs públicas.
 -- No contiene datos reales, credenciales ni permisos públicos de lectura.
 begin;
 
@@ -68,6 +68,10 @@ revoke all on all sequences in schema ues_private from public, anon, authenticat
 grant usage on schema ues_private to service_role;
 grant select, insert, update, delete on all tables in schema ues_private to service_role;
 grant usage, select on all sequences in schema ues_private to service_role;
+
+-- Evitar herencia de futuros permisos para usuarios públicos.
+alter default privileges in schema ues_private revoke all on tables from public, anon, authenticated;
+alter default privileges in schema ues_private revoke all on sequences from public, anon, authenticated;
 
 -- Importante: no crear política pública de Storage.
 -- Crear bucket PRIVADO vía API/administración y confirmar storage.buckets.public=false.
