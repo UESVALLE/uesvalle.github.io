@@ -48,3 +48,7 @@ Completar [SEC-01](https://github.com/UESVALLE/uesvalle.github.io/issues/2), [SE
 - [GitHub Pages: visibilidad distinta de visibilidad del repositorio](https://docs.github.com/es/enterprise-cloud%40latest/pages/getting-started-with-github-pages/creating-a-github-pages-site).
 - [Supabase: RLS, privilegios y políticas](https://supabase.com/docs/guides/database/postgres/row-level-security).
 - [Supabase: proteger secretos y datos](https://supabase.com/docs/guides/database/secure-data).
+
+## Puerta de gobierno de servicios
+
+[SEC-10 — Titularidad institucional, licenciamiento y continuidad](https://github.com/UESVALLE/uesvalle.github.io/issues/12) es un requisito antes de migrar **datos reales** o habilitar operación institucional continua. Vercel opera actualmente bajo un equipo personal Hobby; confirmar con la entidad y términos del proveedor.
