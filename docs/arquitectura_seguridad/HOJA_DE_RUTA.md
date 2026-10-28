@@ -67,3 +67,9 @@ La fuente de verdad de estado operativo son los [issues del repositorio](https:/
 ## Restricción institucional identificada
 
 El proyecto Vercel de UESVALLE pertenece a un equipo personal en plan Hobby. Antes de migrar información operativa o poner usuarios institucionales en producción, completar [SEC-10](https://github.com/UESVALLE/uesvalle.github.io/issues/12): revisión jurídica/TI, titularidad institucional y compatibilidad con términos del proveedor. No contratar ni transferir sin autorización específica.
+
+## Fase F2A — modelo canónico y reutilización selectiva
+
+**[SEC-11](https://github.com/UESVALLE/uesvalle.github.io/issues/13)** se ejecuta **antes** de la migración de datos reales y del piloto MPR. Comparación 33 tablas heredadas vs. fuentes actuales SISA/RASEM/SIVICAP/laboratorio, definición de llaves, contratos ETL y prueba sintética de esquema privado. **No aplicar** el borrador SQL en Supabase UESVALLE sin validar columnas/relaciones de respaldo, clasificación, cuenta institucional y autorización; el esquema `ues_private` real permanece independiente y restringido.
+
+**Pilotos complementarios:** MPR = flujo de actualización de actividades SISA; Estado Acueductos = seguridad de interfaz y evidencia. Ambos se conservan sin cambios hasta superar pruebas y autorización.
