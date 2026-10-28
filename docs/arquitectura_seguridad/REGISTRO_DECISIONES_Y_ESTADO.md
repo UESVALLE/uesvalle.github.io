@@ -71,3 +71,9 @@ Ningún dato se publica por ser técnicamente accesible: sólo vistas/artefactos
 - Resultado PostgreSQL confirma en entorno sintético: permisos privados, RLS activo, cuentas iniciales inactivas y restricción para declarar un dataset público sin aprobación.
 - **Precisión:** la prueba PostgreSQL no equivale a migración en Supabase, no utiliza un proyecto real y no prueba aún políticas específicas por municipio/ARO. Las operaciones de Supabase no fueron invocables en la sesión pese a figurar la integración como instalada.
 - `main` permanece intacto; el PR #11 sigue como borrador para no provocar producción de archivos de configuración antes de cerrar política de publicación.
+
+## Hallazgo de gobernanza — 28/10/2026
+
+- Proyecto Vercel `uesvalle-ai-api` asociado a `uesvalle-tableros.vercel.app` bajo equipo personal `Javier Marin's projects` con plan **Hobby** (consulta de conexión Vercel).
+- Condiciones oficiales del plan: [Hobby](https://vercel.com/docs/plans/hobby) y [fair use](https://vercel.com/docs/limits/fair-use-guidelines). **Se requiere valorar el uso institucional/contractual concreto**; no se concluye incumplimiento automático.
+- [SEC-10](https://github.com/UESVALLE/uesvalle.github.io/issues/12) abierto. No se autoriza transferencia, contratación ni creación de cuentas con costos.
