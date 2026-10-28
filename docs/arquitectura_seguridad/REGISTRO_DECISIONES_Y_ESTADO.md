@@ -64,3 +64,10 @@ Ningún dato se publica por ser técnicamente accesible: sólo vistas/artefactos
 | 2026-10-28 | Vercel Authentication `all` | Configuración consultada; falta prueba anónima de aplicación/archivos |
 | 2026-10-28 | Issues SEC-01..09 | Planeación publicada en repo privado |
 | 2026-10-28 | Carpeta documental de arquitectura | Rama de documentación; no cambios en despliegue principal |
+
+## Validación automatizada adicional — 28/10/2026
+
+- [GitHub Actions #40718025470](https://github.com/UESVALLE/uesvalle.github.io/actions/runs/40718025470): **SUCCESS** para los tres jobs: `guard` (seis pruebas unitarias + revisión de nuevos archivos), `anonymous-http-audit` (7 URLs sin credenciales) y `postgres-security-smoke` (migración SQL de esquema privado probada sobre PostgreSQL 16 efímero con roles simulados).
+- Resultado PostgreSQL confirma en entorno sintético: permisos privados, RLS activo, cuentas iniciales inactivas y restricción para declarar un dataset público sin aprobación.
+- **Precisión:** la prueba PostgreSQL no equivale a migración en Supabase, no utiliza un proyecto real y no prueba aún políticas específicas por municipio/ARO. Las operaciones de Supabase no fueron invocables en la sesión pese a figurar la integración como instalada.
+- `main` permanece intacto; el PR #11 sigue como borrador para no provocar producción de archivos de configuración antes de cerrar política de publicación.
