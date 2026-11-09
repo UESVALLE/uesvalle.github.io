@@ -1,37 +1,39 @@
 {
-  "version": "V6.3 · censo 13/10/2026 · cierres informados",
-  "corte": "2026-10-13",
-  "generado": "2026-10-14T02:02:45",
-  "fuente_publica": "Consolidado ATE del 13/10/2026 y confirmación operativa de cierres",
+  "version": "V6.4 · censo 09/11/2026 · pendientes de verificación",
+  "corte": "2026-11-09",
+  "generado": "2026-11-09T14:18:00",
+  "fuente_publica": "Censo total Valle (conteo de personas) y caracterización del ATE (datos de sitio), consolidado 09/11/2026",
   "indicadores": {
-    "personas": 211,
-    "censadas": 211,
+    "personas": 124,
+    "censadas": 124,
     "por_validar": 0,
-    "alojamientos": 17,
-    "en_operacion": 17,
-    "estado_por_validar": 0,
-    "municipios": 9,
-    "nna": 62,
-    "mayores": 27,
-    "dependientes": 89,
-    "dependientes_pct": 43,
-    "con_fotos": 1,
-    "fotos": 1,
-    "nucleos": 70,
+    "alojamientos": 10,
+    "en_operacion": 10,
+    "estado_por_validar": 7,
+    "municipios": 7,
+    "nna": 32,
+    "mayores": 19,
+    "dependientes": 51,
+    "dependientes_pct": 42,
+    "con_fotos": 0,
+    "fotos": 0,
+    "nucleos": 46,
     "albergues": 1,
-    "alojamientos_temporales": 16,
+    "alojamientos_temporales": 9,
     "pendientes_curso": 2,
     "pendientes_eps": 0,
     "nucleos_octubre": 70,
     "nucleos_por_validar": 0,
-    "sitios_actualizados": 17,
-    "sitios_sin_reporte": 0,
+    "sitios_actualizados": 10,
+    "sitios_sin_reporte": 7,
     "sitios_cerrados": 3,
     "personas_ultimo_registro_cerrados": 34,
-    "variacion_poblacion_entre_cortes": -42
+    "variacion_poblacion_entre_cortes": -87,
+    "nucleos_noviembre": 46,
+    "personas_ultimo_corte_sin_reporte": 81
   },
-  "maestro": "FORMATO CARACTERIZACION ALBERGUES TEMPORALES DE EMERGENCIA-CONSOLIDADO - 13102026.xlsx",
-  "historico": "SDS V23, corte 2026-09-23",
+  "maestro": "FORMATO CARACTERIZACION ALBERGUES TEMPORALES DE EMERGENCIA-CONSOLIDADO - 912026.xlsx",
+  "historico": "Censo anterior 13/10/2026; cierres confirmados desde septiembre/octubre 2026",
   "alojamientos_cerrados": [
     {
       "id": "ATI-034",
@@ -61,17 +63,40 @@
       "motivo_cierre": "No documentado"
     }
   ],
-  "advertencia": "211 personas censadas en 17 alojamientos activos de 9 municipios. Tres sitios cerrados, que registraban 34 personas en septiembre, se conservan solo en el histórico. Se desconoce la causa de salida y el destino habitacional de las personas.",
+  "advertencia": "124 personas censadas individualmente en 10 alojamientos reportados de 7 municipios. La caracterización declarativa suma 177 (diferencia 53: Bugalagrande +39 y El Cairo +14); el tablero usa únicamente el censo individual para población. Los 7 alojamientos de Yotoco y Restrepo con 81 personas en octubre no aparecen en noviembre: estado operativo por confirmar, no cierres. Se conservan por separado tres cierres previamente informados.",
   "comparacion_cortes": {
-    "anterior": "2026-09-23",
-    "personas_anterior": 253,
-    "alojamientos_registrados_anterior": 20,
-    "actual": "2026-10-13",
-    "personas_actual": 211,
-    "alojamientos_activos_actual": 17,
-    "variacion_personas": -42,
-    "personas_ultimo_registro_en_sitios_cerrados": 34,
-    "reduccion_en_municipios_activos": 8,
-    "motivo_reduccion": "No documentado (posible acceso a vivienda o retorno no confirmado)"
+    "anterior": "2026-10-13",
+    "personas_anterior": 211,
+    "alojamientos_reportados_anterior": 17,
+    "municipios_anterior": 9,
+    "actual": "2026-11-09",
+    "personas_actual": 124,
+    "alojamientos_reportados_actual": 10,
+    "municipios_actual": 7,
+    "variacion_personas_reportadas": -87,
+    "personas_ultimo_corte_municipios_sin_reporte": 81,
+    "variacion_municipios_comunes": -6,
+    "nota": "La diferencia entre cortes no equivale necesariamente a egresos, retornos ni cierres. Siete sitios no fueron reportados."
+  },
+  "alojamientos_sin_reporte": [
+    {
+      "municipio": "Yotoco",
+      "sitios": 6,
+      "personas_ultimo_corte": 56,
+      "fecha_ultimo_censo": "2026-10-13",
+      "estado": "Sin reporte en noviembre; operación por confirmar"
+    },
+    {
+      "municipio": "Restrepo",
+      "sitios": 1,
+      "personas_ultimo_corte": 25,
+      "fecha_ultimo_censo": "2026-10-13",
+      "estado": "Sin reporte en noviembre; operación por confirmar"
+    }
+  ],
+  "reglas_fuente": {
+    "conteo_personas": "Censo total Valle",
+    "sitios": "Caracterización del ATE; sin alterar el conteo poblacional",
+    "datos_personales": "No se publican"
   }
 }
