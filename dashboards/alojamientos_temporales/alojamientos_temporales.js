@@ -103,9 +103,9 @@ function render(){
   const perNuc = k.nucleos ? (k.personas / k.nucleos).toLocaleString('es-CO', {maximumFractionDigits:1}) : '—';
   const cobert = pct(k.municipios, 42);
   $('#terrKpis').innerHTML = `
-    <div class="tk"><span class="tk-l">Municipios activos</span><b>${k.municipios}<small> de 42</small></b>
+    <div class="tk"><span class="tk-l">Municipios con censo</span><b>${k.municipios}<small> de 42</small></b>
       <span class="tk-bar" aria-hidden="true"><i style="width:${cobert}%"></i></span><span class="tk-s">${cobert} % del departamento</span></div>
-    <div class="tk"><span class="tk-l">Alojamientos activos</span><b>${k.alojamientos}</b>
+    <div class="tk"><span class="tk-l">Alojamientos reportados</span><b>${k.alojamientos}</b>
       <span class="tk-s">${k.alojamientos_temporales} alojamientos temporales y ${k.albergues} albergue${k.albergues === 1 ? '' : 's'}</span></div>
     <div class="tk"><span class="tk-l">Núcleos familiares</span><b>${fmt.format(k.nucleos)}</b>
       <span class="tk-s">${perNuc} personas por núcleo en promedio</span></div>
@@ -387,11 +387,11 @@ function drawMap(){
         labels.push(`<text x="${lx.toFixed(1)}" y="${ly.toFixed(1)}" text-anchor="middle">${esc(m.municipio)}</text><text class="v" x="${lx.toFixed(1)}" y="${(ly+12).toFixed(1)}" text-anchor="middle">${m.personas}</text>`);
       }
     });
-    $('#map').innerHTML = `<svg viewBox="0 0 ${W+pad*2} ${H+pad*2}" role="img" aria-label="Mapa del Valle del Cauca con los ${DB.municipios.length} municipios que tienen alojamientos temporales">${polys.join('')}${labels.join('')}</svg>
+    $('#map').innerHTML = `<svg viewBox="0 0 ${W+pad*2} ${H+pad*2}" role="img" aria-label="Mapa del Valle del Cauca con los ${DB.municipios.length} municipios con población censada en el corte">${polys.join('')}${labels.join('')}</svg>
       <div class="map-scale" aria-hidden="true">
         <span><i style="background:#a9c4de"></i>1 a 10</span><span><i style="background:#6e9bc8"></i>11 a 30</span>
         <span><i style="background:#2f6fa8"></i>31 a 60</span><span><i style="background:#173f6b"></i>Más de 60 personas</span>
-        <span><i style="background:#e4eaef"></i>Sin alojamientos</span></div>`;
+        <span><i style="background:#e4eaef"></i>Sin censo en el corte</span></div>`;
     $$('#map path.on').forEach(p => p.onclick = () => {
       filtrarMunicipio(p.dataset.mun);
     });
@@ -400,7 +400,7 @@ function drawMap(){
 
 UESPlantilla.init({raiz:'../../', proceso:'eis', evento:'sismo2026', tablero:'alojamientos_temporales'});
 
-fetch(DATA + '?v=6.3.1&ts=' + Date.now())
+fetch(DATA + '?v=6.4&ts=' + Date.now())
   .then(r => { if(!r.ok) throw new Error('No se encontró dashboard_data.json'); return r.json(); })
   .then(d => { DB = d; render(); })
   .catch(err => {
