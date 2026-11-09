@@ -1,169 +1,156 @@
 {
   "metadata": {
-    "version": "V6.3 · censo 13/10/2026 · cierres informados",
-    "corte": "2026-10-13",
-    "generado": "2026-10-14T02:02:45",
-    "fuente_publica": "Consolidado ATE del 13/10/2026 y confirmación operativa de cierres",
+    "version": "V6.4 · censo 09/11/2026 · pendientes de verificación",
+    "corte": "2026-11-09",
+    "generado": "2026-11-09T14:18:00",
+    "fuente_publica": "Censo total Valle (conteo de personas) y caracterización del ATE (datos de sitio), consolidado 09/11/2026",
     "evento": "Sismo del 10 de agosto de 2026",
     "privacidad": "Datos agregados y operacionales. Sin identificación individual.",
-    "fuente_reciente": "FORMATO CARACTERIZACION ALBERGUES TEMPORALES DE EMERGENCIA-CONSOLIDADO - 13102026.xlsx",
+    "fuente_reciente": "FORMATO CARACTERIZACION ALBERGUES TEMPORALES DE EMERGENCIA-CONSOLIDADO - 912026.xlsx",
     "corte_historico": "2026-09-23",
-    "cobertura_censo": 9,
+    "cobertura_censo": 7,
     "municipios_historicos": [
       "Yumbo",
       "Zarzal",
       "Ansermanuevo"
     ],
-    "aclaracion": "211 personas censadas en 17 alojamientos activos de 9 municipios. Tres sitios cerrados, que registraban 34 personas en septiembre, se conservan solo en el histórico. Se desconoce la causa de salida y el destino habitacional de las personas.",
-    "situacion_cierre": "Tres cierres confirmados durante revisión; fecha exacta, causal y destino de personas no informados.",
+    "aclaracion": "124 personas censadas individualmente en 10 alojamientos reportados de 7 municipios. La caracterización declarativa suma 177 (diferencia 53: Bugalagrande +39 y El Cairo +14); el tablero usa únicamente el censo individual para población. Los 7 alojamientos de Yotoco y Restrepo con 81 personas en octubre no aparecen en noviembre: estado operativo por confirmar, no cierres. Se conservan por separado tres cierres previamente informados.",
+    "situacion_cierre": "Los tres cierres históricos permanecen con confirmación anterior; ningún otro cierre se infiere de ausencia de registro.",
     "comparacion_cortes": {
-      "anterior": "2026-09-23",
-      "personas_anterior": 253,
-      "alojamientos_registrados_anterior": 20,
-      "actual": "2026-10-13",
-      "personas_actual": 211,
-      "alojamientos_activos_actual": 17,
-      "variacion_personas": -42,
-      "personas_ultimo_registro_en_sitios_cerrados": 34,
-      "reduccion_en_municipios_activos": 8,
-      "motivo_reduccion": "No documentado (posible acceso a vivienda o retorno no confirmado)"
-    }
+      "anterior": "2026-10-13",
+      "personas_anterior": 211,
+      "alojamientos_reportados_anterior": 17,
+      "municipios_anterior": 9,
+      "actual": "2026-11-09",
+      "personas_actual": 124,
+      "alojamientos_reportados_actual": 10,
+      "municipios_actual": 7,
+      "variacion_personas_reportadas": -87,
+      "personas_ultimo_corte_municipios_sin_reporte": 81,
+      "variacion_municipios_comunes": -6,
+      "nota": "La diferencia entre cortes no equivale necesariamente a egresos, retornos ni cierres. Siete sitios no fueron reportados."
+    },
+    "municipios_sin_reporte": [
+      "Yotoco",
+      "Restrepo"
+    ],
+    "alojamientos_sin_reporte": 7,
+    "personas_ultimo_corte_sin_reporte": 81,
+    "diferencia_caracterizacion_vs_censo": 53
   },
   "kpis": {
-    "personas": 211,
-    "censadas": 211,
+    "personas": 124,
+    "censadas": 124,
     "por_validar": 0,
-    "alojamientos": 17,
-    "en_operacion": 17,
-    "estado_por_validar": 0,
-    "municipios": 9,
-    "nna": 62,
-    "mayores": 27,
-    "dependientes": 89,
-    "dependientes_pct": 43,
-    "con_fotos": 1,
-    "fotos": 1,
-    "nucleos": 70,
+    "alojamientos": 10,
+    "en_operacion": 10,
+    "estado_por_validar": 7,
+    "municipios": 7,
+    "nna": 32,
+    "mayores": 19,
+    "dependientes": 51,
+    "dependientes_pct": 42,
+    "con_fotos": 0,
+    "fotos": 0,
+    "nucleos": 46,
     "albergues": 1,
-    "alojamientos_temporales": 16,
+    "alojamientos_temporales": 9,
     "pendientes_curso": 2,
     "pendientes_eps": 0,
     "nucleos_octubre": 70,
     "nucleos_por_validar": 0,
-    "sitios_actualizados": 17,
-    "sitios_sin_reporte": 0,
+    "sitios_actualizados": 10,
+    "sitios_sin_reporte": 7,
     "sitios_cerrados": 3,
     "personas_ultimo_registro_cerrados": 34,
-    "variacion_poblacion_entre_cortes": -42
+    "variacion_poblacion_entre_cortes": -87,
+    "nucleos_noviembre": 46,
+    "personas_ultimo_corte_sin_reporte": 81
   },
   "municipios": [
     {
       "municipio": "Bugalagrande",
-      "clave": "BUGALAGRANDE",
       "personas": 66,
+      "nucleos": 28,
+      "clave": "BUGALAGRANDE",
       "censadas": 66,
       "por_validar": 0,
       "alojamientos": 1,
-      "nucleos": 28,
       "albergues_sds": 1,
       "alojamientos_sds": 0,
-      "situacion_fuente": "Censo actualizado al 13/10/2026"
-    },
-    {
-      "municipio": "Yotoco",
-      "clave": "YOTOCO",
-      "personas": 56,
-      "censadas": 56,
-      "por_validar": 0,
-      "alojamientos": 6,
-      "nucleos": 10,
-      "albergues_sds": 0,
-      "alojamientos_sds": 6,
-      "situacion_fuente": "Censo actualizado al 13/10/2026"
-    },
-    {
-      "municipio": "Restrepo",
-      "clave": "RESTREPO",
-      "personas": 25,
-      "censadas": 25,
-      "por_validar": 0,
-      "alojamientos": 1,
-      "nucleos": 9,
-      "albergues_sds": 0,
-      "alojamientos_sds": 1,
-      "situacion_fuente": "Censo actualizado al 13/10/2026"
+      "situacion_fuente": "Censo individual 09/11/2026; caracterización declarativa de alojamientos"
     },
     {
       "municipio": "El Cairo",
+      "personas": 17,
+      "nucleos": 7,
       "clave": "EL CAIRO",
-      "personas": 23,
-      "censadas": 23,
+      "censadas": 17,
       "por_validar": 0,
       "alojamientos": 1,
-      "nucleos": 9,
       "albergues_sds": 0,
       "alojamientos_sds": 1,
-      "situacion_fuente": "Censo actualizado al 13/10/2026"
+      "situacion_fuente": "Censo individual 09/11/2026; caracterización declarativa de alojamientos"
     },
     {
       "municipio": "Obando",
-      "clave": "OBANDO",
       "personas": 13,
+      "nucleos": 1,
+      "clave": "OBANDO",
       "censadas": 13,
       "por_validar": 0,
       "alojamientos": 4,
-      "nucleos": 4,
       "albergues_sds": 0,
       "alojamientos_sds": 4,
-      "situacion_fuente": "Censo actualizado al 13/10/2026"
+      "situacion_fuente": "Censo individual 09/11/2026; caracterización declarativa de alojamientos"
     },
     {
       "municipio": "Ulloa",
-      "clave": "ULLOA",
       "personas": 11,
+      "nucleos": 1,
+      "clave": "ULLOA",
       "censadas": 11,
       "por_validar": 0,
       "alojamientos": 1,
-      "nucleos": 1,
       "albergues_sds": 0,
       "alojamientos_sds": 1,
-      "situacion_fuente": "Censo actualizado al 13/10/2026"
+      "situacion_fuente": "Censo individual 09/11/2026; caracterización declarativa de alojamientos"
     },
     {
       "municipio": "El Dovio",
-      "clave": "EL DOVIO",
       "personas": 8,
+      "nucleos": 3,
+      "clave": "EL DOVIO",
       "censadas": 8,
       "por_validar": 0,
       "alojamientos": 1,
-      "nucleos": 3,
       "albergues_sds": 0,
       "alojamientos_sds": 1,
-      "situacion_fuente": "Censo actualizado al 13/10/2026"
+      "situacion_fuente": "Censo individual 09/11/2026; caracterización declarativa de alojamientos"
     },
     {
       "municipio": "Versalles",
-      "clave": "VERSALLES",
       "personas": 7,
+      "nucleos": 5,
+      "clave": "VERSALLES",
       "censadas": 7,
       "por_validar": 0,
       "alojamientos": 1,
-      "nucleos": 5,
       "albergues_sds": 0,
       "alojamientos_sds": 1,
-      "situacion_fuente": "Censo actualizado al 13/10/2026"
+      "situacion_fuente": "Censo individual 09/11/2026; caracterización declarativa de alojamientos"
     },
     {
       "municipio": "Trujillo",
-      "clave": "TRUJILLO",
       "personas": 2,
+      "nucleos": 1,
+      "clave": "TRUJILLO",
       "censadas": 2,
       "por_validar": 0,
       "alojamientos": 1,
-      "nucleos": 1,
       "albergues_sds": 0,
       "alojamientos_sds": 1,
-      "situacion_fuente": "Censo actualizado al 13/10/2026"
+      "situacion_fuente": "Censo individual 09/11/2026; caracterización declarativa de alojamientos"
     }
   ],
   "alojamientos": [
@@ -217,385 +204,35 @@
         "preparacion_alimentos": "Sí",
         "fuente": "Caracterización ATE, consolidado 13/10/2026; dato declarativo, no nueva inspección"
       },
-      "actualizacion": "Censo del 13/10/2026"
-    },
-    {
-      "id": "ATI-016",
-      "municipio": "Yotoco",
-      "nombre": "Coliseo de la I.E. Alfonso Zawadzky",
-      "tipo": "Alojamiento temporal",
-      "personas": 23,
-      "poblacion": "Censada",
-      "estado": "En operación",
-      "capacidad": 50,
-      "ocupacion_pct": 46,
-      "infraestructura": "Coliseo Institución Educativa Alfonso Zawadzky",
-      "sector": "Centenario",
-      "direccion": "Carrer 5 No 5-79",
-      "ultima_verificacion": "2026-09-17",
-      "condiciones": {
-        "agua": {
-          "estado": "S",
-          "texto": "Acuavalle."
-        },
-        "saneamiento": {
-          "estado": "S",
-          "texto": "3 baterías separadas por sexo."
-        },
-        "alimentos": {
-          "estado": "S",
-          "texto": "Alimentos preparados en Centro Vida; no se preparan en el alojamiento."
-        },
-        "animales": {
-          "estado": "O",
-          "texto": "1 canino."
-        }
-      },
-      "observacion": "Seguimiento sin cambio sanitario relevante.",
-      "fotos": [
-        "ATI-016/ATI-016_01_coliseo_carpa.jpg"
-      ],
-      "caracterizacion_octubre": {
-        "fecha_documento": "2026-10-13",
-        "personas_reportadas": 23,
-        "diferencia_censo": 0,
-        "capacidad_reportada": 50,
+      "actualizacion": "Censo individual y caracterización declarativa del 09/11/2026",
+      "caracterizacion_noviembre": {
+        "fecha_documento": "2026-11-09",
+        "personas_reportadas": 105,
+        "diferencia_censo": 39,
+        "capacidad_reportada": 120,
         "capacidad_observacion": null,
-        "fuente_agua": "Red pública",
-        "sanitarios_disponibles": "Sí",
-        "numero_sanitarios": 5,
-        "sanitarios_observacion": null,
-        "recipientes_residuos": "Sí",
-        "numero_recipientes": 3,
-        "residuos_observacion": null,
-        "preparacion_alimentos": "No",
-        "fuente": "Caracterización ATE, consolidado 13/10/2026; dato declarativo, no nueva inspección"
-      },
-      "actualizacion": "Censo del 13/10/2026"
-    },
-    {
-      "id": "ATI-026",
-      "municipio": "Yotoco",
-      "nombre": "Cancha de Baloncesto – Vereda El Jardín",
-      "tipo": "Alojamiento temporal",
-      "personas": 12,
-      "poblacion": "Censada",
-      "estado": "En operación",
-      "capacidad": 15,
-      "ocupacion_pct": 80,
-      "infraestructura": null,
-      "sector": "El Jardin",
-      "direccion": "Cancha de Baloncesto",
-      "ultima_verificacion": "2026-09-17",
-      "condiciones": {
-        "agua": {
-          "estado": "V",
-          "texto": "No documentado en último seguimiento."
-        },
-        "saneamiento": {
-          "estado": "O",
-          "texto": "Servicios sanitarios se realizan en vivienda frente a la cancha."
-        },
-        "alimentos": {
-          "estado": "S",
-          "texto": "Alimentación se realiza en vivienda frente a la cancha."
-        },
-        "animales": {
-          "estado": "V",
-          "texto": "No documentado."
-        }
-      },
-      "observacion": "La carpa se utiliza principalmente para pernocta.",
-      "fotos": [],
-      "caracterizacion_octubre": {
-        "fecha_documento": "2026-10-13",
-        "personas_reportadas": 12,
-        "diferencia_censo": 0,
-        "capacidad_reportada": 15,
-        "capacidad_observacion": null,
-        "fuente_agua": "Red de acueducto",
-        "sanitarios_disponibles": "Sí",
-        "numero_sanitarios": 1,
-        "sanitarios_observacion": null,
-        "recipientes_residuos": "Sí",
-        "numero_recipientes": 3,
-        "residuos_observacion": null,
-        "preparacion_alimentos": "Sí",
-        "fuente": "Caracterización ATE, consolidado 13/10/2026; dato declarativo, no nueva inspección"
-      },
-      "actualizacion": "Censo del 13/10/2026"
-    },
-    {
-      "id": "ATI-022",
-      "municipio": "Yotoco",
-      "nombre": "Refugio Nuevo Renacer – Vereda El Dopo",
-      "tipo": "Alojamiento temporal",
-      "personas": 9,
-      "poblacion": "Censada",
-      "estado": "En operación",
-      "capacidad": 10,
-      "ocupacion_pct": 90,
-      "infraestructura": null,
-      "sector": "Dopo",
-      "direccion": "Refugio Nuevo Renacer Dopo- contiguo a la escuela",
-      "ultima_verificacion": "2026-09-17",
-      "condiciones": {
-        "agua": {
-          "estado": "S",
-          "texto": "Acueducto rural Brisas de Dopo; agua tratada envasada para bebidas."
-        },
-        "saneamiento": {
-          "estado": "S",
-          "texto": "Letrina y 5 baterías, una por familia."
-        },
-        "alimentos": {
-          "estado": "O",
-          "texto": "Cocina comunitaria; algunos alimentos sin protección adecuada."
-        },
-        "animales": {
-          "estado": "O",
-          "texto": "1 gato."
-        }
-      },
-      "observacion": "Condiciones iguales a seguimientos previos.",
-      "fotos": [],
-      "caracterizacion_octubre": {
-        "fecha_documento": "2026-10-13",
-        "personas_reportadas": 9,
-        "diferencia_censo": 0,
-        "capacidad_reportada": 10,
-        "capacidad_observacion": null,
-        "fuente_agua": "Red de acueducto",
-        "sanitarios_disponibles": "Sí",
-        "numero_sanitarios": 1,
-        "sanitarios_observacion": null,
-        "recipientes_residuos": "Sí",
-        "numero_recipientes": 3,
-        "residuos_observacion": null,
-        "preparacion_alimentos": "Sí",
-        "fuente": "Caracterización ATE, consolidado 13/10/2026; dato declarativo, no nueva inspección"
-      },
-      "actualizacion": "Censo del 13/10/2026"
-    },
-    {
-      "id": "ATI-027",
-      "municipio": "Yotoco",
-      "nombre": "Puesto de Salud – Vereda El Caney",
-      "tipo": "Alojamiento temporal",
-      "personas": 5,
-      "poblacion": "Censada",
-      "estado": "En operación",
-      "capacidad": 10,
-      "ocupacion_pct": 50,
-      "infraestructura": null,
-      "sector": "Vereda El Caney",
-      "direccion": "Puesto de Salud",
-      "ultima_verificacion": "2026-09-14",
-      "condiciones": {
-        "agua": {
-          "estado": "S",
-          "texto": "Acueducto rural El Caney; ocasionalmente agua embotellada."
-        },
-        "saneamiento": {
-          "estado": "V",
-          "texto": "Sin detalle sanitario suficiente en último reporte."
-        },
-        "alimentos": {
-          "estado": "O",
-          "texto": "Preparación en sitio sin elementos de protección personal."
-        },
-        "animales": {
-          "estado": "O",
-          "texto": "1 perro."
-        }
-      },
-      "observacion": "Sin otros hallazgos detallados.",
-      "fotos": [],
-      "caracterizacion_octubre": {
-        "fecha_documento": "2026-10-13",
-        "personas_reportadas": 5,
-        "diferencia_censo": 0,
-        "capacidad_reportada": 10,
-        "capacidad_observacion": null,
-        "fuente_agua": "Red de acueducto",
-        "sanitarios_disponibles": "Sí",
-        "numero_sanitarios": 1,
-        "sanitarios_observacion": null,
-        "recipientes_residuos": "Sí",
-        "numero_recipientes": 3,
-        "residuos_observacion": null,
-        "preparacion_alimentos": "Sí",
-        "fuente": "Caracterización ATE, consolidado 13/10/2026; dato declarativo, no nueva inspección"
-      },
-      "actualizacion": "Censo del 13/10/2026"
-    },
-    {
-      "id": "ATI-025",
-      "municipio": "Yotoco",
-      "nombre": "Puesto de Salud – Vereda Campo Alegre",
-      "tipo": "Alojamiento temporal",
-      "personas": 4,
-      "poblacion": "Censada",
-      "estado": "En operación",
-      "capacidad": 10,
-      "ocupacion_pct": 40,
-      "infraestructura": null,
-      "sector": "Campo Alegre",
-      "direccion": "Puesto de Salud",
-      "ultima_verificacion": "2026-09-17",
-      "condiciones": {
-        "agua": {
-          "estado": "S",
-          "texto": "Asociación de Usuarios Agua Albania."
-        },
-        "saneamiento": {
-          "estado": "O",
-          "texto": "Excretas a cuerpo de agua; batería en mal estado, ducha sin agua; uso de baños de otra vivienda."
-        },
-        "alimentos": {
-          "estado": "O",
-          "texto": "Alimentos almacenados/preparados en vivienda cercana; cocina del sitio no se usa por desagües taponados."
-        },
-        "animales": {
-          "estado": "S",
-          "texto": "Sin mascotas evidenciadas."
-        }
-      },
-      "observacion": "Pipas de gas; afectación estructural en muro; sin energía eléctrica.",
-      "fotos": [],
-      "caracterizacion_octubre": {
-        "fecha_documento": "2026-10-13",
-        "personas_reportadas": 4,
-        "diferencia_censo": 0,
-        "capacidad_reportada": 10,
-        "capacidad_observacion": null,
-        "fuente_agua": "Red de acueducto",
-        "sanitarios_disponibles": "Sí",
-        "numero_sanitarios": 1,
-        "sanitarios_observacion": null,
-        "recipientes_residuos": "Sí",
-        "numero_recipientes": 3,
-        "residuos_observacion": null,
-        "preparacion_alimentos": "Sí",
-        "fuente": "Caracterización ATE, consolidado 13/10/2026; dato declarativo, no nueva inspección"
-      },
-      "actualizacion": "Censo del 13/10/2026"
-    },
-    {
-      "id": "ATI-023",
-      "municipio": "Yotoco",
-      "nombre": "Puesto de Salud – Corregimiento de Miravalle",
-      "tipo": "Alojamiento temporal",
-      "personas": 3,
-      "poblacion": "Censada",
-      "estado": "En operación",
-      "capacidad": 10,
-      "ocupacion_pct": 30,
-      "infraestructura": null,
-      "sector": "Miravalle",
-      "direccion": "Puesto de Salud Miravalle",
-      "ultima_verificacion": "2026-09-17",
-      "condiciones": {
-        "agua": {
-          "estado": "S",
-          "texto": "Asociación de Usuarios Agua Albania; agua clorada."
-        },
-        "saneamiento": {
-          "estado": "S",
-          "texto": "Pozo séptico; 1 batería sanitaria de uso general."
-        },
-        "alimentos": {
-          "estado": "O",
-          "texto": "Preparación en sitio; sin tapabocas ni protección de cabello."
-        },
-        "animales": {
-          "estado": "O",
-          "texto": "1 perro."
-        }
-      },
-      "observacion": "Condiciones estables respecto a visita previa.",
-      "fotos": [],
-      "caracterizacion_octubre": {
-        "fecha_documento": "2026-10-13",
-        "personas_reportadas": 3,
-        "diferencia_censo": 0,
-        "capacidad_reportada": 10,
-        "capacidad_observacion": null,
-        "fuente_agua": "Red de acueducto",
-        "sanitarios_disponibles": "Sí",
-        "numero_sanitarios": 1,
-        "sanitarios_observacion": null,
-        "recipientes_residuos": "Sí",
-        "numero_recipientes": 3,
-        "residuos_observacion": null,
-        "preparacion_alimentos": "Sí",
-        "fuente": "Caracterización ATE, consolidado 13/10/2026; dato declarativo, no nueva inspección"
-      },
-      "actualizacion": "Censo del 13/10/2026"
-    },
-    {
-      "id": "ATI-021",
-      "municipio": "Restrepo",
-      "nombre": "Antiguo Hogar Vida del Anciano – Restrepo",
-      "tipo": "Alojamiento temporal",
-      "personas": 25,
-      "poblacion": "Censada",
-      "estado": "En operación",
-      "capacidad": 30,
-      "ocupacion_pct": 83,
-      "infraestructura": "Casa",
-      "sector": "Zona urbana Barrio Luis Carlos Galan Etapa III",
-      "direccion": "Carrera 18 # 4SN - 110",
-      "ultima_verificacion": "2026-09-17",
-      "condiciones": {
-        "agua": {
-          "estado": "S",
-          "texto": "Acuavalle."
-        },
-        "saneamiento": {
-          "estado": "S",
-          "texto": "4 baterías organizadas por familias."
-        },
-        "alimentos": {
-          "estado": "O",
-          "texto": "Preparación por cada familia; almacenamiento de alimentos con protección insuficiente."
-        },
-        "animales": {
-          "estado": "O",
-          "texto": "4 perros."
-        }
-      },
-      "observacion": "Seguimiento estable respecto a reporte previo.",
-      "fotos": [],
-      "caracterizacion_octubre": {
-        "fecha_documento": "2026-10-13",
-        "personas_reportadas": 28,
-        "diferencia_censo": 3,
-        "capacidad_reportada": 30,
-        "capacidad_observacion": null,
-        "fuente_agua": "Red de acueducto",
-        "sanitarios_disponibles": "Sí",
+        "fuente_agua": "Red pública; pendiente visita UESVALLE",
+        "sanitarios_disponibles": "Sí (declarado; visita UESVALLE pendiente)",
         "numero_sanitarios": 2,
-        "sanitarios_observacion": null,
-        "recipientes_residuos": "Sí",
-        "numero_recipientes": 2,
-        "residuos_observacion": null,
+        "sanitarios_observacion": "Pendiente de verificación UESVALLE",
+        "recipientes_residuos": "Sí (declarado; cantidad por verificar)",
+        "numero_recipientes": null,
+        "residuos_observacion": "Cantidad pendiente de verificación UESVALLE",
         "preparacion_alimentos": "Sí",
-        "fuente": "Caracterización ATE, consolidado 13/10/2026; dato declarativo, no nueva inspección"
-      },
-      "actualizacion": "Censo del 13/10/2026"
+        "fuente": "Caracterización ATE, consolidado 09/11/2026; declaración municipal, no equivale a visita sanitaria"
+      }
     },
     {
       "id": "ATI-033",
       "municipio": "El Cairo",
       "nombre": "Alojamiento Temporal La Esperanza",
       "tipo": "Alojamiento temporal",
-      "personas": 23,
+      "personas": 17,
       "poblacion": "Censada",
       "estado": "En operación",
       "capacidad": 60,
-      "ocupacion_pct": 38,
-      "infraestructura": "Coliseo con cubierta",
+      "ocupacion_pct": 28,
+      "infraestructura": "Coliseo cubierto",
       "sector": "Trocaderos",
       "direccion": "Dirección: a 4-87, Cl. 4 #4-33, El Cairo, Valle del Cauca",
       "ultima_verificacion": "2026-09-21",
@@ -635,215 +272,23 @@
         "preparacion_alimentos": "Sí",
         "fuente": "Caracterización ATE, consolidado 13/10/2026; dato declarativo, no nueva inspección"
       },
-      "actualizacion": "Censo del 13/10/2026"
-    },
-    {
-      "id": "ATI-030",
-      "municipio": "Obando",
-      "nombre": "Caseta Comunal – Corregimiento San Isidro",
-      "tipo": "Alojamiento temporal",
-      "personas": 5,
-      "poblacion": "Censada",
-      "estado": "En operación",
-      "capacidad": 10,
-      "ocupacion_pct": 50,
-      "infraestructura": null,
-      "sector": null,
-      "direccion": "Caseta comunal Corregimiento San Isidro",
-      "ultima_verificacion": "2026-09-16",
-      "condiciones": {
-        "agua": {
-          "estado": "O",
-          "texto": "Acueducto rural San Isidro; para consumo se reporta agua embotellada y ausencia de agua tratada en red."
-        },
-        "saneamiento": {
-          "estado": "V",
-          "texto": "Sin detalle de baterías en último reporte."
-        },
-        "alimentos": {
-          "estado": "S",
-          "texto": "Preparación de alimentos en sitio."
-        },
-        "animales": {
-          "estado": "O",
-          "texto": "3 perros, 2 gatos y 2 aves."
-        }
-      },
-      "observacion": "Requiere seguimiento de calidad del agua para consumo.",
-      "fotos": [],
-      "caracterizacion_octubre": {
-        "fecha_documento": "2026-10-13",
-        "personas_reportadas": 5,
-        "diferencia_censo": 0,
-        "capacidad_reportada": 10,
+      "actualizacion": "Censo individual y caracterización declarativa del 09/11/2026",
+      "caracterizacion_noviembre": {
+        "fecha_documento": "2026-11-09",
+        "personas_reportadas": 31,
+        "diferencia_censo": 14,
+        "capacidad_reportada": 60,
         "capacidad_observacion": null,
-        "fuente_agua": "Molina-Obando (SARABRUT) / acueducto rural San Isidro",
+        "fuente_agua": "Red pública",
         "sanitarios_disponibles": "Sí",
-        "numero_sanitarios": null,
-        "sanitarios_observacion": "Una unidad por caseta habitada; no es un valor por sitio verificado",
-        "recipientes_residuos": "No",
-        "numero_recipientes": 1,
-        "residuos_observacion": "Inconsistencia: declara NO disponibilidad de canecas y registra cantidad 1",
+        "numero_sanitarios": 2,
+        "sanitarios_observacion": null,
+        "recipientes_residuos": "Sí",
+        "numero_recipientes": 3,
+        "residuos_observacion": null,
         "preparacion_alimentos": "Sí",
-        "fuente": "Caracterización ATE, consolidado 13/10/2026; dato declarativo, no nueva inspección"
-      },
-      "actualizacion": "Censo del 13/10/2026"
-    },
-    {
-      "id": "ATI-031",
-      "municipio": "Obando",
-      "nombre": "Casa Cural – Corregimiento San Isidro",
-      "tipo": "Alojamiento temporal",
-      "personas": 4,
-      "poblacion": "Censada",
-      "estado": "En operación",
-      "capacidad": 10,
-      "ocupacion_pct": 40,
-      "infraestructura": null,
-      "sector": null,
-      "direccion": "Casa Cural Corregimiento San Isidro",
-      "ultima_verificacion": "2026-09-16",
-      "condiciones": {
-        "agua": {
-          "estado": "O",
-          "texto": "Acueducto rural; agua reportada como no potable."
-        },
-        "saneamiento": {
-          "estado": "S",
-          "texto": "1 batería compartida."
-        },
-        "alimentos": {
-          "estado": "S",
-          "texto": "Preparación de alimentos en sitio; cuenta con cocina."
-        },
-        "animales": {
-          "estado": "O",
-          "texto": "1 perro y 1 gato."
-        }
-      },
-      "observacion": "Requiere seguimiento de agua para consumo.",
-      "fotos": [],
-      "caracterizacion_octubre": {
-        "fecha_documento": "2026-10-13",
-        "personas_reportadas": 4,
-        "diferencia_censo": 0,
-        "capacidad_reportada": 10,
-        "capacidad_observacion": null,
-        "fuente_agua": "Molina-Obando (SARABRUT) / acueducto rural San Isidro",
-        "sanitarios_disponibles": "Sí",
-        "numero_sanitarios": null,
-        "sanitarios_observacion": "Una unidad por caseta habitada; no es un valor por sitio verificado",
-        "recipientes_residuos": "No",
-        "numero_recipientes": 1,
-        "residuos_observacion": "Inconsistencia: declara NO disponibilidad de canecas y registra cantidad 1",
-        "preparacion_alimentos": "Sí",
-        "fuente": "Caracterización ATE, consolidado 13/10/2026; dato declarativo, no nueva inspección"
-      },
-      "actualizacion": "Censo del 13/10/2026"
-    },
-    {
-      "id": "ATI-008",
-      "municipio": "Obando",
-      "nombre": "Caseta Comunal – Corregimiento Puerto Molina",
-      "tipo": "Alojamiento temporal",
-      "personas": 3,
-      "poblacion": "Censada",
-      "estado": "En operación",
-      "capacidad": 10,
-      "ocupacion_pct": 30,
-      "infraestructura": null,
-      "sector": null,
-      "direccion": "Caseta Comunal Corregimiento Puerto Molina",
-      "ultima_verificacion": "2026-09-16",
-      "condiciones": {
-        "agua": {
-          "estado": "O",
-          "texto": "Suministro por manguera desde Acuavalle; almacenamiento en canecas."
-        },
-        "saneamiento": {
-          "estado": "S",
-          "texto": "1 batería compartida."
-        },
-        "alimentos": {
-          "estado": "S",
-          "texto": "Preparación de alimentos en sitio."
-        },
-        "animales": {
-          "estado": "O",
-          "texto": "3 perros y 1 gato."
-        }
-      },
-      "observacion": "Seguimiento por forma de suministro/almacenamiento.",
-      "fotos": [],
-      "caracterizacion_octubre": {
-        "fecha_documento": "2026-10-13",
-        "personas_reportadas": 3,
-        "diferencia_censo": 0,
-        "capacidad_reportada": 10,
-        "capacidad_observacion": null,
-        "fuente_agua": "Molina-Obando (SARABRUT) / acueducto rural San Isidro",
-        "sanitarios_disponibles": "Sí",
-        "numero_sanitarios": null,
-        "sanitarios_observacion": "Una unidad por caseta habitada; no es un valor por sitio verificado",
-        "recipientes_residuos": "No",
-        "numero_recipientes": 1,
-        "residuos_observacion": "Inconsistencia: declara NO disponibilidad de canecas y registra cantidad 1",
-        "preparacion_alimentos": "Sí",
-        "fuente": "Caracterización ATE, consolidado 13/10/2026; dato declarativo, no nueva inspección"
-      },
-      "actualizacion": "Censo del 13/10/2026"
-    },
-    {
-      "id": "ATI-036",
-      "municipio": "Obando",
-      "nombre": "Obando Urbano Caseta comuna",
-      "tipo": "Alojamiento temporal",
-      "personas": 1,
-      "poblacion": "Censada",
-      "estado": "En operación",
-      "capacidad": 10,
-      "ocupacion_pct": 10,
-      "infraestructura": null,
-      "sector": null,
-      "direccion": null,
-      "ultima_verificacion": null,
-      "condiciones": {
-        "agua": {
-          "estado": "V",
-          "texto": "Por validar."
-        },
-        "saneamiento": {
-          "estado": "V",
-          "texto": "Por validar."
-        },
-        "alimentos": {
-          "estado": "V",
-          "texto": "Por validar."
-        },
-        "animales": {
-          "estado": "V",
-          "texto": "Por validar."
-        }
-      },
-      "observacion": "Sitio nuevo en V23; IVC pendiente.",
-      "fotos": [],
-      "caracterizacion_octubre": {
-        "fecha_documento": "2026-10-13",
-        "personas_reportadas": 1,
-        "diferencia_censo": 0,
-        "capacidad_reportada": 10,
-        "capacidad_observacion": null,
-        "fuente_agua": "Molina-Obando (SARABRUT) / acueducto rural San Isidro",
-        "sanitarios_disponibles": "Sí",
-        "numero_sanitarios": null,
-        "sanitarios_observacion": "Una unidad por caseta habitada; no es un valor por sitio verificado",
-        "recipientes_residuos": "No",
-        "numero_recipientes": 1,
-        "residuos_observacion": "Inconsistencia: declara NO disponibilidad de canecas y registra cantidad 1",
-        "preparacion_alimentos": "Sí",
-        "fuente": "Caracterización ATE, consolidado 13/10/2026; dato declarativo, no nueva inspección"
-      },
-      "actualizacion": "Censo del 13/10/2026"
+        "fuente": "Caracterización ATE, consolidado 09/11/2026; declaración municipal, no equivale a visita sanitaria"
+      }
     },
     {
       "id": "ATI-032",
@@ -855,7 +300,7 @@
       "estado": "En operación",
       "capacidad": 15,
       "ocupacion_pct": 73,
-      "infraestructura": "Salon Comunitario",
+      "infraestructura": "Salón comunitario",
       "sector": "Barrio bolivar",
       "direccion": "Calle 4 # 6 A - 16",
       "ultima_verificacion": "2026-09-15",
@@ -895,7 +340,23 @@
         "preparacion_alimentos": "Sí",
         "fuente": "Caracterización ATE, consolidado 13/10/2026; dato declarativo, no nueva inspección"
       },
-      "actualizacion": "Censo del 13/10/2026"
+      "actualizacion": "Censo individual y caracterización declarativa del 09/11/2026",
+      "caracterizacion_noviembre": {
+        "fecha_documento": "2026-11-09",
+        "personas_reportadas": 11,
+        "diferencia_censo": 0,
+        "capacidad_reportada": 15,
+        "capacidad_observacion": null,
+        "fuente_agua": "Red de acueducto urbano (Acuavalle)",
+        "sanitarios_disponibles": "Sí",
+        "numero_sanitarios": 4,
+        "sanitarios_observacion": null,
+        "recipientes_residuos": "Sí",
+        "numero_recipientes": 4,
+        "residuos_observacion": null,
+        "preparacion_alimentos": "Sí",
+        "fuente": "Caracterización ATE, consolidado 09/11/2026; declaración municipal, no equivale a visita sanitaria"
+      }
     },
     {
       "id": "ATI-019",
@@ -907,7 +368,7 @@
       "estado": "En operación",
       "capacidad": 15,
       "ocupacion_pct": 53,
-      "infraestructura": "Camerinos del Estadio",
+      "infraestructura": "Camerinos del estadio",
       "sector": "Barrio Las Colinas",
       "direccion": "Calle 9 carrera 10 # 8 - 63",
       "ultima_verificacion": "2026-09-15",
@@ -947,7 +408,23 @@
         "preparacion_alimentos": "Sí",
         "fuente": "Caracterización ATE, consolidado 13/10/2026; dato declarativo, no nueva inspección"
       },
-      "actualizacion": "Censo del 13/10/2026"
+      "actualizacion": "Censo individual y caracterización declarativa del 09/11/2026",
+      "caracterizacion_noviembre": {
+        "fecha_documento": "2026-11-09",
+        "personas_reportadas": 8,
+        "diferencia_censo": 0,
+        "capacidad_reportada": 15,
+        "capacidad_observacion": null,
+        "fuente_agua": "Red de acueducto",
+        "sanitarios_disponibles": "Sí",
+        "numero_sanitarios": 4,
+        "sanitarios_observacion": "4 inodoros y 6 orinales (según caracterización)",
+        "recipientes_residuos": "Sí",
+        "numero_recipientes": 6,
+        "residuos_observacion": null,
+        "preparacion_alimentos": "Sí",
+        "fuente": "Caracterización ATE, consolidado 09/11/2026; declaración municipal, no equivale a visita sanitaria"
+      }
     },
     {
       "id": "ATI-020",
@@ -959,7 +436,7 @@
       "estado": "En operación",
       "capacidad": null,
       "ocupacion_pct": null,
-      "infraestructura": "4 personas estan en una habitacion grade, y las otras 3 en carpas",
+      "infraestructura": "Habitación comunitaria y carpas",
       "sector": "La florida",
       "direccion": "puesto se salud",
       "ultima_verificacion": "2026-09-08",
@@ -999,7 +476,227 @@
         "preparacion_alimentos": "Sí",
         "fuente": "Caracterización ATE, consolidado 13/10/2026; dato declarativo, no nueva inspección"
       },
-      "actualizacion": "Censo del 13/10/2026"
+      "actualizacion": "Censo individual y caracterización declarativa del 09/11/2026",
+      "caracterizacion_noviembre": {
+        "fecha_documento": "2026-11-09",
+        "personas_reportadas": 7,
+        "diferencia_censo": 0,
+        "capacidad_reportada": null,
+        "capacidad_observacion": "Aforo no cuantificado; espacio habilitado para las personas actualmente alojadas",
+        "fuente_agua": "Red de acueducto",
+        "sanitarios_disponibles": "Sí",
+        "numero_sanitarios": 3,
+        "sanitarios_observacion": null,
+        "recipientes_residuos": "Sí",
+        "numero_recipientes": 2,
+        "residuos_observacion": null,
+        "preparacion_alimentos": "Sí",
+        "fuente": "Caracterización ATE, consolidado 09/11/2026; declaración municipal, no equivale a visita sanitaria"
+      }
+    },
+    {
+      "id": "ATI-030",
+      "municipio": "Obando",
+      "nombre": "Caseta Comunal – Corregimiento San Isidro",
+      "tipo": "Alojamiento temporal",
+      "personas": 5,
+      "poblacion": "Censada",
+      "estado": "En operación",
+      "capacidad": 10,
+      "ocupacion_pct": 50,
+      "infraestructura": "Caseta comunal",
+      "sector": null,
+      "direccion": "Caseta comunal Corregimiento San Isidro",
+      "ultima_verificacion": "2026-09-16",
+      "condiciones": {
+        "agua": {
+          "estado": "O",
+          "texto": "Acueducto rural San Isidro; para consumo se reporta agua embotellada y ausencia de agua tratada en red."
+        },
+        "saneamiento": {
+          "estado": "V",
+          "texto": "Sin detalle de baterías en último reporte."
+        },
+        "alimentos": {
+          "estado": "S",
+          "texto": "Preparación de alimentos en sitio."
+        },
+        "animales": {
+          "estado": "O",
+          "texto": "3 perros, 2 gatos y 2 aves."
+        }
+      },
+      "observacion": "Requiere seguimiento de calidad del agua para consumo.",
+      "fotos": [],
+      "caracterizacion_octubre": {
+        "fecha_documento": "2026-10-13",
+        "personas_reportadas": 5,
+        "diferencia_censo": 0,
+        "capacidad_reportada": 10,
+        "capacidad_observacion": null,
+        "fuente_agua": "Molina-Obando (SARABRUT) / acueducto rural San Isidro",
+        "sanitarios_disponibles": "Sí",
+        "numero_sanitarios": null,
+        "sanitarios_observacion": "Una unidad por caseta habitada; no es un valor por sitio verificado",
+        "recipientes_residuos": "No",
+        "numero_recipientes": 1,
+        "residuos_observacion": "Inconsistencia: declara NO disponibilidad de canecas y registra cantidad 1",
+        "preparacion_alimentos": "Sí",
+        "fuente": "Caracterización ATE, consolidado 13/10/2026; dato declarativo, no nueva inspección"
+      },
+      "actualizacion": "Censo individual y caracterización declarativa del 09/11/2026",
+      "caracterizacion_noviembre": {
+        "fecha_documento": "2026-11-09",
+        "personas_reportadas": 5,
+        "diferencia_censo": 0,
+        "capacidad_reportada": 10,
+        "capacidad_observacion": null,
+        "fuente_agua": "Declaración conjunta para Obando: Molina-Obando (SARABRUT) y San Isidro (acueducto rural), sin desagregación por sitio",
+        "sanitarios_disponibles": "Sí",
+        "numero_sanitarios": 1,
+        "sanitarios_observacion": null,
+        "recipientes_residuos": "No (declarado)",
+        "numero_recipientes": 1,
+        "residuos_observacion": "Se declara que no cuenta con recipientes, pero también se registra 1 unidad; requiere verificación",
+        "preparacion_alimentos": "Sí",
+        "fuente": "Caracterización ATE, consolidado 09/11/2026; declaración municipal, no equivale a visita sanitaria"
+      }
+    },
+    {
+      "id": "ATI-031",
+      "municipio": "Obando",
+      "nombre": "Casa Cural – Corregimiento San Isidro",
+      "tipo": "Alojamiento temporal",
+      "personas": 4,
+      "poblacion": "Censada",
+      "estado": "En operación",
+      "capacidad": 10,
+      "ocupacion_pct": 40,
+      "infraestructura": "Casa cural",
+      "sector": null,
+      "direccion": "Casa Cural Corregimiento San Isidro",
+      "ultima_verificacion": "2026-09-16",
+      "condiciones": {
+        "agua": {
+          "estado": "O",
+          "texto": "Acueducto rural; agua reportada como no potable."
+        },
+        "saneamiento": {
+          "estado": "S",
+          "texto": "1 batería compartida."
+        },
+        "alimentos": {
+          "estado": "S",
+          "texto": "Preparación de alimentos en sitio; cuenta con cocina."
+        },
+        "animales": {
+          "estado": "O",
+          "texto": "1 perro y 1 gato."
+        }
+      },
+      "observacion": "Requiere seguimiento de agua para consumo.",
+      "fotos": [],
+      "caracterizacion_octubre": {
+        "fecha_documento": "2026-10-13",
+        "personas_reportadas": 4,
+        "diferencia_censo": 0,
+        "capacidad_reportada": 10,
+        "capacidad_observacion": null,
+        "fuente_agua": "Molina-Obando (SARABRUT) / acueducto rural San Isidro",
+        "sanitarios_disponibles": "Sí",
+        "numero_sanitarios": null,
+        "sanitarios_observacion": "Una unidad por caseta habitada; no es un valor por sitio verificado",
+        "recipientes_residuos": "No",
+        "numero_recipientes": 1,
+        "residuos_observacion": "Inconsistencia: declara NO disponibilidad de canecas y registra cantidad 1",
+        "preparacion_alimentos": "Sí",
+        "fuente": "Caracterización ATE, consolidado 13/10/2026; dato declarativo, no nueva inspección"
+      },
+      "actualizacion": "Censo individual y caracterización declarativa del 09/11/2026",
+      "caracterizacion_noviembre": {
+        "fecha_documento": "2026-11-09",
+        "personas_reportadas": 4,
+        "diferencia_censo": 0,
+        "capacidad_reportada": 10,
+        "capacidad_observacion": null,
+        "fuente_agua": "Declaración conjunta para Obando: Molina-Obando (SARABRUT) y San Isidro (acueducto rural), sin desagregación por sitio",
+        "sanitarios_disponibles": "Sí",
+        "numero_sanitarios": 1,
+        "sanitarios_observacion": null,
+        "recipientes_residuos": "No (declarado)",
+        "numero_recipientes": 1,
+        "residuos_observacion": "Se declara que no cuenta con recipientes, pero también se registra 1 unidad; requiere verificación",
+        "preparacion_alimentos": "Sí",
+        "fuente": "Caracterización ATE, consolidado 09/11/2026; declaración municipal, no equivale a visita sanitaria"
+      }
+    },
+    {
+      "id": "ATI-008",
+      "municipio": "Obando",
+      "nombre": "Caseta Comunal – Corregimiento Puerto Molina",
+      "tipo": "Alojamiento temporal",
+      "personas": 3,
+      "poblacion": "Censada",
+      "estado": "En operación",
+      "capacidad": 10,
+      "ocupacion_pct": 30,
+      "infraestructura": "Caseta comunal",
+      "sector": null,
+      "direccion": "Caseta Comunal Corregimiento Puerto Molina",
+      "ultima_verificacion": "2026-09-16",
+      "condiciones": {
+        "agua": {
+          "estado": "O",
+          "texto": "Suministro por manguera desde Acuavalle; almacenamiento en canecas."
+        },
+        "saneamiento": {
+          "estado": "S",
+          "texto": "1 batería compartida."
+        },
+        "alimentos": {
+          "estado": "S",
+          "texto": "Preparación de alimentos en sitio."
+        },
+        "animales": {
+          "estado": "O",
+          "texto": "3 perros y 1 gato."
+        }
+      },
+      "observacion": "Seguimiento por forma de suministro/almacenamiento.",
+      "fotos": [],
+      "caracterizacion_octubre": {
+        "fecha_documento": "2026-10-13",
+        "personas_reportadas": 3,
+        "diferencia_censo": 0,
+        "capacidad_reportada": 10,
+        "capacidad_observacion": null,
+        "fuente_agua": "Molina-Obando (SARABRUT) / acueducto rural San Isidro",
+        "sanitarios_disponibles": "Sí",
+        "numero_sanitarios": null,
+        "sanitarios_observacion": "Una unidad por caseta habitada; no es un valor por sitio verificado",
+        "recipientes_residuos": "No",
+        "numero_recipientes": 1,
+        "residuos_observacion": "Inconsistencia: declara NO disponibilidad de canecas y registra cantidad 1",
+        "preparacion_alimentos": "Sí",
+        "fuente": "Caracterización ATE, consolidado 13/10/2026; dato declarativo, no nueva inspección"
+      },
+      "actualizacion": "Censo individual y caracterización declarativa del 09/11/2026",
+      "caracterizacion_noviembre": {
+        "fecha_documento": "2026-11-09",
+        "personas_reportadas": 3,
+        "diferencia_censo": 0,
+        "capacidad_reportada": 10,
+        "capacidad_observacion": null,
+        "fuente_agua": "Declaración conjunta para Obando: Molina-Obando (SARABRUT) y San Isidro (acueducto rural), sin desagregación por sitio",
+        "sanitarios_disponibles": "Sí",
+        "numero_sanitarios": 1,
+        "sanitarios_observacion": null,
+        "recipientes_residuos": "No (declarado)",
+        "numero_recipientes": 1,
+        "residuos_observacion": "Se declara que no cuenta con recipientes, pero también se registra 1 unidad; requiere verificación",
+        "preparacion_alimentos": "Sí",
+        "fuente": "Caracterización ATE, consolidado 09/11/2026; declaración municipal, no equivale a visita sanitaria"
+      }
     },
     {
       "id": "ATI-029",
@@ -1011,7 +708,7 @@
       "estado": "En operación",
       "capacidad": 12,
       "ocupacion_pct": 17,
-      "infraestructura": "Salon comunitario",
+      "infraestructura": "Salón comunitario",
       "sector": null,
       "direccion": "Vivienda",
       "ultima_verificacion": "2026-09-17",
@@ -1051,58 +748,142 @@
         "preparacion_alimentos": "Sí",
         "fuente": "Caracterización ATE, consolidado 13/10/2026; dato declarativo, no nueva inspección"
       },
-      "actualizacion": "Censo del 13/10/2026"
+      "actualizacion": "Censo individual y caracterización declarativa del 09/11/2026",
+      "caracterizacion_noviembre": {
+        "fecha_documento": "2026-11-09",
+        "personas_reportadas": 2,
+        "diferencia_censo": 0,
+        "capacidad_reportada": 12,
+        "capacidad_observacion": null,
+        "fuente_agua": "Red pública",
+        "sanitarios_disponibles": "Sí",
+        "numero_sanitarios": 2,
+        "sanitarios_observacion": null,
+        "recipientes_residuos": "Sí",
+        "numero_recipientes": 2,
+        "residuos_observacion": null,
+        "preparacion_alimentos": "Sí",
+        "fuente": "Caracterización ATE, consolidado 09/11/2026; declaración municipal, no equivale a visita sanitaria"
+      }
+    },
+    {
+      "id": "ATI-036",
+      "municipio": "Obando",
+      "nombre": "Obando Urbano Caseta comuna",
+      "tipo": "Alojamiento temporal",
+      "personas": 1,
+      "poblacion": "Censada",
+      "estado": "En operación",
+      "capacidad": 10,
+      "ocupacion_pct": 10,
+      "infraestructura": "Caseta comunal",
+      "sector": null,
+      "direccion": null,
+      "ultima_verificacion": null,
+      "condiciones": {
+        "agua": {
+          "estado": "V",
+          "texto": "Por validar."
+        },
+        "saneamiento": {
+          "estado": "V",
+          "texto": "Por validar."
+        },
+        "alimentos": {
+          "estado": "V",
+          "texto": "Por validar."
+        },
+        "animales": {
+          "estado": "V",
+          "texto": "Por validar."
+        }
+      },
+      "observacion": "Sitio nuevo en V23; IVC pendiente.",
+      "fotos": [],
+      "caracterizacion_octubre": {
+        "fecha_documento": "2026-10-13",
+        "personas_reportadas": 1,
+        "diferencia_censo": 0,
+        "capacidad_reportada": 10,
+        "capacidad_observacion": null,
+        "fuente_agua": "Molina-Obando (SARABRUT) / acueducto rural San Isidro",
+        "sanitarios_disponibles": "Sí",
+        "numero_sanitarios": null,
+        "sanitarios_observacion": "Una unidad por caseta habitada; no es un valor por sitio verificado",
+        "recipientes_residuos": "No",
+        "numero_recipientes": 1,
+        "residuos_observacion": "Inconsistencia: declara NO disponibilidad de canecas y registra cantidad 1",
+        "preparacion_alimentos": "Sí",
+        "fuente": "Caracterización ATE, consolidado 13/10/2026; dato declarativo, no nueva inspección"
+      },
+      "actualizacion": "Censo individual y caracterización declarativa del 09/11/2026",
+      "caracterizacion_noviembre": {
+        "fecha_documento": "2026-11-09",
+        "personas_reportadas": 1,
+        "diferencia_censo": 0,
+        "capacidad_reportada": 10,
+        "capacidad_observacion": null,
+        "fuente_agua": "Declaración conjunta para Obando: Molina-Obando (SARABRUT) y San Isidro (acueducto rural), sin desagregación por sitio",
+        "sanitarios_disponibles": "Sí",
+        "numero_sanitarios": 1,
+        "sanitarios_observacion": null,
+        "recipientes_residuos": "No (declarado)",
+        "numero_recipientes": 1,
+        "residuos_observacion": "Se declara que no cuenta con recipientes, pero también se registra 1 unidad; requiere verificación",
+        "preparacion_alimentos": "Sí",
+        "fuente": "Caracterización ATE, consolidado 09/11/2026; declaración municipal, no equivale a visita sanitaria"
+      }
     }
   ],
   "condiciones_resumen": {
     "agua": {
-      "S": 11,
+      "S": 5,
       "O": 4,
-      "V": 2
+      "V": 1
     },
     "saneamiento": {
-      "S": 9,
-      "O": 4,
-      "V": 4
+      "S": 5,
+      "O": 2,
+      "V": 3
     },
     "alimentos": {
-      "S": 10,
-      "O": 6,
+      "S": 8,
+      "O": 1,
       "V": 1
     },
     "animales": {
-      "S": 5,
-      "O": 10,
-      "V": 2
+      "S": 4,
+      "O": 5,
+      "V": 1
     }
   },
   "poblacion": {
-    "censadas": 211,
-    "municipios": 9,
+    "censadas": 124,
+    "municipios": 7,
     "curso_vida": [
       {
         "grupo": "Primera infancia (0 a 5 años)",
-        "personas": 16
+        "personas": 6
       },
       {
         "grupo": "Infancia (6 a 11 años)",
-        "personas": 26
+        "personas": 13
       },
       {
         "grupo": "Adolescencia (12 a 17 años)",
-        "personas": 20
+        "personas": 13
       },
       {
         "grupo": "Joven (18 a 28 años)",
-        "personas": 34
+        "personas": 20
       },
       {
         "grupo": "Adultez (29 a 59 años)",
-        "personas": 86
+        "personas": 51
       },
       {
         "grupo": "Persona mayor (60 años o más)",
-        "personas": 27
+        "personas": 19
       },
       {
         "grupo": "S/D",
@@ -1110,66 +891,64 @@
       }
     ],
     "sexo": {
-      "hombres": 101,
-      "mujeres": 110
+      "hombres": 62,
+      "mujeres": 62
     },
     "interes": [
       {
         "grupo": "Personas con discapacidad",
-        "personas": 13
+        "personas": 10
       },
       {
         "grupo": "Afrocolombianas",
-        "personas": 8
-      },
-      {
-        "grupo": "Indígenas",
         "personas": 2
       },
       {
+        "grupo": "Indígenas",
+        "personas": 0
+      },
+      {
         "grupo": "Gestantes",
-        "personas": 1
+        "personas": 0
       }
     ],
     "aseguramiento": [
       {
         "eps": "Nueva EPS",
-        "personas": 88
+        "personas": 55
       },
       {
         "eps": "Emssanar",
-        "personas": 62
+        "personas": 36
       },
       {
         "eps": "Coosalud EPS",
-        "personas": 17
+        "personas": 12
       },
       {
         "eps": "SOS",
-        "personas": 16
-      },
-      {
-        "eps": "Sura",
         "personas": 8
       },
       {
         "eps": "Otras EPS (6)",
-        "personas": 9
+        "personas": 8
       }
     ],
-    "no_asegurados": 11,
-    "asegurados_pct": 95,
+    "no_asegurados": 5,
+    "asegurados_pct": 96,
     "pendientes": 0
   },
   "metodologia": [
-    "Al corte 13/10/2026, el censo individual registra 211 personas alojadas en 17 sitios activos de 9 municipios. Los 3 sitios cerrados (Yumbo, Zarzal y Ansermanuevo) quedan excluidos de los indicadores activos, la distribución territorial y los semáforos sanitarios.",
-    "Los 3 cierres fueron informados durante la revisión del consolidado. No hay fecha exacta de cierre ni constancia de destino habitacional; las 34 personas corresponden a su último registro del 23/09/2026, no a población actual.",
-    "Variación entre cortes: de 253 a 211 personas (−42); 34 figuraban en los alojamientos posteriormente cerrados y 8 corresponden a la actualización de El Cairo. No se atribuye la disminución a consecución de vivienda o retorno sin documentación.",
-    "Contradicción entre fuentes de octubre: la hoja de caracterización declara 261 personas en 17 sitios, frente a 211 del censo individual. Diferencias: Bugalagrande +39, El Cairo +8 y Restrepo +3. Los indicadores activos utilizan el censo individual.",
-    "Núcleos familiares: el resumen del 13/10 reporta 70 en 9 municipios, pero 62 identificadores familiares agrupados por municipio en el censo; la conciliación continúa pendiente.",
-    "El perfil poblacional (curso de vida, sexo, aseguramiento e interés diferencial) corresponde únicamente a las 211 personas censadas. No se publican registros personales ni datos identificables.",
-    "Semáforos de agua, saneamiento, alimentos y animales: se calculan sobre los 17 sitios activos, conservando el último seguimiento de campo. La caracterización de octubre es declarativa y no sustituye una visita sanitaria.",
-    "Los registros de sitios cerrados se conservan en el módulo histórico; su último aforo y última ocupación no representan disponibilidad u ocupación actual. Versalles conserva capacidad numérica por validar."
+    "Fuente prioritaria para población: hoja «Censo total Valle» del archivo institucional recibido el 09/11/2026. Se contabiliza un registro individual por persona: 124 en 7 municipios; sin publicar nombres, documentos, contactos ni datos individuales de salud.",
+    "Los núcleos familiares (46) se obtienen por identificador de familia dentro de cada municipio, no por un identificador global, porque los códigos FAM se reutilizan entre municipios.",
+    "Los 10 alojamientos con censo vigente se cruzan con la hoja «Caracterización del ATE» utilizando el municipio y, en Obando, el sitio de procedencia del registro. El número de personas del sitio se toma exclusivamente del censo.",
+    "La caracterización declarativa consigna 177 personas (105 en Bugalagrande y 31 en El Cairo). No se suman al censo; las diferencias de 39 y 14 personas quedan señaladas en la ficha de cada sitio para conciliación.",
+    "Yotoco (6 alojamientos, 56 personas en octubre) y Restrepo (1 alojamiento, 25 personas en octubre) no aparecen en el archivo del 09/11/2026. Se clasifican como «sin reporte», separados de cierres, y se excluyen de indicadores actuales hasta verificar su situación.",
+    "Se conservan los tres cierres comunicados en octubre (Yumbo, Zarzal y Ansermanuevo) como históricos, sin contabilizar sus últimas poblaciones.",
+    "Las condiciones de agua, saneamiento, alimentos y animales proceden de la última observación de IVC disponible; las declaraciones de noviembre se presentan por separado en las fichas. Una caracterización no equivale a una nueva visita de campo.",
+    "Los porcentajes de curso de vida se basan en 122 personas con curso de vida clasificado; hay 2 registros sin dato. Se reportan 62 mujeres, 62 hombres, 5 sin aseguramiento, 10 con discapacidad y 2 afrocolombianas.",
+    "La variación entre cortes (211 a 124) corresponde a cobertura y conteo de las fuentes recibidas. No demuestra por sí sola salida de personas, cierre, retorno o acceso a vivienda.",
+    "Los datos públicos son agregados. No se carga ni publica el Excel individual con información personal o sensible."
   ],
   "alojamientos_cerrados": [
     {
@@ -1343,6 +1122,404 @@
       "nucleos_en_ultimo_registro": 6,
       "corte_ultimo_registro": "2026-09-23",
       "fecha_cierre_exacta": null
+    }
+  ],
+  "alojamientos_sin_reporte": [
+    {
+      "id": "ATI-016",
+      "municipio": "Yotoco",
+      "nombre": "Coliseo de la I.E. Alfonso Zawadzky",
+      "tipo": "Alojamiento temporal",
+      "personas": 23,
+      "poblacion": "Censada",
+      "estado": "Sin reporte en noviembre",
+      "capacidad": 50,
+      "ocupacion_pct": 46,
+      "infraestructura": "Coliseo Institución Educativa Alfonso Zawadzky",
+      "sector": "Centenario",
+      "direccion": "Carrer 5 No 5-79",
+      "ultima_verificacion": "2026-09-17",
+      "condiciones": {
+        "agua": {
+          "estado": "S",
+          "texto": "Acuavalle."
+        },
+        "saneamiento": {
+          "estado": "S",
+          "texto": "3 baterías separadas por sexo."
+        },
+        "alimentos": {
+          "estado": "S",
+          "texto": "Alimentos preparados en Centro Vida; no se preparan en el alojamiento."
+        },
+        "animales": {
+          "estado": "O",
+          "texto": "1 canino."
+        }
+      },
+      "observacion": "Seguimiento sin cambio sanitario relevante. Ausente de la fuente del 09/11/2026; no implica cierre confirmado.",
+      "fotos": [
+        "ATI-016/ATI-016_01_coliseo_carpa.jpg"
+      ],
+      "caracterizacion_octubre": {
+        "fecha_documento": "2026-10-13",
+        "personas_reportadas": 23,
+        "diferencia_censo": 0,
+        "capacidad_reportada": 50,
+        "capacidad_observacion": null,
+        "fuente_agua": "Red pública",
+        "sanitarios_disponibles": "Sí",
+        "numero_sanitarios": 5,
+        "sanitarios_observacion": null,
+        "recipientes_residuos": "Sí",
+        "numero_recipientes": 3,
+        "residuos_observacion": null,
+        "preparacion_alimentos": "No",
+        "fuente": "Caracterización ATE, consolidado 13/10/2026; dato declarativo, no nueva inspección"
+      },
+      "actualizacion": "Censo del 13/10/2026",
+      "personas_ultimo_corte": 23,
+      "fecha_ultimo_censo": "2026-10-13"
+    },
+    {
+      "id": "ATI-026",
+      "municipio": "Yotoco",
+      "nombre": "Cancha de Baloncesto – Vereda El Jardín",
+      "tipo": "Alojamiento temporal",
+      "personas": 12,
+      "poblacion": "Censada",
+      "estado": "Sin reporte en noviembre",
+      "capacidad": 15,
+      "ocupacion_pct": 80,
+      "infraestructura": null,
+      "sector": "El Jardin",
+      "direccion": "Cancha de Baloncesto",
+      "ultima_verificacion": "2026-09-17",
+      "condiciones": {
+        "agua": {
+          "estado": "V",
+          "texto": "No documentado en último seguimiento."
+        },
+        "saneamiento": {
+          "estado": "O",
+          "texto": "Servicios sanitarios se realizan en vivienda frente a la cancha."
+        },
+        "alimentos": {
+          "estado": "S",
+          "texto": "Alimentación se realiza en vivienda frente a la cancha."
+        },
+        "animales": {
+          "estado": "V",
+          "texto": "No documentado."
+        }
+      },
+      "observacion": "La carpa se utiliza principalmente para pernocta. Ausente de la fuente del 09/11/2026; no implica cierre confirmado.",
+      "fotos": [],
+      "caracterizacion_octubre": {
+        "fecha_documento": "2026-10-13",
+        "personas_reportadas": 12,
+        "diferencia_censo": 0,
+        "capacidad_reportada": 15,
+        "capacidad_observacion": null,
+        "fuente_agua": "Red de acueducto",
+        "sanitarios_disponibles": "Sí",
+        "numero_sanitarios": 1,
+        "sanitarios_observacion": null,
+        "recipientes_residuos": "Sí",
+        "numero_recipientes": 3,
+        "residuos_observacion": null,
+        "preparacion_alimentos": "Sí",
+        "fuente": "Caracterización ATE, consolidado 13/10/2026; dato declarativo, no nueva inspección"
+      },
+      "actualizacion": "Censo del 13/10/2026",
+      "personas_ultimo_corte": 12,
+      "fecha_ultimo_censo": "2026-10-13"
+    },
+    {
+      "id": "ATI-022",
+      "municipio": "Yotoco",
+      "nombre": "Refugio Nuevo Renacer – Vereda El Dopo",
+      "tipo": "Alojamiento temporal",
+      "personas": 9,
+      "poblacion": "Censada",
+      "estado": "Sin reporte en noviembre",
+      "capacidad": 10,
+      "ocupacion_pct": 90,
+      "infraestructura": null,
+      "sector": "Dopo",
+      "direccion": "Refugio Nuevo Renacer Dopo- contiguo a la escuela",
+      "ultima_verificacion": "2026-09-17",
+      "condiciones": {
+        "agua": {
+          "estado": "S",
+          "texto": "Acueducto rural Brisas de Dopo; agua tratada envasada para bebidas."
+        },
+        "saneamiento": {
+          "estado": "S",
+          "texto": "Letrina y 5 baterías, una por familia."
+        },
+        "alimentos": {
+          "estado": "O",
+          "texto": "Cocina comunitaria; algunos alimentos sin protección adecuada."
+        },
+        "animales": {
+          "estado": "O",
+          "texto": "1 gato."
+        }
+      },
+      "observacion": "Condiciones iguales a seguimientos previos. Ausente de la fuente del 09/11/2026; no implica cierre confirmado.",
+      "fotos": [],
+      "caracterizacion_octubre": {
+        "fecha_documento": "2026-10-13",
+        "personas_reportadas": 9,
+        "diferencia_censo": 0,
+        "capacidad_reportada": 10,
+        "capacidad_observacion": null,
+        "fuente_agua": "Red de acueducto",
+        "sanitarios_disponibles": "Sí",
+        "numero_sanitarios": 1,
+        "sanitarios_observacion": null,
+        "recipientes_residuos": "Sí",
+        "numero_recipientes": 3,
+        "residuos_observacion": null,
+        "preparacion_alimentos": "Sí",
+        "fuente": "Caracterización ATE, consolidado 13/10/2026; dato declarativo, no nueva inspección"
+      },
+      "actualizacion": "Censo del 13/10/2026",
+      "personas_ultimo_corte": 9,
+      "fecha_ultimo_censo": "2026-10-13"
+    },
+    {
+      "id": "ATI-027",
+      "municipio": "Yotoco",
+      "nombre": "Puesto de Salud – Vereda El Caney",
+      "tipo": "Alojamiento temporal",
+      "personas": 5,
+      "poblacion": "Censada",
+      "estado": "Sin reporte en noviembre",
+      "capacidad": 10,
+      "ocupacion_pct": 50,
+      "infraestructura": null,
+      "sector": "Vereda El Caney",
+      "direccion": "Puesto de Salud",
+      "ultima_verificacion": "2026-09-14",
+      "condiciones": {
+        "agua": {
+          "estado": "S",
+          "texto": "Acueducto rural El Caney; ocasionalmente agua embotellada."
+        },
+        "saneamiento": {
+          "estado": "V",
+          "texto": "Sin detalle sanitario suficiente en último reporte."
+        },
+        "alimentos": {
+          "estado": "O",
+          "texto": "Preparación en sitio sin elementos de protección personal."
+        },
+        "animales": {
+          "estado": "O",
+          "texto": "1 perro."
+        }
+      },
+      "observacion": "Sin otros hallazgos detallados. Ausente de la fuente del 09/11/2026; no implica cierre confirmado.",
+      "fotos": [],
+      "caracterizacion_octubre": {
+        "fecha_documento": "2026-10-13",
+        "personas_reportadas": 5,
+        "diferencia_censo": 0,
+        "capacidad_reportada": 10,
+        "capacidad_observacion": null,
+        "fuente_agua": "Red de acueducto",
+        "sanitarios_disponibles": "Sí",
+        "numero_sanitarios": 1,
+        "sanitarios_observacion": null,
+        "recipientes_residuos": "Sí",
+        "numero_recipientes": 3,
+        "residuos_observacion": null,
+        "preparacion_alimentos": "Sí",
+        "fuente": "Caracterización ATE, consolidado 13/10/2026; dato declarativo, no nueva inspección"
+      },
+      "actualizacion": "Censo del 13/10/2026",
+      "personas_ultimo_corte": 5,
+      "fecha_ultimo_censo": "2026-10-13"
+    },
+    {
+      "id": "ATI-025",
+      "municipio": "Yotoco",
+      "nombre": "Puesto de Salud – Vereda Campo Alegre",
+      "tipo": "Alojamiento temporal",
+      "personas": 4,
+      "poblacion": "Censada",
+      "estado": "Sin reporte en noviembre",
+      "capacidad": 10,
+      "ocupacion_pct": 40,
+      "infraestructura": null,
+      "sector": "Campo Alegre",
+      "direccion": "Puesto de Salud",
+      "ultima_verificacion": "2026-09-17",
+      "condiciones": {
+        "agua": {
+          "estado": "S",
+          "texto": "Asociación de Usuarios Agua Albania."
+        },
+        "saneamiento": {
+          "estado": "O",
+          "texto": "Excretas a cuerpo de agua; batería en mal estado, ducha sin agua; uso de baños de otra vivienda."
+        },
+        "alimentos": {
+          "estado": "O",
+          "texto": "Alimentos almacenados/preparados en vivienda cercana; cocina del sitio no se usa por desagües taponados."
+        },
+        "animales": {
+          "estado": "S",
+          "texto": "Sin mascotas evidenciadas."
+        }
+      },
+      "observacion": "Pipas de gas; afectación estructural en muro; sin energía eléctrica. Ausente de la fuente del 09/11/2026; no implica cierre confirmado.",
+      "fotos": [],
+      "caracterizacion_octubre": {
+        "fecha_documento": "2026-10-13",
+        "personas_reportadas": 4,
+        "diferencia_censo": 0,
+        "capacidad_reportada": 10,
+        "capacidad_observacion": null,
+        "fuente_agua": "Red de acueducto",
+        "sanitarios_disponibles": "Sí",
+        "numero_sanitarios": 1,
+        "sanitarios_observacion": null,
+        "recipientes_residuos": "Sí",
+        "numero_recipientes": 3,
+        "residuos_observacion": null,
+        "preparacion_alimentos": "Sí",
+        "fuente": "Caracterización ATE, consolidado 13/10/2026; dato declarativo, no nueva inspección"
+      },
+      "actualizacion": "Censo del 13/10/2026",
+      "personas_ultimo_corte": 4,
+      "fecha_ultimo_censo": "2026-10-13"
+    },
+    {
+      "id": "ATI-023",
+      "municipio": "Yotoco",
+      "nombre": "Puesto de Salud – Corregimiento de Miravalle",
+      "tipo": "Alojamiento temporal",
+      "personas": 3,
+      "poblacion": "Censada",
+      "estado": "Sin reporte en noviembre",
+      "capacidad": 10,
+      "ocupacion_pct": 30,
+      "infraestructura": null,
+      "sector": "Miravalle",
+      "direccion": "Puesto de Salud Miravalle",
+      "ultima_verificacion": "2026-09-17",
+      "condiciones": {
+        "agua": {
+          "estado": "S",
+          "texto": "Asociación de Usuarios Agua Albania; agua clorada."
+        },
+        "saneamiento": {
+          "estado": "S",
+          "texto": "Pozo séptico; 1 batería sanitaria de uso general."
+        },
+        "alimentos": {
+          "estado": "O",
+          "texto": "Preparación en sitio; sin tapabocas ni protección de cabello."
+        },
+        "animales": {
+          "estado": "O",
+          "texto": "1 perro."
+        }
+      },
+      "observacion": "Condiciones estables respecto a visita previa. Ausente de la fuente del 09/11/2026; no implica cierre confirmado.",
+      "fotos": [],
+      "caracterizacion_octubre": {
+        "fecha_documento": "2026-10-13",
+        "personas_reportadas": 3,
+        "diferencia_censo": 0,
+        "capacidad_reportada": 10,
+        "capacidad_observacion": null,
+        "fuente_agua": "Red de acueducto",
+        "sanitarios_disponibles": "Sí",
+        "numero_sanitarios": 1,
+        "sanitarios_observacion": null,
+        "recipientes_residuos": "Sí",
+        "numero_recipientes": 3,
+        "residuos_observacion": null,
+        "preparacion_alimentos": "Sí",
+        "fuente": "Caracterización ATE, consolidado 13/10/2026; dato declarativo, no nueva inspección"
+      },
+      "actualizacion": "Censo del 13/10/2026",
+      "personas_ultimo_corte": 3,
+      "fecha_ultimo_censo": "2026-10-13"
+    },
+    {
+      "id": "ATI-021",
+      "municipio": "Restrepo",
+      "nombre": "Antiguo Hogar Vida del Anciano – Restrepo",
+      "tipo": "Alojamiento temporal",
+      "personas": 25,
+      "poblacion": "Censada",
+      "estado": "Sin reporte en noviembre",
+      "capacidad": 30,
+      "ocupacion_pct": 83,
+      "infraestructura": "Casa",
+      "sector": "Zona urbana Barrio Luis Carlos Galan Etapa III",
+      "direccion": "Carrera 18 # 4SN - 110",
+      "ultima_verificacion": "2026-09-17",
+      "condiciones": {
+        "agua": {
+          "estado": "S",
+          "texto": "Acuavalle."
+        },
+        "saneamiento": {
+          "estado": "S",
+          "texto": "4 baterías organizadas por familias."
+        },
+        "alimentos": {
+          "estado": "O",
+          "texto": "Preparación por cada familia; almacenamiento de alimentos con protección insuficiente."
+        },
+        "animales": {
+          "estado": "O",
+          "texto": "4 perros."
+        }
+      },
+      "observacion": "Seguimiento estable respecto a reporte previo. Ausente de la fuente del 09/11/2026; no implica cierre confirmado.",
+      "fotos": [],
+      "caracterizacion_octubre": {
+        "fecha_documento": "2026-10-13",
+        "personas_reportadas": 28,
+        "diferencia_censo": 3,
+        "capacidad_reportada": 30,
+        "capacidad_observacion": null,
+        "fuente_agua": "Red de acueducto",
+        "sanitarios_disponibles": "Sí",
+        "numero_sanitarios": 2,
+        "sanitarios_observacion": null,
+        "recipientes_residuos": "Sí",
+        "numero_recipientes": 2,
+        "residuos_observacion": null,
+        "preparacion_alimentos": "Sí",
+        "fuente": "Caracterización ATE, consolidado 13/10/2026; dato declarativo, no nueva inspección"
+      },
+      "actualizacion": "Censo del 13/10/2026",
+      "personas_ultimo_corte": 25,
+      "fecha_ultimo_censo": "2026-10-13"
+    }
+  ],
+  "municipios_sin_reporte": [
+    {
+      "municipio": "Yotoco",
+      "sitios": 6,
+      "personas_ultimo_corte": 56,
+      "fecha_ultimo_censo": "2026-10-13",
+      "estado": "Sin reporte en noviembre; operación por confirmar"
+    },
+    {
+      "municipio": "Restrepo",
+      "sitios": 1,
+      "personas_ultimo_corte": 25,
+      "fecha_ultimo_censo": "2026-10-13",
+      "estado": "Sin reporte en noviembre; operación por confirmar"
     }
   ]
 }
