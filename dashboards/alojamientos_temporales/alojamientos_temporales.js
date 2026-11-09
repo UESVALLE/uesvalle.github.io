@@ -62,8 +62,8 @@ function render(){
     </button>`;
   $('#kpis').innerHTML =
     kpi('k1','people',fmt.format(k.personas),'Personas censadas',`en ${fmt.format(k.nucleos)} núcleos familiares reportados`,'poblacion') +
-    kpi('k2','house',k.alojamientos,'Alojamientos activos',`${k.alojamientos_temporales} alojamientos temporales y ${k.albergues} albergue${k.albergues === 1 ? '' : 's'}`,'estado') +
-    kpi('k3','pin',k.municipios,'Municipios activos','con alojamientos en funcionamiento, de los 42 del departamento','territorio') +
+    kpi('k2','house',k.alojamientos,'Alojamientos reportados',`${k.alojamientos_temporales} alojamientos temporales y ${k.albergues} albergue${k.albergues === 1 ? '' : 's'}`,'estado') +
+    kpi('k3','pin',k.municipios,'Municipios con censo','con alojamientos en funcionamiento, de los 42 del departamento','territorio') +
     kpi('k4','family',fmt.format(k.dependientes),'Niñas, niños, adolescentes y personas mayores',`${k.dependientes_pct} % de las personas con curso de vida registrado`,'poblacion');
   $$('.kpi[data-go]').forEach(b => b.onclick = () => UESPlantilla.tab(b.dataset.go, true));
 
@@ -91,6 +91,7 @@ function render(){
   $('#btnClear').onclick = () => { $('#fMun').value = ''; $('#fComp').value = ''; $('#fFoto').value = ''; drawRows(); };
   drawRows();
   renderCierres();
+  renderSinReporte();
 
   // ---- distribución territorial: indicadores, lectura y lista por municipio
   const MUN = DB.municipios;
@@ -166,7 +167,8 @@ function render(){
     ['Fuente', DB.metadata.fuente_publica],
     ['Corte de la información', fecha(DB.metadata.corte)],
     ['Datos generados', fecha((DB.metadata.generado || '').slice(0,10)) + ' ' + (DB.metadata.generado || '').slice(11,16)],
-    ['Registros activos', `${DB.alojamientos.length} alojamientos · ${k.fotos || 0} fotografías`],
+    ['Alojamientos reportados', `${DB.alojamientos.length} alojamientos · ${k.fotos || 0} fotografías`],
+    ['Sin reporte en noviembre', `${k.sitios_sin_reporte || 0} sitios · estado de operación por verificar`],
     ['Histórico de cierres', `${k.sitios_cerrados || 0} alojamientos · ${k.personas_ultimo_registro_cerrados || 0} personas en el último registro, no actuales`]
   ].map(([l,v]) => `<div>${esc(l)}<b>${esc(v)}</b></div>`).join('');
 
@@ -190,7 +192,7 @@ function drawRows(){
   const fm = $('#fMun').value, fc = $('#fComp').value, ff = $('#fFoto').value;
   const nf = a => (a.fotos || []).length;
   const rows = DB.alojamientos.filter(a => (!fm || a.municipio === fm) && (!fc || a.condiciones[fc].estado === 'O') && (!ff || (ff === 'con' ? nf(a) > 0 : nf(a) === 0)));
-  $('#count').textContent = `${rows.length} de ${DB.alojamientos.length} alojamientos activos`;
+  $('#count').textContent = `${rows.length} de ${DB.alojamientos.length} alojamientos reportados en el corte`; 
   pintarActivos();
   if(!rows.length){ $('#rows').innerHTML = `<tr><td colspan="8" class="empty">Ningún alojamiento cumple el filtro. Cambie los filtros o use Limpiar.</td></tr>`; return; }
   let prev = null;
@@ -233,17 +235,38 @@ function renderCierres(){
   });
 }
 
+function renderSinReporte(){
+  const sitios = DB.alojamientos_sin_reporte || [];
+  const resumen = $('#sinReporteResumen');
+  const body = $('#rowsSinReporte');
+  if(!resumen || !body) return;
+  const total = sitios.reduce((sum,a)=>sum+(a.personas_ultimo_corte || a.personas || 0),0);
+  resumen.textContent = `${sitios.length} alojamientos sin reporte en el censo 09/11/2026 (Yotoco y Restrepo) · ${fmt.format(total)} personas en el censo previo, no actuales. No consta confirmación de cierre.`;
+  body.innerHTML = sitios.map(a => `
+    <tr data-id="${esc(a.id)}" tabindex="0" aria-label="Ver último registro de ${esc(a.nombre)}">
+      <td class="mun">${esc(a.municipio)}</td>
+      <td class="site">${esc(a.nombre)} <span class="tag pv">Sin reporte</span></td>
+      <td class="num"><b>${fmt.format(a.personas_ultimo_corte || a.personas || 0)}</b></td>
+      <td>${fecha(a.fecha_ultimo_censo || '2026-10-13')}</td>
+      <td>Estado operativo por confirmar; no implica cierre</td>
+    </tr>`).join('');
+  $('#rowsSinReporte tr[data-id]').forEach(tr=>{
+    tr.onclick=()=>openFicha(tr.dataset.id);
+    tr.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openFicha(tr.dataset.id);}};
+  });
+}
 function openFicha(id){
-  const a = [...DB.alojamientos, ...(DB.alojamientos_cerrados || [])].find(x => x.id === id); if(!a) return;
+  const a = [...DB.alojamientos, ...(DB.alojamientos_cerrados || []), ...(DB.alojamientos_sin_reporte || [])].find(x => x.id === id); if(!a) return;
   $('#modalBody').innerHTML = `
     <div class="f-head"><span class="eyebrow dark">Ficha · ${esc(a.tipo || 'Alojamiento temporal')}</span><h2 id="mTitle">${esc(a.nombre)}</h2><p>${esc(a.municipio)}${a.sector?` · ${esc(a.sector)}`:''}</p></div>
     <div class="f-grid">
-      <div><span>${a.estado === 'Cerrado' ? 'Personas en último registro' : 'Personas censadas'}</span><b>${fmt.format(a.personas)}</b></div>
+      <div><span>${a.estado === 'Cerrado' || a.estado.startsWith('Sin reporte') ? 'Personas en último censo anterior' : 'Personas censadas'}</span><b>${fmt.format(a.personas)}</b></div>
       <div><span>Capacidad</span><b>${a.capacidad ?? '—'}</b></div>
-      <div><span>${a.estado === 'Cerrado' ? 'Última ocupación registrada' : 'Ocupación'}</span><b>${a.ocupacion_pct != null ? a.ocupacion_pct+' %' : '—'}</b></div>
+      <div><span>${a.estado === 'Cerrado' || a.estado.startsWith('Sin reporte') ? 'Última ocupación registrada' : 'Ocupación'}</span><b>${a.ocupacion_pct != null ? a.ocupacion_pct+' %' : '—'}</b></div>
       <div><span>Estado</span><b style="font-size:17px">${esc(a.estado)}</b></div>
     </div>
     ${a.estado === 'Cerrado' ? '<div class="f-meta"><p><b>ALBERGUE CERRADO.</b> Se conserva información histórica, no población ni ocupación actual. Fecha exacta del cierre, motivo y destino habitacional de las personas: no documentados.</p></div>' : ''}
+    ${a.estado.startsWith('Sin reporte') ? '<div class="f-meta"><p><b>SIN REPORTE EN NOVIEMBRE.</b> Las personas presentadas corresponden exclusivamente al censo anterior del 13/10/2026. No se confirma si continúa operando ni si cerró. No se incluye en los indicadores del 09/11/2026.</p></div>' : ''}
     <div class="f-cond">
       ${COMP.map(([key,label]) => `<div><span class="cell ${a.condiciones[key].estado}" title="${ESTADO[a.condiciones[key].estado]}"></span><b>${label}</b><span>${esc(a.condiciones[key].texto || 'Por validar.')}</span></div>`).join('')}
     </div>
@@ -262,7 +285,7 @@ function openFicha(id){
 }
 
 function caracterizacionHtml(a){
-  const c=a.caracterizacion_octubre;
+  const c=a.caracterizacion_noviembre || a.caracterizacion_octubre;
   if(!c){
     return a.estado === 'Cerrado'
       ? '<div class="f-meta"><h3>Histórico de cierre</h3><p>Este sitio fue informado como cerrado en la revisión del corte del 13/10/2026. Los datos poblacionales y sanitarios corresponden al último registro disponible del 23/09/2026; no reflejan condiciones actuales. La fecha exacta del cierre y el destino habitacional no están documentados.</p></div>'
@@ -271,7 +294,7 @@ function caracterizacionHtml(a){
   const line=(label,value)=>'<p><b>'+esc(label)+':</b> '+esc(value==null?'Sin dato':value)+'</p>';
   const n=v=>v==null?'No cuantificado':v;
   const d=c.diferencia_censo;
-  return '<div class="f-meta"><h3>Caracterización declarada · 13/10/2026</h3>'+
+  return '<div class="f-meta"><h3>Caracterización declarada · '+fecha(c.fecha_documento || '2026-10-13')+'</h3>'+
      line('Personas declaradas en ATE',c.personas_reportadas)+
      (d?line('Diferencia frente a censo individual','+'+d+' personas; requiere conciliación'):'')+
      line('Fuente de agua',c.fuente_agua)+
