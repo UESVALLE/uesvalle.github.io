@@ -54,26 +54,57 @@
       <div class="wrap">
         <div class="section-heading">
           <h2>Una respuesta en el territorio</h2>
-          <p>Selecciona un municipio para ver las entregas escolares, las actividades F.13 y las fichas de la línea base IRCA.</p>
+          <p>El mapa muestra cuántos filtros se entregaron a establecimientos educativos de cada municipio entre 2024 y 2026.</p>
         </div>
         <div class="territory-layout">
-          <div class="map-frame">
-            <svg id="mapa" viewBox="0 0 570 610" role="img" aria-labelledby="mapa-titulo">
-              <title id="mapa-titulo">Mapa interactivo de municipios del Valle del Cauca</title>
+          <figure class="map-frame">
+            <svg id="mapa" viewBox="0 0 570 610" role="img" aria-labelledby="mapa-titulo mapa-descripcion">
+              <title id="mapa-titulo">Filtros escolares entregados por municipio</title>
+              <desc id="mapa-descripcion">Los colores más oscuros indican más filtros entregados. La tabla junto al mapa contiene las cantidades por municipio.</desc>
             </svg>
-            <div class="map-legend"><span></span> Municipios con entregas escolares o actividades F.13</div>
-          </div>
+            <figcaption>
+              <strong>Filtros escolares entregados</strong>
+              <ul class="map-legend" aria-label="Rangos de entregas">
+                <li><span data-entregas="0"></span>0</li>
+                <li><span data-entregas="1"></span>1–5</li>
+                <li><span data-entregas="2"></span>6–20</li>
+                <li><span data-entregas="3"></span>21–100</li>
+                <li><span data-entregas="4"></span>101 o más</li>
+              </ul>
+            </figcaption>
+          </figure>
           <div class="territory-controls">
-            <label for="municipio">Municipio</label>
-            <select id="municipio" disabled><option value="">Valle del Cauca</option></select>
-            <div id="territorio-datos" aria-live="polite">
-              <h3 id="territorio-nombre">Valle del Cauca</h3>
-              <dl class="metrics territory-metrics">
-                <div><dt>Filtros escolares</dt><dd id="territorio-filtros">–</dd></div>
-                <div><dt>Actividades F.13</dt><dd id="territorio-f13">–</dd></div>
-              </dl>
-            </div>
-            <a href="#historias">Ver fichas de sedes</a>
+            <h3>Entregas en el Valle del Cauca</h3>
+            <dl class="metrics territory-metrics">
+              <div><dt>Filtros escolares</dt><dd data-metric="escolares">–</dd></div>
+              <div><dt>Municipios con entregas</dt><dd id="municipios-entregas">–</dd></div>
+            </dl>
+            <table class="delivery-table">
+              <caption>Municipios con más filtros entregados</caption>
+              <thead><tr><th scope="col">Municipio</th><th scope="col">Filtros</th></tr></thead>
+              <tbody id="entregas-destacadas"></tbody>
+            </table>
+            <details class="territory-details">
+              <summary>Ver las entregas de todos los municipios</summary>
+              <table class="delivery-table">
+                <caption class="sr-only">Distribución completa de filtros escolares</caption>
+                <thead><tr><th scope="col">Municipio</th><th scope="col">Filtros</th></tr></thead>
+                <tbody id="entregas-completas"></tbody>
+              </table>
+            </details>
+            <details id="detalle-municipio" class="territory-details">
+              <summary>Consultar un municipio en detalle</summary>
+              <label class="sr-only" for="municipio">Municipio</label>
+              <select id="municipio" disabled><option value="">Valle del Cauca</option></select>
+              <div id="territorio-datos" aria-live="polite">
+                <h4 id="territorio-nombre">Valle del Cauca</h4>
+                <dl class="metrics territory-metrics">
+                  <div><dt>Filtros escolares</dt><dd id="territorio-filtros">–</dd></div>
+                  <div><dt>Actividades F.13</dt><dd id="territorio-f13">–</dd></div>
+                </dl>
+              </div>
+              <a href="#historias">Ver fichas de sedes</a>
+            </details>
           </div>
         </div>
       </div>
@@ -105,12 +136,13 @@
         <h2>Historias que transforman</h2>
         <p>Las fichas muestran la ubicación, la matrícula registrada y el nivel de riesgo del corte IRCA. Su vínculo con entregas o actividades F.13 requiere confirmación institucional.</p>
       </div>
-      <p id="fichas-aviso" role="status">Selecciona un municipio en el mapa para ver sus fichas.</p>
+      <p id="fichas-aviso" role="status">Para consultar fichas de sedes, selecciona un municipio en el mapa o en el detalle territorial.</p>
       <div id="fichas" class="schools"></div>
       <button type="button" id="mas-fichas" hidden>Ver más sedes</button>
       <section id="evidencias" aria-labelledby="registro-fotografico">
         <h3 id="registro-fotografico">Registro fotográfico</h3>
         <p id="galeria-estado">Las fotografías de las jornadas están pendientes de validación para publicación.</p>
+        <p id="galeria-interna" hidden>Vista interna. Las fotografías están pendientes de autorización para publicación.</p>
         <div class="gallery" id="galeria"></div>
       </section>
     </section>

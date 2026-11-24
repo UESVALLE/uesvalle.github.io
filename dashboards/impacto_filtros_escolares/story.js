@@ -16,12 +16,14 @@ function format(value) {
 }
 
 function municipalityKey(name) {
-  return name.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toUpperCase().replace(/[^A-Z0-9]+/g, ' ').trim();
+  const key = name.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toUpperCase().replace(/[^A-Z0-9]+/g, ' ').trim();
+  return ['CALIMA EL DARIEN', 'CALIMA DARIEN', 'EL DARIEN'].includes(key) ? 'CALIMA' : key;
 }
 
 function friendlyName(name) {
   return ({CALIMA: 'Calima – El Darién', ALCALA: 'Alcalá', BOLIVAR: 'Bolívar', GUACARI: 'Guacarí', TULUA: 'Tuluá',
-    ULLOA: 'Ulloa', VERSALLES: 'Versalles', YOTOCO: 'Yotoco'})[name] ||
+    ANDALUCIA: 'Andalucía', EL_AGUILA: 'El Águila', LA_UNION: 'La Unión', RIOFRIO: 'Riofrío',
+    ULLOA: 'Ulloa', VERSALLES: 'Versalles', YOTOCO: 'Yotoco'})[name.replaceAll(' ', '_')] ||
     name.toLowerCase().replace(/(^| )\p{L}/gu, initial => initial.toUpperCase());
 }
 
@@ -51,7 +53,7 @@ function setTerritory() {
 function showSchools() {
   const town = select.value;
   const schoolList = town ? data.sedes.filter(school => school.MUNICIPIO_NORM === town) : [];
-  $('fichas-aviso').textContent = !town ? 'Selecciona un municipio en el mapa para ver sus fichas.'
+  $('fichas-aviso').textContent = !town ? 'Para consultar fichas de sedes, selecciona un municipio en el mapa o en el detalle territorial.'
     : schoolList.length ? friendlyName(town) + ' · ' + format(schoolList.length) + ' sedes en la línea base IRCA.'
     : 'El municipio seleccionado queda fuera del conjunto de sedes de la línea base IRCA.';
   for (const school of schoolList.slice(schoolOffset, schoolOffset + 12)) {
@@ -70,6 +72,26 @@ function polygons(feature) {
   return feature.geometry.type === 'Polygon' ? [feature.geometry.coordinates] : feature.geometry.coordinates;
 }
 
+function setupDeliveryTables() {
+  const deliveries = Object.entries(data.escolaresPorMunicipio)
+    .filter(([, count]) => count > 0)
+    .sort(([townA, countA], [townB, countB]) => countB - countA
+      || friendlyName(townA).localeCompare(friendlyName(townB), 'es'));
+  $('municipios-entregas').textContent = format(deliveries.length);
+  for (const [table, rows] of [
+    [$('entregas-destacadas'), deliveries.slice(0, 5)],
+    [$('entregas-completas'), deliveries]
+  ]) {
+    for (const [town, count] of rows) {
+      const row = document.createElement('tr');
+      const label = element('th', friendlyName(town));
+      label.scope = 'row';
+      row.append(label, element('td', format(count)));
+      table.append(row);
+    }
+  }
+}
+
 function setupMap(features) {
   const all = features.flatMap(feature => polygons(feature).flat(2));
   const x = all.map(point => point[0]);
@@ -84,6 +106,8 @@ function setupMap(features) {
   for (const feature of features) {
     const key = municipalityKey(feature.properties.canonical);
     const hasData = data.municipios.includes(key);
+    const deliveries = data.escolaresPorMunicipio[key] || 0;
+    const band = [0, 5, 20, 100].filter(limit => deliveries > limit).length;
     const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
     const geometry = polygons(feature).flatMap(polygon => polygon.map(ring => ring.map(([lon, lat], index) =>
       (index ? 'L' : 'M') + (xStart + (lon - west) * scale).toFixed(1) + ' ' + (yStart + (north - lat) * scale).toFixed(1)
@@ -91,13 +115,14 @@ function setupMap(features) {
     path.setAttribute('d', geometry);
     path.setAttribute('fill-rule', 'evenodd');
     const title = document.createElementNS('http://www.w3.org/2000/svg', 'title');
-    title.textContent = friendlyName(key);
+    title.textContent = friendlyName(key) + ' · ' + format(deliveries) + ' filtros escolares';
     path.append(title);
-    path.toggleAttribute('data-active', Boolean(data.escolaresPorMunicipio[key] || data.actividadesPorMunicipio[key]));
+    path.dataset.entregas = String(band);
     if (hasData) {
       path.dataset.choice = key;
       path.addEventListener('click', () => {
         select.value = key;
+        $('detalle-municipio').open = true;
         setTerritory();
       });
     }
@@ -110,9 +135,11 @@ function dateLabel(value) {
     .format(new Date(value + 'T12:00:00Z'));
 }
 
-function showPhotos(photos) {
+function showPhotos(photos, internal = false) {
   for (const photo of photos) {
-    if (!/^assets\/[a-z0-9_-]+\.(jpg|jpeg|webp|png)$/i.test(photo.src) || !photo.alt || !photo.caption) continue;
+    const validPath = internal ? /^\/revision-interna\/fotos\/FOTO-\d{3}\.jpg$/
+      : /^assets\/[a-z0-9_-]+\.(jpg|jpeg|webp|png)$/i;
+    if (!validPath.test(photo.src) || !photo.alt || !photo.caption) continue;
     const thumb = element('button', '');
     thumb.type = 'button';
     thumb.setAttribute('aria-label', 'Ampliar foto: ' + photo.alt);
@@ -131,9 +158,13 @@ function showPhotos(photos) {
       figure.replaceChildren(large, caption);
       dialog.showModal();
     });
-    $('galeria').append(thumb);
+    const figure = document.createElement('figure');
+    figure.append(thumb, element('figcaption', photo.caption));
+    $('galeria').append(figure);
   }
-  $('galeria-estado').hidden = $('galeria').childElementCount > 0;
+  const visible = $('galeria').childElementCount > 0;
+  $('galeria-estado').hidden = visible;
+  $('galeria-interna').hidden = !internal || !visible;
 }
 
 function goToSlide(index) {
@@ -203,6 +234,7 @@ async function init() {
       element('li', 'Actividades F.13 · ' + dateLabel(data.cortes.f13Inicio) + ' a ' + dateLabel(data.cortes.f13Fin) + '.')
     );
     setTerritory();
+    setupDeliveryTables();
     $('estado').hidden = true;
   } catch {
     $('estado').textContent = 'No se pudieron cargar los indicadores. Recarga la página para reintentar.';
@@ -212,7 +244,18 @@ async function init() {
     const map = await getJSON('../respuesta_sanitaria_story/data/municipios_story.geojson');
     setupMap(map.features);
   } catch {
-    $('mapa').replaceWith(element('p', 'Mapa temporalmente no disponible. Usa la lista para consultar los municipios.'));
+    $('mapa').replaceWith(element('p', 'Mapa temporalmente no disponible. Las entregas están disponibles en las tablas.'));
+  }
+  if (['127.0.0.1', 'localhost'].includes(location.hostname)) {
+    try {
+      const photos = await getJSON('/revision-interna/fotos.json');
+      if (photos.length) {
+        showPhotos(photos, true);
+        return;
+      }
+    } catch {
+      // La galería pública también puede revisarse desde un servidor estático.
+    }
   }
   try {
     showPhotos(await getJSON('fotos_autorizadas.json'));
