@@ -6,6 +6,7 @@
   <meta name="description" content="Entregas de filtros, actividades institucionales y calidad del agua en sedes educativas del Valle del Cauca.">
   <title>Agua para aprender, salud para crecer | UESVALLE</title>
   <link rel="stylesheet" href="story.css">
+  <link rel="stylesheet" href="story-extra.css">
   <script src="story.js" defer></script>
 </head>
 <body>
@@ -30,7 +31,8 @@
       </div>
     </section>
     <nav class="chapters wrap" aria-label="Capítulos">
-      <a href="#desafio">El desafío</a>
+      <a href="#desafio">El punto de partida</a>
+      <a href="#acciones">Lo que se ha hecho</a>
       <a href="#territorio">Una respuesta en el territorio</a>
       <a href="#comunidades">Llegando a las comunidades</a>
       <a href="#aprende">El agua también se aprende</a>
@@ -40,22 +42,45 @@
     <p id="estado" class="wrap status" role="status">Cargando los datos de la historia…</p>
     <section id="desafio" class="chapter wrap">
       <div class="section-heading">
-        <h2>El desafío</h2>
-        <p>La línea base identifica las sedes y los estudiantes asociados a los niveles alto o inviable sanitariamente.</p>
+        <h2>El punto de partida</h2>
+        <p>La línea base clasifica el riesgo sanitario del agua en las sedes educativas. La gran mayoría de los estudiantes asiste a sedes sin riesgo; la atención se concentra en una parte menor.</p>
       </div>
+      <div class="hero-stat">
+        <strong id="pct-sin-riesgo">–</strong>
+        <span>de los estudiantes asiste a sedes <b>sin riesgo</b> (<span id="est-sin-riesgo">–</span> de <span id="est-total">–</span> estudiantes registrados)</span>
+      </div>
+      <div class="risk-bar" id="barra-riesgo" role="img" aria-label="Distribución de estudiantes por nivel de riesgo IRCA"></div>
+      <ul class="risk-legend" id="leyenda-riesgo"></ul>
       <dl class="metrics">
         <div><dt>Sedes en la línea base</dt><dd data-metric="sedes">–</dd></div>
-        <div><dt>Estudiantes registrados</dt><dd data-metric="estudiantes">–</dd></div>
+        <div><dt>Sedes sin riesgo</dt><dd id="sedes-sin-riesgo">–</dd></div>
+        <div><dt>Estudiantes en riesgo alto o inviable</dt><dd id="pct-alto">–</dd></div>
         <div><dt>Sedes en riesgo alto o inviable</dt><dd data-metric="altoInviable">–</dd></div>
-        <div><dt>Estudiantes en esos niveles de riesgo</dt><dd data-metric="estudiantesAltoInviable">–</dd></div>
       </dl>
+      <p class="note">Los porcentajes se calculan sobre la matrícula registrada en la línea base, no sobre toda la matrícula del departamento. Las sedes sin dato de riesgo se muestran aparte.</p>
       <a href="../sedes_educativas/sedes_educativas.html">Consultar el tablero de sedes educativas</a>
+    </section>
+    <section id="acciones" class="chapter wrap">
+      <div class="section-heading">
+        <h2>Lo que se ha hecho</h2>
+        <p>UESVALLE actúa en las instituciones educativas con filtros, educación sanitaria, seguimiento y actividades institucionales. Cada cifra se cuenta en su propia unidad y no se suman entre sí.</p>
+      </div>
+      <dl class="metrics">
+        <div><dt>Filtros entregados a instituciones educativas</dt><dd data-metric="escolares">–</dd></div>
+        <div><dt>Actividades institucionales</dt><dd data-metric="f13">–</dd></div>
+        <div><dt>Encuestas de seguimiento a filtros</dt><dd data-metric="encuestas">–</dd></div>
+        <div><dt>Municipios con filtros escolares</dt><dd id="municipios-entregas-acciones">–</dd></div>
+      </dl>
     </section>
     <section id="territorio" class="chapter map-section">
       <div class="wrap">
         <div class="section-heading">
           <h2>Una respuesta en el territorio</h2>
-          <p>El mapa muestra cuántos filtros se entregaron a establecimientos educativos de cada municipio entre 2024 y 2026.</p>
+          <p>Elige qué ver en el mapa: los filtros entregados a establecimientos educativos entre 2024 y 2026, o el porcentaje de estudiantes en sedes sin riesgo de cada municipio.</p>
+          <div class="map-toggle" role="group" aria-label="Vista del mapa">
+            <button type="button" id="vista-entregas" aria-pressed="true">Filtros entregados</button>
+            <button type="button" id="vista-sinriesgo" aria-pressed="false">Estudiantes sin riesgo</button>
+          </div>
         </div>
         <div class="territory-layout">
           <figure class="map-frame">
@@ -64,13 +89,20 @@
               <desc id="mapa-descripcion">Los colores más oscuros indican más filtros entregados. La tabla junto al mapa contiene las cantidades por municipio.</desc>
             </svg>
             <figcaption>
-              <strong>Filtros escolares entregados</strong>
-              <ul class="map-legend" aria-label="Rangos de entregas">
+              <strong id="leyenda-titulo">Filtros escolares entregados</strong>
+              <ul class="map-legend" id="leyenda-entregas" aria-label="Rangos de entregas">
                 <li><span data-entregas="0"></span>0</li>
                 <li><span data-entregas="1"></span>1–5</li>
                 <li><span data-entregas="2"></span>6–20</li>
                 <li><span data-entregas="3"></span>21–100</li>
                 <li><span data-entregas="4"></span>101 o más</li>
+              </ul>
+              <ul class="map-legend" id="leyenda-sinriesgo" aria-label="Rangos de estudiantes sin riesgo" hidden>
+                <li><span data-sr="0"></span>Menos de 80 %</li>
+                <li><span data-sr="1"></span>80–89 %</li>
+                <li><span data-sr="2"></span>90–94 %</li>
+                <li><span data-sr="3"></span>95 % o más</li>
+                <li><span data-sr="na"></span>Fuera de la línea base</li>
               </ul>
             </figcaption>
           </figure>
@@ -102,6 +134,7 @@
                 <dl class="metrics territory-metrics">
                   <div><dt>Filtros escolares</dt><dd id="territorio-filtros">–</dd></div>
                   <div><dt>Actividades F.13</dt><dd id="territorio-f13">–</dd></div>
+                  <div><dt>Estudiantes sin riesgo</dt><dd id="territorio-sinriesgo">–</dd></div>
                 </dl>
               </div>
               <a href="#historias">Ver fichas de sedes</a>
@@ -155,10 +188,16 @@
         <p></p>
       </div>
       <dl class="metrics">
-        <div><dt>Actividades institucionales</dt><dd data-metric="f13">–</dd></div>
-        <div><dt>Encuestas de seguimiento a filtros</dt><dd data-metric="encuestas">–</dd></div>
         <div><dt>Sedes georreferenciadas</dt><dd data-metric="georreferenciadas">–</dd></div>
       </dl>
+      <div class="closing">
+        <h3>Lo que podemos afirmar hoy</h3>
+        <ul>
+          <li>La mayoría de los estudiantes registrados asiste a sedes sin riesgo según la línea base del 4 de junio de 2026.</li>
+          <li>Hay acciones en curso en las instituciones educativas: entrega de filtros, educación sanitaria, encuestas de seguimiento y actividades F.13.</li>
+          <li>Aún no hay evidencia para atribuir cambios del IRCA a la entrega de filtros; medirlo requiere nuevos muestreos.</li>
+        </ul>
+      </div>
       <details>
         <summary>Fuentes y fechas de corte</summary>
         <ul id="fuentes"><li>IRCA escolar. Corte del 4 de junio de 2026.</li></ul>

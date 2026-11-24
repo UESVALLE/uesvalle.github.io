@@ -1,0 +1,30 @@
+/* Estilos añadidos a la historia: punto de partida, acciones, vista de estudiantes sin riesgo y cierre.
+   Se carga después de story.css y no modifica sus reglas. */
+.hero-stat{display:flex;align-items:center;gap:1.25rem;margin:1.25rem 0 .75rem;padding:1.25rem 1.5rem;background:#eaf6f0;border:2px solid #2e9e6b;border-radius:14px}
+.hero-stat>strong{font-size:clamp(3rem,9vw,5rem);line-height:1;color:#1f7a50;font-weight:800;white-space:nowrap}
+.hero-stat>span{font-size:1.1rem;line-height:1.4;color:#1b2a3a}
+.hero-stat b{color:#1f7a50}
+.risk-bar{display:flex;height:28px;border-radius:8px;overflow:hidden;background:#e8edf3;margin:.5rem 0 1rem}
+.risk-bar i{display:block;height:100%}
+.risk-legend{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:.75rem;list-style:none;padding:0;margin:0 0 1.25rem}
+.risk-legend li{position:relative;padding-left:1rem;font-size:.9rem;line-height:1.3;color:#4a5a6e}
+.risk-legend li>span{position:absolute;left:0;top:.35rem;width:.7rem;height:.7rem;border-radius:2px}
+.risk-legend strong{display:block;font-size:1.35rem;color:#12365a}
+.risk-legend li.main strong{font-size:1.9rem;color:#1f7a50}
+.risk-legend em{display:block;font-style:normal}
+.risk-legend small{display:block;font-size:.78rem;color:#6b7a8c}
+.note{font-size:.9rem;color:#5b6b7c}
+.map-toggle{display:inline-flex;gap:.25rem;margin-top:.75rem;padding:.25rem;border:1px solid #d9e2ec;border-radius:999px;background:#fff}
+.map-toggle button{border:0;background:transparent;padding:.45rem 1rem;border-radius:999px;font:inherit;font-weight:600;color:#12365a;cursor:pointer}
+.map-toggle button[aria-pressed="true"]{background:#12365a;color:#fff}
+.map-toggle button:focus-visible{outline:3px solid #ee9400;outline-offset:2px}
+.map-legend span[data-sr="0"]{background:#f0b429}.map-legend span[data-sr="1"]{background:#a8d8bf}.map-legend span[data-sr="2"]{background:#5fb98d}.map-legend span[data-sr="3"]{background:#1f7a50}.map-legend span[data-sr="na"]{background:#e6ebf1}
+#mapa[data-vista="riesgo"] path{fill:#e6ebf1}
+#mapa[data-vista="riesgo"] path[data-sr="0"]{fill:#f0b429}
+#mapa[data-vista="riesgo"] path[data-sr="1"]{fill:#a8d8bf}
+#mapa[data-vista="riesgo"] path[data-sr="2"]{fill:#5fb98d}
+#mapa[data-vista="riesgo"] path[data-sr="3"]{fill:#1f7a50}
+.closing{margin:1.5rem 0;padding:1.25rem 1.5rem;background:#f4f8fc;border-left:4px solid #1f6fb5;border-radius:8px}
+.closing h3{margin:0 0 .5rem}
+.closing li{margin:.35rem 0}
+@media (max-width:720px){.hero-stat{flex-direction:column;align-items:flex-start}.risk-legend{grid-template-columns:repeat(2,minmax(0,1fr))}}

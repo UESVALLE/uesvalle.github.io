@@ -15,6 +15,75 @@ function format(value) {
   return display.format(Number(value) || 0);
 }
 
+function pct(ratio) {
+  return (ratio * 100).toFixed(1).replace('.', ',') + ' %';
+}
+
+const LEVELS = [
+  ['SIN RIESGO', 'Sin riesgo', '#2E9E6B'], ['BAJO', 'Bajo', '#9ED3B4'], ['MEDIO', 'Medio', '#F0B429'],
+  ['ALTO', 'Alto', '#E8710A'], ['INVIABLE SANITARIAMENTE', 'Inviable sanitariamente', '#8F2D0A'], ['SIN DATO', 'Sin dato', '#B9C2CE']
+];
+
+function riskSummary(schools) {
+  const levels = Object.fromEntries(LEVELS.map(([key]) => [key, {students: 0, schools: 0}]));
+  const towns = {};
+  let total = 0;
+  for (const school of schools) {
+    const students = Number(school.ESTUDIANTES_ACTUAL) || 0;
+    const level = levels[school.NIVEL_RIESGO_IRCA] || levels['SIN DATO'];
+    level.students += students;
+    level.schools += 1;
+    total += students;
+    const town = towns[school.MUNICIPIO_NORM] ||= {none: 0, all: 0};
+    town.all += students;
+    if (school.NIVEL_RIESGO_IRCA === 'SIN RIESGO') town.none += students;
+  }
+  const porMunicipio = {};
+  for (const [town, value] of Object.entries(towns)) if (value.all > 0) porMunicipio[town] = value.none / value.all;
+  return {levels, total, porMunicipio, totalRatio: total ? levels['SIN RIESGO'].students / total : 0};
+}
+
+function showRisk() {
+  const summary = data.sinRiesgo;
+  $('pct-sin-riesgo').textContent = pct(summary.totalRatio);
+  $('est-sin-riesgo').textContent = format(summary.levels['SIN RIESGO'].students);
+  $('est-total').textContent = format(summary.total);
+  $('sedes-sin-riesgo').textContent = format(summary.levels['SIN RIESGO'].schools);
+  const high = summary.levels['ALTO'].students + summary.levels['INVIABLE SANITARIAMENTE'].students;
+  $('pct-alto').textContent = pct(summary.total ? high / summary.total : 0);
+  const bar = $('barra-riesgo');
+  const legend = $('leyenda-riesgo');
+  for (const [key, label, color] of LEVELS) {
+    const level = summary.levels[key];
+    const share = summary.total ? level.students / summary.total : 0;
+    const segment = document.createElement('i');
+    segment.style.cssText = 'width:' + (share * 100).toFixed(2) + '%;background:' + color;
+    segment.title = label + ' · ' + pct(share);
+    bar.append(segment);
+    const item = document.createElement('li');
+    const swatch = document.createElement('span');
+    swatch.style.background = color;
+    const strong = element('strong', pct(share));
+    item.append(swatch, strong, element('em', label), element('small', format(level.students) + ' estudiantes · ' + format(level.schools) + ' sedes'));
+    if (key === 'SIN RIESGO') item.className = 'main';
+    legend.append(item);
+  }
+}
+
+function setMapView(view) {
+  const byRisk = view === 'sinriesgo';
+  $('mapa').dataset.vista = byRisk ? 'riesgo' : 'entregas';
+  $('vista-entregas').setAttribute('aria-pressed', String(!byRisk));
+  $('vista-sinriesgo').setAttribute('aria-pressed', String(byRisk));
+  $('leyenda-entregas').hidden = byRisk;
+  $('leyenda-sinriesgo').hidden = !byRisk;
+  $('leyenda-titulo').textContent = byRisk ? 'Estudiantes en sedes sin riesgo' : 'Filtros escolares entregados';
+  document.querySelectorAll('#mapa path').forEach(path => {
+    const title = path.querySelector('title');
+    if (title) title.textContent = byRisk ? path.dataset.tituloRiesgo : path.dataset.tituloEntregas;
+  });
+}
+
 function municipalityKey(name) {
   const key = name.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toUpperCase().replace(/[^A-Z0-9]+/g, ' ').trim();
   return ['CALIMA EL DARIEN', 'CALIMA DARIEN', 'EL DARIEN'].includes(key) ? 'CALIMA' : key;
@@ -44,6 +113,7 @@ function setTerritory() {
   $('territorio-nombre').textContent = town ? friendlyName(town) : 'Valle del Cauca';
   $('territorio-filtros').textContent = format(town ? data.escolaresPorMunicipio[town] : data.totales.escolares);
   $('territorio-f13').textContent = format(town ? data.actividadesPorMunicipio[town] : data.totales.f13);
+  $('territorio-sinriesgo').textContent = town ? (data.sinRiesgo.porMunicipio[town] === undefined ? 'Fuera de la línea base' : pct(data.sinRiesgo.porMunicipio[town])) : pct(data.sinRiesgo.totalRatio);
   document.querySelectorAll('#mapa [data-choice]').forEach(path => path.toggleAttribute('data-selected', path.dataset.choice === town));
   $('fichas').replaceChildren();
   schoolOffset = 0;
@@ -78,6 +148,7 @@ function setupDeliveryTables() {
     .sort(([townA, countA], [townB, countB]) => countB - countA
       || friendlyName(townA).localeCompare(friendlyName(townB), 'es'));
   $('municipios-entregas').textContent = format(deliveries.length);
+  $('municipios-entregas-acciones').textContent = format(deliveries.length);
   for (const [table, rows] of [
     [$('entregas-destacadas'), deliveries.slice(0, 5)],
     [$('entregas-completas'), deliveries]
@@ -118,6 +189,10 @@ function setupMap(features) {
     title.textContent = friendlyName(key) + ' · ' + format(deliveries) + ' filtros escolares';
     path.append(title);
     path.dataset.entregas = String(band);
+    const ratio = data.sinRiesgo.porMunicipio[key];
+    path.dataset.sr = ratio === undefined ? 'na' : String([0.8, 0.9, 0.95].filter(limit => ratio >= limit).length);
+    path.dataset.tituloEntregas = title.textContent;
+    path.dataset.tituloRiesgo = friendlyName(key) + ' · ' + (ratio === undefined ? 'fuera de la línea base' : pct(ratio) + ' de estudiantes sin riesgo');
     if (hasData) {
       path.dataset.choice = key;
       path.addEventListener('click', () => {
@@ -231,6 +306,8 @@ document.addEventListener('keydown', event => {
 });
 
 select.addEventListener('change', setTerritory);
+$('vista-entregas').addEventListener('click', () => setMapView('entregas'));
+$('vista-sinriesgo').addEventListener('click', () => setMapView('sinriesgo'));
 $('mas-fichas').addEventListener('click', showSchools);
 async function init() {
   try {
@@ -238,6 +315,8 @@ async function init() {
     document.querySelectorAll('[data-metric]').forEach(node => {
       node.textContent = format(data.totales[node.dataset.metric]);
     });
+    data.sinRiesgo = riskSummary(data.sedes);
+    showRisk();
     $('fuera-buenaventura').textContent = format(data.totales.escolares - data.totales.escolaresBuenaventura);
     for (const town of [...data.municipios].sort((a, b) => friendlyName(a).localeCompare(friendlyName(b), 'es'))) {
       select.add(new Option(friendlyName(town), town));
