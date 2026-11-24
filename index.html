@@ -1,9 +1,44 @@
 <!doctype html>
-<html lang="es"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="robots" content="noindex,nofollow"><title>Revisión UESVALLE</title>
-<style>body{max-width:48rem;margin:5rem auto;padding:0 1.25rem;background:#f7f8f6;color:#15324a;font:1.125rem/1.55 system-ui}a{color:#0d6f8f}li{margin:.75rem 0}</style>
-<main><h1>Revisión UESVALLE</h1><ul>
-<li><a href="dashboards/impacto_filtros_escolares/">Agua para aprender, salud para crecer</a></li>
-<li><a href="dashboards/filtros/filtros.html">Encuestas de saneamiento con filtros de agua</a></li>
-<li><a href="dashboards/sedes_educativas/sedes_educativas.html">Calidad del agua en sedes educativas</a></li>
-</ul></main></html>
+<html lang="es">
+<head>
+  <meta name="robots" content="noindex, nofollow">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta name="portal-version" content="2.5">
+  <title>Portal de tableros · Vista de revisión UESVALLE</title>
+  <meta name="description" content="Portal de tableros de la Unidad Ejecutora de Saneamiento del Valle del Cauca, organizado por procesos misionales y eventos.">
+  <link rel="stylesheet" href="assets/portal/portal.css?v=2.5">
+</head>
+<body class="layout-b">
+<header class="topbar">
+  <img class="logos" src="assets/portal/logos_institucionales.png" alt="Gobernación del Valle del Cauca y Unidad Ejecutora de Saneamiento del Valle del Cauca">
+  <a class="site-link" href="https://www.uesvalle.gov.co/" rel="noopener">uesvalle.gov.co</a>
+</header>
+
+<section class="hero stage-wrap">
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="stage">
+    <div class="brand">
+      <span class="eyebrow">Unidad Ejecutora de Saneamiento del Valle del Cauca</span>
+      <h1>Portal de tableros</h1>
+      <p class="eyebrow">Vista de revisión</p>
+      <p class="lede">Tableros de seguimiento, vigilancia y control sanitario, según el mapa de procesos y eventos atendidos.</p>
+    </div>
+    <div class="stats" id="stats"></div>
+    <div class="rueda" id="rueda"></div>
+    <div class="side">
+      <label class="search dark" role="search">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg>
+        <input type="search" id="q" placeholder="Buscar tablero, por ejemplo IRCA o piscinas" aria-label="Buscar tablero" autocomplete="off">
+      </label>
+      <aside class="rueda-panel" id="rueda-panel" aria-live="polite"></aside>
+    </div>
+    <p class="meta"><span class="meta-lock"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10.5" width="14" height="9.5" rx="2"/><path d="M8.5 10.5V7.5a3.5 3.5 0 0 1 7 0v3"/></svg> Requiere clave de acceso</span><span id="footMeta"></span></p>
+  </div>
+</section>
+
+<script src="assets/portal/rueda.js?v=2.5"></script>
+<script src="assets/portal/portal.js?v=2.5"></script>
+</body>
+</html>
