@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Entregas de filtros, actividades institucionales y calidad del agua en sedes educativas del Valle del Cauca.">
+  <title>Agua para aprender, salud para crecer | UESVALLE</title>
+  <link rel="stylesheet" href="story.css">
+  <script src="story.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#contenido">Saltar al contenido</a>
+  <header class="site-header">
+    <a class="brand" href="../../index.html" aria-label="Portal de UESVALLE">
+      <img src="../respuesta_sanitaria_story/assets/logo_institucional.png" alt="UESVALLE" width="170" height="48">
+    </a>
+    <nav aria-label="Navegación de la historia">
+      <a href="#territorio">Mapa</a>
+      <a href="#historias">Sedes</a>
+      <button type="button" id="presentar">Presentar</button>
+    </nav>
+  </header>
+  <main id="contenido">
+    <section class="hero" aria-labelledby="titulo">
+      <div class="wrap hero-content">
+        <h1 id="titulo">Agua para aprender,<br><strong>salud para crecer</strong></h1>
+        <p>Entregas de filtros, intervenciones sanitarias y calidad del agua en las sedes educativas del Valle del Cauca.</p>
+        <a class="hero-link" href="#desafio">Comenzar la historia <span aria-hidden="true">↓</span></a>
+      </div>
+    </section>
+    <nav class="chapters wrap" aria-label="Capítulos">
+      <a href="#desafio">El desafío</a>
+      <a href="#territorio">Una respuesta en el territorio</a>
+      <a href="#comunidades">Llegando a las comunidades</a>
+      <a href="#aprende">El agua también se aprende</a>
+      <a href="#historias">Historias que transforman</a>
+      <a href="#seguimiento">Seguimiento y sostenibilidad</a>
+    </nav>
+    <p id="estado" class="wrap status" role="status">Cargando los datos de la historia…</p>
+    <section id="desafio" class="chapter wrap">
+      <div class="section-heading">
+        <h2>El desafío</h2>
+        <p>La línea base del 4 de junio de 2026 identifica las sedes y los estudiantes asociados a los niveles alto o inviable sanitariamente.</p>
+      </div>
+      <dl class="metrics">
+        <div><dt>Sedes en la línea base</dt><dd data-metric="sedes">–</dd></div>
+        <div><dt>Estudiantes registrados</dt><dd data-metric="estudiantes">–</dd></div>
+        <div><dt>Sedes en riesgo alto o inviable</dt><dd data-metric="altoInviable">–</dd></div>
+        <div><dt>Estudiantes en esos niveles de riesgo</dt><dd data-metric="estudiantesAltoInviable">–</dd></div>
+      </dl>
+      <a href="../sedes_educativas/sedes_educativas.html">Consultar el tablero de sedes educativas</a>
+    </section>
+    <section id="territorio" class="chapter map-section">
+      <div class="wrap">
+        <div class="section-heading">
+          <h2>Una respuesta en el territorio</h2>
+          <p>Selecciona un municipio para ver las entregas escolares, las actividades F.13 y las fichas de la línea base IRCA.</p>
+        </div>
+        <div class="territory-layout">
+          <div class="map-frame">
+            <svg id="mapa" viewBox="0 0 570 610" role="img" aria-labelledby="mapa-titulo">
+              <title id="mapa-titulo">Mapa interactivo de municipios del Valle del Cauca</title>
+            </svg>
+            <div class="map-legend"><span></span> Municipios con entregas escolares o actividades F.13</div>
+          </div>
+          <div class="territory-controls">
+            <label for="municipio">Municipio</label>
+            <select id="municipio" disabled><option value="">Valle del Cauca</option></select>
+            <div id="territorio-datos" aria-live="polite">
+              <h3 id="territorio-nombre">Valle del Cauca</h3>
+              <dl class="metrics territory-metrics">
+                <div><dt>Filtros escolares</dt><dd id="territorio-filtros">–</dd></div>
+                <div><dt>Actividades F.13</dt><dd id="territorio-f13">–</dd></div>
+              </dl>
+            </div>
+            <a href="#historias">Ver fichas de sedes</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="comunidades" class="chapter wrap">
+      <div class="section-heading">
+        <h2>Llegando a las comunidades</h2>
+        <p>Entre 2024 y 2026 se registraron entregas para viviendas y establecimientos educativos. Buenaventura se presenta por separado de acuerdo con el alcance territorial de las fuentes.</p>
+      </div>
+      <dl class="metrics">
+        <div><dt>Filtros para viviendas</dt><dd data-metric="viviendas">–</dd></div>
+        <div><dt>Filtros escolares</dt><dd data-metric="escolares">–</dd></div>
+        <div><dt>Filtros escolares en Buenaventura</dt><dd data-metric="escolaresBuenaventura">–</dd></div>
+        <div><dt>Filtros escolares fuera de Buenaventura</dt><dd id="fuera-buenaventura">–</dd></div>
+      </dl>
+      <a href="../filtros/filtros.html">Consultar el tablero de filtros y saneamiento</a>
+    </section>
+    <section id="aprende" class="chapter education">
+      <div class="wrap split">
+        <h2>El agua también<br>se aprende</h2>
+        <div>
+          <p>La educación sanitaria acompaña la instalación y el mantenimiento de los filtros. El seguimiento recoge observaciones sobre el tanque y la vasija, así como respuestas de los hogares sobre el uso del agua.</p>
+          <p>Las encuestas corresponden a registros de seguimiento. La cobertura de beneficiarios únicos queda pendiente de validar.</p>
+        </div>
+      </div>
+    </section>
+    <section id="historias" class="chapter wrap">
+      <div class="section-heading">
+        <h2>Historias que transforman</h2>
+        <p>Las fichas muestran la ubicación, la matrícula registrada y el nivel de riesgo del corte IRCA. Su vínculo con entregas o actividades F.13 requiere confirmación institucional.</p>
+      </div>
+      <p id="fichas-aviso" role="status">Selecciona un municipio en el mapa para ver sus fichas.</p>
+      <div id="fichas" class="schools"></div>
+      <button type="button" id="mas-fichas" hidden>Ver más sedes</button>
+      <section id="evidencias" aria-labelledby="registro-fotografico">
+        <h3 id="registro-fotografico">Registro fotográfico</h3>
+        <p id="galeria-estado">Las fotografías de las jornadas están pendientes de validación para publicación.</p>
+        <div class="gallery" id="galeria"></div>
+      </section>
+    </section>
+    <section id="seguimiento" class="chapter wrap">
+      <div class="section-heading">
+        <h2>Seguimiento y sostenibilidad</h2>
+        <p>El formulario F.13 registra actividades institucionales de varios años. Las entregas, las encuestas y las actividades institucionales se contabilizan en sus propias unidades.</p>
+      </div>
+      <dl class="metrics">
+        <div><dt>Actividades institucionales F.13</dt><dd data-metric="f13">–</dd></div>
+        <div><dt>Encuestas de seguimiento a filtros</dt><dd data-metric="encuestas">–</dd></div>
+        <div><dt>Sedes georreferenciadas</dt><dd data-metric="georreferenciadas">–</dd></div>
+      </dl>
+      <details>
+        <summary>Fuentes y fechas de corte</summary>
+        <ul id="fuentes"><li>IRCA escolar. Corte del 4 de junio de 2026.</li></ul>
+        <p>Los indicadores documentan condiciones observadas y actividades registradas. La evaluación del efecto de los filtros sobre el IRCA requiere evidencia adicional.</p>
+      </details>
+    </section>
+  </main>
+  <footer><div class="wrap"><a href="../../index.html">Portal UESVALLE</a><a href="#contenido">Volver al inicio</a></div></footer>
+  <aside class="presentation-controls" id="controles-presentacion" aria-label="Controles de presentación" hidden>
+    <button type="button" id="anterior">Anterior</button>
+    <span id="paso" aria-live="polite"></span>
+    <button type="button" id="siguiente">Siguiente</button>
+    <button type="button" id="salir">Salir</button>
+  </aside>
+  <dialog id="visor-foto">
+    <form method="dialog"><button type="submit">Cerrar foto</button></form>
+    <figure><figcaption></figcaption></figure>
+  </dialog>
+</body>
+</html>

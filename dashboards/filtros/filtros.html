@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="es">
 <head>
   <meta charset="utf-8"/>
@@ -884,7 +884,7 @@ BLOQUE DE ACCESO UESVALLE - FIN
             <select id="fmes" class="form-select form-select-sm"><option value="">Todos</option></select>
           </div>
           <div class="col-12 col-sm-6 col-md-3">
-            <label class="form-label filter-label mb-1">Encuestador</label>
+            <label class="form-label filter-label mb-1">Equipo de seguimiento</label>
             <select id="fencuestador" class="form-select form-select-sm"><option value="">Todos</option></select>
           </div>
           <div class="col-12 col-sm-6 col-md-3">
@@ -892,12 +892,12 @@ BLOQUE DE ACCESO UESVALLE - FIN
             <select id="fmpio" class="form-select form-select-sm"><option value="">Todos</option></select>
           </div>
           <div class="col-12 col-md-2">
-            <label for="fdesde" class="form-label filter-label mb-1">Desde</label>
-            <input type="date" id="fdesde" class="form-control form-control-sm">
+            <label for="fdesde" class="form-label filter-label mb-1">Mes inicial</label>
+            <input type="month" id="fdesde" class="form-control form-control-sm">
           </div>
           <div class="col-12 col-md-2">
-            <label for="fhasta" class="form-label filter-label mb-1">Hasta</label>
-            <input type="date" id="fhasta" class="form-control form-control-sm">
+            <label for="fhasta" class="form-label filter-label mb-1">Mes final</label>
+            <input type="month" id="fhasta" class="form-control form-control-sm">
           </div>
           <div class="col-12 col-md-10 d-flex gap-2 justify-content-center justify-content-md-end pt-2 flex-wrap">
             <button id="btnFiltrar" class="btn btn-primary btn-sm px-4">Aplicar filtros</button>
@@ -915,6 +915,7 @@ BLOQUE DE ACCESO UESVALLE - FIN
           <div>
             <h5>Indicadores de seguimiento</h5>
             <div class="small text-muted">Resumen general del seguimiento de filtros y su estado físico. No incluye Buenaventura, que se presenta en análisis separado.</div>
+            <p class="small text-muted mb-0">El porcentaje relaciona encuestas registradas con filtros entregados. Una misma vivienda puede tener varias visitas.</p>
           </div>
         </div>
         <div class="section-body">
@@ -1001,6 +1002,8 @@ BLOQUE DE ACCESO UESVALLE - FIN
         </div>
       </section>
 
+
+      <p class="mb-4"><a href="../impacto_filtros_escolares/">Agua para aprender, salud para crecer</a></p>
 
       <section class="section-block section-block--green mb-4" id="seccionFiltrosEntregados">
         <button class="entregados-section-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#filtrosEntregadosCollapse" aria-expanded="false" aria-controls="filtrosEntregadosCollapse">
@@ -1093,7 +1096,7 @@ BLOQUE DE ACCESO UESVALLE - FIN
           <div class="map-section-toolbar">
             <div class="map-section-toolbar__copy">Activa capas territoriales, revisa puntos de seguimiento y descarga el GeoJSON filtrado cuando sea necesario.</div>
             <div class="map-section-toolbar__actions">
-              <span class="badge text-bg-primary badge-map" id="mapCount">0 puntos</span>
+              <span class="badge text-bg-primary badge-map" id="mapCount">0 municipios</span>
               <div class="btn-group">
                 <button id="btnFit" class="btn btn-sm btn-outline-primary">Ajustar vista</button>
                 <button id="btnGeoJSON" class="btn btn-sm btn-success">Descargar GeoJSON (filtrado)</button>
@@ -1122,7 +1125,7 @@ BLOQUE DE ACCESO UESVALLE - FIN
             </details>
             <details open>
               <summary>Capas de datos</summary>
-              <label><input type="checkbox" data-layer="viviendas" checked> Seguimientos realizados (puntos)</label>
+              <label><input type="checkbox" data-layer="viviendas" checked> Seguimientos por municipio</label>
                           </details>
             <details open>
               <summary>Territorial</summary>
@@ -1307,7 +1310,7 @@ BLOQUE DE ACCESO UESVALLE - FIN
             <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
               <h6 class="mb-0 me-auto">Detalle</h6>
               <select id="tblFiltroMunicipio" class="form-select form-select-sm" style="min-width:200px"><option value="">Tabla: todos los municipios</option></select>
-              <select id="tblFiltroEncuestador" class="form-select form-select-sm" style="min-width:220px"><option value="">Tabla: todos los encuestadores</option></select>
+              <select id="tblFiltroEncuestador" class="form-select form-select-sm" style="min-width:220px"><option value="">Tabla: todos los equipos</option></select>
             </div>
             <div class="table-responsive">
               <table id="tbl" class="table table-striped table-hover w-100"></table>
@@ -1319,7 +1322,7 @@ BLOQUE DE ACCESO UESVALLE - FIN
               <h6 class="mb-0 me-auto">Filtros entregados</h6>
               <select id="tblEntregadosMunicipio" class="form-select form-select-sm" style="min-width:200px"><option value="">Entregados: todos los municipios</option></select>
             </div>
-            <div class="section-note mb-2">Tabla de referencia de filtros entregados con variables completas de entrega. Responde al filtro de año y municipio del tablero.</div>
+            <div class="section-note mb-2">Consulta de entregas por año y municipio.</div>
             <div class="table-responsive">
               <table id="tblEntregados" class="table table-striped table-hover w-100"></table>
             </div>
@@ -1366,8 +1369,6 @@ BLOQUE DE ACCESO UESVALLE - FIN
       fecha:"FECHA",
       encuestador:"ENCUESTADOR",
       municipio:"MUNICIPIO",
-      vereda:"VEREDA_O_CORREGIMIENTO",
-      nombre:"NOMBRE_ENCUESTADO",
       latitud:"LATITUD",
       longitud:"LONGITUD",
       fuente:"FUENTE_DONDE_TOMA_EL_AGUA",
@@ -1379,6 +1380,18 @@ BLOQUE DE ACCESO UESVALLE - FIN
       colorAgua:"EL_AGUA_PRESENTA_COLOR",
       olorAgua:"EL_AGUA_PRESENTA_OLOR",
       gastosAgua:"HAN_DISMINUIDO_LOS_GASTOS_FAMILIARES_PARA_ACCEDERA_AGUA_APTA_ARA_EL_CONSUMO"
+    };
+
+    const TABLE_LANGUAGE = {
+      emptyTable: 'No hay datos disponibles',
+      zeroRecords: 'No se encontraron resultados',
+      info: 'Mostrando _START_ a _END_ de _TOTAL_ registros',
+      infoEmpty: 'Mostrando 0 a 0 de 0 registros',
+      infoFiltered: '(filtrado de _MAX_ registros)',
+      lengthMenu: 'Mostrar _MENU_ registros',
+      search: 'Buscar:',
+      processing: 'Procesando…',
+      paginate: {first:'Primera', previous:'Anterior', next:'Siguiente', last:'Última'}
     };
 
     let RAW = [], LIST = [], ENTREGADOS_RAW = [], RESUMEN_MPIO = [];
@@ -1502,66 +1515,10 @@ BLOQUE DE ACCESO UESVALLE - FIN
       </div>`;
     }
 
-    function buildSemaforizadoPopup(d){
-      const enfRaw = normalizeAnswer(d.raw?.[COL.salud] || '');
-      const enf = enfRaw || (d.SALUD === 'SI' ? 'Sí' : (d.SALUD === 'NO' ? 'No' : 'Sin dato'));
-      const nombre = d.NOMBRE_ENCUESTADO || '(sin nombre)';
-      const mpio = d.MUNICIPIO || '-';
-      const vereda = d.VEREDA_CORREGIMIENTO || normalizeAnswer(d.raw?.[COL.vereda] || '') || '-';
-      const fuente = d.FUENTE || '-';
-
-      const resumenFav = [
-        chipPalette('enfermedades', enf).chipBg !== '#ef4444',
-        d.GASTOS_AGUA === 'Sí' || d.GASTOS_AGUA === 'SI',
-        d.SABOR_AGUA === 'Bueno',
-        d.COLOR_AGUA === 'No' || d.COLOR_AGUA === 'NO',
-        d.OLOR_AGUA === 'No' || d.OLOR_AGUA === 'NO',
-        d.TANQUE_SED === 'NO' && d.VASIJA_SED === 'NO'
-      ].filter(Boolean).length;
-
-      const clasif = resumenFav >= 5 ? 'Favorable' : (resumenFav >= 3 ? 'Neutral' : 'Alerta');
-      const clasBg = clasif === 'Favorable' ? '#16a34a' : (clasif === 'Neutral' ? '#f59e0b' : '#ef4444');
-      const clasIcon = clasif === 'Favorable' ? '✅' : (clasif === 'Neutral' ? '⚠️' : '🚨');
-      const sedimentosVal = (d.TANQUE_SED === 'SI' || d.VASIJA_SED === 'SI') ? 'SI' : ((d.TANQUE_SED === 'NO' && d.VASIJA_SED === 'NO') ? 'NO' : 'Sin dato');
-
-      return `<div class="popup-sema">
-        <div class="ps-head">
-          <div class="ps-icon">💧</div>
-          <div class="ps-title">Seguimiento de filtro</div>
-        </div>
-        <div class="ps-body">
-          <div class="ps-block">
-            <div class="ps-block-title"><span class="ps-block-ico">🪪</span> Datos básicos</div>
-            <div class="ps-grid-basic">
-              <div class="ps-kv"><small>Municipio</small><div>${mpio}</div></div>
-              <div class="ps-kv"><small>Vereda o corregimiento</small><div>${vereda}</div></div>
-              <div class="ps-kv ps-kv-span"><small>Nombre</small><div>${nombre}</div></div>
-            </div>
-          </div>
-
-          <div class="ps-block">
-            <div class="ps-block-title"><span class="ps-block-ico">💙</span> Impacto percibido</div>
-            <div class="ps-rows">
-              ${popupRow('Fuente de agua', fuente, 'sabor', '🚰')}
-              ${popupRow('Enfermedades asociadas al agua', enf, 'enfermedades', '✳️')}
-              ${popupRow('Gastos familiares', d.GASTOS_AGUA || 'Sin dato', 'gastos', '💲')}
-              ${popupRow('Sabor del agua', d.SABOR_AGUA || 'Sin dato', 'sabor', '🥤')}
-              ${popupRow('Color', d.COLOR_AGUA || 'Sin dato', 'booleanAgua', '💧')}
-              ${popupRow('Olor', d.OLOR_AGUA || 'Sin dato', 'booleanAgua', '〰️')}
-              ${popupRow('Sedimentos (tanque/vasija)', sedimentosVal, 'sedimentos', '🫙')}
-            </div>
-          </div>
-
-          <div class="ps-summary">
-            <div class="ps-summary-title"><span class="ps-block-ico" style="background:#dcfce7;color:#16a34a;">${clasIcon}</span> Clasificación general</div>
-            <div class="ps-summary-badge" style="background:${clasBg};">${clasif}</div>
-          </div>
-        </div>
-      </div>`;
-    }
-
     function parseFecha(v){
       if(!v) return null;
+      const iso = String(v).match(/^(\d{4})-(\d{2})-(\d{2})$/);
+      if(iso) return new Date(+iso[1], +iso[2]-1, +iso[3]);
       const d = new Date(v);
       if(!isNaN(d)) return d;
       const m = String(v).match(/^(\d{1,2})[\/-](\d{1,2})[\/-](\d{2,4})$/);
@@ -1785,9 +1742,7 @@ BLOQUE DE ACCESO UESVALLE - FIN
       try{
         const [rowsEncuestas, rowsEntregados] = await Promise.all([
           fetchCsvWithFallback(URL_ENCUESTAS, 'utf-8'),
-          // Filtros_Entregados_V1 puede venir desde Excel en codificación Windows-1252.
-          // Esto evita caracteres dañados como Instituci�n o Mar�a.
-          fetchCsvWithFallback(URL_ENTREGADOS, 'windows-1252')
+          fetchCsvWithFallback(URL_ENTREGADOS, 'utf-8')
         ]);
 
         RAW = rowsEncuestas.map(r=>{
@@ -1798,13 +1753,11 @@ BLOQUE DE ACCESO UESVALLE - FIN
             raw:r,
             ID: r[COL.id],
             FECHA: f,
-            FECHA_TXT: f ? f.toISOString().slice(0,10) : (r[COL.fecha] || ""),
+            FECHA_TXT: f ? String(f.getFullYear()) + "-" + String(f.getMonth()+1).padStart(2,"0") : (r[COL.fecha] || ""),
             ANO: f ? f.getFullYear() : null,
             MES: f ? f.getMonth()+1 : null,
             ENCUESTADOR: normalizeAnswer(r[COL.encuestador] || ""),
             MUNICIPIO: normalizeMunicipio(r[COL.municipio] || ""),
-            VEREDA_CORREGIMIENTO: normalizeAnswer(r[COL.vereda] || ""),
-            NOMBRE_ENCUESTADO: r[COL.nombre] || "",
             FUENTE: normalizeAnswer(r[COL.fuente] || "SIN DATO"),
             SALUD: asYesNo(r[COL.salud]),
             TANQUE_SED: asYesNo(r[COL.tanqueSed]),
@@ -1907,9 +1860,8 @@ BLOQUE DE ACCESO UESVALLE - FIN
         if(fmes && String(d.MES)!==String(fmes)) return false;
         if(fenc && d.ENCUESTADOR!==fenc) return false;
         if(fmpio && d.MUNICIPIO!==fmpio) return false;
-        const fecha = d.FECHA;
-        if(fdesde){ const dd = new Date(fdesde); if(!fecha || fecha < dd) return false; }
-        if(fhasta){ const hh = new Date(fhasta); if(!fecha || fecha > hh) return false; }
+        if(fdesde && (!d.FECHA_TXT || d.FECHA_TXT < fdesde)) return false;
+        if(fhasta && (!d.FECHA_TXT || d.FECHA_TXT > fhasta)) return false;
         return true;
       });
 
@@ -2042,44 +1994,47 @@ BLOQUE DE ACCESO UESVALLE - FIN
     }
 
 
+    // Los puntos corresponden a centros municipales compartidos, no a domicilios.
+    function seguimientosPorMunicipio(data){
+      const valid = data.filter(d => isValidCoord(d.LATITUD, d.LONGITUD));
+      return Array.from(groupBy(valid, d => d.MUNICIPIO), ([municipio, rows]) => ({
+        municipio, cantidad: rows.length, latitud: rows[0].LATITUD, longitud: rows[0].LONGITUD
+      }));
+    }
+
     function renderMap(data){
       CAPA_VIVIENDAS.clearLayers();
       refreshMunicipioHighlight();
-      const pts = data.filter(d => isValidCoord(d.LATITUD, d.LONGITUD));
-      document.getElementById('mapCount').textContent = `${pts.length} ${pts.length===1 ? 'punto' : 'puntos'}`;
-
+      const groups = seguimientosPorMunicipio(data);
+      document.getElementById('mapCount').textContent = groups.length + ' municipios';
       const resumenEl = document.getElementById('mapResumen');
       if (resumenEl){
-        resumenEl.innerHTML = `<span class="badge rounded-pill" style="background:#2563eb;color:#fff;margin:2px 4px">Seguimientos: ${pts.length}</span>`;
+        resumenEl.textContent = groups.reduce((total, row) => total + row.cantidad, 0)
+          + ' seguimientos representados en centros municipales';
       }
-
-      for (const d of pts){
-        const coordTxt = `${d.LATITUD.toFixed(5)}, ${d.LONGITUD.toFixed(5)}`;
-        const popup = buildSemaforizadoPopup(d);
-        const mk = L.marker([d.LATITUD, d.LONGITUD], { icon: iconSeguimiento() }).bindPopup(popup, {maxWidth: 600, minWidth: 460, className:'popup-sema-wrap'});
-        CAPA_VIVIENDAS.addLayer(mk);
+      for (const row of groups){
+        const popup = document.createElement('div');
+        const title = document.createElement('strong');
+        title.textContent = row.municipio;
+        popup.append(title, document.createElement('br'), row.cantidad + ' seguimientos');
+        CAPA_VIVIENDAS.addLayer(L.marker([row.latitud, row.longitud], {icon:iconSeguimiento()}).bindPopup(popup));
       }
-
       if (!MAP.hasLayer(CAPA_VIVIENDAS)) CAPA_VIVIENDAS.addTo(MAP);
       fitBoundsToPoints(data);
     }
 
     function downloadGeoJSON(){
-      const features = LIST.filter(d => isValidCoord(d.LATITUD, d.LONGITUD)).map(d => ({
+      const features = seguimientosPorMunicipio(LIST).map(row => ({
         type:"Feature",
-        geometry:{ type:"Point", coordinates:[d.LONGITUD, d.LATITUD] },
-        properties:{
-          ID:d.ID, FECHA:d.FECHA_TXT, ENCUESTADOR:d.ENCUESTADOR, MUNICIPIO:d.MUNICIPIO,
-          NOMBRE_ENCUESTADO:d.NOMBRE_ENCUESTADO, FUENTE:d.FUENTE, SALUD:d.SALUD,
-          TANQUE_SED:d.TANQUE_SED, VASIJA_SED:d.VASIJA_SED
-        }
+        geometry:{ type:"Point", coordinates:[row.longitud,row.latitud] },
+        properties:{ MUNICIPIO:row.municipio, SEGUIMIENTOS:row.cantidad }
       }));
       const fc = { type:"FeatureCollection", features };
       const blob = new Blob([JSON.stringify(fc,null,2)], {type:"application/geo+json"});
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = 'encuestas_filtros_filtrado.geojson';
+      a.download = 'seguimientos_filtros_por_municipio.geojson';
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
@@ -2399,10 +2354,10 @@ BLOQUE DE ACCESO UESVALLE - FIN
       if(DT_RESUMEN) DT_RESUMEN.destroy();
       DT_RESUMEN = $("#tblResumen").DataTable({
         data: rows,
-        columns: [{title:'MUNICIPIO'},{title:'FILTROS ENTREGADOS'},{title:'SEGUIMIENTOS'},{title:'BRECHA'},{title:'% COBERTURA'}],
+        columns: [{title:'MUNICIPIO'},{title:'FILTROS ENTREGADOS'},{title:'SEGUIMIENTOS'},{title:'BRECHA'},{title:'% SEGUIMIENTOS / ENTREGAS'}],
         pageLength:10,
         order:[[1,'desc']],
-        language:{ url:"https://cdn.datatables.net/plug-ins/1.13.8/i18n/es-ES.json" },
+        language: TABLE_LANGUAGE,
         dom:'Bfrtip',
         buttons:[
           { extend:'excelHtml5', title:'Resumen_Filtros_Municipio', text:'Excel', className:'btn btn-success btn-sm' },
@@ -2433,18 +2388,11 @@ BLOQUE DE ACCESO UESVALLE - FIN
           rawVal(raw, ['No','NO','N°','Nº']),
           rawVal(raw, ['ARO']),
           r.MUNICIPIO || rawVal(raw, ['Municipio','MUNICIPIO']),
-          rawVal(raw, ['Ubicación','UBICACION','Ubicacion','Localidad','LOCALIDAD']),
           r.FILTROS || rawVal(raw, ['No. filtros','No. filtros ','No filtros','NO_FILTROS','FILTROS']),
           rawVal(raw, ['Poblacion','Población','POBLACION']),
           rawVal(raw, ['Objeto','OBJETO']),
           rawVal(raw, ['Tipo de filtro','TIPO DE FILTRO','Tipo filtro','TIPO_FILTRO']),
-          rawVal(raw, ['Comunidad','COMUNIDAD']),
-          rawVal(raw, ['Enfoque Diferencial','ENFOQUE DIFERENCIAL','Enfoque diferencial','ENFOQUE_DIFERENCIAL']),
-          rawVal(raw, ['Lugar de entrega','LUGAR DE ENTREGA','Lugar Entrega','LUGAR_ENTREGA']),
-          rawVal(raw, ['COD. SISA','COD SISA','CODIGO SISA','CÓDIGO SISA','COD_SISA']),
-          rawVal(raw, ['Fecha de entrega','FECHA DE ENTREGA','Fecha entrega','FECHA_ENTREGA']),
           r.ANO || rawVal(raw, ['Año','Ano','ANIO','AÑO']),
-          rawVal(raw, ['Equipo','EQUIPO'])
         ];
       });
 
@@ -2455,23 +2403,16 @@ BLOQUE DE ACCESO UESVALLE - FIN
           {title:'No'},
           {title:'ARO'},
           {title:'Municipio'},
-          {title:'Ubicación'},
           {title:'No. filtros'},
           {title:'Poblacion'},
           {title:'Objeto'},
           {title:'Tipo de filtro'},
-          {title:'Comunidad'},
-          {title:'Enfoque Diferencial'},
-          {title:'Lugar de entrega'},
-          {title:'COD. SISA'},
-          {title:'Fecha de entrega'},
           {title:'Año'},
-          {title:'Equipo'}
         ],
         pageLength:10,
-        order:[[2,'asc'],[3,'asc']],
+        order:[[2,'asc']],
         scrollX:true,
-        language:{ url:"https://cdn.datatables.net/plug-ins/1.13.8/i18n/es-ES.json" },
+        language: TABLE_LANGUAGE,
         dom:'Bfrtip',
         buttons:[
           { extend:'excelHtml5', title:'Filtros_Entregados', text:'Excel', className:'btn btn-success btn-sm' },
@@ -2497,19 +2438,19 @@ BLOQUE DE ACCESO UESVALLE - FIN
 
     function renderTable(data){
       const rows = data.map(d=>[
-        d.ID||"", d.FECHA_TXT||"", d.ENCUESTADOR||"", d.MUNICIPIO||"", d.NOMBRE_ENCUESTADO||"",
+        d.ID||"", d.FECHA_TXT||"", d.ENCUESTADOR||"", d.MUNICIPIO||"",
         d.FUENTE||"", d.SALUD||"", d.TANQUE_SED||"", d.VASIJA_SED||""
       ]);
       if(DT) DT.destroy();
       DT = $("#tbl").DataTable({
         data: rows,
         columns: [
-          {title:'ID'},{title:'FECHA'},{title:'ENCUESTADOR'},{title:'MUNICIPIO'},{title:'NOMBRE_ENCUESTADO'},
-          {title:'FUENTE_DONDE_TOMA_EL_AGUA'},{title:'MEJORA EN SALUD'},{title:'SEDIMENTOS TANQUE'},{title:'SEDIMENTOS VASIJA'}
+          {title:'REGISTRO'},{title:'MES'},{title:'EQUIPO'},{title:'MUNICIPIO'},
+          {title:'FUENTE_DONDE_TOMA_EL_AGUA'},{title:'RESPUESTA SOBRE SALUD'},{title:'SEDIMENTOS TANQUE'},{title:'SEDIMENTOS VASIJA'}
         ],
         pageLength:10,
         order:[[1,'desc']],
-        language:{ url:"https://cdn.datatables.net/plug-ins/1.13.8/i18n/es-ES.json" },
+        language: TABLE_LANGUAGE,
         dom:'Bfrtip',
         buttons:[
           { extend:'excelHtml5', title:'Encuestas_Filtros_Agua', text:'Excel', className:'btn btn-success btn-sm' },
@@ -2522,7 +2463,7 @@ BLOQUE DE ACCESO UESVALLE - FIN
       const $tblMun = document.getElementById('tblFiltroMunicipio');
       const $tblEnc = document.getElementById('tblFiltroEncuestador');
       if ($tblMun) $tblMun.innerHTML = `<option value="">Tabla: todos los municipios</option>` + munVals.map(v=>`<option>${v}</option>`).join('');
-      if ($tblEnc) $tblEnc.innerHTML = `<option value="">Tabla: todos los encuestadores</option>` + encVals.map(v=>`<option>${v}</option>`).join('');
+      if ($tblEnc) $tblEnc.innerHTML = `<option value="">Tabla: todos los equipos</option>` + encVals.map(v=>`<option>${v}</option>`).join('');
       if ($tblMun) $tblMun.onchange = function(){ DT.column(3).search(this.value ? '^'+this.value.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'$' : '', true, false).draw(); };
       if ($tblEnc) $tblEnc.onchange = function(){ DT.column(2).search(this.value ? '^'+this.value.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'$' : '', true, false).draw(); };
     }

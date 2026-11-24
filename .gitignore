@@ -48,3 +48,6 @@ data/**/input/
 *.backup_fecha_mpr_*.html
 
 docs/ircas/evidencias/
+
+/FUENTES_PRIVADAS/
+/UESVALLE_REVISION_INTEGRADA_V01/
