@@ -919,11 +919,12 @@ BLOQUE DE ACCESO UESVALLE - FIN
           </div>
         </div>
         <div class="section-body">
+          <p id="alcanceComparacion" class="small text-muted mb-3" role="status"></p>
           <section class="row g-3 kpi-row-5">
             <div class="col">
               <div class="kpi-card kpi-modern h-100">
                 <div class="kpi-icon"><svg viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10.5V20h5v-5h4v5h5v-9.5"/></svg></div>
-                <div class="kpi-label">Seguimiento viviendas con soluciones individuales “Filtros”</div>
+                <div class="kpi-label">Encuestas de seguimiento registradas</div>
                 <div class="kpi-divider"></div>
                 <div id="kpiTotal" class="kpi-value">–</div>
               </div>
@@ -939,7 +940,7 @@ BLOQUE DE ACCESO UESVALLE - FIN
             <div class="col">
               <div class="kpi-card kpi-modern h-100">
                 <div class="kpi-icon"><svg viewBox="0 0 24 24"><path d="M17 5a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z"/><path d="M7 11a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z"/><path d="M6 18 18 6"/></svg></div>
-                <div class="kpi-label">% seguimiento sobre entregados</div>
+                <div class="kpi-label">Encuestas por cada 100 filtros</div>
                 <div class="kpi-divider"></div>
                 <div id="kpiSeguimiento" class="kpi-value">–</div>
               </div>
@@ -979,7 +980,7 @@ BLOQUE DE ACCESO UESVALLE - FIN
               <div class="buenaventura-strip__head">
                 <div>
                   <h6 class="buenaventura-strip__title">🌊 Buenaventura – lectura complementaria</h6>
-                  <p class="buenaventura-strip__note">Estos indicadores se calculan por separado para evitar que la escala de Buenaventura concentre el protagonismo del análisis general.</p>
+                  <p class="buenaventura-strip__note">Las entregas se presentan por separado. La base disponible no contiene encuestas de seguimiento de Buenaventura.</p>
                 </div>
                 <span class="buenaventura-strip__badge">Municipio especial</span>
               </div>
@@ -993,7 +994,7 @@ BLOQUE DE ACCESO UESVALLE - FIN
                   <div id="kpiBventuraSeguimientos" class="buenaventura-mini-value">–</div>
                 </div>
                 <div class="buenaventura-mini-card">
-                  <div class="buenaventura-mini-label">% seguimiento sobre entregados</div>
+                  <div class="buenaventura-mini-label">Encuestas por cada 100 filtros</div>
                   <div id="kpiBventuraCobertura" class="buenaventura-mini-value">–</div>
                 </div>
               </div>
@@ -1094,7 +1095,7 @@ BLOQUE DE ACCESO UESVALLE - FIN
         </div>
         <div class="section-body">
           <div class="map-section-toolbar">
-            <div class="map-section-toolbar__copy">Activa capas territoriales, revisa puntos de seguimiento y descarga el GeoJSON filtrado cuando sea necesario.</div>
+            <div class="map-section-toolbar__copy">Consulta los seguimientos por municipio, activa capas territoriales o descarga el GeoJSON de la selección.</div>
             <div class="map-section-toolbar__actions">
               <span class="badge text-bg-primary badge-map" id="mapCount">0 municipios</span>
               <div class="btn-group">
@@ -1106,6 +1107,7 @@ BLOQUE DE ACCESO UESVALLE - FIN
           <div class="map-section-note">
             El mapa principal incluye los <b>seguimientos realizados</b>, además de las capas <b>Territoriales</b> tomadas del tablero IRCAS: Municipios Valle, Veredas, Centros poblados, Vías principales, Ríos y Valle contorno.
           </div>
+          <p id="mapBasemapStatus" class="small text-muted mt-2 mb-2" role="status" hidden></p>
           <div class="position-relative">
           <div id="map"></div>
           <div id="layerToggle" class="layer-toggle-btn" title="Capas del mapa">
@@ -1118,7 +1120,8 @@ BLOQUE DE ACCESO UESVALLE - FIN
             </div>
             <details open>
               <summary>Mapas base</summary>
-              <label><input type="radio" name="basemap" value="cartoLight" checked> Claro CARTO</label>
+              <label><input type="radio" name="basemap" value="esriLight" checked> Fondo claro (Esri)</label>
+              <label><input type="radio" name="basemap" value="territorial"> Solo límites municipales</label>
               <label><input type="radio" name="basemap" value="esriTopo"> Topográfico Esri</label>
               <label><input type="radio" name="basemap" value="esriImagery"> Satélite Esri</label>
               <label><input type="radio" name="basemap" value="osm"> OpenStreetMap</label>
@@ -1181,7 +1184,7 @@ BLOQUE DE ACCESO UESVALLE - FIN
         <div class="col-12 col-xl-6">
           <div class="chart-card p-3 h-100">
             <h5 class="mb-0">Entregados vs seguimientos por municipio</h5>
-            <div class="small text-muted mb-2">Compara la cantidad de filtros entregados frente a los seguimientos realizados por municipio. No incluye Buenaventura, que se presenta en análisis separado.</div>
+            <div class="small text-muted mb-2">Conteos por municipio fuera de Buenaventura. La leyenda indica si las series tienen alcances distintos.</div>
             <div class="chart-container chart-halfline"><canvas id="chartEntregadosVsSeguimientos"></canvas></div>
           </div>
         </div>
@@ -1430,6 +1433,16 @@ BLOQUE DE ACCESO UESVALLE - FIN
       return "NO SABE";
     }
 
+    function healthAnswer(value){
+      const response = norm(value);
+      const labels = {
+        'NO SE PRESENTABAN':'No se presentaban', 'NO':'No', 'NO SABE':'No sabe', 'SI':'Sí',
+        'SI-DIARREA':'Sí: diarrea', 'SI-DOLOR ABDOMINAL':'Sí: dolor abdominal',
+        'SI-INFECCION':'Sí: infección', 'SI-BROTE':'Sí: brote', 'SI-ALERGIA':'Sí: alergia'
+      };
+      return labels[response] || normalizeAnswer(value) || 'Sin respuesta';
+    }
+
     function pct(p,t){ return !t ? 0 : Math.round((p/t)*1000)/10; }
     function uniq(a){ return [...new Set(a.filter(x=>x!=null && String(x).trim()!==""))]; }
 
@@ -1592,19 +1605,19 @@ BLOQUE DE ACCESO UESVALLE - FIN
       }
     }
 
-    function getMunicipioFeatureName(props){ const p=props||{}; return p.MPIO_CNMBR || p.MUNICIPIO || p.NOM_MUN || p.NOMBRE || p.MPIO || p.NAME || ""; }
+    function getMunicipioFeatureName(props){ const p=props||{}; return p.MPIO_CNMBR || p.MUNICIPIO || p.NOM_MUN || p.NOMBRE || p.MPIO || p.NAME || p.name || p.canonical || ""; }
     function getVeredaFeatureName(props){ const p=props||{}; return p.NOMBRE_VER || p.NOMBRE || ""; }
 
     function renderMunicipiosValleLabels(layerRef){
       if(!MUNICIPIOS_VALLE_LABELS) return;
       MUNICIPIOS_VALLE_LABELS.clearLayers();
-      layerRef.eachFeature(function(featureLayer){
+      layerRef.eachLayer(function(featureLayer){
         const nombre = getMunicipioFeatureName(featureLayer.feature?.properties || {});
         if(!nombre) return;
         let center = null;
         if(featureLayer.getBounds){ const b = featureLayer.getBounds(); if(b && b.isValid()) center = b.getCenter(); }
         if(!center) return;
-        const isSelected = document.getElementById('fmpio')?.value && norm(document.getElementById('fmpio').value) === norm(nombre);
+        const isSelected = document.getElementById('fmpio')?.value && municipalityMapKey(document.getElementById('fmpio').value) === municipalityMapKey(nombre);
         const label = L.marker(center, {interactive:false, icon:L.divIcon({className:'municipio-label', html:`<div style="${isSelected ? 'background:rgba(254,240,138,.95);border:1px solid #f59e0b;color:#92400e;font-size:12px;font-weight:800;' : ''}">${nombre}</div>`})});
         MUNICIPIOS_VALLE_LABELS.addLayer(label);
       });
@@ -1633,29 +1646,53 @@ BLOQUE DE ACCESO UESVALLE - FIN
       if(labelsEnabledByLayer && MAP.getZoom() >= zoomThreshold){ if(!MAP.hasLayer(VEREDAS_VALLE_LABELS)) MAP.addLayer(VEREDAS_VALLE_LABELS); }
       else { if(MAP.hasLayer(VEREDAS_VALLE_LABELS)) MAP.removeLayer(VEREDAS_VALLE_LABELS); }
     }
+    function municipalityMapKey(value){
+      const key = norm(value).replace(/[^A-Z0-9]+/g,' ').trim();
+      return ['CALIMA EL DARIEN','CALIMA DARIEN','EL DARIEN'].includes(key) ? 'CALIMA' : key;
+    }
     function refreshMunicipioHighlight(){
       selectedMunicipioBounds = null; if(!MUNICIPIOS_VALLE_LAYER_REF) return;
       const selectedMunicipio = document.getElementById('fmpio')?.value || '';
-      MUNICIPIOS_VALLE_LAYER_REF.eachFeature(function(featureLayer){
+      MUNICIPIOS_VALLE_LAYER_REF.eachLayer(function(featureLayer){
         const nombre = getMunicipioFeatureName(featureLayer.feature?.properties || {});
-        const isSelected = selectedMunicipio && norm(nombre) === norm(selectedMunicipio);
+        const isSelected = selectedMunicipio && municipalityMapKey(nombre) === municipalityMapKey(selectedMunicipio);
         featureLayer.setStyle({color:isSelected ? '#d97706' : '#8b5cf6', weight:isSelected ? 4.5 : 2.2, fillColor:isSelected ? '#facc15' : '#c4b5fd', fillOpacity:isSelected ? 0.28 : 0.05});
         if(isSelected && featureLayer.getBounds){ const b = featureLayer.getBounds(); if(b&&b.isValid()) selectedMunicipioBounds = b; }
       });
       renderMunicipiosValleLabels(MUNICIPIOS_VALLE_LAYER_REF);
     }
     function initMap(){
-      MAP = L.map('map').setView([4.6,-74.1], 7);
-      baseOSM = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19, attribution:'&copy; OpenStreetMap'});
+      MAP = L.map('map',{minZoom:6,maxZoom:19}).setView([3.75,-76.35], 7);
+      baseOSM = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19, attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'});
       const esriImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{maxZoom:19, attribution:'Tiles © Esri'});
       const esriTopo = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}',{maxZoom:19, attribution:'Tiles © Esri'});
-      const cartoLight = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{maxZoom:20, attribution:'&copy; CARTO'});
-      BASEMAPS = { osm: baseOSM, esriImagery, esriTopo, cartoLight };
-      currentBasemap = cartoLight; currentBasemap.addTo(MAP);
-      CAPA_VIVIENDAS = L.markerClusterGroup({ chunkedLoading:true, disableClusteringAtZoom:14 });
+      const canvasURL = 'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/';
+      const canvasBase = L.tileLayer(canvasURL+'World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+        maxZoom:19,
+        attribution:'<a href="https://doc.arcgis.com/en/data-appliance/7.2/maps/world-light-gray-base.htm">Esri</a>, HERE, Garmin, © OpenStreetMap contributors y comunidad SIG'
+      });
+      const canvasLabels = L.tileLayer(canvasURL+'World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}', {
+        maxZoom:19, zIndex:2
+      });
+      const esriLight = L.layerGroup([canvasBase, canvasLabels]);
+      BASEMAPS = { osm: baseOSM, esriImagery, esriTopo, esriLight };
+      let tileLoaded = false;
+      let errors = 0;
+      canvasBase.on('loading', () => { tileLoaded = false; errors = 0; });
+      canvasBase.on('tileload', () => { tileLoaded = true; });
+      canvasBase.on('tileerror', () => { errors++; });
+      canvasBase.on('load', () => {
+        if (currentBasemap !== esriLight || tileLoaded || !errors) return;
+        document.querySelector('input[name="basemap"][value="territorial"]').checked = true;
+        setBasemap('territorial');
+        const notice = document.getElementById('mapBasemapStatus');
+        notice.hidden = false;
+        notice.textContent = 'El fondo claro no está disponible. Se mantienen los límites y los seguimientos.';
+      });
+      setBasemap('esriLight');
+      CAPA_VIVIENDAS = L.markerClusterGroup ? L.markerClusterGroup({ chunkedLoading:true, disableClusteringAtZoom:14 }) : L.layerGroup();
       CAPA_VIVIENDAS.addTo(MAP);
       const URL_MUNICIPIOS_UES = 'https://services5.arcgis.com/l23kE3b7uPnZIuaB/arcgis/rest/services/Municipio_UES/FeatureServer/0';
-      const URL_MUNICIPIO_VALLE = 'https://services5.arcgis.com/l23kE3b7uPnZIuaB/arcgis/rest/services/CARTOGRAFIA_BASE/FeatureServer/2';
       const URL_VEREDAS_VALLE = 'https://services5.arcgis.com/l23kE3b7uPnZIuaB/arcgis/rest/services/CARTOGRAFIA_BASE/FeatureServer/4';
       const URL_CENTROS_POBLADOS = 'https://services5.arcgis.com/l23kE3b7uPnZIuaB/arcgis/rest/services/CARTOGRAFIA_BASE/FeatureServer/1';
       const URL_TURBIEDAD = 'https://services5.arcgis.com/l23kE3b7uPnZIuaB/arcgis/rest/services/Turbiedad/FeatureServer/1';
@@ -1663,8 +1700,17 @@ BLOQUE DE ACCESO UESVALLE - FIN
       const URL_RIOS = 'https://services5.arcgis.com/l23kE3b7uPnZIuaB/arcgis/rest/services/Sedes_Educativas_WFL1/FeatureServer/4';
       const URL_VALLE_CONTORNO = 'https://services5.arcgis.com/l23kE3b7uPnZIuaB/arcgis/rest/services/Sedes_Educativas_WFL1/FeatureServer/8';
       const municipiosUES = L.esri.featureLayer({url:URL_MUNICIPIOS_UES, style:{color:'#0f766e', weight:2.2, fillColor:'#2dd4bf', fillOpacity:0.04}});
-      const municipiosValle = L.esri.featureLayer({url:URL_MUNICIPIO_VALLE, style:function(feature){ const nombre=getMunicipioFeatureName(feature?.properties||{}); const seleccionado=document.getElementById('fmpio')?.value||''; const isSelected = seleccionado && norm(nombre)===norm(seleccionado); return {color:isSelected ? '#1d4ed8' : '#8b5cf6', weight:isSelected ? 4 : 2.2, fillColor:isSelected ? '#93c5fd' : '#c4b5fd', fillOpacity:isSelected ? 0.18 : 0.05}; }});
-      MUNICIPIOS_VALLE_LAYER_REF = municipiosValle; MUNICIPIOS_VALLE_LABELS = L.layerGroup(); municipiosValle.on('load',()=>renderMunicipiosValleLabels(municipiosValle));
+      const municipiosValle = L.geoJSON(null, {style:{color:'#7561a8',weight:1.5,fillColor:'#d9e1ed',fillOpacity:.26}});
+      MUNICIPIOS_VALLE_LAYER_REF = municipiosValle;
+      MUNICIPIOS_VALLE_LABELS = L.layerGroup();
+      fetch('../../dashboards/respuesta_sanitaria_story/data/municipios_story.geojson').then(response => {
+        if (!response.ok) throw new Error(String(response.status));
+        return response.json();
+      }).then(boundaries => {
+        municipiosValle.addData(boundaries);
+        refreshMunicipioHighlight();
+        if (selectedMunicipioBounds) fitBoundsToPoints(LIST);
+      }).catch(error => console.warn('No se pudieron cargar los límites municipales', error));
       const veredasValle = L.esri.featureLayer({url:URL_VEREDAS_VALLE, style:{color:'#c9ced6', weight:0.8, fillColor:'#f5f6f7', fillOpacity:0.02}});
       VEREDAS_VALLE_LAYER_REF = veredasValle; VEREDAS_VALLE_LABELS = L.layerGroup(); veredasValle.on('load',()=>{ renderVeredasValleLabels(veredasValle); updateVeredaLabelsVisibility(); });
       const centrosPoblados = L.esri.featureLayer({url:URL_CENTROS_POBLADOS, pointToLayer:(geojson,latlng)=>L.circleMarker(latlng,{radius:4,color:'#b45309',fillColor:'#f59e0b',fillOpacity:0.8,weight:1})});
@@ -1679,7 +1725,7 @@ BLOQUE DE ACCESO UESVALLE - FIN
       PANEL_LAYERS = { viviendas: CAPA_VIVIENDAS, municipiosValle, municipiosValleLabels: MUNICIPIOS_VALLE_LABELS, veredasValle, veredasValleLabels: VEREDAS_VALLE_LABELS, centrosPoblados, viasPrincipales, rios, riosLabels: RIOS_LABELS, valleContorno, municipiosUES, turbiedad };
       const legendEl = document.getElementById('legend'); if(legendEl){ legendEl.innerHTML = `
         <div class="legend-title">Seguimientos realizados</div>
-        <div><i style="background:#2563eb"></i>Punto de seguimiento</div>
+        <div><i style="background:#2563eb"></i>Centro municipal con seguimientos</div>
       `; }
       MAP.on('zoomend',()=>updateVeredaLabelsVisibility());
       document.getElementById('btnFit')?.addEventListener('click', ()=> fitBoundsToPoints(LIST));
@@ -1705,9 +1751,18 @@ BLOQUE DE ACCESO UESVALLE - FIN
         });
       });
     }
+    function setBasemap(key){
+      const next = BASEMAPS[key] || null;
+      if (currentBasemap && MAP.hasLayer(currentBasemap)) MAP.removeLayer(currentBasemap);
+      currentBasemap = next;
+      if (currentBasemap) currentBasemap.addTo(MAP);
+      document.getElementById('mapBasemapStatus').hidden = true;
+    }
+
     function initBasemapControls(){
-      const radios = document.querySelectorAll('#layerPanel input[name="basemap"]');
-      radios.forEach(radio => { radio.addEventListener('change', function(){ const key = this.value; const nextBasemap = BASEMAPS[key]; if(!nextBasemap) return; if(currentBasemap && MAP.hasLayer(currentBasemap)) MAP.removeLayer(currentBasemap); currentBasemap = nextBasemap; currentBasemap.addTo(MAP); }); });
+      document.querySelectorAll('#layerPanel input[name="basemap"]').forEach(radio => {
+        radio.addEventListener('change', () => setBasemap(radio.value));
+      });
     }
     function initLayerPanelUI(){
       const toggle = document.getElementById('layerToggle'); const panel = document.getElementById('layerPanel'); const closeBtn = document.getElementById('layerClose'); const legendToggle = document.getElementById('legendToggle'); const legendPanel = document.getElementById('legendPanel'); const legendClose = document.getElementById('legendClose'); const mapEl = document.getElementById('map');
@@ -1730,10 +1785,12 @@ BLOQUE DE ACCESO UESVALLE - FIN
     }
 
     function fitBoundsToPoints(data){
+      const container = MAP.getContainer();
+      if (!container.clientWidth || !container.clientHeight) return;
+      MAP.invalidateSize({pan:false});
       const pts = data.filter(d => isValidCoord(d.LATITUD, d.LONGITUD));
-      if(!pts.length) return;
-      const b = L.latLngBounds(pts.map(d => [d.LATITUD, d.LONGITUD]));
-      MAP.fitBounds(b.pad(0.15));
+      const bounds = selectedMunicipioBounds || L.latLngBounds(pts.map(d => [d.LATITUD, d.LONGITUD]));
+      if(bounds.isValid()) MAP.fitBounds(bounds.pad(0.15), {maxZoom:13});
     }
 
     async function loadData(){
@@ -1759,7 +1816,7 @@ BLOQUE DE ACCESO UESVALLE - FIN
             ENCUESTADOR: normalizeAnswer(r[COL.encuestador] || ""),
             MUNICIPIO: normalizeMunicipio(r[COL.municipio] || ""),
             FUENTE: normalizeAnswer(r[COL.fuente] || "SIN DATO"),
-            SALUD: asYesNo(r[COL.salud]),
+            SALUD: healthAnswer(r[COL.salud]),
             TANQUE_SED: asYesNo(r[COL.tanqueSed]),
             VASIJA_SED: asYesNo(r[COL.vasijaSed]),
             RESPONSABLE_FILTRO: normalizeAnswer(r[COL.responsableFiltro] || ""),
@@ -1817,6 +1874,36 @@ BLOQUE DE ACCESO UESVALLE - FIN
       if ($mun) $mun.innerHTML = `<option value="">Todos</option>` + uniq(data.map(d=>d.MUNICIPIO)).sort((a,b)=>a.localeCompare(b,'es',{numeric:true})).map(v=>`<option>${v}</option>`).join('');
     }
 
+    const ratioNumber = new Intl.NumberFormat('es-CO', {style:'percent', maximumFractionDigits:1});
+    const scopeMonth = new Intl.DateTimeFormat('es-CO', {month:'long',year:'numeric',timeZone:'UTC'});
+    let comparison = {};
+
+    function monthLabel(value){
+      return scopeMonth.format(new Date(value + '-01T00:00:00Z'));
+    }
+
+    function comparisonScope({year,month,team,from,to}){
+      const surveyPeriod = [];
+      if (year) surveyPeriod.push(year);
+      if (month) surveyPeriod.push(MESES[Number(month)]);
+      if (from && to && from === to) surveyPeriod.push(monthLabel(from));
+      else {
+        if (from) surveyPeriod.push('desde ' + monthLabel(from));
+        if (to) surveyPeriod.push('hasta ' + monthLabel(to));
+      }
+      if (team) surveyPeriod.push(team);
+      const narrower = Boolean(month || team || from || to);
+      let message = 'Encuestas: ' + (surveyPeriod.join(' · ') || 'julio de 2024 a marzo de 2026')
+        + '. Entregas: ' + (year || '2024–2026') + '.';
+      if (narrower) message += ' La relación se omite porque las entregas se consultan por año y los filtros de mes o equipo solo aplican a las encuestas.';
+      else if (year === '2026') message += ' La base de encuestas llega hasta marzo de 2026.';
+      return {narrower, message};
+    }
+
+    function ratioLabel(surveys, deliveries){
+      return comparison.narrower || !deliveries || !surveys ? '—' : ratioNumber.format(surveys/deliveries);
+    }
+
     function buildResumenMunicipio(data){
       const byMun = groupBy(data.filter(d=>d.MUNICIPIO), d=>d.MUNICIPIO);
       const entregadosByMun = new Map();
@@ -1841,8 +1928,7 @@ BLOQUE DE ACCESO UESVALLE - FIN
           MUNICIPIO: m,
           ENTREGADOS: entregados,
           VISITADOS: visitados,
-          BRECHA: entregados - visitados,
-          COBERTURA: entregados > 0 ? pct(visitados, entregados) : 0
+          DIFERENCIA: comparison.narrower || !entregados || !visitados ? null : entregados - visitados
         };
       });
     }
@@ -1865,6 +1951,8 @@ BLOQUE DE ACCESO UESVALLE - FIN
         return true;
       });
 
+      comparison = comparisonScope({year:fano, month:fmes, team:fenc, from:fdesde, to:fhasta});
+      document.getElementById('alcanceComparacion').textContent = comparison.message;
       buildResumenMunicipio(LIST);
       renderKPIs(LIST);
       renderMap(LIST);
@@ -1885,11 +1973,10 @@ BLOQUE DE ACCESO UESVALLE - FIN
       const tanqueLimpio = dataGeneral.filter(d=>d.TANQUE_SED==="NO").length;
       const vasijaLimpia = dataGeneral.filter(d=>d.VASIJA_SED==="NO").length;
       const entregados = resumenGeneral.reduce((acc,r)=>acc+r.ENTREGADOS,0);
-      const seguimiento = entregados > 0 ? pct(total, entregados) : 0;
 
       document.getElementById('kpiTotal').textContent = total.toLocaleString('es-CO');
       document.getElementById('kpiEntregados').textContent = entregados.toLocaleString('es-CO');
-      document.getElementById('kpiSeguimiento').textContent = `${seguimiento}%`;
+      document.getElementById('kpiSeguimiento').textContent = ratioLabel(total, entregados);
       document.getElementById('kpiTanqueLimpio').textContent = pct(tanqueLimpio,total) + "%";
       document.getElementById('kpiVasijaLimpia').textContent = pct(vasijaLimpia,total) + "%";
 
@@ -1908,11 +1995,9 @@ BLOQUE DE ACCESO UESVALLE - FIN
         .filter(d => norm(d.MUNICIPIO) === 'BUENAVENTURA')
         .length;
 
-      const coberturaBventura = entregadosBventura > 0 ? pct(seguimientosBventura, entregadosBventura) : 0;
-
       document.getElementById('kpiBventuraEntregados').textContent = entregadosBventura.toLocaleString('es-CO');
       document.getElementById('kpiBventuraSeguimientos').textContent = seguimientosBventura.toLocaleString('es-CO');
-      document.getElementById('kpiBventuraCobertura').textContent = `${coberturaBventura}%`;
+      document.getElementById('kpiBventuraCobertura').textContent = ratioLabel(seguimientosBventura, entregadosBventura);
     }
 
     function rawEntregaVal(raw, names){
@@ -2006,7 +2091,7 @@ BLOQUE DE ACCESO UESVALLE - FIN
       CAPA_VIVIENDAS.clearLayers();
       refreshMunicipioHighlight();
       const groups = seguimientosPorMunicipio(data);
-      document.getElementById('mapCount').textContent = groups.length + ' municipios';
+      document.getElementById('mapCount').textContent = groups.length + (groups.length === 1 ? ' municipio' : ' municipios');
       const resumenEl = document.getElementById('mapResumen');
       if (resumenEl){
         resumenEl.textContent = groups.reduce((total, row) => total + row.cantidad, 0)
@@ -2019,7 +2104,6 @@ BLOQUE DE ACCESO UESVALLE - FIN
         popup.append(title, document.createElement('br'), row.cantidad + ' seguimientos');
         CAPA_VIVIENDAS.addLayer(L.marker([row.latitud, row.longitud], {icon:iconSeguimiento()}).bindPopup(popup));
       }
-      if (!MAP.hasLayer(CAPA_VIVIENDAS)) CAPA_VIVIENDAS.addTo(MAP);
       fitBoundsToPoints(data);
     }
 
@@ -2224,8 +2308,8 @@ BLOQUE DE ACCESO UESVALLE - FIN
         data: {
           labels: pairs.map(x => x[0]),
           datasets: [
-            { label: 'Entregados', data: pairs.map(x => x[1]), backgroundColor: 'rgba(16,185,129,.35)', borderColor:'#10b981', borderWidth:1, borderRadius:6 },
-            { label: 'Seguimientos', data: pairs.map(x => x[2]), backgroundColor: 'rgba(46,100,210,.35)', borderColor:'#2e64d2', borderWidth:1, borderRadius:6 }
+            { label: comparison.narrower ? 'Entregas del año o período general' : 'Entregas', data: pairs.map(x => x[1]), backgroundColor: 'rgba(16,185,129,.35)', borderColor:'#10b981', borderWidth:1, borderRadius:6 },
+            { label: comparison.narrower ? 'Encuestas de la selección' : 'Encuestas', data: pairs.map(x => x[2]), backgroundColor: 'rgba(46,100,210,.35)', borderColor:'#2e64d2', borderWidth:1, borderRadius:6 }
           ]
         },
         plugins: [ChartDataLabels],
@@ -2350,11 +2434,11 @@ BLOQUE DE ACCESO UESVALLE - FIN
     }
 
     function renderResumenTable(){
-      const rows = RESUMEN_MPIO.map(r => [r.MUNICIPIO, r.ENTREGADOS, r.VISITADOS, r.BRECHA, `${r.COBERTURA}%`]);
+      const rows = RESUMEN_MPIO.map(r => [r.MUNICIPIO, r.ENTREGADOS, r.VISITADOS, r.DIFERENCIA ?? '—', ratioLabel(r.VISITADOS,r.ENTREGADOS)]);
       if(DT_RESUMEN) DT_RESUMEN.destroy();
       DT_RESUMEN = $("#tblResumen").DataTable({
         data: rows,
-        columns: [{title:'MUNICIPIO'},{title:'FILTROS ENTREGADOS'},{title:'SEGUIMIENTOS'},{title:'BRECHA'},{title:'% SEGUIMIENTOS / ENTREGAS'}],
+        columns: [{title:'MUNICIPIO'},{title:'FILTROS ENTREGADOS'},{title:'SEGUIMIENTOS'},{title:'ENTREGAS MENOS ENCUESTAS'},{title:'% SEGUIMIENTOS / ENTREGAS'}],
         pageLength:10,
         order:[[1,'desc']],
         language: TABLE_LANGUAGE,
@@ -2446,7 +2530,7 @@ BLOQUE DE ACCESO UESVALLE - FIN
         data: rows,
         columns: [
           {title:'REGISTRO'},{title:'MES'},{title:'EQUIPO'},{title:'MUNICIPIO'},
-          {title:'FUENTE_DONDE_TOMA_EL_AGUA'},{title:'RESPUESTA SOBRE SALUD'},{title:'SEDIMENTOS TANQUE'},{title:'SEDIMENTOS VASIJA'}
+          {title:'FUENTE_DONDE_TOMA_EL_AGUA'},{title:'RESPUESTA REPORTADA SOBRE SALUD'},{title:'SEDIMENTOS TANQUE'},{title:'SEDIMENTOS VASIJA'}
         ],
         pageLength:10,
         order:[[1,'desc']],
@@ -2527,6 +2611,7 @@ function mostrarTableroUESVALLE() {
 
   setTimeout(() => {
     window.dispatchEvent(new Event("resize"));
+    fitBoundsToPoints(LIST);
   }, 300);
 }
 
