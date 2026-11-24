@@ -17,6 +17,7 @@
     <nav aria-label="Navegación de la historia">
       <a href="#territorio">Mapa</a>
       <a href="#historias">Sedes</a>
+      <a href="#evidencias">Fotos</a>
       <button type="button" id="presentar">Presentar</button>
     </nav>
   </header>
@@ -120,6 +121,7 @@
         <div><dt>Filtros escolares en Buenaventura</dt><dd data-metric="escolaresBuenaventura">–</dd></div>
         <div><dt>Filtros escolares fuera de Buenaventura</dt><dd id="fuera-buenaventura">–</dd></div>
       </dl>
+      <div class="gallery chapter-photos" id="fotos-comunidades" hidden></div>
       <a href="../filtros/filtros.html">Consultar el tablero de filtros y saneamiento</a>
     </section>
     <section id="aprende" class="chapter education">
@@ -130,21 +132,22 @@
           <p>Las encuestas corresponden a registros de seguimiento. La cobertura de beneficiarios únicos queda pendiente de validar.</p>
         </div>
       </div>
+      <div class="wrap gallery chapter-photos" id="fotos-aprende" hidden></div>
     </section>
     <section id="historias" class="chapter wrap">
       <div class="section-heading">
         <h2>Historias que transforman</h2>
         <p>Las fichas muestran la ubicación, la matrícula registrada y el nivel de riesgo del corte IRCA. Su vínculo con entregas o actividades F.13 requiere confirmación institucional.</p>
       </div>
+      <section id="evidencias" aria-labelledby="registro-fotografico">
+        <h3 id="registro-fotografico">Registro fotográfico</h3>
+        <p id="galeria-estado">Cargando el registro fotográfico.</p>
+        <p id="galeria-interna" hidden>Vista interna de las fotografías del inventario.</p>
+        <div class="gallery" id="galeria"></div>
+      </section>
       <p id="fichas-aviso" role="status">Para consultar fichas de sedes, selecciona un municipio en el mapa o en el detalle territorial.</p>
       <div id="fichas" class="schools"></div>
       <button type="button" id="mas-fichas" hidden>Ver más sedes</button>
-      <section id="evidencias" aria-labelledby="registro-fotografico">
-        <h3 id="registro-fotografico">Registro fotográfico</h3>
-        <p id="galeria-estado">Las fotografías de las jornadas están pendientes de validación para publicación.</p>
-        <p id="galeria-interna" hidden>Vista interna. Las fotografías están pendientes de autorización para publicación.</p>
-        <div class="gallery" id="galeria"></div>
-      </section>
     </section>
     <section id="seguimiento" class="chapter wrap">
       <div class="section-heading">

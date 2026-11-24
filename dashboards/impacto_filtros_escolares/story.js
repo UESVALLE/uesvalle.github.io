@@ -135,35 +135,50 @@ function dateLabel(value) {
     .format(new Date(value + 'T12:00:00Z'));
 }
 
+function photoFigure(photo) {
+  const thumb = element('button', '');
+  thumb.type = 'button';
+  thumb.setAttribute('aria-label', 'Ampliar foto: ' + photo.alt);
+  const image = element('img', '');
+  image.src = photo.src;
+  image.alt = photo.alt;
+  image.loading = 'lazy';
+  thumb.append(image);
+  thumb.addEventListener('click', () => {
+    const dialog = $('visor-foto');
+    const large = element('img', '');
+    large.src = photo.src;
+    large.alt = photo.alt;
+    dialog.querySelector('figure').replaceChildren(large, element('figcaption', photo.caption));
+    dialog.showModal();
+  });
+  const figure = document.createElement('figure');
+  figure.append(thumb, element('figcaption', photo.caption));
+  return figure;
+}
+
 function showPhotos(photos, internal = false) {
+  const validPath = internal ? /^\/revision-interna\/fotos\/FOTO-\d{3}\.jpg$/
+    : /^assets\/[a-z0-9_-]+\.(jpg|jpeg|webp|png)$/i;
+  const highlights = {
+    '/revision-interna/fotos/FOTO-002.jpg': 'comunidades',
+    '/revision-interna/fotos/FOTO-006.jpg': 'comunidades',
+    '/revision-interna/fotos/FOTO-005.jpg': 'aprende',
+    '/revision-interna/fotos/FOTO-007.jpg': 'aprende',
+  };
+  const chapters = {comunidades: $('fotos-comunidades'), aprende: $('fotos-aprende')};
   for (const photo of photos) {
-    const validPath = internal ? /^\/revision-interna\/fotos\/FOTO-\d{3}\.jpg$/
-      : /^assets\/[a-z0-9_-]+\.(jpg|jpeg|webp|png)$/i;
     if (!validPath.test(photo.src) || !photo.alt || !photo.caption) continue;
-    const thumb = element('button', '');
-    thumb.type = 'button';
-    thumb.setAttribute('aria-label', 'Ampliar foto: ' + photo.alt);
-    const image = element('img', '');
-    image.src = photo.src;
-    image.alt = photo.alt;
-    image.loading = 'lazy';
-    thumb.append(image);
-    thumb.addEventListener('click', () => {
-      const dialog = $('visor-foto');
-      const figure = dialog.querySelector('figure');
-      const large = element('img', '');
-      large.src = photo.src;
-      large.alt = photo.alt;
-      const caption = element('figcaption', photo.caption);
-      figure.replaceChildren(large, caption);
-      dialog.showModal();
-    });
-    const figure = document.createElement('figure');
-    figure.append(thumb, element('figcaption', photo.caption));
-    $('galeria').append(figure);
+    $('galeria').append(photoFigure(photo));
+    const chapter = internal ? highlights[photo.src] : photo.chapter;
+    if (Object.hasOwn(chapters, chapter)) {
+      chapters[chapter].append(photoFigure(photo));
+      chapters[chapter].hidden = false;
+    }
   }
   const visible = $('galeria').childElementCount > 0;
   $('galeria-estado').hidden = visible;
+  if (!visible) $('galeria-estado').textContent = 'El registro fotográfico está temporalmente indisponible.';
   $('galeria-interna').hidden = !internal || !visible;
 }
 

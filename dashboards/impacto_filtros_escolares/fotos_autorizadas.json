@@ -1,7 +1,51 @@
 [
   {
     "src": "assets/demostracion-filtro.jpg",
-    "alt": "Personas adultas muestran el componente cerámico sobre un filtro de agua en un aula.",
+    "alt": "Personas adultas muestran el componente cerámico sobre un filtro de agua.",
     "caption": "Demostración del componente cerámico y del filtro de agua en aula."
+  },
+  {
+    "src": "assets/transporte-rural.jpg",
+    "alt": "Personas transportan filtros y cajas con animales de carga por un camino rural.",
+    "caption": "Transporte de filtros por un camino rural.",
+    "chapter": "comunidades"
+  },
+  {
+    "src": "assets/filtro-y-guia.jpg",
+    "alt": "Estudiantes junto a un filtro ensamblado y una guía de instalación.",
+    "caption": "Filtro ensamblado y guía de instalación."
+  },
+  {
+    "src": "assets/filtro-ensamblado.jpg",
+    "alt": "Dos personas junto a un filtro blanco y naranja ensamblado.",
+    "caption": "Filtro ensamblado durante una jornada de demostración."
+  },
+  {
+    "src": "assets/demostracion-en-aula.jpg",
+    "alt": "Demostración de un filtro blanco y naranja ante un grupo de estudiantes.",
+    "caption": "Jornada de demostración del filtro en aula.",
+    "chapter": "aprende"
+  },
+  {
+    "src": "assets/entrega-comunitaria.jpg",
+    "alt": "Montaje de fotografías de una entrega comunitaria de filtros azules y blancos.",
+    "caption": "Entrega comunitaria de filtros.",
+    "chapter": "comunidades"
+  },
+  {
+    "src": "assets/educacion-sanitaria.jpg",
+    "alt": "Estudiantes observan una presentación sobre el agua junto a un filtro azul.",
+    "caption": "Jornada de educación sanitaria con estudiantes.",
+    "chapter": "aprende"
+  },
+  {
+    "src": "assets/uso-del-filtro.jpg",
+    "alt": "Vista desde el aula de una demostración con filtro y material pedagógico.",
+    "caption": "Demostración del filtro con material pedagógico."
+  },
+  {
+    "src": "assets/acompanamiento-escolar.jpg",
+    "alt": "Estudiantes y adultos acompañan un filtro de agua en una jornada escolar.",
+    "caption": "Acompañamiento durante una jornada escolar."
   }
 ]
