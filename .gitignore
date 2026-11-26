@@ -51,3 +51,8 @@ docs/ircas/evidencias/
 
 /FUENTES_PRIVADAS/
 /UESVALLE_REVISION_INTEGRADA_V01/
+
+# Datos del PAER: nunca al repositorio publico (viven en Vercel Blob privado)
+data/seguimiento_paer/
+paer_tablero*.json
+node_modules/

@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>PAER · Seguimiento del diagnóstico de agua y saneamiento</title>
+<style>
+:root{--ink:#17324d;--ink2:#4b6075;--ink3:#7d8e9e;--navy:#1f4e79;--blue:#2e6f9e;--amber:#e0a33a;--green:#2e8a6e;--teal:#2f8a86;--red:#b9473f;--page:#eef3f7;--line:#d5dfe8;--line2:#e8eef3;--grey:#c9d3dc;--f:"Segoe UI","Fira Sans",Arial,sans-serif;--shadow:0 2px 0 rgba(31,78,121,.04),0 8px 24px rgba(31,78,121,.08)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}html,body{margin:0}
+body{background:var(--page);color:var(--ink);font:400 15px/1.5 var(--f)}
+h1,h2,h3,p{margin:0}h1,h2,h3{line-height:1.15}
+button,select,input{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+.sheet{max-width:1280px;margin:0 auto 24px}
+.eyebrow{display:block;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#bfe0f7}.eyebrow.dark{color:var(--blue)}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:14px 32px;background:#fff;border-bottom:1px solid var(--line)}
+.logos{height:58px;max-width:62%}
+.topmeta{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.pill{font-size:13px;color:var(--ink2);background:var(--page);border:1px solid var(--line);border-radius:999px;padding:3px 12px}.pill b{color:var(--navy)}
+.hero{background:linear-gradient(100deg,#21527d,#2c6a99 55%,#3a80b0 80%,#2f6a93);border-bottom:5px solid var(--amber);color:#fff}
+.hero-in{padding:34px 48px 36px}.hero h1{font-size:clamp(32px,5vw,54px);margin-top:10px}
+.lede{margin-top:10px;font-size:18px;max-width:70ch;color:#eaf4fb}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;padding:24px 32px 6px}
+.kpi{display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--line);border-left:6px solid var(--c);border-radius:14px;padding:18px 20px;box-shadow:var(--shadow)}
+.kpi .n{font-size:44px;font-weight:700;color:var(--c);line-height:1}.kpi .n small{font-size:22px}
+.kpi h3{font-size:17px;margin-top:8px}.kpi p{font-size:13px;color:var(--ink2);margin-top:2px}
+.bar{height:8px;border-radius:99px;background:var(--line2);overflow:hidden;display:flex;margin-top:10px}
+.bar i{display:block;height:100%}
+.tabs{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;padding:18px 32px}
+.tabs a{display:block;text-decoration:none;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 14px;font-weight:600;font-size:14px}
+.tabs small{display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--blue)}
+.module{background:#fff;border:1px solid var(--line);border-top:5px solid var(--navy);border-radius:14px;margin:18px 32px;box-shadow:var(--shadow)}
+.mh{padding:22px 28px 6px}.mh h2{font-size:28px;color:var(--navy);margin:4px 0 6px}.mh p{color:var(--ink2);max-width:80ch}
+.mb{padding:14px 28px 26px}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--ink2);margin-top:8px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink3);text-align:left;padding:8px 10px;border-bottom:2px solid var(--line)}
+td{padding:9px 10px;border-bottom:1px solid var(--line2);vertical-align:middle}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+td .bar{margin:0;min-width:120px}
+.tag{display:inline-block;font-size:12px;font-weight:700;border-radius:99px;padding:2px 10px;background:var(--line2);color:var(--ink2)}
+.tag.ok{background:#dff1ea;color:#1d6b52}.tag.mid{background:#fdf0d5;color:#8a5d06}.tag.bad{background:#f7dedb;color:#8e2f28}
+.alert{display:flex;gap:14px;padding:12px 0;border-bottom:1px solid var(--line2);align-items:flex-start}
+.alert .lv{flex:none;font-weight:700;font-size:12px;text-transform:uppercase;border-radius:6px;padding:3px 9px;margin-top:1px}
+.lv.alta{background:#f7dedb;color:#8e2f28}.lv.media{background:#fdf0d5;color:#8a5d06}
+.alert b{color:var(--navy)}
+.mapgrid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:24px;align-items:start}
+#mapa{width:100%;height:auto;background:#f5f8fb;border:1px solid var(--line);border-radius:12px}
+#mapa path{stroke:#fff;stroke-width:.6;cursor:default}#mapa path:hover{stroke:var(--navy);stroke-width:1.4}
+.toolbar{display:flex;gap:14px;flex-wrap:wrap;margin:10px 0}
+.toolbar label{font-size:13px;color:var(--ink2);display:flex;flex-direction:column;gap:3px}
+select,input[type=text],input[type=password]{border:1px solid var(--line);border-radius:8px;padding:7px 10px;background:#fff}
+details.det{margin:18px 32px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 22px}
+details.det summary{cursor:pointer;font-weight:700;color:var(--navy);font-size:17px}
+.scroll{max-height:520px;overflow:auto;margin-top:10px}
+.meth li{margin:6px 0}.meth{color:var(--ink2);padding-left:20px}
+.foot{padding:8px 32px;color:var(--ink3);font-size:13px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.foot button{background:none;border:0;color:var(--blue);cursor:pointer;text-decoration:underline}
+#gate{position:fixed;inset:0;background:linear-gradient(160deg,#eaf2fa,#dbeafb);display:flex;align-items:center;justify-content:center;z-index:50}
+.gate-card{background:#fff;border-radius:18px;padding:30px 28px;width:min(92vw,360px);box-shadow:0 20px 50px rgba(31,78,121,.18);text-align:center}
+.gate-card h2{font-size:21px;margin:12px 0 4px}.gate-card p{font-size:13px;color:var(--ink2);margin-bottom:14px}
+.gate-card input{width:100%;margin-bottom:10px}.gate-card button{width:100%;background:#0f766e;color:#fff;border:0;border-radius:10px;padding:10px;font-weight:700;cursor:pointer}
+#gmsg{color:var(--red);font-size:13px;min-height:18px;margin-top:8px}
+.hidden{display:none!important}
+@media(max-width:900px){.kpis{grid-template-columns:1fr 1fr}.tabs{grid-template-columns:1fr 1fr}.mapgrid{grid-template-columns:1fr}.module,details.det{margin-left:12px;margin-right:12px}.hero-in{padding:26px 22px}}
+@media print{#gate,.noprint,.tabs{display:none!important}body{background:#fff}.module{box-shadow:none;break-inside:avoid}details.det{display:none}}
+</style>
+</head>
+<body>
+
+<div id="gate">
+  <form class="gate-card" id="gform" autocomplete="off">
+    <h2>Acceso UESVALLE · PAER</h2>
+    <p>Ingrese la contraseña para consultar el tablero.</p>
+    <input type="password" id="gpass" placeholder="Contraseña" autocomplete="current-password" required>
+    <button type="submit">Ingresar</button>
+    <div id="gmsg" role="alert"></div>
+  </form>
+</div>
+
+<main class="sheet hidden" id="sheet">
+  <header class="topbar">
+    <img class="logos" src="assets/logos/logos_institucionales.png" alt="Gobernación del Valle del Cauca y UESVALLE">
+    <div class="topmeta"><span class="eyebrow dark">Respuesta sanitaria postevento · PAER</span><span class="pill">Corte <b id="corte">—</b></span></div>
+  </header>
+
+  <section class="hero"><div class="hero-in">
+    <span class="eyebrow">Gobernación del Valle del Cauca · Salud ambiental</span>
+    <h1>Seguimiento del diagnóstico PAER</h1>
+    <p class="lede">Avance de las visitas de diagnóstico de agua para consumo humano y saneamiento básico programadas por el Grupo Aguas para noviembre y diciembre de 2026.</p>
+  </div></section>
+
+  <section class="kpis" id="kpis" aria-label="Cifras principales"></section>
+
+  <nav class="tabs noprint" aria-label="Secciones">
+    <a href="#m1"><small>01 · Principal</small>Avance por actividad</a>
+    <a href="#m2"><small>02</small>Avance por profesional</a>
+    <a href="#m3"><small>03</small>Territorio</a>
+    <a href="#m4"><small>04</small>Alertas y decisiones</a>
+    <a href="#m5"><small>Trazabilidad</small>Cómo se construyen las cifras</a>
+  </nav>
+
+  <section class="module" id="m1"><div class="mh"><span class="eyebrow dark">Módulo 1</span><h2>Avance por actividad</h2><p>Visitas programadas frente a las que ya tienen evidencia y las ya digitadas en SISA.</p>
+    <div class="legend"><span><i style="background:var(--green)"></i>Digitada en SISA</span><span><i style="background:var(--teal)"></i>Con evidencia, sin digitar</span><span><i style="background:var(--grey)"></i>Pendiente</span></div></div>
+    <div class="mb"><table id="tAct"></table></div></section>
+
+  <section class="module" id="m2"><div class="mh"><span class="eyebrow dark">Módulo 2</span><h2>Avance por profesional</h2><p>Control de cumplimiento de cada profesional del Grupo Aguas sobre su programación.</p></div>
+    <div class="mb"><table id="tProf"></table></div></section>
+
+  <section class="module" id="m3"><div class="mh"><span class="eyebrow dark">Módulo 3</span><h2>Territorio</h2><p id="terrTxt">Avance por municipio. El mapa colorea el porcentaje de visitas con evidencia o digitadas.</p>
+    <div class="legend" id="mapLeg"></div></div>
+    <div class="mb"><div class="mapgrid"><svg id="mapa" role="img" aria-label="Mapa de avance por municipio"></svg>
+      <div><div class="toolbar noprint"><label>ARO<select id="fAro"><option value="">Todas</option></select></label></div>
+      <div class="scroll" style="max-height:440px"><table id="tMun"></table></div></div></div></div></section>
+
+  <section class="module" id="m4"><div class="mh"><span class="eyebrow dark">Módulo 4</span><h2>Alertas y decisiones</h2><p>Situaciones de la programación que requieren una decisión o una aclaración del nivel central.</p></div>
+    <div class="mb" id="alertas"></div></section>
+
+  <section class="module" id="m5"><div class="mh"><span class="eyebrow dark">Trazabilidad</span><h2>Cómo se construyen las cifras</h2></div>
+    <div class="mb"><ul class="meth" id="meth">
+      <li><b>Programada:</b> visitas de la macroprogramación F-PI-07 v3.0 del Grupo Aguas, según el catálogo de actividades PAER 7.1 a 7.11.</li>
+      <li><b>Con evidencia:</b> visita realizada cuya acta fue enviada en foto al grupo de WhatsApp del PAER.</li>
+      <li><b>Digitada:</b> visita que ya aparece en los cuadros de salida de SISA o APP-SISA. Es la cifra oficial.</li>
+      <li><b>Avance preliminar</b> = (con evidencia + digitadas) ÷ programadas. <b>Avance oficial</b> = digitadas ÷ programadas.</li>
+      <li>Las visitas 7.4 programadas por el profesional técnico (112) quedan fuera del total hasta conciliar el informe municipal. 7.11 no tiene programación aún.</li>
+    </ul><p id="fuentes" class="pill" style="display:inline-block;margin-top:10px"></p></div></section>
+
+  <details class="det noprint"><summary>Detalle de la programación (<span id="nDet">0</span> registros)</summary>
+    <div class="toolbar"><label>Actividad<select id="dAct"><option value="">Todas</option></select></label>
+    <label>Profesional<select id="dProf"><option value="">Todos</option></select></label>
+    <label>Municipio<input type="text" id="dMun" placeholder="Buscar"></label></div>
+    <div class="scroll"><table id="tDet"></table></div></details>
+
+  <div class="foot"><span id="ver"></span><span class="noprint"><button onclick="window.print()">Imprimir o guardar PDF</button> · <button id="salir">Cerrar sesión</button></span></div>
+</main>
+
+<script>
+(function(){
+'use strict';
+var $=function(id){return document.getElementById(id)};
+var D=null;
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function pct(a,b){return b?Math.round(100*a/b):0}
+function norm(s){return String(s||'').normalize('NFD').replace(/[̀-ͯ]/g,'').toUpperCase().replace(/[^A-Z]/g,'')}
+function bar(d,e,p){var t=p||1;return '<div class="bar" title="Digitadas '+d+' · Con evidencia '+e+' · Programadas '+p+'"><i style="width:'+(100*d/t)+'%;background:var(--green)"></i><i style="width:'+(100*e/t)+'%;background:var(--teal)"></i></div>'}
+function estado(d,e,p){if(!p)return'<span class="tag">Sin programación</span>';var a=pct(d+e,p);if(!d&&!e)return'<span class="tag">Sin avance registrado</span>';if(a>=100)return'<span class="tag ok">Cumplida</span>';if(a>=60)return'<span class="tag ok">Buen avance</span>';if(a>=30)return'<span class="tag mid">En curso</span>';return'<span class="tag bad">Bajo</span>'}
+
+function mostrarGate(msg){$('gate').classList.remove('hidden');$('sheet').classList.add('hidden');$('gmsg').textContent=msg||''}
+async function cargar(){
+  var r=await fetch('/api/paer/data',{credentials:'same-origin',cache:'no-store'});
+  if(r.status===401){mostrarGate();return false}
+  if(!r.ok){mostrarGate('No fue posible cargar los datos ('+r.status+').');return false}
+  D=await r.json();$('gate').classList.add('hidden');$('sheet').classList.remove('hidden');pintar();return true;
+}
+$('gform').addEventListener('submit',async function(ev){
+  ev.preventDefault();$('gmsg').textContent='';
+  try{var r=await fetch('/api/paer/login',{method:'POST',headers:{'Content-Type':'application/json'},credentials:'same-origin',body:JSON.stringify({clave:$('gpass').value})});
+    $('gpass').value='';
+    if(!r.ok){var j=await r.json().catch(function(){return{}});$('gmsg').textContent=j.error||'No fue posible ingresar.';return}
+    await cargar();
+  }catch(e){$('gmsg').textContent='Error de conexión.'}
+});
+$('salir').addEventListener('click',async function(){await fetch('/api/paer/login',{method:'DELETE',credentials:'same-origin'});D=null;mostrarGate()});
+
+function pintar(){
+  var J=D.municipios.filter(function(m){return m.mk==='JURISDICCION'})[0]||{prog:0,evid:0,dig:0};
+  D.munJ=J;D.municipios=D.municipios.filter(function(m){return m.mk!=='JURISDICCION'});
+  var T=D.total,ev=T.evid,dg=T.dig,pr=T.prog;
+  $('corte').textContent=D.meta.corte;
+  $('ver').textContent='PAER · Grupo Aguas · versión '+D.meta.version+' · generado '+D.meta.generado.replace('T',' ');
+  $('fuentes').textContent='Fuentes: '+D.meta.fuentes.join(' · ');
+  var munAv=D.municipios.filter(function(m){return m.evid+m.dig>0}).length;
+  var altas=D.alertas.filter(function(a){return a.nivel==='alta'}).length;
+  $('kpis').innerHTML=
+   '<a class="kpi" style="--c:var(--green)" href="#m1"><div class="n">'+pct(ev+dg,pr)+'<small>%</small></div><h3>Avance del diagnóstico</h3><p>'+(ev+dg)+' de '+pr+' visitas con evidencia o digitadas</p>'+bar(dg,ev,pr)+'</a>'+
+   '<a class="kpi" style="--c:var(--teal)" href="#m1"><div class="n">'+ev+'</div><h3>Con evidencia, sin digitar</h3><p>'+dg+' ya digitadas en SISA (cifra oficial)</p></a>'+
+   '<a class="kpi" style="--c:var(--navy)" href="#m3"><div class="n">'+munAv+'<small> / '+D.municipios.length+'</small></div><h3>Municipios con avance</h3><p>con al menos una visita realizada</p></a>'+
+   '<a class="kpi" style="--c:var(--amber)" href="#m4"><div class="n">'+D.alertas.length+'</div><h3>Alertas para decidir</h3><p>'+altas+' de prioridad alta</p></a>';
+
+  var h='<tr><th>Actividad</th><th>Unidad</th><th class="num">Programada</th><th class="num">Nov.</th><th class="num">Dic.</th><th class="num">Evid.</th><th class="num">Digit.</th><th>Avance</th><th>Estado</th></tr>';
+  D.actividades.forEach(function(a){h+='<tr><td><b>'+esc(a.cod)+'</b></td><td>'+esc(a.unidad)+'</td><td class="num">'+a.prog+'</td><td class="num">'+a.nov+'</td><td class="num">'+a.dic+'</td><td class="num">'+a.evid+'</td><td class="num">'+a.dig+'</td><td>'+bar(a.dig,a.evid,a.prog)+'</td><td>'+estado(a.dig,a.evid,a.prog)+'</td></tr>'});
+  h+='<tr><td><b>Total</b></td><td></td><td class="num"><b>'+pr+'</b></td><td class="num"><b>'+T.nov+'</b></td><td class="num"><b>'+T.dic+'</b></td><td class="num"><b>'+ev+'</b></td><td class="num"><b>'+dg+'</b></td><td>'+bar(dg,ev,pr)+'</td><td>'+estado(dg,ev,pr)+'</td></tr>';
+  $('tAct').innerHTML=h;
+
+  h='<tr><th>Profesional</th><th class="num">Programada</th><th class="num">Nov.</th><th class="num">Dic.</th><th class="num">Evid.</th><th class="num">Digit.</th><th class="num">%</th><th>Avance</th><th>Estado</th></tr>';
+  D.profesionales.forEach(function(p){h+='<tr><td>'+esc(p.nombre)+'</td><td class="num">'+p.prog+'</td><td class="num">'+p.nov+'</td><td class="num">'+p.dic+'</td><td class="num">'+p.evid+'</td><td class="num">'+p.dig+'</td><td class="num">'+pct(p.evid+p.dig,p.prog)+'%</td><td>'+bar(p.dig,p.evid,p.prog)+'</td><td>'+estado(p.dig,p.evid,p.prog)+'</td></tr>'});
+  $('tProf').innerHTML=h;
+
+  var aros={};D.municipios.forEach(function(m){if(m.aro)aros[m.aro]=1});
+  Object.keys(aros).sort().forEach(function(a){$('fAro').insertAdjacentHTML('beforeend','<option>'+esc(a)+'</option>')});
+  $('fAro').onchange=tablaMun;tablaMun();mapa();
+  $('terrTxt').textContent='Avance por municipio. El mapa colorea el porcentaje de visitas con evidencia o digitadas. Además, '+J.prog+' visitas de 7.3 y 7.4 están programadas por jurisdicción del profesional, sin municipio asignado (con evidencia o digitadas: '+(J.evid+J.dig)+'); no aparecen en el mapa pero sí en el total.';
+
+  $('alertas').innerHTML=D.alertas.map(function(a){return '<div class="alert"><span class="lv '+esc(a.nivel)+'">'+esc(a.nivel)+'</span><div><b>'+esc(a.cod)+'</b> · '+esc(a.texto)+'</div></div>'}).join('');
+
+  var acts={},profs={};D.detalle.forEach(function(d){acts[d.act]=1;profs[d.pid]=d.prof});
+  Object.keys(acts).sort(function(a,b){return parseFloat(a.split('.')[1])-parseFloat(b.split('.')[1])}).forEach(function(a){$('dAct').insertAdjacentHTML('beforeend','<option>'+esc(a)+'</option>')});
+  Object.keys(profs).sort().forEach(function(k){$('dProf').insertAdjacentHTML('beforeend','<option value="'+esc(k)+'">'+esc(profs[k])+'</option>')});
+  ['dAct','dProf'].forEach(function(i){$(i).onchange=detalle});$('dMun').oninput=detalle;detalle();
+}
+function tablaMun(){
+  var f=$('fAro').value;
+  var L=D.municipios.filter(function(m){return!f||m.aro===f}).sort(function(a,b){return b.prog-a.prog});
+  var h='<tr><th>Municipio</th><th class="num">Prog.</th><th class="num">Evid.</th><th class="num">Digit.</th><th>Avance</th></tr>';
+  L.forEach(function(m){h+='<tr><td>'+esc(m.nombre)+'</td><td class="num">'+m.prog+'</td><td class="num">'+m.evid+'</td><td class="num">'+m.dig+'</td><td>'+bar(m.dig,m.evid,m.prog)+'</td></tr>'});
+  $('tMun').innerHTML=h;
+}
+function color(m){if(!m||!m.prog)return'#e3e9ef';var a=pct(m.evid+m.dig,m.prog);if(!a)return'#c9d3dc';if(a>=100)return'#1f7a5a';if(a>=60)return'#5aa88a';if(a>=30)return'#e0b44a';return'#d98a52'}
+async function mapa(){
+  var svg=$('mapa');
+  try{var g=await (await fetch('assets/geo/valle_municipios.json')).json()}catch(e){svg.outerHTML='<p>No se pudo cargar el mapa.</p>';return}
+  var byKey={};D.municipios.forEach(function(m){byKey[norm(m.mk)]=m});
+  var pts=[];function walk(c,fn){if(typeof c[0]==='number')fn(c);else c.forEach(function(x){walk(x,fn)})}
+  g.features.forEach(function(f){walk(f.geometry.coordinates,function(p){pts.push(p)})});
+  var x0=Math.min.apply(null,pts.map(function(p){return p[0]})),x1=Math.max.apply(null,pts.map(function(p){return p[0]}));
+  var y0=Math.min.apply(null,pts.map(function(p){return p[1]})),y1=Math.max.apply(null,pts.map(function(p){return p[1]}));
+  var k=Math.cos(((y0+y1)/2)*Math.PI/180),W=520,s=W/((x1-x0)*k),H=(y1-y0)*s;
+  svg.setAttribute('viewBox','0 0 '+W+' '+H.toFixed(0));
+  function d(geom){var polys=geom.type==='Polygon'?[geom.coordinates]:geom.coordinates,o='';
+    polys.forEach(function(poly){poly.forEach(function(r){o+='M'+r.map(function(p){return((p[0]-x0)*k*s).toFixed(1)+','+((y1-p[1])*s).toFixed(1)}).join('L')+'Z'})});return o}
+  svg.innerHTML=g.features.map(function(f){var m=byKey[norm(f.properties.clave||f.properties.nombre)];
+    var t=(f.properties.nombre||'')+(m?': '+m.prog+' programadas · '+m.evid+' con evidencia · '+m.dig+' digitadas':': sin programación PAER');
+    return '<path d="'+d(f.geometry)+'" fill="'+color(m)+'"><title>'+esc(t)+'</title></path>'}).join('');
+  $('mapLeg').innerHTML='<span><i style="background:#e3e9ef"></i>Sin programación</span><span><i style="background:#c9d3dc"></i>Sin avance</span><span><i style="background:#d98a52"></i>&lt; 30 %</span><span><i style="background:#e0b44a"></i>30–59 %</span><span><i style="background:#5aa88a"></i>60–99 %</span><span><i style="background:#1f7a5a"></i>100 %</span>';
+}
+function detalle(){
+  var a=$('dAct').value,p=$('dProf').value,m=norm($('dMun').value);
+  var L=D.detalle.filter(function(r){return(!a||r.act===a)&&(!p||r.pid===p)&&(!m||norm(r.mun).indexOf(m)>-1)});
+  $('nDet').textContent=L.length;
+  var h='<tr><th>Municipio</th><th>Act.</th><th>Profesional</th><th class="num">Prog.</th><th class="num">Nov.</th><th class="num">Dic.</th><th class="num">Evid.</th><th class="num">Digit.</th></tr>';
+  L.forEach(function(r){h+='<tr><td>'+esc(r.mun)+'</td><td>'+esc(r.act)+'</td><td>'+esc(r.prof)+'</td><td class="num">'+r.prog+'</td><td class="num">'+r.nov+'</td><td class="num">'+r.dic+'</td><td class="num">'+r.evid+'</td><td class="num">'+r.dig+'</td></tr>'});
+  $('tDet').innerHTML=h;
+}
+cargar().catch(function(){mostrarGate('No fue posible conectar con el servidor.')});
+})();
+</script>
+</body>
+</html>
