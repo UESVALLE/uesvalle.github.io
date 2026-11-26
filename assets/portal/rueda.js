@@ -31,9 +31,10 @@ const ico = (k, cls='') => `<svg class="${cls}" viewBox="0 0 24 24" aria-hidden=
 
 /* anillo exterior: [id, desde°, hasta°] (0° = arriba, sentido horario) */
 const RING = [
-  {id:'sismo2026', a0:-62, a1:62},
-  {id:'nino2026', a0:78, a1:162},
-  {id:'transversal', a0:198, a1:282}
+  {id:'sismo2026', a0:-62, a1:14},
+  {id:'paer2026', a0:28, a1:104},
+  {id:'nino2026', a0:118, a1:194},
+  {id:'transversal', a0:208, a1:284}
 ];
 const RING_IN = 250, RING_OUT = 284;
 
@@ -139,7 +140,7 @@ function build(cat){
   window.addEventListener('hashchange', desdeHash);
 }
 
-/* enlaces desde los tableros: index.html#eis, #ach, #zoo, #aym, #sismo2026, #nino2026, #transversal */
+/* enlaces desde los tableros: index.html#eis, #ach, #zoo, #aym, #sismo2026, #paer2026, #nino2026, #transversal */
 function desdeHash(){
   const id = decodeURIComponent((location.hash || '').slice(1));
   if(Q[id]) return select('proc', id);

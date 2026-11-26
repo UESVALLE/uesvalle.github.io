@@ -1,6 +1,6 @@
 {
- "version": "Portal V2.5",
- "actualizado": "2026-11-24",
+ "version": "Portal V2.6",
+ "actualizado": "2026-11-26",
  "fuente_procesos": "Plan Operativo Anual por proceso 2026 (F-PI-04, versión final)",
  "procesos": [
   {
@@ -60,6 +60,16 @@
    "fecha": "2026-08-01",
    "estado": "activo",
    "descripcion": "Priorización de la vigilancia del abastecimiento de agua ante la temporada seca."
+  },
+  {
+   "id": "paer2026",
+   "nombre": "PAER · Plan de Acción Específico para la Recuperación",
+   "corto": "PAER 2026",
+   "color": "#2f8a86",
+   "icono": "plan",
+   "fecha": "2026-08-10",
+   "estado": "activo",
+   "descripcion": "Seguimiento del diagnóstico de agua para consumo humano y saneamiento básico para la recuperación del Valle del Cauca tras el sismo."
   }
  ],
  "tableros": [
@@ -345,6 +355,20 @@
    "version": "V1.2",
    "publicado": "2026-11-24",
    "requiere_clave": false,
+   "estado": "publicado",
+   "enlaces": []
+  },
+  {
+   "id": "seguimiento_paer",
+   "titulo": "PAER · Seguimiento del diagnóstico de agua y saneamiento",
+   "descripcion": "Avance de las visitas programadas por el Grupo Aguas: por actividad, por profesional, territorio y alertas. Acceso con clave propia.",
+   "url": "dashboards/seguimiento_paer/index.html",
+   "tipo": "Tablero",
+   "proceso": "ach",
+   "evento": "paer2026",
+   "version": "V1.0",
+   "publicado": "2026-11-26",
+   "requiere_clave": true,
    "estado": "publicado",
    "enlaces": []
   }
