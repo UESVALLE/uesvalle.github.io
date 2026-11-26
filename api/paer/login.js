@@ -6,12 +6,11 @@ const json = (cuerpo, status = 200, extra = {}) =>
     headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store', ...extra },
   });
 
-export default async function handler(request) {
-  if (request.method === 'DELETE') {
-    return json({ ok: true }, 200, { 'Set-Cookie': cookieBorrar() });
-  }
-  if (request.method !== 'POST') return json({ error: 'Método no permitido' }, 405);
+export async function DELETE() {
+  return json({ ok: true }, 200, { 'Set-Cookie': cookieBorrar() });
+}
 
+export async function POST(request) {
   if (!process.env.PAER_PASSWORD || !process.env.PAER_SESSION_SECRET) {
     return json({ error: 'Acceso no configurado en el servidor.' }, 500);
   }

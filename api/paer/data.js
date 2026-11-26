@@ -4,7 +4,7 @@ import { leerCookie, tokenValido } from './_sesion.js';
 // Ruta del archivo dentro del almacén Blob PRIVADO (lo sube actualizar_paer.py).
 const RUTA = 'paer/paer_tablero.json';
 
-export default async function handler(request) {
+export async function GET(request) {
   if (!tokenValido(leerCookie(request))) {
     return new Response(JSON.stringify({ error: 'No autorizado' }), {
       status: 401,
