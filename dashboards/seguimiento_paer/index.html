@@ -43,11 +43,15 @@ button,select,input{font:inherit;color:inherit}
 .seg button[aria-pressed="true"]{background:var(--navy);color:#fff}
 select,input[type=text],input[type=password]{border:1px solid var(--line);border-radius:8px;padding:7px 10px;background:#fff}
 /* barras con semáforo */
-.bars{display:grid;grid-template-columns:fit-content(400px) minmax(160px,1fr) minmax(84px,max-content) 92px;gap:9px 14px;align-items:center}
+.bars{display:grid;grid-template-columns:fit-content(560px) repeat(4,minmax(52px,max-content)) minmax(120px,260px) minmax(110px,max-content);gap:5px 14px;align-items:center}
+.bars .h{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink3);border-bottom:2px solid var(--line);padding-bottom:4px;text-align:right}.bars .h.l{text-align:left}
+.bars .n{text-align:right;font-variant-numeric:tabular-nums;font-size:14px;color:var(--ink)}.bars .n.z{color:var(--ink3)}
+.duo{display:grid;grid-template-columns:1fr;margin:0}
+
 .bars .lb{text-align:left;font-size:14.5px;color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .bars .lb b{color:var(--ink)}
 .bars .lb[title]{cursor:help}.bars .lb abbr{text-decoration:none;border-bottom:1px dotted var(--ink3)}
-.track{position:relative;height:20px;background:var(--track);border-radius:3px;overflow:hidden;display:flex}
+.track{position:relative;height:12px;background:var(--track);border-radius:3px;overflow:hidden;display:flex}
 .track i{display:block;height:100%}
 .chip{white-space:nowrap;display:inline-flex;align-items:center;gap:6px;justify-content:center;border-radius:99px;padding:2px 9px;font-weight:700;font-size:13.5px;font-variant-numeric:tabular-nums}
 .chip:before{content:"";width:9px;height:9px;border-radius:50%;background:currentColor;opacity:.9}
@@ -81,8 +85,9 @@ td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
 .module.collapsed .mb,.module.collapsed .mh .res{display:none}.module.collapsed .mh{padding-bottom:16px}
 .modbar{padding:8px 28px 0;display:flex;justify-content:flex-end}.modbar button{background:none;border:0;color:var(--blue);cursor:pointer;text-decoration:underline;font-size:14px}
 @media(max-width:1000px){.mapgrid{grid-template-columns:1fr}.lede{white-space:normal}}
-@media(max-width:760px){.kpis{grid-template-columns:1fr 1fr;padding:14px 12px 4px}.module{margin:12px}.mh{padding-right:24px}.tg{position:static;margin:8px 0 0 24px}.hero-in{padding:22px 16px}
-  .bars{grid-template-columns:minmax(0,1fr) 80px 76px}.bars .lb{grid-column:1/-1;text-align:left}.bars .track{grid-column:1}.axis{grid-column:1}}
+@media(max-width:760px){.bars{grid-template-columns:minmax(0,1fr) 44px 44px minmax(84px,max-content)}.bars .c-ev,.bars .c-dg,.bars .track{display:none}
+.kpis{grid-template-columns:1fr 1fr;padding:14px 12px 4px}.module{margin:12px}.mh{padding-right:24px}.tg{position:static;margin:8px 0 0 24px}.hero-in{padding:22px 16px}
+}
 @media print{#gate,.noprint,.tg,.modbar{display:none!important}body{background:#fff}.module{box-shadow:none;break-inside:avoid}}
 </style>
 </head>
@@ -115,6 +120,7 @@ td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
 
   <div class="modbar noprint"><button type="button" id="tgAll">Ocultar todos los módulos</button></div>
 
+  <div class="duo">
   <section class="module" id="m1"><div class="mh"><span class="eyebrow dark">Módulo 1</span><h2>Avance por actividad</h2><p class="res" id="r1"></p></div>
     <div class="mb">
       <div class="toolbar noprint">
@@ -136,6 +142,8 @@ td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
       <div class="legend" id="leg2"></div>
       <div class="bars" id="bProf"></div>
     </div></section>
+
+  </div>
 
   <section class="module" id="m3"><div class="mh"><span class="eyebrow dark">Módulo 3</span><h2>Territorio</h2><p class="res" id="r3"></p>
     <div class="legend" id="mapLeg"></div></div>
@@ -196,12 +204,14 @@ $('salir').addEventListener('click',async function(){await fetch('/api/paer/logi
 function agrupar(rows,key){var A={};rows.forEach(function(r){var k=key(r),a=A[k]=A[k]||{k:k,prog:0,evid:0,dig:0};a.prog+=r.prog;a.evid+=r.evid;a.dig+=r.dig});return Object.keys(A).map(function(k){var a=A[k];a.av=a.prog?(a.evid+a.dig)/a.prog:0;return a})}
 function ordenar(L,o,nom){if(o==='asc')L.sort(function(a,b){return a.av-b.av||a.prog-b.prog});else if(o==='desc')L.sort(function(a,b){return b.av-a.av||b.prog-a.prog});else if(o==='nom')L.sort(function(a,b){return nom(a).localeCompare(nom(b),'es')});return L}
 function chip(av,prog){if(prog===0)return '<span class="chip na"><span>Sin programación</span></span>';var n=nivel(av);return '<span class="chip '+n.c+'" title="'+n.t+'"><span>'+Math.round(100*av)+' %</span></span>'}
-function filas(L,label){
+function filas(L,label,tit){
   if(!L.length)return '<p class="empty">Sin programación para este filtro.</p>';
-  return L.map(function(a){var t=a.prog||1;
-    return label(a)+'<div class="track" title="Digitadas '+a.dig+' · Con evidencia sin digitar '+a.evid+' · Programadas '+a.prog+'"><i style="width:'+(100*a.dig/t)+'%;background:var(--dig)"></i><i style="width:'+(100*a.evid/t)+'%;background:var(--evid)"></i></div>'+
-      '<div>'+chip(a.av,a.prog)+'</div><div class="cnt">'+(a.evid+a.dig)+' de '+a.prog+'</div>'}).join('')+
-    '<div></div><div class="axis"><span>0 %</span><span>25 %</span><span>50 %</span><span>75 %</span><span>100 %</span></div>';
+  function num(v,c){return '<div class="n '+(c||'')+(v?'':' z')+'">'+v+'</div>'}
+  return '<div class="h l">'+tit+'</div><div class="h">Prog.</div><div class="h">Ejec.</div><div class="h c-ev">Evid.</div><div class="h c-dg">Digit.</div><div class="h track-h c-ev"></div><div class="h l">Cumplimiento</div>'+
+   L.map(function(a){var t=a.prog||1;
+    return label(a)+num(a.prog)+num(a.evid+a.dig)+num(a.evid,'c-ev')+num(a.dig,'c-dg')+
+      '<div class="track" title="Digitadas '+a.dig+' · Con evidencia sin digitar '+a.evid+' · Programadas '+a.prog+'"><i style="width:'+(100*a.dig/t)+'%;background:var(--dig)"></i><i style="width:'+(100*a.evid/t)+'%;background:var(--evid)"></i></div>'+
+      '<div>'+chip(a.av,a.prog)+'</div>'}).join('');
 }
 function conteo(L){var c={ok:0,warn:0,bad:0};L.forEach(function(a){c[nivel(a.av).c]++});return c}
 var LEY='<span><i style="background:var(--dig)"></i>Digitada en SISA (oficial)</span><span><i style="background:var(--evid)"></i>Con evidencia, sin digitar</span><span><i style="background:var(--track)"></i>Pendiente</span><span class="sep"></span><span><i class="c" style="background:var(--ok)"></i>≥ 90 % Satisfactorio</span><span><i class="c" style="background:var(--warn)"></i>70–89 % Aceptable</span><span><i class="c" style="background:var(--bad)"></i>&lt; 70 % Crítico</span>';
@@ -267,7 +277,7 @@ function m1(){
   if(!pid&&!mun){D.actividades.forEach(function(A){if(!L.some(function(a){return a.k===A.cod}))L.push({k:A.cod,prog:0,evid:0,dig:0,av:0})})}
   var TOT={k:'Total',prog:T.p,evid:0,dig:0,av:T.p?T.h/T.p:0};L.forEach(function(a){TOT.evid+=a.evid;TOT.dig+=a.dig});
   $('bAct').innerHTML=filas(L.concat([TOT]),function(a){if(a===TOT)return '<div class="sepr"></div><div class="lb tot">Total</div>';var A=ACT[a.k]||{};
-    return '<div class="lb" data-tip="'+esc('<b>'+a.k+'</b> · '+esc(nombreAct(a.k))+(A.estado_meta?'<br><small>Meta: '+esc(A.estado_meta)+'</small>':''))+'"><b><abbr>'+esc(a.k)+'</abbr></b> '+esc(nombreAct(a.k))+'</div>'});
+    return '<div class="lb" data-tip="'+esc('<b>'+a.k+'</b> · '+esc(nombreAct(a.k))+(A.estado_meta?'<br><small>Meta: '+esc(A.estado_meta)+'</small>':''))+'"><b><abbr>'+esc(a.k)+'</abbr></b> '+esc(nombreAct(a.k))+'</div>'},'Actividad');
 }
 function m2(){
   var aro=$('pAro').value;
@@ -276,7 +286,7 @@ function m2(){
   ordenar(L,ordenSel('m2'),function(a){return PROF[a.k].nombre});
   var c=conteo(L);
   $('r2').textContent=L.length+' profesionales'+(aro?' en '+aro:'')+' · '+c.ok+' en verde, '+c.warn+' en amarillo, '+c.bad+' en rojo.';
-  $('bProf').innerHTML=filas(L,function(a){return '<div class="lb" title="'+esc(PROF[a.k].aro)+'"><b>'+esc(PROF[a.k].nombre)+'</b></div>'});
+  $('bProf').innerHTML=filas(L,function(a){return '<div class="lb" title="'+esc(PROF[a.k].aro)+'"><b>'+esc(PROF[a.k].nombre)+'</b></div>'},'Profesional');
 }
 function initToggles(){
   var mods=[].slice.call(document.querySelectorAll('.module'));
