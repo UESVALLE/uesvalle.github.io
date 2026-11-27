@@ -67,6 +67,7 @@ table{width:100%;border-collapse:collapse;font-size:14px}
 th{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink3);text-align:left;padding:8px 10px;border-bottom:2px solid var(--line);position:sticky;top:0;background:#fff}
 td{padding:8px 10px;border-bottom:1px solid var(--line2);vertical-align:middle}
 td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.mapgrid>*{min-width:0}
 .mapgrid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:24px;align-items:start}
 #mapa{width:100%;height:auto;background:#f5f8fb;border:1px solid var(--line);border-radius:12px}
 #mapa path{stroke:#fff;stroke-width:.6}#mapa path:hover{stroke:var(--navy);stroke-width:1.4}
@@ -87,6 +88,27 @@ td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
 @media(max-width:1000px){.mapgrid{grid-template-columns:1fr}.lede{white-space:normal}}
 @media(max-width:760px){.bars{grid-template-columns:minmax(0,1fr) 44px 44px minmax(84px,max-content)}.bars .c-ev,.bars .c-dg,.bars .track{display:none}
 .kpis{grid-template-columns:1fr 1fr;padding:14px 12px 4px}.module{margin:12px}.mh{padding-right:24px}.tg{position:static;margin:8px 0 0 24px}.hero-in{padding:22px 16px}
+}
+@media(max-width:760px){
+  body{font-size:14px}
+  .topbar{padding:10px 16px;gap:10px}.logos{height:38px}.topmeta .eyebrow{display:none}.pill{font-size:12px}
+  .hero-in{padding:16px 16px 18px}.hero h1{font-size:24px;margin-top:4px}.hero .eyebrow{font-size:10.5px}.lede{font-size:14.5px}
+  .kpis{gap:8px;padding:12px 12px 2px}.kpi{padding:8px 11px}.kpi .n{font-size:21px}.kpi p{font-size:12px}
+  .modbar{padding:6px 12px 0}
+  .module{margin:10px 10px;border-radius:12px;position:relative}.mh{padding:12px 14px 2px}.mh h2{font-size:20px;padding-right:70px}.mh .res{font-size:13px}
+  .tg{position:absolute;top:10px;right:10px;margin:0;padding:3px 10px;font-size:12px}
+  .mb{padding:8px 14px 14px}
+  .toolbar{display:grid;grid-template-columns:1fr 1fr;gap:8px}.toolbar label{min-width:0}.toolbar select,.toolbar input{width:100%;font-size:13.5px;padding:6px 8px}
+  .toolbar label:has(.seg){grid-column:1/-1}.seg{width:100%;display:flex}.seg button{flex:1 1 0;padding:6px 6px;font-size:12.5px;line-height:1.2;white-space:normal}
+  .legend{font-size:12px;gap:4px 10px}.legend .lgb,.legend .sep{display:none}
+  .bars{grid-template-columns:minmax(0,1fr) 40px 40px max-content;gap:6px 8px}
+  .bars .lb{white-space:normal;font-size:13px;line-height:1.3}.bars .n{font-size:13px}.bars .h{font-size:10px}
+  .bars .c-ev,.bars .c-dg,.bars .track{display:none}
+  .chip{font-size:12.5px;padding:2px 7px}
+  #mapa{border-radius:8px}
+  table{font-size:13px}th{font-size:10px;letter-spacing:.03em;padding:6px 4px;white-space:normal}td{padding:6px 4px}td:first-child,th:first-child{padding-left:2px}#tDet{font-size:12.5px}#tDet th,#tDet td{padding:6px 3px}#tDet th{letter-spacing:0}
+  .xs{display:none}
+  .foot{padding:8px 16px;font-size:12px}
 }
 @media print{#gate,.noprint,.tg,.modbar{display:none!important}body{background:#fff}.module{box-shadow:none;break-inside:avoid}}
 </style>
@@ -214,7 +236,7 @@ function filas(L,label,tit){
       '<div>'+chip(a.av,a.prog)+'</div>'}).join('');
 }
 function conteo(L){var c={ok:0,warn:0,bad:0};L.forEach(function(a){c[nivel(a.av).c]++});return c}
-var LEY='<span><i style="background:var(--dig)"></i>Digitada en SISA (oficial)</span><span><i style="background:var(--evid)"></i>Con evidencia, sin digitar</span><span><i style="background:var(--track)"></i>Pendiente</span><span class="sep"></span><span><i class="c" style="background:var(--ok)"></i>≥ 90 % Satisfactorio</span><span><i class="c" style="background:var(--warn)"></i>70–89 % Aceptable</span><span><i class="c" style="background:var(--bad)"></i>&lt; 70 % Crítico</span>';
+var LEY='<span class="lgb"><i style="background:var(--dig)"></i>Digitada en SISA (oficial)</span><span class="lgb"><i style="background:var(--evid)"></i>Con evidencia, sin digitar</span><span class="lgb"><i style="background:var(--track)"></i>Pendiente</span><span class="sep"></span><span><i class="c" style="background:var(--ok)"></i>≥ 90 % Satisfactorio</span><span><i class="c" style="background:var(--warn)"></i>70–89 % Aceptable</span><span><i class="c" style="background:var(--bad)"></i>&lt; 70 % Crítico</span>';
 
 function pintar(){
   var T=D.total,ev=T.evid,dg=T.dig,pr=T.prog;
@@ -342,8 +364,8 @@ function detalle(){
   var a=$('dAct').value,p=$('dProf').value,m=norm($('dMun').value);
   var L=D.detalle.filter(function(r){return(!a||r.act===a)&&(!p||r.pid===p)&&(!m||norm(r.mun).indexOf(m)>-1)});
   $('nDet').textContent=L.length;
-  var h='<tr><th>Municipio</th><th>Act.</th><th>Profesional</th><th>Área operativa</th><th class="num">Prog.</th><th class="num">Nov.</th><th class="num">Dic.</th><th class="num">Evid.</th><th class="num">Digit.</th></tr>';
-  L.forEach(function(r){h+='<tr><td>'+esc(nm(r.mun))+'</td><td data-tip="'+esc('<b>'+r.act+'</b> · '+esc(nombreAct(r.act)))+'">'+esc(r.act)+'</td><td>'+esc(PROF[r.pid]?PROF[r.pid].nombre:r.prof)+'</td><td>'+esc(PROF[r.pid]?PROF[r.pid].aro:'')+'</td><td class="num">'+r.prog+'</td><td class="num">'+r.nov+'</td><td class="num">'+r.dic+'</td><td class="num">'+r.evid+'</td><td class="num">'+r.dig+'</td></tr>'});
+  var h='<tr><th>Municipio</th><th>Act.</th><th>Profesional</th><th class="xs">Área operativa</th><th class="num">Prog.</th><th class="num xs">Nov.</th><th class="num xs">Dic.</th><th class="num">Evid.</th><th class="num">Digit.</th></tr>';
+  L.forEach(function(r){h+='<tr><td>'+esc(nm(r.mun))+'</td><td data-tip="'+esc('<b>'+r.act+'</b> · '+esc(nombreAct(r.act)))+'">'+esc(r.act)+'</td><td>'+esc(PROF[r.pid]?PROF[r.pid].nombre:r.prof)+'</td><td class="xs">'+esc(PROF[r.pid]?PROF[r.pid].aro:'')+'</td><td class="num">'+r.prog+'</td><td class="num xs">'+r.nov+'</td><td class="num xs">'+r.dic+'</td><td class="num">'+r.evid+'</td><td class="num">'+r.dig+'</td></tr>'});
   $('tDet').innerHTML=h;
 }
 document.addEventListener('mouseover',function(e){var t=e.target.closest&&e.target.closest('[data-tip]'),tp=$('tip');if(!t){tp.classList.add('hidden');return}tp.innerHTML=t.getAttribute('data-tip');tp.classList.remove('hidden')});
