@@ -1,0 +1,68 @@
+name: Security guard (changes only)
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "**"
+  workflow_dispatch:
+permissions:
+  contents: read
+
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout (historial necesario para diff)
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Tests del guard
+        run: python -m unittest discover -s tools/security -p 'test_*.py' -v
+      - name: Inspeccionar archivos cambiados sin mostrar contenidos
+        env:
+          GITHUB_BASE_REF: ${{ github.base_ref }}
+        run: python tools/security/repo_guard.py --base "origin/$GITHUB_BASE_REF"
+
+  anonymous-http-audit:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout sin credenciales persistidas
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Verificar solo cabeceras y códigos HTTP de URLs conocidas
+        run: python tools/security/check_public_urls.py --timeout 8
+
+  postgres-security-smoke:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_PASSWORD: ci_synthetic_only
+          POSTGRES_DB: uesvalle_security_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    env:
+      PGHOST: localhost
+      PGPORT: "5432"
+      PGDATABASE: uesvalle_security_test
+      PGUSER: postgres
+      PGPASSWORD: ci_synthetic_only
+    steps:
+      - name: Checkout sin credenciales persistidas
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Pruebas sintéticas PostgreSQL RLS y GRANT
+        run: psql -X -v ON_ERROR_STOP=1 -f infra/supabase/tests/001_base_privada_smoke.sql
+      - name: Modelo canónico MPR + SISA sintético
+        run: psql -X -v ON_ERROR_STOP=1 -f infra/supabase/tests/002_modelo_sisa_smoke.sql

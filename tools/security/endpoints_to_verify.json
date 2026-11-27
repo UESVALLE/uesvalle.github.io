@@ -1,0 +1,13 @@
+{
+  "fecha_referencia": "2026-10-28",
+  "nota": "Verificar exclusivamente desde cliente anónimo. No guardar respuestas ni credenciales.",
+  "objetivos": [
+    {"id": "GH01", "url": "https://uesvalle.github.io/", "tipo": "github_pages"},
+    {"id": "GH02", "url": "https://uesvalle.github.io/data/ircas/current/IRCAS.csv", "tipo": "dataset"},
+    {"id": "GH03", "url": "https://uesvalle.github.io/data/inspeccion_sedes/current/inspecciones.json", "tipo": "dataset"},
+    {"id": "VR01", "url": "https://uesvalle-tableros.vercel.app/", "tipo": "vercel_portal"},
+    {"id": "VR02", "url": "https://uesvalle-tableros.vercel.app/data/ircas/current/IRCAS.csv", "tipo": "vercel_dataset"},
+    {"id": "GH04", "url": "https://raw.githubusercontent.com/UESVALLE/uesvalle.github.io/main/data/ircas/current/IRCAS.csv", "tipo": "github_raw"},
+    {"id": "GH05", "url": "https://github.com/JavierMarin7/UESVALLE", "tipo": "copia_historica"}
+  ]
+}
