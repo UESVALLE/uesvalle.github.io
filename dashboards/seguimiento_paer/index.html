@@ -43,7 +43,7 @@ button,select,input{font:inherit;color:inherit}
 .seg button[aria-pressed="true"]{background:var(--navy);color:#fff}
 select,input[type=text],input[type=password]{border:1px solid var(--line);border-radius:8px;padding:7px 10px;background:#fff}
 /* barras con semáforo */
-.bars{display:grid;grid-template-columns:fit-content(560px) repeat(6,minmax(52px,max-content)) minmax(110px,220px) minmax(110px,max-content);gap:5px 14px;align-items:center}
+.bars{display:grid;grid-template-columns:fit-content(560px) repeat(5,minmax(52px,max-content)) minmax(110px,220px) minmax(110px,max-content);gap:5px 14px;align-items:center}
 .bars .h{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink3);border-bottom:2px solid var(--line);padding-bottom:4px;text-align:right}.bars .h.l{text-align:left}
 .bars .so{background:none;border:0;border-bottom:2px solid var(--line);font:inherit;font-size:11px;font-weight:600;cursor:pointer;padding:0 0 4px;color:var(--ink3);text-transform:uppercase;letter-spacing:.06em;white-space:nowrap}.bars .so:hover,.bars .so.on{color:var(--navy)}.bars .so .fl{font-size:10px;opacity:.55;margin-left:2px}.bars .so.on .fl{opacity:1}
 .bars .n{text-align:right;font-variant-numeric:tabular-nums;font-size:14px;color:var(--ink)}.bars .n.z{color:var(--ink3)}.bars .n.c-fa{font-weight:700;color:var(--navy)}.bars .n.c-fa.z{font-weight:400;color:var(--ink3)}.bars .n.c-pd{color:var(--ink2)}
@@ -232,9 +232,9 @@ function hs(m,k,t,c){var o=ORD[m],on=o.k===k,fl=on?(o.d>0?'▲':'▼'):'↕';ret
 function filas(L,label,tit,m){
   if(!L.length)return '<p class="empty">Sin programación para este filtro.</p>';
   function num(v,c){return '<div class="n '+(c||'')+(v?'':' z')+'">'+v+'</div>'}
-  return hs(m,'lab',tit,'l')+'<div class="h">Prog.</div><div class="h">Ejec.</div><div class="h c-ev">Evid.</div><div class="h c-dg">Digit.</div><div class="h c-fa" title="Visitas programadas que aún no tienen evidencia ni digitación">Faltan</div><div class="h c-pd" title="Visitas que habría que hacer cada día hábil hasta el 21 dic para cumplir">Por día</div><div class="h track-h c-ev"></div>'+hs(m,'av','Cumplimiento','l')+
+  return hs(m,'lab',tit,'l')+'<div class="h">Prog.</div><div class="h">Ejec.</div><div class="h c-ev">Evid.</div><div class="h c-dg">Digit.</div><div class="h c-fa" title="Visitas programadas que aún no tienen evidencia ni digitación">Faltan</div><div class="h track-h c-ev"></div>'+hs(m,'av','Cumplimiento','l')+
    L.map(function(a){var t=a.prog||1;
-    return label(a)+num(a.prog)+num(a.evid+a.dig)+num(a.evid,'c-ev')+num(a.dig,'c-dg')+(function(){var f=Math.max(0,a.prog-a.evid-a.dig);return num(f,'c-fa')+'<div class="n c-pd'+(f?'':' z')+'">'+(f?(DIAS?(f/DIAS).toLocaleString('es-CO',{maximumFractionDigits:1}):'—'):'0')+'</div>'})()+
+    return label(a)+num(a.prog)+num(a.evid+a.dig)+num(a.evid,'c-ev')+num(a.dig,'c-dg')+(function(){var f=Math.max(0,a.prog-a.evid-a.dig);return num(f,'c-fa')})()+
       '<div class="track" title="Digitadas '+a.dig+' · Con evidencia sin digitar '+a.evid+' · Programadas '+a.prog+'"><i style="width:'+(100*a.dig/t)+'%;background:var(--dig)"></i><i style="width:'+(100*a.evid/t)+'%;background:var(--evid)"></i></div>'+
       '<div>'+chip(a.av,a.prog)+'</div>'}).join('');
 }
