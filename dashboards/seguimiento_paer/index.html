@@ -6,56 +6,66 @@
 <meta name="robots" content="noindex,nofollow">
 <title>PAER · Seguimiento del diagnóstico de agua y saneamiento</title>
 <style>
-:root{--ink:#17324d;--ink2:#4b6075;--ink3:#7d8e9e;--navy:#1f4e79;--blue:#2e6f9e;--amber:#e0a33a;--green:#2e8a6e;--teal:#2f8a86;--red:#b9473f;--page:#eef3f7;--line:#d5dfe8;--line2:#e8eef3;--grey:#c9d3dc;--f:"Segoe UI","Fira Sans",Arial,sans-serif;--shadow:0 2px 0 rgba(31,78,121,.04),0 8px 24px rgba(31,78,121,.08)}
+:root{--ink:#17324d;--ink2:#4b6075;--ink3:#7d8e9e;--navy:#1f4e79;--blue:#2e6f9e;--amber:#e0a33a;--green:#2e8a6e;--evid:#8cc9b4;--track:#e3e9ef;--page:#eef3f7;--line:#d5dfe8;--line2:#e8eef3;
+--ok:#2e8a6e;--okbg:#dff1ea;--warn:#c08a1e;--warnbg:#fdf0d5;--bad:#b9473f;--badbg:#f7dedb;--red:#b9473f;
+--f:"Segoe UI","Fira Sans",Arial,sans-serif;--shadow:0 2px 0 rgba(31,78,121,.04),0 8px 24px rgba(31,78,121,.08)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}html,body{margin:0}
 body{background:var(--page);color:var(--ink);font:400 15px/1.5 var(--f)}
 h1,h2,h3,p{margin:0}h1,h2,h3{line-height:1.15}
 button,select,input{font:inherit;color:inherit}
 :focus-visible{outline:2px solid var(--amber);outline-offset:2px}
-.sheet{max-width:1280px;margin:0 auto 24px}
+.sheet{max-width:1560px;margin:0 auto 24px}
 .eyebrow{display:block;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#bfe0f7}.eyebrow.dark{color:var(--blue)}
-.topbar{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:14px 32px;background:#fff;border-bottom:1px solid var(--line)}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:14px 28px;background:#fff;border-bottom:1px solid var(--line)}
 .logos{height:58px;max-width:62%}
 .topmeta{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
 .pill{font-size:13px;color:var(--ink2);background:var(--page);border:1px solid var(--line);border-radius:999px;padding:3px 12px}.pill b{color:var(--navy)}
 .hero{background:linear-gradient(100deg,#21527d,#2c6a99 55%,#3a80b0 80%,#2f6a93);border-bottom:5px solid var(--amber);color:#fff}
-.hero-in{padding:34px 48px 36px}.hero h1{font-size:clamp(32px,5vw,54px);margin-top:10px}
-.lede{margin-top:10px;font-size:18px;max-width:70ch;color:#eaf4fb}
-.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;padding:24px 32px 6px}
-.kpi{display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--line);border-left:6px solid var(--c);border-radius:14px;padding:18px 20px;box-shadow:var(--shadow)}
-.kpi .n{font-size:44px;font-weight:700;color:var(--c);line-height:1}.kpi .n small{font-size:22px}
-.kpi h3{font-size:17px;margin-top:8px}.kpi p{font-size:13px;color:var(--ink2);margin-top:2px}
-.bar{height:8px;border-radius:99px;background:var(--line2);overflow:hidden;display:flex;margin-top:10px}
-.bar i{display:block;height:100%}
-.tabs{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;padding:18px 32px}
-.tabs a{display:block;text-decoration:none;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 14px;font-weight:600;font-size:14px}
-.tabs small{display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--blue)}
-.module{background:#fff;border:1px solid var(--line);border-top:5px solid var(--navy);border-radius:14px;margin:18px 32px;box-shadow:var(--shadow)}
-.mh{padding:22px 28px 6px}.mh h2{font-size:28px;color:var(--navy);margin:4px 0 6px}.mh p{color:var(--ink2);max-width:80ch}
-.mb{padding:14px 28px 26px}
-.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--ink2);margin-top:8px}
+.hero-in{padding:26px 28px 28px}.hero h1{font-size:clamp(28px,4vw,46px);margin-top:8px}
+.lede{margin-top:8px;font-size:17px;color:#eaf4fb;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;padding:18px 28px 4px}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 14px;box-shadow:var(--shadow)}
+.kpi .n{font-size:26px;font-weight:700;color:var(--navy);line-height:1.1;font-variant-numeric:tabular-nums}
+.kpi p{font-size:13px;color:var(--ink2);margin-top:2px}
+.dot{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:7px;vertical-align:3px}
+.dot.ok{background:var(--ok)}.dot.warn{background:var(--warn)}.dot.bad{background:var(--bad)}
+.module{position:relative;background:#fff;border:1px solid var(--line);border-top:5px solid var(--navy);border-radius:14px;margin:16px 28px;box-shadow:var(--shadow)}
+.mh{padding:18px 24px 4px;padding-right:150px}.mh h2{font-size:24px;color:var(--navy);margin:4px 0 4px}
+.mh .res{color:var(--ink2);font-size:14px}
+.mb{padding:10px 24px 22px}
+.legend{display:flex;gap:6px 16px;flex-wrap:wrap;font-size:13px;color:var(--ink2);margin:8px 0 4px}
 .legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
-table{width:100%;border-collapse:collapse;font-size:14px}
-th{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink3);text-align:left;padding:8px 10px;border-bottom:2px solid var(--line)}
-td{padding:9px 10px;border-bottom:1px solid var(--line2);vertical-align:middle}
-td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
-td .bar{margin:0;min-width:120px}
-.tag{display:inline-block;font-size:12px;font-weight:700;border-radius:99px;padding:2px 10px;background:var(--line2);color:var(--ink2)}
-.tag.ok{background:#dff1ea;color:#1d6b52}.tag.mid{background:#fdf0d5;color:#8a5d06}.tag.bad{background:#f7dedb;color:#8e2f28}
-.alert{display:flex;gap:14px;padding:12px 0;border-bottom:1px solid var(--line2);align-items:flex-start}
-.alert .lv{flex:none;font-weight:700;font-size:12px;text-transform:uppercase;border-radius:6px;padding:3px 9px;margin-top:1px}
-.lv.alta{background:#f7dedb;color:#8e2f28}.lv.media{background:#fdf0d5;color:#8a5d06}
-.alert b{color:var(--navy)}
-.mapgrid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:24px;align-items:start}
-#mapa{width:100%;height:auto;background:#f5f8fb;border:1px solid var(--line);border-radius:12px}
-#mapa path{stroke:#fff;stroke-width:.6;cursor:default}#mapa path:hover{stroke:var(--navy);stroke-width:1.4}
-.toolbar{display:flex;gap:14px;flex-wrap:wrap;margin:10px 0}
+.legend i.c{border-radius:50%}.legend .sep{flex:1 1 20px}
+.toolbar{display:flex;gap:10px 18px;flex-wrap:wrap;align-items:flex-end;margin:6px 0 10px}
 .toolbar label{font-size:13px;color:var(--ink2);display:flex;flex-direction:column;gap:3px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#fff}
+.seg button{border:0;background:none;padding:7px 13px;font-size:14px;color:var(--ink2);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--navy);color:#fff}
 select,input[type=text],input[type=password]{border:1px solid var(--line);border-radius:8px;padding:7px 10px;background:#fff}
-details.det{margin:18px 32px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 22px}
-details.det summary{cursor:pointer;font-weight:700;color:var(--navy);font-size:17px}
-.scroll{max-height:520px;overflow:auto;margin-top:10px}
-.foot{padding:8px 32px;color:var(--ink3);font-size:13px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+/* barras con semáforo */
+.bars{display:grid;grid-template-columns:minmax(170px,max-content) minmax(160px,1fr) 84px 92px;gap:9px 14px;align-items:center}
+.bars .lb{text-align:right;font-size:14.5px;color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bars .lb b{color:var(--ink)}
+.bars .lb[title]{cursor:help}.bars .lb abbr{text-decoration:none;border-bottom:1px dotted var(--ink3)}
+.track{position:relative;height:20px;background:var(--track);border-radius:3px;overflow:hidden;display:flex}
+.track i{display:block;height:100%}
+.chip{white-space:nowrap;display:inline-flex;align-items:center;gap:6px;justify-content:center;border-radius:99px;padding:2px 9px;font-weight:700;font-size:13.5px;font-variant-numeric:tabular-nums}
+.chip:before{content:"";width:9px;height:9px;border-radius:50%;background:currentColor;opacity:.9}
+.chip.ok{background:var(--okbg);color:#1d6b52}.chip.warn{background:var(--warnbg);color:#8a5d06}.chip.bad{background:var(--badbg);color:#8e2f28}
+.chip span{color:var(--ink)}
+.cnt{font-size:13.5px;color:var(--ink2);font-variant-numeric:tabular-nums;white-space:nowrap}
+.axis{grid-column:2;display:flex;justify-content:space-between;font-size:11.5px;color:var(--ink3);margin-top:-2px}
+.empty{color:var(--ink3);font-size:14px;padding:8px 0}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink3);text-align:left;padding:8px 10px;border-bottom:2px solid var(--line);position:sticky;top:0;background:#fff}
+td{padding:8px 10px;border-bottom:1px solid var(--line2);vertical-align:middle}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.mapgrid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:24px;align-items:start}
+#mapa{width:100%;height:auto;background:#f5f8fb;border:1px solid var(--line);border-radius:12px}
+#mapa path{stroke:#fff;stroke-width:.6}#mapa path:hover{stroke:var(--navy);stroke-width:1.4}
+#mapa text{font:600 7.4px var(--f);fill:#17324d;paint-order:stroke;stroke:#ffffff;stroke-width:2.2px;stroke-linejoin:round;pointer-events:none}
+.scroll{max-height:520px;overflow:auto}
+.foot{padding:8px 28px;color:var(--ink3);font-size:13px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .foot button{background:none;border:0;color:var(--blue);cursor:pointer;text-decoration:underline}
 #gate{position:fixed;inset:0;background:linear-gradient(160deg,#eaf2fa,#dbeafb);display:flex;align-items:center;justify-content:center;z-index:50}
 .gate-card{background:#fff;border-radius:18px;padding:30px 28px;width:min(92vw,360px);box-shadow:0 20px 50px rgba(31,78,121,.18);text-align:center}
@@ -63,18 +73,14 @@ details.det summary{cursor:pointer;font-weight:700;color:var(--navy);font-size:1
 .gate-card input{width:100%;margin-bottom:10px}.gate-card button{width:100%;background:#0f766e;color:#fff;border:0;border-radius:10px;padding:10px;font-weight:700;cursor:pointer}
 #gmsg{color:var(--red);font-size:13px;min-height:18px;margin-top:8px}
 .hidden{display:none!important}
-.module{position:relative}.mh{padding-right:150px}
-.tg{position:absolute;top:18px;right:20px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:5px 14px;font-size:13px;color:var(--navy);font-weight:600;cursor:pointer}
+.tg{position:absolute;top:16px;right:18px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:5px 14px;font-size:13px;color:var(--navy);font-weight:600;cursor:pointer}
 .tg:hover{background:var(--page)}
-.module.collapsed .mb,.module.collapsed .mh p,.module.collapsed .legend{display:none}.module.collapsed .mh{padding-bottom:18px}
-.modbar{padding:0 32px;display:flex;justify-content:flex-end}.modbar button{background:none;border:0;color:var(--blue);cursor:pointer;text-decoration:underline;font-size:14px}
-.fh{display:flex;gap:18px;align-items:center;flex-wrap:wrap;margin-bottom:14px}.fh h3{font-size:22px;color:var(--navy)}
-.fk{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin:10px 0 16px}
-.fk div{background:var(--page);border:1px solid var(--line2);border-radius:10px;padding:10px 12px}.fk b{display:block;font-size:24px;color:var(--navy)}.fk span{font-size:12px;color:var(--ink2)}
-.f2{display:grid;grid-template-columns:1fr 1fr;gap:22px}.f2 h4{margin:0 0 6px;color:var(--navy)}
-@media(max-width:900px){.fk{grid-template-columns:repeat(3,1fr)}.f2{grid-template-columns:1fr}.mh{padding-right:28px}.tg{position:static;margin:10px 0 0 28px}}
-@media(max-width:900px){.kpis{grid-template-columns:1fr 1fr}.tabs{grid-template-columns:1fr 1fr}.mapgrid{grid-template-columns:1fr}.module,details.det{margin-left:12px;margin-right:12px}.hero-in{padding:26px 22px}}
-@media print{#gate,.noprint,.tabs,.tg,.modbar{display:none!important}body{background:#fff}.module{box-shadow:none;break-inside:avoid}details.det{display:none}}
+.module.collapsed .mb,.module.collapsed .mh .res{display:none}.module.collapsed .mh{padding-bottom:16px}
+.modbar{padding:8px 28px 0;display:flex;justify-content:flex-end}.modbar button{background:none;border:0;color:var(--blue);cursor:pointer;text-decoration:underline;font-size:14px}
+@media(max-width:1000px){.mapgrid{grid-template-columns:1fr}.lede{white-space:normal}}
+@media(max-width:760px){.kpis{grid-template-columns:1fr 1fr;padding:14px 12px 4px}.module{margin:12px}.mh{padding-right:24px}.tg{position:static;margin:8px 0 0 24px}.hero-in{padding:22px 16px}
+  .bars{grid-template-columns:minmax(0,1fr) 80px 76px}.bars .lb{grid-column:1/-1;text-align:left}.bars .track{grid-column:1}.axis{grid-column:1}}
+@media print{#gate,.noprint,.tg,.modbar{display:none!important}body{background:#fff}.module{box-shadow:none;break-inside:avoid}}
 </style>
 </head>
 <body>
@@ -98,46 +104,47 @@ details.det summary{cursor:pointer;font-weight:700;color:var(--navy);font-size:1
   <section class="hero"><div class="hero-in">
     <span class="eyebrow">Gobernación del Valle del Cauca · Salud ambiental</span>
     <h1>Seguimiento del diagnóstico PAER</h1>
-    <p class="lede">Avance de las visitas de diagnóstico de agua para consumo humano y saneamiento básico programadas por el Grupo Aguas para noviembre y diciembre de 2026.</p>
+    <p class="lede">Avance de las visitas de diagnóstico de agua para consumo humano y saneamiento básico</p>
   </div></section>
 
   <section class="kpis" id="kpis" aria-label="Cifras principales"></section>
 
-  <nav class="tabs noprint" aria-label="Secciones">
-    <a href="#m1"><small>01 · Principal</small>Avance por actividad</a>
-    <a href="#m2"><small>02</small>Avance por profesional</a>
-    <a href="#m3"><small>03</small>Ficha por profesional</a>
-    <a href="#m4"><small>04</small>Territorio</a>
-    <a href="#m5"><small>05</small>Alertas y decisiones</a>
-  </nav>
-
   <div class="modbar noprint"><button type="button" id="tgAll">Ocultar todos los módulos</button></div>
 
-  <section class="module" id="m1"><div class="mh"><span class="eyebrow dark">Módulo 1</span><h2>Avance por actividad</h2><p>Visitas programadas frente a las que ya tienen evidencia y las ya digitadas en SISA.</p>
-    <div class="legend"><span><i style="background:var(--green)"></i>Digitada en SISA</span><span><i style="background:var(--teal)"></i>Con evidencia, sin digitar</span><span><i style="background:var(--grey)"></i>Pendiente</span></div></div>
-    <div class="mb"><table id="tAct"></table></div></section>
+  <section class="module" id="m1"><div class="mh"><span class="eyebrow dark">Módulo 1</span><h2>Avance por actividad</h2><p class="res" id="r1"></p></div>
+    <div class="mb">
+      <div class="toolbar noprint">
+        <label>Área operativa<select id="fAro"></select></label>
+        <label>Profesional<select id="fProf"></select></label>
+        <label>Orden<span class="seg" role="group" aria-label="Orden de las actividades"><button type="button" data-o="cod" aria-pressed="true">Por código</button><button type="button" data-o="asc" aria-pressed="false">Menor avance primero</button><button type="button" data-o="desc" aria-pressed="false">Mayor avance primero</button></span></label>
+      </div>
+      <div class="legend" id="leg1"></div>
+      <div class="bars" id="bAct"></div>
+    </div></section>
 
-  <section class="module" id="m2"><div class="mh"><span class="eyebrow dark">Módulo 2</span><h2>Avance por profesional</h2><p>Control de cumplimiento de cada profesional del Grupo Aguas sobre su programación.</p></div>
-    <div class="mb"><table id="tProf"></table></div></section>
+  <section class="module" id="m2"><div class="mh"><span class="eyebrow dark">Módulo 2</span><h2>Avance por profesional</h2><p class="res" id="r2"></p></div>
+    <div class="mb">
+      <div class="toolbar noprint">
+        <label>Área operativa<select id="pAro"></select></label>
+        <label>Orden<span class="seg" role="group" aria-label="Orden de los profesionales"><button type="button" data-o="asc" aria-pressed="true">Menor avance primero</button><button type="button" data-o="desc" aria-pressed="false">Mayor avance primero</button><button type="button" data-o="nom" aria-pressed="false">Por nombre</button></span></label>
+      </div>
+      <div class="legend" id="leg2"></div>
+      <div class="bars" id="bProf"></div>
+    </div></section>
 
-  <section class="module" id="m3"><div class="mh"><span class="eyebrow dark">Módulo 3</span><h2>Ficha por profesional</h2><p>Consulte el cumplimiento de cada ingeniero o profesional del Grupo Aguas sobre su propia programación.</p></div>
-    <div class="mb"><div class="toolbar noprint"><label>Profesional<select id="fProf"></select></label></div><div id="ficha"></div></div></section>
-
-  <section class="module" id="m4"><div class="mh"><span class="eyebrow dark">Módulo 4</span><h2>Territorio</h2><p id="terrTxt">Avance por municipio. El mapa colorea el porcentaje de visitas con evidencia o digitadas.</p>
+  <section class="module" id="m3"><div class="mh"><span class="eyebrow dark">Módulo 3</span><h2>Territorio</h2><p class="res" id="r3"></p>
     <div class="legend" id="mapLeg"></div></div>
     <div class="mb"><div class="mapgrid"><svg id="mapa" role="img" aria-label="Mapa de avance por municipio"></svg>
-      <div><div class="toolbar noprint"><label>ARO<select id="fAro"><option value="">Todas</option></select></label></div>
-      <div class="scroll" style="max-height:440px"><table id="tMun"></table></div></div></div></div></section>
+      <div><div class="toolbar noprint"><label>Área operativa<select id="mAro"></select></label></div>
+      <div class="scroll" style="max-height:560px"><table id="tMun"></table></div></div></div></div></section>
 
-  <section class="module" id="m5"><div class="mh"><span class="eyebrow dark">Módulo 5</span><h2>Alertas y decisiones</h2><p>Situaciones de la programación que requieren una decisión o una aclaración del nivel central.</p></div>
-    <div class="mb" id="alertas"></div></section>
-
-
-  <details class="det noprint"><summary>Detalle de la programación (<span id="nDet">0</span> registros)</summary>
-    <div class="toolbar"><label>Actividad<select id="dAct"><option value="">Todas</option></select></label>
-    <label>Profesional<select id="dProf"><option value="">Todos</option></select></label>
-    <label>Municipio<input type="text" id="dMun" placeholder="Buscar"></label></div>
-    <div class="scroll"><table id="tDet"></table></div></details>
+  <section class="module" id="m4"><div class="mh"><span class="eyebrow dark">Módulo 4</span><h2>Detalle de la programación (<span id="nDet">0</span> registros)</h2></div>
+    <div class="mb">
+      <div class="toolbar noprint"><label>Actividad<select id="dAct"><option value="">Todas</option></select></label>
+      <label>Profesional<select id="dProf"><option value="">Todos</option></select></label>
+      <label>Municipio<input type="text" id="dMun" placeholder="Buscar"></label></div>
+      <div class="scroll"><table id="tDet"></table></div>
+    </div></section>
 
   <div class="foot"><span id="ver"></span><span class="noprint"><button onclick="window.print()">Imprimir o guardar PDF</button> · <button id="salir">Cerrar sesión</button></span></div>
 </main>
@@ -146,13 +153,19 @@ details.det summary{cursor:pointer;font-weight:700;color:var(--navy);font-size:1
 (function(){
 'use strict';
 var $=function(id){return document.getElementById(id)};
-var D=null;
+var D=null,ACT={},PROF={},AROS=[],LIMITE='2026-12-21',FEST=['2026-12-08','2026-12-25'];
+// Escala de cumplimiento (semáforo): ejecutadas (evidencia + digitadas) / programadas
+var ESC=[{min:.9,c:'ok',t:'Satisfactorio'},{min:.7,c:'warn',t:'Aceptable'},{min:0,c:'bad',t:'Crítico'}];
+function nivel(x){for(var i=0;i<ESC.length;i++)if(x>=ESC[i].min-1e-9)return ESC[i];return ESC[2]}
 function nm(s){return s==='JURISDICCION'?'Jurisdicción (sin municipio)':s}
 function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
 function pct(a,b){return b?Math.round(100*a/b):0}
 function norm(s){return String(s||'').normalize('NFD').replace(/[̀-ͯ]/g,'').toUpperCase().replace(/[^A-Z]/g,'')}
-function bar(d,e,p){var t=p||1;return '<div class="bar" title="Digitadas '+d+' · Con evidencia '+e+' · Programadas '+p+'"><i style="width:'+(100*d/t)+'%;background:var(--green)"></i><i style="width:'+(100*e/t)+'%;background:var(--teal)"></i></div>'}
-function estado(d,e,p){if(!p)return'<span class="tag">Sin programación</span>';var a=pct(d+e,p);if(!d&&!e)return'<span class="tag">Sin avance registrado</span>';if(a>=100)return'<span class="tag ok">Cumplida</span>';if(a>=60)return'<span class="tag ok">Buen avance</span>';if(a>=30)return'<span class="tag mid">En curso</span>';return'<span class="tag bad">Bajo</span>'}
+function actNum(a){return parseFloat(String(a).split('.')[1])}
+function aroLimpio(s){s=String(s||'').replace(/^\s*\d+\s*-\s*/,'').replace(/^aro\b/i,'ARO').replace(/à/g,'á');return s}
+function iso(d){return d.toISOString().slice(0,10)}
+function habiles(a,b){var n=0,d=new Date(a+'T00:00:00Z'),e=new Date(b+'T00:00:00Z');for(;d<=e;d.setUTCDate(d.getUTCDate()+1)){var w=d.getUTCDay();if(w>0&&w<6&&FEST.indexOf(iso(d))<0)n++}return n}
+function hoy(){var d=new Date();return iso(new Date(Date.UTC(d.getFullYear(),d.getMonth(),d.getDate())))}
 
 function mostrarGate(msg){$('gate').classList.remove('hidden');$('sheet').classList.add('hidden');$('gmsg').textContent=msg||''}
 async function cargar(){
@@ -171,62 +184,80 @@ $('gform').addEventListener('submit',async function(ev){
 });
 $('salir').addEventListener('click',async function(){await fetch('/api/paer/login',{method:'DELETE',credentials:'same-origin'});D=null;mostrarGate()});
 
+// Suma prog/evid/dig de las filas de detalle por una llave
+function agrupar(rows,key){var A={};rows.forEach(function(r){var k=key(r),a=A[k]=A[k]||{k:k,prog:0,evid:0,dig:0};a.prog+=r.prog;a.evid+=r.evid;a.dig+=r.dig});return Object.keys(A).map(function(k){var a=A[k];a.av=a.prog?(a.evid+a.dig)/a.prog:0;return a})}
+function ordenar(L,o,nom){if(o==='asc')L.sort(function(a,b){return a.av-b.av||a.prog-b.prog});else if(o==='desc')L.sort(function(a,b){return b.av-a.av||b.prog-a.prog});else if(o==='nom')L.sort(function(a,b){return nom(a).localeCompare(nom(b),'es')});return L}
+function chip(av){var n=nivel(av);return '<span class="chip '+n.c+'" title="'+n.t+'"><span>'+Math.round(100*av)+' %</span></span>'}
+function filas(L,label){
+  if(!L.length)return '<p class="empty">Sin programación para este filtro.</p>';
+  return L.map(function(a){var t=a.prog||1;
+    return label(a)+'<div class="track" title="Digitadas '+a.dig+' · Con evidencia sin digitar '+a.evid+' · Programadas '+a.prog+'"><i style="width:'+(100*a.dig/t)+'%;background:var(--green)"></i><i style="width:'+(100*a.evid/t)+'%;background:var(--evid)"></i></div>'+
+      '<div>'+chip(a.av)+'</div><div class="cnt">'+(a.evid+a.dig)+' de '+a.prog+'</div>'}).join('')+
+    '<div></div><div class="axis"><span>0 %</span><span>25 %</span><span>50 %</span><span>75 %</span><span>100 %</span></div>';
+}
+function conteo(L){var c={ok:0,warn:0,bad:0};L.forEach(function(a){c[nivel(a.av).c]++});return c}
+var LEY='<span><i style="background:var(--green)"></i>Digitada en SISA (oficial)</span><span><i style="background:var(--evid)"></i>Con evidencia, sin digitar</span><span><i style="background:var(--track)"></i>Pendiente</span><span class="sep"></span><span><i class="c" style="background:var(--ok)"></i>≥ 90 % Satisfactorio</span><span><i class="c" style="background:var(--warn)"></i>70–89 % Aceptable</span><span><i class="c" style="background:var(--bad)"></i>&lt; 70 % Crítico</span>';
+
 function pintar(){
-  var J=D.municipios.filter(function(m){return m.mk==='JURISDICCION'})[0]||{prog:0,evid:0,dig:0};
-  D.munJ=J;D.municipios=D.municipios.filter(function(m){return m.mk!=='JURISDICCION'});
   var T=D.total,ev=T.evid,dg=T.dig,pr=T.prog;
   $('corte').textContent=D.meta.corte;
-  $('ver').textContent='PAER · Grupo Aguas · versión '+D.meta.version+' · generado '+D.meta.generado.replace('T',' ');
-  var munAv=D.municipios.filter(function(m){return m.evid+m.dig>0}).length;
-  var altas=D.alertas.filter(function(a){return a.nivel==='alta'}).length;
+  $('ver').textContent='PAER · Grupo Aguas · versión '+D.meta.version+' · generado '+String(D.meta.generado).replace('T',' ');
+  // catálogos
+  D.actividades.forEach(function(a){ACT[a.cod]=a});
+  var cuenta={};
+  D.detalle.forEach(function(r){var p=PROF[r.pid]=PROF[r.pid]||{id:r.pid,nombre:r.prof};var a=String(r.aro||'');if(/aro/i.test(a)){var c=cuenta[r.pid]=cuenta[r.pid]||{};c[a]=(c[a]||0)+r.prog}});
+  Object.keys(PROF).forEach(function(k){var c=cuenta[k]||{},best=Object.keys(c).sort(function(a,b){return c[b]-c[a]})[0];PROF[k].aro=best?aroLimpio(best):'Sin área'});
+  D.profesionales.forEach(function(p){if(PROF[p.id])PROF[p.id].nombre=p.nombre});
+  var s={};Object.keys(PROF).forEach(function(k){s[PROF[k].aro]=1});AROS=Object.keys(s).sort();
+  var opA='<option value="">Todas las áreas</option>'+AROS.map(function(a){return '<option>'+esc(a)+'</option>'}).join('');
+  ['fAro','pAro'].forEach(function(i){$(i).innerHTML=opA});
+  // KPIs
+  var dias=hoy()>LIMITE?0:habiles(hoy(),LIMITE);
   $('kpis').innerHTML=
-   '<a class="kpi" style="--c:var(--green)" href="#m1"><div class="n">'+pct(ev+dg,pr)+'<small>%</small></div><h3>Avance del diagnóstico</h3><p>'+(ev+dg)+' de '+pr+' visitas con evidencia o digitadas</p>'+bar(dg,ev,pr)+'</a>'+
-   '<a class="kpi" style="--c:var(--teal)" href="#m1"><div class="n">'+ev+'</div><h3>Con evidencia, sin digitar</h3><p>'+dg+' ya digitadas en SISA (cifra oficial)</p></a>'+
-   '<a class="kpi" style="--c:var(--navy)" href="#m4"><div class="n">'+munAv+'<small> / '+D.municipios.length+'</small></div><h3>Municipios con avance</h3><p>con al menos una visita realizada</p></a>'+
-   '<a class="kpi" style="--c:var(--amber)" href="#m5"><div class="n">'+D.alertas.length+'</div><h3>Alertas para decidir</h3><p>'+altas+' de prioridad alta</p></a>';
-
-  var h='<tr><th>Actividad</th><th>Unidad</th><th class="num">Programada</th><th class="num">Nov.</th><th class="num">Dic.</th><th class="num">Evid.</th><th class="num">Digit.</th><th>Avance</th><th>Estado</th></tr>';
-  D.actividades.forEach(function(a){h+='<tr><td><b>'+esc(a.cod)+'</b></td><td>'+esc(a.unidad)+'</td><td class="num">'+a.prog+'</td><td class="num">'+a.nov+'</td><td class="num">'+a.dic+'</td><td class="num">'+a.evid+'</td><td class="num">'+a.dig+'</td><td>'+bar(a.dig,a.evid,a.prog)+'</td><td>'+estado(a.dig,a.evid,a.prog)+'</td></tr>'});
-  h+='<tr><td><b>Total</b></td><td></td><td class="num"><b>'+pr+'</b></td><td class="num"><b>'+T.nov+'</b></td><td class="num"><b>'+T.dic+'</b></td><td class="num"><b>'+ev+'</b></td><td class="num"><b>'+dg+'</b></td><td>'+bar(dg,ev,pr)+'</td><td>'+estado(dg,ev,pr)+'</td></tr>';
-  $('tAct').innerHTML=h;
-
-  h='<tr><th>Profesional</th><th class="num">Programada</th><th class="num">Nov.</th><th class="num">Dic.</th><th class="num">Evid.</th><th class="num">Digit.</th><th class="num">%</th><th>Avance</th><th>Estado</th></tr>';
-  D.profesionales.forEach(function(p){h+='<tr><td>'+esc(p.nombre)+'</td><td class="num">'+p.prog+'</td><td class="num">'+p.nov+'</td><td class="num">'+p.dic+'</td><td class="num">'+p.evid+'</td><td class="num">'+p.dig+'</td><td class="num">'+pct(p.evid+p.dig,p.prog)+'%</td><td>'+bar(p.dig,p.evid,p.prog)+'</td><td>'+estado(p.dig,p.evid,p.prog)+'</td></tr>'});
-  $('tProf').innerHTML=h;
-
-  initFicha();initToggles();
-  var aros={};D.municipios.forEach(function(m){if(m.aro)aros[m.aro]=1});
-  Object.keys(aros).sort().forEach(function(a){$('fAro').insertAdjacentHTML('beforeend','<option>'+esc(a)+'</option>')});
-  $('fAro').onchange=tablaMun;tablaMun();mapa();
-  $('terrTxt').textContent='Avance por municipio. El mapa colorea el porcentaje de visitas con evidencia o digitadas. Además, '+J.prog+' visitas de 7.3 y 7.4 están programadas por jurisdicción del profesional, sin municipio asignado (con evidencia o digitadas: '+(J.evid+J.dig)+'); no aparecen en el mapa pero sí en el total.';
-
-  $('alertas').innerHTML=D.alertas.map(function(a){return '<div class="alert"><span class="lv '+esc(a.nivel)+'">'+esc(a.nivel)+'</span><div><b>'+esc(a.cod)+'</b> · '+esc(a.texto)+'</div></div>'}).join('');
-
-  var acts={},profs={};D.detalle.forEach(function(d){acts[d.act]=1;profs[d.pid]=d.prof});
-  Object.keys(acts).sort(function(a,b){return parseFloat(a.split('.')[1])-parseFloat(b.split('.')[1])}).forEach(function(a){$('dAct').insertAdjacentHTML('beforeend','<option>'+esc(a)+'</option>')});
-  Object.keys(profs).sort().forEach(function(k){$('dProf').insertAdjacentHTML('beforeend','<option value="'+esc(k)+'">'+esc(profs[k])+'</option>')});
+   '<div class="kpi"><div class="n">'+pr+'</div><p>Programadas</p></div>'+
+   '<div class="kpi"><div class="n"><i class="dot '+nivel(pr?(ev+dg)/pr:0).c+'"></i>'+pct(ev+dg,pr)+' %</div><p>Ejecutadas (preliminar) · '+(ev+dg)+' de '+pr+'</p></div>'+
+   '<div class="kpi"><div class="n"><i class="dot '+nivel(pr?dg/pr:0).c+'"></i>'+pct(dg,pr)+' %</div><p>Digitadas en SISA (oficial) · '+dg+' de '+pr+'</p></div>'+
+   '<div class="kpi"><div class="n">'+dias+'</div><p>Días hábiles hasta el 21 dic</p></div>';
+  $('leg1').innerHTML=LEY;$('leg2').innerHTML=LEY;
+  llenarProf();m1();m2();
+  $('fAro').onchange=function(){llenarProf();m1()};$('fProf').onchange=m1;$('pAro').onchange=m2;
+  seg('m1',m1);seg('m2',m2);
+  initToggles();
+  // Módulo 3
+  $('mAro').innerHTML=opA;$('mAro').onchange=function(){tablaMun();mapa()};tablaMun();mapa();
+  // Módulo 4
+  var acts={};D.detalle.forEach(function(d){acts[d.act]=1});
+  Object.keys(acts).sort(function(a,b){return actNum(a)-actNum(b)}).forEach(function(a){$('dAct').insertAdjacentHTML('beforeend','<option>'+esc(a)+'</option>')});
+  Object.keys(PROF).sort(function(a,b){return PROF[a].nombre.localeCompare(PROF[b].nombre,'es')}).forEach(function(k){$('dProf').insertAdjacentHTML('beforeend','<option value="'+esc(k)+'">'+esc(PROF[k].nombre)+'</option>')});
   ['dAct','dProf'].forEach(function(i){$(i).onchange=detalle});$('dMun').oninput=detalle;detalle();
 }
-
-function initFicha(){
-  var s=$('fProf');s.innerHTML=D.profesionales.map(function(p){return '<option value="'+esc(p.id)+'">'+esc(p.nombre)+'</option>'}).join('');
-  s.onchange=ficha;ficha();
+function seg(mod,fn){var b=[].slice.call(document.querySelectorAll('#'+mod+' .seg button'));b.forEach(function(x){x.onclick=function(){b.forEach(function(y){y.setAttribute('aria-pressed',y===x?'true':'false')});fn()}})}
+function ordenSel(mod){var b=document.querySelector('#'+mod+' .seg button[aria-pressed="true"]');return b?b.getAttribute('data-o'):'cod'}
+function llenarProf(){
+  var aro=$('fAro').value,prev=$('fProf').value;
+  var ks=Object.keys(PROF).filter(function(k){return !aro||PROF[k].aro===aro}).sort(function(a,b){return PROF[a].nombre.localeCompare(PROF[b].nombre,'es')});
+  $('fProf').innerHTML='<option value="">'+(aro?'Todos en '+esc(aro):'Todos los profesionales')+'</option>'+ks.map(function(k){return '<option value="'+esc(k)+'">'+esc(PROF[k].nombre)+'</option>'}).join('');
+  if(ks.indexOf(prev)>-1)$('fProf').value=prev;
 }
-function ficha(){
-  var id=$('fProf').value,P=D.profesionales.filter(function(p){return p.id===id})[0];if(!P){$('ficha').innerHTML='';return}
-  var L=D.detalle.filter(function(r){return r.pid===id});
-  var pend=Math.max(0,P.prog-P.evid-P.dig),av=pct(P.evid+P.dig,P.prog),of=pct(P.dig,P.prog);
-  var A={},M={};L.forEach(function(r){var a=A[r.act]=A[r.act]||{prog:0,evid:0,dig:0};a.prog+=r.prog;a.evid+=r.evid;a.dig+=r.dig;
-    var m=M[r.mun]=M[r.mun]||{prog:0,evid:0,dig:0};m.prog+=r.prog;m.evid+=r.evid;m.dig+=r.dig});
-  var h='<div class="fh"><h3>'+esc(P.nombre)+'</h3>'+estado(P.dig,P.evid,P.prog)+'</div>'+
-   '<div class="fk"><div><b>'+P.prog+'</b><span>Programadas</span></div><div><b>'+P.nov+' / '+P.dic+'</b><span>Noviembre / Diciembre</span></div><div><b>'+P.evid+'</b><span>Con evidencia</span></div><div><b>'+P.dig+'</b><span>Digitadas en SISA</span></div><div><b>'+pend+'</b><span>Pendientes</span></div><div><b>'+av+'%</b><span>Avance preliminar · oficial '+of+'%</span></div></div>'+bar(P.dig,P.evid,P.prog)+
-   '<div class="f2" style="margin-top:16px"><div><h4>Por actividad</h4><table><tr><th>Act.</th><th class="num">Prog.</th><th class="num">Evid.</th><th class="num">Digit.</th><th>Avance</th></tr>'+
-   Object.keys(A).sort(function(a,b){return parseFloat(a.split('.')[1])-parseFloat(b.split('.')[1])}).map(function(k){var a=A[k];return '<tr><td><b>'+esc(k)+'</b></td><td class="num">'+a.prog+'</td><td class="num">'+a.evid+'</td><td class="num">'+a.dig+'</td><td>'+bar(a.dig,a.evid,a.prog)+'</td></tr>'}).join('')+'</table></div>'+
-   '<div><h4>Por municipio</h4><div class="scroll" style="max-height:360px"><table><tr><th>Municipio</th><th class="num">Prog.</th><th class="num">Evid.</th><th class="num">Digit.</th><th>Avance</th></tr>'+
-   Object.keys(M).sort(function(a,b){return M[b].prog-M[a].prog}).map(function(k){var m=M[k];return '<tr><td>'+esc(nm(k))+'</td><td class="num">'+m.prog+'</td><td class="num">'+m.evid+'</td><td class="num">'+m.dig+'</td><td>'+bar(m.dig,m.evid,m.prog)+'</td></tr>'}).join('')+'</table></div></div></div>';
-  var al=L.filter(function(r){return r.alerta}).length;
-  if(al)h+='<p class="pill" style="margin-top:12px">'+al+' registro(s) de su programación tienen una observación de calidad de datos.</p>';
-  $('ficha').innerHTML=h;
+function m1(){
+  var aro=$('fAro').value,pid=$('fProf').value;
+  var rows=D.detalle.filter(function(r){return (!pid||r.pid===pid)&&(!aro||PROF[r.pid].aro===aro)});
+  var L=agrupar(rows,function(r){return r.act});
+  L.sort(function(a,b){return actNum(a.k)-actNum(b.k)});ordenar(L,ordenSel('m1'));
+  var T=L.reduce(function(s,a){s.p+=a.prog;s.h+=a.evid+a.dig;return s},{p:0,h:0}),c=conteo(L);
+  var quien=pid?PROF[pid].nombre:(aro||'Grupo Aguas');
+  $('r1').textContent=quien+': '+T.h+' de '+T.p+' ejecutadas ('+pct(T.h,T.p)+' %) · '+c.ok+' en verde, '+c.warn+' en amarillo, '+c.bad+' en rojo.';
+  $('bAct').innerHTML=filas(L,function(a){var A=ACT[a.k]||{};var d=(A.unidad||'')+(A.estado_meta?' · Meta: '+A.estado_meta:'');
+    return '<div class="lb" title="'+esc(a.k+' · '+d)+'"><b><abbr>'+esc(a.k)+'</abbr></b> '+esc(A.unidad||'')+'</div>'});
+}
+function m2(){
+  var aro=$('pAro').value;
+  var rows=D.detalle.filter(function(r){return !aro||PROF[r.pid].aro===aro});
+  var L=agrupar(rows,function(r){return r.pid});
+  ordenar(L,ordenSel('m2'),function(a){return PROF[a.k].nombre});
+  var c=conteo(L);
+  $('r2').textContent=L.length+' profesionales'+(aro?' en '+aro:'')+' · '+c.ok+' en verde, '+c.warn+' en amarillo, '+c.bad+' en rojo.';
+  $('bProf').innerHTML=filas(L,function(a){return '<div class="lb" title="'+esc(PROF[a.k].aro)+'"><b>'+esc(PROF[a.k].nombre)+'</b></div>'});
 }
 function initToggles(){
   var mods=[].slice.call(document.querySelectorAll('.module'));
@@ -237,37 +268,53 @@ function initToggles(){
   $('tgAll').onclick=function(){var ocultar=!mods.every(function(m){return m.classList.contains('collapsed')});
     mods.forEach(function(m){m.classList.toggle('collapsed',ocultar);var b=m.querySelector('.tg');b.textContent=ocultar?'Mostrar':'Ocultar';b.setAttribute('aria-expanded',String(!ocultar))});estadoTodos()};
 }
+function municipios(){
+  var aro=$('mAro').value;
+  var rows=D.detalle.filter(function(r){return r.mk!=='JURISDICCION'&&(!aro||PROF[r.pid].aro===aro)});
+  var L=agrupar(rows,function(r){return r.mk});var nom={};rows.forEach(function(r){nom[r.mk]=r.mun});
+  L.forEach(function(m){m.nombre=nom[m.k]});return L;
+}
 function tablaMun(){
-  var f=$('fAro').value;
-  var L=D.municipios.filter(function(m){return!f||m.aro===f}).sort(function(a,b){return b.prog-a.prog});
-  var h='<tr><th>Municipio</th><th class="num">Prog.</th><th class="num">Evid.</th><th class="num">Digit.</th><th>Avance</th></tr>';
-  L.forEach(function(m){h+='<tr><td>'+esc(m.nombre)+'</td><td class="num">'+m.prog+'</td><td class="num">'+m.evid+'</td><td class="num">'+m.dig+'</td><td>'+bar(m.dig,m.evid,m.prog)+'</td></tr>'});
+  var L=municipios().sort(function(a,b){return a.av-b.av||b.prog-a.prog});
+  var c=conteo(L);$('r3').textContent=L.length+' municipios · '+c.ok+' en verde, '+c.warn+' en amarillo, '+c.bad+' en rojo.';
+  var h='<tr><th>Municipio</th><th class="num">Prog.</th><th class="num">Ejec.</th><th class="num">Digit.</th><th>Cumplimiento</th></tr>';
+  L.forEach(function(m){h+='<tr><td>'+esc(m.nombre)+'</td><td class="num">'+m.prog+'</td><td class="num">'+(m.evid+m.dig)+'</td><td class="num">'+m.dig+'</td><td>'+chip(m.av)+'</td></tr>'});
   $('tMun').innerHTML=h;
 }
-function color(m){if(!m||!m.prog)return'#e3e9ef';var a=pct(m.evid+m.dig,m.prog);if(!a)return'#c9d3dc';if(a>=100)return'#1f7a5a';if(a>=60)return'#5aa88a';if(a>=30)return'#e0b44a';return'#d98a52'}
+var COL={ok:'#5aa88a',warn:'#e0b44a',bad:'#d98a52'};
+function color(m){if(!m||!m.prog)return'#e3e9ef';if(!(m.evid+m.dig))return'#c9d3dc';return COL[nivel(m.av).c]}
+var GEO=null;
 async function mapa(){
   var svg=$('mapa');
-  try{var g=await (await fetch('assets/geo/valle_municipios.json')).json()}catch(e){svg.outerHTML='<p>No se pudo cargar el mapa.</p>';return}
-  var byKey={};D.municipios.forEach(function(m){byKey[norm(m.mk)]=m});
+  if(!GEO){try{GEO=await (await fetch('assets/geo/valle_municipios.json')).json()}catch(e){svg.outerHTML='<p>No se pudo cargar el mapa.</p>';return}}
+  var g=GEO,byKey={};municipios().forEach(function(m){byKey[norm(m.k)]=m});
   var pts=[];function walk(c,fn){if(typeof c[0]==='number')fn(c);else c.forEach(function(x){walk(x,fn)})}
   g.features.forEach(function(f){walk(f.geometry.coordinates,function(p){pts.push(p)})});
   var x0=Math.min.apply(null,pts.map(function(p){return p[0]})),x1=Math.max.apply(null,pts.map(function(p){return p[0]}));
   var y0=Math.min.apply(null,pts.map(function(p){return p[1]})),y1=Math.max.apply(null,pts.map(function(p){return p[1]}));
   var k=Math.cos(((y0+y1)/2)*Math.PI/180),W=520,s=W/((x1-x0)*k),H=(y1-y0)*s;
+  function X(p){return (p[0]-x0)*k*s}function Y(p){return (y1-p[1])*s}
   svg.setAttribute('viewBox','0 0 '+W+' '+H.toFixed(0));
   function d(geom){var polys=geom.type==='Polygon'?[geom.coordinates]:geom.coordinates,o='';
-    polys.forEach(function(poly){poly.forEach(function(r){o+='M'+r.map(function(p){return((p[0]-x0)*k*s).toFixed(1)+','+((y1-p[1])*s).toFixed(1)}).join('L')+'Z'})});return o}
-  svg.innerHTML=g.features.map(function(f){var m=byKey[norm(f.properties.clave||f.properties.nombre)];
-    var t=(f.properties.nombre||'')+(m?': '+m.prog+' programadas · '+m.evid+' con evidencia · '+m.dig+' digitadas':': sin programación PAER');
-    return '<path d="'+d(f.geometry)+'" fill="'+color(m)+'"><title>'+esc(t)+'</title></path>'}).join('');
-  $('mapLeg').innerHTML='<span><i style="background:#e3e9ef"></i>Sin programación</span><span><i style="background:#c9d3dc"></i>Sin avance</span><span><i style="background:#d98a52"></i>&lt; 30 %</span><span><i style="background:#e0b44a"></i>30–59 %</span><span><i style="background:#5aa88a"></i>60–99 %</span><span><i style="background:#1f7a5a"></i>100 %</span>';
+    polys.forEach(function(poly){poly.forEach(function(r){o+='M'+r.map(function(p){return X(p).toFixed(1)+','+Y(p).toFixed(1)}).join('L')+'Z'})});return o}
+  // centro de la etiqueta: centroide del anillo exterior más grande
+  function centro(geom){var polys=geom.type==='Polygon'?[geom.coordinates]:geom.coordinates,best=null,ba=0;
+    polys.forEach(function(poly){var r=poly[0],a=0,cx=0,cy=0;for(var i=0;i<r.length-1;i++){var p=r[i],q=r[i+1],c=X(p)*Y(q)-X(q)*Y(p);a+=c;cx+=(X(p)+X(q))*c;cy+=(Y(p)+Y(q))*c}
+      if(Math.abs(a)>ba){ba=Math.abs(a);best=[cx/(3*a),cy/(3*a)]}});return best||[0,0]}
+  var paths='',labels='';
+  g.features.forEach(function(f){var m=byKey[norm(f.properties.clave||f.properties.nombre)];
+    var t=(f.properties.nombre||'')+(m?': '+m.prog+' programadas · '+(m.evid+m.dig)+' ejecutadas · '+m.dig+' digitadas · '+Math.round(100*m.av)+' %':': sin programación PAER');
+    paths+='<path d="'+d(f.geometry)+'" fill="'+color(m)+'"><title>'+esc(t)+'</title></path>';
+    var c=centro(f.geometry);labels+='<text x="'+c[0].toFixed(1)+'" y="'+c[1].toFixed(1)+'" text-anchor="middle" dominant-baseline="middle">'+esc(f.properties.nombre)+'</text>'});
+  svg.innerHTML=paths+labels;
+  $('mapLeg').innerHTML='<span><i style="background:#e3e9ef"></i>Sin programación</span><span><i style="background:#c9d3dc"></i>Sin avance</span><span><i style="background:'+COL.bad+'"></i>&lt; 70 % Crítico</span><span><i style="background:'+COL.warn+'"></i>70–89 % Aceptable</span><span><i style="background:'+COL.ok+'"></i>≥ 90 % Satisfactorio</span>';
 }
 function detalle(){
   var a=$('dAct').value,p=$('dProf').value,m=norm($('dMun').value);
   var L=D.detalle.filter(function(r){return(!a||r.act===a)&&(!p||r.pid===p)&&(!m||norm(r.mun).indexOf(m)>-1)});
   $('nDet').textContent=L.length;
-  var h='<tr><th>Municipio</th><th>Act.</th><th>Profesional</th><th class="num">Prog.</th><th class="num">Nov.</th><th class="num">Dic.</th><th class="num">Evid.</th><th class="num">Digit.</th></tr>';
-  L.forEach(function(r){h+='<tr><td>'+esc(nm(r.mun))+'</td><td>'+esc(r.act)+'</td><td>'+esc(r.prof)+'</td><td class="num">'+r.prog+'</td><td class="num">'+r.nov+'</td><td class="num">'+r.dic+'</td><td class="num">'+r.evid+'</td><td class="num">'+r.dig+'</td></tr>'});
+  var h='<tr><th>Municipio</th><th>Act.</th><th>Profesional</th><th>Área operativa</th><th class="num">Prog.</th><th class="num">Nov.</th><th class="num">Dic.</th><th class="num">Evid.</th><th class="num">Digit.</th></tr>';
+  L.forEach(function(r){h+='<tr><td>'+esc(nm(r.mun))+'</td><td title="'+esc((ACT[r.act]||{}).unidad||'')+'">'+esc(r.act)+'</td><td>'+esc(PROF[r.pid]?PROF[r.pid].nombre:r.prof)+'</td><td>'+esc(PROF[r.pid]?PROF[r.pid].aro:'')+'</td><td class="num">'+r.prog+'</td><td class="num">'+r.nov+'</td><td class="num">'+r.dic+'</td><td class="num">'+r.evid+'</td><td class="num">'+r.dig+'</td></tr>'});
   $('tDet').innerHTML=h;
 }
 cargar().catch(function(){mostrarGate('No fue posible conectar con el servidor.')});
