@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<title>PAER · Seguimiento del diagnóstico de agua y saneamiento</title>
+<title>Seguimiento Actividades PAER · Agua para consumo humano y saneamiento básico</title>
 <style>
 :root{--ink:#17324d;--ink2:#4b6075;--ink3:#7d8e9e;--navy:#1f4e79;--blue:#2e6f9e;--amber:#e0a33a;--dig:#1f4e79;--evid:#8fb8db;--track:#e3e9ef;--page:#eef3f7;--line:#d5dfe8;--line2:#e8eef3;
 --meta:#2f7fc1;--metabg:#dcebf8;--ok:#2e8a6e;--okbg:#dff1ea;--warn:#c08a1e;--warnbg:#fdf0d5;--bad:#b9473f;--badbg:#f7dedb;--red:#b9473f;
@@ -20,8 +20,8 @@ button,select,input{font:inherit;color:inherit}
 .logos{height:58px;max-width:62%}
 .topmeta{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
 .pill{font-size:13px;color:var(--ink2);background:var(--page);border:1px solid var(--line);border-radius:999px;padding:3px 12px}.pill b{color:var(--navy)}
-.hero{background:linear-gradient(100deg,#232b33,#33414d 60%,#3d4c59);border-bottom:5px solid #e8772e;color:#fff}
-.hero-in{padding:26px 28px 28px}.hero h1{font-size:clamp(28px,4vw,46px);margin-top:8px}
+.hero{background:linear-gradient(100deg,#232b33,#33414d 60%,#3d4c59);border-bottom:5px solid var(--amber);color:#fff}
+.hero-in{padding:26px 28px 28px}.lede2{margin-top:4px;font-size:14px;color:#c9d4dd;letter-spacing:.01em}.hero h1{font-size:clamp(28px,4vw,46px);margin-top:8px}
 .lede{margin-top:8px;font-size:17px;color:#eaf4fb;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;padding:18px 28px 4px}
 .kpi{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 14px;box-shadow:var(--shadow)}
@@ -96,8 +96,8 @@ td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}td.fa{font-weig
 }
 @media(max-width:760px){
   body{font-size:14px}
-  .topbar{padding:10px 16px;gap:10px}.logos{height:38px}.topmeta .eyebrow{display:none}.pill{font-size:12px}
-  .hero-in{padding:16px 16px 18px}.hero h1{font-size:24px;margin-top:4px}.hero .eyebrow{font-size:10.5px}.lede{font-size:14.5px}
+  .topbar{padding:10px 16px;gap:10px}.logos{height:38px}.topmeta .eyebrow{display:none}.pill{font-size:12px;white-space:nowrap}
+  .hero-in{padding:16px 16px 18px}.hero h1{font-size:24px;margin-top:4px}.hero .eyebrow{font-size:10.5px}.lede{font-size:14.5px}.lede2{font-size:12.5px}
   .kpis{gap:8px;padding:12px 12px 2px}.kpi{padding:8px 11px}.kpi .n{font-size:21px}.kpi p{font-size:12px}
   .modbar{padding:6px 12px 0}
   .module{margin:10px 10px;border-radius:12px;position:relative}.mh{padding:12px 14px 2px}.mh h2{font-size:20px;padding-right:70px}.mh .res{font-size:13px}
@@ -135,13 +135,13 @@ td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}td.fa{font-weig
 <main class="sheet hidden" id="sheet">
   <header class="topbar">
     <img class="logos" src="assets/logos/logos_institucionales.png" alt="Gobernación del Valle del Cauca y UESVALLE">
-    <div class="topmeta"><span class="eyebrow dark">Respuesta sanitaria postevento · PAER</span><span class="pill">Corte <b id="corte">—</b></span></div>
+    <div class="topmeta"><span class="eyebrow dark">Diagnóstico PAER</span><span class="pill">Corte <b id="corte">—</b></span></div>
   </header>
 
   <section class="hero"><div class="hero-in">
     <span class="eyebrow">Gobernación del Valle del Cauca · Gestión del riesgo</span>
-    <h1>Seguimiento del diagnóstico PAER</h1>
-    <p class="lede">Avance de las visitas de diagnóstico de agua para consumo humano y saneamiento básico</p>
+    <h1>Seguimiento Actividades PAER</h1>
+    <p class="lede">Proceso Agua para consumo humano y Saneamiento básico</p><p class="lede2">Plan de Acción Específico para la Recuperación del Valle del Cauca</p>
   </div></section>
 
   <section class="kpis" id="kpis" aria-label="Cifras principales"></section>
