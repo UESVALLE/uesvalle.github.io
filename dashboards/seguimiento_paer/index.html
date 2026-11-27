@@ -30,7 +30,7 @@ button,select,input{font:inherit;color:inherit}
 .dot{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:7px;vertical-align:3px}
 .dot.ok{background:var(--ok)}.dot.warn{background:var(--warn)}.dot.bad{background:var(--bad)}
 .module{position:relative;background:#fff;border:1px solid var(--line);border-top:5px solid var(--navy);border-radius:14px;margin:16px 28px;box-shadow:var(--shadow)}
-.mh{padding:18px 24px 4px;padding-right:150px}.mh h2{font-size:24px;color:var(--navy);margin:4px 0 4px}
+.mh{padding:18px 24px 4px;padding-right:70px}.mh h2{font-size:24px;color:var(--navy);margin:4px 0 4px}
 .mh .res{color:var(--ink2);font-size:14px}
 .mb{padding:10px 24px 22px}
 .legend{display:flex;gap:6px 16px;flex-wrap:wrap;font-size:13px;color:var(--ink2);margin:8px 0 4px}
@@ -83,11 +83,13 @@ td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
 .hidden{display:none!important}
 .tg{position:absolute;top:16px;right:18px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:5px 14px;font-size:13px;color:var(--navy);font-weight:600;cursor:pointer}
 .tg:hover{background:var(--page)}
-.module.collapsed .mb,.module.collapsed .mh .res{display:none}.module.collapsed .mh{padding-bottom:16px}
+.module.collapsed .mb,.module.collapsed .mh .res,.module.collapsed .mh .legend{display:none}.module.collapsed .mh{padding-bottom:16px}
+.mh h2{cursor:pointer;padding-right:56px}
+.tg{display:flex;align-items:center;justify-content:center;width:38px;height:38px;padding:0!important}.tg svg{width:20px;height:20px;transition:transform .2s ease}.module.collapsed .tg svg{transform:rotate(-90deg)}
 .modbar{padding:8px 28px 0;display:flex;justify-content:flex-end}.modbar button{background:none;border:0;color:var(--blue);cursor:pointer;text-decoration:underline;font-size:14px}
 @media(max-width:1000px){.mapgrid{grid-template-columns:1fr}.lede{white-space:normal}}
 @media(max-width:760px){.bars{grid-template-columns:minmax(0,1fr) 44px 44px minmax(84px,max-content)}.bars .c-ev,.bars .c-dg,.bars .track{display:none}
-.kpis{grid-template-columns:1fr 1fr;padding:14px 12px 4px}.module{margin:12px}.mh{padding-right:24px}.tg{position:static;margin:8px 0 0 24px}.hero-in{padding:22px 16px}
+.kpis{grid-template-columns:1fr 1fr;padding:14px 12px 4px}.module{margin:12px}.mh{padding-right:24px}.tg{position:absolute;top:12px;right:12px;margin:0}.hero-in{padding:22px 16px}
 }
 @media(max-width:760px){
   body{font-size:14px}
@@ -96,7 +98,7 @@ td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
   .kpis{gap:8px;padding:12px 12px 2px}.kpi{padding:8px 11px}.kpi .n{font-size:21px}.kpi p{font-size:12px}
   .modbar{padding:6px 12px 0}
   .module{margin:10px 10px;border-radius:12px;position:relative}.mh{padding:12px 14px 2px}.mh h2{font-size:20px;padding-right:70px}.mh .res{font-size:13px}
-  .tg{position:absolute;top:10px;right:10px;margin:0;padding:3px 10px;font-size:12px}
+  .tg{position:absolute;top:10px;right:10px;margin:0;width:34px;height:34px}
   .mb{padding:8px 14px 14px}
   .toolbar{display:grid;grid-template-columns:1fr 1fr;gap:8px}.toolbar label{min-width:0}.toolbar select,.toolbar input{width:100%;font-size:13.5px;padding:6px 8px}
   .toolbar label:has(.seg){grid-column:1/-1}.seg{width:100%;display:flex}.seg button{flex:1 1 0;padding:6px 6px;font-size:12.5px;line-height:1.2;white-space:normal}
@@ -143,7 +145,7 @@ td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
   <div class="modbar noprint"><button type="button" id="tgAll">Ocultar todos los módulos</button></div>
 
   <div class="duo">
-  <section class="module" id="m1"><div class="mh"><span class="eyebrow dark">Módulo 1</span><h2>Avance por actividad</h2><p class="res" id="r1"></p></div>
+  <section class="module" id="m1"><div class="mh"><h2>Avance por actividad</h2><p class="res" id="r1"></p></div>
     <div class="mb">
       <div class="toolbar noprint">
         <label>Área operativa<select id="fAro"></select></label>
@@ -155,7 +157,7 @@ td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
       <div class="bars" id="bAct"></div>
     </div></section>
 
-  <section class="module" id="m2"><div class="mh"><span class="eyebrow dark">Módulo 2</span><h2>Avance por profesional</h2><p class="res" id="r2"></p></div>
+  <section class="module" id="m2"><div class="mh"><h2>Avance por profesional</h2><p class="res" id="r2"></p></div>
     <div class="mb">
       <div class="toolbar noprint">
         <label>Área operativa<select id="pAro"></select></label>
@@ -167,13 +169,13 @@ td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
 
   </div>
 
-  <section class="module" id="m3"><div class="mh"><span class="eyebrow dark">Módulo 3</span><h2>Territorio</h2><p class="res" id="r3"></p>
+  <section class="module" id="m3"><div class="mh"><h2>Mapa de actividades</h2><p class="res" id="r3"></p>
     <div class="legend" id="mapLeg"></div></div>
     <div class="mb"><div class="mapgrid"><svg id="mapa" role="img" aria-label="Mapa de avance por municipio"></svg>
       <div><div class="toolbar noprint"><label>Área operativa<select id="mAro"></select></label></div>
       <div class="scroll" style="max-height:560px"><table id="tMun"></table></div></div></div></div></section>
 
-  <section class="module" id="m4"><div class="mh"><span class="eyebrow dark">Módulo 4</span><h2>Detalle de la programación (<span id="nDet">0</span> registros)</h2></div>
+  <section class="module" id="m4"><div class="mh"><h2>Programación</h2><p class="res"><span id="nDet">0</span> registros según los filtros.</p></div>
     <div class="mb">
       <div class="toolbar noprint"><label>Actividad<select id="dAct"><option value="">Todas</option></select></label>
       <label>Profesional<select id="dProf"><option value="">Todos</option></select></label>
@@ -312,12 +314,15 @@ function m2(){
 }
 function initToggles(){
   var mods=[].slice.call(document.querySelectorAll('.module'));
-  mods.forEach(function(m){if(m.querySelector('.tg'))return;var b=document.createElement('button');b.type='button';b.className='tg noprint';b.textContent='Ocultar';b.setAttribute('aria-expanded','true');
-    b.onclick=function(){var c=m.classList.toggle('collapsed');b.textContent=c?'Mostrar':'Ocultar';b.setAttribute('aria-expanded',String(!c));estadoTodos()};
-    m.querySelector('.mh').appendChild(b)});
-  function estadoTodos(){var todos=mods.every(function(m){return m.classList.contains('collapsed')});$('tgAll').textContent=todos?'Mostrar todos los módulos':'Ocultar todos los módulos'}
+  var FLE='<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 7.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  function poner(m,c){m.classList.toggle('collapsed',c);var b=m.querySelector('.tg');b.setAttribute('aria-expanded',String(!c));b.setAttribute('aria-label',c?'Mostrar':'Ocultar');b.title=c?'Mostrar':'Ocultar'}
+  mods.forEach(function(m,i){if(m.querySelector('.tg'))return;var b=document.createElement('button');b.type='button';b.className='tg noprint';b.innerHTML=FLE;
+    b.onclick=function(){poner(m,!m.classList.contains('collapsed'));estadoTodos()};
+    m.querySelector('.mh').appendChild(b);m.querySelector('.mh h2').onclick=b.onclick;poner(m,i>0)});
+  function estadoTodos(){var todos=mods.every(function(m){return m.classList.contains('collapsed')});$('tgAll').textContent=todos?'Mostrar todos':'Ocultar todos'}
   $('tgAll').onclick=function(){var ocultar=!mods.every(function(m){return m.classList.contains('collapsed')});
-    mods.forEach(function(m){m.classList.toggle('collapsed',ocultar);var b=m.querySelector('.tg');b.textContent=ocultar?'Mostrar':'Ocultar';b.setAttribute('aria-expanded',String(!ocultar))});estadoTodos()};
+    mods.forEach(function(m){poner(m,ocultar)});estadoTodos()};
+  estadoTodos();
 }
 function municipios(){
   var aro=$('mAro').value;
