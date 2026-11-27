@@ -14,7 +14,7 @@ body{background:var(--page);color:var(--ink);font:400 15px/1.5 var(--f)}
 h1,h2,h3,p{margin:0}h1,h2,h3{line-height:1.15}
 button,select,input{font:inherit;color:inherit}
 :focus-visible{outline:2px solid var(--amber);outline-offset:2px}
-.sheet{max-width:1560px;margin:0 auto 24px}
+.sheet{max-width:1240px;margin:0 auto 24px}
 .eyebrow{display:block;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#bfe0f7}.eyebrow.dark{color:var(--blue)}
 .topbar{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:14px 28px;background:#fff;border-bottom:1px solid var(--line)}
 .logos{height:58px;max-width:62%}
@@ -43,7 +43,7 @@ button,select,input{font:inherit;color:inherit}
 .seg button[aria-pressed="true"]{background:var(--navy);color:#fff}
 select,input[type=text],input[type=password]{border:1px solid var(--line);border-radius:8px;padding:7px 10px;background:#fff}
 /* barras con semáforo */
-.bars{display:grid;grid-template-columns:fit-content(560px) repeat(5,minmax(52px,max-content)) minmax(110px,220px) minmax(110px,max-content);gap:5px 14px;align-items:center}
+.bars{display:grid;grid-template-columns:fit-content(560px) repeat(5,minmax(52px,max-content)) minmax(90px,170px) minmax(110px,max-content);gap:5px 14px;align-items:center}
 .bars .h{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink3);border-bottom:2px solid var(--line);padding-bottom:4px;text-align:right}.bars .h.l{text-align:left}
 .bars .so{background:none;border:0;border-bottom:2px solid var(--line);font:inherit;font-size:11px;font-weight:600;cursor:pointer;padding:0 0 4px;color:var(--ink3);text-transform:uppercase;letter-spacing:.06em;white-space:nowrap}.bars .so:hover,.bars .so.on{color:var(--navy)}.bars .so .fl{font-size:10px;opacity:.55;margin-left:2px}.bars .so.on .fl{opacity:1}
 .bars .n{text-align:right;font-variant-numeric:tabular-nums;font-size:14px;color:var(--ink)}.bars .n.z{color:var(--ink3)}.bars .n.c-fa{font-weight:700;color:var(--navy)}.bars .n.c-fa.z{font-weight:400;color:var(--ink3)}.bars .n.c-pd{color:var(--ink2)}
@@ -67,6 +67,7 @@ select,input[type=text],input[type=password]{border:1px solid var(--line);border
 table{width:100%;border-collapse:collapse;font-size:14px}
 th{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink3);text-align:left;padding:8px 10px;border-bottom:2px solid var(--line);position:sticky;top:0;background:#fff}
 td{padding:8px 10px;border-bottom:1px solid var(--line2);vertical-align:middle}
+@media(min-width:761px){#tMun th,#tMun td{padding-left:7px;padding-right:7px}}th.sth{cursor:pointer;white-space:nowrap;user-select:none}th.sth:hover,th.sth.on{color:var(--navy)}th.sth .fl{font-size:10px;opacity:.5}th.sth.on .fl{opacity:1}
 td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}td.fa{font-weight:700;color:var(--navy)}td.z{color:var(--ink3)}
 .toolbar label.chk{flex-direction:row;align-items:center;gap:6px;align-self:flex-end;padding-bottom:7px;cursor:pointer;display:flex}.toolbar label.chk input{width:auto;accent-color:var(--navy)}
 .mapgrid>*{min-width:0}
@@ -111,7 +112,7 @@ td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}td.fa{font-weig
   .bars .c-ev,.bars .c-dg,.bars .track{display:none}
   .chip{font-size:12.5px;padding:2px 7px}
   #mapa{border-radius:8px}
-  table{font-size:13px}th{font-size:10px;letter-spacing:.03em;padding:6px 4px;white-space:normal}td{padding:6px 4px}td:first-child,th:first-child{padding-left:2px}#tDet{font-size:12.5px}#tDet th,#tDet td{padding:6px 3px}#tDet th{letter-spacing:0}
+  table{font-size:13px}th{font-size:10px;letter-spacing:.03em;padding:6px 4px;white-space:normal}td{padding:6px 4px}td:first-child,th:first-child{padding-left:2px}th.sth{white-space:normal}th.sth .fl{display:inline-block}#tDet{font-size:12.5px}#tDet th,#tDet td{padding:6px 3px}#tDet th{letter-spacing:0}
   .xs{display:none}
   .foot{padding:8px 16px;font-size:12px}
 }
@@ -334,10 +335,15 @@ function municipios(){
   var L=agrupar(rows,function(r){return r.mk});var nom={};rows.forEach(function(r){nom[r.mk]=r.mun});
   L.forEach(function(m){m.nombre=nom[m.k]});return L;
 }
+var TS={tMun:{k:'av',d:1},tDet:{k:'',d:1}};
+function th(t,k,label,cls){var o=TS[t],on=o.k===k;return '<th class="sth '+(cls||'')+(on?' on':'')+'" data-t="'+t+'" data-k="'+k+'" title="Ordenar por '+label.toLowerCase()+'">'+label+' <span class="fl">'+(on?(o.d>0?'▲':'▼'):'↕')+'</span></th>'}
+function ordT(L,t,V){var o=TS[t];if(!o.k||!V[o.k])return L;var f=V[o.k];return L.sort(function(a,b){var x=f(a),y=f(b),c=typeof x==='string'?x.localeCompare(y,'es'):x-y;return c*o.d||b.prog-a.prog})}
+document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('th.sth');if(!b)return;var t=b.getAttribute('data-t'),k=b.getAttribute('data-k'),o=TS[t];if(o.k===k)o.d=-o.d;else{o.k=k;o.d=1}(t==='tMun'?tablaMun:detalle)()});
 function tablaMun(){
   var L=municipios().sort(function(a,b){return a.av-b.av||b.prog-a.prog});
+  ordT(L,'tMun',{nombre:function(m){return m.nombre},prog:function(m){return m.prog},ej:function(m){return m.evid+m.dig},dig:function(m){return m.dig},av:function(m){return m.prog?m.av:-1}});
   var c=conteo(L);$('r3').textContent=L.length+' municipios · '+c.meta+' con meta cumplida, '+c.ok+' en verde, '+c.warn+' en amarillo, '+c.bad+' en rojo.';
-  var h='<tr><th>Municipio</th><th class="num">Prog.</th><th class="num">Ejec.</th><th class="num">Digit.</th><th>Cumplimiento</th></tr>';
+  var h='<tr>'+th('tMun','nombre','Municipio')+th('tMun','prog','Prog.','num')+th('tMun','ej','Ejec.','num')+th('tMun','dig','Digit.','num')+th('tMun','av','Cumplimiento')+'</tr>';
   L.forEach(function(m){h+='<tr><td>'+esc(m.nombre)+'</td><td class="num">'+m.prog+'</td><td class="num">'+(m.evid+m.dig)+'</td><td class="num">'+m.dig+'</td><td>'+chip(m.av)+'</td></tr>'});
   $('tMun').innerHTML=h;
 }
@@ -373,7 +379,8 @@ function detalle(){
   var a=$('dAct').value,p=$('dProf').value,m=norm($('dMun').value),pen=$('dPen').checked;
   var L=D.detalle.filter(function(r){return(!a||r.act===a)&&(!p||r.pid===p)&&(!m||norm(r.mun).indexOf(m)>-1)&&(!pen||r.prog>r.evid+r.dig)});
   $('nDet').textContent=L.length;
-  var h='<tr><th>Municipio</th><th>Act.</th><th>Profesional</th><th class="xs">Área operativa</th><th class="num">Prog.</th><th class="num xs">Nov.</th><th class="num xs">Dic.</th><th class="num xs">Evid.</th><th class="num">Digit.</th><th class="num">Faltan</th></tr>';
+  L=ordT(L.slice(),'tDet',{mun:function(r){return nm(r.mun)},act:function(r){return actNum(r.act)},prof:function(r){return PROF[r.pid]?PROF[r.pid].nombre:r.prof},aro:function(r){return PROF[r.pid]?PROF[r.pid].aro:''},prog:function(r){return r.prog},nov:function(r){return r.nov},dic:function(r){return r.dic},evid:function(r){return r.evid},dig:function(r){return r.dig},fa:function(r){return Math.max(0,r.prog-r.evid-r.dig)}});
+  var h='<tr>'+th('tDet','mun','Municipio')+th('tDet','act','Act.')+th('tDet','prof','Profesional')+th('tDet','aro','Área operativa','xs')+th('tDet','prog','Prog.','num')+th('tDet','nov','Nov.','num xs')+th('tDet','dic','Dic.','num xs')+th('tDet','evid','Evid.','num xs')+th('tDet','dig','Digit.','num')+th('tDet','fa','Faltan','num')+'</tr>';
   L.forEach(function(r){h+='<tr><td>'+esc(nm(r.mun))+'</td><td data-tip="'+esc('<b>'+r.act+'</b> · '+esc(nombreAct(r.act)))+'">'+esc(r.act)+'</td><td>'+esc(PROF[r.pid]?PROF[r.pid].nombre:r.prof)+'</td><td class="xs">'+esc(PROF[r.pid]?PROF[r.pid].aro:'')+'</td><td class="num">'+r.prog+'</td><td class="num xs">'+r.nov+'</td><td class="num xs">'+r.dic+'</td><td class="num xs">'+r.evid+'</td><td class="num">'+r.dig+'</td><td class="num'+(r.prog>r.evid+r.dig?' fa':' z')+'">'+Math.max(0,r.prog-r.evid-r.dig)+'</td></tr>'});
   $('tDet').innerHTML=h;
 }
