@@ -33,7 +33,7 @@ button,select,input{font:inherit;color:inherit}
 .mh{padding:18px 24px 4px;padding-right:70px}.mh h2{font-size:24px;color:var(--navy);margin:4px 0 4px}
 .mh .res{color:var(--ink2);font-size:14px}
 .mb{padding:10px 24px 22px}
-.legend{display:flex;gap:6px 16px;flex-wrap:wrap;font-size:13px;color:var(--ink2);margin:8px 0 4px}
+.legend{display:flex;gap:6px 16px;flex-wrap:wrap;font-size:13px;color:var(--ink2);margin:10px 0 4px}.mb>.legend{margin:12px 0 18px}
 .legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
 .legend i.c{border-radius:50%}.legend .sep{flex:1 1 20px}
 .toolbar{display:flex;gap:10px 18px;flex-wrap:wrap;align-items:flex-end;margin:6px 0 10px}
@@ -147,7 +147,7 @@ td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}td.fa{font-weig
   <div class="modbar noprint"><button type="button" id="tgAll">Ocultar todos los módulos</button></div>
 
   <div class="duo">
-  <section class="module" id="m1"><div class="mh"><h2>Avance por actividad</h2><p class="res" id="r1"></p></div>
+  <section class="module" id="m1"><div class="mh"><h2>Avance por actividad</h2></div>
     <div class="mb">
       <div class="toolbar noprint">
         <label>Área operativa<select id="fAro"></select></label>
@@ -195,7 +195,7 @@ var D=null,ACT={},PROF={},AROS=[],LIMITE='2026-12-21',FEST=['2026-12-08','2026-1
 // Nombre resumen de cada actividad (hoja de actividades PAER)
 var NOMBRE={'7.1':'Visita Diagnóstico Acueducto Urbano','7.2':'Visita Diagnóstico Acueducto Rural','7.3':'Visita para Toma de muestra in situ Acueductos Urbano o Rural','7.4':'Elaborar y notificar informe del estado de acueductos al municipio','7.5':'Visita para Fomentar acueductos en el marco del PAER - Educación','7.6':'Visita de Acompañamiento técnico al sistema','7.7':'Visita de Diagnóstico e identificación de residuos de aseo (escombros)','7.8':'Identificar en área urbana los sitios de disposición final de escombros','7.9':'Visita de Diagnóstico gestión de residuos a las ESE','7.10':'Visita para consolidar información del servicio de alcantarillado zona urbana','7.11':'Visita viviendas urbanas afectadas'};
 function nombreAct(c){return NOMBRE[c]||((ACT[c]||{}).unidad)||''}
-var ESC=[{min:.9,c:'ok',t:'Satisfactorio'},{min:.7,c:'warn',t:'Aceptable'},{min:0,c:'bad',t:'Crítico'}];
+var ESC=[{min:.9,c:'ok',t:'Alto'},{min:.7,c:'warn',t:'Medio'},{min:0,c:'bad',t:'Bajo'}];
 function nivel(x){for(var i=0;i<ESC.length;i++)if(x>=ESC[i].min-1e-9)return ESC[i];return ESC[2]}
 function nm(s){return s==='JURISDICCION'?'Jurisdicción (sin municipio)':s}
 function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
@@ -239,7 +239,7 @@ function filas(L,label,tit,m){
       '<div>'+chip(a.av,a.prog)+'</div>'}).join('');
 }
 function conteo(L){var c={ok:0,warn:0,bad:0};L.forEach(function(a){c[nivel(a.av).c]++});return c}
-var LEY='<span class="lgb"><i style="background:var(--dig)"></i>Digitada en SISA (oficial)</span><span class="lgb"><i style="background:var(--evid)"></i>Con evidencia, sin digitar</span><span class="lgb"><i style="background:var(--track)"></i>Pendiente</span><span class="sep"></span><span><i class="c" style="background:var(--ok)"></i>≥ 90 % Satisfactorio</span><span><i class="c" style="background:var(--warn)"></i>70–89 % Aceptable</span><span><i class="c" style="background:var(--bad)"></i>&lt; 70 % Crítico</span>';
+var LEY='<span class="lgb"><i style="background:var(--dig)"></i>Digitada</span><span class="lgb"><i style="background:var(--evid)"></i>Sin digitar</span><span class="lgb"><i style="background:var(--track)"></i>Faltan</span><span class="sep"></span><span><i class="c" style="background:var(--ok)"></i>≥ 90 % Alto</span><span><i class="c" style="background:var(--warn)"></i>70–89 % Medio</span><span><i class="c" style="background:var(--bad)"></i>&lt; 70 % Bajo</span>';
 
 function pintar(){
   var T=D.total,ev=T.evid,dg=T.dig,pr=T.prog;
@@ -299,7 +299,6 @@ function m1(){
   L.sort(function(a,b){return actNum(a.k)-actNum(b.k)});if(ordenSel('m1')==='lab-')L.reverse();else ordenar(L,ordenSel('m1'));
   var T=L.reduce(function(s,a){s.p+=a.prog;s.h+=a.evid+a.dig;return s},{p:0,h:0}),c=conteo(L);
   var quien=(pid?PROF[pid].nombre:(aro||'Grupo Aguas'))+(mun?' · '+nm(munNom[mun]||mun):'');
-  $('r1').textContent=quien+': '+T.h+' de '+T.p+' ejecutadas ('+pct(T.h,T.p)+' %) · '+c.ok+' en verde, '+c.warn+' en amarillo, '+c.bad+' en rojo.';
   // Actividades del catálogo sin programación (p. ej. 7.11) y fila de total
   if(!pid&&!mun){D.actividades.forEach(function(A){if(!L.some(function(a){return a.k===A.cod}))L.push({k:A.cod,prog:0,evid:0,dig:0,av:0})})}
   if(ordenSel('m1')==='lab-')L.sort(function(a,b){return actNum(b.k)-actNum(a.k)});
@@ -367,7 +366,7 @@ async function mapa(){
     paths+='<path d="'+d(f.geometry)+'" fill="'+color(m)+'"><title>'+esc(t)+'</title></path>';
     var c=centro(f.geometry);labels+='<text x="'+c[0].toFixed(1)+'" y="'+c[1].toFixed(1)+'" text-anchor="middle" dominant-baseline="middle">'+esc(f.properties.nombre)+'</text>'});
   svg.innerHTML=paths+labels;
-  $('mapLeg').innerHTML='<span><i style="background:#e3e9ef"></i>Sin programación</span><span><i style="background:#c9d3dc"></i>Sin avance</span><span><i style="background:'+COL.bad+'"></i>&lt; 70 % Crítico</span><span><i style="background:'+COL.warn+'"></i>70–89 % Aceptable</span><span><i style="background:'+COL.ok+'"></i>≥ 90 % Satisfactorio</span>';
+  $('mapLeg').innerHTML='<span><i style="background:#e3e9ef"></i>Sin programación</span><span><i style="background:#c9d3dc"></i>Sin avance</span><span><i style="background:'+COL.bad+'"></i>&lt; 70 % Bajo</span><span><i style="background:'+COL.warn+'"></i>70–89 % Medio</span><span><i style="background:'+COL.ok+'"></i>≥ 90 % Alto</span>';
 }
 function detalle(){
   var a=$('dAct').value,p=$('dProf').value,m=norm($('dMun').value),pen=$('dPen').checked;
