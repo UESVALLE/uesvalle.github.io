@@ -43,10 +43,10 @@ button,select,input{font:inherit;color:inherit}
 .seg button[aria-pressed="true"]{background:var(--navy);color:#fff}
 select,input[type=text],input[type=password]{border:1px solid var(--line);border-radius:8px;padding:7px 10px;background:#fff}
 /* barras con semáforo */
-.bars{display:grid;grid-template-columns:fit-content(560px) repeat(4,minmax(52px,max-content)) minmax(120px,260px) minmax(110px,max-content);gap:5px 14px;align-items:center}
+.bars{display:grid;grid-template-columns:fit-content(560px) repeat(6,minmax(52px,max-content)) minmax(110px,220px) minmax(110px,max-content);gap:5px 14px;align-items:center}
 .bars .h{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink3);border-bottom:2px solid var(--line);padding-bottom:4px;text-align:right}.bars .h.l{text-align:left}
 .bars .so{background:none;border:0;border-bottom:2px solid var(--line);font:inherit;font-size:11px;font-weight:600;cursor:pointer;padding:0 0 4px;color:var(--ink3);text-transform:uppercase;letter-spacing:.06em;white-space:nowrap}.bars .so:hover,.bars .so.on{color:var(--navy)}.bars .so .fl{font-size:10px;opacity:.55;margin-left:2px}.bars .so.on .fl{opacity:1}
-.bars .n{text-align:right;font-variant-numeric:tabular-nums;font-size:14px;color:var(--ink)}.bars .n.z{color:var(--ink3)}
+.bars .n{text-align:right;font-variant-numeric:tabular-nums;font-size:14px;color:var(--ink)}.bars .n.z{color:var(--ink3)}.bars .n.c-fa{font-weight:700;color:var(--navy)}.bars .n.c-fa.z{font-weight:400;color:var(--ink3)}.bars .n.c-pd{color:var(--ink2)}
 .duo{display:grid;grid-template-columns:1fr;margin:0}
 
 .bars .lb{text-align:left;font-size:14.5px;color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -67,7 +67,8 @@ select,input[type=text],input[type=password]{border:1px solid var(--line);border
 table{width:100%;border-collapse:collapse;font-size:14px}
 th{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink3);text-align:left;padding:8px 10px;border-bottom:2px solid var(--line);position:sticky;top:0;background:#fff}
 td{padding:8px 10px;border-bottom:1px solid var(--line2);vertical-align:middle}
-td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}td.fa{font-weight:700;color:var(--navy)}td.z{color:var(--ink3)}
+.toolbar label.chk{flex-direction:row;align-items:center;gap:6px;align-self:flex-end;padding-bottom:7px;cursor:pointer;display:flex}.toolbar label.chk input{width:auto;accent-color:var(--navy)}
 .mapgrid>*{min-width:0}
 .mapgrid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:24px;align-items:start}
 #mapa{width:100%;height:auto;background:#f5f8fb;border:1px solid var(--line);border-radius:12px}
@@ -89,7 +90,7 @@ td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
 .tg{display:flex;align-items:center;justify-content:center;width:38px;height:38px;padding:0!important}.tg svg{width:20px;height:20px;transition:transform .2s ease}.module.collapsed .tg svg{transform:rotate(-90deg)}
 .modbar{padding:8px 28px 0;display:flex;justify-content:flex-end}.modbar button{background:none;border:0;color:var(--blue);cursor:pointer;text-decoration:underline;font-size:14px}
 @media(max-width:1000px){.mapgrid{grid-template-columns:1fr}.lede{white-space:normal}}
-@media(max-width:760px){.bars{grid-template-columns:minmax(0,1fr) 44px 44px minmax(84px,max-content)}.bars .c-ev,.bars .c-dg,.bars .track{display:none}
+@media(max-width:760px){.bars .c-ev,.bars .c-dg,.bars .track{display:none}
 .kpis{grid-template-columns:1fr 1fr;padding:14px 12px 4px}.module{margin:12px}.mh{padding-right:24px}.tg{position:absolute;top:12px;right:12px;margin:0}.hero-in{padding:22px 16px}
 }
 @media(max-width:760px){
@@ -104,7 +105,7 @@ td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
   .toolbar{display:grid;grid-template-columns:1fr 1fr;gap:8px}.toolbar label{min-width:0}.toolbar select,.toolbar input{width:100%;font-size:13.5px;padding:6px 8px}
   .toolbar label:has(.seg){grid-column:1/-1}.seg{width:100%;display:flex}.seg button{flex:1 1 0;padding:6px 6px;font-size:12.5px;line-height:1.2;white-space:normal}
   .legend{font-size:12px;gap:4px 10px}.legend .lgb,.legend .sep{display:none}
-  .bars{grid-template-columns:minmax(0,1fr) 40px 40px max-content;gap:6px 8px}
+  .bars{grid-template-columns:1fr 1fr 1fr minmax(96px,1.3fr);gap:2px 10px}.bars .c-pd{display:none}.bars .lb,.bars .so.l:first-child{grid-column:1/-1}.bars .lb{margin-top:8px}.bars .so.l:first-child{border-bottom:0;padding-bottom:0}.bars>div:has(.chip){justify-self:end}.bars .so[data-k=av]{text-align:right}
   .bars .lb{white-space:normal;font-size:13px;line-height:1.3}.bars .n{font-size:13px}.bars .h{font-size:10px}
   .bars .c-ev,.bars .c-dg,.bars .track{display:none}
   .chip{font-size:12.5px;padding:2px 7px}
@@ -178,7 +179,7 @@ td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
     <div class="mb">
       <div class="toolbar noprint"><label>Actividad<select id="dAct"><option value="">Todas</option></select></label>
       <label>Profesional<select id="dProf"><option value="">Todos</option></select></label>
-      <label>Municipio<input type="text" id="dMun" placeholder="Buscar"></label></div>
+      <label>Municipio<input type="text" id="dMun" placeholder="Buscar"></label><label class="chk"><input type="checkbox" id="dPen"> Solo pendientes</label></div>
       <div class="scroll"><table id="tDet"></table></div>
     </div></section>
 
@@ -231,9 +232,9 @@ function hs(m,k,t,c){var o=ORD[m],on=o.k===k,fl=on?(o.d>0?'▲':'▼'):'↕';ret
 function filas(L,label,tit,m){
   if(!L.length)return '<p class="empty">Sin programación para este filtro.</p>';
   function num(v,c){return '<div class="n '+(c||'')+(v?'':' z')+'">'+v+'</div>'}
-  return hs(m,'lab',tit,'l')+'<div class="h">Prog.</div><div class="h">Ejec.</div><div class="h c-ev">Evid.</div><div class="h c-dg">Digit.</div><div class="h track-h c-ev"></div>'+hs(m,'av','Cumplimiento','l')+
+  return hs(m,'lab',tit,'l')+'<div class="h">Prog.</div><div class="h">Ejec.</div><div class="h c-ev">Evid.</div><div class="h c-dg">Digit.</div><div class="h c-fa" title="Visitas programadas que aún no tienen evidencia ni digitación">Faltan</div><div class="h c-pd" title="Visitas que habría que hacer cada día hábil hasta el 21 dic para cumplir">Por día</div><div class="h track-h c-ev"></div>'+hs(m,'av','Cumplimiento','l')+
    L.map(function(a){var t=a.prog||1;
-    return label(a)+num(a.prog)+num(a.evid+a.dig)+num(a.evid,'c-ev')+num(a.dig,'c-dg')+
+    return label(a)+num(a.prog)+num(a.evid+a.dig)+num(a.evid,'c-ev')+num(a.dig,'c-dg')+(function(){var f=Math.max(0,a.prog-a.evid-a.dig);return num(f,'c-fa')+'<div class="n c-pd'+(f?'':' z')+'">'+(f?(DIAS?(f/DIAS).toLocaleString('es-CO',{maximumFractionDigits:1}):'—'):'0')+'</div>'})()+
       '<div class="track" title="Digitadas '+a.dig+' · Con evidencia sin digitar '+a.evid+' · Programadas '+a.prog+'"><i style="width:'+(100*a.dig/t)+'%;background:var(--dig)"></i><i style="width:'+(100*a.evid/t)+'%;background:var(--evid)"></i></div>'+
       '<div>'+chip(a.av,a.prog)+'</div>'}).join('');
 }
@@ -254,7 +255,7 @@ function pintar(){
   var opA='<option value="">Todas las áreas</option>'+AROS.map(function(a){return '<option>'+esc(a)+'</option>'}).join('');
   ['fAro','pAro'].forEach(function(i){$(i).innerHTML=opA});
   // KPIs
-  var dias=hoy()>LIMITE?0:habiles(hoy(),LIMITE);
+  var dias=DIAS=hoy()>LIMITE?0:habiles(hoy(),LIMITE);
   $('kpis').innerHTML=
    '<div class="kpi"><div class="n">'+pr+'</div><p>Programadas</p></div>'+
    '<div class="kpi"><div class="n"><i class="dot '+nivel(pr?(ev+dg)/pr:0).c+'"></i>'+pct(ev+dg,pr)+' %</div><p>Ejecutadas (preliminar) · '+(ev+dg)+' de '+pr+'</p></div>'+
@@ -271,9 +272,10 @@ function pintar(){
   var acts={};D.detalle.forEach(function(d){acts[d.act]=1});
   Object.keys(acts).sort(function(a,b){return actNum(a)-actNum(b)}).forEach(function(a){$('dAct').insertAdjacentHTML('beforeend','<option>'+esc(a)+'</option>')});
   Object.keys(PROF).sort(function(a,b){return PROF[a].nombre.localeCompare(PROF[b].nombre,'es')}).forEach(function(k){$('dProf').insertAdjacentHTML('beforeend','<option value="'+esc(k)+'">'+esc(PROF[k].nombre)+'</option>')});
-  ['dAct','dProf'].forEach(function(i){$(i).onchange=detalle});$('dMun').oninput=detalle;detalle();
+  ['dAct','dProf','dPen'].forEach(function(i){$(i).onchange=detalle});$('dMun').oninput=detalle;detalle();
 }
 function seg(mod,fn){var b=[].slice.call(document.querySelectorAll('#'+mod+' .seg button'));b.forEach(function(x){x.onclick=function(){b.forEach(function(y){y.setAttribute('aria-pressed',y===x?'true':'false')});fn()}})}
+var DIAS=0;
 var ORD={m1:{k:'lab',d:1},m2:{k:'av',d:1}};
 function ordenSel(mod){var o=ORD[mod];if(o.k==='av')return o.d>0?'asc':'desc';return o.d>0?(mod==='m1'?'cod':'nom'):'lab-'}
 function llenarProf(){
@@ -368,11 +370,11 @@ async function mapa(){
   $('mapLeg').innerHTML='<span><i style="background:#e3e9ef"></i>Sin programación</span><span><i style="background:#c9d3dc"></i>Sin avance</span><span><i style="background:'+COL.bad+'"></i>&lt; 70 % Crítico</span><span><i style="background:'+COL.warn+'"></i>70–89 % Aceptable</span><span><i style="background:'+COL.ok+'"></i>≥ 90 % Satisfactorio</span>';
 }
 function detalle(){
-  var a=$('dAct').value,p=$('dProf').value,m=norm($('dMun').value);
-  var L=D.detalle.filter(function(r){return(!a||r.act===a)&&(!p||r.pid===p)&&(!m||norm(r.mun).indexOf(m)>-1)});
+  var a=$('dAct').value,p=$('dProf').value,m=norm($('dMun').value),pen=$('dPen').checked;
+  var L=D.detalle.filter(function(r){return(!a||r.act===a)&&(!p||r.pid===p)&&(!m||norm(r.mun).indexOf(m)>-1)&&(!pen||r.prog>r.evid+r.dig)});
   $('nDet').textContent=L.length;
-  var h='<tr><th>Municipio</th><th>Act.</th><th>Profesional</th><th class="xs">Área operativa</th><th class="num">Prog.</th><th class="num xs">Nov.</th><th class="num xs">Dic.</th><th class="num">Evid.</th><th class="num">Digit.</th></tr>';
-  L.forEach(function(r){h+='<tr><td>'+esc(nm(r.mun))+'</td><td data-tip="'+esc('<b>'+r.act+'</b> · '+esc(nombreAct(r.act)))+'">'+esc(r.act)+'</td><td>'+esc(PROF[r.pid]?PROF[r.pid].nombre:r.prof)+'</td><td class="xs">'+esc(PROF[r.pid]?PROF[r.pid].aro:'')+'</td><td class="num">'+r.prog+'</td><td class="num xs">'+r.nov+'</td><td class="num xs">'+r.dic+'</td><td class="num">'+r.evid+'</td><td class="num">'+r.dig+'</td></tr>'});
+  var h='<tr><th>Municipio</th><th>Act.</th><th>Profesional</th><th class="xs">Área operativa</th><th class="num">Prog.</th><th class="num xs">Nov.</th><th class="num xs">Dic.</th><th class="num xs">Evid.</th><th class="num">Digit.</th><th class="num">Faltan</th></tr>';
+  L.forEach(function(r){h+='<tr><td>'+esc(nm(r.mun))+'</td><td data-tip="'+esc('<b>'+r.act+'</b> · '+esc(nombreAct(r.act)))+'">'+esc(r.act)+'</td><td>'+esc(PROF[r.pid]?PROF[r.pid].nombre:r.prof)+'</td><td class="xs">'+esc(PROF[r.pid]?PROF[r.pid].aro:'')+'</td><td class="num">'+r.prog+'</td><td class="num xs">'+r.nov+'</td><td class="num xs">'+r.dic+'</td><td class="num xs">'+r.evid+'</td><td class="num">'+r.dig+'</td><td class="num'+(r.prog>r.evid+r.dig?' fa':' z')+'">'+Math.max(0,r.prog-r.evid-r.dig)+'</td></tr>'});
   $('tDet').innerHTML=h;
 }
 document.addEventListener('mouseover',function(e){var t=e.target.closest&&e.target.closest('[data-tip]'),tp=$('tip');if(!t){tp.classList.add('hidden');return}tp.innerHTML=t.getAttribute('data-tip');tp.classList.remove('hidden')});
